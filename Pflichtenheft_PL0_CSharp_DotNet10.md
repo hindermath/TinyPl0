@@ -89,6 +89,7 @@ Die vorliegende Beispielimplementierung ist nicht nur Spezifikation, sondern kon
 - Beibehaltung des didaktischen Compileraufbaus (sichtbare Phasen).
 - Reproduzierbare Tests mit Referenzprogrammen.
 - Nachweis der Verhaltenskompatibilität zur konkreten Pascal-Beispielimplementierung (nicht nur zur EBNF).
+- Übernahme der relevanten Compiler-Switches aus dem Pascal-`Usage`-Block in die C#-CLI.
 
 ### 3.2 Abgrenzung (nicht im Scope)
 - Keine Sprach-Erweiterungen über die konsolidierte PL/0-Definition (`PL0.md` + ANTLR-Referenz) hinaus.
@@ -187,6 +188,31 @@ I/O-Erweiterung (verbindlich):
   - `classic`: strikt kompatibel zur Pascal-Referenz ohne `?`/`!`
   - `extended`: konsolidierte Grammatik inkl. `?`/`!`
 
+### 4.5 CLI- und Compiler-Switches (aus `pl0c.pas` Usage)
+Quelle: `/Users/thorstenhindermann/Codex/TinyPl0/pl0c.pas:657`
+
+Verbindliche Switches für den C#-Port:
+| Pascal-Switch | Bedeutung in Pascal | C#-Switch (Soll) | Anforderung |
+|---|---|---|---|
+| `-h`, `-?`, `-help` (auch `/...`) | Hilfe anzeigen, sofort beenden | Legacy-Aliase behalten; zusätzlich `--help` | Gibt Usage aus und beendet ohne Kompilierung. |
+| `-errmsg` | Lange Fehlermeldung mit Text | `--errmsg` plus Legacy-Alias | Diagnosen enthalten neben Code auch Beschreibungstext. |
+| `-wopcod` | Listing mit zusätzlichem numerischem Opcode | `--wopcod` plus Legacy-Alias | Code-Listing enthält `opcode|mnemonic`-Information. |
+| `-conly` | Nur kompilieren, nicht interpretieren | `--compile-only` plus Legacy-Alias `--conly` | VM-Ausführung wird unterdrückt. |
+| `-emit` + `-asm` | P-Code als Mnemonics nach STDOUT | `--emit asm` plus Legacy-Form `--emit --asm` | Ausgabeformat `mnemonic l a` pro Zeile. |
+| `-emit` + `-cod` | P-Code als numerische Opcodes nach STDOUT | `--emit cod` plus Legacy-Form `--emit --cod` | Ausgabeformat `opcode l a` pro Zeile. |
+| `-emit` ohne `-asm/-cod` | Fehlercode 96 | identisch | Klare Fehlermeldung und dedizierter Exit-Code. |
+
+Kompatibilitätsregeln:
+1. Die C#-CLI soll sowohl moderne GNU-Optionen (`--help`) als auch historische `-`/`/`-Aliase aus dem Pascal-Programm akzeptieren.
+2. Die Semantik der Schalterkombinationen muss kompatibel bleiben:
+- `--conly` unterdrückt nur die Interpretation, nicht die Kompilierung.
+- `--emit` erfolgt nach erfolgreicher Kompilierung.
+3. Exit-Codes aus der Referenz sind zu übernehmen:
+- `96`: Emitter-Modus fehlt (`asm`/`cod`)
+- `97`: Compilerfehler im Quellprogramm
+- `98`: Programm unvollständig / unerwartetes EOF
+- `99`: Unerwartete Terminierung (inkl. Help-Exit im Pascal-Vorbild)
+
 ## 5. Nicht-funktionale Anforderungen
 - Plattform: .NET 10, Sprache C# (aktueller Sprachstandard kompatibel zu .NET 10 SDK).
 - Ausführung als Konsole (Windows/macOS/Linux).
@@ -227,6 +253,7 @@ I/O-Erweiterung (verbindlich):
 | Pascal-Prozedur/Funktion | Zweck in der Referenz | C# Ziel (Vorschlag) | Portierungsregeln |
 |---|---|---|---|
 | `error(n)` | Fehlermeldung/Fehlerzähler | `DiagnosticBag.Report(code, location, message)` | Numerische Codes beibehalten; Text zentralisieren. |
+| `PrintUsage(errcode)` | Usage-Text ausgeben und beenden | `CliHelpPrinter.PrintAndExit(code)` | Switch-Aliase und Exit-Code-Verhalten kompatibel abbilden. |
 | `getch` (lokal in `getsym`) | Zeicheneinlesung/Zeilenpuffer | `Lexer.ReadChar()` | Zeile/Spalte exakt pflegen; EOF als eigener Pfad. |
 | `getsym` | Lexikalische Analyse, nächstes Token | `Lexer.NextToken()` | Reserved-Words + Symbolmapping kompatibel halten; historische Operatorabbildung dokumentieren. |
 | `gen(x,y,z)` | Instruktion emittieren | `CodeGenerator.Emit(op, l, a)` | Kapazitätsgrenzen prüfen; Index rückgeben für Backpatching. |
@@ -247,6 +274,15 @@ I/O-Erweiterung (verbindlich):
 | `interpret` | VM-Hauptschleife | `VirtualMachine.Run(program)` | Register `P,B,T` und Dispatch über Opcode exakt spiegeln. |
 | `base(l)` (lokal in `interpret`) | Static-Link-Auflösung | `VirtualMachine.ResolveBase(level)` | Static-Link-Kette identisch traversieren. |
 | `main program` (Initialisierung) | Tabellenaufbau, Start der Pipeline | `Program.cs` + `CompilerPipeline` | Initialisierung explizit und testbar machen; kein globaler Zustand. |
+
+### 6.5 CLI-Optionen im Zielsystem
+- Der C#-Port erhält einen dedizierten Optionsparser (`CliOptionsParser`) mit:
+  - Legacy-Alias-Ebene (Pascal-kompatibel)
+  - Normalisierter interner Optionsstruktur (`CompilerCliOptions`)
+- Konfliktregeln (Pflicht):
+  - `--help` hat Vorrang und beendet frühzeitig.
+  - `--emit` ohne Modus liefert Fehler `96`.
+  - Unbekannte Switches liefern klare CLI-Diagnose mit Usage-Hinweis.
 
 Ergänzende Implementierungsregel:
 - Für jede gemappte Prozedur/Funktion ist mindestens ein fokussierter Unit- oder Integrationstest bereitzustellen, der das Referenzverhalten nachweist.
@@ -300,6 +336,7 @@ Ergebnis:
   - `compile <file.pl0> --out <file.pcode>`
   - `run <file.pl0>` oder `run-pcode <file.pcode>`
   - `--list-code` für didaktische Ausgabe.
+- Legacy-Compiler-Switches aus Pascal integrieren (`help`, `errmsg`, `wopcod`, `conly`, `emit asm|cod`).
 - End-to-End-Tests mit Referenzprogrammen.
 
 Ergebnis:
@@ -479,6 +516,32 @@ Zusätzliche Pflichtfälle `runtime/io-edge`:
 4. `io_input_eof_before_value.pl0`
 - Erwartung: definierte Eingabediagnose bei EOF ohne verfügbaren Integer-Wert.
 
+Pflichtfälle `cli-switches`:
+1. `cli_help_aliases`
+- Aufruf mit `-h`, `-?`, `-help`, `/h`, `/?`, `/help`, `--help`.
+- Erwartung: Usage-Ausgabe, keine Kompilierung, kompatibler Exit-Code.
+
+2. `cli_errmsg_on_off`
+- Erwartung: mit `--errmsg` lange Fehlertexte, ohne nur Kurzdiagnose.
+
+3. `cli_wopcod_listing`
+- Erwartung: Listing enthält numerischen Opcode zusätzlich zu Mnemonic.
+
+4. `cli_conly_skips_interpreter`
+- Erwartung: Kompilierung erfolgt, Interpreter wird nicht gestartet.
+
+5. `cli_emit_asm`
+- Erwartung: `--emit asm` produziert Mnemonic-Ausgabe pro Instruktion.
+
+6. `cli_emit_cod`
+- Erwartung: `--emit cod` produziert numerische Opcode-Ausgabe pro Instruktion.
+
+7. `cli_emit_missing_mode`
+- Erwartung: Fehlercode `96` und passende Meldung.
+
+8. `cli_unknown_switch`
+- Erwartung: klare CLI-Diagnose + Usage-Hinweis.
+
 ### 8.3 Testorakel und Artefakte
 Für jeden `valid`-Fall werden drei Orakel gepflegt:
 1. Parse-/Compile-Erfolg ohne Fehlerdiagnosen.
@@ -508,6 +571,7 @@ Für `runtime/io-edge`-Fälle:
 6. Dialekt-Tests (`classic` vs. `extended`) für Zulässigkeit von `?`/`!`
 7. Limit-Tests (`levmax`, `cxmax`, `txmax`, `nmax`, `amax`)
 8. Runtime-Fehlertests (Division durch 0, Input-Fehler, EOF)
+9. CLI-Switch-Tests (Aliasverhalten, Emit-Modi, Exit-Codes)
 
 - Optionaler Schalter für Golden-Update (nur manuell in Maintainer-Workflow), damit Soll-Änderungen kontrolliert nachvollzogen werden können.
 - Coverage-Gate: jede Sprachregel aus Abschnitt 4.1.1 und jede VM-Regel aus Abschnitt 4.3 muss mindestens einem Pflichttest zugeordnet sein (Traceability-Matrix).
@@ -519,6 +583,7 @@ Für `runtime/io-edge`-Fälle:
 - Referenz-Beispielprogramme laufen erfolgreich.
 - Alle Pflichtfälle aus Abschnitt 8.2 (`valid` und `invalid`) laufen im CI stabil durch.
 - Alle Pflichtfallgruppen (`valid`, `invalid`, `compat`, `dialect`, `limits`, `runtime/io-edge`) laufen im CI stabil durch.
+- Die Pascal-Usage-Switches aus `/Users/thorstenhindermann/Codex/TinyPl0/pl0c.pas:657` sind im C#-CLI kompatibel umgesetzt und getestet.
 
 ## 9. Risiken und Gegenmaßnahmen
 - Risiko: Semantikabweichungen bei Level-/Frame-Handling.

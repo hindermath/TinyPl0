@@ -22,8 +22,15 @@ Referenzquellen im Repository:
 
 ## Build und Ausführung
 
-### Aktueller Stand (Phase 0)
-Aktuell sind Spezifikation, Pflichtenheft und Pascal-Referenzcode vorhanden. Die .NET-10-Solution wird in Phase 1 angelegt.
+### Aktueller Stand (Phase 1)
+Die .NET-10-Solution ist angelegt:
+- `TinyPl0.sln`
+- `src/Pl0.Core`
+- `src/Pl0.Vm`
+- `src/Pl0.Cli`
+- `tests/Pl0.Tests`
+
+Zusätzlich ist ein erster `CliOptionsParser` für die Pascal-kompatiblen Compiler-Switches implementiert.
 
 ### Pascal-Referenz (optional)
 Voraussetzung: FreePascal (`fpc`) oder Delphi-kompatibler Compiler.
@@ -34,7 +41,7 @@ fpc pl0c.pas
 ./pl0c
 ```
 
-### Geplante .NET-10-Befehle (ab Phase 1)
+### .NET-10-Befehle
 ```bash
 dotnet restore
 dotnet build
@@ -44,4 +51,4 @@ dotnet test
 ## Repository-Status
 - Git-Repository ist initialisiert.
 - `.gitignore` für .NET/C#/Visual Studio/JetBrains ist vorhanden.
-- Phase 0 gemäß Pflichtenheft ist damit umgesetzt.
+- Phase 0 und Phase 1 (Grundgerüst + CLI-Parser) sind gemäß Pflichtenheft umgesetzt.
