@@ -121,7 +121,48 @@ public sealed class CliOptionsParserTests
     {
         var result = _sut.Parse(["sample.pl0"]);
 
+        Assert.Equal(CliCommand.None, result.Options.Command);
         Assert.Equal("sample.pl0", result.Options.SourcePath);
         Assert.False(result.HasErrors);
+    }
+
+    [Fact]
+    public void Parses_Compile_Command_And_Default_Output_Path()
+    {
+        var result = _sut.Parse(["compile", "sample.pl0"]);
+
+        Assert.Equal(CliCommand.Compile, result.Options.Command);
+        Assert.True(result.Options.CompileOnly);
+        Assert.Equal("sample.pcode", result.Options.OutputPath);
+        Assert.False(result.HasErrors);
+    }
+
+    [Fact]
+    public void Parses_RunPCode_Command()
+    {
+        var result = _sut.Parse(["run-pcode", "sample.pcode"]);
+
+        Assert.Equal(CliCommand.RunPCode, result.Options.Command);
+        Assert.Equal("sample.pcode", result.Options.SourcePath);
+        Assert.False(result.HasErrors);
+    }
+
+    [Fact]
+    public void Parses_ListCode_And_Out_Switches()
+    {
+        var result = _sut.Parse(["compile", "sample.pl0", "--list-code", "--out", "out/sample.pcode"]);
+
+        Assert.True(result.Options.ListCode);
+        Assert.Equal("out/sample.pcode", result.Options.OutputPath);
+        Assert.False(result.HasErrors);
+    }
+
+    [Fact]
+    public void Missing_Out_Value_Returns_Error99()
+    {
+        var result = _sut.Parse(["compile", "sample.pl0", "--out"]);
+
+        Assert.True(result.HasErrors);
+        Assert.Equal(99, result.ExitCode);
     }
 }

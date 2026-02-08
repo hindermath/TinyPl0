@@ -10,13 +10,18 @@ public sealed class CliOptionsParser
     public CliParseResult Parse(IReadOnlyList<string> args)
     {
         var diagnostics = new List<CliDiagnostic>();
+        var options = new CompilerCliOptions();
+
         var emitRequested = false;
         var emitMode = EmitMode.None;
         var showHelp = false;
         var longErrorMessages = false;
         var writeOpcodesInListing = false;
+        var listCode = false;
         var compileOnly = false;
+        var command = CliCommand.None;
         string? sourcePath = null;
+        string? outputPath = null;
 
         for (var i = 0; i < args.Count; i++)
         {
@@ -24,6 +29,12 @@ public sealed class CliOptionsParser
 
             if (!TryParseSwitch(arg, out var sw))
             {
+                if (command == CliCommand.None && TryParseCommand(arg, out var parsedCommand))
+                {
+                    command = parsedCommand;
+                    continue;
+                }
+
                 if (sourcePath is null)
                 {
                     sourcePath = arg;
@@ -53,9 +64,25 @@ public sealed class CliOptionsParser
                 case "wopcod":
                     writeOpcodesInListing = true;
                     break;
+                case "list-code":
+                    listCode = true;
+                    break;
                 case "conly":
                 case "compile-only":
                     compileOnly = true;
+                    break;
+                case "out":
+                    if (TryReadOptionValue(args, ref i, out var outValue))
+                    {
+                        outputPath = outValue;
+                    }
+                    else
+                    {
+                        diagnostics.Add(new CliDiagnostic(
+                            UnexpectedTerminationExitCode,
+                            "Missing value for '--out'."));
+                    }
+
                     break;
                 case "emit":
                     emitRequested = true;
@@ -96,16 +123,56 @@ public sealed class CliOptionsParser
                 "No emitter mode found. Use '--emit asm' or '--emit cod'."));
         }
 
-        var options = new CompilerCliOptions(
-            ShowHelp: showHelp,
-            LongErrorMessages: longErrorMessages,
-            WriteOpcodesInListing: writeOpcodesInListing,
-            CompileOnly: compileOnly,
-            EmitRequested: emitRequested,
-            EmitMode: emitMode,
-            SourcePath: sourcePath);
+        if (command == CliCommand.Compile)
+        {
+            compileOnly = true;
+            if (sourcePath is not null && string.IsNullOrWhiteSpace(outputPath))
+            {
+                outputPath = Path.ChangeExtension(sourcePath, ".pcode");
+            }
+        }
+
+        options = new CompilerCliOptions
+        {
+            Command = command,
+            ShowHelp = showHelp,
+            LongErrorMessages = longErrorMessages,
+            WriteOpcodesInListing = writeOpcodesInListing,
+            ListCode = listCode,
+            CompileOnly = compileOnly,
+            EmitRequested = emitRequested,
+            EmitMode = emitMode,
+            SourcePath = sourcePath,
+            OutputPath = outputPath,
+        };
 
         return new CliParseResult(options, diagnostics);
+    }
+
+    private static bool TryReadOptionValue(IReadOnlyList<string> args, ref int index, out string value)
+    {
+        value = string.Empty;
+        if (index + 1 >= args.Count)
+        {
+            return false;
+        }
+
+        index++;
+        value = args[index];
+        return true;
+    }
+
+    private static bool TryParseCommand(string token, out CliCommand command)
+    {
+        command = token.ToLowerInvariant() switch
+        {
+            "compile" => CliCommand.Compile,
+            "run" => CliCommand.Run,
+            "run-pcode" => CliCommand.RunPCode,
+            _ => CliCommand.None,
+        };
+
+        return command != CliCommand.None;
     }
 
     private static bool IsHelpSwitch(string sw) =>

@@ -32,7 +32,7 @@ if (result.HasErrors)
 
 if (string.IsNullOrWhiteSpace(result.Options.SourcePath))
 {
-    Console.WriteLine("TinyPl0 Phase 2 lexer scaffold ready. Provide a .pl0 file path to lex.");
+    Console.WriteLine("TinyPl0 Phase 5 CLI ready. Use 'compile', 'run', or 'run-pcode'.");
     return;
 }
 
@@ -43,26 +43,94 @@ if (!File.Exists(result.Options.SourcePath))
     return;
 }
 
-var source = await File.ReadAllTextAsync(result.Options.SourcePath);
-var compiler = new Pl0Compiler();
-var compilation = compiler.Compile(source, CompilerOptions.Default);
-
-if (!compilation.Success)
+IReadOnlyList<Instruction> instructions;
+if (result.Options.Command == CliCommand.RunPCode)
 {
-    foreach (var diagnostic in compilation.Diagnostics)
+    try
     {
-        Console.Error.WriteLine(
-            $"Error {diagnostic.Code} at {diagnostic.Position.Line}:{diagnostic.Position.Column}: {diagnostic.Message}");
+        var pcodeText = await File.ReadAllTextAsync(result.Options.SourcePath);
+        instructions = PCodeSerializer.Parse(pcodeText);
+    }
+    catch (FormatException ex)
+    {
+        Console.Error.WriteLine($"Error {UnexpectedTerminationExitCode}: {ex.Message}");
+        Environment.ExitCode = UnexpectedTerminationExitCode;
+        return;
+    }
+}
+else
+{
+    var source = await File.ReadAllTextAsync(result.Options.SourcePath);
+    var compiler = new Pl0Compiler();
+    var compilation = compiler.Compile(source, CompilerOptions.Default);
+
+    if (!compilation.Success)
+    {
+        foreach (var diagnostic in compilation.Diagnostics)
+        {
+            Console.Error.WriteLine(
+                $"Error {diagnostic.Code} at {diagnostic.Position.Line}:{diagnostic.Position.Column}: {diagnostic.Message}");
+        }
+
+        Environment.ExitCode = CompilerErrorExitCode;
+        return;
     }
 
-    Environment.ExitCode = CompilerErrorExitCode;
-    return;
+    instructions = compilation.Instructions;
+
+    if (result.Options.Command == CliCommand.Compile && !string.IsNullOrWhiteSpace(result.Options.OutputPath))
+    {
+        var outputDir = Path.GetDirectoryName(result.Options.OutputPath);
+        if (!string.IsNullOrWhiteSpace(outputDir))
+        {
+            Directory.CreateDirectory(outputDir);
+        }
+
+        await File.WriteAllTextAsync(result.Options.OutputPath, PCodeSerializer.ToAsm(instructions));
+    }
 }
 
-if (!result.Options.CompileOnly)
+if (result.Options.ListCode)
+{
+    for (var i = 0; i < instructions.Count; i++)
+    {
+        var instruction = instructions[i];
+        if (result.Options.WriteOpcodesInListing)
+        {
+            Console.Error.WriteLine(
+                $"{i,5}|{(int)instruction.Op,5}{instruction.Level,3}{instruction.Argument,5}|{instruction.Op.ToString().ToLowerInvariant(),5}{instruction.Level,3}{instruction.Argument,5}");
+        }
+        else
+        {
+            Console.Error.WriteLine($"{i,5} {instruction.Op.ToString().ToLowerInvariant(),5}{instruction.Level,3}{instruction.Argument,5}");
+        }
+    }
+}
+
+if (result.Options.EmitRequested)
+{
+    var payload = result.Options.EmitMode == EmitMode.Cod
+        ? PCodeSerializer.ToCod(instructions)
+        : PCodeSerializer.ToAsm(instructions);
+    if (!string.IsNullOrWhiteSpace(payload))
+    {
+        Console.WriteLine(payload);
+    }
+}
+
+var shouldRun = result.Options.Command switch
+{
+    CliCommand.Compile => false,
+    CliCommand.RunPCode => !result.Options.CompileOnly,
+    CliCommand.Run => !result.Options.CompileOnly,
+    CliCommand.None => !result.Options.CompileOnly,
+    _ => false,
+};
+
+if (shouldRun)
 {
     var vm = new VirtualMachine();
-    var vmResult = vm.Run(compilation.Instructions, new ConsolePl0Io(), VirtualMachineOptions.Default);
+    var vmResult = vm.Run(instructions, new ConsolePl0Io(), VirtualMachineOptions.Default);
     if (!vmResult.Success)
     {
         foreach (var diagnostic in vmResult.Diagnostics)
@@ -75,24 +143,14 @@ if (!result.Options.CompileOnly)
     }
 }
 
-if (result.Options.EmitRequested)
+if (result.Options.Command == CliCommand.Compile && !result.Options.EmitRequested)
 {
-    foreach (var instruction in compilation.Instructions)
+    if (!string.IsNullOrWhiteSpace(result.Options.OutputPath))
     {
-        if (result.Options.EmitMode == EmitMode.Cod)
-        {
-            Console.WriteLine($"{(int)instruction.Op} {instruction.Level} {instruction.Argument}");
-        }
-        else
-        {
-            Console.WriteLine($"{instruction.Op.ToString().ToLowerInvariant()} {instruction.Level} {instruction.Argument}");
-        }
+        Console.WriteLine($"Compiled {instructions.Count} instructions to '{result.Options.OutputPath}'.");
     }
-}
-else
-{
-    if (result.Options.CompileOnly)
+    else
     {
-        Console.WriteLine($"Compiled {compilation.Instructions.Count} instructions.");
+        Console.WriteLine($"Compiled {instructions.Count} instructions.");
     }
 }
