@@ -1,5 +1,6 @@
 using Pl0.Cli.Cli;
 using Pl0.Core;
+using Pl0.Vm;
 
 const int HelpExitCode = 99;
 const int CompilerErrorExitCode = 97;
@@ -58,6 +59,22 @@ if (!compilation.Success)
     return;
 }
 
+if (!result.Options.CompileOnly)
+{
+    var vm = new VirtualMachine();
+    var vmResult = vm.Run(compilation.Instructions, new ConsolePl0Io(), VirtualMachineOptions.Default);
+    if (!vmResult.Success)
+    {
+        foreach (var diagnostic in vmResult.Diagnostics)
+        {
+            Console.Error.WriteLine($"Runtime {diagnostic.Code}: {diagnostic.Message}");
+        }
+
+        Environment.ExitCode = vmResult.Diagnostics[0].Code;
+        return;
+    }
+}
+
 if (result.Options.EmitRequested)
 {
     foreach (var instruction in compilation.Instructions)
@@ -74,5 +91,8 @@ if (result.Options.EmitRequested)
 }
 else
 {
-    Console.WriteLine($"Compiled {compilation.Instructions.Count} instructions.");
+    if (result.Options.CompileOnly)
+    {
+        Console.WriteLine($"Compiled {compilation.Instructions.Count} instructions.");
+    }
 }
