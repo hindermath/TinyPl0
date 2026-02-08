@@ -30,6 +30,10 @@ Referenzquellen im Repository:
 ## Architektur und Qualität
 - Architekturdiagramm und Pascal->C# Mapping:
   - `/Users/thorstenhindermann/Codex/TinyPl0/docs/ARCHITECTURE.md`
+- Sprachumfang/EBNF:
+  - `/Users/thorstenhindermann/Codex/TinyPl0/docs/LANGUAGE_EBNF.md`
+- VM-Befehlssatz:
+  - `/Users/thorstenhindermann/Codex/TinyPl0/docs/VM_INSTRUCTION_SET.md`
 - Qualitäts- und Coverage-Übersicht:
   - `/Users/thorstenhindermann/Codex/TinyPl0/docs/QUALITY.md`
 
