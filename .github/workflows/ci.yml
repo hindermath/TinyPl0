@@ -28,3 +28,12 @@ jobs:
 
       - name: Test
         run: dotnet test TinyPl0.sln --configuration Release --no-build
+
+      - name: Test (Coverage)
+        run: dotnet test TinyPl0.sln --configuration Release --no-build --collect:"XPlat Code Coverage" --results-directory ./TestResults
+
+      - name: Upload Coverage Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: TestResults

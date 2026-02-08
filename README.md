@@ -20,6 +20,19 @@ Referenzquellen im Repository:
 - `/Users/thorstenhindermann/Codex/TinyPl0/PL0.md`
 - `/Users/thorstenhindermann/Codex/TinyPl0/pl0c.pas`
 
+## Sprachumfang und Einschränkungen
+- Datentyp: nur `integer`.
+- Prozeduren sind unterstützt, Parameter/Funktionsrückgaben nicht.
+- Dialekte:
+1. `classic`: ohne `?`/`!`.
+2. `extended`: mit Eingabe `? ident` und Ausgabe `! expression`.
+
+## Architektur und Qualität
+- Architekturdiagramm und Pascal->C# Mapping:
+  - `/Users/thorstenhindermann/Codex/TinyPl0/docs/ARCHITECTURE.md`
+- Qualitäts- und Coverage-Übersicht:
+  - `/Users/thorstenhindermann/Codex/TinyPl0/docs/QUALITY.md`
+
 ## Build und Ausführung
 
 ### Aktueller Stand (Phase 5)
@@ -55,7 +68,23 @@ dotnet build
 dotnet test
 ```
 
+### CLI-Beispiele
+```bash
+# Kompilieren nach .pcode
+dotnet run --project src/Pl0.Cli -- compile tests/data/pl0/valid/feature_const_var_assignment.pl0 --out /tmp/example.pcode
+
+# PL/0 Quelltext direkt ausführen
+dotnet run --project src/Pl0.Cli -- run tests/data/pl0/valid/feature_io_q_bang_relops.pl0
+
+# Vorhandene .pcode Datei ausführen
+dotnet run --project src/Pl0.Cli -- run-pcode tests/data/expected/code/feature_io_q_bang_relops.pcode.txt
+
+# Code-Liste ausgeben (didaktisch)
+dotnet run --project src/Pl0.Cli -- run tests/data/pl0/valid/feature_const_var_assignment.pl0 --list-code --wopcod
+```
+
 ## Repository-Status
 - Git-Repository ist initialisiert.
 - `.gitignore` für .NET/C#/Visual Studio/JetBrains ist vorhanden.
 - Phase 0 bis Phase 5 (CLI + End-to-End) sind gemäß Pflichtenheft umgesetzt.
+- Phase 6 (Qualität + Dokumentation) ist gestartet und enthält Architektur-/Qualitätsdoku sowie erweiterte Kernpfadtests.
