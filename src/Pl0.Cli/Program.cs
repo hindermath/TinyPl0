@@ -43,12 +43,12 @@ if (!File.Exists(result.Options.SourcePath))
 }
 
 var source = await File.ReadAllTextAsync(result.Options.SourcePath);
-var lexer = new Pl0Lexer(source);
-var lexResult = lexer.Lex();
+var compiler = new Pl0Compiler();
+var compilation = compiler.Compile(source, CompilerOptions.Default);
 
-if (lexResult.Diagnostics.Count > 0)
+if (!compilation.Success)
 {
-    foreach (var diagnostic in lexResult.Diagnostics)
+    foreach (var diagnostic in compilation.Diagnostics)
     {
         Console.Error.WriteLine(
             $"Error {diagnostic.Code} at {diagnostic.Position.Line}:{diagnostic.Position.Column}: {diagnostic.Message}");
@@ -58,4 +58,21 @@ if (lexResult.Diagnostics.Count > 0)
     return;
 }
 
-Console.WriteLine($"Lexed {lexResult.Tokens.Count} tokens.");
+if (result.Options.EmitRequested)
+{
+    foreach (var instruction in compilation.Instructions)
+    {
+        if (result.Options.EmitMode == EmitMode.Cod)
+        {
+            Console.WriteLine($"{(int)instruction.Op} {instruction.Level} {instruction.Argument}");
+        }
+        else
+        {
+            Console.WriteLine($"{instruction.Op.ToString().ToLowerInvariant()} {instruction.Level} {instruction.Argument}");
+        }
+    }
+}
+else
+{
+    Console.WriteLine($"Compiled {compilation.Instructions.Count} instructions.");
+}

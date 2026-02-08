@@ -22,7 +22,7 @@ Referenzquellen im Repository:
 
 ## Build und Ausführung
 
-### Aktueller Stand (Phase 2)
+### Aktueller Stand (Phase 3)
 Die .NET-10-Solution ist angelegt:
 - `TinyPl0.sln`
 - `src/Pl0.Core`
@@ -33,7 +33,8 @@ Die .NET-10-Solution ist angelegt:
 Zusätzlich sind umgesetzt:
 - `CliOptionsParser` für die Pascal-kompatiblen Compiler-Switches.
 - Ein erster Lexer (`Pl0Lexer`) mit Zeilen-/Spalten-Tracking.
-- Erste Golden-Tests auf `.pl0`-Dateien in `tests/data`.
+- Parser + Symboltabelle + Codegenerator (`Pl0Parser`/`Pl0Compiler`).
+- Golden-Tests auf `.pl0`-Dateien für Lexer und Codegenerierung in `tests/data`.
 
 ### Pascal-Referenz (optional)
 Voraussetzung: FreePascal (`fpc`) oder Delphi-kompatibler Compiler.
@@ -54,4 +55,4 @@ dotnet test
 ## Repository-Status
 - Git-Repository ist initialisiert.
 - `.gitignore` für .NET/C#/Visual Studio/JetBrains ist vorhanden.
-- Phase 0, Phase 1 und erste Teile von Phase 2 (Lexer + Golden-Tests) sind gemäß Pflichtenheft umgesetzt.
+- Phase 0, Phase 1, Phase 2 und Phase 3 (Parser + Symboltabelle + Codegenerator) sind gemäß Pflichtenheft umgesetzt.
