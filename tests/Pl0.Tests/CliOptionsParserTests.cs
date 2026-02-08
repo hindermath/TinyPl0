@@ -127,6 +127,16 @@ public sealed class CliOptionsParserTests
     }
 
     [Fact]
+    public void Parses_Absolute_Unix_Source_Path_As_Positional()
+    {
+        var result = _sut.Parse(["run", "/tmp/sample.pl0"]);
+
+        Assert.Equal(CliCommand.Run, result.Options.Command);
+        Assert.Equal("/tmp/sample.pl0", result.Options.SourcePath);
+        Assert.False(result.HasErrors);
+    }
+
+    [Fact]
     public void Parses_Compile_Command_And_Default_Output_Path()
     {
         var result = _sut.Parse(["compile", "sample.pl0"]);

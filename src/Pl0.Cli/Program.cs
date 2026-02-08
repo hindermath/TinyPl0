@@ -3,7 +3,6 @@ using Pl0.Core;
 using Pl0.Vm;
 
 const int HelpExitCode = 99;
-const int CompilerErrorExitCode = 97;
 const int UnexpectedTerminationExitCode = 99;
 
 var parser = new CliOptionsParser();
@@ -68,11 +67,12 @@ else
     {
         foreach (var diagnostic in compilation.Diagnostics)
         {
-            Console.Error.WriteLine(
-                $"Error {diagnostic.Code} at {diagnostic.Position.Line}:{diagnostic.Position.Column}: {diagnostic.Message}");
+            Console.Error.WriteLine(CompilationDiagnostics.FormatCompilerDiagnostic(
+                diagnostic,
+                result.Options.LongErrorMessages));
         }
 
-        Environment.ExitCode = CompilerErrorExitCode;
+        Environment.ExitCode = CompilationDiagnostics.SelectExitCode(compilation.Diagnostics);
         return;
     }
 

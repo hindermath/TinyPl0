@@ -96,6 +96,34 @@ public sealed class CatalogCasesTests
         }
     }
 
+    [Fact]
+    public void All_Compile_Success_Cases_Match_Golden_Code()
+    {
+        foreach (var @case in LoadCases().Where(c => c.CompileSuccess))
+        {
+            var sourcePath = ResolveCasePath(@case.Name, @case.Folder);
+            Assert.True(File.Exists(sourcePath), $"Case file not found: {sourcePath}");
+
+            var source = File.ReadAllText(sourcePath);
+            var compilation = new Pl0Compiler().Compile(source, CreateCompilerOptions(@case));
+            Assert.True(compilation.Success, $"Expected successful compile for case '{@case.Name}'.");
+
+            var expectedCodePath = Path.Combine(
+                RepoRoot,
+                "tests",
+                "data",
+                "expected",
+                "code",
+                $"{Path.GetFileNameWithoutExtension(@case.Name)}.pcode.txt");
+
+            Assert.True(File.Exists(expectedCodePath), $"Missing golden code artifact: {expectedCodePath}");
+
+            var expected = NormalizeLineEndings(File.ReadAllText(expectedCodePath)).TrimEnd();
+            var actual = NormalizeLineEndings(PCodeSerializer.ToAsm(compilation.Instructions)).TrimEnd();
+            Assert.Equal(expected, actual);
+        }
+    }
+
     [Theory]
     [MemberData(nameof(Cases))]
     public void Catalog_Case_Behavior_Matches_Expectations(CatalogCase @case)
@@ -104,17 +132,7 @@ public sealed class CatalogCasesTests
         Assert.True(File.Exists(sourcePath), $"Case file not found: {sourcePath}");
 
         var source = File.ReadAllText(sourcePath);
-        var dialect = @case.Dialect?.Equals("classic", StringComparison.OrdinalIgnoreCase) == true
-            ? Pl0Dialect.Classic
-            : Pl0Dialect.Extended;
-        var options = new CompilerOptions(
-            dialect,
-            MaxLevel: @case.MaxLevel ?? 3,
-            MaxAddress: @case.MaxAddress ?? 2047,
-            MaxIdentifierLength: @case.MaxIdentifierLength ?? 10,
-            MaxNumberDigits: @case.MaxNumberDigits ?? 14,
-            MaxSymbolCount: @case.MaxSymbolCount ?? 100,
-            MaxCodeLength: @case.MaxCodeLength ?? 200);
+        var options = CreateCompilerOptions(@case);
 
         var compilation = new Pl0Compiler().Compile(source, options);
         Assert.Equal(@case.CompileSuccess, compilation.Success);
@@ -124,9 +142,10 @@ public sealed class CatalogCasesTests
             Assert.NotEmpty(compilation.Diagnostics);
             if (@case.ExpectedCompileCodes is { Count: > 0 })
             {
-                Assert.Contains(
-                    compilation.Diagnostics,
-                    d => @case.ExpectedCompileCodes.Contains(d.Code));
+                foreach (var expectedCode in @case.ExpectedCompileCodes)
+                {
+                    Assert.Contains(compilation.Diagnostics, d => d.Code == expectedCode);
+                }
             }
 
             return;
@@ -152,9 +171,10 @@ public sealed class CatalogCasesTests
             Assert.NotEmpty(vmResult.Diagnostics);
             if (@case.ExpectedRuntimeCodes is { Count: > 0 })
             {
-                Assert.Contains(
-                    vmResult.Diagnostics,
-                    d => @case.ExpectedRuntimeCodes.Contains(d.Code));
+                foreach (var expectedCode in @case.ExpectedRuntimeCodes)
+                {
+                    Assert.Contains(vmResult.Diagnostics, d => d.Code == expectedCode);
+                }
             }
 
             return;
@@ -179,6 +199,21 @@ public sealed class CatalogCasesTests
             "formaterror" => CatalogIo.FormatError(),
             _ => CatalogIo.Buffered(@case.Input ?? []),
         };
+    }
+
+    private static CompilerOptions CreateCompilerOptions(CatalogCase @case)
+    {
+        var dialect = @case.Dialect?.Equals("classic", StringComparison.OrdinalIgnoreCase) == true
+            ? Pl0Dialect.Classic
+            : Pl0Dialect.Extended;
+        return new CompilerOptions(
+            dialect,
+            MaxLevel: @case.MaxLevel ?? 3,
+            MaxAddress: @case.MaxAddress ?? 2047,
+            MaxIdentifierLength: @case.MaxIdentifierLength ?? 10,
+            MaxNumberDigits: @case.MaxNumberDigits ?? 14,
+            MaxSymbolCount: @case.MaxSymbolCount ?? 100,
+            MaxCodeLength: @case.MaxCodeLength ?? 200);
     }
 
     private static string ResolveCasePath(string name, string? folderHint)
@@ -239,6 +274,10 @@ public sealed class CatalogCasesTests
 
         throw new InvalidOperationException("Could not locate repository root from test context.");
     }
+
+    private static string NormalizeLineEndings(string text) =>
+        text.Replace("\r\n", "\n", StringComparison.Ordinal)
+            .Replace("\n", Environment.NewLine, StringComparison.Ordinal);
 
     public sealed class CatalogCase
     {

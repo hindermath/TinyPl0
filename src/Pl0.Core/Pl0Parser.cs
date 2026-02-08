@@ -24,7 +24,58 @@ public sealed class Pl0Parser
     private readonly SymbolTable _symbols = new();
     private readonly List<Instruction> _code = [];
     private readonly List<CompilerDiagnostic> _diagnostics = [];
+    private bool _reportedUnexpectedEof;
     private int _position;
+
+    private static readonly TokenKind[] StatementStartTokens =
+    [
+        TokenKind.Ident,
+        TokenKind.Call,
+        TokenKind.Begin,
+        TokenKind.If,
+        TokenKind.While,
+        TokenKind.Question,
+        TokenKind.Bang,
+    ];
+
+    private static readonly TokenKind[] BlockContinuationTokens =
+    [
+        TokenKind.Const,
+        TokenKind.Var,
+        TokenKind.Procedure,
+        TokenKind.Ident,
+        TokenKind.Call,
+        TokenKind.Begin,
+        TokenKind.If,
+        TokenKind.While,
+        TokenKind.Question,
+        TokenKind.Bang,
+        TokenKind.End,
+        TokenKind.Period,
+    ];
+
+    private static readonly TokenKind[] StatementFollowTokens =
+    [
+        TokenKind.Semicolon,
+        TokenKind.End,
+        TokenKind.Period,
+    ];
+
+    private static readonly TokenKind[] ExpressionFollowTokens =
+    [
+        TokenKind.Semicolon,
+        TokenKind.End,
+        TokenKind.Then,
+        TokenKind.Do,
+        TokenKind.Period,
+        TokenKind.Equal,
+        TokenKind.NotEqual,
+        TokenKind.Less,
+        TokenKind.LessOrEqual,
+        TokenKind.Greater,
+        TokenKind.GreaterOrEqual,
+        TokenKind.RParen,
+    ];
 
     public Pl0Parser(IReadOnlyList<Pl0Token> tokens, CompilerOptions options)
     {
@@ -38,6 +89,10 @@ public sealed class Pl0Parser
         if (!TryMatch(TokenKind.Period))
         {
             Report(9, "Period expected.");
+            if (Current.Kind == TokenKind.EndOfFile)
+            {
+                ReportUnexpectedEofOnce();
+            }
         }
 
         Expect(TokenKind.EndOfFile, 99, "Unexpected termination.");
@@ -64,7 +119,7 @@ public sealed class Pl0Parser
                 ParseConstDeclaration(level);
             }
 
-            Expect(TokenKind.Semicolon, 5, "Semicolon or comma missing.");
+            ExpectOrSync(TokenKind.Semicolon, 5, "Semicolon or comma missing.", BlockContinuationTokens);
         }
 
         if (TryMatch(TokenKind.Var))
@@ -75,7 +130,7 @@ public sealed class Pl0Parser
                 ParseVarDeclaration(level, ref dataIndex);
             }
 
-            Expect(TokenKind.Semicolon, 5, "Semicolon or comma missing.");
+            ExpectOrSync(TokenKind.Semicolon, 5, "Semicolon or comma missing.", BlockContinuationTokens);
         }
 
         while (TryMatch(TokenKind.Procedure))
@@ -84,9 +139,9 @@ public sealed class Pl0Parser
             var procedure = new SymbolEntry(name.Lexeme, SymbolKind.Procedure, level, address: 0);
             TryDeclare(procedure, 31, "Duplicate identifier in scope.");
 
-            Expect(TokenKind.Semicolon, 5, "Semicolon or comma missing.");
+            ExpectOrSync(TokenKind.Semicolon, 5, "Semicolon or comma missing.", BlockContinuationTokens);
             ParseBlock(level + 1, procedure);
-            Expect(TokenKind.Semicolon, 5, "Semicolon or comma missing.");
+            ExpectOrSync(TokenKind.Semicolon, 5, "Semicolon or comma missing.", BlockContinuationTokens);
         }
 
         var bodyStart = _code.Count;
@@ -211,14 +266,14 @@ public sealed class Pl0Parser
             ParseStatement(level);
         }
 
-        Expect(TokenKind.End, 17, "Semicolon or 'end' expected.");
+        ExpectOrSync(TokenKind.End, 17, "Semicolon or 'end' expected.", StatementFollowTokens);
     }
 
     private void ParseIf(int level)
     {
         Advance();
         ParseCondition(level);
-        Expect(TokenKind.Then, 16, "'then' expected.");
+        ExpectOrSync(TokenKind.Then, 16, "'then' expected.", StatementStartTokens);
         var jumpIfFalse = Emit(Opcode.Jpc, 0, 0);
         ParseStatement(level);
         PatchArgument(jumpIfFalse, _code.Count);
@@ -230,7 +285,7 @@ public sealed class Pl0Parser
         var conditionStart = _code.Count;
         ParseCondition(level);
         var jumpIfFalse = Emit(Opcode.Jpc, 0, 0);
-        Expect(TokenKind.Do, 18, "'do' expected.");
+        ExpectOrSync(TokenKind.Do, 18, "'do' expected.", StatementStartTokens);
         ParseStatement(level);
         Emit(Opcode.Jmp, 0, conditionStart);
         PatchArgument(jumpIfFalse, _code.Count);
@@ -388,7 +443,7 @@ public sealed class Pl0Parser
             case TokenKind.LParen:
                 Advance();
                 ParseExpression(level);
-                Expect(TokenKind.RParen, 22, "Right parenthesis missing.");
+                ExpectOrSync(TokenKind.RParen, 22, "Right parenthesis missing.", ExpressionFollowTokens);
                 return;
             default:
                 Report(24, "An expression cannot begin with this symbol.");
@@ -481,7 +536,49 @@ public sealed class Pl0Parser
         }
 
         Report(code, message);
+        if (Current.Kind == TokenKind.EndOfFile)
+        {
+            ReportUnexpectedEofOnce();
+            return Current;
+        }
+
         return Advance();
+    }
+
+    private Pl0Token ExpectOrSync(TokenKind kind, int code, string message, params TokenKind[] syncTokens)
+    {
+        if (Current.Kind == kind)
+        {
+            return Advance();
+        }
+
+        Report(code, message);
+        if (Current.Kind == TokenKind.EndOfFile)
+        {
+            ReportUnexpectedEofOnce();
+            return Current;
+        }
+
+        Synchronize(syncTokens.Append(kind));
+        if (Current.Kind == kind)
+        {
+            return Advance();
+        }
+
+        return Current;
+    }
+
+    private void Synchronize(IEnumerable<TokenKind> syncTokens)
+    {
+        var sync = new HashSet<TokenKind>(syncTokens)
+        {
+            TokenKind.EndOfFile,
+        };
+
+        while (!sync.Contains(Current.Kind))
+        {
+            Advance();
+        }
     }
 
     private Pl0Token Advance()
@@ -517,5 +614,16 @@ public sealed class Pl0Parser
     private void Report(int code, string message, TextPosition position)
     {
         _diagnostics.Add(new CompilerDiagnostic(code, message, position));
+    }
+
+    private void ReportUnexpectedEofOnce()
+    {
+        if (_reportedUnexpectedEof)
+        {
+            return;
+        }
+
+        _diagnostics.Add(new CompilerDiagnostic(98, "Program incomplete: unexpected end of input.", Current.Position));
+        _reportedUnexpectedEof = true;
     }
 }

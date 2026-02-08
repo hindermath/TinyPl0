@@ -1,0 +1,5 @@
+jmp 0 1
+int 0 3
+lit 0 42
+opr 0 15
+opr 0 0

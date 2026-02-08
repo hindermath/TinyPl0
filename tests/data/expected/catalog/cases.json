@@ -40,7 +40,7 @@
   {"name":"error_call_non_procedure.pl0","group":"invalid","folder":"invalid","dialect":"extended","compileSuccess":false,"expectedCompileCodes":[15]},
   {"name":"error_missing_end.pl0","group":"invalid","folder":"invalid","dialect":"extended","compileSuccess":false,"expectedCompileCodes":[17]},
   {"name":"error_missing_period.pl0","group":"invalid","folder":"invalid","dialect":"extended","compileSuccess":false,"expectedCompileCodes":[9]},
-  {"name":"error_multiple_errors_recovery.pl0","group":"invalid","folder":"invalid","dialect":"extended","compileSuccess":false,"expectedCompileCodes":[11,13,16,24]},
+  {"name":"error_multiple_errors_recovery.pl0","group":"invalid","folder":"invalid","dialect":"extended","compileSuccess":false,"expectedCompileCodes":[11,24,17,9]},
 
   {"name":"runtime_division_by_zero.pl0","group":"runtime/io-edge","folder":"valid","dialect":"extended","compileSuccess":true,"run":true,"runtimeSuccess":false,"expectedRuntimeCodes":[206]},
   {"name":"io_input_negative_and_whitespace.pl0","group":"runtime/io-edge","folder":"valid","dialect":"extended","compileSuccess":true,"run":true,"input":[-12],"expectedOutput":[-12]},

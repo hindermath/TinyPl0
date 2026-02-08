@@ -100,4 +100,19 @@ public sealed class ParserDiagnosticsTests
         Assert.False(result.Success);
         Assert.Contains(result.Diagnostics, d => d.Code == 31);
     }
+
+    [Fact]
+    public void Incomplete_Program_Reports_Error98()
+    {
+        const string source = """
+                              var x;
+                              begin
+                                x := 1
+                              """;
+
+        var result = new Pl0Compiler().Compile(source, CompilerOptions.Default);
+
+        Assert.False(result.Success);
+        Assert.Contains(result.Diagnostics, d => d.Code == 98);
+    }
 }

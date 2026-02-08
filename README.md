@@ -34,6 +34,8 @@ Referenzquellen im Repository:
   - `/Users/thorstenhindermann/Codex/TinyPl0/docs/LANGUAGE_EBNF.md`
 - VM-Befehlssatz:
   - `/Users/thorstenhindermann/Codex/TinyPl0/docs/VM_INSTRUCTION_SET.md`
+- Traceability-Matrix (Regel -> Pflichttests):
+  - `/Users/thorstenhindermann/Codex/TinyPl0/docs/TRACEABILITY_MATRIX.md`
 - Qualitäts- und Coverage-Übersicht:
   - `/Users/thorstenhindermann/Codex/TinyPl0/docs/QUALITY.md`
 

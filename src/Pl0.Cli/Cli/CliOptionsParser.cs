@@ -27,6 +27,23 @@ public sealed class CliOptionsParser
         {
             var arg = args[i];
 
+            if (IsUnixAbsolutePath(arg) && !IsKnownLegacySlashSwitch(arg))
+            {
+                if (sourcePath is null)
+                {
+                    sourcePath = arg;
+                    continue;
+                }
+
+                diagnostics.Add(new CliDiagnostic(
+                    UnexpectedTerminationExitCode,
+                    string.Format(
+                        CultureInfo.InvariantCulture,
+                        "Unexpected positional argument: '{0}'.",
+                        arg)));
+                continue;
+            }
+
             if (!TryParseSwitch(arg, out var sw))
             {
                 if (command == CliCommand.None && TryParseCommand(arg, out var parsedCommand))
@@ -177,6 +194,26 @@ public sealed class CliOptionsParser
 
     private static bool IsHelpSwitch(string sw) =>
         sw is "?" or "h" or "help";
+
+    private static bool IsUnixAbsolutePath(string value) =>
+        !string.IsNullOrWhiteSpace(value) && value.Length > 1 && value[0] == '/';
+
+    private static bool IsKnownLegacySlashSwitch(string value)
+    {
+        if (!value.StartsWith("/", StringComparison.Ordinal) || value.Length <= 1)
+        {
+            return false;
+        }
+
+        var sw = value[1..].ToLowerInvariant();
+        if (sw is "?" or "h" or "help" or "errmsg" or "wopcod" or "conly" or "compile-only" or "list-code"
+            or "out" or "emit" or "asm" or "cod")
+        {
+            return true;
+        }
+
+        return TryParseEmitEqualsValue(sw, out _);
+    }
 
     private static bool TryParseSwitch(string value, out string sw)
     {
