@@ -51,6 +51,8 @@ Zusätzlich sind umgesetzt:
 - CLI-Subcommands: `compile`, `run`, `run-pcode` (inkl. `--out`, `--list-code`, `--emit`).
 - P-Code Serialisierung/Deserialisierung (`PCodeSerializer`) für Datei-Workflow.
 - End-to-End-Tests für `source -> pcode -> vm` in `tests`.
+- Vollständiger 8.2-Testdatenkatalog (41 Pflicht-`.pl0`-Fälle) inkl. erwarteter Artefakte:
+  - `/Users/thorstenhindermann/Codex/TinyPl0/tests/data/expected/catalog/cases.json`
 
 ### Pascal-Referenz (optional)
 Voraussetzung: FreePascal (`fpc`) oder Delphi-kompatibler Compiler.

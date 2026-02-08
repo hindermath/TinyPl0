@@ -16,6 +16,8 @@ public sealed class Pl0Parser
     private const int OprLeq = 13;
     private const int OprRead = 14;
     private const int OprWrite = 15;
+    private const int ErrorProgramTooLong = 35;
+    private const int ErrorSymbolTableOverflow = 34;
 
     private readonly IReadOnlyList<Pl0Token> _tokens;
     private readonly CompilerOptions _options;
@@ -420,6 +422,12 @@ public sealed class Pl0Parser
 
     private void TryDeclare(SymbolEntry entry, int code, string message)
     {
+        if (_symbols.Count >= _options.MaxSymbolCount)
+        {
+            Report(ErrorSymbolTableOverflow, $"Symbol table overflow (max {_options.MaxSymbolCount}).");
+            return;
+        }
+
         if (_symbols.TryDeclare(entry))
         {
             return;
@@ -430,6 +438,14 @@ public sealed class Pl0Parser
 
     private int Emit(Opcode opcode, int level, int argument)
     {
+        if (_code.Count >= _options.MaxCodeLength)
+        {
+            Report(
+                ErrorProgramTooLong,
+                $"Program too long (max {_options.MaxCodeLength} instructions).");
+            return _code.Count == 0 ? 0 : _code.Count - 1;
+        }
+
         var index = _code.Count;
         _code.Add(new Instruction(opcode, level, argument));
         return index;

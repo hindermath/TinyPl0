@@ -1,0 +1,10 @@
+var x;
+begin
+  x := 5;
+  if x = 5 then ! 1;
+  if x # 6 then ! 1;
+  if x < 6 then ! 1;
+  if x <= 5 then ! 1;
+  if x > 4 then ! 1;
+  if x >= 5 then ! 1
+end.

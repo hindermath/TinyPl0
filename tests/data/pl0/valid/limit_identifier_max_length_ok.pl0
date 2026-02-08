@@ -1,0 +1,5 @@
+var abcdefghij;
+begin
+  abcdefghij := 1;
+  ! abcdefghij
+end.

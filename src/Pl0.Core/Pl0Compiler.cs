@@ -6,7 +6,7 @@ public sealed class Pl0Compiler
     {
         var effectiveOptions = options ?? CompilerOptions.Default;
 
-        var lexResult = new Pl0Lexer(source).Lex();
+        var lexResult = new Pl0Lexer(source, effectiveOptions).Lex();
         var diagnostics = new List<CompilerDiagnostic>(
             lexResult.Diagnostics.Select(
                 d => new CompilerDiagnostic(d.Code, d.Message, d.Position)));

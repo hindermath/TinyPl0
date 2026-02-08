@@ -4,6 +4,7 @@ public sealed class SymbolTable
 {
     private readonly List<SymbolEntry> _entries = [];
     private readonly Stack<int> _scopeStarts = [];
+    public int Count => _entries.Count;
 
     public void EnterScope()
     {

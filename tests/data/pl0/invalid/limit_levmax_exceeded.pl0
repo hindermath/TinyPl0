@@ -1,0 +1,18 @@
+procedure p1;
+  procedure p2;
+    procedure p3;
+      procedure p4;
+      begin
+      end;
+    begin
+      call p4
+    end;
+  begin
+    call p3
+  end;
+begin
+  call p2
+end;
+begin
+  call p1
+end.

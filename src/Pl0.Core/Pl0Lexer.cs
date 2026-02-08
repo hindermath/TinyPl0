@@ -4,6 +4,7 @@ namespace Pl0.Core;
 
 public sealed class Pl0Lexer
 {
+    private readonly CompilerOptions _options;
     private readonly string _text;
     private readonly List<Pl0Token> _tokens = [];
     private readonly List<LexerDiagnostic> _diagnostics = [];
@@ -11,9 +12,10 @@ public sealed class Pl0Lexer
     private int _line = 1;
     private int _column = 1;
 
-    public Pl0Lexer(string text)
+    public Pl0Lexer(string text, CompilerOptions? options = null)
     {
         _text = text ?? string.Empty;
+        _options = options ?? CompilerOptions.Default;
     }
 
     public LexerResult Lex()
@@ -163,6 +165,14 @@ public sealed class Pl0Lexer
         }
 
         var lexeme = _text.Substring(begin, _index - begin);
+        if (lexeme.Length > _options.MaxIdentifierLength)
+        {
+            _diagnostics.Add(new LexerDiagnostic(
+                33,
+                $"Identifier is too long: '{lexeme}'. Max length is {_options.MaxIdentifierLength}.",
+                start));
+        }
+
         _tokens.Add(new Pl0Token(MapIdentifierKind(lexeme), lexeme, start));
     }
 
@@ -176,6 +186,16 @@ public sealed class Pl0Lexer
         }
 
         var lexeme = _text.Substring(begin, _index - begin);
+        if (lexeme.Length > _options.MaxNumberDigits)
+        {
+            _diagnostics.Add(new LexerDiagnostic(
+                30,
+                $"Number has too many digits: '{lexeme}'. Max digits is {_options.MaxNumberDigits}.",
+                start));
+            _tokens.Add(new Pl0Token(TokenKind.Number, lexeme, start));
+            return;
+        }
+
         if (!int.TryParse(lexeme, NumberStyles.None, CultureInfo.InvariantCulture, out var value))
         {
             _diagnostics.Add(new LexerDiagnostic(30, $"Number is too large: '{lexeme}'.", start));

@@ -1,0 +1,49 @@
+[
+  {"name":"feature_const_var_assignment.pl0","group":"valid","folder":"valid","dialect":"extended","compileSuccess":true,"run":true,"input":[],"expectedOutput":[]},
+  {"name":"feature_begin_end_sequence.pl0","group":"valid","folder":"valid","dialect":"extended","compileSuccess":true,"run":true,"input":[],"expectedOutput":[2]},
+  {"name":"feature_if_then_relops.pl0","group":"valid","folder":"valid","dialect":"extended","compileSuccess":true,"run":true,"input":[],"expectedOutput":[1,1,1,1,1,1]},
+  {"name":"feature_while_do.pl0","group":"valid","folder":"valid","dialect":"extended","compileSuccess":true,"run":true,"input":[],"expectedOutput":[0,1,2]},
+  {"name":"feature_odd_condition.pl0","group":"valid","folder":"valid","dialect":"extended","compileSuccess":true,"run":true,"input":[],"expectedOutput":[1]},
+  {"name":"feature_procedure_call_nested_levels.pl0","group":"valid","folder":"valid","dialect":"extended","compileSuccess":true,"run":true,"input":[],"expectedOutput":[1]},
+  {"name":"feature_unary_minus_precedence.pl0","group":"valid","folder":"valid","dialect":"extended","compileSuccess":true,"run":true,"input":[],"expectedOutput":[5]},
+  {"name":"feature_parentheses.pl0","group":"valid","folder":"valid","dialect":"extended","compileSuccess":true,"run":true,"input":[],"expectedOutput":[9]},
+  {"name":"feature_input_qstmt.pl0","group":"valid","folder":"valid","dialect":"extended","compileSuccess":true,"run":true,"input":[7],"expectedOutput":[7]},
+  {"name":"feature_output_bangstmt.pl0","group":"valid","folder":"valid","dialect":"extended","compileSuccess":true,"run":true,"input":[],"expectedOutput":[42]},
+  {"name":"feature_io_roundtrip_q_bang.pl0","group":"valid","folder":"valid","dialect":"extended","compileSuccess":true,"run":true,"input":[5],"expectedOutput":[5,6]},
+
+  {"name":"error_undeclared_identifier.pl0","group":"invalid","folder":"invalid","dialect":"extended","compileSuccess":false,"expectedCompileCodes":[11]},
+  {"name":"error_assign_to_const.pl0","group":"invalid","folder":"invalid","dialect":"extended","compileSuccess":false,"expectedCompileCodes":[12]},
+  {"name":"error_missing_then.pl0","group":"invalid","folder":"invalid","dialect":"extended","compileSuccess":false,"expectedCompileCodes":[16]},
+  {"name":"error_missing_do.pl0","group":"invalid","folder":"invalid","dialect":"extended","compileSuccess":false,"expectedCompileCodes":[18]},
+  {"name":"error_bad_factor.pl0","group":"invalid","folder":"invalid","dialect":"extended","compileSuccess":false,"expectedCompileCodes":[24,22]},
+  {"name":"error_qstmt_non_variable.pl0","group":"invalid","folder":"invalid","dialect":"extended","compileSuccess":false,"expectedCompileCodes":[12]},
+  {"name":"error_bangstmt_missing_expression.pl0","group":"invalid","folder":"invalid","dialect":"extended","compileSuccess":false,"expectedCompileCodes":[24]},
+
+  {"name":"compat_relop_brackets.pl0","group":"compat","folder":"valid","dialect":"extended","compileSuccess":true,"run":true,"input":[],"expectedOutput":[1,1]},
+  {"name":"compat_store_trace_output.pl0","group":"compat","folder":"valid","dialect":"extended","compileSuccess":true,"run":true,"input":[],"expectedOutput":[7],"storeTrace":true},
+
+  {"name":"dialect_classic_reject_qstmt.pl0","group":"dialect","folder":"invalid","dialect":"classic","compileSuccess":false,"expectedCompileCodes":[19]},
+  {"name":"dialect_classic_reject_bangstmt.pl0","group":"dialect","folder":"invalid","dialect":"classic","compileSuccess":false,"expectedCompileCodes":[19]},
+  {"name":"dialect_extended_accept_qstmt.pl0","group":"dialect","folder":"valid","dialect":"extended","compileSuccess":true,"run":true,"input":[3],"expectedOutput":[3]},
+  {"name":"dialect_extended_accept_bangstmt.pl0","group":"dialect","folder":"valid","dialect":"extended","compileSuccess":true,"run":true,"input":[],"expectedOutput":[1]},
+
+  {"name":"limit_identifier_max_length_ok.pl0","group":"limits","folder":"valid","dialect":"extended","compileSuccess":true,"run":true,"input":[],"expectedOutput":[1]},
+  {"name":"limit_identifier_too_long.pl0","group":"limits","folder":"invalid","dialect":"extended","compileSuccess":false,"expectedCompileCodes":[33]},
+  {"name":"limit_number_max_digits_ok.pl0","group":"limits","folder":"valid","dialect":"extended","compileSuccess":true,"run":true,"input":[],"expectedOutput":[2147483647],"maxAddress":2147483647},
+  {"name":"limit_number_too_long.pl0","group":"limits","folder":"invalid","dialect":"extended","compileSuccess":false,"expectedCompileCodes":[30]},
+  {"name":"limit_amax_exceeded.pl0","group":"limits","folder":"invalid","dialect":"extended","compileSuccess":false,"expectedCompileCodes":[30]},
+  {"name":"limit_levmax_exceeded.pl0","group":"limits","folder":"invalid","dialect":"extended","compileSuccess":false,"expectedCompileCodes":[32]},
+  {"name":"limit_cxmax_exceeded.pl0","group":"limits","folder":"invalid","dialect":"extended","compileSuccess":false,"expectedCompileCodes":[35]},
+  {"name":"limit_txmax_exceeded.pl0","group":"limits","folder":"invalid","dialect":"extended","compileSuccess":false,"expectedCompileCodes":[34]},
+
+  {"name":"error_duplicate_identifier_same_scope.pl0","group":"invalid","folder":"invalid","dialect":"extended","compileSuccess":false,"expectedCompileCodes":[31]},
+  {"name":"error_call_non_procedure.pl0","group":"invalid","folder":"invalid","dialect":"extended","compileSuccess":false,"expectedCompileCodes":[15]},
+  {"name":"error_missing_end.pl0","group":"invalid","folder":"invalid","dialect":"extended","compileSuccess":false,"expectedCompileCodes":[17]},
+  {"name":"error_missing_period.pl0","group":"invalid","folder":"invalid","dialect":"extended","compileSuccess":false,"expectedCompileCodes":[9]},
+  {"name":"error_multiple_errors_recovery.pl0","group":"invalid","folder":"invalid","dialect":"extended","compileSuccess":false,"expectedCompileCodes":[11,13,16,24]},
+
+  {"name":"runtime_division_by_zero.pl0","group":"runtime/io-edge","folder":"valid","dialect":"extended","compileSuccess":true,"run":true,"runtimeSuccess":false,"expectedRuntimeCodes":[206]},
+  {"name":"io_input_negative_and_whitespace.pl0","group":"runtime/io-edge","folder":"valid","dialect":"extended","compileSuccess":true,"run":true,"input":[-12],"expectedOutput":[-12]},
+  {"name":"io_input_non_integer.pl0","group":"runtime/io-edge","folder":"valid","dialect":"extended","compileSuccess":true,"run":true,"ioBehavior":"formatError","runtimeSuccess":false,"expectedRuntimeCodes":[97]},
+  {"name":"io_input_eof_before_value.pl0","group":"runtime/io-edge","folder":"valid","dialect":"extended","compileSuccess":true,"run":true,"ioBehavior":"eof","runtimeSuccess":false,"expectedRuntimeCodes":[98]}
+]
