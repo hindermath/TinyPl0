@@ -80,13 +80,16 @@ dotnet test
 ```bash
 # Kompilieren nach .pcode
 dotnet run --project src/Pl0.Cli -- compile tests/data/pl0/valid/feature_const_var_assignment.pl0 --out /tmp/example.pcode
-
+```
+```bash
 # PL/0 Quelltext direkt ausführen
 dotnet run --project src/Pl0.Cli -- run tests/data/pl0/valid/feature_io_q_bang_relops.pl0
-
+```
+```bash
 # Vorhandene .pcode Datei ausführen
 dotnet run --project src/Pl0.Cli -- run-pcode tests/data/expected/code/feature_io_q_bang_relops.pcode.txt
-
+```
+```bash
 # Code-Liste ausgeben (didaktisch)
 dotnet run --project src/Pl0.Cli -- run tests/data/pl0/valid/feature_const_var_assignment.pl0 --list-code --wopcod
 ```
