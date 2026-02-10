@@ -744,15 +744,6 @@ Wikipedia article on [PL/0](https://en.wikipedia.org/wiki/PL/0).
 
 Wikipedia article on [P-code machine](https://en.wikipedia.org/wiki/P-code_machine) (includes the source code for Wirth's interpret function, but not much explanation of PL/0 or the p-code developed for it).
 
-## **Enhancements**
-The project is compilable with Embarcadero DELPHI 10.4.x and 11 and Lazarus.
-
-Outsource runtime/interpreter to its own executable program that currently runs PL/0 assembler. Binary formats are planned
-
-Made the compiler a bit more configurable with a few switches. Gradually, further possibilities are planned to be installed.
-
-Outsource shared portions of the source code to a unit.
-
 ## More URLs
 https://codedocs.org/what-is/pl-0#Use_in_education
 
