@@ -18,7 +18,7 @@ docfx
   - Inhalte aus dem Ordner Docs sollen auch mit in die Dokumentation aufgenommen werden
   - Aus dem Projekt selbst sollen die Arbeitsweise der Sprache PL0 ausführlich als Handbuch erstellt werden mit ausführlichen Code-Beispielen zu allen Elementen.
   - Im Anhang sollen weitere Code-Beispiele zu PL0 enthalten sein.
-    - Fibunacci
+    - Fibonacci
     - KGT, GGT
     - Verschiedenste einfache mathematische Funktionen
       - sin, cos, tan, Kreisberechnung etc.
