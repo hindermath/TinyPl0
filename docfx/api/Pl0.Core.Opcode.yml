@@ -1,0 +1,292 @@
+### YamlMime:ManagedReference
+items:
+- uid: Pl0.Core.Opcode
+  commentId: T:Pl0.Core.Opcode
+  id: Opcode
+  parent: Pl0.Core
+  children:
+  - Pl0.Core.Opcode.Cal
+  - Pl0.Core.Opcode.Int
+  - Pl0.Core.Opcode.Jmp
+  - Pl0.Core.Opcode.Jpc
+  - Pl0.Core.Opcode.Lit
+  - Pl0.Core.Opcode.Lod
+  - Pl0.Core.Opcode.Opr
+  - Pl0.Core.Opcode.Sto
+  langs:
+  - csharp
+  - vb
+  name: Opcode
+  nameWithType: Opcode
+  fullName: Pl0.Core.Opcode
+  type: Enum
+  source:
+    remote:
+      path: src/Pl0.Core/Opcode.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: Opcode
+    path: src/Pl0.Core/Opcode.cs
+    startLine: 5
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  summary: P-Code operation codes understood by the virtual machine.
+  example: []
+  syntax:
+    content: public enum Opcode
+    content.vb: Public Enum Opcode
+- uid: Pl0.Core.Opcode.Lit
+  commentId: F:Pl0.Core.Opcode.Lit
+  id: Lit
+  parent: Pl0.Core.Opcode
+  langs:
+  - csharp
+  - vb
+  name: Lit
+  nameWithType: Opcode.Lit
+  fullName: Pl0.Core.Opcode.Lit
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Core/Opcode.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: Lit
+    path: src/Pl0.Core/Opcode.cs
+    startLine: 10
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  summary: Load literal constant onto the stack.
+  example: []
+  syntax:
+    content: Lit = 0
+    return:
+      type: Pl0.Core.Opcode
+- uid: Pl0.Core.Opcode.Opr
+  commentId: F:Pl0.Core.Opcode.Opr
+  id: Opr
+  parent: Pl0.Core.Opcode
+  langs:
+  - csharp
+  - vb
+  name: Opr
+  nameWithType: Opcode.Opr
+  fullName: Pl0.Core.Opcode.Opr
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Core/Opcode.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: Opr
+    path: src/Pl0.Core/Opcode.cs
+    startLine: 14
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  summary: Execute arithmetic, comparison, or return operations.
+  example: []
+  syntax:
+    content: Opr = 1
+    return:
+      type: Pl0.Core.Opcode
+- uid: Pl0.Core.Opcode.Lod
+  commentId: F:Pl0.Core.Opcode.Lod
+  id: Lod
+  parent: Pl0.Core.Opcode
+  langs:
+  - csharp
+  - vb
+  name: Lod
+  nameWithType: Opcode.Lod
+  fullName: Pl0.Core.Opcode.Lod
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Core/Opcode.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: Lod
+    path: src/Pl0.Core/Opcode.cs
+    startLine: 18
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  summary: Load a variable from the stack frame.
+  example: []
+  syntax:
+    content: Lod = 2
+    return:
+      type: Pl0.Core.Opcode
+- uid: Pl0.Core.Opcode.Sto
+  commentId: F:Pl0.Core.Opcode.Sto
+  id: Sto
+  parent: Pl0.Core.Opcode
+  langs:
+  - csharp
+  - vb
+  name: Sto
+  nameWithType: Opcode.Sto
+  fullName: Pl0.Core.Opcode.Sto
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Core/Opcode.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: Sto
+    path: src/Pl0.Core/Opcode.cs
+    startLine: 22
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  summary: Store a value into a stack frame variable.
+  example: []
+  syntax:
+    content: Sto = 3
+    return:
+      type: Pl0.Core.Opcode
+- uid: Pl0.Core.Opcode.Cal
+  commentId: F:Pl0.Core.Opcode.Cal
+  id: Cal
+  parent: Pl0.Core.Opcode
+  langs:
+  - csharp
+  - vb
+  name: Cal
+  nameWithType: Opcode.Cal
+  fullName: Pl0.Core.Opcode.Cal
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Core/Opcode.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: Cal
+    path: src/Pl0.Core/Opcode.cs
+    startLine: 26
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  summary: Call a procedure.
+  example: []
+  syntax:
+    content: Cal = 4
+    return:
+      type: Pl0.Core.Opcode
+- uid: Pl0.Core.Opcode.Int
+  commentId: F:Pl0.Core.Opcode.Int
+  id: Int
+  parent: Pl0.Core.Opcode
+  langs:
+  - csharp
+  - vb
+  name: Int
+  nameWithType: Opcode.Int
+  fullName: Pl0.Core.Opcode.Int
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Core/Opcode.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: Int
+    path: src/Pl0.Core/Opcode.cs
+    startLine: 30
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  summary: Allocate stack space.
+  example: []
+  syntax:
+    content: Int = 5
+    return:
+      type: Pl0.Core.Opcode
+- uid: Pl0.Core.Opcode.Jmp
+  commentId: F:Pl0.Core.Opcode.Jmp
+  id: Jmp
+  parent: Pl0.Core.Opcode
+  langs:
+  - csharp
+  - vb
+  name: Jmp
+  nameWithType: Opcode.Jmp
+  fullName: Pl0.Core.Opcode.Jmp
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Core/Opcode.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: Jmp
+    path: src/Pl0.Core/Opcode.cs
+    startLine: 34
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  summary: Unconditional jump.
+  example: []
+  syntax:
+    content: Jmp = 6
+    return:
+      type: Pl0.Core.Opcode
+- uid: Pl0.Core.Opcode.Jpc
+  commentId: F:Pl0.Core.Opcode.Jpc
+  id: Jpc
+  parent: Pl0.Core.Opcode
+  langs:
+  - csharp
+  - vb
+  name: Jpc
+  nameWithType: Opcode.Jpc
+  fullName: Pl0.Core.Opcode.Jpc
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Core/Opcode.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: Jpc
+    path: src/Pl0.Core/Opcode.cs
+    startLine: 38
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  summary: Conditional jump based on top-of-stack.
+  example: []
+  syntax:
+    content: Jpc = 7
+    return:
+      type: Pl0.Core.Opcode
+references:
+- uid: Pl0.Core
+  commentId: N:Pl0.Core
+  href: Pl0.html
+  name: Pl0.Core
+  nameWithType: Pl0.Core
+  fullName: Pl0.Core
+  spec.csharp:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Core
+    name: Core
+    href: Pl0.Core.html
+  spec.vb:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Core
+    name: Core
+    href: Pl0.Core.html
+- uid: Pl0.Core.Opcode
+  commentId: T:Pl0.Core.Opcode
+  parent: Pl0.Core
+  href: Pl0.Core.Opcode.html
+  name: Opcode
+  nameWithType: Opcode
+  fullName: Pl0.Core.Opcode

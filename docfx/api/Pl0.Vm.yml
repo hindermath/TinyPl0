@@ -1,0 +1,90 @@
+### YamlMime:ManagedReference
+items:
+- uid: Pl0.Vm
+  commentId: N:Pl0.Vm
+  id: Pl0.Vm
+  children:
+  - Pl0.Vm.BufferedPl0Io
+  - Pl0.Vm.ConsolePl0Io
+  - Pl0.Vm.IPl0Io
+  - Pl0.Vm.VirtualMachine
+  - Pl0.Vm.VirtualMachineOptions
+  - Pl0.Vm.VmDiagnostic
+  - Pl0.Vm.VmExecutionResult
+  langs:
+  - csharp
+  - vb
+  name: Pl0.Vm
+  nameWithType: Pl0.Vm
+  fullName: Pl0.Vm
+  type: Namespace
+  assemblies:
+  - Pl0.Vm
+references:
+- uid: Pl0.Vm.BufferedPl0Io
+  commentId: T:Pl0.Vm.BufferedPl0Io
+  href: Pl0.Vm.BufferedPl0Io.html
+  name: BufferedPl0Io
+  nameWithType: BufferedPl0Io
+  fullName: Pl0.Vm.BufferedPl0Io
+- uid: Pl0.Vm.ConsolePl0Io
+  commentId: T:Pl0.Vm.ConsolePl0Io
+  href: Pl0.Vm.ConsolePl0Io.html
+  name: ConsolePl0Io
+  nameWithType: ConsolePl0Io
+  fullName: Pl0.Vm.ConsolePl0Io
+- uid: Pl0.Vm.IPl0Io
+  commentId: T:Pl0.Vm.IPl0Io
+  parent: Pl0.Vm
+  href: Pl0.Vm.IPl0Io.html
+  name: IPl0Io
+  nameWithType: IPl0Io
+  fullName: Pl0.Vm.IPl0Io
+- uid: Pl0.Vm.VirtualMachine
+  commentId: T:Pl0.Vm.VirtualMachine
+  href: Pl0.Vm.VirtualMachine.html
+  name: VirtualMachine
+  nameWithType: VirtualMachine
+  fullName: Pl0.Vm.VirtualMachine
+- uid: Pl0.Vm.VirtualMachineOptions
+  commentId: T:Pl0.Vm.VirtualMachineOptions
+  parent: Pl0.Vm
+  href: Pl0.Vm.VirtualMachineOptions.html
+  name: VirtualMachineOptions
+  nameWithType: VirtualMachineOptions
+  fullName: Pl0.Vm.VirtualMachineOptions
+- uid: Pl0.Vm.VmDiagnostic
+  commentId: T:Pl0.Vm.VmDiagnostic
+  href: Pl0.Vm.VmDiagnostic.html
+  name: VmDiagnostic
+  nameWithType: VmDiagnostic
+  fullName: Pl0.Vm.VmDiagnostic
+- uid: Pl0.Vm.VmExecutionResult
+  commentId: T:Pl0.Vm.VmExecutionResult
+  parent: Pl0.Vm
+  href: Pl0.Vm.VmExecutionResult.html
+  name: VmExecutionResult
+  nameWithType: VmExecutionResult
+  fullName: Pl0.Vm.VmExecutionResult
+- uid: Pl0.Vm
+  commentId: N:Pl0.Vm
+  href: Pl0.html
+  name: Pl0.Vm
+  nameWithType: Pl0.Vm
+  fullName: Pl0.Vm
+  spec.csharp:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Vm
+    name: Vm
+    href: Pl0.Vm.html
+  spec.vb:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Vm
+    name: Vm
+    href: Pl0.Vm.html

@@ -1,0 +1,151 @@
+### YamlMime:ManagedReference
+items:
+- uid: Pl0.Vm.IPl0Io
+  commentId: T:Pl0.Vm.IPl0Io
+  id: IPl0Io
+  parent: Pl0.Vm
+  children:
+  - Pl0.Vm.IPl0Io.ReadInt
+  - Pl0.Vm.IPl0Io.WriteInt(System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: IPl0Io
+  nameWithType: IPl0Io
+  fullName: Pl0.Vm.IPl0Io
+  type: Interface
+  source:
+    remote:
+      path: src/Pl0.Vm/IPl0Io.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: IPl0Io
+    path: src/Pl0.Vm/IPl0Io.cs
+    startLine: 5
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  summary: Abstraction for PL/0 input/output.
+  example: []
+  syntax:
+    content: public interface IPl0Io
+    content.vb: Public Interface IPl0Io
+- uid: Pl0.Vm.IPl0Io.ReadInt
+  commentId: M:Pl0.Vm.IPl0Io.ReadInt
+  id: ReadInt
+  parent: Pl0.Vm.IPl0Io
+  langs:
+  - csharp
+  - vb
+  name: ReadInt()
+  nameWithType: IPl0Io.ReadInt()
+  fullName: Pl0.Vm.IPl0Io.ReadInt()
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Vm/IPl0Io.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: ReadInt
+    path: src/Pl0.Vm/IPl0Io.cs
+    startLine: 11
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  summary: Reads an integer value from the input source.
+  example: []
+  syntax:
+    content: int ReadInt()
+    return:
+      type: System.Int32
+      description: The read integer.
+    content.vb: Function ReadInt() As Integer
+  overload: Pl0.Vm.IPl0Io.ReadInt*
+- uid: Pl0.Vm.IPl0Io.WriteInt(System.Int32)
+  commentId: M:Pl0.Vm.IPl0Io.WriteInt(System.Int32)
+  id: WriteInt(System.Int32)
+  parent: Pl0.Vm.IPl0Io
+  langs:
+  - csharp
+  - vb
+  name: WriteInt(int)
+  nameWithType: IPl0Io.WriteInt(int)
+  fullName: Pl0.Vm.IPl0Io.WriteInt(int)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Vm/IPl0Io.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: WriteInt
+    path: src/Pl0.Vm/IPl0Io.cs
+    startLine: 17
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  summary: Writes an integer value to the output destination.
+  example: []
+  syntax:
+    content: void WriteInt(int value)
+    parameters:
+    - id: value
+      type: System.Int32
+      description: Value to write.
+    content.vb: Sub WriteInt(value As Integer)
+  overload: Pl0.Vm.IPl0Io.WriteInt*
+  nameWithType.vb: IPl0Io.WriteInt(Integer)
+  fullName.vb: Pl0.Vm.IPl0Io.WriteInt(Integer)
+  name.vb: WriteInt(Integer)
+references:
+- uid: Pl0.Vm
+  commentId: N:Pl0.Vm
+  href: Pl0.html
+  name: Pl0.Vm
+  nameWithType: Pl0.Vm
+  fullName: Pl0.Vm
+  spec.csharp:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Vm
+    name: Vm
+    href: Pl0.Vm.html
+  spec.vb:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Vm
+    name: Vm
+    href: Pl0.Vm.html
+- uid: Pl0.Vm.IPl0Io.ReadInt*
+  commentId: Overload:Pl0.Vm.IPl0Io.ReadInt
+  href: Pl0.Vm.IPl0Io.html#Pl0_Vm_IPl0Io_ReadInt
+  name: ReadInt
+  nameWithType: IPl0Io.ReadInt
+  fullName: Pl0.Vm.IPl0Io.ReadInt
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Pl0.Vm.IPl0Io.WriteInt*
+  commentId: Overload:Pl0.Vm.IPl0Io.WriteInt
+  href: Pl0.Vm.IPl0Io.html#Pl0_Vm_IPl0Io_WriteInt_System_Int32_
+  name: WriteInt
+  nameWithType: IPl0Io.WriteInt
+  fullName: Pl0.Vm.IPl0Io.WriteInt

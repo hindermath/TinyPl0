@@ -1,0 +1,523 @@
+### YamlMime:ManagedReference
+items:
+- uid: Pl0.Core.Instruction
+  commentId: T:Pl0.Core.Instruction
+  id: Instruction
+  parent: Pl0.Core
+  children:
+  - Pl0.Core.Instruction.#ctor(Pl0.Core.Opcode,System.Int32,System.Int32)
+  - Pl0.Core.Instruction.Argument
+  - Pl0.Core.Instruction.Level
+  - Pl0.Core.Instruction.Op
+  langs:
+  - csharp
+  - vb
+  name: Instruction
+  nameWithType: Instruction
+  fullName: Pl0.Core.Instruction
+  type: Struct
+  source:
+    remote:
+      path: src/Pl0.Core/Instruction.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: Instruction
+    path: src/Pl0.Core/Instruction.cs
+    startLine: 8
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  summary: A single P-Code instruction with opcode, lexical level, and argument.
+  example: []
+  syntax:
+    content: 'public readonly record struct Instruction : IEquatable<Instruction>'
+    content.vb: Public Structure Instruction Implements IEquatable(Of Instruction)
+  implements:
+  - System.IEquatable{Pl0.Core.Instruction}
+  inheritedMembers:
+  - System.ValueType.Equals(System.Object)
+  - System.ValueType.GetHashCode
+  - System.ValueType.ToString
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: Pl0.Core.Instruction.#ctor(Pl0.Core.Opcode,System.Int32,System.Int32)
+  commentId: M:Pl0.Core.Instruction.#ctor(Pl0.Core.Opcode,System.Int32,System.Int32)
+  id: '#ctor(Pl0.Core.Opcode,System.Int32,System.Int32)'
+  parent: Pl0.Core.Instruction
+  langs:
+  - csharp
+  - vb
+  name: Instruction(Opcode, int, int)
+  nameWithType: Instruction.Instruction(Opcode, int, int)
+  fullName: Pl0.Core.Instruction.Instruction(Pl0.Core.Opcode, int, int)
+  type: Constructor
+  source:
+    remote:
+      path: src/Pl0.Core/Instruction.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: .ctor
+    path: src/Pl0.Core/Instruction.cs
+    startLine: 8
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  summary: A single P-Code instruction with opcode, lexical level, and argument.
+  example: []
+  syntax:
+    content: public Instruction(Opcode Op, int Level, int Argument)
+    parameters:
+    - id: Op
+      type: Pl0.Core.Opcode
+      description: The operation code.
+    - id: Level
+      type: System.Int32
+      description: The lexical level argument.
+    - id: Argument
+      type: System.Int32
+      description: The instruction argument or address.
+    content.vb: Public Sub New(Op As Opcode, Level As Integer, Argument As Integer)
+  overload: Pl0.Core.Instruction.#ctor*
+  nameWithType.vb: Instruction.New(Opcode, Integer, Integer)
+  fullName.vb: Pl0.Core.Instruction.New(Pl0.Core.Opcode, Integer, Integer)
+  name.vb: New(Opcode, Integer, Integer)
+- uid: Pl0.Core.Instruction.Op
+  commentId: P:Pl0.Core.Instruction.Op
+  id: Op
+  parent: Pl0.Core.Instruction
+  langs:
+  - csharp
+  - vb
+  name: Op
+  nameWithType: Instruction.Op
+  fullName: Pl0.Core.Instruction.Op
+  type: Property
+  source:
+    remote:
+      path: src/Pl0.Core/Instruction.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: Op
+    path: src/Pl0.Core/Instruction.cs
+    startLine: 8
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  summary: The operation code.
+  example: []
+  syntax:
+    content: public Opcode Op { get; init; }
+    parameters: []
+    return:
+      type: Pl0.Core.Opcode
+    content.vb: Public Property Op As Opcode
+  overload: Pl0.Core.Instruction.Op*
+- uid: Pl0.Core.Instruction.Level
+  commentId: P:Pl0.Core.Instruction.Level
+  id: Level
+  parent: Pl0.Core.Instruction
+  langs:
+  - csharp
+  - vb
+  name: Level
+  nameWithType: Instruction.Level
+  fullName: Pl0.Core.Instruction.Level
+  type: Property
+  source:
+    remote:
+      path: src/Pl0.Core/Instruction.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: Level
+    path: src/Pl0.Core/Instruction.cs
+    startLine: 8
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  summary: The lexical level argument.
+  example: []
+  syntax:
+    content: public int Level { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Level As Integer
+  overload: Pl0.Core.Instruction.Level*
+- uid: Pl0.Core.Instruction.Argument
+  commentId: P:Pl0.Core.Instruction.Argument
+  id: Argument
+  parent: Pl0.Core.Instruction
+  langs:
+  - csharp
+  - vb
+  name: Argument
+  nameWithType: Instruction.Argument
+  fullName: Pl0.Core.Instruction.Argument
+  type: Property
+  source:
+    remote:
+      path: src/Pl0.Core/Instruction.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: Argument
+    path: src/Pl0.Core/Instruction.cs
+    startLine: 8
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  summary: The instruction argument or address.
+  example: []
+  syntax:
+    content: public int Argument { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Argument As Integer
+  overload: Pl0.Core.Instruction.Argument*
+references:
+- uid: Pl0.Core
+  commentId: N:Pl0.Core
+  href: Pl0.html
+  name: Pl0.Core
+  nameWithType: Pl0.Core
+  fullName: Pl0.Core
+  spec.csharp:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Core
+    name: Core
+    href: Pl0.Core.html
+  spec.vb:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Core
+    name: Core
+    href: Pl0.Core.html
+- uid: System.IEquatable{Pl0.Core.Instruction}
+  commentId: T:System.IEquatable{Pl0.Core.Instruction}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<Instruction>
+  nameWithType: IEquatable<Instruction>
+  fullName: System.IEquatable<Pl0.Core.Instruction>
+  nameWithType.vb: IEquatable(Of Instruction)
+  fullName.vb: System.IEquatable(Of Pl0.Core.Instruction)
+  name.vb: IEquatable(Of Instruction)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: Pl0.Core.Instruction
+    name: Instruction
+    href: Pl0.Core.Instruction.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Pl0.Core.Instruction
+    name: Instruction
+    href: Pl0.Core.Instruction.html
+  - name: )
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Pl0.Core.Instruction.#ctor*
+  commentId: Overload:Pl0.Core.Instruction.#ctor
+  href: Pl0.Core.Instruction.html#Pl0_Core_Instruction__ctor_Pl0_Core_Opcode_System_Int32_System_Int32_
+  name: Instruction
+  nameWithType: Instruction.Instruction
+  fullName: Pl0.Core.Instruction.Instruction
+  nameWithType.vb: Instruction.New
+  fullName.vb: Pl0.Core.Instruction.New
+  name.vb: New
+- uid: Pl0.Core.Opcode
+  commentId: T:Pl0.Core.Opcode
+  parent: Pl0.Core
+  href: Pl0.Core.Opcode.html
+  name: Opcode
+  nameWithType: Opcode
+  fullName: Pl0.Core.Opcode
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Pl0.Core.Instruction.Op*
+  commentId: Overload:Pl0.Core.Instruction.Op
+  href: Pl0.Core.Instruction.html#Pl0_Core_Instruction_Op
+  name: Op
+  nameWithType: Instruction.Op
+  fullName: Pl0.Core.Instruction.Op
+- uid: Pl0.Core.Instruction.Level*
+  commentId: Overload:Pl0.Core.Instruction.Level
+  href: Pl0.Core.Instruction.html#Pl0_Core_Instruction_Level
+  name: Level
+  nameWithType: Instruction.Level
+  fullName: Pl0.Core.Instruction.Level
+- uid: Pl0.Core.Instruction.Argument*
+  commentId: Overload:Pl0.Core.Instruction.Argument
+  href: Pl0.Core.Instruction.html#Pl0_Core_Instruction_Argument
+  name: Argument
+  nameWithType: Instruction.Argument
+  fullName: Pl0.Core.Instruction.Argument
