@@ -1,8 +1,0 @@
-const scale = 100;
-var w, h, bmi;
-begin
-  ? w;
-  ? h;
-  bmi := (w * scale) / ((h * h) / scale);
-  ! bmi
-end.

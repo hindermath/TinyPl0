@@ -1,9 +1,0 @@
-var x;
-procedure show;
-begin
-  ! x
-end;
-begin
-  x := 1;
-  call show
-end.

@@ -1,3 +1,0 @@
-LIT 0 1
-LIT 0 2
-OPR 0 2       // result: 3

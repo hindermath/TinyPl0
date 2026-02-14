@@ -1,9 +1,0 @@
-var sinx, cosx;
-begin
-  ? sinx;
-  ? cosx;
-  if cosx = 0 then
-    ! 0
-  else
-    ! (sinx / cosx)
-end.

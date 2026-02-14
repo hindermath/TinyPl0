@@ -1,6 +1,0 @@
-var x;
-begin
-  ? x;
-  x := x + 1;
-  ! x
-end.

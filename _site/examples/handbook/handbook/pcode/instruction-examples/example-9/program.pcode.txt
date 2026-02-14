@@ -1,2 +1,0 @@
-LIT 0 4
-OPR 0 1       // result: -4

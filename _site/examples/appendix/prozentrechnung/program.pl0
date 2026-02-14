@@ -1,7 +1,0 @@
-var g, p, w;
-begin
-  ? g;
-  ? p;
-  w := (g * p) / 100;
-  ! w
-end.

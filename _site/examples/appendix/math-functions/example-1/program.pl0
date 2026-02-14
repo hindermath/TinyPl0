@@ -1,9 +1,0 @@
-const scale = 1000, six = 6;
-var x, x2, x3, sinx;
-begin
-  ? x;          /* x in Milliradian */
-  x2 := (x * x) / scale;
-  x3 := (x2 * x) / scale;
-  sinx := x - (x3 / six);
-  ! sinx
-end.

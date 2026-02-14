@@ -1,9 +1,0 @@
-var n;
-begin
-  ? n;
-  while n >= 0 do
-  begin
-    ! n;
-    n := n - 1
-  end
-end.

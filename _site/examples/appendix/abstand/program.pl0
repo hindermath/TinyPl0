@@ -1,9 +1,0 @@
-var a, b, d;
-begin
-  ? a;
-  ? b;
-  d := a - b;
-  if d < 0 then
-    d := -d;
-  ! d
-end.

@@ -1,7 +1,0 @@
-var v, t, s;
-begin
-  ? v;
-  ? t;
-  s := v * t;
-  ! s
-end.

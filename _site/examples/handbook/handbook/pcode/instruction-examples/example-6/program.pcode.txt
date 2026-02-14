@@ -1,1 +1,0 @@
-JMP 0 20      // jump to instruction 20

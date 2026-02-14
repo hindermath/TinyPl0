@@ -1,9 +1,0 @@
-var a, b, c;
-begin
-  a := 5;
-  b := 7;
-  c := a * b + 3;
-  ! a;
-  ! b;
-  ! c
-end.

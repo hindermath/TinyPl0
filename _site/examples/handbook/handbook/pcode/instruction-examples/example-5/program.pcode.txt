@@ -1,1 +1,0 @@
-INT 0 3       // reserve 3 cells for locals (plus 3 control cells)

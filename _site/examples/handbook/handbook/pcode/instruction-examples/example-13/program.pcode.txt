@@ -1,3 +1,0 @@
-LIT 0 10
-LIT 0 3
-OPR 0 5       // result: 3 (Integer)

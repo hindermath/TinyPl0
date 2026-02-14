@@ -1,8 +1,0 @@
-var i, n;
-begin
-  ? n;
-  i := 0;
-  while i < n do
-    i := i + 1;
-  ! i
-end.

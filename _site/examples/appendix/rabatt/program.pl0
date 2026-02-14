@@ -1,7 +1,0 @@
-var preis, rabatt, neu;
-begin
-  ? preis;
-  ? rabatt;
-  neu := preis - (preis * rabatt) / 100;
-  ! neu
-end.

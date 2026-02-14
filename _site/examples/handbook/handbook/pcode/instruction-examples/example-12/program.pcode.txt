@@ -1,3 +1,0 @@
-LIT 0 6
-LIT 0 7
-OPR 0 4       // result: 42

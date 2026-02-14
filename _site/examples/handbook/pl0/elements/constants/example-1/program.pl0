@@ -1,6 +1,0 @@
-const pi = 3;
-var r;
-begin
-  r := pi;
-  ! r
-end.
