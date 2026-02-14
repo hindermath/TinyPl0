@@ -12,6 +12,7 @@ items:
   - Pl0.Cli.Cli.CompilerCliOptions.ListCode
   - Pl0.Cli.Cli.CompilerCliOptions.LongErrorMessages
   - Pl0.Cli.Cli.CompilerCliOptions.OutputPath
+  - Pl0.Cli.Cli.CompilerCliOptions.ShowApi
   - Pl0.Cli.Cli.CompilerCliOptions.ShowHelp
   - Pl0.Cli.Cli.CompilerCliOptions.SourcePath
   - Pl0.Cli.Cli.CompilerCliOptions.WriteOpcodesInListing
@@ -264,6 +265,37 @@ items:
       type: System.Boolean
     content.vb: Public Property EmitRequested As Boolean
   overload: Pl0.Cli.Cli.CompilerCliOptions.EmitRequested*
+- uid: Pl0.Cli.Cli.CompilerCliOptions.ShowApi
+  commentId: P:Pl0.Cli.Cli.CompilerCliOptions.ShowApi
+  id: ShowApi
+  parent: Pl0.Cli.Cli.CompilerCliOptions
+  langs:
+  - csharp
+  - vb
+  name: ShowApi
+  nameWithType: CompilerCliOptions.ShowApi
+  fullName: Pl0.Cli.Cli.CompilerCliOptions.ShowApi
+  type: Property
+  source:
+    remote:
+      path: src/Pl0.Cli/Cli/CompilerCliOptions.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: ShowApi
+    path: src/Pl0.Cli/Cli/CompilerCliOptions.cs
+    startLine: 45
+  assemblies:
+  - Pl0.Cli
+  namespace: Pl0.Cli.Cli
+  summary: Gets a value indicating whether the documentation API should be shown.
+  example: []
+  syntax:
+    content: public bool ShowApi { get; init; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property ShowApi As Boolean
+  overload: Pl0.Cli.Cli.CompilerCliOptions.ShowApi*
 - uid: Pl0.Cli.Cli.CompilerCliOptions.EmitMode
   commentId: P:Pl0.Cli.Cli.CompilerCliOptions.EmitMode
   id: EmitMode
@@ -282,7 +314,7 @@ items:
       repo: https://github.com/hindermath/TinyPl0.git
     id: EmitMode
     path: src/Pl0.Cli/Cli/CompilerCliOptions.cs
-    startLine: 45
+    startLine: 50
   assemblies:
   - Pl0.Cli
   namespace: Pl0.Cli.Cli
@@ -313,7 +345,7 @@ items:
       repo: https://github.com/hindermath/TinyPl0.git
     id: SourcePath
     path: src/Pl0.Cli/Cli/CompilerCliOptions.cs
-    startLine: 50
+    startLine: 55
   assemblies:
   - Pl0.Cli
   namespace: Pl0.Cli.Cli
@@ -344,7 +376,7 @@ items:
       repo: https://github.com/hindermath/TinyPl0.git
     id: OutputPath
     path: src/Pl0.Cli/Cli/CompilerCliOptions.cs
-    startLine: 55
+    startLine: 60
   assemblies:
   - Pl0.Cli
   namespace: Pl0.Cli.Cli
@@ -661,6 +693,12 @@ references:
   name: EmitRequested
   nameWithType: CompilerCliOptions.EmitRequested
   fullName: Pl0.Cli.Cli.CompilerCliOptions.EmitRequested
+- uid: Pl0.Cli.Cli.CompilerCliOptions.ShowApi*
+  commentId: Overload:Pl0.Cli.Cli.CompilerCliOptions.ShowApi
+  href: Pl0.Cli.Cli.CompilerCliOptions.html#Pl0_Cli_Cli_CompilerCliOptions_ShowApi
+  name: ShowApi
+  nameWithType: CompilerCliOptions.ShowApi
+  fullName: Pl0.Cli.Cli.CompilerCliOptions.ShowApi
 - uid: Pl0.Cli.Cli.CompilerCliOptions.EmitMode*
   commentId: Overload:Pl0.Cli.Cli.CompilerCliOptions.EmitMode
   href: Pl0.Cli.Cli.CompilerCliOptions.html#Pl0_Cli_Cli_CompilerCliOptions_EmitMode

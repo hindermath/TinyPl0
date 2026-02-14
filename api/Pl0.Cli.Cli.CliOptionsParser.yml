@@ -163,7 +163,7 @@ items:
       repo: https://github.com/hindermath/TinyPl0.git
     id: TryReadOptionValue
     path: src/Pl0.Cli/Cli/CliOptionsParser.cs
-    startLine: 189
+    startLine: 194
   assemblies:
   - Pl0.Cli
   namespace: Pl0.Cli.Cli
@@ -207,7 +207,7 @@ items:
       repo: https://github.com/hindermath/TinyPl0.git
     id: TryParseCommand
     path: src/Pl0.Cli/Cli/CliOptionsParser.cs
-    startLine: 208
+    startLine: 213
   assemblies:
   - Pl0.Cli
   namespace: Pl0.Cli.Cli
@@ -248,7 +248,7 @@ items:
       repo: https://github.com/hindermath/TinyPl0.git
     id: IsHelpSwitch
     path: src/Pl0.Cli/Cli/CliOptionsParser.cs
-    startLine: 226
+    startLine: 231
   assemblies:
   - Pl0.Cli
   namespace: Pl0.Cli.Cli
@@ -286,7 +286,7 @@ items:
       repo: https://github.com/hindermath/TinyPl0.git
     id: IsUnixAbsolutePath
     path: src/Pl0.Cli/Cli/CliOptionsParser.cs
-    startLine: 234
+    startLine: 239
   assemblies:
   - Pl0.Cli
   namespace: Pl0.Cli.Cli
@@ -324,7 +324,7 @@ items:
       repo: https://github.com/hindermath/TinyPl0.git
     id: IsKnownLegacySlashSwitch
     path: src/Pl0.Cli/Cli/CliOptionsParser.cs
-    startLine: 242
+    startLine: 247
   assemblies:
   - Pl0.Cli
   namespace: Pl0.Cli.Cli
@@ -362,7 +362,7 @@ items:
       repo: https://github.com/hindermath/TinyPl0.git
     id: TryParseSwitch
     path: src/Pl0.Cli/Cli/CliOptionsParser.cs
-    startLine: 265
+    startLine: 270
   assemblies:
   - Pl0.Cli
   namespace: Pl0.Cli.Cli
@@ -403,7 +403,7 @@ items:
       repo: https://github.com/hindermath/TinyPl0.git
     id: TryParseEmitModeFromToken
     path: src/Pl0.Cli/Cli/CliOptionsParser.cs
-    startLine: 304
+    startLine: 309
   assemblies:
   - Pl0.Cli
   namespace: Pl0.Cli.Cli
@@ -444,7 +444,7 @@ items:
       repo: https://github.com/hindermath/TinyPl0.git
     id: TryParseEmitEqualsValue
     path: src/Pl0.Cli/Cli/CliOptionsParser.cs
-    startLine: 333
+    startLine: 338
   assemblies:
   - Pl0.Cli
   namespace: Pl0.Cli.Cli
@@ -485,7 +485,7 @@ items:
       repo: https://github.com/hindermath/TinyPl0.git
     id: MergeEmitMode
     path: src/Pl0.Cli/Cli/CliOptionsParser.cs
-    startLine: 364
+    startLine: 369
   assemblies:
   - Pl0.Cli
   namespace: Pl0.Cli.Cli

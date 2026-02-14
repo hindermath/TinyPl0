@@ -44,6 +44,7 @@
   "Pl0.Cli.Cli.CompilerCliOptions.ListCode": "Pl0.Cli.Cli.CompilerCliOptions.yml",
   "Pl0.Cli.Cli.CompilerCliOptions.LongErrorMessages": "Pl0.Cli.Cli.CompilerCliOptions.yml",
   "Pl0.Cli.Cli.CompilerCliOptions.OutputPath": "Pl0.Cli.Cli.CompilerCliOptions.yml",
+  "Pl0.Cli.Cli.CompilerCliOptions.ShowApi": "Pl0.Cli.Cli.CompilerCliOptions.yml",
   "Pl0.Cli.Cli.CompilerCliOptions.ShowHelp": "Pl0.Cli.Cli.CompilerCliOptions.yml",
   "Pl0.Cli.Cli.CompilerCliOptions.SourcePath": "Pl0.Cli.Cli.CompilerCliOptions.yml",
   "Pl0.Cli.Cli.CompilerCliOptions.WriteOpcodesInListing": "Pl0.Cli.Cli.CompilerCliOptions.yml",
