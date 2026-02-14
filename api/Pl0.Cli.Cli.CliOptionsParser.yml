@@ -1,0 +1,1032 @@
+### YamlMime:ManagedReference
+items:
+- uid: Pl0.Cli.Cli.CliOptionsParser
+  commentId: T:Pl0.Cli.Cli.CliOptionsParser
+  id: CliOptionsParser
+  parent: Pl0.Cli.Cli
+  children:
+  - Pl0.Cli.Cli.CliOptionsParser.EmitModeMissingExitCode
+  - Pl0.Cli.Cli.CliOptionsParser.IsHelpSwitch(System.String)
+  - Pl0.Cli.Cli.CliOptionsParser.IsKnownLegacySlashSwitch(System.String)
+  - Pl0.Cli.Cli.CliOptionsParser.IsUnixAbsolutePath(System.String)
+  - Pl0.Cli.Cli.CliOptionsParser.MergeEmitMode(Pl0.Cli.Cli.EmitMode,Pl0.Cli.Cli.EmitMode,System.Collections.Generic.IList{Pl0.Cli.Cli.CliDiagnostic})
+  - Pl0.Cli.Cli.CliOptionsParser.Parse(System.Collections.Generic.IReadOnlyList{System.String})
+  - Pl0.Cli.Cli.CliOptionsParser.TryParseCommand(System.String,Pl0.Cli.Cli.CliCommand@)
+  - Pl0.Cli.Cli.CliOptionsParser.TryParseEmitEqualsValue(System.String,Pl0.Cli.Cli.EmitMode@)
+  - Pl0.Cli.Cli.CliOptionsParser.TryParseEmitModeFromToken(System.String,Pl0.Cli.Cli.EmitMode@)
+  - Pl0.Cli.Cli.CliOptionsParser.TryParseSwitch(System.String,System.String@)
+  - Pl0.Cli.Cli.CliOptionsParser.TryReadOptionValue(System.Collections.Generic.IReadOnlyList{System.String},System.Int32@,System.String@)
+  - Pl0.Cli.Cli.CliOptionsParser.UnexpectedTerminationExitCode
+  langs:
+  - csharp
+  - vb
+  name: CliOptionsParser
+  nameWithType: CliOptionsParser
+  fullName: Pl0.Cli.Cli.CliOptionsParser
+  type: Class
+  source:
+    remote:
+      path: src/Pl0.Cli/Cli/CliOptionsParser.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: CliOptionsParser
+    path: src/Pl0.Cli/Cli/CliOptionsParser.cs
+    startLine: 7
+  assemblies:
+  - Pl0.Cli
+  namespace: Pl0.Cli.Cli
+  summary: Parses CLI arguments into compiler options and diagnostics.
+  example: []
+  syntax:
+    content: public sealed class CliOptionsParser
+    content.vb: Public NotInheritable Class CliOptionsParser
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Pl0.Cli.Cli.CliOptionsParser.EmitModeMissingExitCode
+  commentId: F:Pl0.Cli.Cli.CliOptionsParser.EmitModeMissingExitCode
+  id: EmitModeMissingExitCode
+  parent: Pl0.Cli.Cli.CliOptionsParser
+  langs:
+  - csharp
+  - vb
+  name: EmitModeMissingExitCode
+  nameWithType: CliOptionsParser.EmitModeMissingExitCode
+  fullName: Pl0.Cli.Cli.CliOptionsParser.EmitModeMissingExitCode
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Cli/Cli/CliOptionsParser.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: EmitModeMissingExitCode
+    path: src/Pl0.Cli/Cli/CliOptionsParser.cs
+    startLine: 12
+  assemblies:
+  - Pl0.Cli
+  namespace: Pl0.Cli.Cli
+  summary: Exit code when an emit mode is requested but missing.
+  example: []
+  syntax:
+    content: private const int EmitModeMissingExitCode = 96
+    return:
+      type: System.Int32
+    content.vb: Private Const EmitModeMissingExitCode As Integer = 96
+- uid: Pl0.Cli.Cli.CliOptionsParser.UnexpectedTerminationExitCode
+  commentId: F:Pl0.Cli.Cli.CliOptionsParser.UnexpectedTerminationExitCode
+  id: UnexpectedTerminationExitCode
+  parent: Pl0.Cli.Cli.CliOptionsParser
+  langs:
+  - csharp
+  - vb
+  name: UnexpectedTerminationExitCode
+  nameWithType: CliOptionsParser.UnexpectedTerminationExitCode
+  fullName: Pl0.Cli.Cli.CliOptionsParser.UnexpectedTerminationExitCode
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Cli/Cli/CliOptionsParser.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: UnexpectedTerminationExitCode
+    path: src/Pl0.Cli/Cli/CliOptionsParser.cs
+    startLine: 16
+  assemblies:
+  - Pl0.Cli
+  namespace: Pl0.Cli.Cli
+  summary: Exit code for unexpected arguments or switches.
+  example: []
+  syntax:
+    content: private const int UnexpectedTerminationExitCode = 99
+    return:
+      type: System.Int32
+    content.vb: Private Const UnexpectedTerminationExitCode As Integer = 99
+- uid: Pl0.Cli.Cli.CliOptionsParser.Parse(System.Collections.Generic.IReadOnlyList{System.String})
+  commentId: M:Pl0.Cli.Cli.CliOptionsParser.Parse(System.Collections.Generic.IReadOnlyList{System.String})
+  id: Parse(System.Collections.Generic.IReadOnlyList{System.String})
+  parent: Pl0.Cli.Cli.CliOptionsParser
+  langs:
+  - csharp
+  - vb
+  name: Parse(IReadOnlyList<string>)
+  nameWithType: CliOptionsParser.Parse(IReadOnlyList<string>)
+  fullName: Pl0.Cli.Cli.CliOptionsParser.Parse(System.Collections.Generic.IReadOnlyList<string>)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Cli/Cli/CliOptionsParser.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: Parse
+    path: src/Pl0.Cli/Cli/CliOptionsParser.cs
+    startLine: 23
+  assemblies:
+  - Pl0.Cli
+  namespace: Pl0.Cli.Cli
+  summary: Parses the provided argument list.
+  example: []
+  syntax:
+    content: public CliParseResult Parse(IReadOnlyList<string> args)
+    parameters:
+    - id: args
+      type: System.Collections.Generic.IReadOnlyList{System.String}
+      description: CLI arguments.
+    return:
+      type: Pl0.Cli.Cli.CliParseResult
+      description: Parse result containing options and diagnostics.
+    content.vb: Public Function Parse(args As IReadOnlyList(Of String)) As CliParseResult
+  overload: Pl0.Cli.Cli.CliOptionsParser.Parse*
+  nameWithType.vb: CliOptionsParser.Parse(IReadOnlyList(Of String))
+  fullName.vb: Pl0.Cli.Cli.CliOptionsParser.Parse(System.Collections.Generic.IReadOnlyList(Of String))
+  name.vb: Parse(IReadOnlyList(Of String))
+- uid: Pl0.Cli.Cli.CliOptionsParser.TryReadOptionValue(System.Collections.Generic.IReadOnlyList{System.String},System.Int32@,System.String@)
+  commentId: M:Pl0.Cli.Cli.CliOptionsParser.TryReadOptionValue(System.Collections.Generic.IReadOnlyList{System.String},System.Int32@,System.String@)
+  id: TryReadOptionValue(System.Collections.Generic.IReadOnlyList{System.String},System.Int32@,System.String@)
+  parent: Pl0.Cli.Cli.CliOptionsParser
+  langs:
+  - csharp
+  - vb
+  name: TryReadOptionValue(IReadOnlyList<string>, ref int, out string)
+  nameWithType: CliOptionsParser.TryReadOptionValue(IReadOnlyList<string>, ref int, out string)
+  fullName: Pl0.Cli.Cli.CliOptionsParser.TryReadOptionValue(System.Collections.Generic.IReadOnlyList<string>, ref int, out string)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Cli/Cli/CliOptionsParser.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: TryReadOptionValue
+    path: src/Pl0.Cli/Cli/CliOptionsParser.cs
+    startLine: 189
+  assemblies:
+  - Pl0.Cli
+  namespace: Pl0.Cli.Cli
+  summary: Reads the next argument as an option value.
+  example: []
+  syntax:
+    content: private static bool TryReadOptionValue(IReadOnlyList<string> args, ref int index, out string value)
+    parameters:
+    - id: args
+      type: System.Collections.Generic.IReadOnlyList{System.String}
+      description: Argument list.
+    - id: index
+      type: System.Int32
+      description: Current index (advanced on success).
+    - id: value
+      type: System.String
+      description: Parsed value.
+    return:
+      type: System.Boolean
+      description: True if a value was read.
+    content.vb: Private Shared Function TryReadOptionValue(args As IReadOnlyList(Of String), index As Integer, value As String) As Boolean
+  overload: Pl0.Cli.Cli.CliOptionsParser.TryReadOptionValue*
+  nameWithType.vb: CliOptionsParser.TryReadOptionValue(IReadOnlyList(Of String), Integer, String)
+  fullName.vb: Pl0.Cli.Cli.CliOptionsParser.TryReadOptionValue(System.Collections.Generic.IReadOnlyList(Of String), Integer, String)
+  name.vb: TryReadOptionValue(IReadOnlyList(Of String), Integer, String)
+- uid: Pl0.Cli.Cli.CliOptionsParser.TryParseCommand(System.String,Pl0.Cli.Cli.CliCommand@)
+  commentId: M:Pl0.Cli.Cli.CliOptionsParser.TryParseCommand(System.String,Pl0.Cli.Cli.CliCommand@)
+  id: TryParseCommand(System.String,Pl0.Cli.Cli.CliCommand@)
+  parent: Pl0.Cli.Cli.CliOptionsParser
+  langs:
+  - csharp
+  - vb
+  name: TryParseCommand(string, out CliCommand)
+  nameWithType: CliOptionsParser.TryParseCommand(string, out CliCommand)
+  fullName: Pl0.Cli.Cli.CliOptionsParser.TryParseCommand(string, out Pl0.Cli.Cli.CliCommand)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Cli/Cli/CliOptionsParser.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: TryParseCommand
+    path: src/Pl0.Cli/Cli/CliOptionsParser.cs
+    startLine: 208
+  assemblies:
+  - Pl0.Cli
+  namespace: Pl0.Cli.Cli
+  summary: Parses a command token.
+  example: []
+  syntax:
+    content: private static bool TryParseCommand(string token, out CliCommand command)
+    parameters:
+    - id: token
+      type: System.String
+      description: Command token.
+    - id: command
+      type: Pl0.Cli.Cli.CliCommand
+      description: Parsed command.
+    return:
+      type: System.Boolean
+      description: True if a valid command was found.
+    content.vb: Private Shared Function TryParseCommand(token As String, command As CliCommand) As Boolean
+  overload: Pl0.Cli.Cli.CliOptionsParser.TryParseCommand*
+  nameWithType.vb: CliOptionsParser.TryParseCommand(String, CliCommand)
+  fullName.vb: Pl0.Cli.Cli.CliOptionsParser.TryParseCommand(String, Pl0.Cli.Cli.CliCommand)
+  name.vb: TryParseCommand(String, CliCommand)
+- uid: Pl0.Cli.Cli.CliOptionsParser.IsHelpSwitch(System.String)
+  commentId: M:Pl0.Cli.Cli.CliOptionsParser.IsHelpSwitch(System.String)
+  id: IsHelpSwitch(System.String)
+  parent: Pl0.Cli.Cli.CliOptionsParser
+  langs:
+  - csharp
+  - vb
+  name: IsHelpSwitch(string)
+  nameWithType: CliOptionsParser.IsHelpSwitch(string)
+  fullName: Pl0.Cli.Cli.CliOptionsParser.IsHelpSwitch(string)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Cli/Cli/CliOptionsParser.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: IsHelpSwitch
+    path: src/Pl0.Cli/Cli/CliOptionsParser.cs
+    startLine: 226
+  assemblies:
+  - Pl0.Cli
+  namespace: Pl0.Cli.Cli
+  summary: Determines whether a switch indicates help.
+  example: []
+  syntax:
+    content: private static bool IsHelpSwitch(string sw)
+    parameters:
+    - id: sw
+      type: System.String
+      description: Switch value.
+    return:
+      type: System.Boolean
+      description: True if the switch is a help switch.
+    content.vb: Private Shared Function IsHelpSwitch(sw As String) As Boolean
+  overload: Pl0.Cli.Cli.CliOptionsParser.IsHelpSwitch*
+  nameWithType.vb: CliOptionsParser.IsHelpSwitch(String)
+  fullName.vb: Pl0.Cli.Cli.CliOptionsParser.IsHelpSwitch(String)
+  name.vb: IsHelpSwitch(String)
+- uid: Pl0.Cli.Cli.CliOptionsParser.IsUnixAbsolutePath(System.String)
+  commentId: M:Pl0.Cli.Cli.CliOptionsParser.IsUnixAbsolutePath(System.String)
+  id: IsUnixAbsolutePath(System.String)
+  parent: Pl0.Cli.Cli.CliOptionsParser
+  langs:
+  - csharp
+  - vb
+  name: IsUnixAbsolutePath(string)
+  nameWithType: CliOptionsParser.IsUnixAbsolutePath(string)
+  fullName: Pl0.Cli.Cli.CliOptionsParser.IsUnixAbsolutePath(string)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Cli/Cli/CliOptionsParser.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: IsUnixAbsolutePath
+    path: src/Pl0.Cli/Cli/CliOptionsParser.cs
+    startLine: 234
+  assemblies:
+  - Pl0.Cli
+  namespace: Pl0.Cli.Cli
+  summary: Checks if a value looks like an absolute Unix path.
+  example: []
+  syntax:
+    content: private static bool IsUnixAbsolutePath(string value)
+    parameters:
+    - id: value
+      type: System.String
+      description: Value to check.
+    return:
+      type: System.Boolean
+      description: True if the value is an absolute Unix path.
+    content.vb: Private Shared Function IsUnixAbsolutePath(value As String) As Boolean
+  overload: Pl0.Cli.Cli.CliOptionsParser.IsUnixAbsolutePath*
+  nameWithType.vb: CliOptionsParser.IsUnixAbsolutePath(String)
+  fullName.vb: Pl0.Cli.Cli.CliOptionsParser.IsUnixAbsolutePath(String)
+  name.vb: IsUnixAbsolutePath(String)
+- uid: Pl0.Cli.Cli.CliOptionsParser.IsKnownLegacySlashSwitch(System.String)
+  commentId: M:Pl0.Cli.Cli.CliOptionsParser.IsKnownLegacySlashSwitch(System.String)
+  id: IsKnownLegacySlashSwitch(System.String)
+  parent: Pl0.Cli.Cli.CliOptionsParser
+  langs:
+  - csharp
+  - vb
+  name: IsKnownLegacySlashSwitch(string)
+  nameWithType: CliOptionsParser.IsKnownLegacySlashSwitch(string)
+  fullName: Pl0.Cli.Cli.CliOptionsParser.IsKnownLegacySlashSwitch(string)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Cli/Cli/CliOptionsParser.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: IsKnownLegacySlashSwitch
+    path: src/Pl0.Cli/Cli/CliOptionsParser.cs
+    startLine: 242
+  assemblies:
+  - Pl0.Cli
+  namespace: Pl0.Cli.Cli
+  summary: Determines whether a slash-prefixed token is a known legacy switch.
+  example: []
+  syntax:
+    content: private static bool IsKnownLegacySlashSwitch(string value)
+    parameters:
+    - id: value
+      type: System.String
+      description: Switch token.
+    return:
+      type: System.Boolean
+      description: True if it is a known legacy switch.
+    content.vb: Private Shared Function IsKnownLegacySlashSwitch(value As String) As Boolean
+  overload: Pl0.Cli.Cli.CliOptionsParser.IsKnownLegacySlashSwitch*
+  nameWithType.vb: CliOptionsParser.IsKnownLegacySlashSwitch(String)
+  fullName.vb: Pl0.Cli.Cli.CliOptionsParser.IsKnownLegacySlashSwitch(String)
+  name.vb: IsKnownLegacySlashSwitch(String)
+- uid: Pl0.Cli.Cli.CliOptionsParser.TryParseSwitch(System.String,System.String@)
+  commentId: M:Pl0.Cli.Cli.CliOptionsParser.TryParseSwitch(System.String,System.String@)
+  id: TryParseSwitch(System.String,System.String@)
+  parent: Pl0.Cli.Cli.CliOptionsParser
+  langs:
+  - csharp
+  - vb
+  name: TryParseSwitch(string, out string)
+  nameWithType: CliOptionsParser.TryParseSwitch(string, out string)
+  fullName: Pl0.Cli.Cli.CliOptionsParser.TryParseSwitch(string, out string)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Cli/Cli/CliOptionsParser.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: TryParseSwitch
+    path: src/Pl0.Cli/Cli/CliOptionsParser.cs
+    startLine: 265
+  assemblies:
+  - Pl0.Cli
+  namespace: Pl0.Cli.Cli
+  summary: Parses a switch token into a canonical switch string.
+  example: []
+  syntax:
+    content: private static bool TryParseSwitch(string value, out string sw)
+    parameters:
+    - id: value
+      type: System.String
+      description: Token to parse.
+    - id: sw
+      type: System.String
+      description: Parsed switch value.
+    return:
+      type: System.Boolean
+      description: True if the token is a switch.
+    content.vb: Private Shared Function TryParseSwitch(value As String, sw As String) As Boolean
+  overload: Pl0.Cli.Cli.CliOptionsParser.TryParseSwitch*
+  nameWithType.vb: CliOptionsParser.TryParseSwitch(String, String)
+  fullName.vb: Pl0.Cli.Cli.CliOptionsParser.TryParseSwitch(String, String)
+  name.vb: TryParseSwitch(String, String)
+- uid: Pl0.Cli.Cli.CliOptionsParser.TryParseEmitModeFromToken(System.String,Pl0.Cli.Cli.EmitMode@)
+  commentId: M:Pl0.Cli.Cli.CliOptionsParser.TryParseEmitModeFromToken(System.String,Pl0.Cli.Cli.EmitMode@)
+  id: TryParseEmitModeFromToken(System.String,Pl0.Cli.Cli.EmitMode@)
+  parent: Pl0.Cli.Cli.CliOptionsParser
+  langs:
+  - csharp
+  - vb
+  name: TryParseEmitModeFromToken(string, out EmitMode)
+  nameWithType: CliOptionsParser.TryParseEmitModeFromToken(string, out EmitMode)
+  fullName: Pl0.Cli.Cli.CliOptionsParser.TryParseEmitModeFromToken(string, out Pl0.Cli.Cli.EmitMode)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Cli/Cli/CliOptionsParser.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: TryParseEmitModeFromToken
+    path: src/Pl0.Cli/Cli/CliOptionsParser.cs
+    startLine: 304
+  assemblies:
+  - Pl0.Cli
+  namespace: Pl0.Cli.Cli
+  summary: Tries to parse an emit mode from a token.
+  example: []
+  syntax:
+    content: private static bool TryParseEmitModeFromToken(string token, out EmitMode mode)
+    parameters:
+    - id: token
+      type: System.String
+      description: Token value.
+    - id: mode
+      type: Pl0.Cli.Cli.EmitMode
+      description: Parsed emit mode.
+    return:
+      type: System.Boolean
+      description: True if an emit mode was parsed.
+    content.vb: Private Shared Function TryParseEmitModeFromToken(token As String, mode As EmitMode) As Boolean
+  overload: Pl0.Cli.Cli.CliOptionsParser.TryParseEmitModeFromToken*
+  nameWithType.vb: CliOptionsParser.TryParseEmitModeFromToken(String, EmitMode)
+  fullName.vb: Pl0.Cli.Cli.CliOptionsParser.TryParseEmitModeFromToken(String, Pl0.Cli.Cli.EmitMode)
+  name.vb: TryParseEmitModeFromToken(String, EmitMode)
+- uid: Pl0.Cli.Cli.CliOptionsParser.TryParseEmitEqualsValue(System.String,Pl0.Cli.Cli.EmitMode@)
+  commentId: M:Pl0.Cli.Cli.CliOptionsParser.TryParseEmitEqualsValue(System.String,Pl0.Cli.Cli.EmitMode@)
+  id: TryParseEmitEqualsValue(System.String,Pl0.Cli.Cli.EmitMode@)
+  parent: Pl0.Cli.Cli.CliOptionsParser
+  langs:
+  - csharp
+  - vb
+  name: TryParseEmitEqualsValue(string, out EmitMode)
+  nameWithType: CliOptionsParser.TryParseEmitEqualsValue(string, out EmitMode)
+  fullName: Pl0.Cli.Cli.CliOptionsParser.TryParseEmitEqualsValue(string, out Pl0.Cli.Cli.EmitMode)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Cli/Cli/CliOptionsParser.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: TryParseEmitEqualsValue
+    path: src/Pl0.Cli/Cli/CliOptionsParser.cs
+    startLine: 333
+  assemblies:
+  - Pl0.Cli
+  namespace: Pl0.Cli.Cli
+  summary: Parses --emit=&lt;mode&gt; values.
+  example: []
+  syntax:
+    content: private static bool TryParseEmitEqualsValue(string switchValue, out EmitMode mode)
+    parameters:
+    - id: switchValue
+      type: System.String
+      description: Switch value to parse.
+    - id: mode
+      type: Pl0.Cli.Cli.EmitMode
+      description: Parsed emit mode.
+    return:
+      type: System.Boolean
+      description: True if a valid emit mode was parsed.
+    content.vb: Private Shared Function TryParseEmitEqualsValue(switchValue As String, mode As EmitMode) As Boolean
+  overload: Pl0.Cli.Cli.CliOptionsParser.TryParseEmitEqualsValue*
+  nameWithType.vb: CliOptionsParser.TryParseEmitEqualsValue(String, EmitMode)
+  fullName.vb: Pl0.Cli.Cli.CliOptionsParser.TryParseEmitEqualsValue(String, Pl0.Cli.Cli.EmitMode)
+  name.vb: TryParseEmitEqualsValue(String, EmitMode)
+- uid: Pl0.Cli.Cli.CliOptionsParser.MergeEmitMode(Pl0.Cli.Cli.EmitMode,Pl0.Cli.Cli.EmitMode,System.Collections.Generic.IList{Pl0.Cli.Cli.CliDiagnostic})
+  commentId: M:Pl0.Cli.Cli.CliOptionsParser.MergeEmitMode(Pl0.Cli.Cli.EmitMode,Pl0.Cli.Cli.EmitMode,System.Collections.Generic.IList{Pl0.Cli.Cli.CliDiagnostic})
+  id: MergeEmitMode(Pl0.Cli.Cli.EmitMode,Pl0.Cli.Cli.EmitMode,System.Collections.Generic.IList{Pl0.Cli.Cli.CliDiagnostic})
+  parent: Pl0.Cli.Cli.CliOptionsParser
+  langs:
+  - csharp
+  - vb
+  name: MergeEmitMode(EmitMode, EmitMode, IList<CliDiagnostic>)
+  nameWithType: CliOptionsParser.MergeEmitMode(EmitMode, EmitMode, IList<CliDiagnostic>)
+  fullName: Pl0.Cli.Cli.CliOptionsParser.MergeEmitMode(Pl0.Cli.Cli.EmitMode, Pl0.Cli.Cli.EmitMode, System.Collections.Generic.IList<Pl0.Cli.Cli.CliDiagnostic>)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Cli/Cli/CliOptionsParser.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: MergeEmitMode
+    path: src/Pl0.Cli/Cli/CliOptionsParser.cs
+    startLine: 364
+  assemblies:
+  - Pl0.Cli
+  namespace: Pl0.Cli.Cli
+  summary: Merges a candidate emit mode into the current mode and reports conflicts.
+  example: []
+  syntax:
+    content: private static EmitMode MergeEmitMode(EmitMode current, EmitMode candidate, IList<CliDiagnostic> diagnostics)
+    parameters:
+    - id: current
+      type: Pl0.Cli.Cli.EmitMode
+      description: Current mode.
+    - id: candidate
+      type: Pl0.Cli.Cli.EmitMode
+      description: Candidate mode.
+    - id: diagnostics
+      type: System.Collections.Generic.IList{Pl0.Cli.Cli.CliDiagnostic}
+      description: Diagnostics collection.
+    return:
+      type: Pl0.Cli.Cli.EmitMode
+      description: The merged emit mode.
+    content.vb: Private Shared Function MergeEmitMode(current As EmitMode, candidate As EmitMode, diagnostics As IList(Of CliDiagnostic)) As EmitMode
+  overload: Pl0.Cli.Cli.CliOptionsParser.MergeEmitMode*
+  nameWithType.vb: CliOptionsParser.MergeEmitMode(EmitMode, EmitMode, IList(Of CliDiagnostic))
+  fullName.vb: Pl0.Cli.Cli.CliOptionsParser.MergeEmitMode(Pl0.Cli.Cli.EmitMode, Pl0.Cli.Cli.EmitMode, System.Collections.Generic.IList(Of Pl0.Cli.Cli.CliDiagnostic))
+  name.vb: MergeEmitMode(EmitMode, EmitMode, IList(Of CliDiagnostic))
+references:
+- uid: Pl0.Cli.Cli
+  commentId: N:Pl0.Cli.Cli
+  href: Pl0.html
+  name: Pl0.Cli.Cli
+  nameWithType: Pl0.Cli.Cli
+  fullName: Pl0.Cli.Cli
+  spec.csharp:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Cli
+    name: Cli
+    href: Pl0.Cli.html
+  - name: .
+  - uid: Pl0.Cli.Cli
+    name: Cli
+    href: Pl0.Cli.Cli.html
+  spec.vb:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Cli
+    name: Cli
+    href: Pl0.Cli.html
+  - name: .
+  - uid: Pl0.Cli.Cli
+    name: Cli
+    href: Pl0.Cli.Cli.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Pl0.Cli.Cli.CliOptionsParser.Parse*
+  commentId: Overload:Pl0.Cli.Cli.CliOptionsParser.Parse
+  href: Pl0.Cli.Cli.CliOptionsParser.html#Pl0_Cli_Cli_CliOptionsParser_Parse_System_Collections_Generic_IReadOnlyList_System_String__
+  name: Parse
+  nameWithType: CliOptionsParser.Parse
+  fullName: Pl0.Cli.Cli.CliOptionsParser.Parse
+- uid: System.Collections.Generic.IReadOnlyList{System.String}
+  commentId: T:System.Collections.Generic.IReadOnlyList{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<string>
+  nameWithType: IReadOnlyList<string>
+  fullName: System.Collections.Generic.IReadOnlyList<string>
+  nameWithType.vb: IReadOnlyList(Of String)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of String)
+  name.vb: IReadOnlyList(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Pl0.Cli.Cli.CliParseResult
+  commentId: T:Pl0.Cli.Cli.CliParseResult
+  parent: Pl0.Cli.Cli
+  href: Pl0.Cli.Cli.CliParseResult.html
+  name: CliParseResult
+  nameWithType: CliParseResult
+  fullName: Pl0.Cli.Cli.CliParseResult
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Pl0.Cli.Cli.CliOptionsParser.TryReadOptionValue*
+  commentId: Overload:Pl0.Cli.Cli.CliOptionsParser.TryReadOptionValue
+  href: Pl0.Cli.Cli.CliOptionsParser.html#Pl0_Cli_Cli_CliOptionsParser_TryReadOptionValue_System_Collections_Generic_IReadOnlyList_System_String__System_Int32__System_String__
+  name: TryReadOptionValue
+  nameWithType: CliOptionsParser.TryReadOptionValue
+  fullName: Pl0.Cli.Cli.CliOptionsParser.TryReadOptionValue
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Pl0.Cli.Cli.CliOptionsParser.TryParseCommand*
+  commentId: Overload:Pl0.Cli.Cli.CliOptionsParser.TryParseCommand
+  href: Pl0.Cli.Cli.CliOptionsParser.html#Pl0_Cli_Cli_CliOptionsParser_TryParseCommand_System_String_Pl0_Cli_Cli_CliCommand__
+  name: TryParseCommand
+  nameWithType: CliOptionsParser.TryParseCommand
+  fullName: Pl0.Cli.Cli.CliOptionsParser.TryParseCommand
+- uid: Pl0.Cli.Cli.CliCommand
+  commentId: T:Pl0.Cli.Cli.CliCommand
+  parent: Pl0.Cli.Cli
+  href: Pl0.Cli.Cli.CliCommand.html
+  name: CliCommand
+  nameWithType: CliCommand
+  fullName: Pl0.Cli.Cli.CliCommand
+- uid: Pl0.Cli.Cli.CliOptionsParser.IsHelpSwitch*
+  commentId: Overload:Pl0.Cli.Cli.CliOptionsParser.IsHelpSwitch
+  href: Pl0.Cli.Cli.CliOptionsParser.html#Pl0_Cli_Cli_CliOptionsParser_IsHelpSwitch_System_String_
+  name: IsHelpSwitch
+  nameWithType: CliOptionsParser.IsHelpSwitch
+  fullName: Pl0.Cli.Cli.CliOptionsParser.IsHelpSwitch
+- uid: Pl0.Cli.Cli.CliOptionsParser.IsUnixAbsolutePath*
+  commentId: Overload:Pl0.Cli.Cli.CliOptionsParser.IsUnixAbsolutePath
+  href: Pl0.Cli.Cli.CliOptionsParser.html#Pl0_Cli_Cli_CliOptionsParser_IsUnixAbsolutePath_System_String_
+  name: IsUnixAbsolutePath
+  nameWithType: CliOptionsParser.IsUnixAbsolutePath
+  fullName: Pl0.Cli.Cli.CliOptionsParser.IsUnixAbsolutePath
+- uid: Pl0.Cli.Cli.CliOptionsParser.IsKnownLegacySlashSwitch*
+  commentId: Overload:Pl0.Cli.Cli.CliOptionsParser.IsKnownLegacySlashSwitch
+  href: Pl0.Cli.Cli.CliOptionsParser.html#Pl0_Cli_Cli_CliOptionsParser_IsKnownLegacySlashSwitch_System_String_
+  name: IsKnownLegacySlashSwitch
+  nameWithType: CliOptionsParser.IsKnownLegacySlashSwitch
+  fullName: Pl0.Cli.Cli.CliOptionsParser.IsKnownLegacySlashSwitch
+- uid: Pl0.Cli.Cli.CliOptionsParser.TryParseSwitch*
+  commentId: Overload:Pl0.Cli.Cli.CliOptionsParser.TryParseSwitch
+  href: Pl0.Cli.Cli.CliOptionsParser.html#Pl0_Cli_Cli_CliOptionsParser_TryParseSwitch_System_String_System_String__
+  name: TryParseSwitch
+  nameWithType: CliOptionsParser.TryParseSwitch
+  fullName: Pl0.Cli.Cli.CliOptionsParser.TryParseSwitch
+- uid: Pl0.Cli.Cli.CliOptionsParser.TryParseEmitModeFromToken*
+  commentId: Overload:Pl0.Cli.Cli.CliOptionsParser.TryParseEmitModeFromToken
+  href: Pl0.Cli.Cli.CliOptionsParser.html#Pl0_Cli_Cli_CliOptionsParser_TryParseEmitModeFromToken_System_String_Pl0_Cli_Cli_EmitMode__
+  name: TryParseEmitModeFromToken
+  nameWithType: CliOptionsParser.TryParseEmitModeFromToken
+  fullName: Pl0.Cli.Cli.CliOptionsParser.TryParseEmitModeFromToken
+- uid: Pl0.Cli.Cli.EmitMode
+  commentId: T:Pl0.Cli.Cli.EmitMode
+  parent: Pl0.Cli.Cli
+  href: Pl0.Cli.Cli.EmitMode.html
+  name: EmitMode
+  nameWithType: EmitMode
+  fullName: Pl0.Cli.Cli.EmitMode
+- uid: Pl0.Cli.Cli.CliOptionsParser.TryParseEmitEqualsValue*
+  commentId: Overload:Pl0.Cli.Cli.CliOptionsParser.TryParseEmitEqualsValue
+  href: Pl0.Cli.Cli.CliOptionsParser.html#Pl0_Cli_Cli_CliOptionsParser_TryParseEmitEqualsValue_System_String_Pl0_Cli_Cli_EmitMode__
+  name: TryParseEmitEqualsValue
+  nameWithType: CliOptionsParser.TryParseEmitEqualsValue
+  fullName: Pl0.Cli.Cli.CliOptionsParser.TryParseEmitEqualsValue
+- uid: Pl0.Cli.Cli.CliOptionsParser.MergeEmitMode*
+  commentId: Overload:Pl0.Cli.Cli.CliOptionsParser.MergeEmitMode
+  href: Pl0.Cli.Cli.CliOptionsParser.html#Pl0_Cli_Cli_CliOptionsParser_MergeEmitMode_Pl0_Cli_Cli_EmitMode_Pl0_Cli_Cli_EmitMode_System_Collections_Generic_IList_Pl0_Cli_Cli_CliDiagnostic__
+  name: MergeEmitMode
+  nameWithType: CliOptionsParser.MergeEmitMode
+  fullName: Pl0.Cli.Cli.CliOptionsParser.MergeEmitMode
+- uid: System.Collections.Generic.IList{Pl0.Cli.Cli.CliDiagnostic}
+  commentId: T:System.Collections.Generic.IList{Pl0.Cli.Cli.CliDiagnostic}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  name: IList<CliDiagnostic>
+  nameWithType: IList<CliDiagnostic>
+  fullName: System.Collections.Generic.IList<Pl0.Cli.Cli.CliDiagnostic>
+  nameWithType.vb: IList(Of CliDiagnostic)
+  fullName.vb: System.Collections.Generic.IList(Of Pl0.Cli.Cli.CliDiagnostic)
+  name.vb: IList(Of CliDiagnostic)
+  spec.csharp:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: <
+  - uid: Pl0.Cli.Cli.CliDiagnostic
+    name: CliDiagnostic
+    href: Pl0.Cli.Cli.CliDiagnostic.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Pl0.Cli.Cli.CliDiagnostic
+    name: CliDiagnostic
+    href: Pl0.Cli.Cli.CliDiagnostic.html
+  - name: )
+- uid: System.Collections.Generic.IList`1
+  commentId: T:System.Collections.Generic.IList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  name: IList<T>
+  nameWithType: IList<T>
+  fullName: System.Collections.Generic.IList<T>
+  nameWithType.vb: IList(Of T)
+  fullName.vb: System.Collections.Generic.IList(Of T)
+  name.vb: IList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )

@@ -1,0 +1,731 @@
+### YamlMime:ManagedReference
+items:
+- uid: Pl0.Core.SymbolTable
+  commentId: T:Pl0.Core.SymbolTable
+  id: SymbolTable
+  parent: Pl0.Core
+  children:
+  - Pl0.Core.SymbolTable.Count
+  - Pl0.Core.SymbolTable.EnterScope
+  - Pl0.Core.SymbolTable.ExitScope
+  - Pl0.Core.SymbolTable.Lookup(System.String)
+  - Pl0.Core.SymbolTable.TryDeclare(Pl0.Core.SymbolEntry)
+  - Pl0.Core.SymbolTable._entries
+  - Pl0.Core.SymbolTable._scopeStarts
+  langs:
+  - csharp
+  - vb
+  name: SymbolTable
+  nameWithType: SymbolTable
+  fullName: Pl0.Core.SymbolTable
+  type: Class
+  source:
+    remote:
+      path: src/Pl0.Core/SymbolTable.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: SymbolTable
+    path: src/Pl0.Core/SymbolTable.cs
+    startLine: 5
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  summary: Simple symbol table with scope tracking.
+  example: []
+  syntax:
+    content: public sealed class SymbolTable
+    content.vb: Public NotInheritable Class SymbolTable
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Pl0.Core.SymbolTable._entries
+  commentId: F:Pl0.Core.SymbolTable._entries
+  id: _entries
+  parent: Pl0.Core.SymbolTable
+  langs:
+  - csharp
+  - vb
+  name: _entries
+  nameWithType: SymbolTable._entries
+  fullName: Pl0.Core.SymbolTable._entries
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Core/SymbolTable.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: _entries
+    path: src/Pl0.Core/SymbolTable.cs
+    startLine: 10
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  summary: All symbol entries in stack order.
+  example: []
+  syntax:
+    content: private readonly List<SymbolEntry> _entries
+    return:
+      type: System.Collections.Generic.List{Pl0.Core.SymbolEntry}
+    content.vb: Private ReadOnly _entries As List(Of SymbolEntry)
+- uid: Pl0.Core.SymbolTable._scopeStarts
+  commentId: F:Pl0.Core.SymbolTable._scopeStarts
+  id: _scopeStarts
+  parent: Pl0.Core.SymbolTable
+  langs:
+  - csharp
+  - vb
+  name: _scopeStarts
+  nameWithType: SymbolTable._scopeStarts
+  fullName: Pl0.Core.SymbolTable._scopeStarts
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Core/SymbolTable.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: _scopeStarts
+    path: src/Pl0.Core/SymbolTable.cs
+    startLine: 14
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  summary: Stack of scope start indices.
+  example: []
+  syntax:
+    content: private readonly Stack<int> _scopeStarts
+    return:
+      type: System.Collections.Generic.Stack{System.Int32}
+    content.vb: Private ReadOnly _scopeStarts As Stack(Of Integer)
+- uid: Pl0.Core.SymbolTable.Count
+  commentId: P:Pl0.Core.SymbolTable.Count
+  id: Count
+  parent: Pl0.Core.SymbolTable
+  langs:
+  - csharp
+  - vb
+  name: Count
+  nameWithType: SymbolTable.Count
+  fullName: Pl0.Core.SymbolTable.Count
+  type: Property
+  source:
+    remote:
+      path: src/Pl0.Core/SymbolTable.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: Count
+    path: src/Pl0.Core/SymbolTable.cs
+    startLine: 18
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  summary: Gets the number of entries in the symbol table.
+  example: []
+  syntax:
+    content: public int Count { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property Count As Integer
+  overload: Pl0.Core.SymbolTable.Count*
+- uid: Pl0.Core.SymbolTable.EnterScope
+  commentId: M:Pl0.Core.SymbolTable.EnterScope
+  id: EnterScope
+  parent: Pl0.Core.SymbolTable
+  langs:
+  - csharp
+  - vb
+  name: EnterScope()
+  nameWithType: SymbolTable.EnterScope()
+  fullName: Pl0.Core.SymbolTable.EnterScope()
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Core/SymbolTable.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: EnterScope
+    path: src/Pl0.Core/SymbolTable.cs
+    startLine: 23
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  summary: Opens a new scope.
+  example: []
+  syntax:
+    content: public void EnterScope()
+    content.vb: Public Sub EnterScope()
+  overload: Pl0.Core.SymbolTable.EnterScope*
+- uid: Pl0.Core.SymbolTable.ExitScope
+  commentId: M:Pl0.Core.SymbolTable.ExitScope
+  id: ExitScope
+  parent: Pl0.Core.SymbolTable
+  langs:
+  - csharp
+  - vb
+  name: ExitScope()
+  nameWithType: SymbolTable.ExitScope()
+  fullName: Pl0.Core.SymbolTable.ExitScope()
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Core/SymbolTable.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: ExitScope
+    path: src/Pl0.Core/SymbolTable.cs
+    startLine: 31
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  summary: Closes the current scope and removes scoped entries.
+  example: []
+  syntax:
+    content: public void ExitScope()
+    content.vb: Public Sub ExitScope()
+  overload: Pl0.Core.SymbolTable.ExitScope*
+- uid: Pl0.Core.SymbolTable.TryDeclare(Pl0.Core.SymbolEntry)
+  commentId: M:Pl0.Core.SymbolTable.TryDeclare(Pl0.Core.SymbolEntry)
+  id: TryDeclare(Pl0.Core.SymbolEntry)
+  parent: Pl0.Core.SymbolTable
+  langs:
+  - csharp
+  - vb
+  name: TryDeclare(SymbolEntry)
+  nameWithType: SymbolTable.TryDeclare(SymbolEntry)
+  fullName: Pl0.Core.SymbolTable.TryDeclare(Pl0.Core.SymbolEntry)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Core/SymbolTable.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: TryDeclare
+    path: src/Pl0.Core/SymbolTable.cs
+    startLine: 50
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  summary: Tries to declare a symbol in the current scope.
+  example: []
+  syntax:
+    content: public bool TryDeclare(SymbolEntry entry)
+    parameters:
+    - id: entry
+      type: Pl0.Core.SymbolEntry
+      description: The symbol entry to add.
+    return:
+      type: System.Boolean
+      description: True if the symbol was declared; false if it was a duplicate.
+    content.vb: Public Function TryDeclare(entry As SymbolEntry) As Boolean
+  overload: Pl0.Core.SymbolTable.TryDeclare*
+- uid: Pl0.Core.SymbolTable.Lookup(System.String)
+  commentId: M:Pl0.Core.SymbolTable.Lookup(System.String)
+  id: Lookup(System.String)
+  parent: Pl0.Core.SymbolTable
+  langs:
+  - csharp
+  - vb
+  name: Lookup(string)
+  nameWithType: SymbolTable.Lookup(string)
+  fullName: Pl0.Core.SymbolTable.Lookup(string)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Core/SymbolTable.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: Lookup
+    path: src/Pl0.Core/SymbolTable.cs
+    startLine: 70
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  summary: Looks up the most recent symbol with the given name.
+  example: []
+  syntax:
+    content: public SymbolEntry? Lookup(string name)
+    parameters:
+    - id: name
+      type: System.String
+      description: The symbol name.
+    return:
+      type: Pl0.Core.SymbolEntry
+      description: The symbol entry, or null if not found.
+    content.vb: Public Function Lookup(name As String) As SymbolEntry
+  overload: Pl0.Core.SymbolTable.Lookup*
+  nameWithType.vb: SymbolTable.Lookup(String)
+  fullName.vb: Pl0.Core.SymbolTable.Lookup(String)
+  name.vb: Lookup(String)
+references:
+- uid: Pl0.Core
+  commentId: N:Pl0.Core
+  href: Pl0.html
+  name: Pl0.Core
+  nameWithType: Pl0.Core
+  fullName: Pl0.Core
+  spec.csharp:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Core
+    name: Core
+    href: Pl0.Core.html
+  spec.vb:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Core
+    name: Core
+    href: Pl0.Core.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Collections.Generic.List{Pl0.Core.SymbolEntry}
+  commentId: T:System.Collections.Generic.List{Pl0.Core.SymbolEntry}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<SymbolEntry>
+  nameWithType: List<SymbolEntry>
+  fullName: System.Collections.Generic.List<Pl0.Core.SymbolEntry>
+  nameWithType.vb: List(Of SymbolEntry)
+  fullName.vb: System.Collections.Generic.List(Of Pl0.Core.SymbolEntry)
+  name.vb: List(Of SymbolEntry)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: Pl0.Core.SymbolEntry
+    name: SymbolEntry
+    href: Pl0.Core.SymbolEntry.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Pl0.Core.SymbolEntry
+    name: SymbolEntry
+    href: Pl0.Core.SymbolEntry.html
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: System.Collections.Generic.Stack{System.Int32}
+  commentId: T:System.Collections.Generic.Stack{System.Int32}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Stack`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.stack-1
+  name: Stack<int>
+  nameWithType: Stack<int>
+  fullName: System.Collections.Generic.Stack<int>
+  nameWithType.vb: Stack(Of Integer)
+  fullName.vb: System.Collections.Generic.Stack(Of Integer)
+  name.vb: Stack(Of Integer)
+  spec.csharp:
+  - uid: System.Collections.Generic.Stack`1
+    name: Stack
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.stack-1
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Stack`1
+    name: Stack
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.stack-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: System.Collections.Generic.Stack`1
+  commentId: T:System.Collections.Generic.Stack`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.stack-1
+  name: Stack<T>
+  nameWithType: Stack<T>
+  fullName: System.Collections.Generic.Stack<T>
+  nameWithType.vb: Stack(Of T)
+  fullName.vb: System.Collections.Generic.Stack(Of T)
+  name.vb: Stack(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.Stack`1
+    name: Stack
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.stack-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Stack`1
+    name: Stack
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.stack-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Pl0.Core.SymbolTable.Count*
+  commentId: Overload:Pl0.Core.SymbolTable.Count
+  href: Pl0.Core.SymbolTable.html#Pl0_Core_SymbolTable_Count
+  name: Count
+  nameWithType: SymbolTable.Count
+  fullName: Pl0.Core.SymbolTable.Count
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Pl0.Core.SymbolTable.EnterScope*
+  commentId: Overload:Pl0.Core.SymbolTable.EnterScope
+  href: Pl0.Core.SymbolTable.html#Pl0_Core_SymbolTable_EnterScope
+  name: EnterScope
+  nameWithType: SymbolTable.EnterScope
+  fullName: Pl0.Core.SymbolTable.EnterScope
+- uid: Pl0.Core.SymbolTable.ExitScope*
+  commentId: Overload:Pl0.Core.SymbolTable.ExitScope
+  href: Pl0.Core.SymbolTable.html#Pl0_Core_SymbolTable_ExitScope
+  name: ExitScope
+  nameWithType: SymbolTable.ExitScope
+  fullName: Pl0.Core.SymbolTable.ExitScope
+- uid: Pl0.Core.SymbolTable.TryDeclare*
+  commentId: Overload:Pl0.Core.SymbolTable.TryDeclare
+  href: Pl0.Core.SymbolTable.html#Pl0_Core_SymbolTable_TryDeclare_Pl0_Core_SymbolEntry_
+  name: TryDeclare
+  nameWithType: SymbolTable.TryDeclare
+  fullName: Pl0.Core.SymbolTable.TryDeclare
+- uid: Pl0.Core.SymbolEntry
+  commentId: T:Pl0.Core.SymbolEntry
+  parent: Pl0.Core
+  href: Pl0.Core.SymbolEntry.html
+  name: SymbolEntry
+  nameWithType: SymbolEntry
+  fullName: Pl0.Core.SymbolEntry
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Pl0.Core.SymbolTable.Lookup*
+  commentId: Overload:Pl0.Core.SymbolTable.Lookup
+  href: Pl0.Core.SymbolTable.html#Pl0_Core_SymbolTable_Lookup_System_String_
+  name: Lookup
+  nameWithType: SymbolTable.Lookup
+  fullName: Pl0.Core.SymbolTable.Lookup
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String

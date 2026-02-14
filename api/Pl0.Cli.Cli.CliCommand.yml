@@ -1,0 +1,184 @@
+### YamlMime:ManagedReference
+items:
+- uid: Pl0.Cli.Cli.CliCommand
+  commentId: T:Pl0.Cli.Cli.CliCommand
+  id: CliCommand
+  parent: Pl0.Cli.Cli
+  children:
+  - Pl0.Cli.Cli.CliCommand.Compile
+  - Pl0.Cli.Cli.CliCommand.None
+  - Pl0.Cli.Cli.CliCommand.Run
+  - Pl0.Cli.Cli.CliCommand.RunPCode
+  langs:
+  - csharp
+  - vb
+  name: CliCommand
+  nameWithType: CliCommand
+  fullName: Pl0.Cli.Cli.CliCommand
+  type: Enum
+  source:
+    remote:
+      path: src/Pl0.Cli/Cli/CliCommand.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: CliCommand
+    path: src/Pl0.Cli/Cli/CliCommand.cs
+    startLine: 5
+  assemblies:
+  - Pl0.Cli
+  namespace: Pl0.Cli.Cli
+  summary: CLI commands supported by TinyPl0.
+  example: []
+  syntax:
+    content: public enum CliCommand
+    content.vb: Public Enum CliCommand
+- uid: Pl0.Cli.Cli.CliCommand.None
+  commentId: F:Pl0.Cli.Cli.CliCommand.None
+  id: None
+  parent: Pl0.Cli.Cli.CliCommand
+  langs:
+  - csharp
+  - vb
+  name: None
+  nameWithType: CliCommand.None
+  fullName: Pl0.Cli.Cli.CliCommand.None
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Cli/Cli/CliCommand.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: None
+    path: src/Pl0.Cli/Cli/CliCommand.cs
+    startLine: 10
+  assemblies:
+  - Pl0.Cli
+  namespace: Pl0.Cli.Cli
+  summary: No explicit command provided.
+  example: []
+  syntax:
+    content: None = 0
+    return:
+      type: Pl0.Cli.Cli.CliCommand
+- uid: Pl0.Cli.Cli.CliCommand.Compile
+  commentId: F:Pl0.Cli.Cli.CliCommand.Compile
+  id: Compile
+  parent: Pl0.Cli.Cli.CliCommand
+  langs:
+  - csharp
+  - vb
+  name: Compile
+  nameWithType: CliCommand.Compile
+  fullName: Pl0.Cli.Cli.CliCommand.Compile
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Cli/Cli/CliCommand.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: Compile
+    path: src/Pl0.Cli/Cli/CliCommand.cs
+    startLine: 14
+  assemblies:
+  - Pl0.Cli
+  namespace: Pl0.Cli.Cli
+  summary: Compile PL/0 source to P-Code.
+  example: []
+  syntax:
+    content: Compile = 1
+    return:
+      type: Pl0.Cli.Cli.CliCommand
+- uid: Pl0.Cli.Cli.CliCommand.Run
+  commentId: F:Pl0.Cli.Cli.CliCommand.Run
+  id: Run
+  parent: Pl0.Cli.Cli.CliCommand
+  langs:
+  - csharp
+  - vb
+  name: Run
+  nameWithType: CliCommand.Run
+  fullName: Pl0.Cli.Cli.CliCommand.Run
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Cli/Cli/CliCommand.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: Run
+    path: src/Pl0.Cli/Cli/CliCommand.cs
+    startLine: 18
+  assemblies:
+  - Pl0.Cli
+  namespace: Pl0.Cli.Cli
+  summary: Compile and run PL/0 source.
+  example: []
+  syntax:
+    content: Run = 2
+    return:
+      type: Pl0.Cli.Cli.CliCommand
+- uid: Pl0.Cli.Cli.CliCommand.RunPCode
+  commentId: F:Pl0.Cli.Cli.CliCommand.RunPCode
+  id: RunPCode
+  parent: Pl0.Cli.Cli.CliCommand
+  langs:
+  - csharp
+  - vb
+  name: RunPCode
+  nameWithType: CliCommand.RunPCode
+  fullName: Pl0.Cli.Cli.CliCommand.RunPCode
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Cli/Cli/CliCommand.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: RunPCode
+    path: src/Pl0.Cli/Cli/CliCommand.cs
+    startLine: 22
+  assemblies:
+  - Pl0.Cli
+  namespace: Pl0.Cli.Cli
+  summary: Run a P-Code file directly.
+  example: []
+  syntax:
+    content: RunPCode = 3
+    return:
+      type: Pl0.Cli.Cli.CliCommand
+references:
+- uid: Pl0.Cli.Cli
+  commentId: N:Pl0.Cli.Cli
+  href: Pl0.html
+  name: Pl0.Cli.Cli
+  nameWithType: Pl0.Cli.Cli
+  fullName: Pl0.Cli.Cli
+  spec.csharp:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Cli
+    name: Cli
+    href: Pl0.Cli.html
+  - name: .
+  - uid: Pl0.Cli.Cli
+    name: Cli
+    href: Pl0.Cli.Cli.html
+  spec.vb:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Cli
+    name: Cli
+    href: Pl0.Cli.html
+  - name: .
+  - uid: Pl0.Cli.Cli
+    name: Cli
+    href: Pl0.Cli.Cli.html
+- uid: Pl0.Cli.Cli.CliCommand
+  commentId: T:Pl0.Cli.Cli.CliCommand
+  parent: Pl0.Cli.Cli
+  href: Pl0.Cli.Cli.CliCommand.html
+  name: CliCommand
+  nameWithType: CliCommand
+  fullName: Pl0.Cli.Cli.CliCommand

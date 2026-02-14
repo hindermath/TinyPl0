@@ -1,0 +1,7 @@
+var a, b, c2;
+begin
+  ? a;
+  ? b;
+  c2 := a * a + b * b;
+  ! c2
+end.

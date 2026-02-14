@@ -1,0 +1,147 @@
+### YamlMime:ManagedReference
+items:
+- uid: Pl0.Core.SymbolKind
+  commentId: T:Pl0.Core.SymbolKind
+  id: SymbolKind
+  parent: Pl0.Core
+  children:
+  - Pl0.Core.SymbolKind.Constant
+  - Pl0.Core.SymbolKind.Procedure
+  - Pl0.Core.SymbolKind.Variable
+  langs:
+  - csharp
+  - vb
+  name: SymbolKind
+  nameWithType: SymbolKind
+  fullName: Pl0.Core.SymbolKind
+  type: Enum
+  source:
+    remote:
+      path: src/Pl0.Core/SymbolKind.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: SymbolKind
+    path: src/Pl0.Core/SymbolKind.cs
+    startLine: 5
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  summary: Symbol table entry kinds used by the parser and compiler.
+  example: []
+  syntax:
+    content: public enum SymbolKind
+    content.vb: Public Enum SymbolKind
+- uid: Pl0.Core.SymbolKind.Constant
+  commentId: F:Pl0.Core.SymbolKind.Constant
+  id: Constant
+  parent: Pl0.Core.SymbolKind
+  langs:
+  - csharp
+  - vb
+  name: Constant
+  nameWithType: SymbolKind.Constant
+  fullName: Pl0.Core.SymbolKind.Constant
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Core/SymbolKind.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: Constant
+    path: src/Pl0.Core/SymbolKind.cs
+    startLine: 10
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  summary: A constant declaration.
+  example: []
+  syntax:
+    content: Constant = 0
+    return:
+      type: Pl0.Core.SymbolKind
+- uid: Pl0.Core.SymbolKind.Variable
+  commentId: F:Pl0.Core.SymbolKind.Variable
+  id: Variable
+  parent: Pl0.Core.SymbolKind
+  langs:
+  - csharp
+  - vb
+  name: Variable
+  nameWithType: SymbolKind.Variable
+  fullName: Pl0.Core.SymbolKind.Variable
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Core/SymbolKind.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: Variable
+    path: src/Pl0.Core/SymbolKind.cs
+    startLine: 14
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  summary: A variable declaration.
+  example: []
+  syntax:
+    content: Variable = 1
+    return:
+      type: Pl0.Core.SymbolKind
+- uid: Pl0.Core.SymbolKind.Procedure
+  commentId: F:Pl0.Core.SymbolKind.Procedure
+  id: Procedure
+  parent: Pl0.Core.SymbolKind
+  langs:
+  - csharp
+  - vb
+  name: Procedure
+  nameWithType: SymbolKind.Procedure
+  fullName: Pl0.Core.SymbolKind.Procedure
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Core/SymbolKind.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: Procedure
+    path: src/Pl0.Core/SymbolKind.cs
+    startLine: 18
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  summary: A procedure declaration.
+  example: []
+  syntax:
+    content: Procedure = 2
+    return:
+      type: Pl0.Core.SymbolKind
+references:
+- uid: Pl0.Core
+  commentId: N:Pl0.Core
+  href: Pl0.html
+  name: Pl0.Core
+  nameWithType: Pl0.Core
+  fullName: Pl0.Core
+  spec.csharp:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Core
+    name: Core
+    href: Pl0.Core.html
+  spec.vb:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Core
+    name: Core
+    href: Pl0.Core.html
+- uid: Pl0.Core.SymbolKind
+  commentId: T:Pl0.Core.SymbolKind
+  parent: Pl0.Core
+  href: Pl0.Core.SymbolKind.html
+  name: SymbolKind
+  nameWithType: SymbolKind
+  fullName: Pl0.Core.SymbolKind

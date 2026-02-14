@@ -1,0 +1,10 @@
+var betrag, c, n;
+begin
+  ? betrag;
+  c := betrag / 50;
+  betrag := betrag - c * 50;
+  n := betrag / 20;
+  betrag := betrag - n * 20;
+  ! c;
+  ! n
+end.

@@ -1,0 +1,8 @@
+var a, b;
+begin
+  ? a;
+  ? b;
+  while a >= b do
+    a := a - b;
+  ! a
+end.

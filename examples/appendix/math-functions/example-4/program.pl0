@@ -1,0 +1,7 @@
+const pi = 3141, scale = 1000;
+var r, area;
+begin
+  ? r;
+  area := (pi * r * r) / scale;
+  ! area
+end.

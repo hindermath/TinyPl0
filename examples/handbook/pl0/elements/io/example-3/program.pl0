@@ -1,0 +1,11 @@
+var x, y;
+var max;
+begin
+  ? x;
+  ? y;
+  if x > y then
+    max := x;
+  if y >= x then
+    max := y;
+  ! max
+end.

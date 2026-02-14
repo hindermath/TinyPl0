@@ -1,0 +1,2 @@
+LIT 0 5
+OPR 0 6       // result: 1

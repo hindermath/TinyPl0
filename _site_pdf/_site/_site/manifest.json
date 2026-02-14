@@ -1,0 +1,1221 @@
+{
+  "source_base_path": "/Users/thorstenhindermann/RiderProjects/TinyPl0",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/api/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "docfx/api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/api/toc.html"
+        },
+        ".json": {
+          "relative_path": "docfx/api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/abstand.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/abstand.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/altersberechnung.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/altersberechnung.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/arithmetische-folge.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/arithmetische-folge.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/betrag.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/betrag.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/bmi.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/bmi.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/countdown.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/countdown.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/division-durch-subtraktion.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/division-durch-subtraktion.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/division-mit-rest.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/division-mit-rest.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/dreieck-umfang.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/dreieck-umfang.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/dreisatz.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/dreisatz.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/dummy-workload.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/dummy-workload.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/einheitenumrechnung.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/einheitenumrechnung.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/fakultaet.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/fakultaet.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/fibonacci.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/fibonacci.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/geometrische-folge.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/geometrische-folge.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/geschwindigkeit.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/geschwindigkeit.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/ggt.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/ggt.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/glossar.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/glossar.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/how-to-run.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/how-to-run.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/kgt.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/kgt.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/kreis.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/kreis.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/kubikzahlen.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/kubikzahlen.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/lineare-gleichung.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/lineare-gleichung.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/lineare-interpolation.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/lineare-interpolation.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/math-functions.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/math-functions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/min-max.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/min-max.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/mittelwert.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/mittelwert.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/modulo-durch-subtraktion.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/modulo-durch-subtraktion.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/multiplikation-durch-addition.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/multiplikation-durch-addition.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/notenbewertung.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/notenbewertung.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/palindrom.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/palindrom.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/paritaet.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/paritaet.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/potenz.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/potenz.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/primzahlen-bis-n.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/primzahlen-bis-n.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/primzahltest.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/primzahltest.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/prozentrechnung.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/prozentrechnung.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/pythagoras.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/pythagoras.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/quadrat.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/quadrat.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/quadratische-gleichung.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/quadratische-gleichung.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/quadratzahlen.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/quadratzahlen.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/rabatt.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/rabatt.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/rechteck.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/rechteck.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/recommended-order.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/recommended-order.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/statistik.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/statistik.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/summe-1-bis-n.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/summe-1-bis-n.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/summe-gerade-ungerade.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/summe-gerade-ungerade.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/summenquadrat-vs-quadratsumme.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/summenquadrat-vs-quadratsumme.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/swap.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/swap.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/tage-zu-wochen.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/tage-zu-wochen.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/temperatur-umrechnung.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/temperatur-umrechnung.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "docfx/appendix/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/toc.html"
+        },
+        ".json": {
+          "relative_path": "docfx/appendix/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/uhrzeitdifferenz.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/uhrzeitdifferenz.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/versandkosten.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/versandkosten.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/waehrungsumrechnung.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/waehrungsumrechnung.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/wechselgeld.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/wechselgeld.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/zahl-umkehrung.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/zahl-umkehrung.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/zahlenvergleich.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/zahlenvergleich.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/zeitumrechnung.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/zeitumrechnung.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/ziffernanzahl.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/ziffernanzahl.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/ziffernsumme.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/ziffernsumme.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/zins.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/zins.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/appendix/zinseszins.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/appendix/zinseszins.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/curated/architecture.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/curated/architecture.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/curated/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/curated/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/curated/language-ebnf.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/curated/language-ebnf.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/curated/quality.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/curated/quality.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "docfx/curated/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/curated/toc.html"
+        },
+        ".json": {
+          "relative_path": "docfx/curated/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/curated/traceability-matrix.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/curated/traceability-matrix.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/curated/vm-instruction-set.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/curated/vm-instruction-set.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/handbook/pcode/advanced-examples.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/handbook/pcode/advanced-examples.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/handbook/pcode/debugging.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/handbook/pcode/debugging.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/handbook/pcode/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/handbook/pcode/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/handbook/pcode/instruction-examples.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/handbook/pcode/instruction-examples.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/handbook/pcode/instruction-reference.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/handbook/pcode/instruction-reference.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "docfx/handbook/pcode/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/handbook/pcode/toc.html"
+        },
+        ".json": {
+          "relative_path": "docfx/handbook/pcode/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/handbook/pl0/best-practices.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/handbook/pl0/best-practices.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/handbook/pl0/common-errors.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/handbook/pl0/common-errors.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/handbook/pl0/elements/conditions.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/handbook/pl0/elements/conditions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/handbook/pl0/elements/constants.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/handbook/pl0/elements/constants.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/handbook/pl0/elements/io.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/handbook/pl0/elements/io.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/handbook/pl0/elements/loops.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/handbook/pl0/elements/loops.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/handbook/pl0/elements/procedures.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/handbook/pl0/elements/procedures.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/handbook/pl0/elements/variables.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/handbook/pl0/elements/variables.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/handbook/pl0/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/handbook/pl0/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/handbook/pl0/syntax.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/handbook/pl0/syntax.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "docfx/handbook/pl0/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/handbook/pl0/toc.html"
+        },
+        ".json": {
+          "relative_path": "docfx/handbook/pl0/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/handbook/tutorial/exercises.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/handbook/tutorial/exercises.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/handbook/tutorial/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/handbook/tutorial/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/handbook/tutorial/learning-path.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/handbook/tutorial/learning-path.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/handbook/tutorial/mini-projects.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/handbook/tutorial/mini-projects.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "docfx/handbook/tutorial/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/handbook/tutorial/toc.html"
+        },
+        ".json": {
+          "relative_path": "docfx/handbook/tutorial/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "docfx/images/favicon.ico",
+      "output": {
+        "resource": {
+          "relative_path": "docfx/images/favicon.ico"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "docfx/images/logo.svg",
+      "output": {
+        "resource": {
+          "relative_path": "docfx/images/logo.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/projects/overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/projects/overview.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/projects/pl0-cli.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/projects/pl0-cli.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/projects/pl0-core.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/projects/pl0-core.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/projects/pl0-vm.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/projects/pl0-vm.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "docfx/projects/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/projects/toc.html"
+        },
+        ".json": {
+          "relative_path": "docfx/projects/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/start/installation.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/start/installation.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/start/license.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/start/license.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/start/overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/start/overview.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/start/quickstart.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/start/quickstart.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/start/support.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/start/support.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "docfx/start/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/start/toc.html"
+        },
+        ".json": {
+          "relative_path": "docfx/start/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "docfx/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/toc.html"
+        },
+        ".json": {
+          "relative_path": "docfx/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/usage/cli.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/usage/cli.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/usage/configuration.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/usage/configuration.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docfx/usage/examples.md",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/usage/examples.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "docfx/usage/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "docfx/usage/toc.html"
+        },
+        ".json": {
+          "relative_path": "docfx/usage/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/ARCHITECTURE.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/ARCHITECTURE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/LANGUAGE_EBNF.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/LANGUAGE_EBNF.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/QUALITY.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/QUALITY.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/TRACEABILITY_MATRIX.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/TRACEABILITY_MATRIX.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/VM_INSTRUCTION_SET.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/VM_INSTRUCTION_SET.html"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

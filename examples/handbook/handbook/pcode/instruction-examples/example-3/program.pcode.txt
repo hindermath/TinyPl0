@@ -1,0 +1,2 @@
+LIT 0 7
+STO 0 0       // store 7 into variable 0

@@ -1,0 +1,155 @@
+### YamlMime:ManagedReference
+items:
+- uid: Pl0.Cli.Cli.EmitMode
+  commentId: T:Pl0.Cli.Cli.EmitMode
+  id: EmitMode
+  parent: Pl0.Cli.Cli
+  children:
+  - Pl0.Cli.Cli.EmitMode.Asm
+  - Pl0.Cli.Cli.EmitMode.Cod
+  - Pl0.Cli.Cli.EmitMode.None
+  langs:
+  - csharp
+  - vb
+  name: EmitMode
+  nameWithType: EmitMode
+  fullName: Pl0.Cli.Cli.EmitMode
+  type: Enum
+  source:
+    remote:
+      path: src/Pl0.Cli/Cli/EmitMode.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: EmitMode
+    path: src/Pl0.Cli/Cli/EmitMode.cs
+    startLine: 5
+  assemblies:
+  - Pl0.Cli
+  namespace: Pl0.Cli.Cli
+  summary: Emit modes for CLI output.
+  example: []
+  syntax:
+    content: public enum EmitMode
+    content.vb: Public Enum EmitMode
+- uid: Pl0.Cli.Cli.EmitMode.None
+  commentId: F:Pl0.Cli.Cli.EmitMode.None
+  id: None
+  parent: Pl0.Cli.Cli.EmitMode
+  langs:
+  - csharp
+  - vb
+  name: None
+  nameWithType: EmitMode.None
+  fullName: Pl0.Cli.Cli.EmitMode.None
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Cli/Cli/EmitMode.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: None
+    path: src/Pl0.Cli/Cli/EmitMode.cs
+    startLine: 10
+  assemblies:
+  - Pl0.Cli
+  namespace: Pl0.Cli.Cli
+  summary: No emission requested.
+  example: []
+  syntax:
+    content: None = 0
+    return:
+      type: Pl0.Cli.Cli.EmitMode
+- uid: Pl0.Cli.Cli.EmitMode.Asm
+  commentId: F:Pl0.Cli.Cli.EmitMode.Asm
+  id: Asm
+  parent: Pl0.Cli.Cli.EmitMode
+  langs:
+  - csharp
+  - vb
+  name: Asm
+  nameWithType: EmitMode.Asm
+  fullName: Pl0.Cli.Cli.EmitMode.Asm
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Cli/Cli/EmitMode.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: Asm
+    path: src/Pl0.Cli/Cli/EmitMode.cs
+    startLine: 14
+  assemblies:
+  - Pl0.Cli
+  namespace: Pl0.Cli.Cli
+  summary: Emit mnemonic assembly.
+  example: []
+  syntax:
+    content: Asm = 1
+    return:
+      type: Pl0.Cli.Cli.EmitMode
+- uid: Pl0.Cli.Cli.EmitMode.Cod
+  commentId: F:Pl0.Cli.Cli.EmitMode.Cod
+  id: Cod
+  parent: Pl0.Cli.Cli.EmitMode
+  langs:
+  - csharp
+  - vb
+  name: Cod
+  nameWithType: EmitMode.Cod
+  fullName: Pl0.Cli.Cli.EmitMode.Cod
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Cli/Cli/EmitMode.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: Cod
+    path: src/Pl0.Cli/Cli/EmitMode.cs
+    startLine: 18
+  assemblies:
+  - Pl0.Cli
+  namespace: Pl0.Cli.Cli
+  summary: Emit numeric opcode format.
+  example: []
+  syntax:
+    content: Cod = 2
+    return:
+      type: Pl0.Cli.Cli.EmitMode
+references:
+- uid: Pl0.Cli.Cli
+  commentId: N:Pl0.Cli.Cli
+  href: Pl0.html
+  name: Pl0.Cli.Cli
+  nameWithType: Pl0.Cli.Cli
+  fullName: Pl0.Cli.Cli
+  spec.csharp:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Cli
+    name: Cli
+    href: Pl0.Cli.html
+  - name: .
+  - uid: Pl0.Cli.Cli
+    name: Cli
+    href: Pl0.Cli.Cli.html
+  spec.vb:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Cli
+    name: Cli
+    href: Pl0.Cli.html
+  - name: .
+  - uid: Pl0.Cli.Cli
+    name: Cli
+    href: Pl0.Cli.Cli.html
+- uid: Pl0.Cli.Cli.EmitMode
+  commentId: T:Pl0.Cli.Cli.EmitMode
+  parent: Pl0.Cli.Cli
+  href: Pl0.Cli.Cli.EmitMode.html
+  name: EmitMode
+  nameWithType: EmitMode
+  fullName: Pl0.Cli.Cli.EmitMode

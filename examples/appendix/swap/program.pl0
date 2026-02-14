@@ -1,0 +1,10 @@
+var a, b, t;
+begin
+  ? a;
+  ? b;
+  t := a;
+  a := b;
+  b := t;
+  ! a;
+  ! b
+end.

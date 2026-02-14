@@ -1,0 +1,114 @@
+### YamlMime:TableOfContent
+items:
+- uid: Pl0.Cli.Cli
+  name: Pl0.Cli.Cli
+  type: Namespace
+  items:
+  - uid: Pl0.Cli.Cli.CliCommand
+    name: CliCommand
+    type: Enum
+  - uid: Pl0.Cli.Cli.CliDiagnostic
+    name: CliDiagnostic
+    type: Class
+  - uid: Pl0.Cli.Cli.CliHelpPrinter
+    name: CliHelpPrinter
+    type: Class
+  - uid: Pl0.Cli.Cli.CliOptionsParser
+    name: CliOptionsParser
+    type: Class
+  - uid: Pl0.Cli.Cli.CliParseResult
+    name: CliParseResult
+    type: Class
+  - uid: Pl0.Cli.Cli.CompilationDiagnostics
+    name: CompilationDiagnostics
+    type: Class
+  - uid: Pl0.Cli.Cli.CompilerCliOptions
+    name: CompilerCliOptions
+    type: Class
+  - uid: Pl0.Cli.Cli.EmitMode
+    name: EmitMode
+    type: Enum
+- uid: Pl0.Core
+  name: Pl0.Core
+  type: Namespace
+  items:
+  - uid: Pl0.Core.CompilationResult
+    name: CompilationResult
+    type: Class
+  - uid: Pl0.Core.CompilerDiagnostic
+    name: CompilerDiagnostic
+    type: Struct
+  - uid: Pl0.Core.CompilerOptions
+    name: CompilerOptions
+    type: Class
+  - uid: Pl0.Core.Instruction
+    name: Instruction
+    type: Struct
+  - uid: Pl0.Core.LexerDiagnostic
+    name: LexerDiagnostic
+    type: Struct
+  - uid: Pl0.Core.LexerResult
+    name: LexerResult
+    type: Class
+  - uid: Pl0.Core.Opcode
+    name: Opcode
+    type: Enum
+  - uid: Pl0.Core.PCodeSerializer
+    name: PCodeSerializer
+    type: Class
+  - uid: Pl0.Core.Pl0Compiler
+    name: Pl0Compiler
+    type: Class
+  - uid: Pl0.Core.Pl0Dialect
+    name: Pl0Dialect
+    type: Enum
+  - uid: Pl0.Core.Pl0Lexer
+    name: Pl0Lexer
+    type: Class
+  - uid: Pl0.Core.Pl0Parser
+    name: Pl0Parser
+    type: Class
+  - uid: Pl0.Core.Pl0Token
+    name: Pl0Token
+    type: Struct
+  - uid: Pl0.Core.SymbolEntry
+    name: SymbolEntry
+    type: Class
+  - uid: Pl0.Core.SymbolKind
+    name: SymbolKind
+    type: Enum
+  - uid: Pl0.Core.SymbolTable
+    name: SymbolTable
+    type: Class
+  - uid: Pl0.Core.TextPosition
+    name: TextPosition
+    type: Struct
+  - uid: Pl0.Core.TokenKind
+    name: TokenKind
+    type: Enum
+- uid: Pl0.Vm
+  name: Pl0.Vm
+  type: Namespace
+  items:
+  - uid: Pl0.Vm.BufferedPl0Io
+    name: BufferedPl0Io
+    type: Class
+  - uid: Pl0.Vm.ConsolePl0Io
+    name: ConsolePl0Io
+    type: Class
+  - uid: Pl0.Vm.IPl0Io
+    name: IPl0Io
+    type: Interface
+  - uid: Pl0.Vm.VirtualMachine
+    name: VirtualMachine
+    type: Class
+  - uid: Pl0.Vm.VirtualMachineOptions
+    name: VirtualMachineOptions
+    type: Class
+  - uid: Pl0.Vm.VmDiagnostic
+    name: VmDiagnostic
+    type: Struct
+  - uid: Pl0.Vm.VmExecutionResult
+    name: VmExecutionResult
+    type: Class
+memberLayout: SamePage

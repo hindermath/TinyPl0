@@ -1,0 +1,15 @@
+var n, i, sum, sumsq;
+begin
+  ? n;
+  sum := 0;
+  sumsq := 0;
+  i := 1;
+  while i <= n do
+  begin
+    sum := sum + i;
+    sumsq := sumsq + i * i;
+    i := i + 1
+  end;
+  ! (sum * sum);
+  ! sumsq
+end.

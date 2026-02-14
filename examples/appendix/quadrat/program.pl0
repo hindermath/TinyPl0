@@ -1,0 +1,8 @@
+var a, u, f;
+begin
+  ? a;
+  u := 4 * a;
+  f := a * a;
+  ! u;
+  ! f
+end.

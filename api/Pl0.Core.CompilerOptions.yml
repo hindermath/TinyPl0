@@ -1,0 +1,779 @@
+### YamlMime:ManagedReference
+items:
+- uid: Pl0.Core.CompilerOptions
+  commentId: T:Pl0.Core.CompilerOptions
+  id: CompilerOptions
+  parent: Pl0.Core
+  children:
+  - Pl0.Core.CompilerOptions.#ctor(Pl0.Core.Pl0Dialect,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)
+  - Pl0.Core.CompilerOptions.Default
+  - Pl0.Core.CompilerOptions.Dialect
+  - Pl0.Core.CompilerOptions.EnableIoStatements
+  - Pl0.Core.CompilerOptions.MaxAddress
+  - Pl0.Core.CompilerOptions.MaxCodeLength
+  - Pl0.Core.CompilerOptions.MaxIdentifierLength
+  - Pl0.Core.CompilerOptions.MaxLevel
+  - Pl0.Core.CompilerOptions.MaxNumberDigits
+  - Pl0.Core.CompilerOptions.MaxSymbolCount
+  langs:
+  - csharp
+  - vb
+  name: CompilerOptions
+  nameWithType: CompilerOptions
+  fullName: Pl0.Core.CompilerOptions
+  type: Class
+  source:
+    remote:
+      path: src/Pl0.Core/CompilerOptions.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: CompilerOptions
+    path: src/Pl0.Core/CompilerOptions.cs
+    startLine: 12
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  summary: Compiler configuration limits and language dialect selection.
+  example: []
+  syntax:
+    content: 'public sealed record CompilerOptions : IEquatable<CompilerOptions>'
+    content.vb: Public NotInheritable Class CompilerOptions Implements IEquatable(Of CompilerOptions)
+  inheritance:
+  - System.Object
+  implements:
+  - System.IEquatable{Pl0.Core.CompilerOptions}
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Pl0.Core.CompilerOptions.#ctor(Pl0.Core.Pl0Dialect,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)
+  commentId: M:Pl0.Core.CompilerOptions.#ctor(Pl0.Core.Pl0Dialect,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)
+  id: '#ctor(Pl0.Core.Pl0Dialect,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)'
+  parent: Pl0.Core.CompilerOptions
+  langs:
+  - csharp
+  - vb
+  name: CompilerOptions(Pl0Dialect, int, int, int, int, int, int)
+  nameWithType: CompilerOptions.CompilerOptions(Pl0Dialect, int, int, int, int, int, int)
+  fullName: Pl0.Core.CompilerOptions.CompilerOptions(Pl0.Core.Pl0Dialect, int, int, int, int, int, int)
+  type: Constructor
+  source:
+    remote:
+      path: src/Pl0.Core/CompilerOptions.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: .ctor
+    path: src/Pl0.Core/CompilerOptions.cs
+    startLine: 12
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  summary: Compiler configuration limits and language dialect selection.
+  example: []
+  syntax:
+    content: public CompilerOptions(Pl0Dialect Dialect, int MaxLevel = 3, int MaxAddress = 2047, int MaxIdentifierLength = 10, int MaxNumberDigits = 14, int MaxSymbolCount = 100, int MaxCodeLength = 200)
+    parameters:
+    - id: Dialect
+      type: Pl0.Core.Pl0Dialect
+      description: Selected language dialect.
+    - id: MaxLevel
+      type: System.Int32
+      description: Maximum block nesting depth.
+    - id: MaxAddress
+      type: System.Int32
+      description: Maximum address/value for literals.
+    - id: MaxIdentifierLength
+      type: System.Int32
+      description: Maximum identifier length.
+    - id: MaxNumberDigits
+      type: System.Int32
+      description: Maximum digits in numeric literals.
+    - id: MaxSymbolCount
+      type: System.Int32
+      description: Maximum number of symbols in the table.
+    - id: MaxCodeLength
+      type: System.Int32
+      description: Maximum number of generated instructions.
+    content.vb: Public Sub New(Dialect As Pl0Dialect, MaxLevel As Integer = 3, MaxAddress As Integer = 2047, MaxIdentifierLength As Integer = 10, MaxNumberDigits As Integer = 14, MaxSymbolCount As Integer = 100, MaxCodeLength As Integer = 200)
+  overload: Pl0.Core.CompilerOptions.#ctor*
+  nameWithType.vb: CompilerOptions.New(Pl0Dialect, Integer, Integer, Integer, Integer, Integer, Integer)
+  fullName.vb: Pl0.Core.CompilerOptions.New(Pl0.Core.Pl0Dialect, Integer, Integer, Integer, Integer, Integer, Integer)
+  name.vb: New(Pl0Dialect, Integer, Integer, Integer, Integer, Integer, Integer)
+- uid: Pl0.Core.CompilerOptions.Dialect
+  commentId: P:Pl0.Core.CompilerOptions.Dialect
+  id: Dialect
+  parent: Pl0.Core.CompilerOptions
+  langs:
+  - csharp
+  - vb
+  name: Dialect
+  nameWithType: CompilerOptions.Dialect
+  fullName: Pl0.Core.CompilerOptions.Dialect
+  type: Property
+  source:
+    remote:
+      path: src/Pl0.Core/CompilerOptions.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: Dialect
+    path: src/Pl0.Core/CompilerOptions.cs
+    startLine: 13
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  summary: Selected language dialect.
+  example: []
+  syntax:
+    content: public Pl0Dialect Dialect { get; init; }
+    parameters: []
+    return:
+      type: Pl0.Core.Pl0Dialect
+    content.vb: Public Property Dialect As Pl0Dialect
+  overload: Pl0.Core.CompilerOptions.Dialect*
+- uid: Pl0.Core.CompilerOptions.MaxLevel
+  commentId: P:Pl0.Core.CompilerOptions.MaxLevel
+  id: MaxLevel
+  parent: Pl0.Core.CompilerOptions
+  langs:
+  - csharp
+  - vb
+  name: MaxLevel
+  nameWithType: CompilerOptions.MaxLevel
+  fullName: Pl0.Core.CompilerOptions.MaxLevel
+  type: Property
+  source:
+    remote:
+      path: src/Pl0.Core/CompilerOptions.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: MaxLevel
+    path: src/Pl0.Core/CompilerOptions.cs
+    startLine: 14
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  summary: Maximum block nesting depth.
+  example: []
+  syntax:
+    content: public int MaxLevel { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property MaxLevel As Integer
+  overload: Pl0.Core.CompilerOptions.MaxLevel*
+- uid: Pl0.Core.CompilerOptions.MaxAddress
+  commentId: P:Pl0.Core.CompilerOptions.MaxAddress
+  id: MaxAddress
+  parent: Pl0.Core.CompilerOptions
+  langs:
+  - csharp
+  - vb
+  name: MaxAddress
+  nameWithType: CompilerOptions.MaxAddress
+  fullName: Pl0.Core.CompilerOptions.MaxAddress
+  type: Property
+  source:
+    remote:
+      path: src/Pl0.Core/CompilerOptions.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: MaxAddress
+    path: src/Pl0.Core/CompilerOptions.cs
+    startLine: 15
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  summary: Maximum address/value for literals.
+  example: []
+  syntax:
+    content: public int MaxAddress { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property MaxAddress As Integer
+  overload: Pl0.Core.CompilerOptions.MaxAddress*
+- uid: Pl0.Core.CompilerOptions.MaxIdentifierLength
+  commentId: P:Pl0.Core.CompilerOptions.MaxIdentifierLength
+  id: MaxIdentifierLength
+  parent: Pl0.Core.CompilerOptions
+  langs:
+  - csharp
+  - vb
+  name: MaxIdentifierLength
+  nameWithType: CompilerOptions.MaxIdentifierLength
+  fullName: Pl0.Core.CompilerOptions.MaxIdentifierLength
+  type: Property
+  source:
+    remote:
+      path: src/Pl0.Core/CompilerOptions.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: MaxIdentifierLength
+    path: src/Pl0.Core/CompilerOptions.cs
+    startLine: 16
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  summary: Maximum identifier length.
+  example: []
+  syntax:
+    content: public int MaxIdentifierLength { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property MaxIdentifierLength As Integer
+  overload: Pl0.Core.CompilerOptions.MaxIdentifierLength*
+- uid: Pl0.Core.CompilerOptions.MaxNumberDigits
+  commentId: P:Pl0.Core.CompilerOptions.MaxNumberDigits
+  id: MaxNumberDigits
+  parent: Pl0.Core.CompilerOptions
+  langs:
+  - csharp
+  - vb
+  name: MaxNumberDigits
+  nameWithType: CompilerOptions.MaxNumberDigits
+  fullName: Pl0.Core.CompilerOptions.MaxNumberDigits
+  type: Property
+  source:
+    remote:
+      path: src/Pl0.Core/CompilerOptions.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: MaxNumberDigits
+    path: src/Pl0.Core/CompilerOptions.cs
+    startLine: 17
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  summary: Maximum digits in numeric literals.
+  example: []
+  syntax:
+    content: public int MaxNumberDigits { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property MaxNumberDigits As Integer
+  overload: Pl0.Core.CompilerOptions.MaxNumberDigits*
+- uid: Pl0.Core.CompilerOptions.MaxSymbolCount
+  commentId: P:Pl0.Core.CompilerOptions.MaxSymbolCount
+  id: MaxSymbolCount
+  parent: Pl0.Core.CompilerOptions
+  langs:
+  - csharp
+  - vb
+  name: MaxSymbolCount
+  nameWithType: CompilerOptions.MaxSymbolCount
+  fullName: Pl0.Core.CompilerOptions.MaxSymbolCount
+  type: Property
+  source:
+    remote:
+      path: src/Pl0.Core/CompilerOptions.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: MaxSymbolCount
+    path: src/Pl0.Core/CompilerOptions.cs
+    startLine: 18
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  summary: Maximum number of symbols in the table.
+  example: []
+  syntax:
+    content: public int MaxSymbolCount { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property MaxSymbolCount As Integer
+  overload: Pl0.Core.CompilerOptions.MaxSymbolCount*
+- uid: Pl0.Core.CompilerOptions.MaxCodeLength
+  commentId: P:Pl0.Core.CompilerOptions.MaxCodeLength
+  id: MaxCodeLength
+  parent: Pl0.Core.CompilerOptions
+  langs:
+  - csharp
+  - vb
+  name: MaxCodeLength
+  nameWithType: CompilerOptions.MaxCodeLength
+  fullName: Pl0.Core.CompilerOptions.MaxCodeLength
+  type: Property
+  source:
+    remote:
+      path: src/Pl0.Core/CompilerOptions.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: MaxCodeLength
+    path: src/Pl0.Core/CompilerOptions.cs
+    startLine: 19
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  summary: Maximum number of generated instructions.
+  example: []
+  syntax:
+    content: public int MaxCodeLength { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property MaxCodeLength As Integer
+  overload: Pl0.Core.CompilerOptions.MaxCodeLength*
+- uid: Pl0.Core.CompilerOptions.Default
+  commentId: P:Pl0.Core.CompilerOptions.Default
+  id: Default
+  parent: Pl0.Core.CompilerOptions
+  langs:
+  - csharp
+  - vb
+  name: Default
+  nameWithType: CompilerOptions.Default
+  fullName: Pl0.Core.CompilerOptions.Default
+  type: Property
+  source:
+    remote:
+      path: src/Pl0.Core/CompilerOptions.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: Default
+    path: src/Pl0.Core/CompilerOptions.cs
+    startLine: 24
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  summary: Default compiler options using the extended dialect.
+  example: []
+  syntax:
+    content: public static CompilerOptions Default { get; }
+    parameters: []
+    return:
+      type: Pl0.Core.CompilerOptions
+    content.vb: Public Shared ReadOnly Property [Default] As CompilerOptions
+  overload: Pl0.Core.CompilerOptions.Default*
+- uid: Pl0.Core.CompilerOptions.EnableIoStatements
+  commentId: P:Pl0.Core.CompilerOptions.EnableIoStatements
+  id: EnableIoStatements
+  parent: Pl0.Core.CompilerOptions
+  langs:
+  - csharp
+  - vb
+  name: EnableIoStatements
+  nameWithType: CompilerOptions.EnableIoStatements
+  fullName: Pl0.Core.CompilerOptions.EnableIoStatements
+  type: Property
+  source:
+    remote:
+      path: src/Pl0.Core/CompilerOptions.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: EnableIoStatements
+    path: src/Pl0.Core/CompilerOptions.cs
+    startLine: 29
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  summary: Gets a value indicating whether I/O statements are enabled for the dialect.
+  example: []
+  syntax:
+    content: public bool EnableIoStatements { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property EnableIoStatements As Boolean
+  overload: Pl0.Core.CompilerOptions.EnableIoStatements*
+references:
+- uid: Pl0.Core
+  commentId: N:Pl0.Core
+  href: Pl0.html
+  name: Pl0.Core
+  nameWithType: Pl0.Core
+  fullName: Pl0.Core
+  spec.csharp:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Core
+    name: Core
+    href: Pl0.Core.html
+  spec.vb:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Core
+    name: Core
+    href: Pl0.Core.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IEquatable{Pl0.Core.CompilerOptions}
+  commentId: T:System.IEquatable{Pl0.Core.CompilerOptions}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<CompilerOptions>
+  nameWithType: IEquatable<CompilerOptions>
+  fullName: System.IEquatable<Pl0.Core.CompilerOptions>
+  nameWithType.vb: IEquatable(Of CompilerOptions)
+  fullName.vb: System.IEquatable(Of Pl0.Core.CompilerOptions)
+  name.vb: IEquatable(Of CompilerOptions)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: Pl0.Core.CompilerOptions
+    name: CompilerOptions
+    href: Pl0.Core.CompilerOptions.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Pl0.Core.CompilerOptions
+    name: CompilerOptions
+    href: Pl0.Core.CompilerOptions.html
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Pl0.Core.CompilerOptions.#ctor*
+  commentId: Overload:Pl0.Core.CompilerOptions.#ctor
+  href: Pl0.Core.CompilerOptions.html#Pl0_Core_CompilerOptions__ctor_Pl0_Core_Pl0Dialect_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_
+  name: CompilerOptions
+  nameWithType: CompilerOptions.CompilerOptions
+  fullName: Pl0.Core.CompilerOptions.CompilerOptions
+  nameWithType.vb: CompilerOptions.New
+  fullName.vb: Pl0.Core.CompilerOptions.New
+  name.vb: New
+- uid: Pl0.Core.Pl0Dialect
+  commentId: T:Pl0.Core.Pl0Dialect
+  parent: Pl0.Core
+  href: Pl0.Core.Pl0Dialect.html
+  name: Pl0Dialect
+  nameWithType: Pl0Dialect
+  fullName: Pl0.Core.Pl0Dialect
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Pl0.Core.CompilerOptions.Dialect*
+  commentId: Overload:Pl0.Core.CompilerOptions.Dialect
+  href: Pl0.Core.CompilerOptions.html#Pl0_Core_CompilerOptions_Dialect
+  name: Dialect
+  nameWithType: CompilerOptions.Dialect
+  fullName: Pl0.Core.CompilerOptions.Dialect
+- uid: Pl0.Core.CompilerOptions.MaxLevel*
+  commentId: Overload:Pl0.Core.CompilerOptions.MaxLevel
+  href: Pl0.Core.CompilerOptions.html#Pl0_Core_CompilerOptions_MaxLevel
+  name: MaxLevel
+  nameWithType: CompilerOptions.MaxLevel
+  fullName: Pl0.Core.CompilerOptions.MaxLevel
+- uid: Pl0.Core.CompilerOptions.MaxAddress*
+  commentId: Overload:Pl0.Core.CompilerOptions.MaxAddress
+  href: Pl0.Core.CompilerOptions.html#Pl0_Core_CompilerOptions_MaxAddress
+  name: MaxAddress
+  nameWithType: CompilerOptions.MaxAddress
+  fullName: Pl0.Core.CompilerOptions.MaxAddress
+- uid: Pl0.Core.CompilerOptions.MaxIdentifierLength*
+  commentId: Overload:Pl0.Core.CompilerOptions.MaxIdentifierLength
+  href: Pl0.Core.CompilerOptions.html#Pl0_Core_CompilerOptions_MaxIdentifierLength
+  name: MaxIdentifierLength
+  nameWithType: CompilerOptions.MaxIdentifierLength
+  fullName: Pl0.Core.CompilerOptions.MaxIdentifierLength
+- uid: Pl0.Core.CompilerOptions.MaxNumberDigits*
+  commentId: Overload:Pl0.Core.CompilerOptions.MaxNumberDigits
+  href: Pl0.Core.CompilerOptions.html#Pl0_Core_CompilerOptions_MaxNumberDigits
+  name: MaxNumberDigits
+  nameWithType: CompilerOptions.MaxNumberDigits
+  fullName: Pl0.Core.CompilerOptions.MaxNumberDigits
+- uid: Pl0.Core.CompilerOptions.MaxSymbolCount*
+  commentId: Overload:Pl0.Core.CompilerOptions.MaxSymbolCount
+  href: Pl0.Core.CompilerOptions.html#Pl0_Core_CompilerOptions_MaxSymbolCount
+  name: MaxSymbolCount
+  nameWithType: CompilerOptions.MaxSymbolCount
+  fullName: Pl0.Core.CompilerOptions.MaxSymbolCount
+- uid: Pl0.Core.CompilerOptions.MaxCodeLength*
+  commentId: Overload:Pl0.Core.CompilerOptions.MaxCodeLength
+  href: Pl0.Core.CompilerOptions.html#Pl0_Core_CompilerOptions_MaxCodeLength
+  name: MaxCodeLength
+  nameWithType: CompilerOptions.MaxCodeLength
+  fullName: Pl0.Core.CompilerOptions.MaxCodeLength
+- uid: Pl0.Core.CompilerOptions.Default*
+  commentId: Overload:Pl0.Core.CompilerOptions.Default
+  href: Pl0.Core.CompilerOptions.html#Pl0_Core_CompilerOptions_Default
+  name: Default
+  nameWithType: CompilerOptions.Default
+  fullName: Pl0.Core.CompilerOptions.Default
+- uid: Pl0.Core.CompilerOptions
+  commentId: T:Pl0.Core.CompilerOptions
+  parent: Pl0.Core
+  href: Pl0.Core.CompilerOptions.html
+  name: CompilerOptions
+  nameWithType: CompilerOptions
+  fullName: Pl0.Core.CompilerOptions
+- uid: Pl0.Core.CompilerOptions.EnableIoStatements*
+  commentId: Overload:Pl0.Core.CompilerOptions.EnableIoStatements
+  href: Pl0.Core.CompilerOptions.html#Pl0_Core_CompilerOptions_EnableIoStatements
+  name: EnableIoStatements
+  nameWithType: CompilerOptions.EnableIoStatements
+  fullName: Pl0.Core.CompilerOptions.EnableIoStatements
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
