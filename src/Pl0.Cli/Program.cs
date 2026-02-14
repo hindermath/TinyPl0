@@ -1,6 +1,10 @@
 using Pl0.Cli.Cli;
 using Pl0.Core;
 using Pl0.Vm;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.FileProviders;
+using Microsoft.Extensions.Hosting;
 
 const int HelpExitCode = 99;
 const int UnexpectedTerminationExitCode = 99;
@@ -14,6 +18,35 @@ if (result.Options.ShowHelp)
 {
     CliHelpPrinter.PrintUsage(Console.Error, executableName);
     Environment.ExitCode = HelpExitCode;
+    return;
+}
+
+if (result.Options.ShowApi)
+{
+    var docPath = Path.Combine(AppContext.BaseDirectory, "_site");
+    if (!Directory.Exists(docPath))
+    {
+        Console.Error.WriteLine($"Error: Documentation directory not found at {docPath}");
+        Environment.ExitCode = UnexpectedTerminationExitCode;
+        return;
+    }
+
+    var builder = WebApplication.CreateBuilder(new WebApplicationOptions
+    {
+        ContentRootPath = docPath,
+        WebRootPath = docPath
+    });
+    builder.WebHost.UseUrls("http://localhost:5000");
+    var app = builder.Build();
+
+    app.UseDefaultFiles();
+    app.UseStaticFiles();
+
+    Console.WriteLine("Documentation server started.");
+    Console.WriteLine("Click here to view documentation: http://localhost:5000");
+    Console.WriteLine("Press Ctrl+C to stop the server.");
+
+    await app.RunAsync();
     return;
 }
 
