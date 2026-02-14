@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>TinyPl0 Dokumentation | TinyPl0 Dokumentation </title>
+      <title>TinyPl0 – Dokumentation &amp; Ausbildung | TinyPl0 Dokumentation </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="TinyPl0 Dokumentation | TinyPl0 Dokumentation ">
+      <meta name="title" content="TinyPl0 – Dokumentation &amp; Ausbildung | TinyPl0 Dokumentation ">
       
       
       <link rel="icon" href="../images/favicon.ico">
@@ -13,7 +13,7 @@
       <meta name="docfx:navrel" content="">
       <meta name="docfx:tocrel" content="toc.html">
       
-      
+      <meta name="docfx:rel" content="../">
       
       
       <meta name="docfx:docurl" content="https://github.com/hindermath/TinyPl0/blob/main/docfx/index.md/#L1">
@@ -52,6 +52,10 @@
           </button>
           <div class="collapse navbar-collapse" id="navpanel">
             <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
             </div>
           </div>
         </div>
@@ -81,26 +85,48 @@
         </div>
 
         <article data-uid="">
-<h1 id="tinypl0-dokumentation">TinyPl0 Dokumentation</h1>
+<h1 id="tinypl0--dokumentation--ausbildung">TinyPl0 – Dokumentation &amp; Ausbildung</h1>
 
-<p>Willkommen zur Dokumentation von TinyPl0. Dieses Handbuch ist auf die Ausbildung ausgerichtet und kombiniert
-Projekt- und Architekturwissen mit einem ausführlichen PL0- und P-Code-Handbuch sowie einer API-Referenz.</p>
-<h2 id="inhalte">Inhalte</h2>
+<p>Willkommen zur zentralen Dokumentation von <strong>TinyPl0</strong>. Dieses Projekt dient als didaktische Portierung des historischen PL/0-Compilers nach C# auf .NET 10.</p>
+<p>Diese Dokumentation ist speziell für die Ausbildung in der Fachinformatik konzipiert und bietet einen tiefen Einblick in die Funktionsweise von Compilern und virtuellen Maschinen.</p>
+<hr>
+<h2 id="hauptbereiche">Hauptbereiche</h2>
+<div class="grid">
+  <div class="card">
+    <h3>🚀 Erste Schritte</h3>
+    <p>Erfahren Sie, wie Sie TinyPl0 installieren und Ihren ersten PL/0-Code ausführen.</p>
+    <a href="start/quickstart.html" class="btn">Zum Schnellstart</a>
+  </div>
+  <div class="card">
+    <h3>📘 PL/0 Handbuch</h3>
+    <p>Lernen Sie die Syntax und die Konzepte der Sprache PL/0 kennen – von Konstanten bis zu Prozeduren.</p>
+    <a href="handbook/pl0/index.html" class="btn">Sprachreferenz</a>
+  </div>
+  <div class="card">
+    <h3>💻 P-Code & VM</h3>
+    <p>Tauchen Sie ab in die Welt der Zwischencodes. Verstehen Sie, wie die Stack-Maschine Instruktionen verarbeitet.</p>
+    <a href="handbook/pcode/index.html" class="btn">P-Code Details</a>
+  </div>
+  <div class="card">
+    <h3>🏗️ Architektur</h3>
+    <p>Analyse der drei Teilprojekte: Core, VM und CLI sowie deren Zusammenspiel.</p>
+    <a href="projects/overview.html" class="btn">Architektur-Überblick</a>
+  </div>
+</div>
+<hr>
+<h2 id="über-das-projekt">Über das Projekt</h2>
+<p>TinyPl0 ist mehr als nur ein Compiler. Es ist ein Lernwerkzeug:</p>
 <ul>
-<li>Einstieg, Installation und Nutzung der CLI.</li>
-<li>Architektur und Projektübersicht (Pl0.CLI, Pl0.Core, Pl0.Vm).</li>
-<li>PL0-Handbuch mit Beispielen auf drei Lernstufen.</li>
-<li>P-Code-Handbuch und Tutorial zur direkten P-Code-Programmierung.</li>
-<li>API-Referenz aus XML-Kommentaren.</li>
-<li>Anhang mit vollständigen Beispielprogrammen.</li>
+<li><strong>Einfachheit:</strong> PL/0 ist eine minimalistische Sprache, ideal zum Erlernen von Compilerbau-Grundlagen.</li>
+<li><strong>Modernität:</strong> Implementiert in C# 14 und .NET 10.</li>
+<li><strong>Transparenz:</strong> Vollständige Traceability von Anforderungen bis zu den Tests.</li>
 </ul>
-<h2 id="schnellstart">Schnellstart</h2>
-<ul>
-<li>Build: <code>dotnet build</code></li>
-<li>Tests: <code>dotnet test</code></li>
-<li>CLI-Run: <code>dotnet run --project src/Pl0.Cli -- run &lt;datei.pl0&gt;</code></li>
-</ul>
-<p>Weiter geht es mit dem Einstiegskapitel.</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>Besuchen Sie den <a href="appendix/index.html">Anhang</a>, um eine Vielzahl von Beispielprogrammen (wie Fibonacci oder Kreisberechnung) zu entdecken und direkt auszuprobieren.</p>
+</div>
+<hr>
+<p><em>Lizenz: MIT – siehe LICENSE. Dieses Projekt dient zu Ausbildungszwecken für Auszubildende der Fachinformatik.</em></p>
 
 </article>
 
@@ -117,6 +143,7 @@ Projekt- und Architekturwissen mit einem ausführlichen PL0- und P-Code-Handbuch
       </div>
     </main>
 
+    <div class="container-xxl search-results" id="search-results"></div>
 
     <footer class="border-top text-secondary">
       <div class="container-xxl">

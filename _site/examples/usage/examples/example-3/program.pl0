@@ -1,0 +1,14 @@
+const limit = 10;
+var x;
+procedure show;
+begin
+  ! x
+end;
+begin
+  x := 0;
+  while x < limit do
+  begin
+    call show;
+    x := x + 1
+  end
+end.

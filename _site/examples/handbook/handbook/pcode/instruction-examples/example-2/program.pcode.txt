@@ -1,0 +1,1 @@
+LOD 0 0       // load variable at level 0, offset 0

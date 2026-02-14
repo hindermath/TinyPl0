@@ -1,0 +1,1 @@
+OPR 0 14      // read int from input, push on stack

@@ -1,0 +1,8 @@
+var t, w, r;
+begin
+  ? t;
+  w := t / 7;
+  r := t - w * 7;
+  ! w;
+  ! r
+end.

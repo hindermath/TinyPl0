@@ -1,0 +1,9 @@
+var a, b, q, r;
+begin
+  ? a;
+  ? b;
+  q := a / b;
+  r := a - q * b;
+  ! q;
+  ! r
+end.

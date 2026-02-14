@@ -1,0 +1,7 @@
+const kurs = 110;
+var eur, jpy;
+begin
+  ? eur;
+  jpy := eur * kurs;
+  ! jpy
+end.

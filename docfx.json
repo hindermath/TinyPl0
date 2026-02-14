@@ -1,4 +1,5 @@
 {
+  "$schema": "https://raw.githubusercontent.com/dotnet/docfx/main/schemas/docfx.schema.json",
   "metadata": [
     {
       "src": [
@@ -7,35 +8,42 @@
         { "files": ["src/Pl0.Vm/Pl0.Vm.csproj"] }
       ],
       "dest": "api",
-      "includePrivateMembers": true
+      "includePrivateMembers": true,
+      "disableGitFeatures": false,
+      "disableDefaultFilter": false
     }
   ],
   "build": {
     "content": [
-      { "files": ["docfx/**.md", "docfx/**/toc.yml"] },
+      { "src": "docfx", "files": ["index.md"], "dest": "." },
+      { "src": "docfx", "files": ["**.md", "**/toc.yml"], "exclude": ["index.md"], "dest": "docfx" },
       { "files": ["docs/**.md"] }
     ],
     "resource": [
-      { "files": ["docfx/images/**"] }
+      { "files": ["docfx/images/**", "*.png", "docs/**.pdf"] },
+      { "files": ["examples/**"] }
     ],
     "dest": "_site",
     "globalMetadata": {
       "_appTitle": "TinyPl0 Dokumentation",
       "_appFooter": "Lizenz: MIT - siehe LICENSE.",
       "_appLogoPath": "images/logo.svg",
-      "_appFaviconPath": "images/favicon.ico"
+      "_appFaviconPath": "images/favicon.ico",
+      "_enableSearch": true,
+      "pdf": true
     },
     "template": ["default", "modern"]
   },
   "pdf": {
     "content": [
-      { "files": ["docfx/**.md", "docfx/**/toc.yml"] },
+      { "files": ["docfx/index.md"] },
+      { "files": ["docfx/**.md", "docfx/**/toc.yml"], "exclude": ["docfx/index.md"] },
       { "files": ["docs/**.md"] }
     ],
     "resource": [
       { "files": ["docfx/images/**"] }
     ],
-    "dest": "_site_pdf",
+    "dest": "_site/pdf",
     "globalMetadata": {
       "_appTitle": "TinyPl0 Dokumentation"
     },

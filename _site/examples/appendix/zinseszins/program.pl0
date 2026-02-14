@@ -1,0 +1,13 @@
+var k, p, n, i;
+begin
+  ? k;
+  ? p;
+  ? n;
+  i := 0;
+  while i < n do
+  begin
+    k := k + (k * p) / 100;
+    i := i + 1
+  end;
+  ! k
+end.

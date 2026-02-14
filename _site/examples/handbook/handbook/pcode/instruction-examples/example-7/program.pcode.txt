@@ -1,0 +1,2 @@
+LIT 0 0
+JPC 0 12      // if top is 0, jump to 12

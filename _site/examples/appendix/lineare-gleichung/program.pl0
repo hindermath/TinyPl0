@@ -1,0 +1,12 @@
+var a, b, x;
+begin
+  ? a;
+  ? b;
+  if a = 0 then
+    ! 0
+  else
+  begin
+    x := -b / a;
+    ! x
+  end
+end.

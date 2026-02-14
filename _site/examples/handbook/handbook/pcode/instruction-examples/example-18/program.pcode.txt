@@ -1,0 +1,11 @@
+INT 0 3       // locals: x, y, sum
+LIT 0 2
+STO 0 0
+LIT 0 3
+STO 0 1
+LOD 0 0
+LOD 0 1
+OPR 0 2       // x + y
+STO 0 2
+LOD 0 2
+OPR 0 15      // print sum

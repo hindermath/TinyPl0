@@ -1,0 +1,9 @@
+var a, b, u, f;
+begin
+  ? a;
+  ? b;
+  u := 2 * (a + b);
+  f := a * b;
+  ! u;
+  ! f
+end.

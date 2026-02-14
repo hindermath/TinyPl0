@@ -1,0 +1,9 @@
+var geb, jahr, alter;
+begin
+  ? geb;
+  ? jahr;
+  alter := jahr - geb;
+  if alter < 0 then
+    alter := 0;
+  ! alter
+end.

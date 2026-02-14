@@ -1,0 +1,8 @@
+var cm, m, km;
+begin
+  ? cm;
+  m := cm / 100;
+  km := m / 1000;
+  ! m;
+  ! km
+end.

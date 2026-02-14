@@ -3,6 +3,14 @@
   "xrefmap": "xrefmap.yml",
   "files": [
     {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
       "type": "Conceptual",
       "source_relative_path": "docfx/api/index.md",
       "output": {
@@ -985,7 +993,7 @@
       "source_relative_path": "docfx/index.md",
       "output": {
         ".html": {
-          "relative_path": "docfx/index.html"
+          "relative_path": "index.html"
         }
       },
       "version": ""
@@ -1208,6 +1216,2116 @@
       "output": {
         ".html": {
           "relative_path": "docs/VM_INSTRUCTION_SET.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/abstand/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/abstand/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/abstand/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/abstand/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/altersberechnung/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/altersberechnung/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/altersberechnung/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/altersberechnung/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/arithmetische-folge/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/arithmetische-folge/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/arithmetische-folge/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/arithmetische-folge/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/betrag/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/betrag/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/betrag/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/betrag/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/bmi/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/bmi/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/bmi/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/bmi/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/countdown/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/countdown/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/countdown/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/countdown/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/division-durch-subtraktion/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/division-durch-subtraktion/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/division-durch-subtraktion/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/division-durch-subtraktion/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/division-mit-rest/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/division-mit-rest/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/division-mit-rest/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/division-mit-rest/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/dreieck-umfang/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/dreieck-umfang/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/dreieck-umfang/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/dreieck-umfang/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/dreisatz/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/dreisatz/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/dreisatz/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/dreisatz/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/dummy-workload/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/dummy-workload/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/dummy-workload/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/dummy-workload/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/einheitenumrechnung/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/einheitenumrechnung/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/einheitenumrechnung/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/einheitenumrechnung/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/fakultaet/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/fakultaet/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/fakultaet/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/fakultaet/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/fibonacci/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/fibonacci/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/fibonacci/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/fibonacci/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/geometrische-folge/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/geometrische-folge/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/geometrische-folge/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/geometrische-folge/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/geschwindigkeit/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/geschwindigkeit/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/geschwindigkeit/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/geschwindigkeit/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/ggt/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/ggt/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/ggt/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/ggt/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/kgt/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/kgt/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/kgt/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/kgt/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/kreis/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/kreis/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/kreis/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/kreis/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/kubikzahlen/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/kubikzahlen/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/kubikzahlen/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/kubikzahlen/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/lineare-gleichung/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/lineare-gleichung/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/lineare-gleichung/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/lineare-gleichung/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/lineare-interpolation/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/lineare-interpolation/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/lineare-interpolation/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/lineare-interpolation/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/math-functions/example-1/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/math-functions/example-1/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/math-functions/example-1/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/math-functions/example-1/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/math-functions/example-2/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/math-functions/example-2/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/math-functions/example-2/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/math-functions/example-2/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/math-functions/example-3/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/math-functions/example-3/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/math-functions/example-3/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/math-functions/example-3/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/math-functions/example-4/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/math-functions/example-4/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/math-functions/example-4/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/math-functions/example-4/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/min-max/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/min-max/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/min-max/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/min-max/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/mittelwert/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/mittelwert/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/mittelwert/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/mittelwert/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/modulo-durch-subtraktion/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/modulo-durch-subtraktion/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/modulo-durch-subtraktion/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/modulo-durch-subtraktion/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/multiplikation-durch-addition/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/multiplikation-durch-addition/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/multiplikation-durch-addition/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/multiplikation-durch-addition/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/notenbewertung/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/notenbewertung/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/notenbewertung/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/notenbewertung/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/palindrom/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/palindrom/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/palindrom/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/palindrom/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/paritaet/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/paritaet/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/paritaet/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/paritaet/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/potenz/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/potenz/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/potenz/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/potenz/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/primzahlen-bis-n/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/primzahlen-bis-n/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/primzahlen-bis-n/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/primzahlen-bis-n/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/primzahltest/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/primzahltest/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/primzahltest/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/primzahltest/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/prozentrechnung/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/prozentrechnung/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/prozentrechnung/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/prozentrechnung/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/pythagoras/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/pythagoras/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/pythagoras/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/pythagoras/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/quadrat/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/quadrat/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/quadrat/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/quadrat/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/quadratische-gleichung/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/quadratische-gleichung/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/quadratische-gleichung/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/quadratische-gleichung/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/quadratzahlen/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/quadratzahlen/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/quadratzahlen/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/quadratzahlen/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/rabatt/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/rabatt/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/rabatt/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/rabatt/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/rechteck/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/rechteck/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/rechteck/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/rechteck/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/statistik/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/statistik/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/statistik/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/statistik/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/summe-1-bis-n/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/summe-1-bis-n/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/summe-1-bis-n/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/summe-1-bis-n/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/summe-gerade-ungerade/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/summe-gerade-ungerade/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/summe-gerade-ungerade/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/summe-gerade-ungerade/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/summenquadrat-vs-quadratsumme/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/summenquadrat-vs-quadratsumme/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/summenquadrat-vs-quadratsumme/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/summenquadrat-vs-quadratsumme/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/swap/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/swap/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/swap/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/swap/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/tage-zu-wochen/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/tage-zu-wochen/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/tage-zu-wochen/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/tage-zu-wochen/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/temperatur-umrechnung/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/temperatur-umrechnung/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/temperatur-umrechnung/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/temperatur-umrechnung/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/uhrzeitdifferenz/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/uhrzeitdifferenz/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/uhrzeitdifferenz/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/uhrzeitdifferenz/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/versandkosten/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/versandkosten/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/versandkosten/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/versandkosten/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/waehrungsumrechnung/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/waehrungsumrechnung/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/waehrungsumrechnung/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/waehrungsumrechnung/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/wechselgeld/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/wechselgeld/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/wechselgeld/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/wechselgeld/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/zahl-umkehrung/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/zahl-umkehrung/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/zahl-umkehrung/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/zahl-umkehrung/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/zahlenvergleich/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/zahlenvergleich/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/zahlenvergleich/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/zahlenvergleich/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/zeitumrechnung/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/zeitumrechnung/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/zeitumrechnung/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/zeitumrechnung/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/ziffernanzahl/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/ziffernanzahl/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/ziffernanzahl/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/ziffernanzahl/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/ziffernsumme/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/ziffernsumme/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/ziffernsumme/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/ziffernsumme/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/zins/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/zins/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/zins/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/zins/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/zinseszins/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/zinseszins/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/appendix/zinseszins/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/appendix/zinseszins/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/handbook/pcode/advanced-examples/example-1/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/handbook/pcode/advanced-examples/example-1/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/handbook/pcode/advanced-examples/example-1/program.pcode.txt",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/handbook/pcode/advanced-examples/example-1/program.pcode.txt"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/handbook/pcode/advanced-examples/example-2/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/handbook/pcode/advanced-examples/example-2/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/handbook/pcode/advanced-examples/example-2/program.pcode.txt",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/handbook/pcode/advanced-examples/example-2/program.pcode.txt"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-1/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-1/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-1/program.pcode.txt",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-1/program.pcode.txt"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-10/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-10/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-10/program.pcode.txt",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-10/program.pcode.txt"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-11/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-11/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-11/program.pcode.txt",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-11/program.pcode.txt"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-12/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-12/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-12/program.pcode.txt",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-12/program.pcode.txt"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-13/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-13/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-13/program.pcode.txt",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-13/program.pcode.txt"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-14/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-14/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-14/program.pcode.txt",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-14/program.pcode.txt"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-15/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-15/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-15/program.pcode.txt",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-15/program.pcode.txt"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-16/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-16/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-16/program.pcode.txt",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-16/program.pcode.txt"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-17/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-17/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-17/program.pcode.txt",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-17/program.pcode.txt"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-18/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-18/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-18/program.pcode.txt",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-18/program.pcode.txt"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-2/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-2/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-2/program.pcode.txt",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-2/program.pcode.txt"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-3/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-3/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-3/program.pcode.txt",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-3/program.pcode.txt"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-4/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-4/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-4/program.pcode.txt",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-4/program.pcode.txt"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-5/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-5/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-5/program.pcode.txt",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-5/program.pcode.txt"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-6/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-6/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-6/program.pcode.txt",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-6/program.pcode.txt"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-7/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-7/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-7/program.pcode.txt",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-7/program.pcode.txt"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-8/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-8/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-8/program.pcode.txt",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-8/program.pcode.txt"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-9/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-9/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-9/program.pcode.txt",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/handbook/pcode/instruction-examples/example-9/program.pcode.txt"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/handbook/tutorial/exercises/example-1/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/handbook/tutorial/exercises/example-1/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/handbook/tutorial/exercises/example-1/program.pcode.txt",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/handbook/tutorial/exercises/example-1/program.pcode.txt"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/handbook/tutorial/exercises/example-2/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/handbook/tutorial/exercises/example-2/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/handbook/tutorial/exercises/example-2/program.pcode.txt",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/handbook/tutorial/exercises/example-2/program.pcode.txt"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/handbook/tutorial/exercises/example-3/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/handbook/tutorial/exercises/example-3/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/handbook/tutorial/exercises/example-3/program.pcode.txt",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/handbook/tutorial/exercises/example-3/program.pcode.txt"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/pl0/elements/conditions/example-1/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/pl0/elements/conditions/example-1/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/pl0/elements/conditions/example-1/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/pl0/elements/conditions/example-1/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/pl0/elements/conditions/example-2/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/pl0/elements/conditions/example-2/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/pl0/elements/conditions/example-2/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/pl0/elements/conditions/example-2/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/pl0/elements/conditions/example-3/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/pl0/elements/conditions/example-3/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/pl0/elements/conditions/example-3/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/pl0/elements/conditions/example-3/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/pl0/elements/constants/example-1/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/pl0/elements/constants/example-1/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/pl0/elements/constants/example-1/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/pl0/elements/constants/example-1/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/pl0/elements/constants/example-2/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/pl0/elements/constants/example-2/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/pl0/elements/constants/example-2/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/pl0/elements/constants/example-2/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/pl0/elements/constants/example-3/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/pl0/elements/constants/example-3/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/pl0/elements/constants/example-3/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/pl0/elements/constants/example-3/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/pl0/elements/io/example-1/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/pl0/elements/io/example-1/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/pl0/elements/io/example-1/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/pl0/elements/io/example-1/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/pl0/elements/io/example-2/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/pl0/elements/io/example-2/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/pl0/elements/io/example-2/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/pl0/elements/io/example-2/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/pl0/elements/io/example-3/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/pl0/elements/io/example-3/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/pl0/elements/io/example-3/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/pl0/elements/io/example-3/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/pl0/elements/loops/example-1/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/pl0/elements/loops/example-1/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/pl0/elements/loops/example-1/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/pl0/elements/loops/example-1/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/pl0/elements/loops/example-2/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/pl0/elements/loops/example-2/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/pl0/elements/loops/example-2/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/pl0/elements/loops/example-2/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/pl0/elements/loops/example-3/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/pl0/elements/loops/example-3/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/pl0/elements/loops/example-3/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/pl0/elements/loops/example-3/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/pl0/elements/procedures/example-1/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/pl0/elements/procedures/example-1/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/pl0/elements/procedures/example-1/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/pl0/elements/procedures/example-1/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/pl0/elements/procedures/example-2/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/pl0/elements/procedures/example-2/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/pl0/elements/procedures/example-2/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/pl0/elements/procedures/example-2/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/pl0/elements/procedures/example-3/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/pl0/elements/procedures/example-3/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/pl0/elements/procedures/example-3/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/pl0/elements/procedures/example-3/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/pl0/elements/variables/example-1/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/pl0/elements/variables/example-1/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/pl0/elements/variables/example-1/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/pl0/elements/variables/example-1/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/pl0/elements/variables/example-2/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/pl0/elements/variables/example-2/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/pl0/elements/variables/example-2/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/pl0/elements/variables/example-2/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/pl0/elements/variables/example-3/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/pl0/elements/variables/example-3/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/handbook/pl0/elements/variables/example-3/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/handbook/pl0/elements/variables/example-3/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/usage/examples/example-1/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/usage/examples/example-1/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/usage/examples/example-1/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/usage/examples/example-1/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/usage/examples/example-2/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/usage/examples/example-2/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/usage/examples/example-2/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/usage/examples/example-2/program.pl0"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/usage/examples/example-3/README.md",
+      "output": {
+        "resource": {
+          "relative_path": "examples/usage/examples/example-3/README.md"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "examples/usage/examples/example-3/program.pl0",
+      "output": {
+        "resource": {
+          "relative_path": "examples/usage/examples/example-3/program.pl0"
         }
       },
       "version": ""
