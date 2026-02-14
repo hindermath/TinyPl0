@@ -29,6 +29,11 @@ Diese Dokumentation ist speziell für die Ausbildung in der Fachinformatik konzi
     <p>Analyse der drei Teilprojekte: Core, VM und CLI sowie deren Zusammenspiel.</p>
     <a href="projects/overview.md" class="btn">Architektur-Überblick</a>
   </div>
+  <div class="card">
+    <h3>🔧 API-Referenz</h3>
+    <p>Detaillierte Dokumentation aller öffentlichen und internen APIs – von Compiler über CLI bis zur VM.</p>
+    <a href="api/index.md" class="btn">API-Dokumentation</a>
+  </div>
 </div>
 
 ---
