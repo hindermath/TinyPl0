@@ -2,11 +2,25 @@ using System.Globalization;
 
 namespace Pl0.Cli.Cli;
 
+/// <summary>
+/// Parses CLI arguments into compiler options and diagnostics.
+/// </summary>
 public sealed class CliOptionsParser
 {
+    /// <summary>
+    /// Exit code when an emit mode is requested but missing.
+    /// </summary>
     private const int EmitModeMissingExitCode = 96;
+    /// <summary>
+    /// Exit code for unexpected arguments or switches.
+    /// </summary>
     private const int UnexpectedTerminationExitCode = 99;
 
+    /// <summary>
+    /// Parses the provided argument list.
+    /// </summary>
+    /// <param name="args">CLI arguments.</param>
+    /// <returns>Parse result containing options and diagnostics.</returns>
     public CliParseResult Parse(IReadOnlyList<string> args)
     {
         var diagnostics = new List<CliDiagnostic>();
@@ -166,6 +180,13 @@ public sealed class CliOptionsParser
         return new CliParseResult(options, diagnostics);
     }
 
+    /// <summary>
+    /// Reads the next argument as an option value.
+    /// </summary>
+    /// <param name="args">Argument list.</param>
+    /// <param name="index">Current index (advanced on success).</param>
+    /// <param name="value">Parsed value.</param>
+    /// <returns>True if a value was read.</returns>
     private static bool TryReadOptionValue(IReadOnlyList<string> args, ref int index, out string value)
     {
         value = string.Empty;
@@ -179,6 +200,12 @@ public sealed class CliOptionsParser
         return true;
     }
 
+    /// <summary>
+    /// Parses a command token.
+    /// </summary>
+    /// <param name="token">Command token.</param>
+    /// <param name="command">Parsed command.</param>
+    /// <returns>True if a valid command was found.</returns>
     private static bool TryParseCommand(string token, out CliCommand command)
     {
         command = token.ToLowerInvariant() switch
@@ -192,12 +219,27 @@ public sealed class CliOptionsParser
         return command != CliCommand.None;
     }
 
+    /// <summary>
+    /// Determines whether a switch indicates help.
+    /// </summary>
+    /// <param name="sw">Switch value.</param>
+    /// <returns>True if the switch is a help switch.</returns>
     private static bool IsHelpSwitch(string sw) =>
         sw is "?" or "h" or "help";
 
+    /// <summary>
+    /// Checks if a value looks like an absolute Unix path.
+    /// </summary>
+    /// <param name="value">Value to check.</param>
+    /// <returns>True if the value is an absolute Unix path.</returns>
     private static bool IsUnixAbsolutePath(string value) =>
         !string.IsNullOrWhiteSpace(value) && value.Length > 1 && value[0] == '/';
 
+    /// <summary>
+    /// Determines whether a slash-prefixed token is a known legacy switch.
+    /// </summary>
+    /// <param name="value">Switch token.</param>
+    /// <returns>True if it is a known legacy switch.</returns>
     private static bool IsKnownLegacySlashSwitch(string value)
     {
         if (!value.StartsWith("/", StringComparison.Ordinal) || value.Length <= 1)
@@ -215,6 +257,12 @@ public sealed class CliOptionsParser
         return TryParseEmitEqualsValue(sw, out _);
     }
 
+    /// <summary>
+    /// Parses a switch token into a canonical switch string.
+    /// </summary>
+    /// <param name="value">Token to parse.</param>
+    /// <param name="sw">Parsed switch value.</param>
+    /// <returns>True if the token is a switch.</returns>
     private static bool TryParseSwitch(string value, out string sw)
     {
         sw = string.Empty;
@@ -248,6 +296,12 @@ public sealed class CliOptionsParser
         return false;
     }
 
+    /// <summary>
+    /// Tries to parse an emit mode from a token.
+    /// </summary>
+    /// <param name="token">Token value.</param>
+    /// <param name="mode">Parsed emit mode.</param>
+    /// <returns>True if an emit mode was parsed.</returns>
     private static bool TryParseEmitModeFromToken(string token, out EmitMode mode)
     {
         mode = EmitMode.None;
@@ -271,6 +325,12 @@ public sealed class CliOptionsParser
         return false;
     }
 
+    /// <summary>
+    /// Parses --emit=&lt;mode&gt; values.
+    /// </summary>
+    /// <param name="switchValue">Switch value to parse.</param>
+    /// <param name="mode">Parsed emit mode.</param>
+    /// <returns>True if a valid emit mode was parsed.</returns>
     private static bool TryParseEmitEqualsValue(string switchValue, out EmitMode mode)
     {
         mode = EmitMode.None;
@@ -295,6 +355,13 @@ public sealed class CliOptionsParser
         return false;
     }
 
+    /// <summary>
+    /// Merges a candidate emit mode into the current mode and reports conflicts.
+    /// </summary>
+    /// <param name="current">Current mode.</param>
+    /// <param name="candidate">Candidate mode.</param>
+    /// <param name="diagnostics">Diagnostics collection.</param>
+    /// <returns>The merged emit mode.</returns>
     private static EmitMode MergeEmitMode(EmitMode current, EmitMode candidate, IList<CliDiagnostic> diagnostics)
     {
         if (current == EmitMode.None || current == candidate)

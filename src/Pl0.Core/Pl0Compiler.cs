@@ -1,7 +1,16 @@
 namespace Pl0.Core;
 
+/// <summary>
+/// Compiles PL/0 source text into P-Code instructions and diagnostics.
+/// </summary>
 public sealed class Pl0Compiler
 {
+    /// <summary>
+    /// Compiles a PL/0 source string using the provided options.
+    /// </summary>
+    /// <param name="source">PL/0 source code to compile.</param>
+    /// <param name="options">Optional compiler options; defaults are used when null.</param>
+    /// <returns>The compilation result containing instructions and diagnostics.</returns>
     public CompilationResult Compile(string source, CompilerOptions? options = null)
     {
         var effectiveOptions = options ?? CompilerOptions.Default;

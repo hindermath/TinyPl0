@@ -1,7 +1,15 @@
 namespace Pl0.Cli.Cli;
 
+/// <summary>
+/// Prints CLI usage information.
+/// </summary>
 public static class CliHelpPrinter
 {
+    /// <summary>
+    /// Writes usage lines to the provided writer.
+    /// </summary>
+    /// <param name="writer">Destination writer.</param>
+    /// <param name="executableName">Executable name to display.</param>
     public static void PrintUsage(TextWriter writer, string executableName)
     {
         foreach (var line in GetUsageLines(executableName))
@@ -10,6 +18,11 @@ public static class CliHelpPrinter
         }
     }
 
+    /// <summary>
+    /// Returns the usage lines for the CLI.
+    /// </summary>
+    /// <param name="executableName">Executable name to display.</param>
+    /// <returns>List of usage lines.</returns>
     public static IReadOnlyList<string> GetUsageLines(string executableName) =>
         [
             "Usage:",

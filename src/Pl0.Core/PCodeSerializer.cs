@@ -2,14 +2,32 @@ using System.Globalization;
 
 namespace Pl0.Core;
 
+/// <summary>
+/// Serializes and parses P-Code in text form.
+/// </summary>
 public static class PCodeSerializer
 {
+    /// <summary>
+    /// Converts instructions to mnemonic assembly format.
+    /// </summary>
+    /// <param name="instructions">Instructions to serialize.</param>
+    /// <returns>Assembly text with one instruction per line.</returns>
     public static string ToAsm(IReadOnlyList<Instruction> instructions) =>
         string.Join(Environment.NewLine, instructions.Select(i => $"{ToMnemonic(i.Op)} {i.Level} {i.Argument}"));
 
+    /// <summary>
+    /// Converts instructions to numeric opcode format.
+    /// </summary>
+    /// <param name="instructions">Instructions to serialize.</param>
+    /// <returns>Numeric opcode text with one instruction per line.</returns>
     public static string ToCod(IReadOnlyList<Instruction> instructions) =>
         string.Join(Environment.NewLine, instructions.Select(i => $"{(int)i.Op} {i.Level} {i.Argument}"));
 
+    /// <summary>
+    /// Parses P-Code text into instructions.
+    /// </summary>
+    /// <param name="text">Input text containing p-code.</param>
+    /// <returns>Parsed instruction list.</returns>
     public static IReadOnlyList<Instruction> Parse(string text)
     {
         var result = new List<Instruction>();
@@ -38,12 +56,24 @@ public static class PCodeSerializer
         return result;
     }
 
+    /// <summary>
+    /// Removes // comments from a line.
+    /// </summary>
+    /// <param name="line">Input line.</param>
+    /// <returns>Line content without comments.</returns>
     private static string StripComment(string line)
     {
         var commentIndex = line.IndexOf("//", StringComparison.Ordinal);
         return commentIndex >= 0 ? line[..commentIndex] : line;
     }
 
+    /// <summary>
+    /// Parses an integer value or throws a formatted exception.
+    /// </summary>
+    /// <param name="value">Text to parse.</param>
+    /// <param name="lineNo">Line number for error reporting.</param>
+    /// <param name="partName">Name of the parsed part.</param>
+    /// <returns>Parsed integer.</returns>
     private static int ParseInt(string value, int lineNo, string partName)
     {
         if (int.TryParse(value, NumberStyles.Integer, CultureInfo.InvariantCulture, out var parsed))
@@ -54,6 +84,12 @@ public static class PCodeSerializer
         throw new FormatException($"Invalid {partName} on p-code line {lineNo}: '{value}'.");
     }
 
+    /// <summary>
+    /// Parses an opcode from mnemonic or numeric form.
+    /// </summary>
+    /// <param name="value">Opcode value.</param>
+    /// <param name="lineNo">Line number for error reporting.</param>
+    /// <returns>The parsed opcode.</returns>
     private static Opcode ParseOpcode(string value, int lineNo)
     {
         if (int.TryParse(value, NumberStyles.Integer, CultureInfo.InvariantCulture, out var numericOpcode))
@@ -80,6 +116,11 @@ public static class PCodeSerializer
         };
     }
 
+    /// <summary>
+    /// Converts an opcode to its mnemonic form.
+    /// </summary>
+    /// <param name="opcode">Opcode to convert.</param>
+    /// <returns>Mnemonic string.</returns>
     private static string ToMnemonic(Opcode opcode) =>
         opcode switch
         {

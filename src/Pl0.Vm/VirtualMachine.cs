@@ -2,13 +2,35 @@ using Pl0.Core;
 
 namespace Pl0.Vm;
 
+/// <summary>
+/// Executes PL/0 P-Code instructions on a stack-based virtual machine.
+/// </summary>
 public sealed class VirtualMachine
 {
+    /// <summary>
+    /// Exit code for generic runtime errors.
+    /// </summary>
     private const int RuntimeErrorExitCode = 99;
+    /// <summary>
+    /// Exit code for end-of-input during read.
+    /// </summary>
     private const int InputEofExitCode = 98;
+    /// <summary>
+    /// Exit code for input format errors.
+    /// </summary>
     private const int InputFormatExitCode = 97;
+    /// <summary>
+    /// Exit code for division-by-zero.
+    /// </summary>
     private const int DivisionByZeroExitCode = 206;
 
+    /// <summary>
+    /// Runs a program and returns the execution result.
+    /// </summary>
+    /// <param name="program">P-Code instructions to execute.</param>
+    /// <param name="io">Optional I/O implementation.</param>
+    /// <param name="options">Optional VM options.</param>
+    /// <returns>The execution result.</returns>
     public VmExecutionResult Run(
         IReadOnlyList<Instruction> program,
         IPl0Io? io = null,
@@ -180,6 +202,18 @@ public sealed class VirtualMachine
         return BuildResult(stack, t, diagnostics);
     }
 
+    /// <summary>
+    /// Executes an OPR instruction.
+    /// </summary>
+    /// <param name="code">OPR subcode.</param>
+    /// <param name="p">Program counter.</param>
+    /// <param name="b">Base pointer.</param>
+    /// <param name="t">Top-of-stack pointer.</param>
+    /// <param name="stack">Stack storage.</param>
+    /// <param name="io">I/O implementation.</param>
+    /// <param name="options">VM options.</param>
+    /// <param name="diagnostics">Diagnostics collection.</param>
+    /// <returns>True if execution should continue.</returns>
     private static bool ExecuteOpr(
         int code,
         ref int p,
@@ -299,6 +333,14 @@ public sealed class VirtualMachine
         }
     }
 
+    /// <summary>
+    /// Executes a binary operation on the stack.
+    /// </summary>
+    /// <param name="t">Top-of-stack pointer.</param>
+    /// <param name="stack">Stack storage.</param>
+    /// <param name="diagnostics">Diagnostics collection.</param>
+    /// <param name="op">Operation to execute.</param>
+    /// <returns>True if execution should continue.</returns>
     private static bool BinaryOp(
         ref int t,
         int[] stack,
@@ -315,6 +357,14 @@ public sealed class VirtualMachine
         return true;
     }
 
+    /// <summary>
+    /// Resolves the base pointer for a given lexical level.
+    /// </summary>
+    /// <param name="level">Lexical level to resolve.</param>
+    /// <param name="currentBase">Current base pointer.</param>
+    /// <param name="stack">Stack storage.</param>
+    /// <param name="diagnostics">Diagnostics collection.</param>
+    /// <returns>Resolved base address.</returns>
     private static int ResolveBase(int level, int currentBase, int[] stack, IList<VmDiagnostic> diagnostics)
     {
         var baseAddress = currentBase;
@@ -335,6 +385,13 @@ public sealed class VirtualMachine
         return baseAddress;
     }
 
+    /// <summary>
+    /// Attempts to push a value onto the stack.
+    /// </summary>
+    /// <param name="t">Top-of-stack pointer.</param>
+    /// <param name="stackSize">Maximum stack size.</param>
+    /// <param name="diagnostics">Diagnostics collection.</param>
+    /// <returns>True if push is possible.</returns>
     private static bool TryPush(ref int t, int stackSize, IList<VmDiagnostic> diagnostics)
     {
         if (t + 1 > stackSize)
@@ -347,6 +404,12 @@ public sealed class VirtualMachine
         return true;
     }
 
+    /// <summary>
+    /// Ensures a stack index is valid for reading.
+    /// </summary>
+    /// <param name="index">Stack index.</param>
+    /// <param name="diagnostics">Diagnostics collection.</param>
+    /// <returns>True if the index is valid.</returns>
     private static bool TryPeek(int index, IList<VmDiagnostic> diagnostics)
     {
         if (index < 1)
@@ -358,8 +421,21 @@ public sealed class VirtualMachine
         return true;
     }
 
+    /// <summary>
+    /// Validates a stack index against bounds.
+    /// </summary>
+    /// <param name="index">Stack index.</param>
+    /// <param name="stackSize">Maximum stack size.</param>
+    /// <returns>True if the index is within bounds.</returns>
     private static bool IsValidStackIndex(int index, int stackSize) => index >= 1 && index <= stackSize;
 
+    /// <summary>
+    /// Builds an execution result with a safe stack snapshot.
+    /// </summary>
+    /// <param name="stack">Stack storage.</param>
+    /// <param name="top">Top-of-stack pointer.</param>
+    /// <param name="diagnostics">Diagnostics collection.</param>
+    /// <returns>The execution result.</returns>
     private static VmExecutionResult BuildResult(int[] stack, int top, IReadOnlyList<VmDiagnostic> diagnostics)
     {
         var safeTop = Math.Clamp(top, 0, stack.Length - 1);
