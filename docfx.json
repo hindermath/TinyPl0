@@ -20,7 +20,8 @@
       { "files": ["docs/**.md"] }
     ],
     "resource": [
-      { "files": ["docfx/images/**", "*.png", "docs/**.pdf"] },
+      { "src": "docfx", "files": ["images/**"], "dest": "." },
+      { "files": ["*.png", "docs/**.pdf"] },
       { "files": ["examples/**"] }
     ],
     "dest": "_site",
