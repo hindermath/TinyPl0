@@ -6,6 +6,9 @@ Dieses Repository dient der Portierung des historischen PL/0-Beispielcompilers (
 Die fachliche und technische Zieldefinition steht im Pflichtenheft:
 - `/Users/thorstenhindermann/Codex/TinyPl0/Pflichtenheft_PL0_CSharp_DotNet10.md`
 
+## Lizenz
+Lizenz: MIT - siehe LICENSE.
+
 ## Referenzverhalten
 Die Portierung orientiert sich an zwei klaren Dialekten:
 
