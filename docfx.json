@@ -7,7 +7,7 @@
         { "files": ["src/Pl0.Core/Pl0.Core.csproj"] },
         { "files": ["src/Pl0.Vm/Pl0.Vm.csproj"] }
       ],
-      "dest": "api",
+      "dest": "docfx/api",
       "includePrivateMembers": true,
       "disableGitFeatures": false,
       "disableDefaultFilter": false
@@ -22,7 +22,8 @@
     "resource": [
       { "src": "docfx", "files": ["images/**"], "dest": "." },
       { "files": ["*.png", "docs/**.pdf"] },
-      { "files": ["examples/**"] }
+      { "files": ["examples/**"] },
+      { "files": ["LICENSE"], "dest": "." }
     ],
     "dest": "_site",
     "globalMetadata": {
