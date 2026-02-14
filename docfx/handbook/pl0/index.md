@@ -3,6 +3,9 @@
 Dieses Handbuch erklaert die Sprache PL/0 und bietet pro Sprachelement
 Beispiele in drei Lernstufen: kurz, mittel und ausfuehrlich.
 
+Hinweis: TinyPl0 unterstuetzt die Dialekte `classic` und `extended`.
+Der `extended` Dialekt umfasst `?` (Eingabe) und `!` (Ausgabe).
+
 ## Inhalte
 
 - Sprachelemente (Konstanten, Variablen, Prozeduren, Bedingungen, Schleifen, Ein-/Ausgabe)

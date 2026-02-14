@@ -2,6 +2,11 @@
 
 Bedingungen steuern den Programmfluss mit `if ... then` und Vergleichsoperatoren.
 
+## Regeln
+
+- Jede Bedingung liefert 0 (false) oder 1 (true) in der VM.
+- Vergleichsoperatoren: =, #, <, <=, >, >=
+
 ## Kurz
 
 ```pl0
@@ -35,3 +40,13 @@ begin
     ! b
 end.
 ```
+
+## Erklaerung
+
+- Bedingungen pruefen Relationen und steuern den Kontrollfluss.
+- In PL/0 gibt es kein `else`; alternative Zweige werden mit weiteren `if` gebaut.
+## Siehe auch
+
+- [Anhang: Primzahltest](../../../appendix/primzahltest.md)
+- [Anhang: Zahlenvergleich](../../../appendix/zahlenvergleich.md)
+

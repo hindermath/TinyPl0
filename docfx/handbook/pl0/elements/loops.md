@@ -2,6 +2,11 @@
 
 Schleifen werden mit `while ... do` gebildet.
 
+## Regeln
+
+- Die Bedingung wird vor jeder Iteration geprueft.
+- Der Schleifenkoerper kann ein einzelnes Statement oder ein `begin ... end` Block sein.
+
 ## Kurz
 
 ```pl0
@@ -43,3 +48,13 @@ begin
   ! sum
 end.
 ```
+
+## Erklaerung
+
+- Die Schleife bricht ab, sobald die Bedingung false ist.
+- Im ausfuehrlichen Beispiel wird eine laufende Summe gebildet.
+## Siehe auch
+
+- [Anhang: Countdown](../../../appendix/countdown.md)
+- [Anhang: Fibonacci](../../../appendix/fibonacci.md)
+

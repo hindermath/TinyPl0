@@ -3,6 +3,11 @@
 Konstanten werden mit `const` deklariert und koennen im weiteren Programmverlauf
 nicht geaendert werden.
 
+## Regeln
+
+- Konstanten muessen vor Variablen deklariert werden.
+- Zuweisungen an Konstanten sind nicht erlaubt.
+
 ## Kurz
 
 ```pl0
@@ -47,3 +52,14 @@ begin
   end
 end.
 ```
+
+## Erklaerung
+
+- Im kurzen Beispiel wird eine Konstante direkt verwendet.
+- Im mittleren Beispiel zeigt `step`, wie feste Schrittweiten genutzt werden.
+- Im ausfuehrlichen Beispiel demonstriert `base` die wiederholte Multiplikation.
+## Siehe auch
+
+- [Anhang: Math Functions](../../../appendix/math-functions.md)
+- [Anhang: Kreis](../../../appendix/kreis.md)
+

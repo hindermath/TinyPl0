@@ -1,3 +1,11 @@
+- name: Uebersicht
+  href: index.md
+- name: Beispiele ausfuehren
+  href: how-to-run.md
+- name: Empfohlene Reihenfolge
+  href: recommended-order.md
+- name: Glossar
+  href: glossar.md
 - name: Fibonacci
   href: fibonacci.md
 - name: KGT
@@ -6,3 +14,111 @@
   href: ggt.md
 - name: Mathematische Funktionen
   href: math-functions.md
+- name: BMI
+  href: bmi.md
+- name: Zins (einfach)
+  href: zins.md
+- name: Wechselgeld
+  href: wechselgeld.md
+- name: Lineare Interpolation
+  href: lineare-interpolation.md
+- name: Waehrungsumrechnung
+  href: waehrungsumrechnung.md
+- name: Dreisatz
+  href: dreisatz.md
+- name: Geometrische Folge
+  href: geometrische-folge.md
+- name: Primzahltest
+  href: primzahltest.md
+- name: Notenbewertung
+  href: notenbewertung.md
+- name: Rechteck Umfang und Flaeche
+  href: rechteck.md
+- name: Versandkostenstaffel
+  href: versandkosten.md
+- name: Betrag
+  href: betrag.md
+- name: Rabattberechnung
+  href: rabatt.md
+- name: Multiplikation durch Addition
+  href: multiplikation-durch-addition.md
+- name: Temperaturumrechnung
+  href: temperatur-umrechnung.md
+- name: Countdown
+  href: countdown.md
+- name: Kreis Umfang und Flaeche
+  href: kreis.md
+- name: Pythagoras
+  href: pythagoras.md
+- name: Kubikzahlen
+  href: kubikzahlen.md
+- name: Modulo durch Subtraktion
+  href: modulo-durch-subtraktion.md
+- name: Summe gerade/ungerade
+  href: summe-gerade-ungerade.md
+- name: Paritaetstest
+  href: paritaet.md
+- name: Primzahlen bis N
+  href: primzahlen-bis-n.md
+- name: Summenquadrat vs. Quadratsumme
+  href: summenquadrat-vs-quadratsumme.md
+- name: Altersberechnung
+  href: altersberechnung.md
+- name: Potenz
+  href: potenz.md
+- name: Einheitenumrechnung
+  href: einheitenumrechnung.md
+- name: Quadratzahlen
+  href: quadratzahlen.md
+- name: Zinseszins
+  href: zinseszins.md
+- name: Zahlenvergleich
+  href: zahlenvergleich.md
+- name: Minimum und Maximum
+  href: min-max.md
+- name: Mittelwert aus N Zahlen
+  href: mittelwert.md
+- name: Ganzzahl-Division mit Rest
+  href: division-mit-rest.md
+- name: Dreiecksumfang
+  href: dreieck-umfang.md
+- name: Abstand zweier Zahlen
+  href: abstand.md
+- name: Division durch Subtraktion
+  href: division-durch-subtraktion.md
+- name: Uhrzeitdifferenz
+  href: uhrzeitdifferenz.md
+- name: Ziffernanzahl
+  href: ziffernanzahl.md
+- name: Lineare Gleichung
+  href: lineare-gleichung.md
+- name: Schleifenzaehler
+  href: dummy-workload.md
+- name: Geschwindigkeit
+  href: geschwindigkeit.md
+- name: Fakultaet
+  href: fakultaet.md
+- name: Quadrat Umfang und Flaeche
+  href: quadrat.md
+- name: Arithmetische Folge
+  href: arithmetische-folge.md
+- name: Tage zu Wochen
+  href: tage-zu-wochen.md
+- name: Einfache Statistik
+  href: statistik.md
+- name: Summe 1 bis N
+  href: summe-1-bis-n.md
+- name: Quadratische Gleichung
+  href: quadratische-gleichung.md
+- name: Palindromtest
+  href: palindrom.md
+- name: Zeitumrechnung
+  href: zeitumrechnung.md
+- name: Werte tauschen
+  href: swap.md
+- name: Ziffernsumme
+  href: ziffernsumme.md
+- name: Prozentrechnung
+  href: prozentrechnung.md
+- name: Umkehrung einer Zahl
+  href: zahl-umkehrung.md

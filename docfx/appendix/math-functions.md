@@ -55,3 +55,38 @@ begin
   ! area
 end.
 ```
+## Details
+
+- Festkomma-Naeherungen fuer trigonometrische Funktionen.
+- Ergebnisse sind didaktisch, nicht numerisch exakt.
+## Beispiel
+
+Eingabe:
+
+```
+1000
+```
+
+Ausgabe:
+
+```
+approx
+```
+## Testfaelle
+
+- 1000 -> approx
+- 2000 -> approx
+
+## Ausfuehrung
+
+Beispiel:
+
+```bash
+dotnet run --project src/Pl0.Cli -- run example.pl0
+```
+
+Tipp: Fuege `--list-code` hinzu, um den P-Code zu sehen.
+
+
+
+

@@ -2,6 +2,11 @@
 
 Im erweiterten Dialekt stehen `? ident` (Eingabe) und `! expression` (Ausgabe) zur Verfuegung.
 
+## Regeln
+
+- Ein-/Ausgabe ist nur im Dialekt `extended` erlaubt.
+- `?` liest einen Integer, `!` gibt einen Integer aus.
+
 ## Kurz
 
 ```pl0
@@ -38,3 +43,14 @@ begin
   ! max
 end.
 ```
+
+## Erklaerung
+
+- `?` liest genau einen Integer von der Eingabe.
+- `!` gibt einen Integer aus.
+- Im ausfuehrlichen Beispiel wird das Maximum zweier Eingaben ausgegeben.
+## Siehe auch
+
+- [Anhang: Min Max](../../../appendix/min-max.md)
+- [Anhang: Statistik](../../../appendix/statistik.md)
+
