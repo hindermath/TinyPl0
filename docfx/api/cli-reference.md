@@ -162,5 +162,7 @@ if (compilationResult.Success)
 
 - [Pl0.Cli.Cli Namespace API](xref:Pl0.Cli.Cli)
 - [Architektur-Übersicht: CLI](../projects/pl0-cli.md)
-- [Bedienung & Nutzung](../usage/index.md)
+- [Bedienung & Nutzung](../usage/cli.md)
+
+
 

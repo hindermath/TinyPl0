@@ -209,5 +209,6 @@ if (result.IsSuccess)
 - [Pl0.Vm Namespace API](xref:Pl0.Vm)
 - [Architektur-Übersicht: VM](../projects/pl0-vm.md)
 - [P-Code & VM Handbuch](../handbook/pcode/index.md)
-- [VM Instruction Set](../docs/VM_INSTRUCTION_SET.md)
+- [VM Instruction Set](../curated/vm-instruction-set.md)
+
 
