@@ -1,0 +1,8 @@
+- name: Einstieg
+  href: index.md
+- name: Lernpfad
+  href: learning-path.md
+- name: Uebungen
+  href: exercises.md
+- name: Mini-Projekte
+  href: mini-projects.md

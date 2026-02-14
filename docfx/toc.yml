@@ -1,0 +1,18 @@
+- name: Start
+  href: start/
+- name: Architektur & Projekte
+  href: projects/
+- name: Bedienung
+  href: usage/
+- name: PL0-Handbuch
+  href: handbook/pl0/
+- name: P-Code-Handbuch
+  href: handbook/pcode/
+- name: P-Code-Tutorial
+  href: handbook/tutorial/
+- name: API-Referenz
+  href: api/
+- name: Anhang
+  href: appendix/
+- name: Inhalte aus docs/
+  href: curated/

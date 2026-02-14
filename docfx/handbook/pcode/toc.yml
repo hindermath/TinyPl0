@@ -1,0 +1,10 @@
+- name: Einstieg
+  href: index.md
+- name: Instruktions-Referenz
+  href: instruction-reference.md
+- name: Beispiele je Instruktion
+  href: instruction-examples.md
+- name: Ausfuehrliche Beispiele
+  href: advanced-examples.md
+- name: Debugging
+  href: debugging.md

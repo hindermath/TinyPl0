@@ -1,0 +1,12 @@
+- name: Uebersicht
+  href: index.md
+- name: Architektur
+  href: architecture.md
+- name: PL0 EBNF
+  href: language-ebnf.md
+- name: VM-Instruction-Set
+  href: vm-instruction-set.md
+- name: Traceability-Matrix
+  href: traceability-matrix.md
+- name: Qualitaet
+  href: quality.md

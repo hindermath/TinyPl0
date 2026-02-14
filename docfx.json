@@ -1,0 +1,27 @@
+{
+  "metadata": [
+    {
+      "src": [
+        { "files": ["src/Pl0.Cli/Pl0.Cli.csproj"] },
+        { "files": ["src/Pl0.Core/Pl0.Core.csproj"] },
+        { "files": ["src/Pl0.Vm/Pl0.Vm.csproj"] }
+      ],
+      "dest": "api"
+    }
+  ],
+  "build": {
+    "content": [
+      { "files": ["docfx/**.md", "docfx/**/toc.yml"] },
+      { "files": ["docs/**.md"] }
+    ],
+    "resource": [
+      { "files": ["docfx/images/**"] }
+    ],
+    "dest": "_site",
+    "globalMetadata": {
+      "_appTitle": "TinyPl0 Dokumentation",
+      "_appFooter": "Lizenz: MIT - siehe LICENSE."
+    },
+    "template": ["modern"]
+  }
+}

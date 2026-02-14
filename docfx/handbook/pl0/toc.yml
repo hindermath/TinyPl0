@@ -1,0 +1,20 @@
+- name: Einstieg
+  href: index.md
+- name: Syntax
+  href: syntax.md
+- name: Konstanten
+  href: elements/constants.md
+- name: Variablen
+  href: elements/variables.md
+- name: Prozeduren
+  href: elements/procedures.md
+- name: Bedingungen
+  href: elements/conditions.md
+- name: Schleifen
+  href: elements/loops.md
+- name: Ein- und Ausgabe
+  href: elements/io.md
+- name: Best Practices
+  href: best-practices.md
+- name: Typische Fehler
+  href: common-errors.md

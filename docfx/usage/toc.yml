@@ -1,0 +1,6 @@
+- name: CLI
+  href: cli.md
+- name: Konfiguration
+  href: configuration.md
+- name: Beispiele
+  href: examples.md
