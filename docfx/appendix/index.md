@@ -105,19 +105,18 @@ Legende: E = Einfach, M = Mittel, A = Anspruchsvoll.
 | Abstand zweier Zahlen | E | 5-10 min |
 | Countdown | E | 10-15 min |
 | Arithmetische Folge | E | 10-15 min |
+| Prozentrechnung | E | 10-15 min |
+| Zins (einfach) | E | 10-15 min |
+| Rechteck Umfang und Flaeche | E | 10-15 min |
 | Geometrische Folge | M | 15-20 min |
 | Fibonacci | M | 20-25 min |
 | GGT | M | 20-25 min |
 | KGT | M | 20-25 min |
 | Primzahltest | M | 20-25 min |
-| Primzahlen bis N | A | 25-35 min |
-| Prozentrechnung | E | 10-15 min |
-| Zins (einfach) | E | 10-15 min |
 | Zinseszins | M | 15-20 min |
-| Rechteck Umfang und Flaeche | E | 10-15 min |
 | Kreis Umfang und Flaeche | M | 15-20 min |
 | Lineare Gleichung | M | 15-20 min |
-| Quadratische Gleichung | A | 25-35 min |
 | Ziffernsumme | M | 15-20 min |
+| Primzahlen bis N | A | 25-35 min |
+| Quadratische Gleichung | A | 25-35 min |
 | Palindromtest | A | 25-35 min |
-
