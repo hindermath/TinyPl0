@@ -41,6 +41,11 @@ public sealed class CompilerCliOptions
     public bool EmitRequested { get; init; }
 
     /// <summary>
+    /// Gets a value indicating whether the documentation API should be shown.
+    /// </summary>
+    public bool ShowApi { get; init; }
+
+    /// <summary>
     /// Gets the emit mode selection.
     /// </summary>
     public EmitMode EmitMode { get; init; } = EmitMode.None;
