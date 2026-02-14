@@ -33,6 +33,7 @@ public sealed class CliOptionsParser
         var writeOpcodesInListing = false;
         var listCode = false;
         var compileOnly = false;
+        var showApi = false;
         var command = CliCommand.None;
         string? sourcePath = null;
         string? outputPath = null;
@@ -101,6 +102,9 @@ public sealed class CliOptionsParser
                 case "conly":
                 case "compile-only":
                     compileOnly = true;
+                    break;
+                case "api":
+                    showApi = true;
                     break;
                 case "out":
                     if (TryReadOptionValue(args, ref i, out var outValue))
@@ -173,6 +177,7 @@ public sealed class CliOptionsParser
             CompileOnly = compileOnly,
             EmitRequested = emitRequested,
             EmitMode = emitMode,
+            ShowApi = showApi,
             SourcePath = sourcePath,
             OutputPath = outputPath,
         };
