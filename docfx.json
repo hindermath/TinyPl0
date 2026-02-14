@@ -7,7 +7,7 @@
         { "files": ["src/Pl0.Core/Pl0.Core.csproj"] },
         { "files": ["src/Pl0.Vm/Pl0.Vm.csproj"] }
       ],
-      "dest": "docfx/api",
+      "dest": "api",
       "includePrivateMembers": true,
       "disableGitFeatures": false,
       "disableDefaultFilter": false
@@ -15,8 +15,9 @@
   ],
   "build": {
     "content": [
-      { "src": "docfx", "files": ["index.md"], "dest": "." },
-      { "src": "docfx", "files": ["**.md", "**/toc.yml"], "exclude": ["index.md"], "dest": "docfx" },
+      { "src": "docfx", "files": ["index.md", "toc.yml"], "dest": "." },
+      { "src": "docfx", "files": ["**.md", "**/toc.yml"], "exclude": ["index.md", "toc.yml"], "dest": "docfx" },
+      { "files": ["api/**.yml", "api/toc.yml"] },
       { "files": ["docs/**.md"] }
     ],
     "resource": [
