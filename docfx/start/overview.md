@@ -12,9 +12,9 @@ und vollständige Dokumentation.
 
 ## Struktur der Dokumentation
 
-- Einstieg und Nutzung der CLI.
-- Architektur und Projektaufteilung.
-- PL0-Handbuch mit Lernstufen.
-- P-Code-Handbuch und P-Code-Tutorial.
-- API-Referenz.
-- Anhang mit Beispielprogrammen.
+- [Einstieg und Nutzung der CLI](installation.md)
+- [Architektur und Projektaufteilung](../curated/architecture.md)
+- [PL0-Handbuch mit Lernstufen](../handbook/pl0/index.md)
+- [P-Code-Handbuch und P-Code-Tutorial](../handbook/pcode/index.md)
+- [API-Referenz](../api/index.md)
+- [Anhang mit Beispielprogrammen](../appendix/index.md)

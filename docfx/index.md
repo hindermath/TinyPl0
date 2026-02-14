@@ -46,4 +46,4 @@ TinyPl0 ist mehr als nur ein Compiler. Es ist ein Lernwerkzeug:
 
 ---
 
-*Lizenz: MIT – siehe LICENSE. Dieses Projekt dient zu Ausbildungszwecken für Auszubildende der Fachinformatik.*
+*Lizenz: MIT – siehe [LICENSE](../LICENSE). Dieses Projekt dient zu Ausbildungszwecken für Auszubildende der Fachinformatik.*
