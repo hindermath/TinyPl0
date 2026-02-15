@@ -3,6 +3,7 @@ using Pl0.Core;
 using Pl0.Vm;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 
@@ -38,9 +39,22 @@ if (result.Options.ShowApi)
     });
     builder.WebHost.UseUrls("http://localhost:5000");
     var app = builder.Build();
+    
+    var provider = new FileExtensionContentTypeProvider();
+    provider.Mappings[".pl0"] = "text/plain";
 
     app.UseDefaultFiles();
-    app.UseStaticFiles();
+    app.UseStaticFiles(new StaticFileOptions
+    {
+        ContentTypeProvider = provider,
+        OnPrepareResponse = ctx =>
+        {
+            if (ctx.File.Name.EndsWith(".pl0", StringComparison.OrdinalIgnoreCase))
+            {
+                ctx.Context.Response.Headers.ContentDisposition = "attachment; filename=\"" + ctx.File.Name + "\"";
+            }
+        }
+    });
 
     Console.WriteLine("Documentation server started.");
     Console.WriteLine("Click here to view documentation: http://localhost:5000");
