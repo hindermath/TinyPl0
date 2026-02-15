@@ -20,7 +20,8 @@ Eine umfangreiche Sammlung von PL/0-Programmen, die klassische Algorithmen und m
 
 Diese Programme eignen sich hervorragend, um die Sprachmöglichkeiten von PL/0 kennenzulernen und gleichzeitig die VM zu testen.
 
-[📖 Anhang-Programme durchsuchen](../../examples/appendix/)
+> [!TIP]
+> Weitere Anhang-Programme finden Sie im `appendix/`-Verzeichnis.
 
 ---
 
@@ -36,7 +37,10 @@ Strukturierte Beispiele, die direkt zu den Kapiteln des **PL/0-Sprachreferenz-Ha
 
 Ideal für Anfänger, um Sprachkonzepte schrittweise zu erlernen.
 
-[📖 PL/0 Handbuch-Beispiele](../../examples/handbook/pl0/)
+> [!TIP]
+> Weitere PL/0-Handbuch-Beispiele finden Sie im `handbook/pl0/`-Verzeichnis.
+
+Siehe auch: [PL/0-Sprachreferenz](../handbook/pl0/index.md)
 
 ---
 
@@ -51,7 +55,10 @@ Detaillierte Beispiele, die die **Zwischendarstellung und P-Code-Instruktionen**
 
 Diese Beispiele zeigen, wie PL/0-Code in P-Code übersetzt wird und welche Instruktionen die VM ausführt.
 
-[📖 P-Code Handbuch-Beispiele](../../examples/handbook/pcode/)
+> [!TIP]
+> Weitere P-Code-Handbuch-Beispiele finden Sie im `handbook/pcode/`-Verzeichnis.
+
+Siehe auch: [P-Code & VM Handbuch](../handbook/pcode/index.md)
 
 ---
 
@@ -66,7 +73,10 @@ Ein schrittweises Tutorial, das den **Compilierungsprozess** von Anfang bis Ende
 
 Perfekt zum Verständnis, wie ein Compiler intern arbeitet.
 
-[📖 P-Code Tutorial durchlaufen](../../examples/handbook/tutorial/)
+> [!TIP]
+> Weitere P-Code-Tutorial-Beispiele finden Sie im `handbook/tutorial/`-Verzeichnis.
+
+Siehe auch: [P-Code-Tutorial](../handbook/tutorial/index.md)
 
 ---
 
@@ -79,7 +89,10 @@ Praktische Beispiele, die die **Kommandozeilen-Schnittstelle** demonstrieren:
 - Ausführung von kompilierten Programmen
 - Verschiedene I/O-Modi
 
-[📖 CLI-Nutzungs-Beispiele](../../examples/usage/)
+> [!TIP]
+> Weitere CLI-Nutzungs-Beispiele finden Sie im `usage/`-Verzeichnis.
+
+Siehe auch: [CLI-Dokumentation](../usage/cli.md)
 
 ---
 

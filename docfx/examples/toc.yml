@@ -1,3 +1,13 @@
 - name: Überblick
   href: index.md
+- name: Anhang-Programme
+  href: appendix/
+- name: PL/0-Handbuch-Beispiele
+  href: handbook/pl0/
+- name: P-Code-Handbuch-Beispiele
+  href: handbook/pcode/
+- name: P-Code-Tutorial
+  href: handbook/tutorial/
+- name: CLI-Nutzungs-Beispiele
+  href: usage/
 
