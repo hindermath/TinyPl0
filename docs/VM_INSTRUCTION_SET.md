@@ -7,8 +7,8 @@ Jede Instruktion besteht aus:
 - `a`: Argument (Adresse oder Untercode)
 
 Kodiert in C# als:
-- `/Users/thorstenhindermann/Codex/TinyPl0/src/Pl0.Core/Instruction.cs`
-- `/Users/thorstenhindermann/Codex/TinyPl0/src/Pl0.Core/Opcode.cs`
+- [Instruction.cs](https://github.com/hindermath/TinyPl0/blob/main/src/Pl0.Core/Instruction.cs)
+- [Opcode.cs](https://github.com/hindermath/TinyPl0/blob/main/src/Pl0.Core/Opcode.cs)
 
 ## Opcodes
 | Opcode | Wert | Bedeutung |
@@ -42,7 +42,7 @@ Kodiert in C# als:
 | 15 | Integer-Ausgabe (`!`) |
 
 Implementierung:
-- `/Users/thorstenhindermann/Codex/TinyPl0/src/Pl0.Vm/VirtualMachine.cs`
+- [VirtualMachine.cs](https://github.com/hindermath/TinyPl0/blob/main/src/Pl0.Vm/VirtualMachine.cs)
 
 ## Registermodell
 - `P`: Program Counter
