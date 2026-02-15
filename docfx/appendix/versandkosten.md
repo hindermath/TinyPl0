@@ -49,7 +49,7 @@ Ausgabe:
 Beispiel:
 
 ```bash
-dotnet run --project src/Pl0.Cli -- run example.pl0
+dotnet run --project src/Pl0.Cli -- examples/appendix/versandkosten/program.pl0
 ```
 
 Tipp: Fuege `--list-code` hinzu, um den P-Code zu sehen.

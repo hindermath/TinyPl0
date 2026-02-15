@@ -5,9 +5,19 @@ Zum Ausfuehren kopiere den Code in eine Datei und nutze die CLI.
 
 ## Schritte
 
-1. Datei anlegen, z. B. `example.pl0`.
+1. Datei anlegen, z. B. `program.pl0`.
 2. Programm einfuegen und mit `.` abschliessen.
-3. Ausfuehren: `dotnet run --project src/Pl0.Cli -- run example.pl0`
+3. Ausfuehren: `dotnet run --project src/Pl0.Cli -- run program.pl0`
+
+## Beispiele aus dem Repository ausfuehren
+
+Wenn du das Repository ausgecheckt hast, kannst du die Beispiele direkt aus dem Ordner `examples/appendix` starten.
+
+Beispiel BMI:
+
+```bash
+dotnet run --project src/Pl0.Cli -- examples/appendix/bmi/program.pl0
+```
 
 ## Tipp
 
