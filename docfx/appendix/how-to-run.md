@@ -34,3 +34,19 @@ P-Code mit Op-Codes anzeigen:
 ```bash
 dotnet run --project src/Pl0.Cli -- examples/appendix/bmi/program.pl0 --list-code --wopcod
 ```
+
+## Op-Code-Dateien ausfuehren
+
+Die VM kann auch direkt Dateien ausfuehren, die nur numerische Op-Codes (und deren Argumente) enthalten. Diese Dateien haben ueblicherweise die Endung `.cod` oder `.pcode`.
+
+```bash
+dotnet run --project src/Pl0.Cli -- bmi.cod
+```
+
+Eine solche Datei sieht beispielsweise so aus:
+```
+6 0 1
+5 0 6
+1 0 14
+...
+```
