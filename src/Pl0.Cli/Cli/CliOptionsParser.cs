@@ -67,6 +67,11 @@ public sealed class CliOptionsParser
                     continue;
                 }
 
+                if (command == CliCommand.None && (arg.EndsWith(".cod", StringComparison.OrdinalIgnoreCase) || arg.EndsWith(".pcode", StringComparison.OrdinalIgnoreCase)))
+                {
+                    command = CliCommand.RunPCode;
+                }
+
                 if (sourcePath is null)
                 {
                     sourcePath = arg;
