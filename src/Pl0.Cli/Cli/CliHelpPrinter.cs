@@ -30,6 +30,7 @@ public static class CliHelpPrinter
             $"{executableName} compile <file.pl0> [--out <file.pcode>] [--emit asm|cod] [--list-code]",
             $"{executableName} run <file.pl0> [--emit asm|cod] [--list-code]",
             $"{executableName} run-pcode <file.pcode> [--list-code]",
+            $"{executableName} <file.pcode> | <file.cod> [run P-Code directly]",
             $"{executableName} --api",
             $"{executableName} <file.pl0> [legacy mode; compile and run]",
             "",
