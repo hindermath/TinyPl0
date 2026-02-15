@@ -51,7 +51,22 @@ if (result.Options.ShowApi)
         {
             if (ctx.File.Name.EndsWith(".pl0", StringComparison.OrdinalIgnoreCase))
             {
-                ctx.Context.Response.Headers.ContentDisposition = "attachment; filename=\"" + ctx.File.Name + "\"";
+                var fileName = ctx.File.Name;
+                var requestPath = ctx.Context.Request.Path.Value;
+                if (!string.IsNullOrEmpty(requestPath))
+                {
+                    var parts = requestPath.Split('/', StringSplitOptions.RemoveEmptyEntries);
+                    if (parts.Length >= 2 && string.Equals(parts[^1], "program.pl0", StringComparison.OrdinalIgnoreCase))
+                    {
+                        var folderName = parts[^2];
+                        if (string.Equals(folderName, "example-1", StringComparison.OrdinalIgnoreCase) && parts.Length >= 3)
+                        {
+                            folderName = parts[^3];
+                        }
+                        fileName = folderName + ".pl0";
+                    }
+                }
+                ctx.Context.Response.Headers.ContentDisposition = "attachment; filename=\"" + fileName + "\"";
             }
         }
     });
