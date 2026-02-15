@@ -8,12 +8,12 @@ muss mindestens einem Pflichttestfall zugeordnet sein.
 
 ## Quelle der Zuordnung
 - Maschinenlesbare Matrix:
-  - `/Users/thorstenhindermann/Codex/TinyPl0/tests/data/expected/traceability/matrix.json`
+  - `../tests/data/expected/traceability/matrix.json`
 - Referenzkatalog der Pflichttestfaelle:
-  - `/Users/thorstenhindermann/Codex/TinyPl0/tests/data/expected/catalog/cases.json`
+  - `../tests/data/expected/catalog/cases.json`
 
 ## Automatischer Gate-Test
-- `/Users/thorstenhindermann/Codex/TinyPl0/tests/Pl0.Tests/TraceabilityMatrixTests.cs`
+- [`TraceabilityMatrixTests.cs`](https://github.com/hindermath/TinyPl0/blob/main/tests/Pl0.Tests/TraceabilityMatrixTests.cs)
 
 Der Test validiert:
 1. Vollstaendigkeit aller geforderten Sprachregeln.
