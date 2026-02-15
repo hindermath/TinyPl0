@@ -1,5 +1,11 @@
 # TinyPl0
 
+## Sprache und Zielgruppe
+
+Dieses Projekt und seine gesamte Dokumentation sind **in deutscher Sprache** verfasst. Der Grund dafür ist die Ausrichtung auf die **Fachinformatiker-Ausbildung in Deutschland**. Das Projekt dient als Lernwerkzeug für Auszubildende im deutschsprachigen Raum und nutzt daher die deutsche Sprache zur optimalen Verständlichkeit und Vermittlung von Compilerbau-Konzepten.
+
+Eine englische Variante der Dokumentation ist derzeit nicht geplant, steht aber für zukünftige Versionen zur Diskussion.
+
 ## Zielsetzung
 Dieses Repository dient der Portierung des historischen PL/0-Beispielcompilers (Pascal) nach C# auf .NET 10.
 
