@@ -1,0 +1,8 @@
+var a, b, c, x;
+begin
+  ? a;
+  ? b;
+  ? c;
+  x := (b * c) / a;
+  ! x
+end.

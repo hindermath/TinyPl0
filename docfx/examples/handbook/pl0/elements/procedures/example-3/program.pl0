@@ -1,0 +1,16 @@
+var x;
+procedure loop;
+var i;
+begin
+  i := 0;
+  while i < 3 do
+  begin
+    x := x + 1;
+    i := i + 1
+  end
+end;
+begin
+  x := 5;
+  call loop;
+  ! x
+end.

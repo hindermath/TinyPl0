@@ -1,0 +1,14 @@
+var a, q, n, i, x;
+begin
+  ? a;
+  ? q;
+  ? n;
+  i := 0;
+  x := a;
+  while i < n do
+  begin
+    ! x;
+    x := x * q;
+    i := i + 1
+  end
+end.

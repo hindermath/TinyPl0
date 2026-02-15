@@ -1,0 +1,8 @@
+var x, even;
+begin
+  ? x;
+  even := 0;
+  if (x / 2) * 2 = x then
+    even := 1;
+  ! even
+end.

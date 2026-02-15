@@ -1,0 +1,10 @@
+const limit = 10, step = 2;
+var x;
+begin
+  x := 0;
+  while x < limit do
+  begin
+    ! x;
+    x := x + step
+  end
+end.

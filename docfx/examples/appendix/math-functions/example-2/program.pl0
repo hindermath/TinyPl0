@@ -1,0 +1,8 @@
+const scale = 1000, two = 2;
+var x, x2, cosx;
+begin
+  ? x;
+  x2 := (x * x) / scale;
+  cosx := scale - (x2 / two);
+  ! cosx
+end.

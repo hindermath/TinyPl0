@@ -1,0 +1,12 @@
+- name: Variables
+  href: variables/
+- name: Constants
+  href: constants/
+- name: Loops
+  href: loops/
+- name: Conditions
+  href: conditions/
+- name: Procedures
+  href: procedures/
+- name: I/O
+  href: io/

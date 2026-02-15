@@ -1,0 +1,7 @@
+var k, p, z;
+begin
+  ? k;
+  ? p;
+  z := (k * p) / 100;
+  ! z
+end.

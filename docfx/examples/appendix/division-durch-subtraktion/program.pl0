@@ -1,0 +1,12 @@
+var a, b, q;
+begin
+  ? a;
+  ? b;
+  q := 0;
+  while a >= b do
+  begin
+    a := a - b;
+    q := q + 1
+  end;
+  ! q
+end.

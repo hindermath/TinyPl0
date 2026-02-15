@@ -1,0 +1,13 @@
+var a, b, r;
+begin
+  ? a;
+  ? b;
+  r := 0;
+  if a < b then
+    r := -1;
+  if a = b then
+    r := 0;
+  if a > b then
+    r := 1;
+  ! r
+end.

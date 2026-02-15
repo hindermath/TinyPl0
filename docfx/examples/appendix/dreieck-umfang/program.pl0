@@ -1,0 +1,8 @@
+var a, b, c, u;
+begin
+  ? a;
+  ? b;
+  ? c;
+  u := a + b + c;
+  ! u
+end.

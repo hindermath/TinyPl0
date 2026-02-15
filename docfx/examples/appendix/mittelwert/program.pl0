@@ -1,0 +1,13 @@
+var n, i, sum, x;
+begin
+  ? n;
+  sum := 0;
+  i := 0;
+  while i < n do
+  begin
+    ? x;
+    sum := sum + x;
+    i := i + 1
+  end;
+  ! (sum / n)
+end.
