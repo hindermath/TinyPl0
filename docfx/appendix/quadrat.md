@@ -15,6 +15,8 @@ begin
 end.
 ```
 
+[📥 Programm herunterladen](../../examples/appendix/quadrat/program.pl0)
+
 ## Erklaerung
 
 - Eingaben werden mit `?` gelesen.

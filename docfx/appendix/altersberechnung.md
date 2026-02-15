@@ -16,6 +16,8 @@ begin
 end.
 ```
 
+[📥 Programm herunterladen](../../examples/appendix/altersberechnung/program.pl0)
+
 ## Erklaerung
 
 - Eingaben werden mit `?` gelesen.

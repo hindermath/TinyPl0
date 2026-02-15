@@ -21,6 +21,8 @@ begin
 end.
 ```
 
+[📥 Programm herunterladen](../../examples/appendix/quadratische-gleichung/program.pl0)
+
 ## Erklaerung
 
 - Eingaben werden mit `?` gelesen.

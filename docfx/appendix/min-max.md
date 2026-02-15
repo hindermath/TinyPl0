@@ -26,6 +26,8 @@ begin
 end.
 ```
 
+[📥 Programm herunterladen](../../examples/appendix/min-max/program.pl0)
+
 ## Erklaerung
 
 - Eingaben werden mit `?` gelesen.

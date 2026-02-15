@@ -23,6 +23,8 @@ begin
 end.
 ```
 
+[📥 Programm herunterladen](../../examples/appendix/palindrom/program.pl0)
+
 ## Erklaerung
 
 - Eingaben werden mit `?` gelesen.

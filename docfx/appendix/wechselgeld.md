@@ -17,6 +17,8 @@ begin
 end.
 ```
 
+[📥 Programm herunterladen](../../examples/appendix/wechselgeld/program.pl0)
+
 ## Erklaerung
 
 - Eingaben werden mit `?` gelesen.

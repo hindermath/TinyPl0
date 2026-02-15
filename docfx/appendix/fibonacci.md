@@ -21,6 +21,8 @@ begin
 end.
 ```
 
+[📥 Programm herunterladen](../../examples/appendix/fibonacci/program.pl0)
+
 ## Erklaerung
 
 - `a` und `b` halten die aktuellen Werte.

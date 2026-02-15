@@ -18,6 +18,8 @@ begin
 end.
 ```
 
+[📥 Programm herunterladen](../../examples/appendix/zeitumrechnung/program.pl0)
+
 ## Erklaerung
 
 - Eingaben werden mit `?` gelesen.

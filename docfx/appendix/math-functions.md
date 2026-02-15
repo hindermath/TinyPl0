@@ -17,6 +17,8 @@ begin
 end.
 ```
 
+[📥 Programm herunterladen](../../examples/appendix/math-functions/example-1/program.pl0)
+
 ## cos (naehereungsweise)
 
 ```pl0
@@ -29,6 +31,8 @@ begin
   ! cosx
 end.
 ```
+
+[📥 Programm herunterladen](../../examples/appendix/math-functions/example-1/program.pl0)
 
 ## tan (naehereungsweise)
 
@@ -44,6 +48,8 @@ begin
 end.
 ```
 
+[📥 Programm herunterladen](../../examples/appendix/math-functions/example-1/program.pl0)
+
 ## Kreisberechnung (Flaeche)
 
 ```pl0
@@ -55,6 +61,8 @@ begin
   ! area
 end.
 ```
+
+[📥 Programm herunterladen](../../examples/appendix/math-functions/example-1/program.pl0)
 ## Details
 
 - Festkomma-Naeherungen fuer trigonometrische Funktionen.

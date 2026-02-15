@@ -30,6 +30,8 @@ begin
 end.
 ```
 
+[📥 Programm herunterladen](../../examples/appendix/statistik/program.pl0)
+
 ## Erklaerung
 
 - Eingaben werden mit `?` gelesen.

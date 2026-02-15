@@ -14,6 +14,8 @@ begin
 end.
 ```
 
+[📥 Programm herunterladen](../../examples/appendix/geschwindigkeit/program.pl0)
+
 ## Erklaerung
 
 - Eingaben werden mit `?` gelesen.

@@ -26,6 +26,8 @@ begin
 end.
 ```
 
+[📥 Programm herunterladen](../../examples/appendix/kgt/program.pl0)
+
 ## Erklaerung
 
 - Der groesste gemeinsame Teiler (GGT) wird mit dem Euklidischen Algorithmus ermittelt.

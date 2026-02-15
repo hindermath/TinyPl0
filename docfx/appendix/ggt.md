@@ -19,6 +19,8 @@ begin
 end.
 ```
 
+[📥 Programm herunterladen](../../examples/appendix/ggt/program.pl0)
+
 ## Erklaerung
 
 - Die Schleife implementiert den Euklidischen Algorithmus.

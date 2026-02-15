@@ -23,6 +23,8 @@ begin
 end.
 ```
 
+[📥 Programm herunterladen](../../examples/appendix/notenbewertung/program.pl0)
+
 ## Erklaerung
 
 - Eingaben werden mit `?` gelesen.

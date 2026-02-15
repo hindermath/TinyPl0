@@ -20,6 +20,8 @@ begin
 end.
 ```
 
+[📥 Programm herunterladen](../../examples/appendix/multiplikation-durch-addition/program.pl0)
+
 ## Erklaerung
 
 - Eingaben werden mit `?` gelesen.
