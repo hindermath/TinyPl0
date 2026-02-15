@@ -39,6 +39,11 @@ Diese Dokumentation ist speziell für die Ausbildung in der Fachinformatik konzi
     <p>Detaillierte Dokumentation aller öffentlichen und internen APIs – von Compiler über CLI bis zur VM.</p>
     <a href="api/index.md" class="btn">API-Dokumentation</a>
   </div>
+  <div class="card">
+    <h3>📑 Anhang</h3>
+    <p>Zusätzliche Ressourcen, Referenzmaterialien und weiterführende Dokumentation zum Projekt.</p>
+    <a href="appendix/index.md" class="btn">Zum Anhang</a>
+  </div>
 </div>
 
 ---
