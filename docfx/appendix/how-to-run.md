@@ -21,4 +21,16 @@ dotnet run --project src/Pl0.Cli -- examples/appendix/bmi/program.pl0
 
 ## Tipp
 
-Mit `--list-code` kannst du die generierte P-Code-Liste ausgeben.
+Mit `--list-code` kannst du die generierte P-Code-Liste ausgeben. Fuege noch `--wopcod` hinzu, um zusaetzlich den Op-Code anzuzeigen.
+
+P-Code anzeigen:
+
+```bash
+dotnet run --project src/Pl0.Cli -- examples/appendix/bmi/program.pl0 --list-code
+```
+
+P-Code mit Op-Codes anzeigen:
+
+```bash
+dotnet run --project src/Pl0.Cli -- examples/appendix/bmi/program.pl0 --list-code --wopcod
+```

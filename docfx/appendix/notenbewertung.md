@@ -60,7 +60,19 @@ Beispiel:
 dotnet run --project src/Pl0.Cli -- examples/appendix/notenbewertung/program.pl0
 ```
 
-Tipp: Fuege `--list-code` hinzu, um den P-Code zu sehen.
+Tipp: Fuege `--list-code` hinzu, um den P-Code zu sehen. Fuege noch `--wopcod` hinzu, um zusaetzlich den Op-Code anzuzeigen.
+
+P-Code anzeigen:
+
+```bash
+dotnet run --project src/Pl0.Cli -- examples/appendix/notenbewertung/program.pl0 --list-code
+```
+
+P-Code mit Op-Codes anzeigen:
+
+```bash
+dotnet run --project src/Pl0.Cli -- examples/appendix/notenbewertung/program.pl0 --list-code --wopcod
+```
 
 
 
