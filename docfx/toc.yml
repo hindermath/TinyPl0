@@ -13,6 +13,8 @@
 - name: API-Referenz
   href: api/index.md
   topicHref: api/index.md
+- name: Beispiele & Tutorials
+  href: examples/
 - name: Anhang
   href: appendix/
 - name: Inhalte aus docs/

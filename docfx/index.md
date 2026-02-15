@@ -30,6 +30,11 @@ Diese Dokumentation ist speziell für die Ausbildung in der Fachinformatik konzi
     <a href="projects/overview.md" class="btn">Architektur-Überblick</a>
   </div>
   <div class="card">
+    <h3>💡 Beispiele & Tutorials</h3>
+    <p>Praktische Code-Beispiele und Tutorials – von einfachen Programmen bis zu fortgeschrittenen Compilerbau-Konzepten.</p>
+    <a href="examples/index.md" class="btn">Beispiele erkunden</a>
+  </div>
+  <div class="card">
     <h3>🔧 API-Referenz</h3>
     <p>Detaillierte Dokumentation aller öffentlichen und internen APIs – von Compiler über CLI bis zur VM.</p>
     <a href="api/index.md" class="btn">API-Dokumentation</a>
