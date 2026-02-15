@@ -11,19 +11,17 @@ Abdeckung der Kernpfade aus Lexer, Parser/Codegenerator, VM und CLI.
 ## Kernpfad-Matrix
 | Bereich | Tests |
 |---|---|
-| CLI-Switches und Subcommands | `CliOptionsParserTests` |
-| Lexer + Positionstracking | `LexerTests`, `LexerGoldenTests` |
-| Parser + Codegen + Dialektregeln | `ParserGoldenTests`, `ParserDiagnosticsTests` |
-| VM-Laufzeit + Fehlerfälle | `VirtualMachineTests` |
-| P-Code Datei-Roundtrip und E2E | `PCodeSerializerTests` |
-| Katalogpflichtfaelle 8.2 + Golden-Code | `CatalogCasesTests` |
-| Traceability Coverage-Gate (4.1.1 + 4.3) | `TraceabilityMatrixTests` |
+| CLI-Switches und Subcommands | [`CliOptionsParserTests`](https://github.com/hindermath/TinyPl0/blob/main/tests/Pl0.Tests/CliOptionsParserTests.cs) |
+| Lexer + Positionstracking | [`LexerTests`](https://github.com/hindermath/TinyPl0/blob/main/tests/Pl0.Tests/LexerTests.cs), [`LexerGoldenTests`](https://github.com/hindermath/TinyPl0/blob/main/tests/Pl0.Tests/LexerGoldenTests.cs) |
+| Parser + Codegen + Dialektregeln | [`ParserGoldenTests`](https://github.com/hindermath/TinyPl0/blob/main/tests/Pl0.Tests/ParserGoldenTests.cs), [`ParserDiagnosticsTests`](https://github.com/hindermath/TinyPl0/blob/main/tests/Pl0.Tests/ParserDiagnosticsTests.cs) |
+| VM-Laufzeit + Fehlerfälle | [`VirtualMachineTests`](https://github.com/hindermath/TinyPl0/blob/main/tests/Pl0.Tests/VirtualMachineTests.cs) |
+| P-Code Datei-Roundtrip und E2E | [`PCodeSerializerTests`](https://github.com/hindermath/TinyPl0/blob/main/tests/Pl0.Tests/PCodeSerializerTests.cs) |
+| Katalogpflichtfaelle 8.2 + Golden-Code | [`CatalogCasesTests`](https://github.com/hindermath/TinyPl0/blob/main/tests/Pl0.Tests/CatalogCasesTests.cs) |
+| Traceability Coverage-Gate (4.1.1 + 4.3) | [`TraceabilityMatrixTests`](https://github.com/hindermath/TinyPl0/blob/main/tests/Pl0.Tests/TraceabilityMatrixTests.cs) |
 
 ## Traceability-Matrix
 - Dokumentation:
-  - `/Users/thorstenhindermann/Codex/TinyPl0/docs/TRACEABILITY_MATRIX.md`
-- Datenbasis:
-  - `/Users/thorstenhindermann/Codex/TinyPl0/tests/data/expected/traceability/matrix.json`
+  - [Traceability Matrix](TRACEABILITY_MATRIX.md)
 
 ## Lokale Qualitätskommandos
 ```bash
@@ -38,4 +36,4 @@ Der Workflow führt Build, Tests und Coverage-Collection aus.
 
 ## Manuelles Golden-Update
 - Script für Maintainer-Workflow:
-  - `/Users/thorstenhindermann/Codex/TinyPl0/scripts/update-golden-code.sh`
+  - `../scripts/update-golden-code.sh`
