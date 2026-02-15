@@ -4,7 +4,7 @@
 Dieses Repository dient der Portierung des historischen PL/0-Beispielcompilers (Pascal) nach C# auf .NET 10.
 
 Die fachliche und technische Zieldefinition steht im Pflichtenheft:
-- `/Users/thorstenhindermann/Codex/TinyPl0/Pflichtenheft_PL0_CSharp_DotNet10.md`
+- `Pflichtenheft_PL0_CSharp_DotNet10.md`
 
 ## Lizenz
 Lizenz: MIT - siehe LICENSE.
@@ -20,8 +20,8 @@ Die Portierung orientiert sich an zwei klaren Dialekten:
 - Konsolidierte EBNF inkl. `? ident` (Input) und `! expression` (Output) auf Basis der ANTLR-PL/0-Grammatik.
 
 Referenzquellen im Repository:
-- `/Users/thorstenhindermann/Codex/TinyPl0/PL0.md`
-- `/Users/thorstenhindermann/Codex/TinyPl0/pl0c.pas`
+- `PL0.md`
+- `pl0c.pas`
 
 ## Sprachumfang und Einschränkungen
 - Datentyp: nur `integer`.
@@ -32,15 +32,15 @@ Referenzquellen im Repository:
 
 ## Architektur und Qualität
 - Architekturdiagramm und Pascal->C# Mapping:
-  - `/Users/thorstenhindermann/Codex/TinyPl0/docs/ARCHITECTURE.md`
+  - `docs/ARCHITECTURE.md`
 - Sprachumfang/EBNF:
-  - `/Users/thorstenhindermann/Codex/TinyPl0/docs/LANGUAGE_EBNF.md`
+  - `docs/LANGUAGE_EBNF.md`
 - VM-Befehlssatz:
-  - `/Users/thorstenhindermann/Codex/TinyPl0/docs/VM_INSTRUCTION_SET.md`
+  - `docs/VM_INSTRUCTION_SET.md`
 - Traceability-Matrix (Regel -> Pflichttests):
-  - `/Users/thorstenhindermann/Codex/TinyPl0/docs/TRACEABILITY_MATRIX.md`
+  - `docs/TRACEABILITY_MATRIX.md`
 - Qualitäts- und Coverage-Übersicht:
-  - `/Users/thorstenhindermann/Codex/TinyPl0/docs/QUALITY.md`
+  - `docs/QUALITY.md`
 
 ## Build und Ausführung
 
@@ -61,7 +61,7 @@ Zusätzlich sind umgesetzt:
 - P-Code Serialisierung/Deserialisierung (`PCodeSerializer`) für Datei-Workflow.
 - End-to-End-Tests für `source -> pcode -> vm` in `tests`.
 - Vollständiger 8.2-Testdatenkatalog (41 Pflicht-`.pl0`-Fälle) inkl. erwarteter Artefakte:
-  - `/Users/thorstenhindermann/Codex/TinyPl0/tests/data/expected/catalog/cases.json`
+  - `tests/data/expected/catalog/cases.json`
 
 ### Pascal-Referenz (optional)
 Voraussetzung: FreePascal (`fpc`) oder Delphi-kompatibler Compiler.
@@ -102,3 +102,26 @@ dotnet run --project src/Pl0.Cli -- run tests/data/pl0/valid/feature_const_var_a
 - `.gitignore` für .NET/C#/Visual Studio/JetBrains ist vorhanden.
 - Phase 0 bis Phase 5 (CLI + End-to-End) sind gemäß Pflichtenheft umgesetzt.
 - Phase 6 (Qualität + Dokumentation) ist gestartet und enthält Architektur-/Qualitätsdoku sowie erweiterte Kernpfadtests.
+
+## Entwicklung mit Agentic-AI
+
+Dieses Projekt entstand mit starker Unterstützung durch **Agentic-AI-Technologien**. Die Verwendung von KI-Agenten spielte eine zentrale Rolle bei:
+
+- **Architektur & Design:** Automatisierte Analyse von Anforderungen und Ableitung der Systemarchitektur.
+- **Code-Generierung:** Unterstützung bei der Implementierung von Lexer, Parser, Compiler und VM.
+- **Testing & Validierung:** Systematische Generierung von Testfällen und Überprüfung der Compliance.
+- **Dokumentation:** Automatisierte Erstellung von API-Dokumentation, Handbüchern und Architekturdokumentation.
+- **Qualitätssicherung:** Statische Codeanalyse, Fehlerdetection und Optimierungsvorschläge.
+
+### Ziel: Agentic-AI in der Ausbildung
+
+Neben der praktischen Implementierung eines Compilers dient dieses Projekt auch als **Fallstudie** zur Untersuchung, wie Agentic-AI sinnvoll in der **Fachinformatiker-Ausbildung** eingesetzt werden kann:
+
+- **Pädagogischer Mehrwert:** Wie können AI-Agenten Auszubildende beim Erlernen komplexer Compilerbau-Konzepte unterstützen?
+- **Produktivität:** Wie beschleunigt die Zusammenarbeit mit AI-Agenten die Entwicklung, ohne die Lerneffekte zu schmälern?
+- **Qualität:** Wie trägt Agentic-AI zu besserer Code-Qualität, Dokumentation und Testabdeckung bei?
+- **Transparenz:** Wie bleibt die Nachvollziehbarkeit und Validierbarkeit der generierten Artefakte gewährleistet?
+
+Dieses Projekt zeigt, dass Agentic-AI nicht als Ersatz für manuelles Lernen gedacht ist, sondern als **produktive Werkzeug und Lernpartner** für professionelle Softwareentwicklung in der Ausbildung.
+
+
