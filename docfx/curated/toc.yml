@@ -10,3 +10,11 @@
   href: traceability-matrix.md
 - name: Qualitaet
   href: quality.md
+- name: PL0 Referenz
+  href: pl0-referenz.md
+- name: Pflichtenheft C#
+  href: pflichtenheft-csharp.md
+- name: Pflichtenheft Dokumentation
+  href: pflichtenheft-dok.md
+- name: Lastenheft Dokumentation
+  href: lastenheft-dok.md
