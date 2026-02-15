@@ -39,5 +39,5 @@ factor     = ident | number | "(" expression ")" ;
 - Der Sprachkern bleibt bewusst klein: Integer, keine Parameter, keine Rueckgabewerte.
 
 ## Referenzen
-- `/Users/thorstenhindermann/Codex/TinyPl0/PL0.md`
-- `/Users/thorstenhindermann/Codex/TinyPl0/Pflichtenheft_PL0_CSharp_DotNet10.md`
+- [PL0 Referenz](../PL0.md)
+- [Pflichtenheft C#](../Pflichtenheft_PL0_CSharp_DotNet10.md)
