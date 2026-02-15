@@ -9,7 +9,7 @@ Das Ergebnis soll ein didaktisch klarer, wartbarer Referenzcompiler sein, der:
 - diesen P-Code in einer virtuellen Maschine ausführt.
 
 ## 2. Ausgangslage (Ist-Analyse aus `PL0.md`)
-Referenzquelle: `/Users/thorstenhindermann/Codex/TinyPl0/PL0.md`
+Referenzquelle: [PL0 Referenz](docfx/curated/pl0-referenz.md)
 
 Technische Kernelemente:
 - EBNF der Sprache (Programm, Block, Statements, Bedingungen, Ausdrücke).
