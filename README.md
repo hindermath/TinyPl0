@@ -15,10 +15,10 @@ An English version of the documentation is currently not planned, but it may be 
 Dieses Repository dient der Portierung des historischen PL/0-Beispielcompilers (Pascal) nach C# auf .NET 10.
 
 Die fachliche und technische Zieldefinition steht im Pflichtenheft:
-- `Pflichtenheft_PL0_CSharp_DotNet10.md`
+- [Pflichtenheft_PL0_CSharp_DotNet10.md](Pflichtenheft_PL0_CSharp_DotNet10.md)
 
 ## Lizenz
-Lizenz: MIT - siehe LICENSE.
+Lizenz: MIT - siehe [LICENSE](LICENSE).
 
 ## Referenzverhalten
 Die Portierung orientiert sich an zwei klaren Dialekten:
@@ -31,8 +31,8 @@ Die Portierung orientiert sich an zwei klaren Dialekten:
 - Konsolidierte EBNF inkl. `? ident` (Input) und `! expression` (Output) auf Basis der ANTLR-PL/0-Grammatik.
 
 Referenzquellen im Repository:
-- `PL0.md`
-- `pl0c.pas`
+- [PL0.md](PL0.md)
+- [pl0c.pas](pl0c.pas)
 
 ## Sprachumfang und Einschränkungen
 - Datentyp: nur `integer`.
