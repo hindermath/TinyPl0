@@ -80,3 +80,11 @@ Vollständige Namespace-Übersicht:
 > [!NOTE]
 > Der Quellcode ist auf GitHub verfügbar. Nutzen Sie die API-Referenz zusammen mit dem Quellcode, um die Implementierung zu durchschauen.
 
+---
+
+### Direkt zur vollständigen API-Referenz
+
+Wenn Sie ohne Umwege in die generierte API-Navigation wechseln möchten, nutzen Sie den folgenden Link:
+
+- [Zur vollständigen API-Referenz](xref:Pl0.Core)
+
