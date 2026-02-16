@@ -221,7 +221,7 @@ public sealed class Pl0Lexer
             Advance();
         }
 
-        var lexeme = _text.Substring(begin, _index - begin);
+        var lexeme = _text.Substring(begin, _index - begin).ToLowerInvariant();
         if (lexeme.Length > _options.MaxIdentifierLength)
         {
             _diagnostics.Add(new LexerDiagnostic(
