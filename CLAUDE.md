@@ -24,7 +24,7 @@ dotnet build --configuration Release
 # Run with coverage
 dotnet test --collect:"XPlat Code Coverage"
 
-# Update golden master artifacts after intentional changes
+# Update golden master artifacts after intentional changes (requires jq)
 ./scripts/update-golden-code.sh
 ```
 
@@ -35,6 +35,10 @@ dotnet run --project src/Pl0.Cli -- compile <file.pl0> --out <file.pcode>
 dotnet run --project src/Pl0.Cli -- run <file.pl0>
 dotnet run --project src/Pl0.Cli -- run-pcode <file.pcode>
 dotnet run --project src/Pl0.Cli -- run <file.pl0> --list-code --wopcod
+dotnet run --project src/Pl0.Cli -- run <file.pl0> --conly        # compile only, skip VM
+dotnet run --project src/Pl0.Cli -- run <file.pl0> --emit asm     # emit assembly to STDOUT
+dotnet run --project src/Pl0.Cli -- run <file.pl0> --errmsg       # show long error messages
+dotnet run --project src/Pl0.Cli -- --api                         # start embedded docs server
 ```
 
 ## Architecture
