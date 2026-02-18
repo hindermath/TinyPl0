@@ -24,9 +24,13 @@ dotnet restore
 
 # Build the entire solution
 dotnet build
+dotnet build --configuration Release
 
 # Run all tests
 dotnet test
+
+# Run tests with coverage
+dotnet test --collect:"XPlat Code Coverage"
 
 # Run a specific test class
 dotnet test --filter "FullyQualifiedName~Pl0.Tests.LexerTests"
@@ -48,6 +52,18 @@ dotnet run --project src/Pl0.Cli -- run-pcode <file.pcode>
 
 # Show P-Code listing with symbolic opcodes
 dotnet run --project src/Pl0.Cli -- run <file.pl0> --list-code --wopcod
+
+# Compile only, skip VM execution
+dotnet run --project src/Pl0.Cli -- run <file.pl0> --conly
+
+# Emit assembly to STDOUT
+dotnet run --project src/Pl0.Cli -- run <file.pl0> --emit asm
+
+# Show long error messages
+dotnet run --project src/Pl0.Cli -- run <file.pl0> --errmsg
+
+# Start embedded docs server
+dotnet run --project src/Pl0.Cli -- --api
 ```
 
 ### Golden Master Tests
@@ -96,6 +112,8 @@ The VM uses three registers:
 
 Activation records use three reserved cells: Static Link, Dynamic Link, Return Address.
 
+**8 opcodes:** `Lit`, `Opr`, `Lod`, `Sto`, `Cal`, `Int`, `Jmp`, `Jpc`. See `docs/VM_INSTRUCTION_SET.md` for full reference.
+
 ## Code Conventions and Patterns
 
 ### Error Handling
@@ -110,6 +128,11 @@ Activation records use three reserved cells: Static Link, Dynamic Link, Return A
 - **Local variables, parameters:** camelCase
 - **Test classes:** Suffix with `Tests` (e.g., `LexerTests`)
 - **Test classes:** Marked as `public sealed class`
+
+### C# Style
+- Use C# 12+ features: collection expressions `[]`, primary constructors
+- Use `record` for immutable data types (e.g., `Pl0Token`, `TextPosition`)
+- Use `List<T>` for mutable collections
 
 ### Testing Requirements
 - Use **xUnit** for all tests.
