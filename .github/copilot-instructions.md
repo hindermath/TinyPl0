@@ -67,7 +67,7 @@ dotnet run --project src/Pl0.Cli -- --api
 ```
 
 ### Golden Master Tests
-The project uses Golden Master tests for lexer and parser outputs. To update golden artifacts after intentional changes:
+The project uses Golden Master tests for lexer and parser outputs. To update golden artifacts after intentional changes (requires `jq`):
 ```bash
 ./scripts/update-golden-code.sh
 ```
@@ -139,6 +139,37 @@ Activation records use three reserved cells: Static Link, Dynamic Link, Return A
 - New features or bug fixes MUST include corresponding test cases in `tests/Pl0.Tests`.
 - The project maintains high traceability between requirements and tests (see `docs/TRACEABILITY_MATRIX.md`).
 - Test data catalog is at `tests/data/expected/catalog/cases.json` with 41 mandatory test cases.
+
+### Adding New Test Cases
+
+To add a catalog test case, touch **all four** of these in order:
+
+1. **Add the `.pl0` source file** to `tests/data/pl0/valid/` or `tests/data/pl0/invalid/`.
+2. **Add a catalog entry** in `tests/data/expected/catalog/cases.json`:
+   ```json
+   {
+     "name": "my_case.pl0",
+     "group": "valid",
+     "folder": "valid",
+     "dialect": "extended",
+     "compileSuccess": true,
+     "run": true,
+     "input": [],
+     "expectedOutput": [42]
+   }
+   ```
+   Key fields: `group` (`valid`/`invalid`/`compat`/`dialect`/`limits`/`runtime/io-edge`), `dialect` (`extended`/`classic`), `compileSuccess`, `run`, `runtimeSuccess` (default true), `input`/`expectedOutput` (integer lists), `expectedCompileCodes`/`expectedRuntimeCodes` (error code lists), `ioBehavior` (`buffered`/`eof`/`formatError`), `storeTrace`. Limit overrides: `maxLevel`, `maxAddress`, `maxIdentifierLength`, `maxNumberDigits`, `maxSymbolCount`, `maxCodeLength`.
+3. **Generate the golden P-Code artifact** (only for `compileSuccess: true` cases):
+   ```bash
+   ./scripts/update-golden-code.sh   # requires jq
+   ```
+   This writes `tests/data/expected/code/<case-name>.pcode.txt`.
+4. **Update the traceability matrix** at `tests/data/expected/traceability/matrix.json` if the new case covers a language rule or VM opcode not yet listed there. `TraceabilityMatrixTests` enforces that every rule in the matrix references at least one catalog case.
+
+Golden artifact locations:
+- `tests/data/expected/code/` — P-Code assembly for each compile-success case
+- `tests/data/expected/lexer/` — token streams for lexer golden tests
+- `tests/data/expected/traceability/matrix.json` — rule-to-case coverage map
 
 ### Historical Quirks (Preserve These)
 - **Relational operators:** `[` maps to `<=` and `]` maps to `>=` (historical compatibility)
