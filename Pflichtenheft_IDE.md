@@ -157,6 +157,10 @@ Die bestehenden Abhaengigkeitsregeln der vorhandenen Module bleiben unveraendert
       - naechster Aufruf stoppt den laufenden Kestrel-Webserver wieder.
     - Nach dem Start zeigt die IDE einen Hinweis-Dialog mit der konkreten URL, unter der die Hilfe erreichbar ist.
     - Der Server ist auf `localhost` gebunden; die angezeigte URL muss dem tatsaechlich verwendeten Endpoint entsprechen.
+    - Technische Portvorgabe:
+      - Standard: Start auf `http://localhost:5000`.
+      - Fallback: Falls Port `5000` belegt ist, wird automatisch der naechste freie Port im Bereich `5001..5099` verwendet.
+      - Falls kein Port im Fallback-Bereich verfuegbar ist, wird ein Fehlerdialog angezeigt und kein Webserver gestartet.
     - Falls `_site` nicht vorhanden ist oder der Start fehlschlaegt, zeigt die IDE eine klare Fehlermeldung im Dialog.
     - Kestrel-Konsolenausgaben duerfen die IDE-Ansicht nicht stoeren (keine UI-Glitches durch direkte Ausgabe auf das IDE-Terminal).
 
@@ -202,6 +206,7 @@ Die bestehenden Abhaengigkeitsregeln der vorhandenen Module bleiben unveraendert
 - `AK-017`: Zuletzt geoeffnete Datei und Fenstergroessen werden ueber Neustarts hinweg wiederhergestellt.
 - `AK-018`: Ein Hilfe-Menuepunkt startet die Web-Hilfe aus `_site` per Kestrel, zeigt die konkrete URL im Hinweis-Dialog und stoppt den Server beim naechsten Aufruf.
 - `AK-019`: Kestrel-Ausgaben verursachen keine sichtbaren UI-Stoerungen in der IDE-Ansicht.
+- `AK-020`: Die Web-Hilfe startet bevorzugt auf `http://localhost:5000`; bei belegtem Port erfolgt automatischer Fallback auf den naechsten freien Port aus `5001..5099`.
 
 ## 9. Testfaelle und Anforderungszuordnung
 
@@ -229,6 +234,7 @@ Die folgenden Testfaelle sind als automatisierte xUnit-Tests umzusetzen.
 | `TC-IDE-018` | Hilfe-Menuepunkt startet Kestrel fuer `_site`, zeigt einen Hinweis-Dialog mit der tatsaechlichen URL und stoppt den Server beim zweiten Aufruf. | `PF-IDE-022` |
 | `TC-IDE-019` | Bei fehlendem `_site` oder Startfehler wird ein Fehlerdialog angezeigt; die IDE bleibt bedienbar. | `PF-IDE-022` |
 | `TC-IDE-020` | Beim Betrieb der Web-Hilfe treten keine stoerenden Konsolenausgaben/Renderartefakte in der IDE-Ansicht auf. | `PF-IDE-022`, `NF-007` |
+| `TC-IDE-021` | Ist `localhost:5000` belegt, startet die Web-Hilfe automatisch auf dem naechsten freien Port im Bereich `5001..5099`, und der Hinweis-Dialog zeigt die tatsaechlich verwendete URL. | `PF-IDE-022` |
 
 Hinweise zur Umsetzung:
 - Tests mit UI-Bezug sollen ueber testbare ViewModel-/Controller-Logik und Adapter abstrahiert werden.
