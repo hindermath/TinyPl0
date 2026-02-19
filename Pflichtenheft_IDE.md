@@ -1,0 +1,184 @@
+# Pflichtenheft: TinyPl0 IDE (Terminal.Gui)
+
+## 1. Ziel und Zweck
+Ziel ist die Entwicklung einer textbasierten IDE fuer TinyPl0 als neues Projekt `src/Pl0.Ide`.
+Die IDE soll sich an der Bedienlogik der Turbo-Pascal-DOS-IDE orientieren und den gesamten
+Arbeitsablauf abdecken: Quellcode bearbeiten, kompilieren, P-Code anzeigen, ausfuehren und debuggen.
+
+## 2. Ausgangssituation
+TinyPl0 stellt bereits folgende Bausteine bereit:
+- `Pl0.Core` fuer Lexer, Parser, Semantik und P-Code-Erzeugung
+- `Pl0.Vm` fuer die Ausfuehrung von P-Code
+- `Pl0.Cli` fuer Kommandozeilen-Bedienung
+
+Es existiert bisher keine integrierte grafische (TUI-)Entwicklungsumgebung.
+
+## 3. Projektabgrenzung
+- Kein neuer Sprachumfang fuer PL/0.
+- Keine Compiler-Optimierungen.
+- Kein Ersatz der bestehenden CLI, sondern eine zusaetzliche Bedienoberflaeche.
+- Fokus auf didaktisch nachvollziehbare Funktionen fuer Ausbildung und Demonstration.
+
+## 4. Produktdefinition und Architektur
+
+### 4.1 Zielsystem
+- Neues .NET-10-Projekt: `src/Pl0.Ide`
+- GUI-Bibliothek: `Terminal.Gui` in Version `1.9.x`
+- Laufzeitplattform: Windows, macOS, Linux (Konsole/Terminal)
+
+### 4.2 Modulabhaengigkeiten
+- `Pl0.Ide -> Pl0.Core`
+- `Pl0.Ide -> Pl0.Vm`
+- `Pl0.Ide -> Terminal.Gui`
+
+Die bestehenden Abhaengigkeitsregeln der vorhandenen Module bleiben unveraendert.
+
+### 4.3 Hauptkomponenten der IDE
+- Editorfenster fuer PL/0-Quelltext
+- P-Code-Fenster fuer generierten Code
+- Meldungsfenster fuer Compilerdiagnosen und Laufzeitmeldungen
+- Ausgabefenster/Dialoge fuer Kompilier- und Laufzeitergebnisse
+- Debug-Fenster fuer Register (`P`, `B`, `T`) und Stack-Inhalt
+- Hilfe-/Dokumentationsfenster
+
+## 5. Funktionale Anforderungen
+
+### 5.1 Muss-Anforderungen
+1. `PF-IDE-001` Projektstruktur:
+   - Ein neues Projekt `src/Pl0.Ide` ist in der Solution eingebunden und baubar.
+
+2. `PF-IDE-002` GUI-Basis:
+   - Die Oberflaeche basiert auf Nuget-Paket `Terminal.Gui` `1.9.x`.
+
+3. `PF-IDE-003` Look-and-Feel:
+   - Layout und Menuefuehrung orientieren sich an der Turbo-Pascal-IDE (DOS-Stil).
+
+4. `PF-IDE-004` Quellcodefenster:
+   - Ein dediziertes Fenster zur Anzeige und Bearbeitung von PL/0-Quellcode ist vorhanden.
+
+5. `PF-IDE-005` Syntax-Hervorhebung:
+   - Schluesselwoerter von PL/0 werden im Editor farblich hervorgehoben.
+   - Der Farbstil richtet sich nach den Konventionen von Turbo-Pascal.
+   - Auch Zahlen, Operatoren werden entsprechend formatiert.
+
+6. `PF-IDE-006` Kompilierung:
+   - Quellcode kann direkt aus der IDE ueber `Pl0.Core` kompiliert werden.
+
+7. `PF-IDE-007` Kompilierdialog:
+   - Nach Kompilierung wird ein Dialog mit Ergebnisstatus angezeigt (Erfolg/Fehler).
+
+8. `PF-IDE-008` Fehleranzeige:
+   - Compilerdiagnosen werden gesammelt und in einem Meldungsfenster angezeigt.
+
+9. `PF-IDE-009` P-Code-Fenster:
+   - Der erzeugte P-Code wird in einem separaten Fenster dargestellt.
+
+10. `PF-IDE-010` P-Code-Ausfuehrung:
+    - Der erzeugte P-Code kann aus der IDE heraus ueber `Pl0.Vm` ausgefuehrt werden.
+    - Laufzeitausgaben werden sichtbar dargestellt.
+
+11. `PF-IDE-011` Dateioperationen:
+    - Quellcode kann gespeichert und geladen werden.
+    - Dazu werden die Standard-Dialoge von Terminal.GUI genutzt.
+
+12. `PF-IDE-012` Quelltextformatierung:
+    - Eine Funktion zur Formatierung des PL/0-Quellcodes ist vorhanden.
+
+13. `PF-IDE-013` Kombi-Aktion:
+    - Eine Aktion "Kompilieren und Ausfuehren" ist vorhanden. Auch hier Orientierung an der Turbo Pascal IDE für DOS.
+
+14. `PF-IDE-014` Debugging:
+    - Schrittweise P-Code-Ausfuehrung (Step) ist moeglich. Hierbei wird der Instruktion-Pointer (`P`) aktualisiert und auch sichtbar im Inhalt des Stacks nachvollziehbar gezeigt, wo im P-Code der aktuelle Ausführungspunkt liegt.
+    - Nach jedem Schritt werden Stack und Register (`P`, `B`, `T`) aktualisiert angezeigt. 
+
+15. `PF-IDE-015` Hilfe:
+    - Eine Hilfe-Funktion mit Bedienhinweisen der IDE ist in der IDE verfuegbar.
+    - Eine Hilfe-Funktion für die Sprache PL0 ist in der IDE verfuegbar.
+
+16. `PF-IDE-016` Integrierte Dokumentation:
+    - Eine integrierte Dokumentationsansicht (lokale Inhalte) steht in der IDE bereit.
+
+17. `PF-IDE-017` Testfaelle:
+    - Fuer die IDE-Funktionen werden automatisierte Tests erstellt (xUnit).
+    - Die Tests decken mindestens die Kernablaeufe ab: Laden/Speichern, Kompilieren, Diagnostikanzeige,
+      P-Code-Anzeige, Ausfuehren sowie Schritt-Debugging mit Register-/Stackaktualisierung.
+    - Die Tests sind in `dotnet test` integriert und laufen reproduzierbar.
+
+### 5.2 Kann-Anforderungen (optional)
+- `PF-IDE-018` Tastatur-Shortcuts analog klassischer IDE-Muster (z. B. Build, Run, Step).
+- `PF-IDE-019` Persistenz der zuletzt geoeffneten Datei und Fenstergroessen.
+
+## 6. Nicht-funktionale Anforderungen
+- `NF-001` Stabilitaet: Fehler im Quelltext duerfen nicht zum Absturz der IDE fuehren.
+- `NF-002` Diagnostikmodell: Compilerfehler werden als Diagnosen angezeigt, nicht per ungefangener Exception.
+- `NF-003` Bedienbarkeit: Hauptfunktionen sind vollstaendig per Tastatur erreichbar.
+- `NF-004` Performance: Interaktive Reaktion bei Standardbeispielen ohne merkliche Verzoegerung.
+- `NF-005` Wartbarkeit: Klare Trennung von UI, Compiler-/VM-Adapter und Anwendungslogik.
+- `NF-006` Didaktik: Oberflaeche und Meldungen sind fuer Lernende nachvollziehbar formuliert.
+
+## 7. Bedien- und Prozessablauf (Soll)
+1. Benutzer erstellt/oeffnet eine `.pl0`-Datei im Editorfenster.
+2. Benutzer startet Kompilierung.
+3. IDE zeigt Dialogstatus und schreibt Diagnosen ins Meldungsfenster.
+4. Bei Erfolg wird P-Code im P-Code-Fenster aktualisiert.
+5. Benutzer waehlt:
+   - Ausfuehren (Gesamtlauf), oder
+   - Debuggen (Schrittbetrieb mit Register-/Stackanzeige).
+6. Ergebnisse und Meldungen bleiben nachvollziehbar einsehbar.
+
+## 8. Abnahmekriterien
+- `AK-001`: `src/Pl0.Ide` ist in `TinyPl0.sln` eingebunden und baut erfolgreich.
+- `AK-002`: IDE startet in Terminalumgebung mit sichtbarem Hauptlayout.
+- `AK-003`: PL/0-Schluesselwoerter werden im Editor hervorgehoben.
+- `AK-004`: Kompilierung aus IDE erzeugt entweder P-Code oder Diagnosen.
+- `AK-005`: Kompilierdialog erscheint nach jedem Kompiliervorgang.
+- `AK-006`: P-Code wird in separatem Fenster angezeigt.
+- `AK-007`: P-Code-Ausfuehrung liefert sichtbare Ergebnisanzeige.
+- `AK-008`: Datei laden/speichern funktioniert fuer `.pl0`-Dateien.
+- `AK-009`: Formatierfunktion veraendert Quelltext deterministisch.
+- `AK-010`: "Kompilieren und Ausfuehren" funktioniert in einem Schritt.
+- `AK-011`: Schritt-Debugging zeigt pro Schritt Register- und Stackzustand.
+- `AK-012`: Hilfe und integrierte Dokumentation sind aus der IDE heraus aufrufbar.
+- `AK-013`: Automatisierte IDE-Tests (xUnit) sind vorhanden und mit `dotnet test` erfolgreich ausfuehrbar.
+
+## 9. Testfaelle und Anforderungszuordnung
+
+Die folgenden Testfaelle sind als automatisierte xUnit-Tests umzusetzen.
+
+| Testfall-ID  | Kurzbeschreibung                                                                 | Zuordnung Anforderungen                                |
+|--------------|----------------------------------------------------------------------------------|--------------------------------------------------------|
+| `TC-IDE-001` | Projekt `Pl0.Ide` ist in Solution eingebunden und buildet erfolgreich.           | `PF-IDE-001`                                           |
+| `TC-IDE-002` | IDE startet mit Hauptlayout (Editor, P-Code, Meldungen).                         | `PF-IDE-002`, `PF-IDE-003`, `PF-IDE-004`, `PF-IDE-009` |
+| `TC-IDE-003` | PL/0-Schluesselwoerter werden im Editor korrekt hervorgehoben.                   | `PF-IDE-005`                                           |
+| `TC-IDE-004` | Kompilierung eines gueltigen Programms liefert Erfolg und zeigt Kompilierdialog. | `PF-IDE-006`, `PF-IDE-007`                             |
+| `TC-IDE-005` | Kompilierung eines fehlerhaften Programms zeigt Diagnosen im Meldungsfenster.    | `PF-IDE-008`                                           |
+| `TC-IDE-006` | Nach erfolgreicher Kompilierung wird P-Code im P-Code-Fenster angezeigt.         | `PF-IDE-009`                                           |
+| `TC-IDE-007` | Ausfuehrung von P-Code liefert sichtbare Laufzeitausgabe.                        | `PF-IDE-010`                                           |
+| `TC-IDE-008` | Laden und Speichern von `.pl0`-Dateien funktioniert verlustfrei.                 | `PF-IDE-011`                                           |
+| `TC-IDE-009` | Formatieren eines Quelltexts liefert deterministisches Ergebnis.                 | `PF-IDE-012`                                           |
+| `TC-IDE-010` | Aktion "Kompilieren und Ausfuehren" durchlaeuft beide Schritte erfolgreich.      | `PF-IDE-013`                                           |
+| `TC-IDE-011` | Schritt-Debugging aktualisiert pro Step Register (`P`, `B`, `T`) und Stack.      | `PF-IDE-014`                                           |
+| `TC-IDE-012` | Hilfe und integrierte Dokumentation sind ueber die IDE aufrufbar.                | `PF-IDE-015`, `PF-IDE-016`                             |
+| `TC-IDE-013` | Gesamte IDE-Test-Suite laeuft erfolgreich mit `dotnet test`.                     | `PF-IDE-017`                                           |
+
+Hinweise zur Umsetzung:
+- Tests mit UI-Bezug sollen ueber testbare ViewModel-/Controller-Logik und Adapter abstrahiert werden.
+- Dateizugriffe und VM-I/O sind in Tests ueber Test-Doubles (z. B. In-Memory) zu kapseln.
+- Jeder Testfall ist eindeutig auf mindestens eine `PF-IDE-*`-Anforderung rueckfuehrbar.
+
+## 10. Liefergegenstaende
+- Neues Projekt `src/Pl0.Ide` inkl. Projektdatei
+- Einbindung in `TinyPl0.sln`
+- IDE-Oberflaeche (Editor, P-Code, Meldungen, Debug, Hilfe)
+- Schnittstellenanbindung an `Pl0.Core` und `Pl0.Vm`
+- Tests fuer die IDE-Kernfunktionen (xUnit, in Testlauf integriert)
+- Dokumentation der Bedienung (deutsch, im Repository)
+
+## 11. Risiken und Annahmen
+- `R-001`: `Terminal.Gui` `1.9.x` kann je nach Plattform unterschiedliche Terminal-Eigenheiten zeigen.
+- `R-002`: Schritt-Debugging erfordert ggf. Erweiterungen an VM-Observability-Schnittstellen.
+- `R-003`: Eine robuste Quelltextformatierung fuer alle Grenzfaelle kann iterative Nachschaerfung benoetigen.
+
+Annahmen:
+- Das bestehende Compiler- und VM-Verhalten bleibt fachlich unveraendert.
+- IDE-Dokumentationsinhalte koennen aus vorhandenen Repository-Dokumenten kuratiert werden.
