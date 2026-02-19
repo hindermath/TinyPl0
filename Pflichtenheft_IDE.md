@@ -129,16 +129,16 @@ Die bestehenden Abhaengigkeitsregeln der vorhandenen Module bleiben unveraendert
 ## 8. Abnahmekriterien
 - `AK-001`: `src/Pl0.Ide` ist in `TinyPl0.sln` eingebunden und baut erfolgreich.
 - `AK-002`: IDE startet in Terminalumgebung mit sichtbarem Hauptlayout.
-- `AK-003`: PL/0-Schluesselwoerter werden im Editor hervorgehoben.
+- `AK-003`: PL/0-Syntaxelemente (Schluesselwoerter, Zahlen, Operatoren) werden im Editor hervorgehoben; der Farbstil orientiert sich an Turbo Pascal.
 - `AK-004`: Kompilierung aus IDE erzeugt entweder P-Code oder Diagnosen.
 - `AK-005`: Kompilierdialog erscheint nach jedem Kompiliervorgang.
 - `AK-006`: P-Code wird in separatem Fenster angezeigt.
 - `AK-007`: P-Code-Ausfuehrung liefert sichtbare Ergebnisanzeige.
-- `AK-008`: Datei laden/speichern funktioniert fuer `.pl0`-Dateien.
+- `AK-008`: Datei laden/speichern funktioniert fuer `.pl0`-Dateien ueber die Standard-Dialoge von `Terminal.Gui`.
 - `AK-009`: Formatierfunktion veraendert Quelltext deterministisch.
 - `AK-010`: "Kompilieren und Ausfuehren" funktioniert in einem Schritt.
-- `AK-011`: Schritt-Debugging zeigt pro Schritt Register- und Stackzustand.
-- `AK-012`: Hilfe und integrierte Dokumentation sind aus der IDE heraus aufrufbar.
+- `AK-011`: Schritt-Debugging zeigt pro Schritt Register- und Stackzustand; der aktuelle Ausfuehrungspunkt ist ueber den Instruktionszeiger (`P`) im P-Code nachvollziehbar.
+- `AK-012`: Hilfe zur IDE-Bedienung, Hilfe zur Sprache PL/0 und integrierte Dokumentation sind aus der IDE heraus aufrufbar.
 - `AK-013`: Automatisierte IDE-Tests (xUnit) sind vorhanden und mit `dotnet test` erfolgreich ausfuehrbar.
 
 ## 9. Testfaelle und Anforderungszuordnung
@@ -149,16 +149,16 @@ Die folgenden Testfaelle sind als automatisierte xUnit-Tests umzusetzen.
 |--------------|----------------------------------------------------------------------------------|--------------------------------------------------------|
 | `TC-IDE-001` | Projekt `Pl0.Ide` ist in Solution eingebunden und buildet erfolgreich.           | `PF-IDE-001`                                           |
 | `TC-IDE-002` | IDE startet mit Hauptlayout (Editor, P-Code, Meldungen).                         | `PF-IDE-002`, `PF-IDE-003`, `PF-IDE-004`, `PF-IDE-009` |
-| `TC-IDE-003` | PL/0-Schluesselwoerter werden im Editor korrekt hervorgehoben.                   | `PF-IDE-005`                                           |
+| `TC-IDE-003` | PL/0-Syntaxelemente (Schluesselwoerter, Zahlen, Operatoren) werden im Editor im Turbo-Pascal-orientierten Farbstil hervorgehoben. | `PF-IDE-005` |
 | `TC-IDE-004` | Kompilierung eines gueltigen Programms liefert Erfolg und zeigt Kompilierdialog. | `PF-IDE-006`, `PF-IDE-007`                             |
 | `TC-IDE-005` | Kompilierung eines fehlerhaften Programms zeigt Diagnosen im Meldungsfenster.    | `PF-IDE-008`                                           |
 | `TC-IDE-006` | Nach erfolgreicher Kompilierung wird P-Code im P-Code-Fenster angezeigt.         | `PF-IDE-009`                                           |
 | `TC-IDE-007` | Ausfuehrung von P-Code liefert sichtbare Laufzeitausgabe.                        | `PF-IDE-010`                                           |
-| `TC-IDE-008` | Laden und Speichern von `.pl0`-Dateien funktioniert verlustfrei.                 | `PF-IDE-011`                                           |
+| `TC-IDE-008` | Laden und Speichern von `.pl0`-Dateien funktioniert verlustfrei ueber die Standard-Dialoge von `Terminal.Gui`. | `PF-IDE-011` |
 | `TC-IDE-009` | Formatieren eines Quelltexts liefert deterministisches Ergebnis.                 | `PF-IDE-012`                                           |
 | `TC-IDE-010` | Aktion "Kompilieren und Ausfuehren" durchlaeuft beide Schritte erfolgreich.      | `PF-IDE-013`                                           |
-| `TC-IDE-011` | Schritt-Debugging aktualisiert pro Step Register (`P`, `B`, `T`) und Stack.      | `PF-IDE-014`                                           |
-| `TC-IDE-012` | Hilfe und integrierte Dokumentation sind ueber die IDE aufrufbar.                | `PF-IDE-015`, `PF-IDE-016`                             |
+| `TC-IDE-011` | Schritt-Debugging aktualisiert pro Step Register (`P`, `B`, `T`) und Stack; der aktuelle Ausfuehrungspunkt ist im P-Code ueber `P` sichtbar. | `PF-IDE-014` |
+| `TC-IDE-012` | Hilfe zur IDE-Bedienung, Hilfe zur Sprache PL/0 und integrierte Dokumentation sind ueber die IDE aufrufbar. | `PF-IDE-015`, `PF-IDE-016` |
 | `TC-IDE-013` | Gesamte IDE-Test-Suite laeuft erfolgreich mit `dotnet test`.                     | `PF-IDE-017`                                           |
 
 Hinweise zur Umsetzung:
