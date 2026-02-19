@@ -18,4 +18,48 @@
 - Die IDE soll angelehnt sein an die Turbo Pascal IDE für DOS
 - Die IDE soll eine Hilfe-Funktion haben, die die Benutzer bei der Entwicklung unterstützt.
 - Die IDE soll eine integrierte Dokumentation haben, die die Benutzer bei der Entwicklung unterstützt.
-- 
+
+## Beispiel: Agentic-AI-Dialog (für Fachinformatiker-Auszubildende)
+
+Dieser Abschnitt dokumentiert unseren Dialog als praxisnahes Beispiel für
+iterative Anforderungsarbeit mit Agentic AI.
+
+### Dialogverlauf (chronologisch, inhaltlich vollständig)
+
+1. Benutzer: Bitte ein Pflichtenheft `Pflichtenheft_IDE.md` zum Lastenheft erstellen.
+2. Agent: Lastenheft analysiert, bestehende Pflichtenheft-Struktur im Repository als Vorlage genutzt und neues Pflichtenheft erstellt.
+3. Benutzer: Bitte Tests als Pflicht ergänzen.
+4. Agent: Testanforderung in funktionale Anforderungen, Abnahmekriterien und Liefergegenstände aufgenommen.
+5. Benutzer: Bitte konkrete Testfall-IDs (`TC-IDE-001` ff.) mit Zuordnung ergänzen.
+6. Agent: Traceability-Matrix mit Testfall-IDs und Zuordnung auf `PF-IDE-*` ergänzt.
+7. Benutzer: Nachfrage, ob das Pflichtenheft verständlich ist.
+8. Agent: Verständnis bestätigt, keine offenen Fragen.
+9. Benutzer: Hinweis, dass später selbst gelesen wird.
+10. Agent: Bereitschaft für weitere Änderungen signalisiert.
+11. Benutzer: Bitte prüfen, ob eigene Ergänzungen in Abschnitt 5.1 konsistent sind; bei Bedarf anpassen.
+12. Agent: Konsistenzprüfung durchgeführt und Abnahmekriterien/Testfälle an die neuen 5.1-Details angepasst.
+13. Benutzer: Compiler-Steuerung aus `src/Pl0.Core/CompilerOptions.cs` soll per Einstellungsdialog konfigurierbar sein; sinnvolle Wertebereiche vorschlagen.
+14. Agent: Optionen analysiert und Wertebereiche als neue Anforderung ergänzt, inkl. AK/TC.
+15. Benutzer: `MaxNumberDigits` soll von `Dialect` abhängen (10 technisch, 14 historisch).
+16. Agent: Regel umgesetzt: `Classic=14`, `Extended=10`; freie Eingabe für `MaxNumberDigits` entfernt; AK/TC angepasst.
+17. Benutzer: Bitte dieselbe Regel auch im Prozessablauf sichtbar machen.
+18. Agent: Prozessablauf um expliziten Dialekt-/`MaxNumberDigits`-Schritt erweitert.
+19. Benutzer: Zusätzlich P-Code-Speicherung in mnemonischer Form oder Maschinencode; Orientierung an `CompilerCliOptions.cs` und `EmitMode.cs`; Vorschlag gewünscht.
+20. Agent: Vorschlag gemacht (Exportdialog mit `Asm`/`Cod`, Nutzung `PCodeSerializer`, klare UX/Teststrategie).
+21. Benutzer: Für `Cod` nur Endung `.cod`; bitte direkt als Anforderungen/AK/TC eintragen.
+22. Agent: `PF-IDE-021` + `AK-015` + `TC-IDE-015` ergänzt; Prozessablauf erweitert.
+23. Benutzer: Kann-Optionen aus Abschnitt 5.2 sollen Pflicht in 5.1 werden.
+24. Agent: `PF-IDE-019` und `PF-IDE-020` nach 5.1 verschoben; 5.2 entfernt; passende AK/TC ergänzt.
+25. Benutzer: Hilfe-Menüpunkt für Web-Hilfe aus `_site` via Kestrel, mit Start/Stop-Toggle, URL-Hinweisdialog und ohne UI-Glitches; Orientierung an `--api` aus `src/Pl0.Cli`.
+26. Agent: `PF-IDE-022` ergänzt, inklusive Toggle-Verhalten, Fehlerdialoge, Log-Isolation, `NF-007`, zusätzliche AK/TC.
+27. Benutzer: Konkrete Portvorgabe ergänzen: `localhost:5000` mit Fallback bei Belegung.
+28. Agent: Portregel ergänzt: Standard `5000`, Fallback `5001..5099`, sonst Fehlerdialog; `AK-020` und `TC-IDE-021` ergänzt.
+29. Benutzer: Bitte gesamten Dialog als Beispielabschnitt in `Lastenheft_IDE.md` aufnehmen.
+30. Agent: Dieser Abschnitt wurde eingefügt.
+
+### Didaktischer Nutzen
+
+- Zeigt, wie Anforderungen iterativ präzisiert werden.
+- Zeigt die Kopplung von Anforderungen, Abnahmekriterien und Testfällen (Traceability).
+- Zeigt, wie technische Randbedingungen früh als verbindliche Regeln dokumentiert werden.
+- Zeigt, wie Agentic AI als Co-Engineer arbeitet: analysieren, anpassen, verifizieren, nachziehen.
