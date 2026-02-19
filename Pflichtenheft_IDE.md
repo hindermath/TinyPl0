@@ -104,9 +104,37 @@ Die bestehenden Abhaengigkeitsregeln der vorhandenen Module bleiben unveraendert
       P-Code-Anzeige, Ausfuehren sowie Schritt-Debugging mit Register-/Stackaktualisierung.
     - Die Tests sind in `dotnet test` integriert und laufen reproduzierbar.
 
+18. `PF-IDE-018` Compiler-Einstellungsdialog:
+    - Die Compiler-Steuerung aus `src/Pl0.Core/CompilerOptions.cs` ist in der IDE ueber einen Einstellungsdialog konfigurierbar.
+    - Konfigurierbar sind mindestens:
+      - `Dialect`
+      - `MaxLevel`
+      - `MaxAddress`
+      - `MaxIdentifierLength`
+      - `MaxSymbolCount`
+      - `MaxCodeLength`
+      - `MaxNumberDigits` (abhaengig von `Dialect`, nicht frei editierbar)
+    - Vorgeschlagene Wertebereiche fuer den Dialog:
+
+      | Option | Typ | Vorgeschlagener Bereich | Default |
+      |---|---|---|---|
+      | `Dialect` | Auswahl | `Classic`, `Extended` | `Extended` |
+      | `MaxLevel` | Ganzzahl | `0..10` (Schrittweite `1`) | `3` |
+      | `MaxAddress` | Ganzzahl | `127..32767` (Schrittweite `1`) | `2047` |
+      | `MaxIdentifierLength` | Ganzzahl | `1..32` (Schrittweite `1`) | `10` |
+      | `MaxNumberDigits` | Ganzzahl (abgeleitet) | `10` oder `14` abhaengig von `Dialect` | `14` bei `Classic`, `10` bei `Extended` |
+      | `MaxSymbolCount` | Ganzzahl | `10..5000` (Schrittweite `10`) | `100` |
+      | `MaxCodeLength` | Ganzzahl | `50..10000` (Schrittweite `50`) | `200` |
+
+    - Werte ausserhalb des Bereichs werden im Dialog validiert und nicht uebernommen.
+    - Sonderregel `MaxNumberDigits`:
+      - Bei `Dialect = Classic` wird `MaxNumberDigits = 14` gesetzt (historische Kompatibilitaet).
+      - Bei `Dialect = Extended` wird `MaxNumberDigits = 10` gesetzt (technisch passend zu `int`).
+    - Geaenderte Werte werden fuer den naechsten Kompiliervorgang verwendet.
+
 ### 5.2 Kann-Anforderungen (optional)
-- `PF-IDE-018` Tastatur-Shortcuts analog klassischer IDE-Muster (z. B. Build, Run, Step).
-- `PF-IDE-019` Persistenz der zuletzt geoeffneten Datei und Fenstergroessen.
+- `PF-IDE-019` Tastatur-Shortcuts analog klassischer IDE-Muster (z. B. Build, Run, Step).
+- `PF-IDE-020` Persistenz der zuletzt geoeffneten Datei und Fenstergroessen.
 
 ## 6. Nicht-funktionale Anforderungen
 - `NF-001` Stabilitaet: Fehler im Quelltext duerfen nicht zum Absturz der IDE fuehren.
@@ -140,6 +168,7 @@ Die bestehenden Abhaengigkeitsregeln der vorhandenen Module bleiben unveraendert
 - `AK-011`: Schritt-Debugging zeigt pro Schritt Register- und Stackzustand; der aktuelle Ausfuehrungspunkt ist ueber den Instruktionszeiger (`P`) im P-Code nachvollziehbar.
 - `AK-012`: Hilfe zur IDE-Bedienung, Hilfe zur Sprache PL/0 und integrierte Dokumentation sind aus der IDE heraus aufrufbar.
 - `AK-013`: Automatisierte IDE-Tests (xUnit) sind vorhanden und mit `dotnet test` erfolgreich ausfuehrbar.
+- `AK-014`: Ein Einstellungsdialog erlaubt das Setzen aller `CompilerOptions`-Werte innerhalb der definierten Bereiche; `MaxNumberDigits` wird dabei regelbasiert aus `Dialect` auf `10` oder `14` gesetzt. Die Werte werden beim naechsten Kompilieren wirksam.
 
 ## 9. Testfaelle und Anforderungszuordnung
 
@@ -160,6 +189,7 @@ Die folgenden Testfaelle sind als automatisierte xUnit-Tests umzusetzen.
 | `TC-IDE-011` | Schritt-Debugging aktualisiert pro Step Register (`P`, `B`, `T`) und Stack; der aktuelle Ausfuehrungspunkt ist im P-Code ueber `P` sichtbar. | `PF-IDE-014` |
 | `TC-IDE-012` | Hilfe zur IDE-Bedienung, Hilfe zur Sprache PL/0 und integrierte Dokumentation sind ueber die IDE aufrufbar. | `PF-IDE-015`, `PF-IDE-016` |
 | `TC-IDE-013` | Gesamte IDE-Test-Suite laeuft erfolgreich mit `dotnet test`.                     | `PF-IDE-017`                                           |
+| `TC-IDE-014` | Einstellungsdialog validiert Wertebereiche fuer `CompilerOptions`, setzt `MaxNumberDigits` dialektabhaengig (`Classic=14`, `Extended=10`) und uebergibt die gesetzten Werte an den naechsten Kompiliervorgang. | `PF-IDE-018` |
 
 Hinweise zur Umsetzung:
 - Tests mit UI-Bezug sollen ueber testbare ViewModel-/Controller-Logik und Adapter abstrahiert werden.
