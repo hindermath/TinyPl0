@@ -149,6 +149,17 @@ Die bestehenden Abhaengigkeitsregeln der vorhandenen Module bleiben unveraendert
     - Fuer `Cod` wird ausschliesslich die Dateiendung `.cod` verwendet.
     - Der Export ist nur nach erfolgreicher Kompilierung moeglich.
 
+22. `PF-IDE-022` Web-Hilfe ueber Kestrel (Hilfe-Menue):
+    - Im Hilfe-Bereich der IDE gibt es einen Menuepunkt zum Starten/Stoppen der Web-Hilfe aus dem Ordner `_site`.
+    - Die Umsetzung orientiert sich am vorhandenen `--api`-Verhalten in `src/Pl0.Cli`.
+    - Der Menuepunkt arbeitet als Toggle:
+      - erster Aufruf startet den Kestrel-Webserver,
+      - naechster Aufruf stoppt den laufenden Kestrel-Webserver wieder.
+    - Nach dem Start zeigt die IDE einen Hinweis-Dialog mit der konkreten URL, unter der die Hilfe erreichbar ist.
+    - Der Server ist auf `localhost` gebunden; die angezeigte URL muss dem tatsaechlich verwendeten Endpoint entsprechen.
+    - Falls `_site` nicht vorhanden ist oder der Start fehlschlaegt, zeigt die IDE eine klare Fehlermeldung im Dialog.
+    - Kestrel-Konsolenausgaben duerfen die IDE-Ansicht nicht stoeren (keine UI-Glitches durch direkte Ausgabe auf das IDE-Terminal).
+
 ## 6. Nicht-funktionale Anforderungen
 - `NF-001` Stabilitaet: Fehler im Quelltext duerfen nicht zum Absturz der IDE fuehren.
 - `NF-002` Diagnostikmodell: Compilerfehler werden als Diagnosen angezeigt, nicht per ungefangener Exception.
@@ -156,6 +167,7 @@ Die bestehenden Abhaengigkeitsregeln der vorhandenen Module bleiben unveraendert
 - `NF-004` Performance: Interaktive Reaktion bei Standardbeispielen ohne merkliche Verzoegerung.
 - `NF-005` Wartbarkeit: Klare Trennung von UI, Compiler-/VM-Adapter und Anwendungslogik.
 - `NF-006` Didaktik: Oberflaeche und Meldungen sind fuer Lernende nachvollziehbar formuliert.
+- `NF-007` Hintergrunddienste wie der Hilfe-Webserver laufen ohne stoerende Konsolenausgaben in der IDE-Ansicht.
 
 ## 7. Bedien- und Prozessablauf (Soll)
 1. Benutzer erstellt/oeffnet eine `.pl0`-Datei im Editorfenster.
@@ -167,7 +179,8 @@ Die bestehenden Abhaengigkeitsregeln der vorhandenen Module bleiben unveraendert
    - Ausfuehren (Gesamtlauf), oder
    - Debuggen (Schrittbetrieb mit Register-/Stackanzeige).
 7. Benutzer kann den P-Code optional exportieren (`Asm` oder `Cod`; fuer `Cod` mit Dateiendung `.cod`).
-8. Ergebnisse und Meldungen bleiben nachvollziehbar einsehbar.
+8. Benutzer kann im Hilfe-Menue die Web-Hilfe aus `_site` starten/stoppen; beim Start wird die erreichbare URL im Hinweis-Dialog angezeigt.
+9. Ergebnisse und Meldungen bleiben nachvollziehbar einsehbar.
 
 ## 8. Abnahmekriterien
 - `AK-001`: `src/Pl0.Ide` ist in `TinyPl0.sln` eingebunden und baut erfolgreich.
@@ -187,6 +200,8 @@ Die bestehenden Abhaengigkeitsregeln der vorhandenen Module bleiben unveraendert
 - `AK-015`: Der P-Code-Export unterstuetzt `Asm` und `Cod`; bei `Cod` wird ausschliesslich die Dateiendung `.cod` verwendet.
 - `AK-016`: Fuer Kernfunktionen (mindestens Build, Run, Step) sind Tastatur-Shortcuts verfuegbar.
 - `AK-017`: Zuletzt geoeffnete Datei und Fenstergroessen werden ueber Neustarts hinweg wiederhergestellt.
+- `AK-018`: Ein Hilfe-Menuepunkt startet die Web-Hilfe aus `_site` per Kestrel, zeigt die konkrete URL im Hinweis-Dialog und stoppt den Server beim naechsten Aufruf.
+- `AK-019`: Kestrel-Ausgaben verursachen keine sichtbaren UI-Stoerungen in der IDE-Ansicht.
 
 ## 9. Testfaelle und Anforderungszuordnung
 
@@ -211,6 +226,9 @@ Die folgenden Testfaelle sind als automatisierte xUnit-Tests umzusetzen.
 | `TC-IDE-015` | Exportfunktion schreibt P-Code in den Modi `Asm` und `Cod`; fuer `Cod` wird ausschliesslich `.cod` akzeptiert/verwendet. | `PF-IDE-021` |
 | `TC-IDE-016` | Kernfunktionen (mindestens Build, Run, Step) sind ueber definierte Tastatur-Shortcuts ausloesbar. | `PF-IDE-019` |
 | `TC-IDE-017` | Zuletzt geoeffnete Datei und Fenstergroessen werden gespeichert und beim Neustart wiederhergestellt. | `PF-IDE-020` |
+| `TC-IDE-018` | Hilfe-Menuepunkt startet Kestrel fuer `_site`, zeigt einen Hinweis-Dialog mit der tatsaechlichen URL und stoppt den Server beim zweiten Aufruf. | `PF-IDE-022` |
+| `TC-IDE-019` | Bei fehlendem `_site` oder Startfehler wird ein Fehlerdialog angezeigt; die IDE bleibt bedienbar. | `PF-IDE-022` |
+| `TC-IDE-020` | Beim Betrieb der Web-Hilfe treten keine stoerenden Konsolenausgaben/Renderartefakte in der IDE-Ansicht auf. | `PF-IDE-022`, `NF-007` |
 
 Hinweise zur Umsetzung:
 - Tests mit UI-Bezug sollen ueber testbare ViewModel-/Controller-Logik und Adapter abstrahiert werden.
