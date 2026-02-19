@@ -146,13 +146,14 @@ Die bestehenden Abhaengigkeitsregeln der vorhandenen Module bleiben unveraendert
 
 ## 7. Bedien- und Prozessablauf (Soll)
 1. Benutzer erstellt/oeffnet eine `.pl0`-Datei im Editorfenster.
-2. Benutzer startet Kompilierung.
-3. IDE zeigt Dialogstatus und schreibt Diagnosen ins Meldungsfenster.
-4. Bei Erfolg wird P-Code im P-Code-Fenster aktualisiert.
-5. Benutzer waehlt:
+2. Benutzer oeffnet bei Bedarf den Compiler-Einstellungsdialog; bei Dialektwechsel setzt die IDE `MaxNumberDigits` automatisch (`Classic=14`, `Extended=10`).
+3. Benutzer startet Kompilierung.
+4. IDE zeigt Dialogstatus und schreibt Diagnosen ins Meldungsfenster.
+5. Bei Erfolg wird P-Code im P-Code-Fenster aktualisiert.
+6. Benutzer waehlt:
    - Ausfuehren (Gesamtlauf), oder
    - Debuggen (Schrittbetrieb mit Register-/Stackanzeige).
-6. Ergebnisse und Meldungen bleiben nachvollziehbar einsehbar.
+7. Ergebnisse und Meldungen bleiben nachvollziehbar einsehbar.
 
 ## 8. Abnahmekriterien
 - `AK-001`: `src/Pl0.Ide` ist in `TinyPl0.sln` eingebunden und baut erfolgreich.
