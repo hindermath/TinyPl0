@@ -132,6 +132,15 @@ Die bestehenden Abhaengigkeitsregeln der vorhandenen Module bleiben unveraendert
       - Bei `Dialect = Extended` wird `MaxNumberDigits = 10` gesetzt (technisch passend zu `int`).
     - Geaenderte Werte werden fuer den naechsten Kompiliervorgang verwendet.
 
+21. `PF-IDE-021` P-Code-Export (Emit-Modi):
+    - Die IDE bietet eine Exportfunktion fuer den erzeugten P-Code.
+    - Die Export-Modi orientieren sich an `src/Pl0.Cli/Cli/EmitMode.cs`:
+      - `Asm` (mnemonische Darstellung)
+      - `Cod` (numerischer Maschinen-Code)
+    - Die Exportformate orientieren sich an `src/Pl0.Cli/Cli/CompilerCliOptions.cs` und den bestehenden Core-Serialisierern.
+    - Fuer `Cod` wird ausschliesslich die Dateiendung `.cod` verwendet.
+    - Der Export ist nur nach erfolgreicher Kompilierung moeglich.
+
 ### 5.2 Kann-Anforderungen (optional)
 - `PF-IDE-019` Tastatur-Shortcuts analog klassischer IDE-Muster (z. B. Build, Run, Step).
 - `PF-IDE-020` Persistenz der zuletzt geoeffneten Datei und Fenstergroessen.
@@ -153,7 +162,8 @@ Die bestehenden Abhaengigkeitsregeln der vorhandenen Module bleiben unveraendert
 6. Benutzer waehlt:
    - Ausfuehren (Gesamtlauf), oder
    - Debuggen (Schrittbetrieb mit Register-/Stackanzeige).
-7. Ergebnisse und Meldungen bleiben nachvollziehbar einsehbar.
+7. Benutzer kann den P-Code optional exportieren (`Asm` oder `Cod`; fuer `Cod` mit Dateiendung `.cod`).
+8. Ergebnisse und Meldungen bleiben nachvollziehbar einsehbar.
 
 ## 8. Abnahmekriterien
 - `AK-001`: `src/Pl0.Ide` ist in `TinyPl0.sln` eingebunden und baut erfolgreich.
@@ -170,6 +180,7 @@ Die bestehenden Abhaengigkeitsregeln der vorhandenen Module bleiben unveraendert
 - `AK-012`: Hilfe zur IDE-Bedienung, Hilfe zur Sprache PL/0 und integrierte Dokumentation sind aus der IDE heraus aufrufbar.
 - `AK-013`: Automatisierte IDE-Tests (xUnit) sind vorhanden und mit `dotnet test` erfolgreich ausfuehrbar.
 - `AK-014`: Ein Einstellungsdialog erlaubt das Setzen aller `CompilerOptions`-Werte innerhalb der definierten Bereiche; `MaxNumberDigits` wird dabei regelbasiert aus `Dialect` auf `10` oder `14` gesetzt. Die Werte werden beim naechsten Kompilieren wirksam.
+- `AK-015`: Der P-Code-Export unterstuetzt `Asm` und `Cod`; bei `Cod` wird ausschliesslich die Dateiendung `.cod` verwendet.
 
 ## 9. Testfaelle und Anforderungszuordnung
 
@@ -191,6 +202,7 @@ Die folgenden Testfaelle sind als automatisierte xUnit-Tests umzusetzen.
 | `TC-IDE-012` | Hilfe zur IDE-Bedienung, Hilfe zur Sprache PL/0 und integrierte Dokumentation sind ueber die IDE aufrufbar. | `PF-IDE-015`, `PF-IDE-016` |
 | `TC-IDE-013` | Gesamte IDE-Test-Suite laeuft erfolgreich mit `dotnet test`.                     | `PF-IDE-017`                                           |
 | `TC-IDE-014` | Einstellungsdialog validiert Wertebereiche fuer `CompilerOptions`, setzt `MaxNumberDigits` dialektabhaengig (`Classic=14`, `Extended=10`) und uebergibt die gesetzten Werte an den naechsten Kompiliervorgang. | `PF-IDE-018` |
+| `TC-IDE-015` | Exportfunktion schreibt P-Code in den Modi `Asm` und `Cod`; fuer `Cod` wird ausschliesslich `.cod` akzeptiert/verwendet. | `PF-IDE-021` |
 
 Hinweise zur Umsetzung:
 - Tests mit UI-Bezug sollen ueber testbare ViewModel-/Controller-Logik und Adapter abstrahiert werden.
