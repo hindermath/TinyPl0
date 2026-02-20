@@ -7,6 +7,9 @@ internal static class Program
     private static int Main()
     {
         var app = CreateApplication();
+        var previousApplication = ApplicationImpl.Instance;
+
+        ApplicationImpl.ChangeInstance(app);
 
         try
         {
@@ -22,6 +25,8 @@ internal static class Program
             {
                 disposable.Dispose();
             }
+
+            ApplicationImpl.ChangeInstance(previousApplication);
         }
     }
 

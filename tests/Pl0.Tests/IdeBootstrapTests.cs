@@ -71,6 +71,47 @@ public sealed class IdeBootstrapTests
     }
 
     [Fact]
+    public void CompileSource_FromEditor_Succeeds_For_Valid_Source_And_Writes_PCode()
+    {
+        var mainView = new IdeMainView();
+        mainView.SourceEditor.Text = """
+                                     var x;
+                                     begin
+                                       x := 1
+                                     end.
+                                     """;
+
+        var result = mainView.CompileSource();
+        var pCodeText = mainView.PCodeOutput.Text?.ToString() ?? string.Empty;
+        var messagesText = mainView.MessagesOutput.Text?.ToString() ?? string.Empty;
+
+        Assert.True(result.Success);
+        Assert.Same(result, mainView.LastCompilationResult);
+        Assert.NotEmpty(pCodeText);
+        Assert.Contains("Kompilierung erfolgreich", messagesText);
+    }
+
+    [Fact]
+    public void CompileSource_FromEditor_Returns_Diagnostics_For_Invalid_Source()
+    {
+        var mainView = new IdeMainView();
+        mainView.SourceEditor.Text = """
+                                     var x;
+                                     begin
+                                       x := 1
+                                     """;
+
+        var result = mainView.CompileSource();
+        var pCodeText = mainView.PCodeOutput.Text?.ToString() ?? string.Empty;
+        var messagesText = mainView.MessagesOutput.Text?.ToString() ?? string.Empty;
+
+        Assert.False(result.Success);
+        Assert.Same(result, mainView.LastCompilationResult);
+        Assert.Empty(pCodeText);
+        Assert.Contains("E", messagesText);
+    }
+
+    [Fact]
     public void MainView_Uses_Classic_Turbo_Pascal_Menu_Structure()
     {
         var mainView = new IdeMainView();
