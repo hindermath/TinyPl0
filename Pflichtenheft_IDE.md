@@ -332,3 +332,10 @@ Hinweise zur Umsetzung:
 Annahmen:
 - Das bestehende Compiler- und VM-Verhalten bleibt fachlich unveraendert.
 - IDE-Dokumentationsinhalte koennen aus vorhandenen Repository-Dokumenten kuratiert werden.
+
+## 12. Arbeitsprotokoll (fortlaufend)
+
+Dieser Abschnitt dokumentiert ab diesem Arbeitsschritt fortlaufend den Dialogverlauf mit Datum/Uhrzeit und, falls vorhanden, der zugehoerigen Git-Commit-Referenz.
+
+1. Benutzer (2026-02-20 22:31:43 CET): Bitte nach jedem Arbeitsschritt einen Abschnitt am Ende mit Dialog, Zeitstempel und ggf. Git-Commit dokumentieren (angelehnt an `Lastenheft_IDE.md`).
+2. Agent (2026-02-20 22:31:43 CET): `Pflichtenheft_IDE.md` vollstaendig gelesen und das gewuenschte fortlaufende Protokoll im Pflichtenheft angelegt (kein separater Commit-Link).
