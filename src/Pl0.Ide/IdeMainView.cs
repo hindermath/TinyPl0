@@ -5,7 +5,7 @@ namespace Pl0.Ide;
 internal sealed class IdeMainView : Toplevel
 {
     private static readonly Action NoOp = static () => { };
-    private readonly TextView sourceEditor;
+    private readonly Pl0SourceEditorView sourceEditor;
 
     public IdeMainView()
     {
@@ -44,7 +44,7 @@ internal sealed class IdeMainView : Toplevel
         Add(editorWindow, pCodeWindow, messagesWindow);
     }
 
-    internal TextView SourceEditor => sourceEditor;
+    internal Pl0SourceEditorView SourceEditor => sourceEditor;
 
     private static MenuBar CreateMenuBar()
     {
@@ -84,17 +84,14 @@ internal sealed class IdeMainView : Toplevel
         };
     }
 
-    private static TextView CreateSourceEditor()
+    private static Pl0SourceEditorView CreateSourceEditor()
     {
-        return new TextView
+        return new Pl0SourceEditorView
         {
             X = 0,
             Y = 0,
             Width = Dim.Fill(),
-            Height = Dim.Fill(),
-            Multiline = true,
-            ReadOnly = false,
-            Text = string.Empty
+            Height = Dim.Fill()
         };
     }
 }

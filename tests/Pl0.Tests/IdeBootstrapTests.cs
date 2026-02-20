@@ -42,6 +42,35 @@ public sealed class IdeBootstrapTests
     }
 
     [Fact]
+    public void SourceEditor_Highlights_Keywords_Numbers_And_Operators()
+    {
+        var editor = new Pl0SourceEditorView
+        {
+            Text = "const x = 1;\n! x + 2."
+        };
+
+        Assert.Equal(Pl0HighlightKind.Keyword, editor.GetHighlightKindAt(0, 0)); // c in const
+        Assert.Equal(Pl0HighlightKind.Operator, editor.GetHighlightKindAt(0, 8)); // =
+        Assert.Equal(Pl0HighlightKind.Number, editor.GetHighlightKindAt(0, 10)); // 1
+        Assert.Equal(Pl0HighlightKind.Operator, editor.GetHighlightKindAt(1, 0)); // !
+        Assert.Equal(Pl0HighlightKind.Operator, editor.GetHighlightKindAt(1, 4)); // +
+        Assert.Equal(Pl0HighlightKind.Number, editor.GetHighlightKindAt(1, 6)); // 2
+    }
+
+    [Fact]
+    public void SourceEditor_Does_Not_Highlight_Identifiers_As_Keywords()
+    {
+        var editor = new Pl0SourceEditorView
+        {
+            Text = "foo := 42;"
+        };
+
+        Assert.Equal(Pl0HighlightKind.None, editor.GetHighlightKindAt(0, 0)); // f in foo
+        Assert.Equal(Pl0HighlightKind.Operator, editor.GetHighlightKindAt(0, 4)); // :
+        Assert.Equal(Pl0HighlightKind.Number, editor.GetHighlightKindAt(0, 7)); // 4
+    }
+
+    [Fact]
     public void MainView_Uses_Classic_Turbo_Pascal_Menu_Structure()
     {
         var mainView = new IdeMainView();
