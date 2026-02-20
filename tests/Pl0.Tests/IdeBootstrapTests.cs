@@ -27,6 +27,21 @@ public sealed class IdeBootstrapTests
     }
 
     [Fact]
+    public void MainView_Contains_Dedicated_Source_Code_Editor_In_Source_Window()
+    {
+        var mainView = new IdeMainView();
+        var sourceWindow = mainView
+            .Subviews
+            .OfType<Window>()
+            .Single(window => window.Title.ToString() == "Quellcode");
+
+        var sourceEditor = Assert.Single(sourceWindow.Subviews.OfType<TextView>());
+        Assert.Same(mainView.SourceEditor, sourceEditor);
+        Assert.False(sourceEditor.ReadOnly);
+        Assert.True(sourceEditor.Multiline);
+    }
+
+    [Fact]
     public void MainView_Uses_Classic_Turbo_Pascal_Menu_Structure()
     {
         var mainView = new IdeMainView();

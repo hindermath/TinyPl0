@@ -5,6 +5,7 @@ namespace Pl0.Ide;
 internal sealed class IdeMainView : Toplevel
 {
     private static readonly Action NoOp = static () => { };
+    private readonly TextView sourceEditor;
 
     public IdeMainView()
     {
@@ -19,6 +20,8 @@ internal sealed class IdeMainView : Toplevel
             Width = Dim.Percent(70),
             Height = Dim.Percent(70)
         };
+        sourceEditor = CreateSourceEditor();
+        editorWindow.Add(sourceEditor);
 
         var pCodeWindow = new Window
         {
@@ -40,6 +43,8 @@ internal sealed class IdeMainView : Toplevel
 
         Add(editorWindow, pCodeWindow, messagesWindow);
     }
+
+    internal TextView SourceEditor => sourceEditor;
 
     private static MenuBar CreateMenuBar()
     {
@@ -76,6 +81,20 @@ internal sealed class IdeMainView : Toplevel
                     new MenuItem("_PL/0-Sprache", string.Empty, NoOp, () => true, null, default)
                 ], null)
             ]
+        };
+    }
+
+    private static TextView CreateSourceEditor()
+    {
+        return new TextView
+        {
+            X = 0,
+            Y = 0,
+            Width = Dim.Fill(),
+            Height = Dim.Fill(),
+            Multiline = true,
+            ReadOnly = false,
+            Text = string.Empty
         };
     }
 }
