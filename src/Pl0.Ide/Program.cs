@@ -11,6 +11,7 @@ internal static class Program
         try
         {
             app.Init();
+            _ = IdeLookAndFeel.ApplyTurboPascalThemeIfAvailable();
             app.Run<IdeMainView>();
             return 0;
         }
