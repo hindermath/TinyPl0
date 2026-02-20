@@ -3,7 +3,7 @@
 ## Anforderungen
 
 - ein neuesProjekt 'src/Pl0.Ide' erstellen
-- die IDE soll eine GUI haben, die auf dem Nuget-Paket Terminal.GUI Version 1.9.x basiert
+- die IDE soll eine GUI haben, die auf dem Nuget-Paket Terminal.Gui Version 2.x basiert
 - die IDE soll eine Syntax-Hervorhebung haben für die Schlüsselwort der Sprache Pl0
 - der Pl0-Compiler soll in die IDE integriert sein, so dass eingegebener Quellcode direkt aus der IDE übersetzt werden kann
 - wenn die Übersetzung erfolgt, wird das in einem Dialog angezeigt.
@@ -74,6 +74,14 @@ iterative Anforderungsarbeit mit Agentic AI.
 46. Agent: 15 Verbesserungen eingearbeitet: VM-Stepping-Voraussetzung, Cli-Abhängigkeitsgrenze, IPl0Io-Implementierung, Abbruchmechanismus, Formatierungs-Mindestumfang, Reset-Funktion, Persistenz-Speicherort, Hilfe-Abgrenzung, ViewModel-Pattern, _site-Voraussetzung, Risiko-Gegenmassnahmen, Nummerierungs-Fussnote, 7 neue AK (AK-024–AK-030), 6 neue TC (TC-IDE-025–TC-IDE-030) ([PR #2](https://github.com/hindermath/TinyPl0/pull/2)).
 47. Benutzer: Terminal.Gui v2 wird offiziell für neue Projekte empfohlen — Prüfung, ob v2 besser zu den Architektur- und Testbarkeitsanforderungen passt.
 48. Agent: Recherche durchgeführt: v2 bietet instanzbasierte `IApplication` (mockbar, parallele Tests), eingebautes TurboPascal-5-Theme, 24-bit-TrueColor, FakeDriver für Headless-Tests. Empfehlung: v2 verwenden. Pflichtenheft auf v2 umgestellt (PF-IDE-002, PF-IDE-003, PF-IDE-005, NF-005, R-001, Abschnitt 4.1).
+49. Benutzer (2026-02-20 12:56:41 CET): Erneute Prüfung des aktualisierten `Pflichtenheft_IDE.md` und Rückfrage, ob noch Unklarheiten bestehen.
+50. Agent (2026-02-20 12:58:10 CET): Änderungsstand gegen frühere Commits verglichen und 4 gezielte Rückfragen gestellt (Lastenheft-Version, `_site`-Pfad, TC-Zuordnung, VM-Abbruchzustand) (kein separater Commit-Link).
+51. Benutzer (2026-02-20 12:59:02 CET): Entscheidungen getroffen: Lastenheft auf 2.x anpassen, `_site` relativ zum Executable-Verzeichnis, VM-Zustand nach Abbruch sichtbar lassen, `PF-IDE-021`-Zuordnung bleibt beabsichtigt.
+52. Agent (2026-02-20 13:00:15 CET): Entscheidungen in Lasten- und Pflichtenheft eingearbeitet (`Terminal.Gui 2.x`, `_site`-Pfadauflösung, Debug-Abbruchzustand inkl. AK/TC) ([Commit](COMMIT_B_URL)).
+53. Benutzer (2026-02-20 13:01:04 CET): Bitte direkt committen und Dialogverlauf inkl. Commit-URL sowie Datum/Uhrzeit ergänzen.
+54. Agent (2026-02-20 13:02:20 CET): Änderungen committet, gepusht und Dialogverlauf mit Zeitstempeln nachgezogen ([Commit](COMMIT_C_URL)).
+
+**Zeitliche Einordnung (heutige Nachtragsrunde):** Start `2026-02-20 12:56:41 CET`, Ende `2026-02-20 13:02:20 CET`, Dauer ca. `6 Minuten`.
 
 ### Didaktischer Nutzen
 

@@ -142,6 +142,7 @@ Die bestehenden Abhaengigkeitsregeln der vorhandenen Module bleiben unveraendert
     - Nach jedem Schritt werden Stack und Register (`P`, `B`, `T`) aktualisiert angezeigt.
     - Voraussetzung: Die VM in `Pl0.Vm` muss um eine Schritt-Ausfuehrungsschnittstelle erweitert werden (z. B. `Step()`-Methode oder `IVmObserver`-Callback). Die aktuelle `VirtualMachine.Run()` laeuft atomar bis zum Ende; fuer Schritt-Debugging muss der VM-Zustand (`P`, `B`, `T`, Stack) zwischen Einzelschritten zugaenglich sein. Diese Erweiterung ist als eigene Teilaufgabe zu planen.
     - Die IDE bietet eine Moeglichkeit, eine laufende P-Code-Ausfuehrung abzubrechen (z. B. ueber Tastatur-Shortcut oder Schaltflaeche), um auch bei Endlosschleifen bedienbar zu bleiben.
+    - Nach einem Abbruch bleibt der letzte VM-Zustand (`P`, `B`, `T`, Stack) zur Analyse in der Debug-Ansicht sichtbar.
 
 17. `PF-IDE-015` Hilfe:
     - Eine Hilfe-Funktion mit Bedienhinweisen der IDE ist in der IDE verfuegbar (z. B. Tastaturbelegung, Menuefunktionen, Kurzanleitung).
@@ -194,6 +195,7 @@ Die bestehenden Abhaengigkeitsregeln der vorhandenen Module bleiben unveraendert
       - Fallback: Falls Port `5000` belegt ist, wird automatisch der naechste freie Port im Bereich `5001..5099` verwendet.
       - Falls kein Port im Fallback-Bereich verfuegbar ist, wird ein Fehlerdialog angezeigt und kein Webserver gestartet.
     - Voraussetzung: Der Ordner `_site` muss vor Nutzung der Web-Hilfe durch `docfx build` erzeugt worden sein. Er wird nicht im Repository versioniert.
+    - Pfadauflösung: `_site` wird relativ zum Executable-Verzeichnis der IDE aufgeloest (analog zum bestehenden CLI-Verhalten), da die statischen Inhalte beim Build/Publish dorthin kopiert werden.
     - Falls `_site` nicht vorhanden ist oder der Start fehlschlaegt, zeigt die IDE eine klare Fehlermeldung im Dialog mit dem Hinweis, dass `docfx build` ausgefuehrt werden muss.
     - Kestrel-Konsolenausgaben duerfen die IDE-Ansicht nicht stoeren (keine UI-Glitches durch direkte Ausgabe auf das IDE-Terminal).
 
@@ -262,10 +264,10 @@ Die bestehenden Abhaengigkeitsregeln der vorhandenen Module bleiben unveraendert
 - `AK-023`: Die integrierte Dokumentation startet standardmaessig mit `docs/LANGUAGE_EBNF.md`; falls nicht verfuegbar, wird gemaess definierter Priorisierung auf die naechste verfuegbare Quelle gewechselt.
 - `AK-024`: Die `ArchitectureGuardTests` validieren, dass `Pl0.Ide` ausschliesslich von `Pl0.Core`, `Pl0.Vm` und `Terminal.Gui` abhaengt — nicht von `Pl0.Cli`.
 - `AK-025`: Die IDE stellt eine eigene `IPl0Io`-Implementierung bereit; Laufzeiteingaben (`?`) werden ueber einen Eingabedialog erfasst, Ausgaben (`!`) im Ausgabefenster dargestellt.
-- `AK-026`: Eine laufende P-Code-Ausfuehrung kann aus der IDE heraus abgebrochen werden (z. B. ueber Shortcut oder Schaltflaeche).
+- `AK-026`: Eine laufende P-Code-Ausfuehrung kann aus der IDE heraus abgebrochen werden (z. B. ueber Shortcut oder Schaltflaeche); der letzte VM-Zustand bleibt danach zur Analyse sichtbar.
 - `AK-027`: Der Einstellungsdialog bietet eine Funktion zum Zuruecksetzen aller Werte auf `CompilerOptions.Default`.
 - `AK-028`: Die Quelltextformatierung ist idempotent und deckt mindestens Einrueckung, Operator-Spacing und Zeilenumbrueche ab.
-- `AK-029`: Bei fehlendem `_site` zeigt die IDE einen Hinweisdialog mit dem Verweis auf `docfx build`.
+- `AK-029`: Bei fehlendem `_site` (relativ zum Executable-Verzeichnis) zeigt die IDE einen Hinweisdialog mit dem Verweis auf `docfx build`.
 - `AK-030`: Persistenz-Einstellungen werden als JSON-Datei im plattformspezifischen Benutzerverzeichnis gespeichert; bei fehlender Datei startet die IDE mit Standardwerten.
 
 ## 9. Testfaelle und Anforderungszuordnung
@@ -292,7 +294,7 @@ Die folgenden Testfaelle sind als automatisierte xUnit-Tests umzusetzen.
 | `TC-IDE-016` | Kernfunktionen (mindestens Build, Run, Step) sind ueber definierte Tastatur-Shortcuts ausloesbar.                                                                                                              | `PF-IDE-019`                                           |
 | `TC-IDE-017` | Zuletzt geoeffnete Datei und Fenstergroessen werden gespeichert und beim Neustart wiederhergestellt.                                                                                                           | `PF-IDE-020`                                           |
 | `TC-IDE-018` | Hilfe-Menuepunkt startet Kestrel fuer `_site`, zeigt einen Hinweis-Dialog mit der tatsaechlichen URL und stoppt den Server beim zweiten Aufruf.                                                                | `PF-IDE-022`                                           |
-| `TC-IDE-019` | Bei fehlendem `_site` oder Startfehler wird ein Fehlerdialog angezeigt; die IDE bleibt bedienbar.                                                                                                              | `PF-IDE-022`                                           |
+| `TC-IDE-019` | Bei fehlendem `_site` (relativ zum Executable-Verzeichnis) oder Startfehler wird ein Fehlerdialog angezeigt; die IDE bleibt bedienbar.                                                                          | `PF-IDE-022`                                           |
 | `TC-IDE-020` | Beim Betrieb der Web-Hilfe treten keine stoerenden Konsolenausgaben/Renderartefakte in der IDE-Ansicht auf. *(Halbautomatisch: pruefbar durch Verifikation, dass `Console.Out`/`Console.Error` waehrend des Serverbetriebs ueber Log-Isolation umgeleitet werden; visuelle Pruefung ergaenzend manuell.)* | `PF-IDE-022`, `NF-007`                                 |
 | `TC-IDE-021` | Ist `localhost:5000` belegt, startet die Web-Hilfe automatisch auf dem naechsten freien Port im Bereich `5001..5099`, und der Hinweis-Dialog zeigt die tatsaechlich verwendete URL.                            | `PF-IDE-022`                                           |
 | `TC-IDE-022` | Integrierte Dokumentation zeigt TOC-Navigation, Inhaltsbereich und lokale Volltextsuche ueber die konfigurierten Dokuquellen; Auswahl eines Treffers oeffnet den passenden Inhalt.                             | `PF-IDE-016`                                           |
@@ -300,7 +302,7 @@ Die folgenden Testfaelle sind als automatisierte xUnit-Tests umzusetzen.
 | `TC-IDE-024` | Start der integrierten Dokumentation oeffnet `docs/LANGUAGE_EBNF.md`; bei fehlender Datei wird automatisch die naechste verfuegbare Quelle gemaess Priorisierung geoeffnet.                                      | `PF-IDE-016`                                           |
 | `TC-IDE-025` | `ArchitectureGuardTests` validieren, dass `Pl0.Ide` nur von `Pl0.Core`, `Pl0.Vm` und `Terminal.Gui` abhaengt — keine Referenz auf `Pl0.Cli`.                                                                   | `PF-IDE-001`, `PF-IDE-021`                             |
 | `TC-IDE-026` | Laufzeiteingaben (`?`) werden ueber einen IDE-Eingabedialog erfasst; Ausgaben (`!`) erscheinen im Ausgabefenster. Die konsolenbasierte `ConsolePl0Io` wird nicht verwendet.                                     | `PF-IDE-010`                                           |
-| `TC-IDE-027` | Eine laufende P-Code-Ausfuehrung (inkl. Endlosschleife) kann ueber Shortcut oder Schaltflaeche abgebrochen werden; die IDE bleibt danach bedienbar.                                                             | `PF-IDE-014`                                           |
+| `TC-IDE-027` | Eine laufende P-Code-Ausfuehrung (inkl. Endlosschleife) kann ueber Shortcut oder Schaltflaeche abgebrochen werden; die IDE bleibt danach bedienbar und der letzte VM-Zustand bleibt in der Debug-Ansicht sichtbar. | `PF-IDE-014`                                           |
 | `TC-IDE-028` | Der Einstellungsdialog setzt alle Werte bei Klick auf Zuruecksetzen auf `CompilerOptions.Default` zurueck.                                                                                                       | `PF-IDE-018`                                           |
 | `TC-IDE-029` | Die Quelltextformatierung ist idempotent: zweimaliges Anwenden auf denselben Quelltext liefert identisches Ergebnis. Einrueckung, Spacing und Zeilenumbrueche werden normalisiert.                                | `PF-IDE-012`                                           |
 | `TC-IDE-030` | Persistenz-Einstellungen werden im plattformspezifischen Benutzerverzeichnis als JSON-Datei gespeichert und beim Neustart korrekt geladen; bei fehlender Datei startet die IDE mit Standardwerten.               | `PF-IDE-020`                                           |
