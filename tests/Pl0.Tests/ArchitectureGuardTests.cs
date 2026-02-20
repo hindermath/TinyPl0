@@ -5,6 +5,13 @@ namespace Pl0.Tests;
 public sealed class ArchitectureGuardTests
 {
     [Fact]
+    public void Solution_Contains_Pl0_Ide_Project()
+    {
+        var solutionContent = File.ReadAllText(Path.Combine(FindRepoRoot(), "TinyPl0.sln"));
+        Assert.Contains("\"Pl0.Ide\", \"src\\Pl0.Ide\\Pl0.Ide.csproj\"", solutionContent);
+    }
+
+    [Fact]
     public void Project_Reference_Graph_Matches_Architecture_Rules()
     {
         var expectedReferences = new Dictionary<string, string[]>(StringComparer.Ordinal)
@@ -12,6 +19,7 @@ public sealed class ArchitectureGuardTests
             ["Pl0.Core.csproj"] = [],
             ["Pl0.Vm.csproj"] = ["Pl0.Core.csproj"],
             ["Pl0.Cli.csproj"] = ["Pl0.Core.csproj", "Pl0.Vm.csproj"],
+            ["Pl0.Ide.csproj"] = ["Pl0.Core.csproj", "Pl0.Vm.csproj"],
             ["Pl0.Tests.csproj"] = ["Pl0.Cli.csproj", "Pl0.Core.csproj", "Pl0.Vm.csproj"],
         };
 
@@ -25,6 +33,14 @@ public sealed class ArchitectureGuardTests
             var actualTargets = ReadProjectReferences(projectFiles[projectName]);
             Assert.Equal(expectedTargets, actualTargets);
         }
+    }
+
+    [Fact]
+    public void Pl0_Ide_Package_References_Match_Architecture_Rules()
+    {
+        var projectFiles = FindProjectFiles();
+        var packageReferences = ReadPackageReferences(projectFiles["Pl0.Ide.csproj"]);
+        Assert.Equal(["Terminal.Gui"], packageReferences);
     }
 
     private static IReadOnlyDictionary<string, string> FindProjectFiles()
@@ -48,6 +64,19 @@ public sealed class ArchitectureGuardTests
             .Select(node => node.Attribute("Include")?.Value)
             .Where(include => !string.IsNullOrWhiteSpace(include))
             .Select(include => Path.GetFileName(include!.Replace('\\', '/')))
+            .OrderBy(name => name, StringComparer.Ordinal)
+            .ToArray();
+    }
+
+    private static string[] ReadPackageReferences(string projectPath)
+    {
+        var document = XDocument.Load(projectPath);
+        return document
+            .Descendants()
+            .Where(node => node.Name.LocalName == "PackageReference")
+            .Select(node => node.Attribute("Include")?.Value)
+            .Where(include => !string.IsNullOrWhiteSpace(include))
+            .Select(include => include!)
             .OrderBy(name => name, StringComparer.Ordinal)
             .ToArray();
     }

@@ -339,3 +339,5 @@ Dieser Abschnitt dokumentiert ab diesem Arbeitsschritt fortlaufend den Dialogver
 
 1. Benutzer (2026-02-20 22:31:43 CET): Bitte nach jedem Arbeitsschritt einen Abschnitt am Ende mit Dialog, Zeitstempel und ggf. Git-Commit dokumentieren (angelehnt an `Lastenheft_IDE.md`).
 2. Agent (2026-02-20 22:31:43 CET): `Pflichtenheft_IDE.md` vollstaendig gelesen und das gewuenschte fortlaufende Protokoll im Pflichtenheft angelegt (kein separater Commit-Link).
+3. Benutzer (2026-02-20 22:37:32 CET): Abschnitt 5.1 Nr. 1 umsetzen und dabei die Abnahmekriterien (Abschnitt 8) sowie Testzuordnung (Abschnitt 9) beruecksichtigen.
+4. Agent (2026-02-20 22:37:32 CET): `PF-IDE-001` umgesetzt: neues Projekt `src/Pl0.Ide` erstellt, in `TinyPl0.sln` eingebunden, `ArchitectureGuardTests` fuer `Pl0.Ide`-Projekt- und Paketabhaengigkeiten erweitert, Build sowie Architekturtests erfolgreich ausgefuehrt (kein separater Commit-Link).
