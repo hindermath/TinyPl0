@@ -56,6 +56,14 @@ iterative Anforderungsarbeit mit Agentic AI.
 28. Agent: Portregel ergänzt: Standard `5000`, Fallback `5001..5099`, sonst Fehlerdialog; `AK-020` und `TC-IDE-021` ergänzt.
 29. Benutzer: Bitte gesamten Dialog als Beispielabschnitt in `Lastenheft_IDE.md` aufnehmen.
 30. Agent: Dieser Abschnitt wurde eingefügt.
+31. Benutzer: Bitte für `PF-IDE-016` („Integrierte Dokumentation“) einen detaillierten Vorschlag machen.
+32. Agent: Detaillierten Vorschlag geliefert (interne Dokuansicht, TOC, Suche, Offline-Nutzung, F1-Kontext, Abgrenzung zu Web-Hilfe).
+33. Benutzer: Bitte direkt als ersetzbaren Textblock für Abschnitt 5.1 plus passende AK-/TC-Ergänzungen formulieren.
+34. Agent: `PF-IDE-016` detailliert in `Pflichtenheft_IDE.md` ersetzt und passende Abnahmekriterien sowie Testfälle ergänzt.
+35. Benutzer: Zuerst den Vorschlag für Priorisierung der Dokuquellen zeigen.
+36. Agent: Priorisierungs-Vorschlag gezeigt (hoch/mittel/ergänzend, Startseite, Fallback-Regel).
+37. Benutzer: Bitte diesen Vorschlag direkt in `Pflichtenheft_IDE.md` eintragen.
+38. Agent: Priorisierung der Dokuquellen in `PF-IDE-016` eingetragen und um `AK-023` sowie `TC-IDE-024` ergänzt.
 
 ### Didaktischer Nutzen
 
