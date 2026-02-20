@@ -61,41 +61,78 @@ Die bestehenden Abhaengigkeitsregeln der vorhandenen Module bleiben unveraendert
    - Der Farbstil richtet sich nach den Konventionen von Turbo-Pascal.
    - Auch Zahlen, Operatoren werden entsprechend formatiert.
 
-6. `PF-IDE-006` Kompilierung:
-   - Quellcode kann direkt aus der IDE ueber `Pl0.Core` kompiliert werden.
-
-7. `PF-IDE-007` Kompilierdialog:
-   - Nach Kompilierung wird ein Dialog mit Ergebnisstatus angezeigt (Erfolg/Fehler).
-
-8. `PF-IDE-008` Fehleranzeige:
-   - Compilerdiagnosen werden gesammelt und in einem Meldungsfenster angezeigt.
-
-9. `PF-IDE-009` P-Code-Fenster:
-   - Der erzeugte P-Code wird in einem separaten Fenster dargestellt.
-
-10. `PF-IDE-010` P-Code-Ausfuehrung:
-    - Der erzeugte P-Code kann aus der IDE heraus ueber `Pl0.Vm` ausgefuehrt werden.
-    - Laufzeitausgaben werden sichtbar dargestellt.
-
-11. `PF-IDE-011` Dateioperationen:
+6. `PF-IDE-011` Dateioperationen:
     - Quellcode kann gespeichert und geladen werden.
     - Dazu werden die Standard-Dialoge von Terminal.GUI genutzt.
 
-12. `PF-IDE-012` Quelltextformatierung:
+7. `PF-IDE-012` Quelltextformatierung:
     - Eine Funktion zur Formatierung des PL/0-Quellcodes ist vorhanden.
 
-13. `PF-IDE-013` Kombi-Aktion:
+8. `PF-IDE-018` Compiler-Einstellungsdialog:
+    - Die Compiler-Steuerung aus `src/Pl0.Core/CompilerOptions.cs` ist in der IDE ueber einen Einstellungsdialog konfigurierbar.
+    - Konfigurierbar sind mindestens:
+      - `Dialect`
+      - `MaxLevel`
+      - `MaxAddress`
+      - `MaxIdentifierLength`
+      - `MaxSymbolCount`
+      - `MaxCodeLength`
+      - `MaxNumberDigits` (abhaengig von `Dialect`, nicht frei editierbar)
+    - Vorgeschlagene Wertebereiche fuer den Dialog:
+
+      | Option                | Typ                   | Vorgeschlagener Bereich                | Default                                 |
+      |-----------------------|-----------------------|----------------------------------------|-----------------------------------------|
+      | `Dialect`             | Auswahl               | `Classic`, `Extended`                  | `Extended`                              |
+      | `MaxLevel`            | Ganzzahl              | `0..10` (Schrittweite `1`)             | `3`                                     |
+      | `MaxAddress`          | Ganzzahl              | `127..32767` (Schrittweite `1`)        | `2047`                                  |
+      | `MaxIdentifierLength` | Ganzzahl              | `1..32` (Schrittweite `1`)             | `10`                                    |
+      | `MaxNumberDigits`     | Ganzzahl (abgeleitet) | `10` oder `14` abhaengig von `Dialect` | `14` bei `Classic`, `10` bei `Extended` |
+      | `MaxSymbolCount`      | Ganzzahl              | `10..5000` (Schrittweite `10`)         | `100`                                   |
+      | `MaxCodeLength`       | Ganzzahl              | `50..10000` (Schrittweite `50`)        | `200`                                   |
+
+    - Werte ausserhalb des Bereichs werden im Dialog validiert und nicht uebernommen.
+    - Sonderregel `MaxNumberDigits`:
+      - Bei `Dialect = Classic` wird `MaxNumberDigits = 14` gesetzt (historische Kompatibilitaet).
+      - Bei `Dialect = Extended` wird `MaxNumberDigits = 10` gesetzt (technisch passend zu `int`).
+    - Geaenderte Werte werden fuer den naechsten Kompiliervorgang verwendet.
+
+9. `PF-IDE-006` Kompilierung:
+   - Quellcode kann direkt aus der IDE ueber `Pl0.Core` kompiliert werden.
+
+10. `PF-IDE-007` Kompilierdialog:
+    - Nach Kompilierung wird ein Dialog mit Ergebnisstatus angezeigt (Erfolg/Fehler).
+
+11. `PF-IDE-008` Fehleranzeige:
+    - Compilerdiagnosen werden gesammelt und in einem Meldungsfenster angezeigt.
+
+12. `PF-IDE-009` P-Code-Fenster:
+    - Der erzeugte P-Code wird in einem separaten Fenster dargestellt.
+
+13. `PF-IDE-021` P-Code-Export (Emit-Modi):
+    - Die IDE bietet eine Exportfunktion fuer den erzeugten P-Code.
+    - Die Export-Modi orientieren sich an `src/Pl0.Cli/Cli/EmitMode.cs`:
+      - `Asm` (mnemonische Darstellung)
+      - `Cod` (numerischer Maschinen-Code)
+    - Die Exportformate orientieren sich an `src/Pl0.Cli/Cli/CompilerCliOptions.cs` und den bestehenden Core-Serialisierern.
+    - Fuer `Cod` wird ausschliesslich die Dateiendung `.cod` verwendet.
+    - Der Export ist nur nach erfolgreicher Kompilierung moeglich.
+
+14. `PF-IDE-010` P-Code-Ausfuehrung:
+    - Der erzeugte P-Code kann aus der IDE heraus ueber `Pl0.Vm` ausgefuehrt werden.
+    - Laufzeitausgaben werden sichtbar dargestellt.
+
+15. `PF-IDE-013` Kombi-Aktion:
     - Eine Aktion "Kompilieren und Ausfuehren" ist vorhanden. Auch hier Orientierung an der Turbo Pascal IDE für DOS.
 
-14. `PF-IDE-014` Debugging:
+16. `PF-IDE-014` Debugging:
     - Schrittweise P-Code-Ausfuehrung (Step) ist moeglich. Hierbei wird der Instruktion-Pointer (`P`) aktualisiert und auch sichtbar im Inhalt des Stacks nachvollziehbar gezeigt, wo im P-Code der aktuelle Ausführungspunkt liegt.
-    - Nach jedem Schritt werden Stack und Register (`P`, `B`, `T`) aktualisiert angezeigt. 
+    - Nach jedem Schritt werden Stack und Register (`P`, `B`, `T`) aktualisiert angezeigt.
 
-15. `PF-IDE-015` Hilfe:
+17. `PF-IDE-015` Hilfe:
     - Eine Hilfe-Funktion mit Bedienhinweisen der IDE ist in der IDE verfuegbar.
     - Eine Hilfe-Funktion für die Sprache PL0 ist in der IDE verfuegbar.
 
-16. `PF-IDE-016` Integrierte Dokumentation:
+18. `PF-IDE-016` Integrierte Dokumentation:
     - Die integrierte Dokumentation ist direkt in der IDE nutzbar, ohne externen Browser.
     - Aufruf ueber den Menuepunkt `Hilfe -> Integrierte Dokumentation`.
     - Die Ansicht besteht mindestens aus:
@@ -128,58 +165,7 @@ Die bestehenden Abhaengigkeitsregeln der vorhandenen Module bleiben unveraendert
     - Bei fehlenden oder nicht lesbaren Dokumentationsdateien zeigt die IDE einen klaren Hinweisdialog und bleibt bedienbar.
     - Abgrenzung: `PF-IDE-016` beschreibt die interne IDE-Dokumentationsansicht; `PF-IDE-022` beschreibt den optionalen Webserver-Start fuer die Browseransicht.
 
-17. `PF-IDE-017` Testfaelle:
-    - Fuer die IDE-Funktionen werden automatisierte Tests erstellt (xUnit).
-    - Die Tests decken mindestens die Kernablaeufe ab: Laden/Speichern, Kompilieren, Diagnostikanzeige,
-      P-Code-Anzeige, Ausfuehren sowie Schritt-Debugging mit Register-/Stackaktualisierung.
-    - Die Tests sind in `dotnet test` integriert und laufen reproduzierbar.
-
-18. `PF-IDE-018` Compiler-Einstellungsdialog:
-    - Die Compiler-Steuerung aus `src/Pl0.Core/CompilerOptions.cs` ist in der IDE ueber einen Einstellungsdialog konfigurierbar.
-    - Konfigurierbar sind mindestens:
-      - `Dialect`
-      - `MaxLevel`
-      - `MaxAddress`
-      - `MaxIdentifierLength`
-      - `MaxSymbolCount`
-      - `MaxCodeLength`
-      - `MaxNumberDigits` (abhaengig von `Dialect`, nicht frei editierbar)
-    - Vorgeschlagene Wertebereiche fuer den Dialog:
-
-      | Option                | Typ                   | Vorgeschlagener Bereich                | Default                                 |
-      |-----------------------|-----------------------|----------------------------------------|-----------------------------------------|
-      | `Dialect`             | Auswahl               | `Classic`, `Extended`                  | `Extended`                              |
-      | `MaxLevel`            | Ganzzahl              | `0..10` (Schrittweite `1`)             | `3`                                     |
-      | `MaxAddress`          | Ganzzahl              | `127..32767` (Schrittweite `1`)        | `2047`                                  |
-      | `MaxIdentifierLength` | Ganzzahl              | `1..32` (Schrittweite `1`)             | `10`                                    |
-      | `MaxNumberDigits`     | Ganzzahl (abgeleitet) | `10` oder `14` abhaengig von `Dialect` | `14` bei `Classic`, `10` bei `Extended` |
-      | `MaxSymbolCount`      | Ganzzahl              | `10..5000` (Schrittweite `10`)         | `100`                                   |
-      | `MaxCodeLength`       | Ganzzahl              | `50..10000` (Schrittweite `50`)        | `200`                                   |
-
-    - Werte ausserhalb des Bereichs werden im Dialog validiert und nicht uebernommen.
-    - Sonderregel `MaxNumberDigits`:
-      - Bei `Dialect = Classic` wird `MaxNumberDigits = 14` gesetzt (historische Kompatibilitaet).
-      - Bei `Dialect = Extended` wird `MaxNumberDigits = 10` gesetzt (technisch passend zu `int`).
-    - Geaenderte Werte werden fuer den naechsten Kompiliervorgang verwendet.
-
-19. `PF-IDE-019` Tastatur-Shortcuts:
-    - Hauptfunktionen der IDE sind ueber Tastatur-Shortcuts erreichbar.
-    - Die Belegung orientiert sich an klassischen IDE-Mustern (z. B. Build, Run, Step).
-
-20. `PF-IDE-020` Persistenz:
-    - Die IDE speichert mindestens die zuletzt geoeffnete Datei und Fenstergroessen.
-    - Die gespeicherten Werte werden beim naechsten Start wiederhergestellt.
-
-21. `PF-IDE-021` P-Code-Export (Emit-Modi):
-    - Die IDE bietet eine Exportfunktion fuer den erzeugten P-Code.
-    - Die Export-Modi orientieren sich an `src/Pl0.Cli/Cli/EmitMode.cs`:
-      - `Asm` (mnemonische Darstellung)
-      - `Cod` (numerischer Maschinen-Code)
-    - Die Exportformate orientieren sich an `src/Pl0.Cli/Cli/CompilerCliOptions.cs` und den bestehenden Core-Serialisierern.
-    - Fuer `Cod` wird ausschliesslich die Dateiendung `.cod` verwendet.
-    - Der Export ist nur nach erfolgreicher Kompilierung moeglich.
-
-22. `PF-IDE-022` Web-Hilfe ueber Kestrel (Hilfe-Menue):
+19. `PF-IDE-022` Web-Hilfe ueber Kestrel (Hilfe-Menue):
     - Im Hilfe-Bereich der IDE gibt es einen Menuepunkt zum Starten/Stoppen der Web-Hilfe aus dem Ordner `_site`.
     - Die Umsetzung orientiert sich am vorhandenen `--api`-Verhalten in `src/Pl0.Cli`.
     - Der Menuepunkt arbeitet als Toggle:
@@ -193,6 +179,20 @@ Die bestehenden Abhaengigkeitsregeln der vorhandenen Module bleiben unveraendert
       - Falls kein Port im Fallback-Bereich verfuegbar ist, wird ein Fehlerdialog angezeigt und kein Webserver gestartet.
     - Falls `_site` nicht vorhanden ist oder der Start fehlschlaegt, zeigt die IDE eine klare Fehlermeldung im Dialog.
     - Kestrel-Konsolenausgaben duerfen die IDE-Ansicht nicht stoeren (keine UI-Glitches durch direkte Ausgabe auf das IDE-Terminal).
+
+20. `PF-IDE-019` Tastatur-Shortcuts:
+    - Hauptfunktionen der IDE sind ueber Tastatur-Shortcuts erreichbar.
+    - Die Belegung orientiert sich an klassischen IDE-Mustern (z. B. Build, Run, Step).
+
+21. `PF-IDE-020` Persistenz:
+    - Die IDE speichert mindestens die zuletzt geoeffnete Datei und Fenstergroessen.
+    - Die gespeicherten Werte werden beim naechsten Start wiederhergestellt.
+
+22. `PF-IDE-017` Testfaelle:
+    - Fuer die IDE-Funktionen werden automatisierte Tests erstellt (xUnit).
+    - Die Tests decken mindestens die Kernablaeufe ab: Laden/Speichern, Kompilieren, Diagnostikanzeige,
+      P-Code-Anzeige, Ausfuehren sowie Schritt-Debugging mit Register-/Stackaktualisierung.
+    - Die Tests sind in `dotnet test` integriert und laufen reproduzierbar.
 
 ## 6. Nicht-funktionale Anforderungen
 - `NF-001` Stabilitaet: Fehler im Quelltext duerfen nicht zum Absturz der IDE fuehren.
