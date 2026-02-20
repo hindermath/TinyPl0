@@ -23,7 +23,7 @@ Es existiert bisher keine integrierte grafische (TUI-)Entwicklungsumgebung.
 
 ### 4.1 Zielsystem
 - Neues .NET-10-Projekt: `src/Pl0.Ide`
-- GUI-Bibliothek: `Terminal.Gui` in Version `1.9.x`
+- GUI-Bibliothek: `Terminal.Gui` in Version `2.x` (empfohlen fuer neue Projekte; instanzbasierte Architektur mit `IApplication`)
 - Laufzeitplattform: Windows, macOS, Linux (Konsole/Terminal)
 
 ### 4.2 Modulabhaengigkeiten
@@ -52,17 +52,19 @@ Die bestehenden Abhaengigkeitsregeln der vorhandenen Module bleiben unveraendert
    - Die bestehenden `ArchitectureGuardTests` werden um die erlaubten Abhaengigkeiten von `Pl0.Ide` erweitert (`Pl0.Core`, `Pl0.Vm`, `Terminal.Gui`).
 
 2. `PF-IDE-002` GUI-Basis:
-   - Die Oberflaeche basiert auf Nuget-Paket `Terminal.Gui` `1.9.x`.
+   - Die Oberflaeche basiert auf NuGet-Paket `Terminal.Gui` `2.x`.
+   - Der Application-Lifecycle folgt dem instanzbasierten v2-Muster (`Application.Create().Init()` / `app.Run<T>()` / `app.Dispose()`). Statische `Application`-Aufrufe aus v1 werden nicht verwendet.
 
 3. `PF-IDE-003` Look-and-Feel:
    - Layout und Menuefuehrung orientieren sich an der Turbo-Pascal-IDE (DOS-Stil).
+   - Als Basis dient das in `Terminal.Gui` v2 eingebaute Theme `TurboPascal 5` (aktivierbar ueber `ThemeManager`). Bei Bedarf kann das Theme angepasst oder erweitert werden.
 
 4. `PF-IDE-004` Quellcodefenster:
    - Ein dediziertes Fenster zur Anzeige und Bearbeitung von PL/0-Quellcode ist vorhanden.
 
 5. `PF-IDE-005` Syntax-Hervorhebung:
    - Schluesselwoerter von PL/0 werden im Editor farblich hervorgehoben.
-   - Der Farbstil richtet sich nach den Konventionen von Turbo-Pascal.
+   - Der Farbstil richtet sich nach den Konventionen von Turbo-Pascal und nutzt das v2-Scheme-/Theming-System (`Scheme`, `ThemeManager`).
    - Auch Zahlen, Operatoren werden entsprechend formatiert.
 
 6. `PF-IDE-011` Dateioperationen:
@@ -216,7 +218,7 @@ Die bestehenden Abhaengigkeitsregeln der vorhandenen Module bleiben unveraendert
 - `NF-002` Diagnostikmodell: Compilerfehler werden als Diagnosen angezeigt, nicht per ungefangener Exception.
 - `NF-003` Bedienbarkeit: Hauptfunktionen sind vollstaendig per Tastatur erreichbar.
 - `NF-004` Performance: Interaktive Reaktion bei Standardbeispielen ohne merkliche Verzoegerung.
-- `NF-005` Wartbarkeit: Klare Trennung von UI, Compiler-/VM-Adapter und Anwendungslogik. Die IDE folgt einem ViewModel-/Adapter-Pattern, das UI-Logik von `Terminal.Gui`-Abhaengigkeiten trennt und automatisierte Tests ohne laufende TUI ermoeglicht.
+- `NF-005` Wartbarkeit: Klare Trennung von UI, Compiler-/VM-Adapter und Anwendungslogik. Die IDE folgt einem ViewModel-/Adapter-Pattern, das UI-Logik von `Terminal.Gui`-Abhaengigkeiten trennt und automatisierte Tests ohne laufende TUI ermoeglicht. Die instanzbasierte `IApplication`-Architektur von v2 unterstuetzt dies: `IApplication` ist mockbar, mehrere Instanzen koennen parallel in Tests existieren, und der FakeDriver ermoeglicht Headless-Tests ohne Terminal.
 - `NF-006` Didaktik: Oberflaeche und Meldungen sind fuer Lernende nachvollziehbar formuliert.
 - `NF-007` Hintergrunddienste wie der Hilfe-Webserver laufen ohne stoerende Konsolenausgaben in der IDE-Ansicht.
 
@@ -304,7 +306,7 @@ Die folgenden Testfaelle sind als automatisierte xUnit-Tests umzusetzen.
 | `TC-IDE-030` | Persistenz-Einstellungen werden im plattformspezifischen Benutzerverzeichnis als JSON-Datei gespeichert und beim Neustart korrekt geladen; bei fehlender Datei startet die IDE mit Standardwerten.               | `PF-IDE-020`                                           |
 
 Hinweise zur Umsetzung:
-- Tests mit UI-Bezug sollen ueber testbare ViewModel-/Controller-Logik und Adapter abstrahiert werden.
+- Tests mit UI-Bezug sollen ueber testbare ViewModel-/Controller-Logik und Adapter abstrahiert werden. Die instanzbasierte `IApplication` von `Terminal.Gui` v2 ermoeglicht isolierte Tests mit FakeDriver ohne reales Terminal.
 - Dateizugriffe und VM-I/O sind in Tests ueber Test-Doubles (z. B. In-Memory) zu kapseln.
 - Jeder Testfall ist eindeutig auf mindestens eine `PF-IDE-*`-Anforderung rueckfuehrbar.
 
@@ -320,7 +322,7 @@ Hinweise zur Umsetzung:
 
 | Risiko | Beschreibung | Gegenmassnahme |
 |--------|-------------|----------------|
-| `R-001` | `Terminal.Gui` `1.9.x` kann je nach Plattform unterschiedliche Terminal-Eigenheiten zeigen. | Fruehe Tests auf allen drei Zielplattformen (Windows, macOS, Linux). Bekannte Einschraenkungen in einer Kompatibilitaetsmatrix dokumentieren. |
+| `R-001` | `Terminal.Gui` v2 befindet sich im Alpha-Status; Breaking Changes sind vor dem Beta-Release moeglich. Plattformspezifische Terminal-Eigenheiten koennen auftreten. | Fruehe Tests auf allen drei Zielplattformen (Windows, macOS, Linux). NuGet-Paketversion pinnen und bei Breaking Changes gezielt aktualisieren. v2 wird offiziell fuer neue Projekte empfohlen; v1 erhaelt nur noch kritische Bugfixes. |
 | `R-002` | Schritt-Debugging erfordert Erweiterungen an VM-Observability-Schnittstellen. | VM-Erweiterung (`Step()`/`IVmObserver`) als eigene, fruehe Teilaufgabe planen (siehe PF-IDE-014). Bestehende VM-Tests muessen weiterhin bestehen. |
 | `R-003` | Eine robuste Quelltextformatierung fuer alle Grenzfaelle kann iterative Nachschaerfung benoetigen. | Mindestumfang (Einrueckung, Spacing, Zeilenumbrueche) priorisieren; Grenzfaelle ueber Testfaelle absichern und bei Bedarf iterativ erweitern. |
 | `R-004` | Der `_site`-Ordner fehlt im Repository und muss durch `docfx build` erzeugt werden. | Klarer Hinweisdialog in der IDE bei fehlendem `_site` (siehe PF-IDE-022). Build-Dokumentation um `docfx build`-Schritt ergaenzen. |
