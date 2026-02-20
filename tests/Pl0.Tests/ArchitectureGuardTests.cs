@@ -20,7 +20,7 @@ public sealed class ArchitectureGuardTests
             ["Pl0.Vm.csproj"] = ["Pl0.Core.csproj"],
             ["Pl0.Cli.csproj"] = ["Pl0.Core.csproj", "Pl0.Vm.csproj"],
             ["Pl0.Ide.csproj"] = ["Pl0.Core.csproj", "Pl0.Vm.csproj"],
-            ["Pl0.Tests.csproj"] = ["Pl0.Cli.csproj", "Pl0.Core.csproj", "Pl0.Vm.csproj"],
+            ["Pl0.Tests.csproj"] = ["Pl0.Cli.csproj", "Pl0.Core.csproj", "Pl0.Ide.csproj", "Pl0.Vm.csproj"],
         };
 
         var projectFiles = FindProjectFiles();

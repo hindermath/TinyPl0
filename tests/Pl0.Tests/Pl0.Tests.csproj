@@ -27,6 +27,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\Pl0.Core\Pl0.Core.csproj" />
     <ProjectReference Include="..\..\src\Pl0.Cli\Pl0.Cli.csproj" />
+    <ProjectReference Include="..\..\src\Pl0.Ide\Pl0.Ide.csproj" />
     <ProjectReference Include="..\..\src\Pl0.Vm\Pl0.Vm.csproj" />
   </ItemGroup>
 
