@@ -107,6 +107,21 @@ Die bestehenden Abhaengigkeitsregeln der vorhandenen Module bleiben unveraendert
       - `docs/VM_INSTRUCTION_SET.md`
       - `docs/ARCHITECTURE.md`
       - `docs/TRACEABILITY_MATRIX.md`
+    - Priorisierung der Dokuquellen (Anzeige und Navigation):
+      1. Prioritaet hoch (Kernsprache und Semantik):
+         - `docs/LANGUAGE_EBNF.md`
+         - `docs/VM_INSTRUCTION_SET.md`
+         - `docs/ARCHITECTURE.md`
+      2. Prioritaet mittel (Qualitaet und Nachvollziehbarkeit):
+         - `docs/TRACEABILITY_MATRIX.md`
+         - `docs/QUALITY.md` (falls vorhanden)
+      3. Prioritaet ergaenzend (Projekt- und Bedienkontext):
+         - `README.md`
+         - `Pflichtenheft_PL0_CSharp_DotNet10.md`
+    - Startseite der integrierten Dokumentation ist standardmaessig `docs/LANGUAGE_EBNF.md`.
+    - Fallback-Regel:
+      - Wenn die Startseite oder eine hoeher priorisierte Datei fehlt, wird automatisch die naechste verfuegbare Datei gemaess Prioritaet geoeffnet.
+      - Wenn keine Dokumentationsdatei verfuegbar ist, wird ein Hinweisdialog angezeigt.
     - Die Funktion ist offline nutzbar (kein Internet erforderlich).
     - Die IDE merkt sich die zuletzt geoeffnete Dokumentationsseite.
     - Kontexthilfe (z. B. ueber `F1`) oeffnet passende Dokumentationskapitel.
@@ -224,6 +239,7 @@ Die bestehenden Abhaengigkeitsregeln der vorhandenen Module bleiben unveraendert
 - `AK-020`: Die Web-Hilfe startet bevorzugt auf `http://localhost:5000`; bei belegtem Port erfolgt automatischer Fallback auf den naechsten freien Port aus `5001..5099`.
 - `AK-021`: Die integrierte Dokumentationsansicht bietet TOC-Navigation, Inhaltsbereich und lokale Volltextsuche ueber die definierten lokalen Dokuquellen.
 - `AK-022`: Die integrierte Dokumentation ist offline nutzbar, merkt sich die zuletzt geoeffnete Seite und zeigt bei fehlenden Doku-Dateien einen Hinweisdialog ohne Absturz.
+- `AK-023`: Die integrierte Dokumentation startet standardmaessig mit `docs/LANGUAGE_EBNF.md`; falls nicht verfuegbar, wird gemaess definierter Priorisierung auf die naechste verfuegbare Quelle gewechselt.
 
 ## 9. Testfaelle und Anforderungszuordnung
 
@@ -254,6 +270,7 @@ Die folgenden Testfaelle sind als automatisierte xUnit-Tests umzusetzen.
 | `TC-IDE-021` | Ist `localhost:5000` belegt, startet die Web-Hilfe automatisch auf dem naechsten freien Port im Bereich `5001..5099`, und der Hinweis-Dialog zeigt die tatsaechlich verwendete URL.                            | `PF-IDE-022`                                           |
 | `TC-IDE-022` | Integrierte Dokumentation zeigt TOC-Navigation, Inhaltsbereich und lokale Volltextsuche ueber die konfigurierten Dokuquellen; Auswahl eines Treffers oeffnet den passenden Inhalt.                             | `PF-IDE-016`                                           |
 | `TC-IDE-023` | Integrierte Dokumentation ist offline nutzbar, stellt die zuletzt geoeffnete Seite nach Neustart wieder her und zeigt bei fehlenden Doku-Dateien einen Hinweisdialog bei weiterhin bedienbarer IDE.            | `PF-IDE-016`                                           |
+| `TC-IDE-024` | Start der integrierten Dokumentation oeffnet `docs/LANGUAGE_EBNF.md`; bei fehlender Datei wird automatisch die naechste verfuegbare Quelle gemaess Priorisierung geoeffnet.                                      | `PF-IDE-016`                                           |
 
 Hinweise zur Umsetzung:
 - Tests mit UI-Bezug sollen ueber testbare ViewModel-/Controller-Logik und Adapter abstrahiert werden.
