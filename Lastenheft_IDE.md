@@ -65,11 +65,11 @@ iterative Anforderungsarbeit mit Agentic AI.
 37. Benutzer: Bitte diesen Vorschlag direkt in `Pflichtenheft_IDE.md` eintragen.
 38. Agent: Priorisierung der Dokuquellen in `PF-IDE-016` eingetragen und um `AK-023` sowie `TC-IDE-024` ergänzt ([Commit](https://github.com/hindermath/TinyPl0/commit/c097fb4)).
 39. Benutzer: Wenn möglich, hinter Agenten-Antworten die URLs der eingecheckten GitHub-Commits ergänzen.
-40. Agent: Commit-URLs hinter den Agenten-Antworten ergänzt und transparente Markierung für Antworten ohne separaten Commit gesetzt ([Commit](COMMIT_A_URL)).
+40. Agent: Commit-URLs hinter den Agenten-Antworten ergänzt und transparente Markierung für Antworten ohne separaten Commit gesetzt ([Commit](https://github.com/hindermath/TinyPl0/commit/a415c0f)).
 41. Benutzer: Bitte die Reihenfolge aller `PF-IDE-*` in Abschnitt 5.1 prüfen und eine neue Reihenfolge zur Ansicht zeigen.
 42. Agent: Neue, workflow-orientierte Reihenfolge vorgeschlagen (Anzeige zur Abnahme) (kein separater Commit-Link).
 43. Benutzer: Bitte die neue Reihenfolge direkt einpflegen, Querverweise in AK/TC bei Bedarf nachziehen und fehlende Dialoge im Lastenheft mit Commit-URLs ergänzen.
-44. Agent: Reihenfolge in Abschnitt 5.1 umgesetzt und fehlende Dialogeinträge im Lastenheft ergänzt ([Commit](COMMIT_A_URL)).
+44. Agent: Reihenfolge in Abschnitt 5.1 umgesetzt und fehlende Dialogeinträge im Lastenheft ergänzt ([Commit](https://github.com/hindermath/TinyPl0/commit/a415c0f)).
 
 ### Didaktischer Nutzen
 
