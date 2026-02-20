@@ -93,6 +93,18 @@ iterative Anforderungsarbeit mit Agentic AI.
 
 **Zeitliche Einordnung (heutige Nachtragsrunde):** Start `2026-02-20 12:56:41 CET`, Ende `2026-02-20 13:02:20 CET`, Dauer ca. `6 Minuten`.
 
+**Kompakte Zeitübersicht (Punkte 1–54):**
+
+| Punktebereich | Start | Ende | Dauer | Quelle |
+|---|---|---|---|---|
+| `1–30` | 2026-02-19 22:54 CET | 2026-02-19 23:48 CET | ca. 54 Min | [16d4242](https://github.com/hindermath/TinyPl0/commit/16d4242) bis [b6e3e6d](https://github.com/hindermath/TinyPl0/commit/b6e3e6d) |
+| `31–38` | 2026-02-20 08:04 CET | 2026-02-20 08:10 CET | ca. 6 Min | [f458748](https://github.com/hindermath/TinyPl0/commit/f458748), [c097fb4](https://github.com/hindermath/TinyPl0/commit/c097fb4) |
+| `39–44` | 2026-02-20 08:26 CET | 2026-02-20 08:27 CET | ca. 1 Min | [a415c0f](https://github.com/hindermath/TinyPl0/commit/a415c0f), [dac947f](https://github.com/hindermath/TinyPl0/commit/dac947f) |
+| `45–46` | 2026-02-20 10:53 CET | 2026-02-20 10:53 CET | punktuell | [PR #2](https://github.com/hindermath/TinyPl0/pull/2), [c21a8f9](https://github.com/hindermath/TinyPl0/commit/c21a8f9) |
+| `47–48` | 2026-02-20 12:36 CET | 2026-02-20 12:36 CET | punktuell | [a126e0a](https://github.com/hindermath/TinyPl0/commit/a126e0a) |
+| `49–54` | 2026-02-20 12:56:41 CET | 2026-02-20 13:02:20 CET | 5 Min 39 Sek | [e19885e](https://github.com/hindermath/TinyPl0/commit/e19885e), [45c77f5](https://github.com/hindermath/TinyPl0/commit/45c77f5), [141c236](https://github.com/hindermath/TinyPl0/commit/141c236) |
+| `1–54 (Kalenderzeit)` | 2026-02-19 22:54 CET | 2026-02-20 13:02:20 CET | 14 Std 08 Min 20 Sek | Aggregiert aus obigen Quellen (inkl. Unterbrechungen) |
+
 ### Didaktischer Nutzen
 
 - Zeigt, wie Anforderungen iterativ präzisiert werden.
