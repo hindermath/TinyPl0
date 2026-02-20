@@ -77,9 +77,9 @@ iterative Anforderungsarbeit mit Agentic AI.
 49. Benutzer (2026-02-20 12:56:41 CET): Erneute Prüfung des aktualisierten `Pflichtenheft_IDE.md` und Rückfrage, ob noch Unklarheiten bestehen.
 50. Agent (2026-02-20 12:58:10 CET): Änderungsstand gegen frühere Commits verglichen und 4 gezielte Rückfragen gestellt (Lastenheft-Version, `_site`-Pfad, TC-Zuordnung, VM-Abbruchzustand) (kein separater Commit-Link).
 51. Benutzer (2026-02-20 12:59:02 CET): Entscheidungen getroffen: Lastenheft auf 2.x anpassen, `_site` relativ zum Executable-Verzeichnis, VM-Zustand nach Abbruch sichtbar lassen, `PF-IDE-021`-Zuordnung bleibt beabsichtigt.
-52. Agent (2026-02-20 13:00:15 CET): Entscheidungen in Lasten- und Pflichtenheft eingearbeitet (`Terminal.Gui 2.x`, `_site`-Pfadauflösung, Debug-Abbruchzustand inkl. AK/TC) ([Commit](COMMIT_B_URL)).
+52. Agent (2026-02-20 13:00:15 CET): Entscheidungen in Lasten- und Pflichtenheft eingearbeitet (`Terminal.Gui 2.x`, `_site`-Pfadauflösung, Debug-Abbruchzustand inkl. AK/TC) ([Commit](https://github.com/hindermath/TinyPl0/commit/e19885e)).
 53. Benutzer (2026-02-20 13:01:04 CET): Bitte direkt committen und Dialogverlauf inkl. Commit-URL sowie Datum/Uhrzeit ergänzen.
-54. Agent (2026-02-20 13:02:20 CET): Änderungen committet, gepusht und Dialogverlauf mit Zeitstempeln nachgezogen ([Commit](COMMIT_C_URL)).
+54. Agent (2026-02-20 13:02:20 CET): Änderungen committet, gepusht und Dialogverlauf mit Zeitstempeln nachgezogen ([Commit](https://github.com/hindermath/TinyPl0/commit/e19885e)).
 
 **Zeitliche Einordnung (heutige Nachtragsrunde):** Start `2026-02-20 12:56:41 CET`, Ende `2026-02-20 13:02:20 CET`, Dauer ca. `6 Minuten`.
 
