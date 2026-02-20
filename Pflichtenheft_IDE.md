@@ -96,7 +96,22 @@ Die bestehenden Abhaengigkeitsregeln der vorhandenen Module bleiben unveraendert
     - Eine Hilfe-Funktion für die Sprache PL0 ist in der IDE verfuegbar.
 
 16. `PF-IDE-016` Integrierte Dokumentation:
-    - Eine integrierte Dokumentationsansicht (lokale Inhalte) steht in der IDE bereit.
+    - Die integrierte Dokumentation ist direkt in der IDE nutzbar, ohne externen Browser.
+    - Aufruf ueber den Menuepunkt `Hilfe -> Integrierte Dokumentation`.
+    - Die Ansicht besteht mindestens aus:
+      - einer Kapitel-/TOC-Navigation,
+      - einem Inhaltsbereich fuer Markdown-Inhalte,
+      - einer lokalen Volltextsuche ueber die eingebundenen Dokumente.
+    - Als Dokumentationsquellen werden lokale Repository-Dateien verwendet, insbesondere:
+      - `docs/LANGUAGE_EBNF.md`
+      - `docs/VM_INSTRUCTION_SET.md`
+      - `docs/ARCHITECTURE.md`
+      - `docs/TRACEABILITY_MATRIX.md`
+    - Die Funktion ist offline nutzbar (kein Internet erforderlich).
+    - Die IDE merkt sich die zuletzt geoeffnete Dokumentationsseite.
+    - Kontexthilfe (z. B. ueber `F1`) oeffnet passende Dokumentationskapitel.
+    - Bei fehlenden oder nicht lesbaren Dokumentationsdateien zeigt die IDE einen klaren Hinweisdialog und bleibt bedienbar.
+    - Abgrenzung: `PF-IDE-016` beschreibt die interne IDE-Dokumentationsansicht; `PF-IDE-022` beschreibt den optionalen Webserver-Start fuer die Browseransicht.
 
 17. `PF-IDE-017` Testfaelle:
     - Fuer die IDE-Funktionen werden automatisierte Tests erstellt (xUnit).
@@ -116,15 +131,15 @@ Die bestehenden Abhaengigkeitsregeln der vorhandenen Module bleiben unveraendert
       - `MaxNumberDigits` (abhaengig von `Dialect`, nicht frei editierbar)
     - Vorgeschlagene Wertebereiche fuer den Dialog:
 
-      | Option | Typ | Vorgeschlagener Bereich | Default |
-      |---|---|---|---|
-      | `Dialect` | Auswahl | `Classic`, `Extended` | `Extended` |
-      | `MaxLevel` | Ganzzahl | `0..10` (Schrittweite `1`) | `3` |
-      | `MaxAddress` | Ganzzahl | `127..32767` (Schrittweite `1`) | `2047` |
-      | `MaxIdentifierLength` | Ganzzahl | `1..32` (Schrittweite `1`) | `10` |
-      | `MaxNumberDigits` | Ganzzahl (abgeleitet) | `10` oder `14` abhaengig von `Dialect` | `14` bei `Classic`, `10` bei `Extended` |
-      | `MaxSymbolCount` | Ganzzahl | `10..5000` (Schrittweite `10`) | `100` |
-      | `MaxCodeLength` | Ganzzahl | `50..10000` (Schrittweite `50`) | `200` |
+      | Option                | Typ                   | Vorgeschlagener Bereich                | Default                                 |
+      |-----------------------|-----------------------|----------------------------------------|-----------------------------------------|
+      | `Dialect`             | Auswahl               | `Classic`, `Extended`                  | `Extended`                              |
+      | `MaxLevel`            | Ganzzahl              | `0..10` (Schrittweite `1`)             | `3`                                     |
+      | `MaxAddress`          | Ganzzahl              | `127..32767` (Schrittweite `1`)        | `2047`                                  |
+      | `MaxIdentifierLength` | Ganzzahl              | `1..32` (Schrittweite `1`)             | `10`                                    |
+      | `MaxNumberDigits`     | Ganzzahl (abgeleitet) | `10` oder `14` abhaengig von `Dialect` | `14` bei `Classic`, `10` bei `Extended` |
+      | `MaxSymbolCount`      | Ganzzahl              | `10..5000` (Schrittweite `10`)         | `100`                                   |
+      | `MaxCodeLength`       | Ganzzahl              | `50..10000` (Schrittweite `50`)        | `200`                                   |
 
     - Werte ausserhalb des Bereichs werden im Dialog validiert und nicht uebernommen.
     - Sonderregel `MaxNumberDigits`:
@@ -207,34 +222,38 @@ Die bestehenden Abhaengigkeitsregeln der vorhandenen Module bleiben unveraendert
 - `AK-018`: Ein Hilfe-Menuepunkt startet die Web-Hilfe aus `_site` per Kestrel, zeigt die konkrete URL im Hinweis-Dialog und stoppt den Server beim naechsten Aufruf.
 - `AK-019`: Kestrel-Ausgaben verursachen keine sichtbaren UI-Stoerungen in der IDE-Ansicht.
 - `AK-020`: Die Web-Hilfe startet bevorzugt auf `http://localhost:5000`; bei belegtem Port erfolgt automatischer Fallback auf den naechsten freien Port aus `5001..5099`.
+- `AK-021`: Die integrierte Dokumentationsansicht bietet TOC-Navigation, Inhaltsbereich und lokale Volltextsuche ueber die definierten lokalen Dokuquellen.
+- `AK-022`: Die integrierte Dokumentation ist offline nutzbar, merkt sich die zuletzt geoeffnete Seite und zeigt bei fehlenden Doku-Dateien einen Hinweisdialog ohne Absturz.
 
 ## 9. Testfaelle und Anforderungszuordnung
 
 Die folgenden Testfaelle sind als automatisierte xUnit-Tests umzusetzen.
 
-| Testfall-ID  | Kurzbeschreibung                                                                 | Zuordnung Anforderungen                                |
-|--------------|----------------------------------------------------------------------------------|--------------------------------------------------------|
-| `TC-IDE-001` | Projekt `Pl0.Ide` ist in Solution eingebunden und buildet erfolgreich.           | `PF-IDE-001`                                           |
-| `TC-IDE-002` | IDE startet mit Hauptlayout (Editor, P-Code, Meldungen).                         | `PF-IDE-002`, `PF-IDE-003`, `PF-IDE-004`, `PF-IDE-009` |
-| `TC-IDE-003` | PL/0-Syntaxelemente (Schluesselwoerter, Zahlen, Operatoren) werden im Editor im Turbo-Pascal-orientierten Farbstil hervorgehoben. | `PF-IDE-005` |
-| `TC-IDE-004` | Kompilierung eines gueltigen Programms liefert Erfolg und zeigt Kompilierdialog. | `PF-IDE-006`, `PF-IDE-007`                             |
-| `TC-IDE-005` | Kompilierung eines fehlerhaften Programms zeigt Diagnosen im Meldungsfenster.    | `PF-IDE-008`                                           |
-| `TC-IDE-006` | Nach erfolgreicher Kompilierung wird P-Code im P-Code-Fenster angezeigt.         | `PF-IDE-009`                                           |
-| `TC-IDE-007` | Ausfuehrung von P-Code liefert sichtbare Laufzeitausgabe.                        | `PF-IDE-010`                                           |
-| `TC-IDE-008` | Laden und Speichern von `.pl0`-Dateien funktioniert verlustfrei ueber die Standard-Dialoge von `Terminal.Gui`. | `PF-IDE-011` |
-| `TC-IDE-009` | Formatieren eines Quelltexts liefert deterministisches Ergebnis.                 | `PF-IDE-012`                                           |
-| `TC-IDE-010` | Aktion "Kompilieren und Ausfuehren" durchlaeuft beide Schritte erfolgreich.      | `PF-IDE-013`                                           |
-| `TC-IDE-011` | Schritt-Debugging aktualisiert pro Step Register (`P`, `B`, `T`) und Stack; der aktuelle Ausfuehrungspunkt ist im P-Code ueber `P` sichtbar. | `PF-IDE-014` |
-| `TC-IDE-012` | Hilfe zur IDE-Bedienung, Hilfe zur Sprache PL/0 und integrierte Dokumentation sind ueber die IDE aufrufbar. | `PF-IDE-015`, `PF-IDE-016` |
-| `TC-IDE-013` | Gesamte IDE-Test-Suite laeuft erfolgreich mit `dotnet test`.                     | `PF-IDE-017`                                           |
-| `TC-IDE-014` | Einstellungsdialog validiert Wertebereiche fuer `CompilerOptions`, setzt `MaxNumberDigits` dialektabhaengig (`Classic=14`, `Extended=10`) und uebergibt die gesetzten Werte an den naechsten Kompiliervorgang. | `PF-IDE-018` |
-| `TC-IDE-015` | Exportfunktion schreibt P-Code in den Modi `Asm` und `Cod`; fuer `Cod` wird ausschliesslich `.cod` akzeptiert/verwendet. | `PF-IDE-021` |
-| `TC-IDE-016` | Kernfunktionen (mindestens Build, Run, Step) sind ueber definierte Tastatur-Shortcuts ausloesbar. | `PF-IDE-019` |
-| `TC-IDE-017` | Zuletzt geoeffnete Datei und Fenstergroessen werden gespeichert und beim Neustart wiederhergestellt. | `PF-IDE-020` |
-| `TC-IDE-018` | Hilfe-Menuepunkt startet Kestrel fuer `_site`, zeigt einen Hinweis-Dialog mit der tatsaechlichen URL und stoppt den Server beim zweiten Aufruf. | `PF-IDE-022` |
-| `TC-IDE-019` | Bei fehlendem `_site` oder Startfehler wird ein Fehlerdialog angezeigt; die IDE bleibt bedienbar. | `PF-IDE-022` |
-| `TC-IDE-020` | Beim Betrieb der Web-Hilfe treten keine stoerenden Konsolenausgaben/Renderartefakte in der IDE-Ansicht auf. | `PF-IDE-022`, `NF-007` |
-| `TC-IDE-021` | Ist `localhost:5000` belegt, startet die Web-Hilfe automatisch auf dem naechsten freien Port im Bereich `5001..5099`, und der Hinweis-Dialog zeigt die tatsaechlich verwendete URL. | `PF-IDE-022` |
+| Testfall-ID  | Kurzbeschreibung                                                                                                                                                                                               | Zuordnung Anforderungen                                |
+|--------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------|
+| `TC-IDE-001` | Projekt `Pl0.Ide` ist in Solution eingebunden und buildet erfolgreich.                                                                                                                                         | `PF-IDE-001`                                           |
+| `TC-IDE-002` | IDE startet mit Hauptlayout (Editor, P-Code, Meldungen).                                                                                                                                                       | `PF-IDE-002`, `PF-IDE-003`, `PF-IDE-004`, `PF-IDE-009` |
+| `TC-IDE-003` | PL/0-Syntaxelemente (Schluesselwoerter, Zahlen, Operatoren) werden im Editor im Turbo-Pascal-orientierten Farbstil hervorgehoben.                                                                              | `PF-IDE-005`                                           |
+| `TC-IDE-004` | Kompilierung eines gueltigen Programms liefert Erfolg und zeigt Kompilierdialog.                                                                                                                               | `PF-IDE-006`, `PF-IDE-007`                             |
+| `TC-IDE-005` | Kompilierung eines fehlerhaften Programms zeigt Diagnosen im Meldungsfenster.                                                                                                                                  | `PF-IDE-008`                                           |
+| `TC-IDE-006` | Nach erfolgreicher Kompilierung wird P-Code im P-Code-Fenster angezeigt.                                                                                                                                       | `PF-IDE-009`                                           |
+| `TC-IDE-007` | Ausfuehrung von P-Code liefert sichtbare Laufzeitausgabe.                                                                                                                                                      | `PF-IDE-010`                                           |
+| `TC-IDE-008` | Laden und Speichern von `.pl0`-Dateien funktioniert verlustfrei ueber die Standard-Dialoge von `Terminal.Gui`.                                                                                                 | `PF-IDE-011`                                           |
+| `TC-IDE-009` | Formatieren eines Quelltexts liefert deterministisches Ergebnis.                                                                                                                                               | `PF-IDE-012`                                           |
+| `TC-IDE-010` | Aktion "Kompilieren und Ausfuehren" durchlaeuft beide Schritte erfolgreich.                                                                                                                                    | `PF-IDE-013`                                           |
+| `TC-IDE-011` | Schritt-Debugging aktualisiert pro Step Register (`P`, `B`, `T`) und Stack; der aktuelle Ausfuehrungspunkt ist im P-Code ueber `P` sichtbar.                                                                   | `PF-IDE-014`                                           |
+| `TC-IDE-012` | Hilfe zur IDE-Bedienung, Hilfe zur Sprache PL/0 und integrierte Dokumentation sind ueber die IDE aufrufbar; die integrierte Doku oeffnet als interne IDE-Ansicht.                                              | `PF-IDE-015`, `PF-IDE-016`                             |
+| `TC-IDE-013` | Gesamte IDE-Test-Suite laeuft erfolgreich mit `dotnet test`.                                                                                                                                                   | `PF-IDE-017`                                           |
+| `TC-IDE-014` | Einstellungsdialog validiert Wertebereiche fuer `CompilerOptions`, setzt `MaxNumberDigits` dialektabhaengig (`Classic=14`, `Extended=10`) und uebergibt die gesetzten Werte an den naechsten Kompiliervorgang. | `PF-IDE-018`                                           |
+| `TC-IDE-015` | Exportfunktion schreibt P-Code in den Modi `Asm` und `Cod`; fuer `Cod` wird ausschliesslich `.cod` akzeptiert/verwendet.                                                                                       | `PF-IDE-021`                                           |
+| `TC-IDE-016` | Kernfunktionen (mindestens Build, Run, Step) sind ueber definierte Tastatur-Shortcuts ausloesbar.                                                                                                              | `PF-IDE-019`                                           |
+| `TC-IDE-017` | Zuletzt geoeffnete Datei und Fenstergroessen werden gespeichert und beim Neustart wiederhergestellt.                                                                                                           | `PF-IDE-020`                                           |
+| `TC-IDE-018` | Hilfe-Menuepunkt startet Kestrel fuer `_site`, zeigt einen Hinweis-Dialog mit der tatsaechlichen URL und stoppt den Server beim zweiten Aufruf.                                                                | `PF-IDE-022`                                           |
+| `TC-IDE-019` | Bei fehlendem `_site` oder Startfehler wird ein Fehlerdialog angezeigt; die IDE bleibt bedienbar.                                                                                                              | `PF-IDE-022`                                           |
+| `TC-IDE-020` | Beim Betrieb der Web-Hilfe treten keine stoerenden Konsolenausgaben/Renderartefakte in der IDE-Ansicht auf.                                                                                                    | `PF-IDE-022`, `NF-007`                                 |
+| `TC-IDE-021` | Ist `localhost:5000` belegt, startet die Web-Hilfe automatisch auf dem naechsten freien Port im Bereich `5001..5099`, und der Hinweis-Dialog zeigt die tatsaechlich verwendete URL.                            | `PF-IDE-022`                                           |
+| `TC-IDE-022` | Integrierte Dokumentation zeigt TOC-Navigation, Inhaltsbereich und lokale Volltextsuche ueber die konfigurierten Dokuquellen; Auswahl eines Treffers oeffnet den passenden Inhalt.                             | `PF-IDE-016`                                           |
+| `TC-IDE-023` | Integrierte Dokumentation ist offline nutzbar, stellt die zuletzt geoeffnete Seite nach Neustart wieder her und zeigt bei fehlenden Doku-Dateien einen Hinweisdialog bei weiterhin bedienbarer IDE.            | `PF-IDE-016`                                           |
 
 Hinweise zur Umsetzung:
 - Tests mit UI-Bezug sollen ueber testbare ViewModel-/Controller-Logik und Adapter abstrahiert werden.
