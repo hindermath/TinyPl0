@@ -74,6 +74,16 @@ iterative Anforderungsarbeit mit Agentic AI.
 46. Agent: 15 Verbesserungen eingearbeitet: VM-Stepping-Voraussetzung, Cli-Abhängigkeitsgrenze, IPl0Io-Implementierung, Abbruchmechanismus, Formatierungs-Mindestumfang, Reset-Funktion, Persistenz-Speicherort, Hilfe-Abgrenzung, ViewModel-Pattern, _site-Voraussetzung, Risiko-Gegenmassnahmen, Nummerierungs-Fussnote, 7 neue AK (AK-024–AK-030), 6 neue TC (TC-IDE-025–TC-IDE-030) ([PR #2](https://github.com/hindermath/TinyPl0/pull/2)).
 47. Benutzer: Terminal.Gui v2 wird offiziell für neue Projekte empfohlen — Prüfung, ob v2 besser zu den Architektur- und Testbarkeitsanforderungen passt.
 48. Agent: Recherche durchgeführt: v2 bietet instanzbasierte `IApplication` (mockbar, parallele Tests), eingebautes TurboPascal-5-Theme, 24-bit-TrueColor, FakeDriver für Headless-Tests. Empfehlung: v2 verwenden. Pflichtenheft auf v2 umgestellt (PF-IDE-002, PF-IDE-003, PF-IDE-005, NF-005, R-001, Abschnitt 4.1).
+
+**Zeitliche Einordnung (Punkte 1–48, nachträglich aus Git-Historie rekonstruiert):**
+
+- Punkte `1–30`: `2026-02-19 22:54` bis `2026-02-19 23:48` CET (u. a. Commits [16d4242](https://github.com/hindermath/TinyPl0/commit/16d4242) bis [b6e3e6d](https://github.com/hindermath/TinyPl0/commit/b6e3e6d)).
+- Punkte `31–38`: `2026-02-20 08:04` bis `2026-02-20 08:10` CET (u. a. Commits [f458748](https://github.com/hindermath/TinyPl0/commit/f458748) und [c097fb4](https://github.com/hindermath/TinyPl0/commit/c097fb4)).
+- Punkte `39–44`: `2026-02-20 08:26` bis `2026-02-20 08:27` CET (Commits [a415c0f](https://github.com/hindermath/TinyPl0/commit/a415c0f) und [dac947f](https://github.com/hindermath/TinyPl0/commit/dac947f)).
+- Punkte `45–46`: `2026-02-20 10:53` CET (Verbesserungsrunde, siehe [PR #2](https://github.com/hindermath/TinyPl0/pull/2), Basis-Commit [c21a8f9](https://github.com/hindermath/TinyPl0/commit/c21a8f9)).
+- Punkte `47–48`: `2026-02-20 12:36` CET (Commit [a126e0a](https://github.com/hindermath/TinyPl0/commit/a126e0a)).
+
+**Gesamtzeitraum Punkte 1–48:** `2026-02-19 22:54` bis `2026-02-20 12:36` CET (mit Arbeitsunterbrechungen zwischen den Blöcken).
 49. Benutzer (2026-02-20 12:56:41 CET): Erneute Prüfung des aktualisierten `Pflichtenheft_IDE.md` und Rückfrage, ob noch Unklarheiten bestehen.
 50. Agent (2026-02-20 12:58:10 CET): Änderungsstand gegen frühere Commits verglichen und 4 gezielte Rückfragen gestellt (Lastenheft-Version, `_site`-Pfad, TC-Zuordnung, VM-Abbruchzustand) (kein separater Commit-Link).
 51. Benutzer (2026-02-20 12:59:02 CET): Entscheidungen getroffen: Lastenheft auf 2.x anpassen, `_site` relativ zum Executable-Verzeichnis, VM-Zustand nach Abbruch sichtbar lassen, `PF-IDE-021`-Zuordnung bleibt beabsichtigt.
