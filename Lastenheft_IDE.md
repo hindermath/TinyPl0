@@ -70,6 +70,10 @@ iterative Anforderungsarbeit mit Agentic AI.
 42. Agent: Neue, workflow-orientierte Reihenfolge vorgeschlagen (Anzeige zur Abnahme) (kein separater Commit-Link).
 43. Benutzer: Bitte die neue Reihenfolge direkt einpflegen, Querverweise in AK/TC bei Bedarf nachziehen und fehlende Dialoge im Lastenheft mit Commit-URLs ergänzen.
 44. Agent: Reihenfolge in Abschnitt 5.1 umgesetzt und fehlende Dialogeinträge im Lastenheft ergänzt ([Commit](https://github.com/hindermath/TinyPl0/commit/a415c0f)).
+45. Benutzer: Bitte Pflichtenheft auf Architektur, Vollständigkeit und Testbarkeit prüfen und Verbesserungsvorschläge einarbeiten.
+46. Agent: 15 Verbesserungen eingearbeitet: VM-Stepping-Voraussetzung, Cli-Abhängigkeitsgrenze, IPl0Io-Implementierung, Abbruchmechanismus, Formatierungs-Mindestumfang, Reset-Funktion, Persistenz-Speicherort, Hilfe-Abgrenzung, ViewModel-Pattern, _site-Voraussetzung, Risiko-Gegenmassnahmen, Nummerierungs-Fussnote, 7 neue AK (AK-024–AK-030), 6 neue TC (TC-IDE-025–TC-IDE-030) ([PR #2](https://github.com/hindermath/TinyPl0/pull/2)).
+47. Benutzer: Terminal.Gui v2 wird offiziell für neue Projekte empfohlen — Prüfung, ob v2 besser zu den Architektur- und Testbarkeitsanforderungen passt.
+48. Agent: Recherche durchgeführt: v2 bietet instanzbasierte `IApplication` (mockbar, parallele Tests), eingebautes TurboPascal-5-Theme, 24-bit-TrueColor, FakeDriver für Headless-Tests. Empfehlung: v2 verwenden. Pflichtenheft auf v2 umgestellt (PF-IDE-002, PF-IDE-003, PF-IDE-005, NF-005, R-001, Abschnitt 4.1).
 
 ### Didaktischer Nutzen
 
