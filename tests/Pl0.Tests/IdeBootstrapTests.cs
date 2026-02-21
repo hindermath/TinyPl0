@@ -113,6 +113,28 @@ public sealed class IdeBootstrapTests
     }
 
     [Fact]
+    public void CompileSource_Shows_All_Collected_Diagnostics_In_Messages_Window()
+    {
+        var mainView = new IdeMainView();
+        mainView.SourceEditor.Text = """
+                                     begin
+                                       y := ;
+                                       if then ;
+                                       !
+                                     end.
+                                     """;
+
+        var result = mainView.CompileSource();
+        var messagesText = mainView.MessagesOutput.Text?.ToString() ?? string.Empty;
+
+        Assert.False(result.Success);
+        Assert.True(result.Diagnostics.Count > 1);
+        Assert.Contains("E11", messagesText);
+        Assert.Contains("E99", messagesText);
+        Assert.Contains(Environment.NewLine, messagesText);
+    }
+
+    [Fact]
     public void OpenCompilerSettingsDialog_Changes_Options_For_Next_Compile()
     {
         var mainView = new IdeMainView(
