@@ -1,3 +1,4 @@
+using Pl0.Core;
 using Pl0.Ide;
 using Terminal.Gui;
 
@@ -109,6 +110,48 @@ public sealed class IdeBootstrapTests
         Assert.Same(result, mainView.LastCompilationResult);
         Assert.Empty(pCodeText);
         Assert.Contains("E", messagesText);
+    }
+
+    [Fact]
+    public void OpenCompilerSettingsDialog_Changes_Options_For_Next_Compile()
+    {
+        var mainView = new IdeMainView(
+            new StubIdeFileDialogService(),
+            new StubIdeFileStorage(),
+            new StubCompilerSettingsDialogService([
+                new CompilerOptions(Pl0Dialect.Classic, 3, 2047, 10, 10, 100, 200)
+            ]));
+
+        mainView.SourceEditor.Text = "begin ! 1 end.";
+        var firstResult = mainView.CompileSource();
+
+        var changed = mainView.OpenCompilerSettingsDialog();
+        var secondResult = mainView.CompileSource();
+
+        Assert.True(firstResult.Success);
+        Assert.True(changed);
+        Assert.Equal(Pl0Dialect.Classic, mainView.CurrentCompilerOptions.Dialect);
+        Assert.Equal(IdeCompilerOptionsRules.MaxNumberDigitsClassic, mainView.CurrentCompilerOptions.MaxNumberDigits);
+        Assert.False(secondResult.Success);
+    }
+
+    [Fact]
+    public void OpenCompilerSettingsDialog_Rejects_Invalid_Values()
+    {
+        var mainView = new IdeMainView(
+            new StubIdeFileDialogService(),
+            new StubIdeFileStorage(),
+            new StubCompilerSettingsDialogService([
+                new CompilerOptions(Pl0Dialect.Extended, 42, 2047, 10, 99, 100, 200)
+            ]));
+
+        var changed = mainView.OpenCompilerSettingsDialog();
+        var messagesText = mainView.MessagesOutput.Text?.ToString() ?? string.Empty;
+
+        Assert.False(changed);
+        Assert.Equal(Pl0Dialect.Extended, mainView.CurrentCompilerOptions.Dialect);
+        Assert.Equal(IdeCompilerOptionsRules.MaxNumberDigitsExtended, mainView.CurrentCompilerOptions.MaxNumberDigits);
+        Assert.Contains("MaxLevel", messagesText);
     }
 
     [Fact]
@@ -429,6 +472,24 @@ public sealed class IdeBootstrapTests
         Assert.True(filters[1].IsAllowed("programm.txt"));
     }
 
+    [Fact]
+    public void CompilerSettingsState_ResetToDefaults_Uses_CompilerOptionsDefault_And_Derived_MaxNumberDigits()
+    {
+        var state = new IdeCompilerSettingsDialogState(new CompilerOptions(Pl0Dialect.Classic, 4, 2000, 12, 14, 120, 220));
+        var applied = state.TryApplyValues(4, 2000, 12, 120, 220, out _);
+
+        state.ResetToDefaults();
+
+        Assert.True(applied);
+        Assert.Equal(CompilerOptions.Default.Dialect, state.Options.Dialect);
+        Assert.Equal(CompilerOptions.Default.MaxLevel, state.Options.MaxLevel);
+        Assert.Equal(CompilerOptions.Default.MaxAddress, state.Options.MaxAddress);
+        Assert.Equal(CompilerOptions.Default.MaxIdentifierLength, state.Options.MaxIdentifierLength);
+        Assert.Equal(CompilerOptions.Default.MaxSymbolCount, state.Options.MaxSymbolCount);
+        Assert.Equal(CompilerOptions.Default.MaxCodeLength, state.Options.MaxCodeLength);
+        Assert.Equal(IdeCompilerOptionsRules.MaxNumberDigitsExtended, state.Options.MaxNumberDigits);
+    }
+
     private sealed class StubIdeFileDialogService(string? openPath = null, string? savePath = null) : IIdeFileDialogService
     {
         public string? ShowOpenDialog()
@@ -459,6 +520,16 @@ public sealed class IdeBootstrapTests
         public void WriteAllText(string path, string content)
         {
             contentByPath[path] = content;
+        }
+    }
+
+    private sealed class StubCompilerSettingsDialogService(IEnumerable<CompilerOptions?> optionsToReturn) : IIdeCompilerSettingsDialogService
+    {
+        private readonly Queue<CompilerOptions?> queuedOptions = new(optionsToReturn);
+
+        public CompilerOptions? ShowCompilerSettingsDialog(CompilerOptions currentOptions)
+        {
+            return queuedOptions.Count > 0 ? queuedOptions.Dequeue() : null;
         }
     }
 }

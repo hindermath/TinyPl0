@@ -11,6 +11,7 @@ internal sealed class IdeMainView : Toplevel
     private readonly Pl0Compiler compiler = new();
     private readonly IIdeFileDialogService fileDialogs;
     private readonly IIdeFileStorage fileStorage;
+    private readonly IIdeCompilerSettingsDialogService compilerSettingsDialog;
     private readonly Window sourceWindow;
     private readonly Window pCodeWindow;
     private readonly Pl0SourceEditorView sourceEditor;
@@ -18,15 +19,25 @@ internal sealed class IdeMainView : Toplevel
     private readonly TextView messagesOutput;
     private CompilationResult? lastCompilationResult;
     private string? currentSourcePath;
+    private CompilerOptions currentCompilerOptions = IdeCompilerOptionsRules.GetResetDefaults();
 
-    public IdeMainView() : this(new TerminalGuiIdeFileDialogService(), new PhysicalIdeFileStorage())
+    public IdeMainView() : this(
+        new TerminalGuiIdeFileDialogService(),
+        new PhysicalIdeFileStorage(),
+        new TerminalGuiIdeCompilerSettingsDialogService())
     {
     }
 
     internal IdeMainView(IIdeFileDialogService fileDialogs, IIdeFileStorage fileStorage)
+        : this(fileDialogs, fileStorage, new TerminalGuiIdeCompilerSettingsDialogService())
+    {
+    }
+
+    internal IdeMainView(IIdeFileDialogService fileDialogs, IIdeFileStorage fileStorage, IIdeCompilerSettingsDialogService compilerSettingsDialog)
     {
         this.fileDialogs = fileDialogs;
         this.fileStorage = fileStorage;
+        this.compilerSettingsDialog = compilerSettingsDialog;
 
         var menuBar = CreateMenuBar();
         Add(menuBar);
@@ -74,6 +85,7 @@ internal sealed class IdeMainView : Toplevel
     internal string? CurrentSourcePath => currentSourcePath;
     internal string SourceWindowTitle => sourceWindow.Title?.ToString() ?? string.Empty;
     internal string PCodeWindowTitle => pCodeWindow.Title?.ToString() ?? string.Empty;
+    internal CompilerOptions CurrentCompilerOptions => currentCompilerOptions;
 
     internal void CreateNewSourceFile()
     {
@@ -142,7 +154,7 @@ internal sealed class IdeMainView : Toplevel
     internal bool FormatSource()
     {
         var source = sourceEditor.Text?.ToString() ?? string.Empty;
-        if (!Pl0SourceFormatter.TryFormat(source, out var formattedSource, CompilerOptions.Default))
+        if (!Pl0SourceFormatter.TryFormat(source, out var formattedSource, currentCompilerOptions))
         {
             messagesOutput.Text = "Formatierung uebersprungen: Quelltext enthaelt Fehler.";
             return false;
@@ -156,11 +168,30 @@ internal sealed class IdeMainView : Toplevel
     internal CompilationResult CompileSource()
     {
         var source = SourceEditor.Text?.ToString() ?? string.Empty;
-        var result = compiler.Compile(source, CompilerOptions.Default);
+        var result = compiler.Compile(source, currentCompilerOptions);
 
         lastCompilationResult = result;
         RenderCompilationResult(result);
         return result;
+    }
+
+    internal bool OpenCompilerSettingsDialog()
+    {
+        var selectedOptions = compilerSettingsDialog.ShowCompilerSettingsDialog(currentCompilerOptions);
+        if (selectedOptions is null)
+        {
+            return false;
+        }
+
+        if (!IdeCompilerOptionsRules.TryValidateAndNormalize(selectedOptions, out var normalized, out var validationError))
+        {
+            messagesOutput.Text = $"Compiler-Einstellungen ungueltig: {validationError}";
+            return false;
+        }
+
+        currentCompilerOptions = normalized;
+        messagesOutput.Text = $"Compiler-Einstellungen aktualisiert: Dialekt {normalized.Dialect}, MaxNumberDigits {normalized.MaxNumberDigits}.";
+        return true;
     }
 
     private MenuBar CreateMenuBar()
@@ -182,6 +213,7 @@ internal sealed class IdeMainView : Toplevel
                 ], null),
                 new MenuBarItem("_Kompilieren",
                 [
+                    new MenuItem("_Einstellungen", string.Empty, OpenCompilerSettingsDialogFromMenu, () => true, null, default),
                     new MenuItem("_Build", string.Empty, CompileSourceFromMenu, () => true, null, default)
                 ], null),
                 new MenuBarItem("_Ausfuehren",
@@ -204,6 +236,11 @@ internal sealed class IdeMainView : Toplevel
     private void CompileSourceFromMenu()
     {
         _ = CompileSource();
+    }
+
+    private void OpenCompilerSettingsDialogFromMenu()
+    {
+        _ = OpenCompilerSettingsDialog();
     }
 
     private void CreateNewSourceFileFromMenu()
