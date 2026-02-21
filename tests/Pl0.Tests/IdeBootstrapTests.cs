@@ -21,10 +21,11 @@ public sealed class IdeBootstrapTests
 
         var windows = mainView.Subviews.OfType<Window>().ToArray();
 
-        Assert.Equal(3, windows.Length);
+        Assert.Equal(4, windows.Length);
         Assert.Contains(windows, window => window.Title.ToString() == "Quellcode");
         Assert.Contains(windows, window => window.Title.ToString() == "Assembler-Code");
         Assert.Contains(windows, window => window.Title.ToString() == "Meldungen");
+        Assert.Contains(windows, window => window.Title.ToString() == "Ausgabe");
     }
 
     [Fact]
@@ -228,6 +229,99 @@ public sealed class IdeBootstrapTests
         Assert.Equal("Assembler-Code", mainView.PCodeWindowTitle);
         Assert.Contains("0000: ", assemblerTextAfterSwitch);
         Assert.True(char.IsLetter(GetInstructionTokenFromFirstLine(assemblerTextAfterSwitch)[0]));
+    }
+
+    [Fact]
+    public void RunCompiledCode_Requires_Successful_Compilation()
+    {
+        var runtimeDialogs = new StubIdeRuntimeDialogService([]);
+        var mainView = new IdeMainView(
+            new StubIdeFileDialogService(),
+            new StubIdeFileStorage(),
+            new StubCompilerSettingsDialogService([]),
+            runtimeDialogs);
+
+        var executed = mainView.RunCompiledCode();
+
+        Assert.False(executed);
+        Assert.Contains("zuerst erfolgreich kompilieren", mainView.MessagesOutput.Text?.ToString() ?? string.Empty);
+    }
+
+    [Fact]
+    public void RunCompiledCode_Executes_Program_And_Writes_Runtime_Output()
+    {
+        var runtimeDialogs = new StubIdeRuntimeDialogService([]);
+        var mainView = new IdeMainView(
+            new StubIdeFileDialogService(),
+            new StubIdeFileStorage(),
+            new StubCompilerSettingsDialogService([]),
+            runtimeDialogs);
+        mainView.SourceEditor.Text = """
+                                     var x;
+                                     begin
+                                       x := 7;
+                                       ! x
+                                     end.
+                                     """;
+
+        var compiled = mainView.CompileSource();
+        var executed = mainView.RunCompiledCode();
+
+        Assert.True(compiled.Success);
+        Assert.True(executed);
+        Assert.Equal("7", mainView.RuntimeOutput.Text?.ToString());
+        Assert.Contains("Ausfuehrung erfolgreich", mainView.MessagesOutput.Text?.ToString());
+        Assert.Equal(0, runtimeDialogs.ReadCount);
+    }
+
+    [Fact]
+    public void RunCompiledCode_Uses_Ide_Input_Dialog_For_Question_Operator()
+    {
+        var runtimeDialogs = new StubIdeRuntimeDialogService([42]);
+        var mainView = new IdeMainView(
+            new StubIdeFileDialogService(),
+            new StubIdeFileStorage(),
+            new StubCompilerSettingsDialogService([]),
+            runtimeDialogs);
+        mainView.SourceEditor.Text = """
+                                     var x;
+                                     begin
+                                       ? x;
+                                       ! x
+                                     end.
+                                     """;
+
+        var compiled = mainView.CompileSource();
+        var executed = mainView.RunCompiledCode();
+
+        Assert.True(compiled.Success);
+        Assert.True(executed);
+        Assert.Equal("42", mainView.RuntimeOutput.Text?.ToString());
+        Assert.Equal(1, runtimeDialogs.ReadCount);
+    }
+
+    [Fact]
+    public void RunCompiledCode_Shows_Runtime_Diagnostics_On_Error()
+    {
+        var runtimeDialogs = new StubIdeRuntimeDialogService([]);
+        var mainView = new IdeMainView(
+            new StubIdeFileDialogService(),
+            new StubIdeFileStorage(),
+            new StubCompilerSettingsDialogService([]),
+            runtimeDialogs);
+        mainView.SourceEditor.Text = """
+                                     begin
+                                       ! 1 / 0
+                                     end.
+                                     """;
+
+        var compiled = mainView.CompileSource();
+        var executed = mainView.RunCompiledCode();
+        var messagesText = mainView.MessagesOutput.Text?.ToString() ?? string.Empty;
+
+        Assert.True(compiled.Success);
+        Assert.False(executed);
+        Assert.Contains("R206", messagesText);
     }
 
     [Fact]
@@ -742,6 +836,19 @@ public sealed class IdeBootstrapTests
         public IdeCompilerSettingsDialogResult? ShowCompilerSettingsDialog(CompilerOptions currentOptions, IdeCodeDisplayMode currentCodeDisplayMode)
         {
             return queuedOptions.Count > 0 ? queuedOptions.Dequeue() : null;
+        }
+    }
+
+    private sealed class StubIdeRuntimeDialogService(IEnumerable<int?> values) : IIdeRuntimeDialogService
+    {
+        private readonly Queue<int?> values = new(values);
+
+        internal int ReadCount { get; private set; }
+
+        public int? ReadInt(string prompt)
+        {
+            ReadCount++;
+            return values.Count > 0 ? values.Dequeue() : null;
         }
     }
 }
