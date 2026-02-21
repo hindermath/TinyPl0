@@ -247,6 +247,143 @@ public sealed class IdeBootstrapTests
     }
 
     [Fact]
+    public void FormatSource_Normalizes_Indentation_Spacing_And_LineBreaks()
+    {
+        var mainView = new IdeMainView();
+        mainView.SourceEditor.Text = "procedure p;var x;begin x:=1+2;end;begin call p;end.";
+
+        var formatted = mainView.FormatSource();
+        var formattedText = mainView.SourceEditor.Text?.ToString() ?? string.Empty;
+        var expected = string.Join(
+            Environment.NewLine,
+            [
+                "procedure p;",
+                "  var x;",
+                "  begin",
+                "    x := 1 + 2;",
+                "  end;",
+                "begin",
+                "  call p;",
+                "end."
+            ]);
+
+        Assert.True(formatted);
+        Assert.Equal(expected, formattedText);
+        Assert.Equal("Quelltext formatiert.", mainView.MessagesOutput.Text?.ToString());
+    }
+
+    [Fact]
+    public void FormatSource_Is_Idempotent()
+    {
+        var mainView = new IdeMainView();
+        var expected = string.Join(
+            Environment.NewLine,
+            [
+                "procedure p;",
+                "  var x;",
+                "  begin",
+                "    x := 1 + 2;",
+                "  end;",
+                "begin",
+                "  call p;",
+                "end."
+            ]);
+        mainView.SourceEditor.Text = expected;
+
+        var formatted = mainView.FormatSource();
+        var formattedAgain = mainView.FormatSource();
+
+        Assert.True(formatted);
+        Assert.True(formattedAgain);
+        Assert.Equal(expected, mainView.SourceEditor.Text?.ToString());
+    }
+
+    [Fact]
+    public void FormatSource_Does_Not_Require_Semicolon_Before_End()
+    {
+        var mainView = new IdeMainView();
+        mainView.SourceEditor.Text = "begin x:=1 end.";
+
+        var formatted = mainView.FormatSource();
+        var formattedText = mainView.SourceEditor.Text?.ToString() ?? string.Empty;
+        var expected = string.Join(
+            Environment.NewLine,
+            [
+                "begin",
+                "  x := 1",
+                "end."
+            ]);
+
+        Assert.True(formatted);
+        Assert.Equal(expected, formattedText);
+        Assert.DoesNotContain("1;", formattedText);
+    }
+
+    [Fact]
+    public void FormatSource_Indents_Procedure_Header_In_Containing_Begin_End_Block()
+    {
+        var mainView = new IdeMainView();
+        mainView.SourceEditor.Text = "procedure p;begin x:=2 end;begin call p end.";
+
+        var formatted = mainView.FormatSource();
+        var formattedText = mainView.SourceEditor.Text?.ToString() ?? string.Empty;
+        var expected = string.Join(
+            Environment.NewLine,
+            [
+                "procedure p;",
+                "  begin",
+                "    x := 2",
+                "  end;",
+                "begin",
+                "  call p",
+                "end."
+            ]);
+
+        Assert.True(formatted);
+        Assert.Equal(expected, formattedText);
+    }
+
+    [Fact]
+    public void FormatSource_Respects_Ebnf_Block_Nesting_For_Procedure_Declarations()
+    {
+        var mainView = new IdeMainView();
+        mainView.SourceEditor.Text = "const a=10,b=20;var x,y,z;procedure pa;const c=30,d=40;var m;procedure pc;begin ! m := c*d;end;begin call pc;x:=a end;procedure pb;begin y:=b end;begin call pa;call pb;z:=x+y;! z end.";
+
+        var formatted = mainView.FormatSource();
+        var formattedText = mainView.SourceEditor.Text?.ToString() ?? string.Empty;
+        var expected = string.Join(
+            Environment.NewLine,
+            [
+                "const a = 10, b = 20;",
+                "var x, y, z;",
+                "procedure pa;",
+                "  const c = 30, d = 40;",
+                "  var m;",
+                "  procedure pc;",
+                "    begin",
+                "      ! m := c * d;",
+                "    end;",
+                "  begin",
+                "    call pc;",
+                "    x := a",
+                "  end;",
+                "procedure pb;",
+                "  begin",
+                "    y := b",
+                "  end;",
+                "begin",
+                "  call pa;",
+                "  call pb;",
+                "  z := x + y;",
+                "  ! z",
+                "end."
+            ]);
+
+        Assert.True(formatted);
+        Assert.Equal(expected, formattedText);
+    }
+
+    [Fact]
     public void MainView_Uses_Classic_Turbo_Pascal_Menu_Structure()
     {
         var mainView = new IdeMainView();

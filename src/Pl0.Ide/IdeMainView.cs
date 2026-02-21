@@ -139,6 +139,20 @@ internal sealed class IdeMainView : Toplevel
         }
     }
 
+    internal bool FormatSource()
+    {
+        var source = sourceEditor.Text?.ToString() ?? string.Empty;
+        if (!Pl0SourceFormatter.TryFormat(source, out var formattedSource, CompilerOptions.Default))
+        {
+            messagesOutput.Text = "Formatierung uebersprungen: Quelltext enthaelt Fehler.";
+            return false;
+        }
+
+        sourceEditor.Text = formattedSource;
+        messagesOutput.Text = "Quelltext formatiert.";
+        return true;
+    }
+
     internal CompilationResult CompileSource()
     {
         var source = SourceEditor.Text?.ToString() ?? string.Empty;
@@ -164,7 +178,7 @@ internal sealed class IdeMainView : Toplevel
                 ], null),
                 new MenuBarItem("_Bearbeiten",
                 [
-                    new MenuItem("_Formatieren", string.Empty, NoOp, () => true, null, default)
+                    new MenuItem("_Formatieren", string.Empty, FormatSourceFromMenu, () => true, null, default)
                 ], null),
                 new MenuBarItem("_Kompilieren",
                 [
@@ -205,6 +219,11 @@ internal sealed class IdeMainView : Toplevel
     private void SaveSourceFileFromMenu()
     {
         _ = SaveSourceFile();
+    }
+
+    private void FormatSourceFromMenu()
+    {
+        _ = FormatSource();
     }
 
     private static bool HasPl0Extension(string path)
