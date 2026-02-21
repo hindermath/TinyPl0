@@ -8,6 +8,7 @@ internal sealed class IdeMainView : Toplevel
     private static readonly Action NoOp = static () => { };
     private const string SourceWindowBaseTitle = "Quellcode";
     private const string PCodeWindowBaseTitle = "P-Code";
+    private const string AssemblerWindowBaseTitle = "Assembler-Code";
     private readonly Pl0Compiler compiler = new();
     private readonly IIdeFileDialogService fileDialogs;
     private readonly IIdeFileStorage fileStorage;
@@ -20,6 +21,7 @@ internal sealed class IdeMainView : Toplevel
     private CompilationResult? lastCompilationResult;
     private string? currentSourcePath;
     private CompilerOptions currentCompilerOptions = IdeCompilerOptionsRules.GetResetDefaults();
+    private IdeCodeDisplayMode currentCodeDisplayMode = IdeCodeDisplayMode.Assembler;
 
     public IdeMainView() : this(
         new TerminalGuiIdeFileDialogService(),
@@ -55,7 +57,7 @@ internal sealed class IdeMainView : Toplevel
 
         pCodeWindow = new Window
         {
-            Title = PCodeWindowBaseTitle,
+            Title = GetCodeWindowBaseTitle(),
             X = Pos.Right(sourceWindow),
             Y = Pos.Bottom(menuBar),
             Width = Dim.Fill(),
@@ -86,6 +88,7 @@ internal sealed class IdeMainView : Toplevel
     internal string SourceWindowTitle => sourceWindow.Title?.ToString() ?? string.Empty;
     internal string PCodeWindowTitle => pCodeWindow.Title?.ToString() ?? string.Empty;
     internal CompilerOptions CurrentCompilerOptions => currentCompilerOptions;
+    internal IdeCodeDisplayMode CurrentCodeDisplayMode => currentCodeDisplayMode;
 
     internal void CreateNewSourceFile()
     {
@@ -177,20 +180,27 @@ internal sealed class IdeMainView : Toplevel
 
     internal bool OpenCompilerSettingsDialog()
     {
-        var selectedOptions = compilerSettingsDialog.ShowCompilerSettingsDialog(currentCompilerOptions);
-        if (selectedOptions is null)
+        var dialogResult = compilerSettingsDialog.ShowCompilerSettingsDialog(currentCompilerOptions, currentCodeDisplayMode);
+        if (dialogResult is null)
         {
             return false;
         }
 
-        if (!IdeCompilerOptionsRules.TryValidateAndNormalize(selectedOptions, out var normalized, out var validationError))
+        if (!IdeCompilerOptionsRules.TryValidateAndNormalize(dialogResult.CompilerOptions, out var normalized, out var validationError))
         {
             messagesOutput.Text = $"Compiler-Einstellungen ungueltig: {validationError}";
             return false;
         }
 
         currentCompilerOptions = normalized;
-        messagesOutput.Text = $"Compiler-Einstellungen aktualisiert: Dialekt {normalized.Dialect}, MaxNumberDigits {normalized.MaxNumberDigits}.";
+        currentCodeDisplayMode = dialogResult.CodeDisplayMode;
+        UpdateDocumentTitles();
+        if (lastCompilationResult?.Success == true)
+        {
+            RenderCompilationResult(lastCompilationResult);
+        }
+
+        messagesOutput.Text = $"Compiler-Einstellungen aktualisiert: Dialekt {normalized.Dialect}, MaxNumberDigits {normalized.MaxNumberDigits}, Anzeige {GetCodeWindowBaseTitle()}.";
         return true;
     }
 
@@ -300,23 +310,27 @@ internal sealed class IdeMainView : Toplevel
 
     private void UpdateDocumentTitles()
     {
+        var codeWindowBaseTitle = GetCodeWindowBaseTitle();
         if (string.IsNullOrWhiteSpace(currentSourcePath))
         {
             sourceWindow.Title = SourceWindowBaseTitle;
-            pCodeWindow.Title = PCodeWindowBaseTitle;
+            pCodeWindow.Title = codeWindowBaseTitle;
             return;
         }
 
         var fileName = Path.GetFileName(currentSourcePath);
         sourceWindow.Title = $"{SourceWindowBaseTitle}: {fileName}";
-        pCodeWindow.Title = $"{PCodeWindowBaseTitle}: {fileName}";
+        pCodeWindow.Title = $"{codeWindowBaseTitle}: {fileName}";
     }
 
     private void RenderCompilationResult(CompilationResult result)
     {
         if (result.Success)
         {
-            pCodeOutput.Text = PCodeSerializer.ToAsm(result.Instructions);
+            var listing = currentCodeDisplayMode == IdeCodeDisplayMode.PCode
+                ? PCodeSerializer.ToCod(result.Instructions)
+                : PCodeSerializer.ToAsm(result.Instructions);
+            pCodeOutput.Text = AddLineNumbers(listing);
             messagesOutput.Text = $"Kompilierung erfolgreich ({result.Instructions.Count} Instruktionen).";
             return;
         }
@@ -336,5 +350,23 @@ internal sealed class IdeMainView : Toplevel
             Environment.NewLine,
             diagnostics.Select(d =>
                 $"E{d.Code} (Zeile {d.Position.Line}, Spalte {d.Position.Column}): {d.Message}"));
+    }
+
+    private string GetCodeWindowBaseTitle()
+    {
+        return currentCodeDisplayMode == IdeCodeDisplayMode.PCode ? PCodeWindowBaseTitle : AssemblerWindowBaseTitle;
+    }
+
+    private static string AddLineNumbers(string listing)
+    {
+        if (string.IsNullOrWhiteSpace(listing))
+        {
+            return string.Empty;
+        }
+
+        var lines = listing.Replace("\r\n", "\n", StringComparison.Ordinal).Split('\n');
+        return string.Join(
+            Environment.NewLine,
+            lines.Select((line, index) => $"{index:D4}: {line}"));
     }
 }

@@ -23,7 +23,7 @@ public sealed class IdeBootstrapTests
 
         Assert.Equal(3, windows.Length);
         Assert.Contains(windows, window => window.Title.ToString() == "Quellcode");
-        Assert.Contains(windows, window => window.Title.ToString() == "P-Code");
+        Assert.Contains(windows, window => window.Title.ToString() == "Assembler-Code");
         Assert.Contains(windows, window => window.Title.ToString() == "Meldungen");
     }
 
@@ -89,6 +89,7 @@ public sealed class IdeBootstrapTests
         Assert.True(result.Success);
         Assert.Same(result, mainView.LastCompilationResult);
         Assert.NotEmpty(pCodeText);
+        Assert.Contains("0000: ", pCodeText);
         Assert.Contains("Kompilierung erfolgreich", messagesText);
     }
 
@@ -141,7 +142,9 @@ public sealed class IdeBootstrapTests
             new StubIdeFileDialogService(),
             new StubIdeFileStorage(),
             new StubCompilerSettingsDialogService([
-                new CompilerOptions(Pl0Dialect.Classic, 3, 2047, 10, 10, 100, 200)
+                new IdeCompilerSettingsDialogResult(
+                    new CompilerOptions(Pl0Dialect.Classic, 3, 2047, 10, 10, 100, 200),
+                    IdeCodeDisplayMode.PCode)
             ]));
 
         mainView.SourceEditor.Text = "begin ! 1 end.";
@@ -154,6 +157,7 @@ public sealed class IdeBootstrapTests
         Assert.True(changed);
         Assert.Equal(Pl0Dialect.Classic, mainView.CurrentCompilerOptions.Dialect);
         Assert.Equal(IdeCompilerOptionsRules.MaxNumberDigitsClassic, mainView.CurrentCompilerOptions.MaxNumberDigits);
+        Assert.Equal(IdeCodeDisplayMode.PCode, mainView.CurrentCodeDisplayMode);
         Assert.False(secondResult.Success);
     }
 
@@ -164,7 +168,9 @@ public sealed class IdeBootstrapTests
             new StubIdeFileDialogService(),
             new StubIdeFileStorage(),
             new StubCompilerSettingsDialogService([
-                new CompilerOptions(Pl0Dialect.Extended, 42, 2047, 10, 99, 100, 200)
+                new IdeCompilerSettingsDialogResult(
+                    new CompilerOptions(Pl0Dialect.Extended, 42, 2047, 10, 99, 100, 200),
+                    IdeCodeDisplayMode.Assembler)
             ]));
 
         var changed = mainView.OpenCompilerSettingsDialog();
@@ -173,7 +179,55 @@ public sealed class IdeBootstrapTests
         Assert.False(changed);
         Assert.Equal(Pl0Dialect.Extended, mainView.CurrentCompilerOptions.Dialect);
         Assert.Equal(IdeCompilerOptionsRules.MaxNumberDigitsExtended, mainView.CurrentCompilerOptions.MaxNumberDigits);
+        Assert.Equal(IdeCodeDisplayMode.Assembler, mainView.CurrentCodeDisplayMode);
         Assert.Contains("MaxLevel", messagesText);
+    }
+
+    [Fact]
+    public void CompileSource_Can_Switch_Between_PCode_And_Assembler_Display()
+    {
+        var mainView = new IdeMainView(
+            new StubIdeFileDialogService(),
+            new StubIdeFileStorage(),
+            new StubCompilerSettingsDialogService([
+                new IdeCompilerSettingsDialogResult(
+                    new CompilerOptions(Pl0Dialect.Extended, 3, 2047, 10, 10, 100, 200),
+                    IdeCodeDisplayMode.PCode),
+                new IdeCompilerSettingsDialogResult(
+                    new CompilerOptions(Pl0Dialect.Extended, 3, 2047, 10, 10, 100, 200),
+                    IdeCodeDisplayMode.Assembler)
+            ]));
+        mainView.SourceEditor.Text = """
+                                     var x;
+                                     begin
+                                       x := 1
+                                     end.
+                                     """;
+
+        _ = mainView.CompileSource();
+        var assemblerTextBeforeSwitch = mainView.PCodeOutput.Text?.ToString() ?? string.Empty;
+
+        var changedToPCode = mainView.OpenCompilerSettingsDialog();
+        _ = mainView.CompileSource();
+        var pCodeText = mainView.PCodeOutput.Text?.ToString() ?? string.Empty;
+
+        Assert.Contains("0000: ", assemblerTextBeforeSwitch);
+        Assert.True(char.IsLetter(GetInstructionTokenFromFirstLine(assemblerTextBeforeSwitch)[0]));
+        Assert.True(changedToPCode);
+        Assert.Equal(IdeCodeDisplayMode.PCode, mainView.CurrentCodeDisplayMode);
+        Assert.Equal("P-Code", mainView.PCodeWindowTitle);
+        Assert.Contains("0000: ", pCodeText);
+        Assert.True(char.IsDigit(GetInstructionTokenFromFirstLine(pCodeText)[0]));
+
+        var changedToAssembler = mainView.OpenCompilerSettingsDialog();
+        _ = mainView.CompileSource();
+        var assemblerTextAfterSwitch = mainView.PCodeOutput.Text?.ToString() ?? string.Empty;
+
+        Assert.True(changedToAssembler);
+        Assert.Equal(IdeCodeDisplayMode.Assembler, mainView.CurrentCodeDisplayMode);
+        Assert.Equal("Assembler-Code", mainView.PCodeWindowTitle);
+        Assert.Contains("0000: ", assemblerTextAfterSwitch);
+        Assert.True(char.IsLetter(GetInstructionTokenFromFirstLine(assemblerTextAfterSwitch)[0]));
     }
 
     [Fact]
@@ -202,7 +256,7 @@ public sealed class IdeBootstrapTests
             Assert.Equal(source, File.ReadAllText(expectedPath));
             Assert.Contains("Datei gespeichert", messagesText);
             Assert.Equal("Quellcode: beispiel.pl0", mainView.SourceWindowTitle);
-            Assert.Equal("P-Code: beispiel.pl0", mainView.PCodeWindowTitle);
+            Assert.Equal("Assembler-Code: beispiel.pl0", mainView.PCodeWindowTitle);
         }
         finally
         {
@@ -237,7 +291,7 @@ public sealed class IdeBootstrapTests
             Assert.Equal(sourcePath, mainView.CurrentSourcePath);
             Assert.Contains("Datei geladen", messagesText);
             Assert.Equal("Quellcode: programm.pl0", mainView.SourceWindowTitle);
-            Assert.Equal("P-Code: programm.pl0", mainView.PCodeWindowTitle);
+            Assert.Equal("Assembler-Code: programm.pl0", mainView.PCodeWindowTitle);
         }
         finally
         {
@@ -283,7 +337,7 @@ public sealed class IdeBootstrapTests
 
         Assert.True(opened);
         Assert.Equal("Quellcode: demo.pl0", mainView.SourceWindowTitle);
-        Assert.Equal("P-Code: demo.pl0", mainView.PCodeWindowTitle);
+        Assert.Equal("Assembler-Code: demo.pl0", mainView.PCodeWindowTitle);
     }
 
     [Fact]
@@ -497,7 +551,9 @@ public sealed class IdeBootstrapTests
     [Fact]
     public void CompilerSettingsState_ResetToDefaults_Uses_CompilerOptionsDefault_And_Derived_MaxNumberDigits()
     {
-        var state = new IdeCompilerSettingsDialogState(new CompilerOptions(Pl0Dialect.Classic, 4, 2000, 12, 14, 120, 220));
+        var state = new IdeCompilerSettingsDialogState(
+            new CompilerOptions(Pl0Dialect.Classic, 4, 2000, 12, 14, 120, 220),
+            IdeCodeDisplayMode.Assembler);
         var applied = state.TryApplyValues(4, 2000, 12, 120, 220, out _);
 
         state.ResetToDefaults();
@@ -510,6 +566,31 @@ public sealed class IdeBootstrapTests
         Assert.Equal(CompilerOptions.Default.MaxSymbolCount, state.Options.MaxSymbolCount);
         Assert.Equal(CompilerOptions.Default.MaxCodeLength, state.Options.MaxCodeLength);
         Assert.Equal(IdeCompilerOptionsRules.MaxNumberDigitsExtended, state.Options.MaxNumberDigits);
+        Assert.Equal(IdeCodeDisplayMode.Assembler, state.CodeDisplayMode);
+    }
+
+    [Fact]
+    public void WindowTitles_Use_Code_Display_Mode_After_File_Open()
+    {
+        var sourcePath = Path.Combine("/tmp", "unterordner", "demo.pl0");
+        var mainView = new IdeMainView(
+            new StubIdeFileDialogService(openPath: sourcePath),
+            new StubIdeFileStorage(contentByPath: new Dictionary<string, string>
+            {
+                [sourcePath] = "begin end."
+            }),
+            new StubCompilerSettingsDialogService([
+                new IdeCompilerSettingsDialogResult(
+                    CompilerOptions.Default,
+                    IdeCodeDisplayMode.Assembler)
+            ]));
+
+        var opened = mainView.OpenSourceFile();
+        var changed = mainView.OpenCompilerSettingsDialog();
+
+        Assert.True(opened);
+        Assert.True(changed);
+        Assert.Equal("Assembler-Code: demo.pl0", mainView.PCodeWindowTitle);
     }
 
     private sealed class StubIdeFileDialogService(string? openPath = null, string? savePath = null) : IIdeFileDialogService
@@ -545,11 +626,20 @@ public sealed class IdeBootstrapTests
         }
     }
 
-    private sealed class StubCompilerSettingsDialogService(IEnumerable<CompilerOptions?> optionsToReturn) : IIdeCompilerSettingsDialogService
+    private static string GetInstructionTokenFromFirstLine(string listingWithLineNumbers)
     {
-        private readonly Queue<CompilerOptions?> queuedOptions = new(optionsToReturn);
+        var firstLine = listingWithLineNumbers.Replace("\r\n", "\n", StringComparison.Ordinal)
+            .Split('\n', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
+            .First();
+        var separatorIndex = firstLine.IndexOf(':', StringComparison.Ordinal);
+        return firstLine[(separatorIndex + 1)..].Trim().Split(' ', StringSplitOptions.RemoveEmptyEntries)[0];
+    }
 
-        public CompilerOptions? ShowCompilerSettingsDialog(CompilerOptions currentOptions)
+    private sealed class StubCompilerSettingsDialogService(IEnumerable<IdeCompilerSettingsDialogResult?> optionsToReturn) : IIdeCompilerSettingsDialogService
+    {
+        private readonly Queue<IdeCompilerSettingsDialogResult?> queuedOptions = new(optionsToReturn);
+
+        public IdeCompilerSettingsDialogResult? ShowCompilerSettingsDialog(CompilerOptions currentOptions, IdeCodeDisplayMode currentCodeDisplayMode)
         {
             return queuedOptions.Count > 0 ? queuedOptions.Dequeue() : null;
         }

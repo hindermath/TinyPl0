@@ -6,21 +6,21 @@ namespace Pl0.Ide;
 
 internal interface IIdeCompilerSettingsDialogService
 {
-    CompilerOptions? ShowCompilerSettingsDialog(CompilerOptions currentOptions);
+    IdeCompilerSettingsDialogResult? ShowCompilerSettingsDialog(CompilerOptions currentOptions, IdeCodeDisplayMode currentCodeDisplayMode);
 }
 
 internal sealed class TerminalGuiIdeCompilerSettingsDialogService : IIdeCompilerSettingsDialogService
 {
-    public CompilerOptions? ShowCompilerSettingsDialog(CompilerOptions currentOptions)
+    public IdeCompilerSettingsDialogResult? ShowCompilerSettingsDialog(CompilerOptions currentOptions, IdeCodeDisplayMode currentCodeDisplayMode)
     {
-        var state = new IdeCompilerSettingsDialogState(currentOptions);
-        CompilerOptions? acceptedOptions = null;
+        var state = new IdeCompilerSettingsDialogState(currentOptions, currentCodeDisplayMode);
+        IdeCompilerSettingsDialogResult? acceptedOptions = null;
 
         var dialog = new Dialog
         {
             Title = "Compiler-Einstellungen",
             Width = 72,
-            Height = 21
+            Height = 24
         };
 
         var dialectLabel = new Label
@@ -38,24 +38,39 @@ internal sealed class TerminalGuiIdeCompilerSettingsDialogService : IIdeCompiler
             RadioLabels = ["Classic", "Extended"]
         };
 
-        var maxLevelLabel = CreateLabel("MaxLevel:", 4);
-        var maxLevelField = CreateNumericField(4);
-        var maxAddressLabel = CreateLabel("MaxAddress:", 6);
-        var maxAddressField = CreateNumericField(6);
-        var maxIdentifierLengthLabel = CreateLabel("MaxIdentifierLength:", 8);
-        var maxIdentifierLengthField = CreateNumericField(8);
-        var maxNumberDigitsLabel = CreateLabel("MaxNumberDigits (abgeleitet):", 10);
-        var maxNumberDigitsField = CreateNumericField(10);
+        var displayModeLabel = new Label
+        {
+            X = 1,
+            Y = 4,
+            Text = "Code-Anzeige:"
+        };
+        var displayModeRadio = new RadioGroup
+        {
+            X = 28,
+            Y = 4,
+            Width = 20,
+            Height = 2,
+            RadioLabels = ["P-Code", "Assembler"]
+        };
+
+        var maxLevelLabel = CreateLabel("MaxLevel:", 7);
+        var maxLevelField = CreateNumericField(7);
+        var maxAddressLabel = CreateLabel("MaxAddress:", 9);
+        var maxAddressField = CreateNumericField(9);
+        var maxIdentifierLengthLabel = CreateLabel("MaxIdentifierLength:", 11);
+        var maxIdentifierLengthField = CreateNumericField(11);
+        var maxNumberDigitsLabel = CreateLabel("MaxNumberDigits (abgeleitet):", 13);
+        var maxNumberDigitsField = CreateNumericField(13);
         maxNumberDigitsField.ReadOnly = true;
-        var maxSymbolCountLabel = CreateLabel("MaxSymbolCount:", 12);
-        var maxSymbolCountField = CreateNumericField(12);
-        var maxCodeLengthLabel = CreateLabel("MaxCodeLength:", 14);
-        var maxCodeLengthField = CreateNumericField(14);
+        var maxSymbolCountLabel = CreateLabel("MaxSymbolCount:", 15);
+        var maxSymbolCountField = CreateNumericField(15);
+        var maxCodeLengthLabel = CreateLabel("MaxCodeLength:", 17);
+        var maxCodeLengthField = CreateNumericField(17);
 
         var validationLabel = new Label
         {
             X = 1,
-            Y = 16,
+            Y = 19,
             Width = Dim.Fill(2),
             Text = string.Empty
         };
@@ -68,7 +83,7 @@ internal sealed class TerminalGuiIdeCompilerSettingsDialogService : IIdeCompiler
         {
             e.Cancel = true;
             state.ResetToDefaults();
-            ApplyStateToFields(state, dialectRadio, maxLevelField, maxAddressField, maxIdentifierLengthField, maxNumberDigitsField, maxSymbolCountField, maxCodeLengthField);
+            ApplyStateToFields(state, dialectRadio, displayModeRadio, maxLevelField, maxAddressField, maxIdentifierLengthField, maxNumberDigitsField, maxSymbolCountField, maxCodeLengthField);
             validationLabel.Text = "Standardwerte geladen.";
         };
 
@@ -105,13 +120,14 @@ internal sealed class TerminalGuiIdeCompilerSettingsDialogService : IIdeCompiler
 
             var selectedDialect = GetDialectForSelectedIndex(dialectRadio.SelectedItem);
             state.SetDialect(selectedDialect);
+            state.SetCodeDisplayMode(GetDisplayModeForSelectedIndex(displayModeRadio.SelectedItem));
             if (!state.TryApplyValues(maxLevel, maxAddress, maxIdentifierLength, maxSymbolCount, maxCodeLength, out var validationError))
             {
                 validationLabel.Text = validationError ?? "Ungueltige Eingabe.";
                 return;
             }
 
-            acceptedOptions = state.Options;
+            acceptedOptions = new IdeCompilerSettingsDialogResult(state.Options, state.CodeDisplayMode);
             dialog.Canceled = false;
             Application.RequestStop(dialog);
         };
@@ -122,9 +138,16 @@ internal sealed class TerminalGuiIdeCompilerSettingsDialogService : IIdeCompiler
             maxNumberDigitsField.Text = state.Options.MaxNumberDigits.ToString(CultureInfo.InvariantCulture);
         };
 
+        displayModeRadio.SelectedItemChanged += (_, _) =>
+        {
+            state.SetCodeDisplayMode(GetDisplayModeForSelectedIndex(displayModeRadio.SelectedItem));
+        };
+
         dialog.Add(
             dialectLabel,
             dialectRadio,
+            displayModeLabel,
+            displayModeRadio,
             maxLevelLabel,
             maxLevelField,
             maxAddressLabel,
@@ -142,7 +165,7 @@ internal sealed class TerminalGuiIdeCompilerSettingsDialogService : IIdeCompiler
         dialog.AddButton(cancelButton);
         dialog.AddButton(okButton);
 
-        ApplyStateToFields(state, dialectRadio, maxLevelField, maxAddressField, maxIdentifierLengthField, maxNumberDigitsField, maxSymbolCountField, maxCodeLengthField);
+        ApplyStateToFields(state, dialectRadio, displayModeRadio, maxLevelField, maxAddressField, maxIdentifierLengthField, maxNumberDigitsField, maxSymbolCountField, maxCodeLengthField);
 
         Application.Run(dialog);
         return dialog.Canceled ? null : acceptedOptions;
@@ -171,6 +194,7 @@ internal sealed class TerminalGuiIdeCompilerSettingsDialogService : IIdeCompiler
     private static void ApplyStateToFields(
         IdeCompilerSettingsDialogState state,
         RadioGroup dialectRadio,
+        RadioGroup displayModeRadio,
         TextField maxLevelField,
         TextField maxAddressField,
         TextField maxIdentifierLengthField,
@@ -179,6 +203,7 @@ internal sealed class TerminalGuiIdeCompilerSettingsDialogService : IIdeCompiler
         TextField maxCodeLengthField)
     {
         dialectRadio.SelectedItem = GetSelectedIndexForDialect(state.Options.Dialect);
+        displayModeRadio.SelectedItem = GetSelectedIndexForDisplayMode(state.CodeDisplayMode);
         maxLevelField.Text = state.Options.MaxLevel.ToString(CultureInfo.InvariantCulture);
         maxAddressField.Text = state.Options.MaxAddress.ToString(CultureInfo.InvariantCulture);
         maxIdentifierLengthField.Text = state.Options.MaxIdentifierLength.ToString(CultureInfo.InvariantCulture);
@@ -208,20 +233,37 @@ internal sealed class TerminalGuiIdeCompilerSettingsDialogService : IIdeCompiler
     {
         return selectedItem == 0 ? Pl0Dialect.Classic : Pl0Dialect.Extended;
     }
+
+    private static int GetSelectedIndexForDisplayMode(IdeCodeDisplayMode codeDisplayMode)
+    {
+        return codeDisplayMode == IdeCodeDisplayMode.PCode ? 0 : 1;
+    }
+
+    private static IdeCodeDisplayMode GetDisplayModeForSelectedIndex(int selectedItem)
+    {
+        return selectedItem == 0 ? IdeCodeDisplayMode.PCode : IdeCodeDisplayMode.Assembler;
+    }
 }
 
 internal sealed class IdeCompilerSettingsDialogState
 {
-    internal IdeCompilerSettingsDialogState(CompilerOptions options)
+    internal IdeCompilerSettingsDialogState(CompilerOptions options, IdeCodeDisplayMode codeDisplayMode)
     {
         Options = IdeCompilerOptionsRules.Normalize(options);
+        CodeDisplayMode = codeDisplayMode;
     }
 
     internal CompilerOptions Options { get; private set; }
+    internal IdeCodeDisplayMode CodeDisplayMode { get; private set; }
 
     internal void SetDialect(Pl0Dialect dialect)
     {
         Options = IdeCompilerOptionsRules.Normalize(Options with { Dialect = dialect });
+    }
+
+    internal void SetCodeDisplayMode(IdeCodeDisplayMode codeDisplayMode)
+    {
+        CodeDisplayMode = codeDisplayMode;
     }
 
     internal bool TryApplyValues(int maxLevel, int maxAddress, int maxIdentifierLength, int maxSymbolCount, int maxCodeLength, out string? validationError)
@@ -247,5 +289,6 @@ internal sealed class IdeCompilerSettingsDialogState
     internal void ResetToDefaults()
     {
         Options = IdeCompilerOptionsRules.GetResetDefaults();
+        CodeDisplayMode = IdeCodeDisplayMode.Assembler;
     }
 }

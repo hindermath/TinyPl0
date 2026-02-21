@@ -107,6 +107,11 @@ Die bestehenden Abhaengigkeitsregeln der vorhandenen Module bleiben unveraendert
       - Bei `Dialect = Extended` wird `MaxNumberDigits = 10` gesetzt (technisch passend zu `int`).
     - Der Einstellungsdialog bietet eine Funktion zum Zuruecksetzen auf die Standardwerte (`CompilerOptions.Default`).
     - Geaenderte Werte werden fuer den naechsten Kompiliervorgang verwendet.
+    - Zusaetzlich enthaelt der Einstellungsdialog einen Schalter fuer die Anzeige im Code-Fenster:
+      - `P-Code` (numerische Darstellung),
+      - `Assembler` (mnemonische Darstellung).
+      - Default fuer die Code-Anzeige ist `Assembler`.
+      Die Auswahl wirkt sich auf die naechste Anzeige nach erfolgreicher Kompilierung aus.
 
 9. `PF-IDE-006` Kompilierung:
    - Quellcode kann direkt aus der IDE ueber `Pl0.Core` kompiliert werden.
@@ -122,6 +127,9 @@ Die bestehenden Abhaengigkeitsregeln der vorhandenen Module bleiben unveraendert
 
 12. `PF-IDE-009` P-Code-Fenster:
     - Der erzeugte P-Code wird in einem separaten Fenster dargestellt.
+    - Jede Codezeile erhaelt eine feste, vierstellige Zeilennummer im Format `0000:`.
+    - Die Darstellung kann zwischen `P-Code` (numerisch) und `Assembler` (mnemonisch) umgeschaltet werden.
+    - Der Fenstertitel wird entsprechend der gewaehlten Darstellung angepasst (`P-Code` bzw. `Assembler-Code`).
 
 13. `PF-IDE-021` P-Code-Export (Emit-Modi):
     - Die IDE bietet eine Exportfunktion fuer den erzeugten P-Code.
@@ -247,7 +255,7 @@ Die bestehenden Abhaengigkeitsregeln der vorhandenen Module bleiben unveraendert
 - `AK-003`: PL/0-Syntaxelemente (Schluesselwoerter, Zahlen, Operatoren) werden im Editor hervorgehoben; der Farbstil orientiert sich an Turbo Pascal.
 - `AK-004`: Kompilierung aus IDE erzeugt entweder P-Code oder Diagnosen.
 - `AK-005`: Nach jedem Kompiliervorgang wird der Ergebnisstatus im Meldungsfenster angezeigt (kein separater Dialog erforderlich).
-- `AK-006`: P-Code wird in separatem Fenster angezeigt.
+- `AK-006`: Das Code-Fenster zeigt nach erfolgreicher Kompilierung die gewaehlte Darstellung (`P-Code` oder `Assembler`) inklusive vierstelliger Zeilennummern im Format `0000:`.
 - `AK-007`: P-Code-Ausfuehrung liefert sichtbare Ergebnisanzeige.
 - `AK-008`: Datei laden/speichern funktioniert fuer `.pl0`-Dateien ueber die Standard-Dialoge von `Terminal.Gui`.
 - `AK-009`: Formatierfunktion veraendert Quelltext deterministisch.
@@ -284,7 +292,7 @@ Die folgenden Testfaelle sind als automatisierte xUnit-Tests umzusetzen.
 | `TC-IDE-003` | PL/0-Syntaxelemente (Schluesselwoerter, Zahlen, Operatoren) werden im Editor im Turbo-Pascal-orientierten Farbstil hervorgehoben.                                                                              | `PF-IDE-005`                                           |
 | `TC-IDE-004` | Kompilierung eines gueltigen Programms liefert Erfolg und zeigt den Ergebnisstatus im Meldungsfenster (ohne separaten Kompilierdialog).                                                                       | `PF-IDE-006`, `PF-IDE-008`                             |
 | `TC-IDE-005` | Kompilierung eines fehlerhaften Programms zeigt Diagnosen im Meldungsfenster.                                                                                                                                  | `PF-IDE-008`                                           |
-| `TC-IDE-006` | Nach erfolgreicher Kompilierung wird P-Code im P-Code-Fenster angezeigt.                                                                                                                                       | `PF-IDE-009`                                           |
+| `TC-IDE-006` | Nach erfolgreicher Kompilierung wird die gewaehlte Code-Darstellung (`P-Code`/`Assembler`) im Code-Fenster angezeigt; jede Zeile beginnt mit einer vierstelligen Zeilennummer im Format `0000:`.              | `PF-IDE-009`, `PF-IDE-018`                             |
 | `TC-IDE-007` | Ausfuehrung von P-Code liefert sichtbare Laufzeitausgabe.                                                                                                                                                      | `PF-IDE-010`                                           |
 | `TC-IDE-008` | Laden und Speichern von `.pl0`-Dateien funktioniert verlustfrei ueber die Standard-Dialoge von `Terminal.Gui`.                                                                                                 | `PF-IDE-011`                                           |
 | `TC-IDE-009` | Formatieren eines Quelltexts liefert deterministisches Ergebnis.                                                                                                                                               | `PF-IDE-012`                                           |
@@ -400,3 +408,9 @@ Dieser Abschnitt dokumentiert ab diesem Arbeitsschritt fortlaufend den Dialogver
 58. Agent (2026-02-21 17:41:04 CET): Pflichtenheft angepasst: `PF-IDE-006` explizit als erledigt markiert, `PF-IDE-007` als entfallen dokumentiert (Rueckmeldung ueber Meldungsfenster), Prozessschritt 7.4, `AK-005` und `TC-IDE-004` konsistent auf Meldungsfenster statt Kompilierdialog umgestellt; Commit im gleichen Arbeitsschritt ausgefuehrt (Commit-Details siehe Git-Historie/Antwort).
 59. Benutzer (2026-02-21 17:45:55 CET): Bitte `PF-IDE-008 Fehleranzeige` pruefen; falls noch nicht umgesetzt, entsprechend umsetzen.
 60. Agent (2026-02-21 17:45:55 CET): `PF-IDE-008` geprueft: Funktionalitaet ist bereits umgesetzt. `Pl0Compiler` sammelt Diagnosen in einer Liste (`CompilationResult.Diagnostics`), und `IdeMainView` schreibt diese gesammelt in das Meldungsfenster (`FormatDiagnostics`). Nachweis mit fehlerhaftem Programm (`error_multiple_errors_recovery`) ergab mehrere Diagnosen (`E11`, `E24`, `E17`, `E9`, `E99`). Zusaetzlich Regressionstest ergaenzt (`CompileSource_Shows_All_Collected_Diagnostics_In_Messages_Window`) und erfolgreich verifiziert mit `dotnet test tests/Pl0.Tests/Pl0.Tests.csproj --filter "FullyQualifiedName~IdeBootstrapTests"` (kein separater Commit-Link).
+61. Benutzer (2026-02-21 17:52:13 CET): Hinweis, dass der Git-Commit fuer den letzten Arbeitsschritt erfolgt ist, mit Bitte um Dokumentation.
+62. Agent (2026-02-21 17:52:13 CET): Commit-Referenz fuer den vorigen Arbeitsschritt nachgetragen: [Commit](https://github.com/hindermath/TinyPl0/commit/dc78c390d6c3346bee704dcb9d1fa16919a5e549) (`test: add regression test for diagnostics display in messages window`, Commit-Zeit: `2026-02-21T17:51:53+01:00`).
+63. Benutzer (2026-02-21 18:01:26 CET): Fuer `PF-IDE-009` zwei Ergaenzungen angefordert: vierstellige Zeilennummern (`0000:`) vor jeder Codezeile sowie ein Schalter im Einstellungsdialog fuer `P-Code` vs. `Assembler` inkl. angepasstem Fenstertitel.
+64. Agent (2026-02-21 18:01:26 CET): Umsetzung erfolgt: Code-Fenster zeigt jetzt nummerierte Zeilen (`D4` + `:`), Darstellung ist ueber den Einstellungsdialog zwischen numerischem `P-Code` (`ToCod`) und mnemonischem `Assembler` (`ToAsm`) umschaltbar; der Fenstertitel wechselt entsprechend (`P-Code`/`Assembler-Code`) und wird auch bei geoeffneter Datei korrekt mit Dateinamen fortgefuehrt. Testabdeckung erweitert (`CompileSource_Can_Switch_Between_PCode_And_Assembler_Display`, `WindowTitles_Use_Code_Display_Mode_After_File_Open`) sowie bestehende Tests angepasst; Verifikation erfolgreich mit `dotnet build TinyPl0.sln` und `dotnet test tests/Pl0.Tests/Pl0.Tests.csproj --filter "FullyQualifiedName~IdeBootstrapTests|FullyQualifiedName~ArchitectureGuardTests"` (kein separater Commit-Link).
+65. Benutzer (2026-02-21 18:10:22 CET): Zwei Korrekturen angefordert: Zeilennummerierung soll bei `0000` starten und im Einstellungsdialog soll `Assembler` als Default gesetzt sein.
+66. Agent (2026-02-21 18:10:22 CET): Korrektur umgesetzt: Zeilennummern starten nun bei `0000` (statt `0001`), Default-Anzeigemodus ist `Assembler` (Initialzustand sowie `Zuruecksetzen` im Einstellungsdialog). Titel-/Anzeige-Tests entsprechend angepasst und erfolgreich verifiziert mit `dotnet build TinyPl0.sln` sowie `dotnet test tests/Pl0.Tests/Pl0.Tests.csproj --filter "FullyQualifiedName~IdeBootstrapTests|FullyQualifiedName~ArchitectureGuardTests"` (kein separater Commit-Link).
