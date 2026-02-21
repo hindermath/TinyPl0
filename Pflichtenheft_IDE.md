@@ -110,9 +110,12 @@ Die bestehenden Abhaengigkeitsregeln der vorhandenen Module bleiben unveraendert
 
 9. `PF-IDE-006` Kompilierung:
    - Quellcode kann direkt aus der IDE ueber `Pl0.Core` kompiliert werden.
+   - Diese Anforderung ist umgesetzt und wird als erledigt betrachtet.
 
-10. `PF-IDE-007` Kompilierdialog:
-    - Nach Kompilierung wird ein Dialog mit Ergebnisstatus angezeigt (Erfolg/Fehler).
+10. `PF-IDE-007` Kompilierdialog (entfaellt):
+    - Ein separater Kompilierdialog wird nicht mehr benoetigt.
+    - Der Ergebnisstatus nach der Kompilierung wird im Meldungsfenster angezeigt.
+    - Diese Anforderung wird als erledigt betrachtet, da die notwendige Rueckmeldung bereits durch das Meldungsfenster abgedeckt ist.
 
 11. `PF-IDE-008` Fehleranzeige:
     - Compilerdiagnosen werden gesammelt und in einem Meldungsfenster angezeigt.
@@ -228,7 +231,7 @@ Die bestehenden Abhaengigkeitsregeln der vorhandenen Module bleiben unveraendert
 1. Benutzer erstellt/oeffnet eine `.pl0`-Datei im Editorfenster.
 2. Benutzer oeffnet bei Bedarf den Compiler-Einstellungsdialog; bei Dialektwechsel setzt die IDE `MaxNumberDigits` automatisch (`Classic=14`, `Extended=10`).
 3. Benutzer startet Kompilierung.
-4. IDE zeigt Dialogstatus und schreibt Diagnosen ins Meldungsfenster.
+4. IDE zeigt den Ergebnisstatus im Meldungsfenster und schreibt Diagnosen ebenfalls dort hinein.
 5. Bei Erfolg wird P-Code im P-Code-Fenster aktualisiert.
 6. Benutzer waehlt:
    - Ausfuehren (Gesamtlauf) — Laufzeiteingaben (`?`) werden ueber Eingabedialog erfasst, Ausgaben (`!`) im Ausgabefenster angezeigt, oder
@@ -243,7 +246,7 @@ Die bestehenden Abhaengigkeitsregeln der vorhandenen Module bleiben unveraendert
 - `AK-002`: IDE startet in Terminalumgebung mit sichtbarem Hauptlayout.
 - `AK-003`: PL/0-Syntaxelemente (Schluesselwoerter, Zahlen, Operatoren) werden im Editor hervorgehoben; der Farbstil orientiert sich an Turbo Pascal.
 - `AK-004`: Kompilierung aus IDE erzeugt entweder P-Code oder Diagnosen.
-- `AK-005`: Kompilierdialog erscheint nach jedem Kompiliervorgang.
+- `AK-005`: Nach jedem Kompiliervorgang wird der Ergebnisstatus im Meldungsfenster angezeigt (kein separater Dialog erforderlich).
 - `AK-006`: P-Code wird in separatem Fenster angezeigt.
 - `AK-007`: P-Code-Ausfuehrung liefert sichtbare Ergebnisanzeige.
 - `AK-008`: Datei laden/speichern funktioniert fuer `.pl0`-Dateien ueber die Standard-Dialoge von `Terminal.Gui`.
@@ -279,7 +282,7 @@ Die folgenden Testfaelle sind als automatisierte xUnit-Tests umzusetzen.
 | `TC-IDE-001` | Projekt `Pl0.Ide` ist in Solution eingebunden und buildet erfolgreich.                                                                                                                                         | `PF-IDE-001`                                           |
 | `TC-IDE-002` | IDE startet mit Hauptlayout (Editor, P-Code, Meldungen).                                                                                                                                                       | `PF-IDE-002`, `PF-IDE-003`, `PF-IDE-004`, `PF-IDE-009` |
 | `TC-IDE-003` | PL/0-Syntaxelemente (Schluesselwoerter, Zahlen, Operatoren) werden im Editor im Turbo-Pascal-orientierten Farbstil hervorgehoben.                                                                              | `PF-IDE-005`                                           |
-| `TC-IDE-004` | Kompilierung eines gueltigen Programms liefert Erfolg und zeigt Kompilierdialog.                                                                                                                               | `PF-IDE-006`, `PF-IDE-007`                             |
+| `TC-IDE-004` | Kompilierung eines gueltigen Programms liefert Erfolg und zeigt den Ergebnisstatus im Meldungsfenster (ohne separaten Kompilierdialog).                                                                       | `PF-IDE-006`, `PF-IDE-008`                             |
 | `TC-IDE-005` | Kompilierung eines fehlerhaften Programms zeigt Diagnosen im Meldungsfenster.                                                                                                                                  | `PF-IDE-008`                                           |
 | `TC-IDE-006` | Nach erfolgreicher Kompilierung wird P-Code im P-Code-Fenster angezeigt.                                                                                                                                       | `PF-IDE-009`                                           |
 | `TC-IDE-007` | Ausfuehrung von P-Code liefert sichtbare Laufzeitausgabe.                                                                                                                                                      | `PF-IDE-010`                                           |
@@ -391,3 +394,7 @@ Dieser Abschnitt dokumentiert ab diesem Arbeitsschritt fortlaufend den Dialogver
 52. Agent (2026-02-21 17:15:32 CET): Commit-Referenz fuer den vorigen Arbeitsschritt nachgetragen: [Commit](https://github.com/hindermath/TinyPl0/commit/e5e7ab6e829b190a9c2fc05ea9f5c0e0e0f0064a) (`feat: add source code formatting feature with EBNF-consistent indentation and tests`, Commit-Zeit: `2026-02-21T17:14:56+01:00`).
 53. Benutzer (2026-02-21 17:25:27 CET): Bitte Abschnitt 5.1 Nr. 8 `PF-IDE-018 Compiler-Einstellungsdialog` ausfuehren.
 54. Agent (2026-02-21 17:25:27 CET): `PF-IDE-018` umgesetzt: neuer Compiler-Einstellungsdialog in `Pl0.Ide` mit Konfiguration fuer `Dialect`, `MaxLevel`, `MaxAddress`, `MaxIdentifierLength`, `MaxSymbolCount`, `MaxCodeLength` sowie abgeleitetem, nicht frei editierbarem `MaxNumberDigits` (`Classic=14`, `Extended=10`); Wertebereichsvalidierung (`0..10`, `127..32767`, `1..32`, `10..5000`, `50..10000`) integriert, inklusive Reset-Funktion auf Standardwerte (`CompilerOptions.Default` mit dialektabhaengiger `MaxNumberDigits`-Ableitung), Menueanbindung ueber `Kompilieren -> Einstellungen` und Uebernahme fuer den naechsten Kompiliervorgang. Testabdeckung fuer `TC-IDE-014` und `TC-IDE-028` ergaenzt (`OpenCompilerSettingsDialog_Changes_Options_For_Next_Compile`, `OpenCompilerSettingsDialog_Rejects_Invalid_Values`, `CompilerSettingsState_ResetToDefaults_Uses_CompilerOptionsDefault_And_Derived_MaxNumberDigits`) und erfolgreich verifiziert mit `dotnet build TinyPl0.sln` sowie `dotnet test tests/Pl0.Tests/Pl0.Tests.csproj --filter "FullyQualifiedName~IdeBootstrapTests|FullyQualifiedName~ArchitectureGuardTests"` (kein separater Commit-Link).
+55. Benutzer (2026-02-21 17:34:18 CET): Hinweis, dass der Git-Commit fuer den letzten Arbeitsschritt erfolgt ist, mit Bitte um Dokumentation.
+56. Agent (2026-02-21 17:34:18 CET): Commit-Referenz fuer den vorigen Arbeitsschritt nachgetragen: [Commit](https://github.com/hindermath/TinyPl0/commit/14de10ad04b0173f46b65675da19b034fa366939) (`feat: add compiler settings dialog with validation and tests`, Commit-Zeit: `2026-02-21T17:33:26+01:00`).
+57. Benutzer (2026-02-21 17:41:04 CET): `PF-IDE-006` als bereits erledigt markieren und `PF-IDE-007` als nicht mehr benoetigt/erledigt dokumentieren; anschliessend Commit ausfuehren und ebenfalls dokumentieren.
+58. Agent (2026-02-21 17:41:04 CET): Pflichtenheft angepasst: `PF-IDE-006` explizit als erledigt markiert, `PF-IDE-007` als entfallen dokumentiert (Rueckmeldung ueber Meldungsfenster), Prozessschritt 7.4, `AK-005` und `TC-IDE-004` konsistent auf Meldungsfenster statt Kompilierdialog umgestellt; Commit im gleichen Arbeitsschritt ausgefuehrt (Commit-Details siehe Git-Historie/Antwort).
