@@ -151,9 +151,39 @@ Die bestehenden Abhaengigkeitsregeln der vorhandenen Module bleiben unveraendert
 16. `PF-IDE-014` Debugging:
     - Schrittweise P-Code-Ausfuehrung (Step) ist moeglich. Hierbei wird der Instruktion-Pointer (`P`) aktualisiert und auch sichtbar im Inhalt des Stacks nachvollziehbar gezeigt, wo im P-Code der aktuelle Ausführungspunkt liegt.
     - Nach jedem Schritt werden Stack und Register (`P`, `B`, `T`) aktualisiert angezeigt.
-    - Voraussetzung: Die VM in `Pl0.Vm` muss um eine Schritt-Ausfuehrungsschnittstelle erweitert werden (z. B. `Step()`-Methode oder `IVmObserver`-Callback). Die aktuelle `VirtualMachine.Run()` laeuft atomar bis zum Ende; fuer Schritt-Debugging muss der VM-Zustand (`P`, `B`, `T`, Stack) zwischen Einzelschritten zugaenglich sein. Diese Erweiterung ist als eigene Teilaufgabe zu planen.
+    - Voraussetzung: Die VM in `Pl0.Vm` muss um eine Schritt-Ausfuehrungsschnittstelle erweitert werden. Die aktuelle `VirtualMachine.Run()` laeuft atomar bis zum Ende; fuer Schritt-Debugging muss der VM-Zustand (`P`, `B`, `T`, Stack) zwischen Einzelschritten zugaenglich sein. Die Umsetzung erfolgt als Teilaufgabe `PF-IDE-014a` (siehe unten).
     - Die IDE bietet eine Moeglichkeit, eine laufende P-Code-Ausfuehrung abzubrechen (z. B. ueber Tastatur-Shortcut oder Schaltflaeche), um auch bei Endlosschleifen bedienbar zu bleiben.
     - Nach einem Abbruch bleibt der letzte VM-Zustand (`P`, `B`, `T`, Stack) zur Analyse in der Debug-Ansicht sichtbar.
+
+    **Teilaufgabe `PF-IDE-014a`: VM-Erweiterung fuer Schritt-Ausfuehrung**
+
+    Gewaehlter Ansatz: **Zustandsbehaftete VM mit `Step()`-Methode** (statt Observer-Callback).
+
+    Begruendung: Fuer ein didaktisches Projekt mit TUI-Debugging ist eine explizite `Step()`-Methode der klarere Ansatz. Die IDE ruft bei jedem Klick auf „Step" eine Methode auf und liest anschliessend den aktuellen VM-Zustand — ohne Thread-Synchronisation zwischen VM-Schleife und Terminal.Gui.
+
+    Neue Typen in `Pl0.Vm`:
+
+    | Typ                          | Art      | Beschreibung                                                                                           |
+    |------------------------------|----------|--------------------------------------------------------------------------------------------------------|
+    | `VmState`                    | `record` | Zustandsschnappschuss: `P`, `B`, `T`, `int[] Stack`, `Instruction? CurrentInstruction`                 |
+    | `VmStepStatus`               | `enum`   | Ausfuehrungsstatus: `Running`, `Halted`, `Error`                                                       |
+    | `VmStepResult`               | `record` | Ergebnis eines Einzelschritts: `VmState State`, `VmStepStatus Status`, `IReadOnlyList<VmDiagnostic> Diagnostics` |
+    | `SteppableVirtualMachine`    | `class`  | Zustandsbehaftete VM mit `Initialize()`, `Step()`, `State`-Property und `IsRunning`-Property           |
+
+    Schnittstellenvertrag `SteppableVirtualMachine`:
+    - `Initialize(IReadOnlyList<Instruction> program, IPl0Io? io = null, VirtualMachineOptions? options = null)`: Setzt Register (`P=0`, `B=1`, `T=0`), alloziert Stack und bereitet die Ausfuehrung vor.
+    - `Step() -> VmStepResult`: Fuehrt genau eine Instruktion aus und gibt den resultierenden Zustand zurueck. Bei bereits beendeter Ausfuehrung liefert erneuter Aufruf `VmStepStatus.Halted`.
+    - `State -> VmState` (Property): Aktueller VM-Zustand, jederzeit abfragbar.
+    - `IsRunning -> bool` (Property): `true`, solange die Ausfuehrung nicht beendet oder fehlerhaft ist.
+
+    Abwaertskompatibilitaet:
+    - Die bestehende `VirtualMachine` mit `Run()` bleibt unveraendert. CLI und nicht-Debug-Betrieb der IDE verwenden weiterhin `Run()`.
+    - Alle bestehenden `VirtualMachineTests` muessen ohne Aenderung bestehen bleiben.
+    - Optional kann `VirtualMachine.Run()` spaeter intern auf `SteppableVirtualMachine` delegieren, um Code-Dopplung zu reduzieren; dies ist kein Muss fuer die erste Umsetzung.
+
+    Abbruch-Verhalten:
+    - Kein expliziter `Abort()`-Mechanismus noetig: Die IDE ruft bei Abbruch einfach kein weiteres `Step()` auf und verwirft die Instanz.
+    - Der letzte `VmState` bleibt ueber die `State`-Property fuer die Analyse in der Debug-Ansicht verfuegbar (siehe `AK-026`).
 
 17. `PF-IDE-015` Hilfe:
     - Eine Hilfe-Funktion mit Bedienhinweisen der IDE ist in der IDE verfuegbar (z. B. Tastaturbelegung, Menuefunktionen, Kurzanleitung).
@@ -261,6 +291,9 @@ Die bestehenden Abhaengigkeitsregeln der vorhandenen Module bleiben unveraendert
 - `AK-009`: Formatierfunktion veraendert Quelltext deterministisch.
 - `AK-010`: "Kompilieren und Ausfuehren" funktioniert in einem Schritt.
 - `AK-011`: Schritt-Debugging zeigt pro Schritt Register- und Stackzustand; der aktuelle Ausfuehrungspunkt ist ueber den Instruktionszeiger (`P`) im P-Code nachvollziehbar.
+- `AK-031`: `SteppableVirtualMachine` in `Pl0.Vm` stellt `Initialize()`, `Step()`, `State` und `IsRunning` bereit; `Step()` fuehrt genau eine Instruktion aus und liefert `VmStepResult` mit `VmState`, `VmStepStatus` und `Diagnostics`.
+- `AK-032`: Die bestehende `VirtualMachine.Run()` und alle zugehoerigen Tests bleiben durch die Erweiterung unveraendert und bestehen weiterhin.
+- `AK-033`: `SteppableVirtualMachine` liefert nach Programmende (`P == 0` oder Fehler) bei erneutem `Step()`-Aufruf den Status `Halted` bzw. `Error` und fuehrt keine weitere Instruktion aus.
 - `AK-012`: Hilfe zur IDE-Bedienung, Hilfe zur Sprache PL/0 und integrierte Dokumentation sind aus der IDE heraus aufrufbar.
 - `AK-013`: Automatisierte IDE-Tests (xUnit) sind vorhanden und mit `dotnet test` erfolgreich ausfuehrbar.
 - `AK-014`: Ein Einstellungsdialog erlaubt das Setzen aller `CompilerOptions`-Werte innerhalb der definierten Bereiche; `MaxNumberDigits` wird dabei regelbasiert aus `Dialect` auf `10` oder `14` gesetzt. Die Werte werden beim naechsten Kompilieren wirksam.
@@ -317,6 +350,11 @@ Die folgenden Testfaelle sind als automatisierte xUnit-Tests umzusetzen.
 | `TC-IDE-028` | Der Einstellungsdialog setzt alle Werte bei Klick auf Zuruecksetzen auf `CompilerOptions.Default` zurueck.                                                                                                       | `PF-IDE-018`                                           |
 | `TC-IDE-029` | Die Quelltextformatierung ist idempotent: zweimaliges Anwenden auf denselben Quelltext liefert identisches Ergebnis. Einrueckung, Spacing und Zeilenumbrueche werden normalisiert.                                | `PF-IDE-012`                                           |
 | `TC-IDE-030` | Persistenz-Einstellungen werden im plattformspezifischen Benutzerverzeichnis als JSON-Datei gespeichert und beim Neustart korrekt geladen; bei fehlender Datei startet die IDE mit Standardwerten.               | `PF-IDE-020`                                           |
+| `TC-IDE-031` | `SteppableVirtualMachine.Initialize()` setzt Register auf Startwerte (`P=0`, `B=1`, `T=0`) und `IsRunning` auf `true`.                                                                                           | `PF-IDE-014a`                                          |
+| `TC-IDE-032` | `SteppableVirtualMachine.Step()` fuehrt genau eine Instruktion aus; nach dem Schritt sind `P`, `B`, `T` und Stack im zurueckgegebenen `VmStepResult` korrekt aktualisiert.                                        | `PF-IDE-014a`                                          |
+| `TC-IDE-033` | Nach Programmende (`P == 0`) liefert `Step()` den Status `Halted` und fuehrt keine weitere Instruktion aus; `IsRunning` ist `false`.                                                                               | `PF-IDE-014a`                                          |
+| `TC-IDE-034` | Bei einem Laufzeitfehler (z. B. Division durch Null) liefert `Step()` den Status `Error` mit entsprechender `VmDiagnostic`; der letzte gueltige `VmState` bleibt ueber die `State`-Property abrufbar.              | `PF-IDE-014a`                                          |
+| `TC-IDE-035` | Die bestehenden `VirtualMachineTests` bestehen nach Einfuehrung von `SteppableVirtualMachine` weiterhin unveraendert.                                                                                              | `PF-IDE-014a`                                          |
 
 Hinweise zur Umsetzung:
 - Tests mit UI-Bezug sollen ueber testbare ViewModel-/Controller-Logik und Adapter abstrahiert werden. Die instanzbasierte `IApplication` von `Terminal.Gui` v2 ermoeglicht isolierte Tests mit FakeDriver ohne reales Terminal.
@@ -336,7 +374,7 @@ Hinweise zur Umsetzung:
 | Risiko | Beschreibung | Gegenmassnahme |
 |--------|-------------|----------------|
 | `R-001` | `Terminal.Gui` v2 befindet sich im Alpha-Status; Breaking Changes sind vor dem Beta-Release moeglich. Plattformspezifische Terminal-Eigenheiten koennen auftreten. | Fruehe Tests auf allen drei Zielplattformen (Windows, macOS, Linux). NuGet-Paketversion pinnen und bei Breaking Changes gezielt aktualisieren. v2 wird offiziell fuer neue Projekte empfohlen; v1 erhaelt nur noch kritische Bugfixes. |
-| `R-002` | Schritt-Debugging erfordert Erweiterungen an VM-Observability-Schnittstellen. | VM-Erweiterung (`Step()`/`IVmObserver`) als eigene, fruehe Teilaufgabe planen (siehe PF-IDE-014). Bestehende VM-Tests muessen weiterhin bestehen. |
+| `R-002` | Schritt-Debugging erfordert eine zustandsbehaftete VM-Erweiterung (`SteppableVirtualMachine`). | Umsetzung als Teilaufgabe `PF-IDE-014a` mit dedizierter Klasse und eigenem Testset (`TC-IDE-031`–`TC-IDE-035`). Die bestehende `VirtualMachine.Run()` bleibt unveraendert; alle bestehenden VM-Tests muessen weiterhin bestehen (`TC-IDE-035`). |
 | `R-003` | Eine robuste Quelltextformatierung fuer alle Grenzfaelle kann iterative Nachschaerfung benoetigen. | Mindestumfang (Einrueckung, Spacing, Zeilenumbrueche) priorisieren; Grenzfaelle ueber Testfaelle absichern und bei Bedarf iterativ erweitern. |
 | `R-004` | Der `_site`-Ordner fehlt im Repository und muss durch `docfx build` erzeugt werden. | Klarer Hinweisdialog in der IDE bei fehlendem `_site` (siehe PF-IDE-022). Build-Dokumentation um `docfx build`-Schritt ergaenzen. |
 
@@ -418,3 +456,15 @@ Dieser Abschnitt dokumentiert ab diesem Arbeitsschritt fortlaufend den Dialogver
 68. Agent (2026-02-21 18:16:46 CET): Commit-Referenz fuer den vorigen Arbeitsschritt nachgetragen: [Commit](https://github.com/hindermath/TinyPl0/commit/87611be827651c0e0a8daad4516b8a887eb8128e) (`feat: add switchable P-Code and Assembler display with line numbering in the IDE`, Commit-Zeit: `2026-02-21T18:16:16+01:00`).
 69. Benutzer (2026-02-21 18:21:03 CET): Bitte Abschnitt 5.1 Nr. 13 `PF-IDE-021 P-Code-Export (Emit-Modi)` umsetzen.
 70. Agent (2026-02-21 18:21:03 CET): `PF-IDE-021` umgesetzt: Exportfunktion im Menue `Kompilieren` ergaenzt (`Export Asm`, `Export Cod`), Export nur nach erfolgreicher Kompilierung erlaubt, Serialisierung ueber `PCodeSerializer.ToAsm()` bzw. `PCodeSerializer.ToCod()`, und bei `Cod` wird die Zielendung strikt auf `.cod` normalisiert. Die IDE bleibt dabei ohne `Pl0.Cli`-Abhaengigkeit (eigener `IdeEmitMode`). Dialogservice um dedizierten Export-Dialog erweitert (inkl. Dateitypfilter fuer `asm`/`cod`). Testabdeckung fuer `TC-IDE-015` ergaenzt (`ExportCompiledCode_Requires_Successful_Compilation`, `ExportCompiledCode_Writes_Asm_Output`, `ExportCompiledCode_Cod_Uses_Cod_Extension_Only`, `FileDialogFilters_For_Export_Expose_Asm_And_Cod`) und erfolgreich verifiziert mit `dotnet build TinyPl0.sln` sowie `dotnet test tests/Pl0.Tests/Pl0.Tests.csproj --filter "FullyQualifiedName~IdeBootstrapTests|FullyQualifiedName~ArchitectureGuardTests"` (kein separater Commit-Link).
+71. Benutzer (2026-02-21 18:29:34 CET): Hinweis, dass der Git-Commit fuer den letzten Arbeitsschritt erfolgt ist, mit Bitte um Dokumentation.
+72. Agent (2026-02-21 18:29:34 CET): Commit-Referenz fuer den vorigen Arbeitsschritt nachgetragen: [Commit](https://github.com/hindermath/TinyPl0/commit/41e5388c5cf6cc1906e91f2f2461a8d8f065cf7d) (`feat: add export functionality for compiled code in ASM and COD formats`, Commit-Zeit: `2026-02-21T18:29:00+01:00`).
+73. Benutzer (2026-02-21 22:47:42 CET): Bitte Abschnitt 5.1 Nr. 14 `PF-IDE-010 P-Code-Ausfuehrung` umsetzen und dokumentieren.
+74. Agent (2026-02-21 22:47:42 CET): `PF-IDE-010` umgesetzt: Menueaktion `Ausfuehren -> Run` auf echte P-Code-Ausfuehrung umgestellt (`RunCompiledCode`), neues Ausgabefenster `Ausgabe` im Hauptlayout ergaenzt und VM-Lauf via `VirtualMachine` an die letzte erfolgreiche Kompilierung gebunden; eigene IDE-I/O-Integration implementiert (`IdeRuntimeIo`) mit Eingabe ueber IDE-Dialog (`TerminalGuiIdeRuntimeDialogService`) und Ausgabe ueber das Ausgabefenster statt Konsole. Laufzeitdiagnosen werden bei Fehlern im Meldungsfenster angezeigt (`R<Code>`). Testabdeckung fuer `AK-007`/`AK-025` sowie `TC-IDE-007`/`TC-IDE-026` ergaenzt (`RunCompiledCode_Requires_Successful_Compilation`, `RunCompiledCode_Executes_Program_And_Writes_Runtime_Output`, `RunCompiledCode_Uses_Ide_Input_Dialog_For_Question_Operator`, `RunCompiledCode_Shows_Runtime_Diagnostics_On_Error`) und erfolgreich verifiziert mit `dotnet build TinyPl0.sln` sowie `dotnet test tests/Pl0.Tests/Pl0.Tests.csproj --filter "FullyQualifiedName~IdeBootstrapTests|FullyQualifiedName~ArchitectureGuardTests"` (kein separater Commit-Link).
+75. Benutzer (2026-02-21 22:54:45 CET): Hinweis, dass der Git-Commit fuer den letzten Arbeitsschritt erfolgt ist, mit Bitte um Dokumentation.
+76. Agent (2026-02-21 22:54:45 CET): Commit-Referenz fuer den vorigen Arbeitsschritt nachgetragen: [Commit](https://github.com/hindermath/TinyPl0/commit/68894db08a1f4ad027d963bda3cfea9617c92b1c) (`feat: enable P-Code execution with runtime diagnostics and output`, Commit-Zeit: `2026-02-21T22:54:12+01:00`).
+77. Benutzer (2026-02-21 22:57:54 CET): Bitte Abschnitt 5.1 Nr. 15 `PF-IDE-013 Kombi-Aktion` umsetzen und dokumentieren.
+78. Agent (2026-02-21 22:57:54 CET): `PF-IDE-013` umgesetzt: dedizierte Kombi-Aktion `Kompilieren und Run` in der Menuegruppe `Ausfuehren` ergaenzt; neue IDE-Operation `CompileAndRun()` fuehrt Kompilierung und anschliessend (nur bei erfolgreicher Kompilierung) die P-Code-Ausfuehrung in einem Schritt aus. Damit bleibt das Verhalten konsistent zu `PF-IDE-006`/`PF-IDE-010` (Compilerdiagnosen im Meldungsfenster, Laufzeitausgabe im Ausgabefenster). Testabdeckung fuer `AK-010` und `TC-IDE-010` ergaenzt (`CompileAndRun_Compiles_And_Executes_In_One_Step`) und erfolgreich verifiziert mit `dotnet build TinyPl0.sln` sowie `dotnet test tests/Pl0.Tests/Pl0.Tests.csproj --filter "FullyQualifiedName~IdeBootstrapTests|FullyQualifiedName~ArchitectureGuardTests"` (kein separater Commit-Link).
+79. Benutzer (2026-02-21 23:15:00 CET): Bitte fuer `PF-IDE-014` die im Pflichtenheft vorgesehene VM-Erweiterung als eigene Teilaufgabe planen, bevor etwas geschrieben wird.
+80. Agent (2026-02-21 23:15:00 CET): Vorschlag fuer VM-Erweiterung erarbeitet: Analyse der bestehenden `VirtualMachine.Run()` (atomar, alle Register lokal), Vergleich zweier Ansaetze (A: Observer-Callback `IVmObserver`, B: zustandsbehaftete VM mit `Step()`-Methode). Empfehlung fuer Ansatz B (natuerliche Passung fuer TUI-Debugging: Button-Klick → `Step()` → Zustand ablesen). Vorschlag dem Benutzer vorgelegt.
+81. Benutzer (2026-02-21 23:18:00 CET): Ansatz B genehmigt, bitte als Teilaufgabe ins Pflichtenheft uebernehmen.
+82. Agent (2026-02-21 23:18:00 CET): Teilaufgabe `PF-IDE-014a` im Pflichtenheft dokumentiert: Anforderung `PF-IDE-014` um detaillierten Teilaufgabenblock ergaenzt (neue Typen `VmState`, `VmStepStatus`, `VmStepResult`, `SteppableVirtualMachine` mit `Initialize()`/`Step()`/`State`/`IsRunning`); Abnahmekriterien `AK-031`–`AK-033` hinzugefuegt; Testfaelle `TC-IDE-031`–`TC-IDE-035` in Abschnitt 9 ergaenzt; Risiko `R-002` auf Ansatz B konkretisiert. Keine Code-Aenderungen, nur Pflichtenheft-Aktualisierung (kein separater Commit-Link).

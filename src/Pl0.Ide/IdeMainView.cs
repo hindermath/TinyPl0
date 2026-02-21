@@ -1,4 +1,5 @@
 using Pl0.Core;
+using Pl0.Vm;
 using Terminal.Gui;
 
 namespace Pl0.Ide;
@@ -9,15 +10,19 @@ internal sealed class IdeMainView : Toplevel
     private const string SourceWindowBaseTitle = "Quellcode";
     private const string PCodeWindowBaseTitle = "P-Code";
     private const string AssemblerWindowBaseTitle = "Assembler-Code";
+    private const string RuntimeOutputWindowBaseTitle = "Ausgabe";
     private readonly Pl0Compiler compiler = new();
+    private readonly VirtualMachine virtualMachine = new();
     private readonly IIdeFileDialogService fileDialogs;
     private readonly IIdeFileStorage fileStorage;
     private readonly IIdeCompilerSettingsDialogService compilerSettingsDialog;
+    private readonly IIdeRuntimeDialogService runtimeDialogService;
     private readonly Window sourceWindow;
     private readonly Window pCodeWindow;
     private readonly Pl0SourceEditorView sourceEditor;
     private readonly TextView pCodeOutput;
     private readonly TextView messagesOutput;
+    private readonly TextView runtimeOutput;
     private CompilationResult? lastCompilationResult;
     private string? currentSourcePath;
     private CompilerOptions currentCompilerOptions = IdeCompilerOptionsRules.GetResetDefaults();
@@ -26,20 +31,31 @@ internal sealed class IdeMainView : Toplevel
     public IdeMainView() : this(
         new TerminalGuiIdeFileDialogService(),
         new PhysicalIdeFileStorage(),
-        new TerminalGuiIdeCompilerSettingsDialogService())
+        new TerminalGuiIdeCompilerSettingsDialogService(),
+        new TerminalGuiIdeRuntimeDialogService())
     {
     }
 
     internal IdeMainView(IIdeFileDialogService fileDialogs, IIdeFileStorage fileStorage)
-        : this(fileDialogs, fileStorage, new TerminalGuiIdeCompilerSettingsDialogService())
+        : this(fileDialogs, fileStorage, new TerminalGuiIdeCompilerSettingsDialogService(), new TerminalGuiIdeRuntimeDialogService())
     {
     }
 
     internal IdeMainView(IIdeFileDialogService fileDialogs, IIdeFileStorage fileStorage, IIdeCompilerSettingsDialogService compilerSettingsDialog)
+        : this(fileDialogs, fileStorage, compilerSettingsDialog, new TerminalGuiIdeRuntimeDialogService())
+    {
+    }
+
+    internal IdeMainView(
+        IIdeFileDialogService fileDialogs,
+        IIdeFileStorage fileStorage,
+        IIdeCompilerSettingsDialogService compilerSettingsDialog,
+        IIdeRuntimeDialogService runtimeDialogService)
     {
         this.fileDialogs = fileDialogs;
         this.fileStorage = fileStorage;
         this.compilerSettingsDialog = compilerSettingsDialog;
+        this.runtimeDialogService = runtimeDialogService;
 
         var menuBar = CreateMenuBar();
         Add(menuBar);
@@ -71,18 +87,30 @@ internal sealed class IdeMainView : Toplevel
             Title = "Meldungen",
             X = 0,
             Y = Pos.Bottom(sourceWindow),
-            Width = Dim.Fill(),
+            Width = Dim.Percent(65),
             Height = Dim.Fill()
         };
         messagesOutput = CreateReadOnlyOutputView();
         messagesWindow.Add(messagesOutput);
 
-        Add(sourceWindow, pCodeWindow, messagesWindow);
+        var runtimeOutputWindow = new Window
+        {
+            Title = RuntimeOutputWindowBaseTitle,
+            X = Pos.Right(messagesWindow),
+            Y = Pos.Bottom(sourceWindow),
+            Width = Dim.Fill(),
+            Height = Dim.Fill()
+        };
+        runtimeOutput = CreateReadOnlyOutputView();
+        runtimeOutputWindow.Add(runtimeOutput);
+
+        Add(sourceWindow, pCodeWindow, messagesWindow, runtimeOutputWindow);
     }
 
     internal Pl0SourceEditorView SourceEditor => sourceEditor;
     internal TextView PCodeOutput => pCodeOutput;
     internal TextView MessagesOutput => messagesOutput;
+    internal TextView RuntimeOutput => runtimeOutput;
     internal CompilationResult? LastCompilationResult => lastCompilationResult;
     internal string? CurrentSourcePath => currentSourcePath;
     internal string SourceWindowTitle => sourceWindow.Title?.ToString() ?? string.Empty;
@@ -95,6 +123,7 @@ internal sealed class IdeMainView : Toplevel
         sourceEditor.Text = string.Empty;
         currentSourcePath = null;
         pCodeOutput.Text = string.Empty;
+        runtimeOutput.Text = string.Empty;
         UpdateDocumentTitles();
         messagesOutput.Text = "Neue Datei erstellt.";
     }
@@ -230,7 +259,8 @@ internal sealed class IdeMainView : Toplevel
                 ], null),
                 new MenuBarItem("_Ausfuehren",
                 [
-                    new MenuItem("_Run", string.Empty, NoOp, () => true, null, default)
+                    new MenuItem("Kompilieren _und Run", string.Empty, CompileAndRunFromMenu, () => true, null, default),
+                    new MenuItem("_Run", string.Empty, RunCompiledCodeFromMenu, () => true, null, default)
                 ], null),
                 new MenuBarItem("_Debug",
                 [
@@ -263,6 +293,16 @@ internal sealed class IdeMainView : Toplevel
     private void ExportCodFromMenu()
     {
         _ = ExportCompiledCode(IdeEmitMode.Cod);
+    }
+
+    private void RunCompiledCodeFromMenu()
+    {
+        _ = RunCompiledCode();
+    }
+
+    private void CompileAndRunFromMenu()
+    {
+        _ = CompileAndRun();
     }
 
     private void CreateNewSourceFileFromMenu()
@@ -326,6 +366,36 @@ internal sealed class IdeMainView : Toplevel
             messagesOutput.Text = $"Export fehlgeschlagen: {ex.Message}";
             return false;
         }
+    }
+
+    internal bool RunCompiledCode()
+    {
+        if (lastCompilationResult is null || !lastCompilationResult.Success)
+        {
+            messagesOutput.Text = "Ausfuehrung nicht moeglich: zuerst erfolgreich kompilieren.";
+            return false;
+        }
+
+        runtimeOutput.Text = string.Empty;
+        var io = new IdeRuntimeIo(
+            () => runtimeDialogService.ReadInt("Bitte Ganzzahl fuer die Laufzeiteingabe eingeben:"),
+            AppendRuntimeOutputValue);
+
+        var vmResult = virtualMachine.Run(lastCompilationResult.Instructions, io);
+        if (vmResult.Success)
+        {
+            messagesOutput.Text = "Ausfuehrung erfolgreich.";
+            return true;
+        }
+
+        messagesOutput.Text = FormatVmDiagnostics(vmResult.Diagnostics);
+        return false;
+    }
+
+    internal bool CompileAndRun()
+    {
+        var compileResult = CompileSource();
+        return compileResult.Success && RunCompiledCode();
     }
 
     private static Pl0SourceEditorView CreateSourceEditor()
@@ -397,6 +467,18 @@ internal sealed class IdeMainView : Toplevel
                 $"E{d.Code} (Zeile {d.Position.Line}, Spalte {d.Position.Column}): {d.Message}"));
     }
 
+    private static string FormatVmDiagnostics(IReadOnlyList<VmDiagnostic> diagnostics)
+    {
+        if (diagnostics.Count == 0)
+        {
+            return "Keine Laufzeitdiagnosen.";
+        }
+
+        return string.Join(
+            Environment.NewLine,
+            diagnostics.Select(d => $"R{d.Code}: {d.Message}"));
+    }
+
     private string GetCodeWindowBaseTitle()
     {
         return currentCodeDisplayMode == IdeCodeDisplayMode.PCode ? PCodeWindowBaseTitle : AssemblerWindowBaseTitle;
@@ -436,5 +518,14 @@ internal sealed class IdeMainView : Toplevel
         return string.IsNullOrEmpty(Path.GetExtension(path))
             ? Path.ChangeExtension(path, ".asm")
             : path;
+    }
+
+    private void AppendRuntimeOutputValue(int value)
+    {
+        var line = value.ToString(System.Globalization.CultureInfo.InvariantCulture);
+        var current = runtimeOutput.Text?.ToString() ?? string.Empty;
+        runtimeOutput.Text = string.IsNullOrEmpty(current)
+            ? line
+            : $"{current}{Environment.NewLine}{line}";
     }
 }
