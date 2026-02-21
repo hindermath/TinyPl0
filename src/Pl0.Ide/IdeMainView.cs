@@ -259,6 +259,7 @@ internal sealed class IdeMainView : Toplevel
                 ], null),
                 new MenuBarItem("_Ausfuehren",
                 [
+                    new MenuItem("Kompilieren _und Run", string.Empty, CompileAndRunFromMenu, () => true, null, default),
                     new MenuItem("_Run", string.Empty, RunCompiledCodeFromMenu, () => true, null, default)
                 ], null),
                 new MenuBarItem("_Debug",
@@ -297,6 +298,11 @@ internal sealed class IdeMainView : Toplevel
     private void RunCompiledCodeFromMenu()
     {
         _ = RunCompiledCode();
+    }
+
+    private void CompileAndRunFromMenu()
+    {
+        _ = CompileAndRun();
     }
 
     private void CreateNewSourceFileFromMenu()
@@ -384,6 +390,12 @@ internal sealed class IdeMainView : Toplevel
 
         messagesOutput.Text = FormatVmDiagnostics(vmResult.Diagnostics);
         return false;
+    }
+
+    internal bool CompileAndRun()
+    {
+        var compileResult = CompileSource();
+        return compileResult.Success && RunCompiledCode();
     }
 
     private static Pl0SourceEditorView CreateSourceEditor()

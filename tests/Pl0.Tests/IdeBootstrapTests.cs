@@ -325,6 +325,32 @@ public sealed class IdeBootstrapTests
     }
 
     [Fact]
+    public void CompileAndRun_Compiles_And_Executes_In_One_Step()
+    {
+        var runtimeDialogs = new StubIdeRuntimeDialogService([]);
+        var mainView = new IdeMainView(
+            new StubIdeFileDialogService(),
+            new StubIdeFileStorage(),
+            new StubCompilerSettingsDialogService([]),
+            runtimeDialogs);
+        mainView.SourceEditor.Text = """
+                                     var x;
+                                     begin
+                                       x := 9;
+                                       ! x
+                                     end.
+                                     """;
+
+        var succeeded = mainView.CompileAndRun();
+
+        Assert.True(succeeded);
+        Assert.NotNull(mainView.LastCompilationResult);
+        Assert.True(mainView.LastCompilationResult!.Success);
+        Assert.Equal("9", mainView.RuntimeOutput.Text?.ToString());
+        Assert.Contains("Ausfuehrung erfolgreich", mainView.MessagesOutput.Text?.ToString());
+    }
+
+    [Fact]
     public void ExportCompiledCode_Requires_Successful_Compilation()
     {
         var mainView = new IdeMainView(
