@@ -6,6 +6,7 @@ internal interface IIdeFileDialogService
 {
     string? ShowOpenDialog();
     string? ShowSaveDialog(string? currentPath);
+    string? ShowExportDialog(IdeEmitMode mode, string? suggestedPath);
 }
 
 internal sealed class TerminalGuiIdeFileDialogService : IIdeFileDialogService
@@ -54,6 +55,34 @@ internal sealed class TerminalGuiIdeFileDialogService : IIdeFileDialogService
         }
 
         return ResolveSelectedPath(dialog.Path, dialog.FileName, currentPath);
+    }
+
+    public string? ShowExportDialog(IdeEmitMode mode, string? suggestedPath)
+    {
+        var allowedTypes = mode == IdeEmitMode.Cod
+            ? CreateExportCodAllowedTypes()
+            : CreateExportAsmAllowedTypes();
+
+        var dialog = new SaveDialog
+        {
+            Title = mode == IdeEmitMode.Cod ? "P-Code exportieren (Cod)" : "P-Code exportieren (Asm)",
+            OpenMode = OpenMode.File,
+            MustExist = false,
+            AllowedTypes = allowedTypes
+        };
+
+        if (!string.IsNullOrWhiteSpace(suggestedPath))
+        {
+            dialog.Path = suggestedPath;
+        }
+
+        Application.Run(dialog);
+        if (dialog.Canceled)
+        {
+            return null;
+        }
+
+        return ResolveSelectedPath(dialog.Path, dialog.FileName, suggestedPath);
     }
 
     private static string? ResolveSelectedPath(string? selectedPath, string? fallbackFileName, string? basePath)
@@ -116,6 +145,24 @@ internal sealed class TerminalGuiIdeFileDialogService : IIdeFileDialogService
         return
         [
             new Pl0SaveAllowedType(),
+            new AllowedTypeAny()
+        ];
+    }
+
+    internal static List<IAllowedType> CreateExportAsmAllowedTypes()
+    {
+        return
+        [
+            new AllowedType("Assembler (*.asm)", ".asm"),
+            new AllowedTypeAny()
+        ];
+    }
+
+    internal static List<IAllowedType> CreateExportCodAllowedTypes()
+    {
+        return
+        [
+            new AllowedType("P-Code (*.cod)", ".cod"),
             new AllowedTypeAny()
         ];
     }

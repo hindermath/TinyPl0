@@ -224,7 +224,9 @@ internal sealed class IdeMainView : Toplevel
                 new MenuBarItem("_Kompilieren",
                 [
                     new MenuItem("_Einstellungen", string.Empty, OpenCompilerSettingsDialogFromMenu, () => true, null, default),
-                    new MenuItem("_Build", string.Empty, CompileSourceFromMenu, () => true, null, default)
+                    new MenuItem("_Build", string.Empty, CompileSourceFromMenu, () => true, null, default),
+                    new MenuItem("Export _Asm", string.Empty, ExportAsmFromMenu, () => true, null, default),
+                    new MenuItem("Export _Cod", string.Empty, ExportCodFromMenu, () => true, null, default)
                 ], null),
                 new MenuBarItem("_Ausfuehren",
                 [
@@ -251,6 +253,16 @@ internal sealed class IdeMainView : Toplevel
     private void OpenCompilerSettingsDialogFromMenu()
     {
         _ = OpenCompilerSettingsDialog();
+    }
+
+    private void ExportAsmFromMenu()
+    {
+        _ = ExportCompiledCode(IdeEmitMode.Asm);
+    }
+
+    private void ExportCodFromMenu()
+    {
+        _ = ExportCompiledCode(IdeEmitMode.Cod);
     }
 
     private void CreateNewSourceFileFromMenu()
@@ -281,6 +293,39 @@ internal sealed class IdeMainView : Toplevel
     private static string EnsurePl0Extension(string path)
     {
         return HasPl0Extension(path) ? path : Path.ChangeExtension(path, ".pl0");
+    }
+
+    internal bool ExportCompiledCode(IdeEmitMode mode)
+    {
+        if (lastCompilationResult is null || !lastCompilationResult.Success)
+        {
+            messagesOutput.Text = "Export nicht moeglich: zuerst erfolgreich kompilieren.";
+            return false;
+        }
+
+        var suggestedPath = BuildSuggestedExportPath(mode);
+        var selectedPath = fileDialogs.ShowExportDialog(mode, suggestedPath);
+        if (string.IsNullOrWhiteSpace(selectedPath))
+        {
+            return false;
+        }
+
+        var targetPath = NormalizeExportPath(Path.GetFullPath(selectedPath), mode);
+        var payload = mode == IdeEmitMode.Cod
+            ? PCodeSerializer.ToCod(lastCompilationResult.Instructions)
+            : PCodeSerializer.ToAsm(lastCompilationResult.Instructions);
+
+        try
+        {
+            fileStorage.WriteAllText(targetPath, payload);
+            messagesOutput.Text = $"Export erfolgreich: {targetPath}";
+            return true;
+        }
+        catch (Exception ex)
+        {
+            messagesOutput.Text = $"Export fehlgeschlagen: {ex.Message}";
+            return false;
+        }
     }
 
     private static Pl0SourceEditorView CreateSourceEditor()
@@ -368,5 +413,28 @@ internal sealed class IdeMainView : Toplevel
         return string.Join(
             Environment.NewLine,
             lines.Select((line, index) => $"{index:D4}: {line}"));
+    }
+
+    private string BuildSuggestedExportPath(IdeEmitMode mode)
+    {
+        var extension = mode == IdeEmitMode.Cod ? ".cod" : ".asm";
+        if (!string.IsNullOrWhiteSpace(currentSourcePath))
+        {
+            return Path.ChangeExtension(currentSourcePath, extension);
+        }
+
+        return Path.GetFullPath($"output{extension}");
+    }
+
+    private static string NormalizeExportPath(string path, IdeEmitMode mode)
+    {
+        if (mode == IdeEmitMode.Cod)
+        {
+            return Path.ChangeExtension(path, ".cod");
+        }
+
+        return string.IsNullOrEmpty(Path.GetExtension(path))
+            ? Path.ChangeExtension(path, ".asm")
+            : path;
     }
 }

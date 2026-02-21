@@ -231,6 +231,86 @@ public sealed class IdeBootstrapTests
     }
 
     [Fact]
+    public void ExportCompiledCode_Requires_Successful_Compilation()
+    {
+        var mainView = new IdeMainView(
+            new StubIdeFileDialogService(exportPath: "/tmp/ignored.asm"),
+            new StubIdeFileStorage());
+
+        var exported = mainView.ExportCompiledCode(IdeEmitMode.Asm);
+        var messagesText = mainView.MessagesOutput.Text?.ToString() ?? string.Empty;
+
+        Assert.False(exported);
+        Assert.Contains("zuerst erfolgreich kompilieren", messagesText);
+    }
+
+    [Fact]
+    public void ExportCompiledCode_Writes_Asm_Output()
+    {
+        var tempDirectory = Directory.CreateDirectory(Path.Combine(Path.GetTempPath(), $"pl0-ide-export-{Guid.NewGuid():N}"));
+        try
+        {
+            var exportPath = Path.Combine(tempDirectory.FullName, "programm.asm");
+            var mainView = new IdeMainView(
+                new StubIdeFileDialogService(exportPath: exportPath),
+                new PhysicalIdeFileStorage());
+            mainView.SourceEditor.Text = """
+                                         var x;
+                                         begin
+                                           x := 1
+                                         end.
+                                         """;
+
+            var compiled = mainView.CompileSource();
+            var exported = mainView.ExportCompiledCode(IdeEmitMode.Asm);
+            var payload = File.ReadAllText(exportPath);
+
+            Assert.True(compiled.Success);
+            Assert.True(exported);
+            Assert.Contains("jmp", payload);
+            Assert.DoesNotContain("0000:", payload);
+        }
+        finally
+        {
+            tempDirectory.Delete(recursive: true);
+        }
+    }
+
+    [Fact]
+    public void ExportCompiledCode_Cod_Uses_Cod_Extension_Only()
+    {
+        var tempDirectory = Directory.CreateDirectory(Path.Combine(Path.GetTempPath(), $"pl0-ide-export-{Guid.NewGuid():N}"));
+        try
+        {
+            var enteredPath = Path.Combine(tempDirectory.FullName, "programm.txt");
+            var expectedPath = Path.Combine(tempDirectory.FullName, "programm.cod");
+            var mainView = new IdeMainView(
+                new StubIdeFileDialogService(exportPath: enteredPath),
+                new PhysicalIdeFileStorage());
+            mainView.SourceEditor.Text = """
+                                         var x;
+                                         begin
+                                           x := 1
+                                         end.
+                                         """;
+
+            var compiled = mainView.CompileSource();
+            var exported = mainView.ExportCompiledCode(IdeEmitMode.Cod);
+            var payload = File.ReadAllText(expectedPath);
+
+            Assert.True(compiled.Success);
+            Assert.True(exported);
+            Assert.False(File.Exists(enteredPath));
+            Assert.True(File.Exists(expectedPath));
+            Assert.True(char.IsDigit(payload.TrimStart()[0]));
+        }
+        finally
+        {
+            tempDirectory.Delete(recursive: true);
+        }
+    }
+
+    [Fact]
     public void SaveSourceFile_Writes_Source_Lossless_To_Pl0_File()
     {
         var tempDirectory = Directory.CreateDirectory(Path.Combine(Path.GetTempPath(), $"pl0-ide-{Guid.NewGuid():N}"));
@@ -549,6 +629,21 @@ public sealed class IdeBootstrapTests
     }
 
     [Fact]
+    public void FileDialogFilters_For_Export_Expose_Asm_And_Cod()
+    {
+        var asmFilters = TerminalGuiIdeFileDialogService.CreateExportAsmAllowedTypes();
+        var codFilters = TerminalGuiIdeFileDialogService.CreateExportCodAllowedTypes();
+
+        Assert.Equal(2, asmFilters.Count);
+        Assert.True(asmFilters[0].IsAllowed("programm.asm"));
+        Assert.False(asmFilters[0].IsAllowed("programm.cod"));
+
+        Assert.Equal(2, codFilters.Count);
+        Assert.True(codFilters[0].IsAllowed("programm.cod"));
+        Assert.False(codFilters[0].IsAllowed("programm.asm"));
+    }
+
+    [Fact]
     public void CompilerSettingsState_ResetToDefaults_Uses_CompilerOptionsDefault_And_Derived_MaxNumberDigits()
     {
         var state = new IdeCompilerSettingsDialogState(
@@ -593,7 +688,7 @@ public sealed class IdeBootstrapTests
         Assert.Equal("Assembler-Code: demo.pl0", mainView.PCodeWindowTitle);
     }
 
-    private sealed class StubIdeFileDialogService(string? openPath = null, string? savePath = null) : IIdeFileDialogService
+    private sealed class StubIdeFileDialogService(string? openPath = null, string? savePath = null, string? exportPath = null) : IIdeFileDialogService
     {
         public string? ShowOpenDialog()
         {
@@ -603,6 +698,11 @@ public sealed class IdeBootstrapTests
         public string? ShowSaveDialog(string? currentPath)
         {
             return savePath;
+        }
+
+        public string? ShowExportDialog(IdeEmitMode mode, string? suggestedPath)
+        {
+            return exportPath;
         }
     }
 
