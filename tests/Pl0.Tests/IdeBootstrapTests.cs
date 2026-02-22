@@ -46,6 +46,35 @@ public sealed class IdeBootstrapTests
     }
 
     [Fact]
+    public void SourceWindow_Shows_StatusLine_With_Initial_Cursor_Position()
+    {
+        var mainView = new IdeMainView();
+
+        Assert.Equal("Zeile 1, Spalte 1", mainView.SourceStatusLineText);
+    }
+
+    [Fact]
+    public void SourceWindow_Title_Shows_Dirty_Marker_For_Unsaved_And_Modified_Source()
+    {
+        var savePath = Path.Combine("/tmp", "ide-dirty-marker", "demo.pl0");
+        var mainView = new IdeMainView(
+            new StubIdeFileDialogService(savePath: savePath),
+            new StubIdeFileStorage());
+
+        Assert.Equal("Quellcode", mainView.SourceWindowTitle);
+
+        mainView.SourceEditor.Text = "begin end.";
+        Assert.Equal("Quellcode*", mainView.SourceWindowTitle);
+
+        var saved = mainView.SaveSourceFile();
+        Assert.True(saved);
+        Assert.Equal("Quellcode: demo.pl0", mainView.SourceWindowTitle);
+
+        mainView.SourceEditor.Text = "begin ! 1 end.";
+        Assert.Equal("Quellcode*: demo.pl0", mainView.SourceWindowTitle);
+    }
+
+    [Fact]
     public void SourceEditor_Highlights_Keywords_Numbers_And_Operators()
     {
         var editor = new Pl0SourceEditorView

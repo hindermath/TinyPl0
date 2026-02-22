@@ -39,6 +39,7 @@ internal sealed class IdeMainView : Toplevel
     private readonly Window sourceWindow;
     private readonly Window pCodeWindow;
     private readonly Pl0SourceEditorView sourceEditor;
+    private readonly Label sourceStatusLine;
     private readonly TextView pCodeOutput;
     private readonly TextView messagesOutput;
     private readonly TextView runtimeOutput;
@@ -49,6 +50,8 @@ internal sealed class IdeMainView : Toplevel
     private CompilerOptions currentCompilerOptions = IdeCompilerOptionsRules.GetResetDefaults();
     private IdeCodeDisplayMode currentCodeDisplayMode = IdeCodeDisplayMode.Assembler;
     private bool isDebugSessionActive;
+    private string lastPersistedSourceText = string.Empty;
+    private bool isSourceDirty;
 
     public IdeMainView() : this(
         new TerminalGuiIdeFileDialogService(),
@@ -103,7 +106,9 @@ internal sealed class IdeMainView : Toplevel
             Height = Dim.Percent(70)
         };
         sourceEditor = CreateSourceEditor();
-        sourceWindow.Add(sourceEditor);
+        sourceEditor.Height = Dim.Fill(1);
+        sourceStatusLine = CreateSourceStatusLine();
+        sourceWindow.Add(sourceEditor, sourceStatusLine);
 
         pCodeWindow = new Window
         {
@@ -149,6 +154,10 @@ internal sealed class IdeMainView : Toplevel
         runtimeOutput = CreateReadOnlyOutputView();
         runtimeOutputWindow.Add(runtimeOutput);
 
+        sourceEditor.ContentsChanged += (_, _) => RefreshSourceEditorState();
+        sourceEditor.UnwrappedCursorPosition += (_, _) => RefreshSourceCursorStatus();
+        RefreshSourceEditorState();
+
         Add(sourceWindow, pCodeWindow, messagesWindow, runtimeOutputWindow, debugWindow);
     }
 
@@ -160,6 +169,7 @@ internal sealed class IdeMainView : Toplevel
     internal CompilationResult? LastCompilationResult => lastCompilationResult;
     internal string? CurrentSourcePath => currentSourcePath;
     internal string SourceWindowTitle => sourceWindow.Title?.ToString() ?? string.Empty;
+    internal string SourceStatusLineText => sourceStatusLine.Text?.ToString() ?? string.Empty;
     internal string PCodeWindowTitle => pCodeWindow.Title?.ToString() ?? string.Empty;
     internal CompilerOptions CurrentCompilerOptions => currentCompilerOptions;
     internal IdeCodeDisplayMode CurrentCodeDisplayMode => currentCodeDisplayMode;
@@ -170,12 +180,13 @@ internal sealed class IdeMainView : Toplevel
     {
         sourceEditor.Text = string.Empty;
         currentSourcePath = null;
+        lastPersistedSourceText = string.Empty;
         pCodeOutput.Text = string.Empty;
         runtimeOutput.Text = string.Empty;
         debugOutput.Text = string.Empty;
         isDebugSessionActive = false;
         lastDebugStepResult = null;
-        UpdateDocumentTitles();
+        RefreshSourceEditorState();
         messagesOutput.Text = "Neue Datei erstellt.";
     }
 
@@ -198,10 +209,11 @@ internal sealed class IdeMainView : Toplevel
         {
             sourceEditor.Text = fileStorage.ReadAllText(fullPath);
             currentSourcePath = fullPath;
+            lastPersistedSourceText = sourceEditor.Text?.ToString() ?? string.Empty;
             debugOutput.Text = string.Empty;
             isDebugSessionActive = false;
             lastDebugStepResult = null;
-            UpdateDocumentTitles();
+            RefreshSourceEditorState();
             messagesOutput.Text = $"Datei geladen: {fullPath}";
             return true;
         }
@@ -226,7 +238,8 @@ internal sealed class IdeMainView : Toplevel
         {
             fileStorage.WriteAllText(targetPath, sourceEditor.Text?.ToString() ?? string.Empty);
             currentSourcePath = targetPath;
-            UpdateDocumentTitles();
+            lastPersistedSourceText = sourceEditor.Text?.ToString() ?? string.Empty;
+            RefreshSourceEditorState();
             messagesOutput.Text = $"Datei gespeichert: {targetPath}";
             return true;
         }
@@ -625,18 +638,58 @@ internal sealed class IdeMainView : Toplevel
         };
     }
 
+    private static Label CreateSourceStatusLine()
+    {
+        return new Label
+        {
+            X = 0,
+            Y = Pos.AnchorEnd(1),
+            Width = Dim.Fill(),
+            Height = 1,
+            CanFocus = false,
+            Text = "Zeile 1, Spalte 1"
+        };
+    }
+
+    private void RefreshSourceEditorState()
+    {
+        UpdateSourceDirtyFlag();
+        UpdateDocumentTitles();
+        RefreshSourceCursorStatus();
+    }
+
+    private void UpdateSourceDirtyFlag()
+    {
+        var currentText = sourceEditor.Text?.ToString() ?? string.Empty;
+        if (string.IsNullOrWhiteSpace(currentSourcePath))
+        {
+            isSourceDirty = !string.IsNullOrEmpty(currentText);
+            return;
+        }
+
+        isSourceDirty = !string.Equals(currentText, lastPersistedSourceText, StringComparison.Ordinal);
+    }
+
+    private void RefreshSourceCursorStatus()
+    {
+        var row = Math.Max(0, sourceEditor.CurrentRow) + 1;
+        var column = Math.Max(0, sourceEditor.CurrentColumn) + 1;
+        sourceStatusLine.Text = $"Zeile {row}, Spalte {column}";
+    }
+
     private void UpdateDocumentTitles()
     {
         var codeWindowBaseTitle = GetCodeWindowBaseTitle();
+        var dirtyMarker = isSourceDirty ? "*" : string.Empty;
         if (string.IsNullOrWhiteSpace(currentSourcePath))
         {
-            sourceWindow.Title = SourceWindowBaseTitle;
+            sourceWindow.Title = $"{SourceWindowBaseTitle}{dirtyMarker}";
             pCodeWindow.Title = codeWindowBaseTitle;
             return;
         }
 
         var fileName = Path.GetFileName(currentSourcePath);
-        sourceWindow.Title = $"{SourceWindowBaseTitle}: {fileName}";
+        sourceWindow.Title = $"{SourceWindowBaseTitle}{dirtyMarker}: {fileName}";
         pCodeWindow.Title = $"{codeWindowBaseTitle}: {fileName}";
     }
 
