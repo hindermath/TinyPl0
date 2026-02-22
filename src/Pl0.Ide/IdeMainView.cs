@@ -599,6 +599,11 @@ internal sealed class IdeMainView : Toplevel
         }
 
         isDebugSessionActive = false;
+        if (lastDebugStepResult is not null)
+        {
+            RenderDebugState(lastDebugStepResult, "Abgebrochen");
+        }
+
         messagesOutput.Text = "Debug-Ausfuehrung abgebrochen. Letzter VM-Zustand bleibt sichtbar.";
         return true;
     }
@@ -715,13 +720,13 @@ internal sealed class IdeMainView : Toplevel
         pCodeOutput.Text = AddLineNumbers(listing, pointer);
     }
 
-    private void RenderDebugState(VmStepResult stepResult)
+    private void RenderDebugState(VmStepResult stepResult, string? statusOverride = null)
     {
         var state = stepResult.State;
         var lines = new List<string>();
         var spans = new List<IdeDebugHighlightSpan>();
 
-        lines.Add($"Status: {stepResult.Status}");
+        lines.Add($"Status: {statusOverride ?? stepResult.Status.ToString()}");
 
         var registerRow = lines.Count;
         var registerLine = BuildRegisterLine(state, registerRow, spans);

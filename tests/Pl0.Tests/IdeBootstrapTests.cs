@@ -609,12 +609,16 @@ public sealed class IdeBootstrapTests
         var beforeAbort = mainView.DebugOutput.Text?.ToString();
 
         var aborted = mainView.AbortDebug();
+        var afterAbort = mainView.DebugOutput.Text?.ToString() ?? string.Empty;
 
         Assert.True(compiled.Success);
         Assert.NotNull(step);
         Assert.True(aborted);
         Assert.False(mainView.IsDebugSessionActive);
-        Assert.Equal(beforeAbort, mainView.DebugOutput.Text?.ToString());
+        Assert.NotEqual(beforeAbort, afterAbort);
+        Assert.Contains("Status: Abgebrochen", afterAbort);
+        Assert.Contains("Register: IP=", afterAbort);
+        Assert.Contains("Stack:", afterAbort);
         Assert.Contains("abgebrochen", mainView.MessagesOutput.Text?.ToString());
     }
 
