@@ -972,9 +972,8 @@ public sealed class IdeBootstrapTests
 
         Assert.Equal("Ueber", messageDialogs.LastTitle);
         Assert.NotNull(messageDialogs.LastMessage);
-        Assert.Contains("PPP", messageDialogs.LastMessage);
-        Assert.Contains("ddd", messageDialogs.LastMessage);
-        Assert.Contains("   .", messageDialogs.LastMessage);
+        Assert.Contains("______ _ _____ _____", messageDialogs.LastMessage);
+        Assert.Contains("\\_|   |_|\\___(_)___/\\__,_|\\___|", messageDialogs.LastMessage);
         Assert.DoesNotContain("Pl0.Ide", messageDialogs.LastMessage);
         Assert.Contains("Programmierung #include<everyone>", messageDialogs.LastMessage);
         Assert.Contains("Version: 1.7.5.7", messageDialogs.LastMessage);

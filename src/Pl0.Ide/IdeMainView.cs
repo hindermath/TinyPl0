@@ -17,11 +17,14 @@ internal sealed class IdeMainView : Toplevel
     private const string DebugWindowBaseTitle = "Debug";
     private static readonly string[] AboutAsciiArt =
     [
-        "PPPP   l    ooo        III    d      eee ",
-        "P   P  l   o   o        I     d     e    ",
-        "PPPP   l   o   o   .    I    ddd    eee  ",
-        "P      l   o   o        I   d  d    e    ",
-        "P     ll    ooo        III   ddd    eee  "
+        "______ _ _____ _____    _      ",
+        "| ___ \\ |  _  |_   _|  | |     ",
+        "| |_/ / | |/' | | |  __| | ___ ",
+        "|  __/| |  /| | | | / _` |/ _ \\",
+        "| |   | \\ |_/ /_| || (_| |  __/",
+        "\\_|   |_|\\___(_)___/\\__,_|\\___|",
+        "                               ",
+        "                               "
     ];
 
     private readonly Pl0Compiler compiler = new();
