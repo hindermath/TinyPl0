@@ -59,6 +59,13 @@ Update golden artifacts after intentional changes:
 ./scripts/update-golden-code.sh
 ```
 
+## Git Workflow (Mandatory)
+
+- `main` is protected: do not commit or push directly to `main`.
+- For every change, create a new clean branch first.
+- Open a pull request to merge changes into `main`.
+- Agent branch naming convention: `codex/<topic>`.
+
 ## Code Style Guidelines
 
 ### General

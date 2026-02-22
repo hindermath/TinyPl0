@@ -122,6 +122,11 @@ dotnet run --project src/Pl0.Ide
 - `Pl0.Ide` ist als eigenes Projekt in die Solution integriert und durch Tests abgesichert.
 - Qualitäts- und Architekturprüfungen laufen über die Test-Suite (`ArchitectureGuardTests`, Traceability-/Golden-/E2E-Tests).
 
+## Beitrags-Workflow (Pull Requests)
+- Der Branch `main` ist geschützt; direkte Commits/Pushes auf `main` sind nicht erlaubt.
+- Für jede Änderung zuerst einen neuen, sauberen Arbeits-Branch erstellen.
+- Änderungen ausschließlich per Pull Request nach `main` integrieren.
+
 ## Entwicklung mit Agentic-AI
 
 Dieses Projekt entstand mit starker Unterstützung durch **Agentic-AI-Technologien**. Die Verwendung von KI-Agenten spielte eine zentrale Rolle bei:
