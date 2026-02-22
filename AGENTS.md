@@ -10,6 +10,7 @@ TinyPl0 is a C# .NET 10 port of the historical PL/0 compiler (originally in Pasc
 - `Pl0.Core`: Lexer, Parser, Symbol Table, Code Generator
 - `Pl0.Vm`: Stack-based virtual machine for P-Code
 - `Pl0.Cli`: Command-line interface
+- `Pl0.Ide`: Terminal.Gui-based IDE for compile/run/debug workflows
 
 ## Build, Test, and Run Commands
 
@@ -100,10 +101,13 @@ Update golden artifacts after intentional changes:
 ## Module Dependencies (Must Follow)
 
 ```
-Pl0.Cli --> Pl0.Core
-Pl0.Cli --> Pl0.Vm
 Pl0.Core --> (no dependencies)
 Pl0.Vm --> Pl0.Core (for Instruction, Opcode)
+Pl0.Cli --> Pl0.Core
+Pl0.Cli --> Pl0.Vm
+Pl0.Ide --> Pl0.Core
+Pl0.Ide --> Pl0.Vm
+Pl0.Tests --> Pl0.Core, Pl0.Vm, Pl0.Cli, Pl0.Ide
 ```
 
 Enforced by `ArchitectureGuardTests` - do not violate these rules.
