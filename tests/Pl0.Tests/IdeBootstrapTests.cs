@@ -948,6 +948,36 @@ public sealed class IdeBootstrapTests
     }
 
     [Fact]
+    public void ExitApplication_Sets_Requested_Process_ExitCode()
+    {
+        var mainView = new IdeMainView();
+
+        mainView.ExitApplication(23);
+
+        Assert.Equal(23, mainView.ExitCode);
+    }
+
+    [Fact]
+    public void ShowAboutDialog_Displays_AsciiArt_And_FourPart_Version()
+    {
+        var messageDialogs = new StubIdeMessageDialogService();
+        var mainView = new IdeMainView(
+            new StubIdeFileDialogService(),
+            new StubIdeFileStorage(),
+            new StubCompilerSettingsDialogService([]),
+            new StubIdeRuntimeDialogService([]),
+            messageDialogs);
+
+        mainView.ShowAboutDialog();
+
+        Assert.Equal("Ueber Pl0.Ide", messageDialogs.LastTitle);
+        Assert.NotNull(messageDialogs.LastMessage);
+        Assert.Contains("Pl0.Ide", messageDialogs.LastMessage);
+        Assert.Contains("____", messageDialogs.LastMessage);
+        Assert.Matches(@"Version:\s+\d+\.\d+\.\d+\.\d+", messageDialogs.LastMessage);
+    }
+
+    [Fact]
     public void LookAndFeel_Applies_TurboPascal5_Theme_When_Available()
     {
         var exception = Record.Exception(() => _ = IdeLookAndFeel.ApplyTurboPascalThemeIfAvailable());
@@ -1119,6 +1149,18 @@ public sealed class IdeBootstrapTests
         {
             ReadCount++;
             return values.Count > 0 ? values.Dequeue() : null;
+        }
+    }
+
+    private sealed class StubIdeMessageDialogService : IIdeMessageDialogService
+    {
+        internal string? LastTitle { get; private set; }
+        internal string? LastMessage { get; private set; }
+
+        public void ShowInfo(string title, string message)
+        {
+            LastTitle = title;
+            LastMessage = message;
         }
     }
 }

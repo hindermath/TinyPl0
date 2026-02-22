@@ -9,11 +9,22 @@ namespace Pl0.Ide;
 internal sealed class IdeMainView : Toplevel
 {
     private static readonly Action NoOp = static () => { };
+    private const int SuccessfulExitCode = 0;
     private const string SourceWindowBaseTitle = "Quellcode";
     private const string PCodeWindowBaseTitle = "P-Code";
     private const string AssemblerWindowBaseTitle = "Assembler-Code";
     private const string RuntimeOutputWindowBaseTitle = "Ausgabe";
     private const string DebugWindowBaseTitle = "Debug";
+    private static readonly string[] AboutAsciiArt =
+    [
+        "  ____  _   ___    ___     ___    _      ",
+        " |  _ \\| | / _ \\  |_ _|___| | ___| |___  ",
+        " | |_) | || | | |  | |/ _ \\ |/ -_) / -_) ",
+        " |  __/| || |_| |  | |\\___/_|\\___|_\\___| ",
+        " |_|   |_| \\___/  |___|                  ",
+        "               Pl0.Ide                   "
+    ];
+
     private readonly Pl0Compiler compiler = new();
     private readonly VirtualMachine virtualMachine = new();
     private readonly SteppableVirtualMachine steppableVirtualMachine = new();
@@ -21,6 +32,7 @@ internal sealed class IdeMainView : Toplevel
     private readonly IIdeFileStorage fileStorage;
     private readonly IIdeCompilerSettingsDialogService compilerSettingsDialog;
     private readonly IIdeRuntimeDialogService runtimeDialogService;
+    private readonly IIdeMessageDialogService messageDialogService;
     private readonly Window sourceWindow;
     private readonly Window pCodeWindow;
     private readonly Pl0SourceEditorView sourceEditor;
@@ -39,7 +51,8 @@ internal sealed class IdeMainView : Toplevel
         new TerminalGuiIdeFileDialogService(),
         new PhysicalIdeFileStorage(),
         new TerminalGuiIdeCompilerSettingsDialogService(),
-        new TerminalGuiIdeRuntimeDialogService())
+        new TerminalGuiIdeRuntimeDialogService(),
+        new TerminalGuiIdeMessageDialogService())
     {
     }
 
@@ -49,7 +62,7 @@ internal sealed class IdeMainView : Toplevel
     }
 
     internal IdeMainView(IIdeFileDialogService fileDialogs, IIdeFileStorage fileStorage, IIdeCompilerSettingsDialogService compilerSettingsDialog)
-        : this(fileDialogs, fileStorage, compilerSettingsDialog, new TerminalGuiIdeRuntimeDialogService())
+        : this(fileDialogs, fileStorage, compilerSettingsDialog, new TerminalGuiIdeRuntimeDialogService(), new TerminalGuiIdeMessageDialogService())
     {
     }
 
@@ -58,11 +71,22 @@ internal sealed class IdeMainView : Toplevel
         IIdeFileStorage fileStorage,
         IIdeCompilerSettingsDialogService compilerSettingsDialog,
         IIdeRuntimeDialogService runtimeDialogService)
+        : this(fileDialogs, fileStorage, compilerSettingsDialog, runtimeDialogService, new TerminalGuiIdeMessageDialogService())
+    {
+    }
+
+    internal IdeMainView(
+        IIdeFileDialogService fileDialogs,
+        IIdeFileStorage fileStorage,
+        IIdeCompilerSettingsDialogService compilerSettingsDialog,
+        IIdeRuntimeDialogService runtimeDialogService,
+        IIdeMessageDialogService messageDialogService)
     {
         this.fileDialogs = fileDialogs;
         this.fileStorage = fileStorage;
         this.compilerSettingsDialog = compilerSettingsDialog;
         this.runtimeDialogService = runtimeDialogService;
+        this.messageDialogService = messageDialogService;
 
         var menuBar = CreateMenuBar();
         Add(menuBar);
@@ -137,6 +161,7 @@ internal sealed class IdeMainView : Toplevel
     internal CompilerOptions CurrentCompilerOptions => currentCompilerOptions;
     internal IdeCodeDisplayMode CurrentCodeDisplayMode => currentCodeDisplayMode;
     internal bool IsDebugSessionActive => isDebugSessionActive;
+    internal int ExitCode { get; private set; } = SuccessfulExitCode;
 
     internal void CreateNewSourceFile()
     {
@@ -277,7 +302,7 @@ internal sealed class IdeMainView : Toplevel
                     new MenuItem("_Neu", string.Empty, CreateNewSourceFileFromMenu, () => true, null, default),
                     new MenuItem("_Oeffnen", string.Empty, OpenSourceFileFromMenu, () => true, null, default),
                     new MenuItem("_Speichern", string.Empty, SaveSourceFileFromMenu, () => true, null, default),
-                    new MenuItem("_Beenden", string.Empty, NoOp, () => true, null, default)
+                    new MenuItem("_Beenden", string.Empty, ExitApplicationFromMenu, () => true, null, default)
                 ], null),
                 new MenuBarItem("_Bearbeiten",
                 [
@@ -303,7 +328,8 @@ internal sealed class IdeMainView : Toplevel
                 new MenuBarItem("_Hilfe",
                 [
                     new MenuItem("_Bedienung", string.Empty, NoOp, () => true, null, default),
-                    new MenuItem("_PL/0-Sprache", string.Empty, NoOp, () => true, null, default)
+                    new MenuItem("_PL/0-Sprache", string.Empty, NoOp, () => true, null, default),
+                    new MenuItem("_Ueber", string.Empty, ShowAboutDialogFromMenu, () => true, null, default)
                 ], null)
             ]
         };
@@ -367,6 +393,49 @@ internal sealed class IdeMainView : Toplevel
     private void FormatSourceFromMenu()
     {
         _ = FormatSource();
+    }
+
+    private void ExitApplicationFromMenu()
+    {
+        ExitApplication();
+    }
+
+    private void ShowAboutDialogFromMenu()
+    {
+        ShowAboutDialog();
+    }
+
+    internal void ExitApplication(int exitCode = SuccessfulExitCode)
+    {
+        ExitCode = exitCode;
+        if (ApplicationImpl.Instance is not null)
+        {
+            Application.RequestStop(this);
+        }
+    }
+
+    internal void ShowAboutDialog()
+    {
+        messageDialogService.ShowInfo("Ueber Pl0.Ide", CreateAboutDialogText());
+    }
+
+    internal static string CreateAboutDialogText()
+    {
+        var version = typeof(IdeMainView).Assembly.GetName().Version ?? new Version(0, 0, 0, 0);
+        var versionText = FormatVersion(version);
+        return string.Join(
+            Environment.NewLine,
+            AboutAsciiArt.Concat(["", $"Version: {versionText}"]));
+    }
+
+    private static string FormatVersion(Version version)
+    {
+        return $"{NormalizeVersionComponent(version.Major)}.{NormalizeVersionComponent(version.Minor)}.{NormalizeVersionComponent(version.Build)}.{NormalizeVersionComponent(version.Revision)}";
+    }
+
+    private static int NormalizeVersionComponent(int versionComponent)
+    {
+        return versionComponent < 0 ? 0 : versionComponent;
     }
 
     private static bool HasPl0Extension(string path)
