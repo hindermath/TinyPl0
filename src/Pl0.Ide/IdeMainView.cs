@@ -106,9 +106,8 @@ internal sealed class IdeMainView : Toplevel
             Height = Dim.Percent(70)
         };
         sourceEditor = CreateSourceEditor();
-        sourceEditor.Height = Dim.Fill(1);
-        sourceStatusLine = CreateSourceStatusLine();
-        sourceWindow.Add(sourceEditor, sourceStatusLine);
+        sourceEditor.Height = Dim.Fill();
+        sourceWindow.Add(sourceEditor);
 
         pCodeWindow = new Window
         {
@@ -138,7 +137,7 @@ internal sealed class IdeMainView : Toplevel
             X = 0,
             Y = Pos.Bottom(sourceWindow),
             Width = Dim.Percent(65),
-            Height = Dim.Fill()
+            Height = Dim.Fill(1)
         };
         messagesOutput = CreateReadOnlyOutputView();
         messagesWindow.Add(messagesOutput);
@@ -149,16 +148,18 @@ internal sealed class IdeMainView : Toplevel
             X = Pos.Right(messagesWindow),
             Y = Pos.Bottom(sourceWindow),
             Width = Dim.Fill(),
-            Height = Dim.Fill()
+            Height = Dim.Fill(1)
         };
         runtimeOutput = CreateReadOnlyOutputView();
         runtimeOutputWindow.Add(runtimeOutput);
+
+        sourceStatusLine = CreateSourceStatusLine();
 
         sourceEditor.ContentsChanged += (_, _) => RefreshSourceEditorState();
         sourceEditor.UnwrappedCursorPosition += (_, _) => RefreshSourceCursorStatus();
         RefreshSourceEditorState();
 
-        Add(sourceWindow, pCodeWindow, messagesWindow, runtimeOutputWindow, debugWindow);
+        Add(sourceWindow, pCodeWindow, messagesWindow, runtimeOutputWindow, debugWindow, sourceStatusLine);
     }
 
     internal Pl0SourceEditorView SourceEditor => sourceEditor;
