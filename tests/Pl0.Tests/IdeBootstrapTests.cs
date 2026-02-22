@@ -91,6 +91,23 @@ public sealed class IdeBootstrapTests
     }
 
     [Fact]
+    public void RainbowAsciiArtView_Assigns_Repeating_Rainbow_Colors_To_NonWhitespace_Characters()
+    {
+        var view = new IdeRainbowAsciiArtView();
+        view.SetAsciiArt(["ABCDEF", " A "]);
+
+        Assert.Equal(0, view.GetRainbowColorIndexAt(0, 0));
+        Assert.Equal(1, view.GetRainbowColorIndexAt(0, 1));
+        Assert.Equal(2, view.GetRainbowColorIndexAt(0, 2));
+        Assert.Equal(3, view.GetRainbowColorIndexAt(0, 3));
+        Assert.Equal(4, view.GetRainbowColorIndexAt(0, 4));
+        Assert.Equal(5, view.GetRainbowColorIndexAt(0, 5));
+        Assert.Equal(-1, view.GetRainbowColorIndexAt(1, 0));
+        Assert.Equal(1, view.GetRainbowColorIndexAt(1, 1));
+        Assert.Equal(-1, view.GetRainbowColorIndexAt(1, 2));
+    }
+
+    [Fact]
     public void SourceEditor_Does_Not_Highlight_Identifiers_As_Keywords()
     {
         var editor = new Pl0SourceEditorView

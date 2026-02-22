@@ -432,6 +432,17 @@ internal sealed class IdeMainView : Toplevel
 
     internal void ShowAboutDialog()
     {
+        var assembly = typeof(IdeMainView).Assembly;
+        var version = assembly.GetName().Version ?? new Version(0, 0, 0, 0);
+        var versionText = FormatVersion(version);
+        var buildCounterText = NormalizeVersionComponent(version.Revision).ToString(CultureInfo.InvariantCulture);
+
+        if (messageDialogService is IIdeAboutDialogService aboutDialogService)
+        {
+            aboutDialogService.ShowAboutDialog("Ueber", AboutAsciiArt, "Programmierung #include<everyone>", versionText, buildCounterText);
+            return;
+        }
+
         messageDialogService.ShowInfo("Ueber", CreateAboutDialogText());
     }
 
@@ -441,6 +452,11 @@ internal sealed class IdeMainView : Toplevel
         var version = assembly.GetName().Version ?? new Version(0, 0, 0, 0);
         var versionText = FormatVersion(version);
         var buildCounterText = NormalizeVersionComponent(version.Revision).ToString(CultureInfo.InvariantCulture);
+        return BuildAboutDialogText(versionText, buildCounterText);
+    }
+
+    private static string BuildAboutDialogText(string versionText, string buildCounterText)
+    {
         return string.Join(
             Environment.NewLine,
             AboutAsciiArt.Concat(["", "Programmierung #include<everyone>", $"Version: {versionText}", $"Buildzaehler: {buildCounterText}"]));
