@@ -17,6 +17,8 @@
     <Version>1.7.5.7</Version>
     <AssemblyVersion>1.7.5.7</AssemblyVersion>
     <FileVersion>1.7.5.7</FileVersion>
+    <BuildCounter>$([System.DateTime]::UtcNow.ToString("yyyyMMddHHmmss"))</BuildCounter>
+    <InformationalVersion>$(Version)+build.$(BuildCounter)</InformationalVersion>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);1591</NoWarn>
   </PropertyGroup>

@@ -977,6 +977,7 @@ public sealed class IdeBootstrapTests
         Assert.DoesNotContain("Pl0.Ide", messageDialogs.LastMessage);
         Assert.Contains("Programmierung #include<everyone>", messageDialogs.LastMessage);
         Assert.Contains("Version: 1.7.5.7", messageDialogs.LastMessage);
+        Assert.Matches(@"Buildzaehler:\s+\d{14}", messageDialogs.LastMessage);
         Assert.Matches(@"Version:\s+\d+\.\d+\.\d+\.\d+", messageDialogs.LastMessage);
     }
 
