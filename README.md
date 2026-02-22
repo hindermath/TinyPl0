@@ -55,12 +55,13 @@ Referenzquellen im Repository:
 
 ## Build und Ausführung
 
-### Aktueller Stand (Phase 5)
+### Aktueller Stand (CLI + IDE)
 Die .NET-10-Solution ist angelegt:
 - `TinyPl0.sln`
 - `src/Pl0.Core`
 - `src/Pl0.Vm`
 - `src/Pl0.Cli`
+- `src/Pl0.Ide`
 - `tests/Pl0.Tests`
 
 Zusätzlich sind umgesetzt:
@@ -71,6 +72,7 @@ Zusätzlich sind umgesetzt:
 - CLI-Subcommands: `compile`, `run`, `run-pcode` (inkl. `--out`, `--list-code`, `--emit`).
 - P-Code Serialisierung/Deserialisierung (`PCodeSerializer`) für Datei-Workflow.
 - End-to-End-Tests für `source -> pcode -> vm` in `tests`.
+- Terminal-GUI-IDE (`Pl0.Ide`) mit Quellcode-Editor, Kompilieren/Ausführen, Export (`asm`/`cod`) und Schritt-Debugging über `SteppableVirtualMachine`.
 - Vollständiger 8.2-Testdatenkatalog (41 Pflicht-`.pl0`-Fälle) inkl. erwarteter Artefakte:
   - `tests/data/expected/catalog/cases.json`
 
@@ -108,11 +110,17 @@ dotnet run --project src/Pl0.Cli -- run-pcode tests/data/expected/code/feature_i
 dotnet run --project src/Pl0.Cli -- run tests/data/pl0/valid/feature_const_var_assignment.pl0 --list-code --wopcod
 ```
 
+### IDE starten
+```bash
+dotnet run --project src/Pl0.Ide
+```
+
 ## Repository-Status
 - Git-Repository ist initialisiert.
 - `.gitignore` für .NET/C#/Visual Studio/JetBrains ist vorhanden.
-- Phase 0 bis Phase 5 (CLI + End-to-End) sind gemäß Pflichtenheft umgesetzt.
-- Phase 6 (Qualität + Dokumentation) ist gestartet und enthält Architektur-/Qualitätsdoku sowie erweiterte Kernpfadtests.
+- Core/VM/CLI sind inklusive End-to-End-Workflow (`source -> pcode -> vm`) umgesetzt.
+- `Pl0.Ide` ist als eigenes Projekt in die Solution integriert und durch Tests abgesichert.
+- Qualitäts- und Architekturprüfungen laufen über die Test-Suite (`ArchitectureGuardTests`, Traceability-/Golden-/E2E-Tests).
 
 ## Entwicklung mit Agentic-AI
 
@@ -134,5 +142,4 @@ Neben der praktischen Implementierung eines Compilers dient dieses Projekt auch 
 - **Transparenz:** Wie bleibt die Nachvollziehbarkeit und Validierbarkeit der generierten Artefakte gewährleistet?
 
 Dieses Projekt zeigt, dass Agentic-AI nicht als Ersatz für manuelles Lernen gedacht ist, sondern als **produktive Werkzeug und Lernpartner** für professionelle Softwareentwicklung in der Ausbildung.
-
 
