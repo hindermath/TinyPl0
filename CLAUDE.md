@@ -43,14 +43,19 @@ dotnet run --project src/Pl0.Cli -- --api                         # start embedd
 
 ## Architecture
 
-Three-module layered architecture with enforced dependencies (`ArchitectureGuardTests`):
+Four-module layered architecture with enforced dependencies (`ArchitectureGuardTests`):
 
 ```
 Pl0.Cli  --> Pl0.Core  (compilation)
 Pl0.Cli  --> Pl0.Vm    (execution)
 Pl0.Core --> (no dependencies)
 Pl0.Vm   --> Pl0.Core  (for Instruction, Opcode types)
+Pl0.Ide  --> Pl0.Core
+Pl0.Ide  --> Pl0.Vm
+Pl0.Ide  --> Terminal.Gui  (only allowed external NuGet package for Pl0.Ide)
 ```
+
+`ArchitectureGuardTests` also verifies that `Pl0.Ide.csproj` references only `Terminal.Gui` as a NuGet package. Do not violate these dependency rules.
 
 **Compiler pipeline:**
 ```
@@ -76,13 +81,30 @@ Pl0.Vm   --> Pl0.Core  (for Instruction, Opcode types)
 
 **8 opcodes:** `Lit`, `Opr`, `Lod`, `Sto`, `Cal`, `Int`, `Jmp`, `Jpc`. See `docs/VM_INSTRUCTION_SET.md`.
 
+### Pl0.Ide — TUI IDE
+
+`Pl0.Ide` is a Terminal.Gui v2.x application modelled after the Turbo Pascal DOS IDE. It uses the instance-based v2 lifecycle (`Application.Create().Init()` / `app.Run<T>()` / `app.Dispose()`). Static `Application` calls from v1 must not be used.
+
+**IDE components:** source editor, P-Code viewer, assembler viewer, runtime output window, debug window (registers P/B/T + stack), diagnostics window.
+
+**IDE Version Scheme** — `<Version>` in `src/Pl0.Ide/Pl0.Ide.csproj` follows `Major.Minor.Patch.Build`:
+- `Minor` = current PR number
+- `Patch` = current commit count in that PR branch (after committing the current change)
+- `Build` = manual build counter incremented before every `dotnet build` or `dotnet test`
+
+Align `Version`, `AssemblyVersion`, and `FileVersion` in `Pl0.Ide.csproj` whenever a commit is created or the PR branch is updated, before pushing.
+
+**IDE Worklog** — After any IDE-related work, append a new entry to the worklog at the bottom of `Pflichtenheft_IDE.md`.
+
 ## Key Files
 
 - `Pflichtenheft_PL0_CSharp_DotNet10.md` — main requirements specification
+- `Pflichtenheft_IDE.md` — IDE requirements and worklog
 - `docs/ARCHITECTURE.md` — Pascal-to-C# mapping and module overview
 - `docs/LANGUAGE_EBNF.md` — formal grammar for both dialects
 - `docs/VM_INSTRUCTION_SET.md` — P-Code instruction set reference
 - `docs/TRACEABILITY_MATRIX.md` — requirements-to-test mapping
+- `docs/QUALITY.md` — code quality and coverage metrics
 - `tests/data/expected/catalog/cases.json` — 41 mandatory test cases
 - `pl0c.pas` — historical Pascal reference source
 
@@ -94,6 +116,37 @@ Pl0.Vm   --> Pl0.Core  (for Instruction, Opcode types)
 - 4-space indentation, opening brace on same line
 
 **Error handling — critical:** Do NOT throw exceptions during compilation. All errors go into `CompilerDiagnostic` / `LexerDiagnostic`. Check `CompilationResult.Success` (true when `Diagnostics.Count == 0`) before execution.
+
+## Adding New Test Cases
+
+To add a catalog test case, touch **all four** of these in order:
+
+1. **Add the `.pl0` source file** to `tests/data/pl0/valid/` or `tests/data/pl0/invalid/`.
+2. **Add a catalog entry** in `tests/data/expected/catalog/cases.json`:
+   ```json
+   {
+     "name": "my_case.pl0",
+     "group": "valid",
+     "folder": "valid",
+     "dialect": "extended",
+     "compileSuccess": true,
+     "run": true,
+     "input": [],
+     "expectedOutput": [42]
+   }
+   ```
+   Key fields: `group` (`valid`/`invalid`/`compat`/`dialect`/`limits`/`runtime/io-edge`), `dialect` (`extended`/`classic`), `compileSuccess`, `run`, `runtimeSuccess` (default true), `input`/`expectedOutput` (integer lists), `expectedCompileCodes`/`expectedRuntimeCodes` (error code lists), `ioBehavior` (`buffered`/`eof`/`formatError`), `storeTrace`. Limit overrides: `maxLevel`, `maxAddress`, `maxIdentifierLength`, `maxNumberDigits`, `maxSymbolCount`, `maxCodeLength`.
+3. **Generate the golden P-Code artifact** (only for `compileSuccess: true` cases):
+   ```bash
+   ./scripts/update-golden-code.sh   # requires jq
+   ```
+   This writes `tests/data/expected/code/<case-name>.pcode.txt`.
+4. **Update the traceability matrix** at `tests/data/expected/traceability/matrix.json` if the new case covers a language rule or VM opcode not yet listed there. `TraceabilityMatrixTests` enforces that every rule in the matrix references at least one catalog case.
+
+Golden artifact locations:
+- `tests/data/expected/code/` — P-Code assembly for each compile-success case
+- `tests/data/expected/lexer/` — token streams for lexer golden tests
+- `tests/data/expected/traceability/matrix.json` — rule-to-case coverage map
 
 ## Dialect Handling
 

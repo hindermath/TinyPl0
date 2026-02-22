@@ -10,6 +10,7 @@ This project is a port of the historical PL/0 compiler (originally in Pascal) to
 - `Pl0.Core`: Lexer, Parser, Symbol Table, and Code Generator
 - `Pl0.Vm`: Stack-based virtual machine that executes P-Code instructions
 - `Pl0.Cli`: Command-line interface for compiling and running PL/0 programs
+- `Pl0.Ide`: Text-based IDE (TUI) using Terminal.Gui v2.x, modelled after the Turbo Pascal DOS IDE
 
 **Supported Dialects:**
 - `classic`: Strictly compatible with the original Pascal reference (no I/O statements `?` and `!`)
@@ -80,9 +81,12 @@ Pl0.Cli --> Pl0.Core
 Pl0.Cli --> Pl0.Vm
 Pl0.Core --> (no dependencies on other modules)
 Pl0.Vm --> Pl0.Core (for Instruction, Opcode)
+Pl0.Ide --> Pl0.Core
+Pl0.Ide --> Pl0.Vm
+Pl0.Ide --> Terminal.Gui (only allowed external package for Pl0.Ide)
 ```
 
-**Important:** This layered architecture is enforced by `ArchitectureGuardTests`. Do not introduce circular dependencies or violate these rules.
+**Important:** This layered architecture is enforced by `ArchitectureGuardTests`. Do not introduce circular dependencies or violate these rules. `ArchitectureGuardTests` also verifies that `Pl0.Ide.csproj` only references `Terminal.Gui` as a NuGet package.
 
 ### Data Flow
 1. `.pl0` source → `Pl0Lexer` → tokens
@@ -195,6 +199,25 @@ When modifying parser or lexer:
 - `docs/TRACEABILITY_MATRIX.md`: Mapping between requirements and tests
 - `docs/QUALITY.md`: Code quality and coverage metrics
 - `pl0c.pas`: Historical Pascal reference source
+
+## Pl0.Ide — TUI IDE
+
+`Pl0.Ide` is a Terminal.Gui v2.x application modelled after the Turbo Pascal DOS IDE. It uses the instance-based v2 lifecycle (`Application.Create().Init()` / `app.Run<T>()` / `app.Dispose()`). Static `Application` calls from v1 must not be used.
+
+**IDE components:** source editor, P-Code viewer, assembler viewer, runtime output window, debug window (registers P/B/T + stack), diagnostics window.
+
+### IDE Version Scheme
+
+`<Version>` in `src/Pl0.Ide/Pl0.Ide.csproj` follows `Major.Minor.Patch.Build`:
+- `Minor` = current PR number
+- `Patch` = current commit count in that PR branch (after committing the current change)
+- `Build` = manual build counter incremented before every `dotnet build` or `dotnet test`
+
+Whenever a commit is created or the PR branch is updated, align `Version`, `AssemblyVersion`, and `FileVersion` in `Pl0.Ide.csproj` to this scheme before pushing.
+
+### IDE Worklog
+
+After any IDE-related work, append a new entry to the worklog at the bottom of `Pflichtenheft_IDE.md`.
 
 ## Important Notes
 
