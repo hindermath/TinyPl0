@@ -972,10 +972,10 @@ public sealed class IdeBootstrapTests
 
         Assert.Equal("Ueber Pl0.Ide", messageDialogs.LastTitle);
         Assert.NotNull(messageDialogs.LastMessage);
-        Assert.Contains("Pl0.Ide", messageDialogs.LastMessage);
+        Assert.Contains("Plo.IDe", messageDialogs.LastMessage);
         Assert.Contains("____", messageDialogs.LastMessage);
         Assert.Contains("Programmierung #include<everyone>", messageDialogs.LastMessage);
-        Assert.Contains($"{Environment.NewLine}   .{Environment.NewLine}", messageDialogs.LastMessage);
+        Assert.Contains($"{Environment.NewLine} (_){Environment.NewLine}", messageDialogs.LastMessage);
         Assert.Matches(@"Version:\s+\d+\.\d+\.\d+\.\d+", messageDialogs.LastMessage);
     }
 

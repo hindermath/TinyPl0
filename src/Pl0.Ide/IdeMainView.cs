@@ -17,18 +17,15 @@ internal sealed class IdeMainView : Toplevel
     private const string DebugWindowBaseTitle = "Debug";
     private static readonly string[] AboutAsciiArt =
     [
-        " ____  _      ___  ",
-        "|  _ \\| |    / _ \\ ",
-        "| |_) | |   | | | |",
-        "|  __/| |___| |_| |",
-        "|_|   |_____|\\___/ ",
+        " ____  _         ___ ____      ",
+        "|  _ \\| | ___   |_ _|  _ \\ ___ ",
+        "| |_) | |/ _ \\   | || | | / _ \\",
+        "|  __/| | (_) |  | || |_| |  __/",
+        "|_|   |_|\\___/  |___|____/ \\___|",
+        "            Plo.IDe             ",
         "",
-        "   .",
-        "  ___     _       ",
-        " |_ _| __| | ___  ",
-        "  | | / _` |/ -_) ",
-        " |___|\\__,_|\\___| ",
-        "      Pl0.Ide     "
+        "  _  ",
+        " (_)"
     ];
 
     private readonly Pl0Compiler compiler = new();
@@ -102,7 +99,7 @@ internal sealed class IdeMainView : Toplevel
             Title = SourceWindowBaseTitle,
             X = 0,
             Y = Pos.Bottom(menuBar),
-            Width = Dim.Percent(50),
+            Width = Dim.Percent(45),
             Height = Dim.Percent(70)
         };
         sourceEditor = CreateSourceEditor();
