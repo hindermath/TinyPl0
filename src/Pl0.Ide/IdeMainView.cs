@@ -17,15 +17,11 @@ internal sealed class IdeMainView : Toplevel
     private const string DebugWindowBaseTitle = "Debug";
     private static readonly string[] AboutAsciiArt =
     [
-        " ____  _         ___ ____      ",
-        "|  _ \\| | ___   |_ _|  _ \\ ___ ",
-        "| |_) | |/ _ \\   | || | | / _ \\",
-        "|  __/| | (_) |  | || |_| |  __/",
-        "|_|   |_|\\___/  |___|____/ \\___|",
-        "            Plo.IDe             ",
-        "",
-        "  _  ",
-        " (_)"
+        "PPP   l    000         III    d       eee ",
+        "P  P  l   0   0         I     d      e    ",
+        "PPP   l   0   0   .     I    ddd     eee  ",
+        "P     l   0   0         I   d  d     e    ",
+        "P    ll    000         III   ddd     eee  "
     ];
 
     private readonly Pl0Compiler compiler = new();
@@ -419,7 +415,7 @@ internal sealed class IdeMainView : Toplevel
 
     internal void ShowAboutDialog()
     {
-        messageDialogService.ShowInfo("Ueber Pl0.Ide", CreateAboutDialogText());
+        messageDialogService.ShowInfo("Ueber", CreateAboutDialogText());
     }
 
     internal static string CreateAboutDialogText()

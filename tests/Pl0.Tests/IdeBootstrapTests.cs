@@ -970,12 +970,13 @@ public sealed class IdeBootstrapTests
 
         mainView.ShowAboutDialog();
 
-        Assert.Equal("Ueber Pl0.Ide", messageDialogs.LastTitle);
+        Assert.Equal("Ueber", messageDialogs.LastTitle);
         Assert.NotNull(messageDialogs.LastMessage);
-        Assert.Contains("Plo.IDe", messageDialogs.LastMessage);
-        Assert.Contains("____", messageDialogs.LastMessage);
+        Assert.Contains("PPP", messageDialogs.LastMessage);
+        Assert.Contains("ddd", messageDialogs.LastMessage);
+        Assert.Contains("   .", messageDialogs.LastMessage);
+        Assert.DoesNotContain("Pl0.Ide", messageDialogs.LastMessage);
         Assert.Contains("Programmierung #include<everyone>", messageDialogs.LastMessage);
-        Assert.Contains($"{Environment.NewLine} (_){Environment.NewLine}", messageDialogs.LastMessage);
         Assert.Matches(@"Version:\s+\d+\.\d+\.\d+\.\d+", messageDialogs.LastMessage);
     }
 
