@@ -1,6 +1,8 @@
 using Pl0.Core;
 using Pl0.Vm;
 using Terminal.Gui;
+using System.Globalization;
+using System.Text;
 
 namespace Pl0.Ide;
 
@@ -11,8 +13,10 @@ internal sealed class IdeMainView : Toplevel
     private const string PCodeWindowBaseTitle = "P-Code";
     private const string AssemblerWindowBaseTitle = "Assembler-Code";
     private const string RuntimeOutputWindowBaseTitle = "Ausgabe";
+    private const string DebugWindowBaseTitle = "Debug";
     private readonly Pl0Compiler compiler = new();
     private readonly VirtualMachine virtualMachine = new();
+    private readonly SteppableVirtualMachine steppableVirtualMachine = new();
     private readonly IIdeFileDialogService fileDialogs;
     private readonly IIdeFileStorage fileStorage;
     private readonly IIdeCompilerSettingsDialogService compilerSettingsDialog;
@@ -23,10 +27,13 @@ internal sealed class IdeMainView : Toplevel
     private readonly TextView pCodeOutput;
     private readonly TextView messagesOutput;
     private readonly TextView runtimeOutput;
+    private readonly IdeDebugView debugOutput;
     private CompilationResult? lastCompilationResult;
+    private VmStepResult? lastDebugStepResult;
     private string? currentSourcePath;
     private CompilerOptions currentCompilerOptions = IdeCompilerOptionsRules.GetResetDefaults();
     private IdeCodeDisplayMode currentCodeDisplayMode = IdeCodeDisplayMode.Assembler;
+    private bool isDebugSessionActive;
 
     public IdeMainView() : this(
         new TerminalGuiIdeFileDialogService(),
@@ -76,11 +83,22 @@ internal sealed class IdeMainView : Toplevel
             Title = GetCodeWindowBaseTitle(),
             X = Pos.Right(sourceWindow),
             Y = Pos.Bottom(menuBar),
-            Width = Dim.Fill(),
+            Width = Dim.Percent(15),
             Height = Dim.Percent(70)
         };
         pCodeOutput = CreateReadOnlyOutputView();
         pCodeWindow.Add(pCodeOutput);
+
+        var debugWindow = new Window
+        {
+            Title = DebugWindowBaseTitle,
+            X = Pos.Right(pCodeWindow),
+            Y = Pos.Bottom(menuBar),
+            Width = Dim.Fill(),
+            Height = Dim.Percent(70)
+        };
+        debugOutput = CreateDebugOutputView();
+        debugWindow.Add(debugOutput);
 
         var messagesWindow = new Window
         {
@@ -104,19 +122,21 @@ internal sealed class IdeMainView : Toplevel
         runtimeOutput = CreateReadOnlyOutputView();
         runtimeOutputWindow.Add(runtimeOutput);
 
-        Add(sourceWindow, pCodeWindow, messagesWindow, runtimeOutputWindow);
+        Add(sourceWindow, pCodeWindow, messagesWindow, runtimeOutputWindow, debugWindow);
     }
 
     internal Pl0SourceEditorView SourceEditor => sourceEditor;
     internal TextView PCodeOutput => pCodeOutput;
     internal TextView MessagesOutput => messagesOutput;
     internal TextView RuntimeOutput => runtimeOutput;
+    internal TextView DebugOutput => debugOutput;
     internal CompilationResult? LastCompilationResult => lastCompilationResult;
     internal string? CurrentSourcePath => currentSourcePath;
     internal string SourceWindowTitle => sourceWindow.Title?.ToString() ?? string.Empty;
     internal string PCodeWindowTitle => pCodeWindow.Title?.ToString() ?? string.Empty;
     internal CompilerOptions CurrentCompilerOptions => currentCompilerOptions;
     internal IdeCodeDisplayMode CurrentCodeDisplayMode => currentCodeDisplayMode;
+    internal bool IsDebugSessionActive => isDebugSessionActive;
 
     internal void CreateNewSourceFile()
     {
@@ -124,6 +144,9 @@ internal sealed class IdeMainView : Toplevel
         currentSourcePath = null;
         pCodeOutput.Text = string.Empty;
         runtimeOutput.Text = string.Empty;
+        debugOutput.Text = string.Empty;
+        isDebugSessionActive = false;
+        lastDebugStepResult = null;
         UpdateDocumentTitles();
         messagesOutput.Text = "Neue Datei erstellt.";
     }
@@ -147,6 +170,9 @@ internal sealed class IdeMainView : Toplevel
         {
             sourceEditor.Text = fileStorage.ReadAllText(fullPath);
             currentSourcePath = fullPath;
+            debugOutput.Text = string.Empty;
+            isDebugSessionActive = false;
+            lastDebugStepResult = null;
             UpdateDocumentTitles();
             messagesOutput.Text = $"Datei geladen: {fullPath}";
             return true;
@@ -202,6 +228,9 @@ internal sealed class IdeMainView : Toplevel
         var source = SourceEditor.Text?.ToString() ?? string.Empty;
         var result = compiler.Compile(source, currentCompilerOptions);
 
+        isDebugSessionActive = false;
+        debugOutput.Text = string.Empty;
+        lastDebugStepResult = null;
         lastCompilationResult = result;
         RenderCompilationResult(result);
         return result;
@@ -227,6 +256,10 @@ internal sealed class IdeMainView : Toplevel
         if (lastCompilationResult?.Success == true)
         {
             RenderCompilationResult(lastCompilationResult);
+            if (lastDebugStepResult is not null)
+            {
+                RenderDebugState(lastDebugStepResult);
+            }
         }
 
         messagesOutput.Text = $"Compiler-Einstellungen aktualisiert: Dialekt {normalized.Dialect}, MaxNumberDigits {normalized.MaxNumberDigits}, Anzeige {GetCodeWindowBaseTitle()}.";
@@ -264,7 +297,8 @@ internal sealed class IdeMainView : Toplevel
                 ], null),
                 new MenuBarItem("_Debug",
                 [
-                    new MenuItem("_Step", string.Empty, NoOp, () => true, null, default)
+                    new MenuItem("_Step", string.Empty, StepDebugFromMenu, () => true, null, default),
+                    new MenuItem("_Abbrechen", string.Empty, AbortDebugFromMenu, () => true, null, default)
                 ], null),
                 new MenuBarItem("_Hilfe",
                 [
@@ -303,6 +337,16 @@ internal sealed class IdeMainView : Toplevel
     private void CompileAndRunFromMenu()
     {
         _ = CompileAndRun();
+    }
+
+    private void StepDebugFromMenu()
+    {
+        _ = StepDebug();
+    }
+
+    private void AbortDebugFromMenu()
+    {
+        AbortDebug();
     }
 
     private void CreateNewSourceFileFromMenu()
@@ -398,6 +442,60 @@ internal sealed class IdeMainView : Toplevel
         return compileResult.Success && RunCompiledCode();
     }
 
+    internal VmStepResult? StepDebug()
+    {
+        if (lastCompilationResult is null || !lastCompilationResult.Success)
+        {
+            messagesOutput.Text = "Debug nicht moeglich: zuerst erfolgreich kompilieren.";
+            return null;
+        }
+
+        if (!isDebugSessionActive)
+        {
+            runtimeOutput.Text = string.Empty;
+            var io = new IdeRuntimeIo(
+                () => runtimeDialogService.ReadInt("Bitte Ganzzahl fuer die Laufzeiteingabe eingeben:"),
+                AppendRuntimeOutputValue);
+            steppableVirtualMachine.Initialize(lastCompilationResult.Instructions, io);
+            isDebugSessionActive = true;
+        }
+
+        var stepResult = steppableVirtualMachine.Step();
+        lastDebugStepResult = stepResult;
+        RenderDebugState(stepResult);
+        RenderCodeOutput(lastCompilationResult.Instructions, stepResult.State.P);
+
+        switch (stepResult.Status)
+        {
+            case VmStepStatus.Running:
+                messagesOutput.Text = $"Debug-Step ausgefuehrt (P={stepResult.State.P}, B={stepResult.State.B}, T={stepResult.State.T}).";
+                break;
+            case VmStepStatus.Halted:
+                isDebugSessionActive = false;
+                messagesOutput.Text = "Debug-Ausfuehrung beendet.";
+                break;
+            case VmStepStatus.Error:
+                isDebugSessionActive = false;
+                messagesOutput.Text = FormatVmDiagnostics(stepResult.Diagnostics);
+                break;
+        }
+
+        return stepResult;
+    }
+
+    internal bool AbortDebug()
+    {
+        if (!isDebugSessionActive)
+        {
+            messagesOutput.Text = "Keine laufende Debug-Ausfuehrung zum Abbrechen.";
+            return false;
+        }
+
+        isDebugSessionActive = false;
+        messagesOutput.Text = "Debug-Ausfuehrung abgebrochen. Letzter VM-Zustand bleibt sichtbar.";
+        return true;
+    }
+
     private static Pl0SourceEditorView CreateSourceEditor()
     {
         return new Pl0SourceEditorView
@@ -423,6 +521,17 @@ internal sealed class IdeMainView : Toplevel
         };
     }
 
+    private static IdeDebugView CreateDebugOutputView()
+    {
+        return new IdeDebugView
+        {
+            X = 0,
+            Y = 0,
+            Width = Dim.Fill(),
+            Height = Dim.Fill()
+        };
+    }
+
     private void UpdateDocumentTitles()
     {
         var codeWindowBaseTitle = GetCodeWindowBaseTitle();
@@ -442,16 +551,136 @@ internal sealed class IdeMainView : Toplevel
     {
         if (result.Success)
         {
-            var listing = currentCodeDisplayMode == IdeCodeDisplayMode.PCode
-                ? PCodeSerializer.ToCod(result.Instructions)
-                : PCodeSerializer.ToAsm(result.Instructions);
-            pCodeOutput.Text = AddLineNumbers(listing);
+            RenderCodeOutput(result.Instructions, null);
             messagesOutput.Text = $"Kompilierung erfolgreich ({result.Instructions.Count} Instruktionen).";
             return;
         }
 
         pCodeOutput.Text = string.Empty;
         messagesOutput.Text = FormatDiagnostics(result.Diagnostics);
+    }
+
+    private void RenderCodeOutput(IReadOnlyList<Instruction> instructions, int? pointer)
+    {
+        var listing = currentCodeDisplayMode == IdeCodeDisplayMode.PCode
+            ? PCodeSerializer.ToCod(instructions)
+            : PCodeSerializer.ToAsm(instructions);
+        pCodeOutput.Text = AddLineNumbers(listing, pointer);
+    }
+
+    private void RenderDebugState(VmStepResult stepResult)
+    {
+        var state = stepResult.State;
+        var lines = new List<string>();
+        var spans = new List<IdeDebugHighlightSpan>();
+
+        lines.Add($"Status: {stepResult.Status}");
+
+        var registerRow = lines.Count;
+        var registerLine = BuildRegisterLine(state, registerRow, spans);
+        lines.Add(registerLine);
+
+        lines.Add($"Instruktion: {FormatCurrentInstruction(state.CurrentInstruction, currentCodeDisplayMode)}");
+        lines.Add("Stack:");
+
+        if (state.T < 1)
+        {
+            lines.Add("  <leer>");
+        }
+        else
+        {
+            for (var index = 1; index <= state.T && index < state.Stack.Length; index++)
+            {
+                var stackRow = lines.Count;
+                var stackLine = BuildStackLine(state, index, stackRow, spans);
+                lines.Add(stackLine);
+            }
+        }
+
+        if (stepResult.Diagnostics.Count > 0)
+        {
+            lines.Add("Diagnosen:");
+            foreach (var diagnostic in stepResult.Diagnostics)
+            {
+                lines.Add($"  R{diagnostic.Code}: {diagnostic.Message}");
+            }
+        }
+
+        debugOutput.SetDebugContent(string.Join(Environment.NewLine, lines), spans);
+    }
+
+    private static string BuildRegisterLine(VmState state, int row, ICollection<IdeDebugHighlightSpan> spans)
+    {
+        var displayBasePointer = ToDisplayStackIndex(state.B);
+        var displayTopPointer = ToDisplayStackIndex(state.T);
+
+        var builder = new StringBuilder();
+        builder.Append("Register: IP=");
+        builder.Append(state.P.ToString(CultureInfo.InvariantCulture));
+        builder.Append(", BP=");
+        var baseStart = builder.Length;
+        var baseText = displayBasePointer.ToString(CultureInfo.InvariantCulture);
+        builder.Append(baseText);
+        builder.Append(", SP=");
+        var topStart = builder.Length;
+        var topText = displayTopPointer.ToString(CultureInfo.InvariantCulture);
+        builder.Append(topText);
+
+        spans.Add(new IdeDebugHighlightSpan(row, baseStart, baseText.Length, IdeDebugHighlightKind.BasePointer));
+        spans.Add(new IdeDebugHighlightSpan(row, topStart, topText.Length, IdeDebugHighlightKind.StackPointer));
+
+        return builder.ToString();
+    }
+
+    private static int ToDisplayStackIndex(int internalIndex)
+    {
+        return Math.Max(0, internalIndex - 1);
+    }
+
+    private static string BuildStackLine(VmState state, int stackIndex, int row, ICollection<IdeDebugHighlightSpan> spans)
+    {
+        var isBasePointerLine = state.B == stackIndex;
+        var isTopPointerLine = state.T == stackIndex;
+
+        var builder = new StringBuilder();
+        builder.Append("  BP");
+        var baseIndicatorColumn = builder.Length;
+        builder.Append(isBasePointerLine ? ">>" : "  ");
+        builder.Append(" SP");
+        var topIndicatorColumn = builder.Length;
+        builder.Append(isTopPointerLine ? ">>" : "  ");
+        builder.Append(" [");
+        builder.Append((stackIndex - 1).ToString("D3", CultureInfo.InvariantCulture));
+        builder.Append("] = ");
+        builder.Append(state.Stack[stackIndex].ToString(CultureInfo.InvariantCulture));
+
+        if (isBasePointerLine)
+        {
+            spans.Add(new IdeDebugHighlightSpan(row, baseIndicatorColumn, 2, IdeDebugHighlightKind.BasePointer));
+        }
+
+        if (isTopPointerLine)
+        {
+            spans.Add(new IdeDebugHighlightSpan(row, topIndicatorColumn, 2, IdeDebugHighlightKind.StackPointer));
+        }
+
+        return builder.ToString();
+    }
+
+    private static string FormatCurrentInstruction(Instruction? instruction, IdeCodeDisplayMode displayMode)
+    {
+        if (!instruction.HasValue)
+        {
+            return "<keine>";
+        }
+
+        if (displayMode == IdeCodeDisplayMode.PCode)
+        {
+            return $"{(int)instruction.Value.Op} {instruction.Value.Level} {instruction.Value.Argument}";
+        }
+
+        var mnemonic = instruction.Value.Op.ToString().ToLowerInvariant();
+        return $"{mnemonic} {instruction.Value.Level} {instruction.Value.Argument}";
     }
 
     private static string FormatDiagnostics(IReadOnlyList<CompilerDiagnostic> diagnostics)
@@ -484,7 +713,7 @@ internal sealed class IdeMainView : Toplevel
         return currentCodeDisplayMode == IdeCodeDisplayMode.PCode ? PCodeWindowBaseTitle : AssemblerWindowBaseTitle;
     }
 
-    private static string AddLineNumbers(string listing)
+    private static string AddLineNumbers(string listing, int? pointer)
     {
         if (string.IsNullOrWhiteSpace(listing))
         {
@@ -494,7 +723,11 @@ internal sealed class IdeMainView : Toplevel
         var lines = listing.Replace("\r\n", "\n", StringComparison.Ordinal).Split('\n');
         return string.Join(
             Environment.NewLine,
-            lines.Select((line, index) => $"{index:D4}: {line}"));
+            lines.Select((line, index) =>
+            {
+                var marker = pointer.HasValue && pointer.Value == index ? ">> " : "   ";
+                return $"{marker}{index:D4}: {line}";
+            }));
     }
 
     private string BuildSuggestedExportPath(IdeEmitMode mode)

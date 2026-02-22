@@ -1,5 +1,6 @@
 using Pl0.Core;
 using Pl0.Ide;
+using Pl0.Vm;
 using Terminal.Gui;
 
 namespace Pl0.Tests;
@@ -21,11 +22,12 @@ public sealed class IdeBootstrapTests
 
         var windows = mainView.Subviews.OfType<Window>().ToArray();
 
-        Assert.Equal(4, windows.Length);
+        Assert.Equal(5, windows.Length);
         Assert.Contains(windows, window => window.Title.ToString() == "Quellcode");
         Assert.Contains(windows, window => window.Title.ToString() == "Assembler-Code");
         Assert.Contains(windows, window => window.Title.ToString() == "Meldungen");
         Assert.Contains(windows, window => window.Title.ToString() == "Ausgabe");
+        Assert.Contains(windows, window => window.Title.ToString() == "Debug");
     }
 
     [Fact]
@@ -348,6 +350,239 @@ public sealed class IdeBootstrapTests
         Assert.True(mainView.LastCompilationResult!.Success);
         Assert.Equal("9", mainView.RuntimeOutput.Text?.ToString());
         Assert.Contains("Ausfuehrung erfolgreich", mainView.MessagesOutput.Text?.ToString());
+    }
+
+    [Fact]
+    public void StepDebug_Requires_Successful_Compilation()
+    {
+        var mainView = new IdeMainView(
+            new StubIdeFileDialogService(),
+            new StubIdeFileStorage(),
+            new StubCompilerSettingsDialogService([]),
+            new StubIdeRuntimeDialogService([]));
+
+        var step = mainView.StepDebug();
+
+        Assert.Null(step);
+        Assert.Contains("zuerst erfolgreich kompilieren", mainView.MessagesOutput.Text?.ToString());
+    }
+
+    [Fact]
+    public void StepDebug_Updates_Registers_Stack_And_Pointer_In_Code_Window()
+    {
+        var mainView = new IdeMainView(
+            new StubIdeFileDialogService(),
+            new StubIdeFileStorage(),
+            new StubCompilerSettingsDialogService([]),
+            new StubIdeRuntimeDialogService([]));
+        mainView.SourceEditor.Text = """
+                                     var x;
+                                     begin
+                                       x := 1;
+                                       ! x
+                                     end.
+                                     """;
+
+        var compiled = mainView.CompileSource();
+        var firstStep = mainView.StepDebug();
+        var secondStep = mainView.StepDebug();
+        var debugText = mainView.DebugOutput.Text?.ToString() ?? string.Empty;
+        var codeText = mainView.PCodeOutput.Text?.ToString() ?? string.Empty;
+
+        Assert.True(compiled.Success);
+        Assert.NotNull(firstStep);
+        Assert.NotNull(secondStep);
+        Assert.Equal(VmStepStatus.Running, firstStep!.Status);
+        Assert.Equal(VmStepStatus.Running, secondStep!.Status);
+        Assert.Contains("Register: IP=", debugText);
+        Assert.Contains("BP=", debugText);
+        Assert.Contains("SP=", debugText);
+        var instructionLine = debugText.Replace("\r\n", "\n", StringComparison.Ordinal)
+            .Split('\n')
+            .First(line => line.StartsWith("Instruktion: ", StringComparison.Ordinal));
+        var instructionText = instructionLine["Instruktion: ".Length..];
+        if (!string.Equals(instructionText, "<keine>", StringComparison.Ordinal))
+        {
+            var mnemonic = instructionText.Split(' ', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)[0];
+            Assert.Equal(mnemonic.ToLowerInvariant(), mnemonic);
+        }
+        Assert.Contains("Stack:", debugText);
+        Assert.Contains("BP>>", debugText);
+        Assert.Contains("SP>>", debugText);
+        Assert.Contains("[000]", debugText);
+        Assert.Contains(">> ", codeText);
+    }
+
+    [Fact]
+    public void StepDebug_Highlights_Base_And_Stack_Pointers_In_Requested_Colors()
+    {
+        var mainView = new IdeMainView(
+            new StubIdeFileDialogService(),
+            new StubIdeFileStorage(),
+            new StubCompilerSettingsDialogService([]),
+            new StubIdeRuntimeDialogService([]));
+        mainView.SourceEditor.Text = """
+                                     var x;
+                                     begin
+                                       x := 1;
+                                       ! x
+                                     end.
+                                     """;
+
+        var compiled = mainView.CompileSource();
+        _ = mainView.StepDebug();
+        var step = mainView.StepDebug();
+        var debugText = mainView.DebugOutput.Text?.ToString() ?? string.Empty;
+        var debugView = Assert.IsType<IdeDebugView>(mainView.DebugOutput);
+
+        Assert.True(compiled.Success);
+        Assert.NotNull(step);
+
+        var lines = debugText.Replace("\r\n", "\n", StringComparison.Ordinal).Split('\n');
+        var registerRow = Array.FindIndex(lines, line => line.StartsWith("Register:", StringComparison.Ordinal));
+        Assert.True(registerRow >= 0);
+
+        var registerLine = lines[registerRow];
+        var displayBp = Math.Max(0, step!.State.B - 1);
+        var displaySp = Math.Max(0, step.State.T - 1);
+        var bToken = $"BP={displayBp}";
+        var bStart = registerLine.IndexOf(bToken, StringComparison.Ordinal) + 3;
+        var tToken = $"SP={displaySp}";
+        var tStart = registerLine.IndexOf(tToken, StringComparison.Ordinal) + 3;
+        Assert.Equal(IdeDebugHighlightKind.BasePointer, debugView.GetHighlightKindAt(registerRow, bStart));
+        Assert.Equal(IdeDebugHighlightKind.StackPointer, debugView.GetHighlightKindAt(registerRow, tStart));
+
+        var baseStackRow = Array.FindIndex(lines, line => line.Contains("BP>>", StringComparison.Ordinal));
+        var topStackRow = Array.FindIndex(lines, line => line.Contains("SP>>", StringComparison.Ordinal));
+        Assert.True(baseStackRow >= 0);
+        Assert.True(topStackRow >= 0);
+
+        var baseIndicatorColumn = lines[baseStackRow].IndexOf("BP>>", StringComparison.Ordinal) + 2;
+        var topIndicatorColumn = lines[topStackRow].IndexOf("SP>>", StringComparison.Ordinal) + 2;
+        Assert.Equal(IdeDebugHighlightKind.BasePointer, debugView.GetHighlightKindAt(baseStackRow, baseIndicatorColumn));
+        Assert.Equal(IdeDebugHighlightKind.StackPointer, debugView.GetHighlightKindAt(topStackRow, topIndicatorColumn));
+    }
+
+    [Fact]
+    public void StepDebug_Shows_Current_Instruction_In_PCode_Mode_Consistent_With_Code_Window()
+    {
+        var mainView = new IdeMainView(
+            new StubIdeFileDialogService(),
+            new StubIdeFileStorage(),
+            new StubCompilerSettingsDialogService([
+                new IdeCompilerSettingsDialogResult(
+                    new CompilerOptions(Pl0Dialect.Extended, 3, 2047, 10, 10, 100, 200),
+                    IdeCodeDisplayMode.PCode)
+            ]),
+            new StubIdeRuntimeDialogService([]));
+        mainView.SourceEditor.Text = """
+                                     var x;
+                                     begin
+                                       x := 1;
+                                       ! x
+                                     end.
+                                     """;
+
+        var settingsChanged = mainView.OpenCompilerSettingsDialog();
+        var compiled = mainView.CompileSource();
+        var step = mainView.StepDebug();
+        var debugText = mainView.DebugOutput.Text?.ToString() ?? string.Empty;
+        var codeText = mainView.PCodeOutput.Text?.ToString() ?? string.Empty;
+
+        Assert.True(settingsChanged);
+        Assert.Equal(IdeCodeDisplayMode.PCode, mainView.CurrentCodeDisplayMode);
+        Assert.True(compiled.Success);
+        Assert.NotNull(step);
+
+        var instructionLine = debugText.Replace("\r\n", "\n", StringComparison.Ordinal)
+            .Split('\n')
+            .First(line => line.StartsWith("Instruktion: ", StringComparison.Ordinal));
+        var debugInstructionToken = instructionLine["Instruktion: ".Length..]
+            .Split(' ', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)[0];
+        var codeInstructionToken = GetInstructionTokenFromPointerLine(codeText);
+
+        Assert.True(char.IsDigit(debugInstructionToken[0]));
+        Assert.Equal(codeInstructionToken, debugInstructionToken);
+    }
+
+    [Fact]
+    public void OpenCompilerSettingsDialog_ReRenders_DebugInstruction_To_Selected_CodeDisplayMode()
+    {
+        var mainView = new IdeMainView(
+            new StubIdeFileDialogService(),
+            new StubIdeFileStorage(),
+            new StubCompilerSettingsDialogService([
+                new IdeCompilerSettingsDialogResult(
+                    new CompilerOptions(Pl0Dialect.Extended, 3, 2047, 10, 10, 100, 200),
+                    IdeCodeDisplayMode.PCode)
+            ]),
+            new StubIdeRuntimeDialogService([]));
+        mainView.SourceEditor.Text = """
+                                     var x;
+                                     begin
+                                       x := 1;
+                                       ! x
+                                     end.
+                                     """;
+
+        var compiled = mainView.CompileSource();
+        var step = mainView.StepDebug();
+        var debugBeforeSwitch = mainView.DebugOutput.Text?.ToString() ?? string.Empty;
+
+        var settingsChanged = mainView.OpenCompilerSettingsDialog();
+        var debugAfterSwitch = mainView.DebugOutput.Text?.ToString() ?? string.Empty;
+
+        Assert.True(compiled.Success);
+        Assert.NotNull(step);
+        Assert.True(settingsChanged);
+
+        var instructionLineBefore = debugBeforeSwitch.Replace("\r\n", "\n", StringComparison.Ordinal)
+            .Split('\n')
+            .First(line => line.StartsWith("Instruktion: ", StringComparison.Ordinal));
+        var instructionBefore = instructionLineBefore["Instruktion: ".Length..];
+        var beforeToken = instructionBefore.Split(' ', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)[0];
+        Assert.True(char.IsLetter(beforeToken[0]));
+
+        var instructionLineAfter = debugAfterSwitch.Replace("\r\n", "\n", StringComparison.Ordinal)
+            .Split('\n')
+            .First(line => line.StartsWith("Instruktion: ", StringComparison.Ordinal));
+        var instructionAfter = instructionLineAfter["Instruktion: ".Length..];
+        var afterToken = instructionAfter.Split(' ', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)[0];
+        Assert.True(char.IsDigit(afterToken[0]));
+
+        Assert.True(step!.State.CurrentInstruction.HasValue);
+        var expectedAfter = $"{(int)step.State.CurrentInstruction.Value.Op} {step.State.CurrentInstruction.Value.Level} {step.State.CurrentInstruction.Value.Argument}";
+        Assert.Equal(expectedAfter, instructionAfter);
+    }
+
+    [Fact]
+    public void AbortDebug_Stops_Debug_Session_And_Leaves_Last_State_Visible()
+    {
+        var mainView = new IdeMainView(
+            new StubIdeFileDialogService(),
+            new StubIdeFileStorage(),
+            new StubCompilerSettingsDialogService([]),
+            new StubIdeRuntimeDialogService([]));
+        mainView.SourceEditor.Text = """
+                                     begin
+                                       while 1 = 1 do
+                                       begin
+                                       end
+                                     end.
+                                     """;
+
+        var compiled = mainView.CompileSource();
+        var step = mainView.StepDebug();
+        var beforeAbort = mainView.DebugOutput.Text?.ToString();
+
+        var aborted = mainView.AbortDebug();
+
+        Assert.True(compiled.Success);
+        Assert.NotNull(step);
+        Assert.True(aborted);
+        Assert.False(mainView.IsDebugSessionActive);
+        Assert.Equal(beforeAbort, mainView.DebugOutput.Text?.ToString());
+        Assert.Contains("abgebrochen", mainView.MessagesOutput.Text?.ToString());
     }
 
     [Fact]
@@ -853,6 +1088,15 @@ public sealed class IdeBootstrapTests
             .First();
         var separatorIndex = firstLine.IndexOf(':', StringComparison.Ordinal);
         return firstLine[(separatorIndex + 1)..].Trim().Split(' ', StringSplitOptions.RemoveEmptyEntries)[0];
+    }
+
+    private static string GetInstructionTokenFromPointerLine(string listingWithLineNumbers)
+    {
+        var pointerLine = listingWithLineNumbers.Replace("\r\n", "\n", StringComparison.Ordinal)
+            .Split('\n', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
+            .First(line => line.StartsWith(">> ", StringComparison.Ordinal));
+        var separatorIndex = pointerLine.IndexOf(':', StringComparison.Ordinal);
+        return pointerLine[(separatorIndex + 1)..].Trim().Split(' ', StringSplitOptions.RemoveEmptyEntries)[0];
     }
 
     private sealed class StubCompilerSettingsDialogService(IEnumerable<IdeCompilerSettingsDialogResult?> optionsToReturn) : IIdeCompilerSettingsDialogService
