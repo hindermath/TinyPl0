@@ -114,6 +114,11 @@ dotnet run --project src/Pl0.Cli -- run tests/data/pl0/valid/feature_const_var_a
 - Phase 0 bis Phase 5 (CLI + End-to-End) sind gemäß Pflichtenheft umgesetzt.
 - Phase 6 (Qualität + Dokumentation) ist gestartet und enthält Architektur-/Qualitätsdoku sowie erweiterte Kernpfadtests.
 
+## Beitrags-Workflow (Pull Requests)
+- Der Branch `main` ist geschützt; direkte Commits/Pushes auf `main` sind nicht erlaubt.
+- Für jede Änderung zuerst einen neuen, sauberen Arbeits-Branch erstellen.
+- Änderungen ausschließlich per Pull Request nach `main` integrieren.
+
 ## Entwicklung mit Agentic-AI
 
 Dieses Projekt entstand mit starker Unterstützung durch **Agentic-AI-Technologien**. Die Verwendung von KI-Agenten spielte eine zentrale Rolle bei:
@@ -134,5 +139,4 @@ Neben der praktischen Implementierung eines Compilers dient dieses Projekt auch 
 - **Transparenz:** Wie bleibt die Nachvollziehbarkeit und Validierbarkeit der generierten Artefakte gewährleistet?
 
 Dieses Projekt zeigt, dass Agentic-AI nicht als Ersatz für manuelles Lernen gedacht ist, sondern als **produktive Werkzeug und Lernpartner** für professionelle Softwareentwicklung in der Ausbildung.
-
 
