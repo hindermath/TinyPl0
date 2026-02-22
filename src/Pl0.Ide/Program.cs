@@ -15,8 +15,9 @@ internal static class Program
         {
             app.Init();
             _ = IdeLookAndFeel.ApplyTurboPascalThemeIfAvailable();
-            app.Run<IdeMainView>();
-            return 0;
+            var mainView = new IdeMainView();
+            app.Run(mainView);
+            return mainView.ExitCode;
         }
         finally
         {

@@ -46,6 +46,35 @@ public sealed class IdeBootstrapTests
     }
 
     [Fact]
+    public void SourceWindow_Shows_StatusLine_With_Initial_Cursor_Position()
+    {
+        var mainView = new IdeMainView();
+
+        Assert.Equal("Zeile 1, Spalte 1", mainView.SourceStatusLineText);
+    }
+
+    [Fact]
+    public void SourceWindow_Title_Shows_Dirty_Marker_For_Unsaved_And_Modified_Source()
+    {
+        var savePath = Path.Combine("/tmp", "ide-dirty-marker", "demo.pl0");
+        var mainView = new IdeMainView(
+            new StubIdeFileDialogService(savePath: savePath),
+            new StubIdeFileStorage());
+
+        Assert.Equal("Quellcode", mainView.SourceWindowTitle);
+
+        mainView.SourceEditor.Text = "begin end.";
+        Assert.Equal("Quellcode*", mainView.SourceWindowTitle);
+
+        var saved = mainView.SaveSourceFile();
+        Assert.True(saved);
+        Assert.Equal("Quellcode: demo.pl0", mainView.SourceWindowTitle);
+
+        mainView.SourceEditor.Text = "begin ! 1 end.";
+        Assert.Equal("Quellcode*: demo.pl0", mainView.SourceWindowTitle);
+    }
+
+    [Fact]
     public void SourceEditor_Highlights_Keywords_Numbers_And_Operators()
     {
         var editor = new Pl0SourceEditorView
@@ -59,6 +88,23 @@ public sealed class IdeBootstrapTests
         Assert.Equal(Pl0HighlightKind.Operator, editor.GetHighlightKindAt(1, 0)); // !
         Assert.Equal(Pl0HighlightKind.Operator, editor.GetHighlightKindAt(1, 4)); // +
         Assert.Equal(Pl0HighlightKind.Number, editor.GetHighlightKindAt(1, 6)); // 2
+    }
+
+    [Fact]
+    public void RainbowAsciiArtView_Assigns_Repeating_Rainbow_Colors_To_NonWhitespace_Characters()
+    {
+        var view = new IdeRainbowAsciiArtView();
+        view.SetAsciiArt(["ABCDEF", " A "]);
+
+        Assert.Equal(0, view.GetRainbowColorIndexAt(0, 0));
+        Assert.Equal(1, view.GetRainbowColorIndexAt(0, 1));
+        Assert.Equal(2, view.GetRainbowColorIndexAt(0, 2));
+        Assert.Equal(3, view.GetRainbowColorIndexAt(0, 3));
+        Assert.Equal(4, view.GetRainbowColorIndexAt(0, 4));
+        Assert.Equal(5, view.GetRainbowColorIndexAt(0, 5));
+        Assert.Equal(-1, view.GetRainbowColorIndexAt(1, 0));
+        Assert.Equal(1, view.GetRainbowColorIndexAt(1, 1));
+        Assert.Equal(-1, view.GetRainbowColorIndexAt(1, 2));
     }
 
     [Fact]
@@ -388,6 +434,7 @@ public sealed class IdeBootstrapTests
         var secondStep = mainView.StepDebug();
         var debugText = mainView.DebugOutput.Text?.ToString() ?? string.Empty;
         var codeText = mainView.PCodeOutput.Text?.ToString() ?? string.Empty;
+        var messagesText = mainView.MessagesOutput.Text?.ToString() ?? string.Empty;
 
         Assert.True(compiled.Success);
         Assert.NotNull(firstStep);
@@ -411,6 +458,9 @@ public sealed class IdeBootstrapTests
         Assert.Contains("SP>>", debugText);
         Assert.Contains("[000]", debugText);
         Assert.Contains(">> ", codeText);
+        Assert.StartsWith("Debug-Step ausgefuehrt (IP=", messagesText);
+        Assert.Contains(", BP=", messagesText);
+        Assert.Contains(", SP=", messagesText);
     }
 
     [Fact]
@@ -576,12 +626,16 @@ public sealed class IdeBootstrapTests
         var beforeAbort = mainView.DebugOutput.Text?.ToString();
 
         var aborted = mainView.AbortDebug();
+        var afterAbort = mainView.DebugOutput.Text?.ToString() ?? string.Empty;
 
         Assert.True(compiled.Success);
         Assert.NotNull(step);
         Assert.True(aborted);
         Assert.False(mainView.IsDebugSessionActive);
-        Assert.Equal(beforeAbort, mainView.DebugOutput.Text?.ToString());
+        Assert.NotEqual(beforeAbort, afterAbort);
+        Assert.Contains("Status: Abgebrochen", afterAbort);
+        Assert.Contains("Register: IP=", afterAbort);
+        Assert.Contains("Stack:", afterAbort);
         Assert.Contains("abgebrochen", mainView.MessagesOutput.Text?.ToString());
     }
 
@@ -944,7 +998,44 @@ public sealed class IdeBootstrapTests
         var menuBar = Assert.Single(mainView.Subviews.OfType<MenuBar>());
 
         var menuTitles = menuBar.Menus.Select(menu => menu.Title.ToString()).ToArray();
-        Assert.Equal(["_Datei", "_Bearbeiten", "_Kompilieren", "_Ausfuehren", "_Debug", "_Hilfe"], menuTitles);
+        Assert.Equal(["_Datei", "_Bearbeiten", "_Kompilieren", "_Ausfuehren", "Debu_g", "_Hilfe"], menuTitles);
+    }
+
+    [Fact]
+    public void ExitApplication_Sets_Requested_Process_ExitCode()
+    {
+        var mainView = new IdeMainView();
+
+        mainView.ExitApplication(23);
+
+        Assert.Equal(23, mainView.ExitCode);
+    }
+
+    [Fact]
+    public void ShowAboutDialog_Displays_AsciiArt_And_FourPart_Version()
+    {
+        var messageDialogs = new StubIdeMessageDialogService();
+        var mainView = new IdeMainView(
+            new StubIdeFileDialogService(),
+            new StubIdeFileStorage(),
+            new StubCompilerSettingsDialogService([]),
+            new StubIdeRuntimeDialogService([]),
+            messageDialogs);
+
+        mainView.ShowAboutDialog();
+
+        Assert.Equal("Ueber", messageDialogs.LastTitle);
+        Assert.NotNull(messageDialogs.LastMessage);
+        var version = typeof(IdeMainView).Assembly.GetName().Version ?? new Version(0, 0, 0, 0);
+        var normalizedVersion =
+            $"{Math.Max(0, version.Major)}.{Math.Max(0, version.Minor)}.{Math.Max(0, version.Build)}.{Math.Max(0, version.Revision)}";
+        Assert.Contains("______ _ _____ _____", messageDialogs.LastMessage);
+        Assert.Contains("\\_|   |_|\\___(_)___/\\__,_|\\___|", messageDialogs.LastMessage);
+        Assert.DoesNotContain("Pl0.Ide", messageDialogs.LastMessage);
+        Assert.Contains("Programmierung #include<everyone>", messageDialogs.LastMessage);
+        Assert.Contains($"Version: {normalizedVersion}", messageDialogs.LastMessage);
+        Assert.Contains($"Buildzaehler: {Math.Max(0, version.Revision)}", messageDialogs.LastMessage);
+        Assert.Matches(@"Version:\s+\d+\.\d+\.\d+\.\d+", messageDialogs.LastMessage);
     }
 
     [Fact]
@@ -1119,6 +1210,18 @@ public sealed class IdeBootstrapTests
         {
             ReadCount++;
             return values.Count > 0 ? values.Dequeue() : null;
+        }
+    }
+
+    private sealed class StubIdeMessageDialogService : IIdeMessageDialogService
+    {
+        internal string? LastTitle { get; private set; }
+        internal string? LastMessage { get; private set; }
+
+        public void ShowInfo(string title, string message)
+        {
+            LastTitle = title;
+            LastMessage = message;
         }
     }
 }

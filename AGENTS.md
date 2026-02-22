@@ -163,3 +163,6 @@ Enforced by `ArchitectureGuardTests` - do not violate these rules.
 - No compiler optimizations (no peephole, SSA, etc.).
 - VM target only - no JIT or IL backend.
 - Prerequisites: .NET 10 SDK.
+- For `Pl0.Ide`, `<Version>` in `src/Pl0.Ide/Pl0.Ide.csproj` follows `Major.Minor.Patch.Build` with these fixed semantics: `Minor` = current PR number, `Patch` = current commit count in that PR branch (after committing the current change), `Build` = manual build counter incremented by the bot before every `dotnet build` or `dotnet test`.
+- Whenever the bot creates a commit or updates a PR branch, it must automatically align the IDE version fields (`Version`, `AssemblyVersion`, `FileVersion`) to this rule before pushing.
+- Keep `Pflichtenheft_IDE.md` worklog up to date by appending new IDE-related work steps at the end.

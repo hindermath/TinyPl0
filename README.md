@@ -55,6 +55,12 @@ Referenzquellen im Repository:
 
 ## Build und Ausführung
 
+### Versionskonvention (Pl0.Ide)
+Fuer `src/Pl0.Ide` gilt die vierteilige Version `Major.Minor.Patch.Build` mit folgender Bedeutung:
+- `Minor`: aktuelle PR-Nummer
+- `Patch`: Anzahl Commits im aktuellen PR-Branch
+- `Build`: manueller Buildzaehler (vor jedem `dotnet build`/`dotnet test` erhoehen)
+
 ### Aktueller Stand (CLI + IDE)
 Die .NET-10-Solution ist angelegt:
 - `TinyPl0.sln`
@@ -147,4 +153,3 @@ Neben der praktischen Implementierung eines Compilers dient dieses Projekt auch 
 - **Transparenz:** Wie bleibt die Nachvollziehbarkeit und Validierbarkeit der generierten Artefakte gewährleistet?
 
 Dieses Projekt zeigt, dass Agentic-AI nicht als Ersatz für manuelles Lernen gedacht ist, sondern als **produktive Werkzeug und Lernpartner** für professionelle Softwareentwicklung in der Ausbildung.
-
