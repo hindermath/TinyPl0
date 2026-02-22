@@ -561,7 +561,7 @@ internal sealed class IdeMainView : Toplevel
         switch (stepResult.Status)
         {
             case VmStepStatus.Running:
-                messagesOutput.Text = $"Debug-Step ausgefuehrt (P={stepResult.State.P}, B={stepResult.State.B}, T={stepResult.State.T}).";
+                messagesOutput.Text = FormatDebugStepRegisters(stepResult.State);
                 break;
             case VmStepStatus.Halted:
                 isDebugSessionActive = false;
@@ -723,6 +723,13 @@ internal sealed class IdeMainView : Toplevel
         spans.Add(new IdeDebugHighlightSpan(row, topStart, topText.Length, IdeDebugHighlightKind.StackPointer));
 
         return builder.ToString();
+    }
+
+    private static string FormatDebugStepRegisters(VmState state)
+    {
+        var displayBasePointer = ToDisplayStackIndex(state.B);
+        var displayTopPointer = ToDisplayStackIndex(state.T);
+        return $"Debug-Step ausgefuehrt (IP={state.P}, BP={displayBasePointer}, SP={displayTopPointer}).";
     }
 
     private static int ToDisplayStackIndex(int internalIndex)

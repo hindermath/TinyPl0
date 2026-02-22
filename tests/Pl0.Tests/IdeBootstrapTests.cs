@@ -388,6 +388,7 @@ public sealed class IdeBootstrapTests
         var secondStep = mainView.StepDebug();
         var debugText = mainView.DebugOutput.Text?.ToString() ?? string.Empty;
         var codeText = mainView.PCodeOutput.Text?.ToString() ?? string.Empty;
+        var messagesText = mainView.MessagesOutput.Text?.ToString() ?? string.Empty;
 
         Assert.True(compiled.Success);
         Assert.NotNull(firstStep);
@@ -411,6 +412,9 @@ public sealed class IdeBootstrapTests
         Assert.Contains("SP>>", debugText);
         Assert.Contains("[000]", debugText);
         Assert.Contains(">> ", codeText);
+        Assert.StartsWith("Debug-Step ausgefuehrt (IP=", messagesText);
+        Assert.Contains(", BP=", messagesText);
+        Assert.Contains(", SP=", messagesText);
     }
 
     [Fact]
