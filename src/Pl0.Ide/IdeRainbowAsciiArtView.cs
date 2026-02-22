@@ -43,10 +43,25 @@ internal sealed class IdeRainbowAsciiArtView : TextView
 
     protected override void OnDrawNormalColor(List<Cell> line, int idxCol, int idxRow)
     {
+        ApplyRainbowColor(line, idxCol, idxRow, () => base.OnDrawNormalColor(line, idxCol, idxRow));
+    }
+
+    protected override void OnDrawReadOnlyColor(List<Cell> line, int idxCol, int idxRow)
+    {
+        ApplyRainbowColor(line, idxCol, idxRow, () => base.OnDrawReadOnlyColor(line, idxCol, idxRow));
+    }
+
+    protected override void OnDrawUsedColor(List<Cell> line, int idxCol, int idxRow)
+    {
+        ApplyRainbowColor(line, idxCol, idxRow, () => base.OnDrawUsedColor(line, idxCol, idxRow));
+    }
+
+    private void ApplyRainbowColor(List<Cell> line, int idxCol, int idxRow, Action drawBaseColor)
+    {
         var colorIndex = GetRainbowColorIndexAt(idxRow, idxCol);
         if (colorIndex < 0)
         {
-            base.OnDrawNormalColor(line, idxCol, idxRow);
+            drawBaseColor();
             return;
         }
 
