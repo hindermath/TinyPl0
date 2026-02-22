@@ -944,7 +944,7 @@ public sealed class IdeBootstrapTests
         var menuBar = Assert.Single(mainView.Subviews.OfType<MenuBar>());
 
         var menuTitles = menuBar.Menus.Select(menu => menu.Title.ToString()).ToArray();
-        Assert.Equal(["_Datei", "_Bearbeiten", "_Kompilieren", "_Ausfuehren", "_Debug", "_Hilfe"], menuTitles);
+        Assert.Equal(["_Datei", "_Bearbeiten", "_Kompilieren", "_Ausfuehren", "Debu_g", "_Hilfe"], menuTitles);
     }
 
     [Fact]
@@ -974,6 +974,8 @@ public sealed class IdeBootstrapTests
         Assert.NotNull(messageDialogs.LastMessage);
         Assert.Contains("Pl0.Ide", messageDialogs.LastMessage);
         Assert.Contains("____", messageDialogs.LastMessage);
+        Assert.Contains("Programmierung #include<everyone>", messageDialogs.LastMessage);
+        Assert.Contains($"{Environment.NewLine}   .{Environment.NewLine}", messageDialogs.LastMessage);
         Assert.Matches(@"Version:\s+\d+\.\d+\.\d+\.\d+", messageDialogs.LastMessage);
     }
 

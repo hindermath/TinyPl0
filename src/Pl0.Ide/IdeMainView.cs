@@ -17,12 +17,18 @@ internal sealed class IdeMainView : Toplevel
     private const string DebugWindowBaseTitle = "Debug";
     private static readonly string[] AboutAsciiArt =
     [
-        "  ____  _   ___    ___     ___    _      ",
-        " |  _ \\| | / _ \\  |_ _|___| | ___| |___  ",
-        " | |_) | || | | |  | |/ _ \\ |/ -_) / -_) ",
-        " |  __/| || |_| |  | |\\___/_|\\___|_\\___| ",
-        " |_|   |_| \\___/  |___|                  ",
-        "               Pl0.Ide                   "
+        " ____  _      ___  ",
+        "|  _ \\| |    / _ \\ ",
+        "| |_) | |   | | | |",
+        "|  __/| |___| |_| |",
+        "|_|   |_____|\\___/ ",
+        "",
+        "   .",
+        "  ___     _       ",
+        " |_ _| __| | ___  ",
+        "  | | / _` |/ -_) ",
+        " |___|\\__,_|\\___| ",
+        "      Pl0.Ide     "
     ];
 
     private readonly Pl0Compiler compiler = new();
@@ -96,7 +102,7 @@ internal sealed class IdeMainView : Toplevel
             Title = SourceWindowBaseTitle,
             X = 0,
             Y = Pos.Bottom(menuBar),
-            Width = Dim.Percent(70),
+            Width = Dim.Percent(50),
             Height = Dim.Percent(70)
         };
         sourceEditor = CreateSourceEditor();
@@ -107,7 +113,7 @@ internal sealed class IdeMainView : Toplevel
             Title = GetCodeWindowBaseTitle(),
             X = Pos.Right(sourceWindow),
             Y = Pos.Bottom(menuBar),
-            Width = Dim.Percent(15),
+            Width = Dim.Percent(25),
             Height = Dim.Percent(70)
         };
         pCodeOutput = CreateReadOnlyOutputView();
@@ -320,7 +326,7 @@ internal sealed class IdeMainView : Toplevel
                     new MenuItem("Kompilieren _und Run", string.Empty, CompileAndRunFromMenu, () => true, null, default),
                     new MenuItem("_Run", string.Empty, RunCompiledCodeFromMenu, () => true, null, default)
                 ], null),
-                new MenuBarItem("_Debug",
+                new MenuBarItem("Debu_g",
                 [
                     new MenuItem("_Step", string.Empty, StepDebugFromMenu, () => true, null, default),
                     new MenuItem("_Abbrechen", string.Empty, AbortDebugFromMenu, () => true, null, default)
@@ -425,7 +431,7 @@ internal sealed class IdeMainView : Toplevel
         var versionText = FormatVersion(version);
         return string.Join(
             Environment.NewLine,
-            AboutAsciiArt.Concat(["", $"Version: {versionText}"]));
+            AboutAsciiArt.Concat(["", "Programmierung #include<everyone>", $"Version: {versionText}"]));
     }
 
     private static string FormatVersion(Version version)
