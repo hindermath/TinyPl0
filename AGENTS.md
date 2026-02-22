@@ -152,5 +152,5 @@ Enforced by `ArchitectureGuardTests` - do not violate these rules.
 - No compiler optimizations (no peephole, SSA, etc.).
 - VM target only - no JIT or IL backend.
 - Prerequisites: .NET 10 SDK.
-- For `Pl0.Ide`, the build counter shown in the About dialog must update on every build.
+- For `Pl0.Ide`, the build counter is the 4th component of `<Version>` in `src/Pl0.Ide/Pl0.Ide.csproj` (Major.Minor.Patch.Build) and must be incremented manually by the bot before every `dotnet build` or `dotnet test`.
 - Keep `Pflichtenheft_IDE.md` worklog up to date by appending new IDE-related work steps at the end.

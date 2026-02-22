@@ -1013,8 +1013,8 @@ public sealed class IdeBootstrapTests
         Assert.Contains("\\_|   |_|\\___(_)___/\\__,_|\\___|", messageDialogs.LastMessage);
         Assert.DoesNotContain("Pl0.Ide", messageDialogs.LastMessage);
         Assert.Contains("Programmierung #include<everyone>", messageDialogs.LastMessage);
-        Assert.Contains("Version: 1.7.5.7", messageDialogs.LastMessage);
-        Assert.Matches(@"Buildzaehler:\s+\d{14}", messageDialogs.LastMessage);
+        Assert.Contains("Version: 1.7.6.8", messageDialogs.LastMessage);
+        Assert.Contains("Buildzaehler: 8", messageDialogs.LastMessage);
         Assert.Matches(@"Version:\s+\d+\.\d+\.\d+\.\d+", messageDialogs.LastMessage);
     }
 

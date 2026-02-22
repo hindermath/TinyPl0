@@ -14,11 +14,10 @@
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Version>1.7.5.7</Version>
-    <AssemblyVersion>1.7.5.7</AssemblyVersion>
-    <FileVersion>1.7.5.7</FileVersion>
-    <BuildCounter>$([System.DateTime]::UtcNow.ToString("yyyyMMddHHmmss"))</BuildCounter>
-    <InformationalVersion>$(Version)+build.$(BuildCounter)</InformationalVersion>
+    <Version>1.7.6.8</Version>
+    <AssemblyVersion>1.7.6.8</AssemblyVersion>
+    <FileVersion>1.7.6.8</FileVersion>
+    <InformationalVersion>$(Version)</InformationalVersion>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);1591</NoWarn>
   </PropertyGroup>

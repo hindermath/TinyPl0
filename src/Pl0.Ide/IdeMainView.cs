@@ -2,7 +2,6 @@ using Pl0.Core;
 using Pl0.Vm;
 using Terminal.Gui;
 using System.Globalization;
-using System.Reflection;
 using System.Text;
 
 namespace Pl0.Ide;
@@ -441,7 +440,7 @@ internal sealed class IdeMainView : Toplevel
         var assembly = typeof(IdeMainView).Assembly;
         var version = assembly.GetName().Version ?? new Version(0, 0, 0, 0);
         var versionText = FormatVersion(version);
-        var buildCounterText = GetBuildCounterText(assembly, NormalizeVersionComponent(version.Revision).ToString(CultureInfo.InvariantCulture));
+        var buildCounterText = NormalizeVersionComponent(version.Revision).ToString(CultureInfo.InvariantCulture);
         return string.Join(
             Environment.NewLine,
             AboutAsciiArt.Concat(["", "Programmierung #include<everyone>", $"Version: {versionText}", $"Buildzaehler: {buildCounterText}"]));
@@ -455,25 +454,6 @@ internal sealed class IdeMainView : Toplevel
     private static int NormalizeVersionComponent(int versionComponent)
     {
         return versionComponent < 0 ? 0 : versionComponent;
-    }
-
-    private static string GetBuildCounterText(Assembly assembly, string fallback)
-    {
-        var informationalVersion = assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion;
-        if (string.IsNullOrWhiteSpace(informationalVersion))
-        {
-            return fallback;
-        }
-
-        const string marker = "build.";
-        var markerIndex = informationalVersion.LastIndexOf(marker, StringComparison.Ordinal);
-        if (markerIndex < 0)
-        {
-            return fallback;
-        }
-
-        var counter = informationalVersion[(markerIndex + marker.Length)..];
-        return string.IsNullOrWhiteSpace(counter) ? fallback : counter;
     }
 
     private static bool HasPl0Extension(string path)
