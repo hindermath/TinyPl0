@@ -39,6 +39,9 @@ dotnet run --project src/Pl0.Cli -- run <file.pl0> --conly        # compile only
 dotnet run --project src/Pl0.Cli -- run <file.pl0> --emit asm     # emit assembly to STDOUT
 dotnet run --project src/Pl0.Cli -- run <file.pl0> --errmsg       # show long error messages
 dotnet run --project src/Pl0.Cli -- --api                         # start embedded docs server
+
+# Start the TUI IDE
+dotnet run --project src/Pl0.Ide
 ```
 
 ## Architecture
@@ -81,6 +84,10 @@ Pl0.Ide  --> Terminal.Gui  (only allowed external NuGet package for Pl0.Ide)
 
 **8 opcodes:** `Lit`, `Opr`, `Lod`, `Sto`, `Cal`, `Int`, `Jmp`, `Jpc`. See `docs/VM_INSTRUCTION_SET.md`.
 
+**I/O abstraction:** `IPl0Io` interface with two implementations — `ConsolePl0Io` (default, for CLI/IDE) and `BufferedPl0Io` (for tests, provides pre-set input and captures output).
+
+**Step debugging:** `SteppableVirtualMachine` wraps `VirtualMachine` and exposes `Step()` / `VmState` for the IDE debug view.
+
 ### Pl0.Ide — TUI IDE
 
 `Pl0.Ide` is a Terminal.Gui v2.x application modelled after the Turbo Pascal DOS IDE. It uses the instance-based v2 lifecycle (`Application.Create().Init()` / `app.Run<T>()` / `app.Dispose()`). Static `Application` calls from v1 must not be used.
@@ -114,6 +121,7 @@ Align `Version`, `AssemblyVersion`, and `FileVersion` in `Pl0.Ide.csproj` whenev
 - Test classes: `public sealed class`, suffix `Tests`, use xUnit `[Fact]`
 - Namespaces: all in `Pl0.*`
 - 4-space indentation, opening brace on same line
+- XML doc comments (`<summary>`, `<param>`) required for all public APIs
 
 **Error handling — critical:** Do NOT throw exceptions during compilation. All errors go into `CompilerDiagnostic` / `LexerDiagnostic`. Check `CompilationResult.Success` (true when `Diagnostics.Count == 0`) before execution.
 
@@ -160,6 +168,11 @@ Use `CompilerOptions.Dialect` when modifying parser/lexer. Classic mode must sta
 - `[` maps to `<=`, `]` maps to `>=`
 - Max identifier length: 10 characters; max number digits: 14; max nesting: 3 levels
 - Only integer type; no procedure parameters or return values
+
+## Git Workflow
+
+- `main` is protected — no direct commits or pushes; all changes via pull request.
+- Create a new branch for each change before starting work.
 
 ## Constraints
 
