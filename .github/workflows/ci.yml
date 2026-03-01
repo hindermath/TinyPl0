@@ -4,7 +4,10 @@ on:
   push:
     branches:
       - main
-      - "codex/**"
+      - codex/**
+      - claude/**
+      - gemini/**
+      - copilot/**
   pull_request:
 
 jobs:
