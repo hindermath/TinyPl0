@@ -1,6 +1,6 @@
 # AGENTS.md - TinyPl0
 
-This file provides guidance for Junie working in this repository.
+This file provides guidance for agents working in this repository.
 
 ## Project Overview
 
@@ -166,3 +166,24 @@ Enforced by `ArchitectureGuardTests` - do not violate these rules.
 - For `Pl0.Ide`, `<Version>` in `src/Pl0.Ide/Pl0.Ide.csproj` follows `Major.Minor.Patch.Build` with these fixed semantics: `Minor` = current PR number, `Patch` = current commit count in that PR branch (after committing the current change), `Build` = manual build counter incremented by the bot before every `dotnet build` or `dotnet test`.
 - Whenever the bot creates a commit or updates a PR branch, it must automatically align the IDE version fields (`Version`, `AssemblyVersion`, `FileVersion`) to this rule before pushing.
 - Keep `Pflichtenheft_IDE.md` worklog up to date by appending new IDE-related work steps at the end.
+
+## Copilot Instructions
+
+This project is a port of the historical PL/0 compiler (originally in Pascal) to C# on .NET 10. It serves as a pedagogical reference for compiler construction in the German vocational training context (Fachinformatiker-Ausbildung).
+
+The original Pascal implementation serves as the behavioral reference. Key mappings:
+- `getsym/getch` → `Pl0Lexer`
+- `block/statement/condition/expression` → `Pl0Parser`
+- `enter/position/table` → `SymbolTable` + `SymbolEntry`
+- `gen` → `Pl0Parser.Emit()`
+- `interpret` → `VirtualMachine.Run()`
+- `base(l)` → `VirtualMachine.ResolveBase()`
+
+The VM uses three registers:
+- **P** (Program Counter): Next instruction to execute
+- **B** (Base Pointer): Points to the current activation record's base
+- **T** (Top of Stack): Points to the top of the stack
+
+Activation records use three reserved cells: Static Link, Dynamic Link, Return Address.
+
+8 opcodes: `Lit`, `Opr`, `Lod`, `Sto`, `Cal`, `Int`, `Jmp`, `Jpc`. See `docs/VM_INSTRUCTION_SET.md` for full reference.
