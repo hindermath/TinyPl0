@@ -17,7 +17,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CliHelpPrinter.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: CliHelpPrinter
     path: src/Pl0.Cli/Cli/CliHelpPrinter.cs
@@ -54,7 +54,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CliHelpPrinter.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: PrintUsage
     path: src/Pl0.Cli/Cli/CliHelpPrinter.cs
@@ -92,7 +92,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CliHelpPrinter.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: GetUsageLines
     path: src/Pl0.Cli/Cli/CliHelpPrinter.cs

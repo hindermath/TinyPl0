@@ -1,0 +1,112 @@
+### YamlMime:ManagedReference
+items:
+- uid: Pl0.Ide.IdeCodeDisplayMode
+  commentId: T:Pl0.Ide.IdeCodeDisplayMode
+  id: IdeCodeDisplayMode
+  parent: Pl0.Ide
+  children:
+  - Pl0.Ide.IdeCodeDisplayMode.Assembler
+  - Pl0.Ide.IdeCodeDisplayMode.PCode
+  langs:
+  - csharp
+  - vb
+  name: IdeCodeDisplayMode
+  nameWithType: IdeCodeDisplayMode
+  fullName: Pl0.Ide.IdeCodeDisplayMode
+  type: Enum
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeCodeDisplayMode.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: IdeCodeDisplayMode
+    path: src/Pl0.Ide/IdeCodeDisplayMode.cs
+    startLine: 4
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: internal enum IdeCodeDisplayMode
+    content.vb: Friend Enum IdeCodeDisplayMode
+- uid: Pl0.Ide.IdeCodeDisplayMode.PCode
+  commentId: F:Pl0.Ide.IdeCodeDisplayMode.PCode
+  id: PCode
+  parent: Pl0.Ide.IdeCodeDisplayMode
+  langs:
+  - csharp
+  - vb
+  name: PCode
+  nameWithType: IdeCodeDisplayMode.PCode
+  fullName: Pl0.Ide.IdeCodeDisplayMode.PCode
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeCodeDisplayMode.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: PCode
+    path: src/Pl0.Ide/IdeCodeDisplayMode.cs
+    startLine: 6
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: PCode = 0
+    return:
+      type: Pl0.Ide.IdeCodeDisplayMode
+- uid: Pl0.Ide.IdeCodeDisplayMode.Assembler
+  commentId: F:Pl0.Ide.IdeCodeDisplayMode.Assembler
+  id: Assembler
+  parent: Pl0.Ide.IdeCodeDisplayMode
+  langs:
+  - csharp
+  - vb
+  name: Assembler
+  nameWithType: IdeCodeDisplayMode.Assembler
+  fullName: Pl0.Ide.IdeCodeDisplayMode.Assembler
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeCodeDisplayMode.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: Assembler
+    path: src/Pl0.Ide/IdeCodeDisplayMode.cs
+    startLine: 7
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: Assembler = 1
+    return:
+      type: Pl0.Ide.IdeCodeDisplayMode
+references:
+- uid: Pl0.Ide
+  commentId: N:Pl0.Ide
+  href: Pl0.html
+  name: Pl0.Ide
+  nameWithType: Pl0.Ide
+  fullName: Pl0.Ide
+  spec.csharp:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Ide
+    name: Ide
+    href: Pl0.Ide.html
+  spec.vb:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Ide
+    name: Ide
+    href: Pl0.Ide.html
+- uid: Pl0.Ide.IdeCodeDisplayMode
+  commentId: T:Pl0.Ide.IdeCodeDisplayMode
+  parent: Pl0.Ide
+  href: Pl0.Ide.IdeCodeDisplayMode.html
+  name: IdeCodeDisplayMode
+  nameWithType: IdeCodeDisplayMode
+  fullName: Pl0.Ide.IdeCodeDisplayMode

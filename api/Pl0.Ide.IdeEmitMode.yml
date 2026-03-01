@@ -1,0 +1,112 @@
+### YamlMime:ManagedReference
+items:
+- uid: Pl0.Ide.IdeEmitMode
+  commentId: T:Pl0.Ide.IdeEmitMode
+  id: IdeEmitMode
+  parent: Pl0.Ide
+  children:
+  - Pl0.Ide.IdeEmitMode.Asm
+  - Pl0.Ide.IdeEmitMode.Cod
+  langs:
+  - csharp
+  - vb
+  name: IdeEmitMode
+  nameWithType: IdeEmitMode
+  fullName: Pl0.Ide.IdeEmitMode
+  type: Enum
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeEmitMode.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: IdeEmitMode
+    path: src/Pl0.Ide/IdeEmitMode.cs
+    startLine: 2
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: internal enum IdeEmitMode
+    content.vb: Friend Enum IdeEmitMode
+- uid: Pl0.Ide.IdeEmitMode.Asm
+  commentId: F:Pl0.Ide.IdeEmitMode.Asm
+  id: Asm
+  parent: Pl0.Ide.IdeEmitMode
+  langs:
+  - csharp
+  - vb
+  name: Asm
+  nameWithType: IdeEmitMode.Asm
+  fullName: Pl0.Ide.IdeEmitMode.Asm
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeEmitMode.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: Asm
+    path: src/Pl0.Ide/IdeEmitMode.cs
+    startLine: 4
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: Asm = 0
+    return:
+      type: Pl0.Ide.IdeEmitMode
+- uid: Pl0.Ide.IdeEmitMode.Cod
+  commentId: F:Pl0.Ide.IdeEmitMode.Cod
+  id: Cod
+  parent: Pl0.Ide.IdeEmitMode
+  langs:
+  - csharp
+  - vb
+  name: Cod
+  nameWithType: IdeEmitMode.Cod
+  fullName: Pl0.Ide.IdeEmitMode.Cod
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeEmitMode.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: Cod
+    path: src/Pl0.Ide/IdeEmitMode.cs
+    startLine: 5
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: Cod = 1
+    return:
+      type: Pl0.Ide.IdeEmitMode
+references:
+- uid: Pl0.Ide
+  commentId: N:Pl0.Ide
+  href: Pl0.html
+  name: Pl0.Ide
+  nameWithType: Pl0.Ide
+  fullName: Pl0.Ide
+  spec.csharp:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Ide
+    name: Ide
+    href: Pl0.Ide.html
+  spec.vb:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Ide
+    name: Ide
+    href: Pl0.Ide.html
+- uid: Pl0.Ide.IdeEmitMode
+  commentId: T:Pl0.Ide.IdeEmitMode
+  parent: Pl0.Ide
+  href: Pl0.Ide.IdeEmitMode.html
+  name: IdeEmitMode
+  nameWithType: IdeEmitMode
+  fullName: Pl0.Ide.IdeEmitMode

@@ -1,0 +1,886 @@
+### YamlMime:ManagedReference
+items:
+- uid: Pl0.Ide.TerminalGuiIdeFileDialogService
+  commentId: T:Pl0.Ide.TerminalGuiIdeFileDialogService
+  id: TerminalGuiIdeFileDialogService
+  parent: Pl0.Ide
+  children:
+  - Pl0.Ide.TerminalGuiIdeFileDialogService.CombineWithBasePathOrCurrentDirectory(System.String,System.String)
+  - Pl0.Ide.TerminalGuiIdeFileDialogService.CreateExportAsmAllowedTypes
+  - Pl0.Ide.TerminalGuiIdeFileDialogService.CreateExportCodAllowedTypes
+  - Pl0.Ide.TerminalGuiIdeFileDialogService.CreateOpenAllowedTypes
+  - Pl0.Ide.TerminalGuiIdeFileDialogService.CreateSaveAllowedTypes
+  - Pl0.Ide.TerminalGuiIdeFileDialogService.DetermineBaseDirectory(System.String)
+  - Pl0.Ide.TerminalGuiIdeFileDialogService.ResolveSelectedPath(System.String,System.String,System.String)
+  - Pl0.Ide.TerminalGuiIdeFileDialogService.ShowExportDialog(Pl0.Ide.IdeEmitMode,System.String)
+  - Pl0.Ide.TerminalGuiIdeFileDialogService.ShowOpenDialog
+  - Pl0.Ide.TerminalGuiIdeFileDialogService.ShowSaveDialog(System.String)
+  langs:
+  - csharp
+  - vb
+  name: TerminalGuiIdeFileDialogService
+  nameWithType: TerminalGuiIdeFileDialogService
+  fullName: Pl0.Ide.TerminalGuiIdeFileDialogService
+  type: Class
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeFileDialogService.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: TerminalGuiIdeFileDialogService
+    path: src/Pl0.Ide/IdeFileDialogService.cs
+    startLine: 11
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: 'internal sealed class TerminalGuiIdeFileDialogService : IIdeFileDialogService'
+    content.vb: Friend NotInheritable Class TerminalGuiIdeFileDialogService Implements IIdeFileDialogService
+  inheritance:
+  - System.Object
+  implements:
+  - Pl0.Ide.IIdeFileDialogService
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Pl0.Ide.TerminalGuiIdeFileDialogService.ShowOpenDialog
+  commentId: M:Pl0.Ide.TerminalGuiIdeFileDialogService.ShowOpenDialog
+  id: ShowOpenDialog
+  parent: Pl0.Ide.TerminalGuiIdeFileDialogService
+  langs:
+  - csharp
+  - vb
+  name: ShowOpenDialog()
+  nameWithType: TerminalGuiIdeFileDialogService.ShowOpenDialog()
+  fullName: Pl0.Ide.TerminalGuiIdeFileDialogService.ShowOpenDialog()
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeFileDialogService.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: ShowOpenDialog
+    path: src/Pl0.Ide/IdeFileDialogService.cs
+    startLine: 13
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  example: []
+  syntax:
+    content: public string? ShowOpenDialog()
+    return:
+      type: System.String
+    content.vb: Public Function ShowOpenDialog() As String
+  overload: Pl0.Ide.TerminalGuiIdeFileDialogService.ShowOpenDialog*
+  implements:
+  - Pl0.Ide.IIdeFileDialogService.ShowOpenDialog
+- uid: Pl0.Ide.TerminalGuiIdeFileDialogService.ShowSaveDialog(System.String)
+  commentId: M:Pl0.Ide.TerminalGuiIdeFileDialogService.ShowSaveDialog(System.String)
+  id: ShowSaveDialog(System.String)
+  parent: Pl0.Ide.TerminalGuiIdeFileDialogService
+  langs:
+  - csharp
+  - vb
+  name: ShowSaveDialog(string?)
+  nameWithType: TerminalGuiIdeFileDialogService.ShowSaveDialog(string?)
+  fullName: Pl0.Ide.TerminalGuiIdeFileDialogService.ShowSaveDialog(string?)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeFileDialogService.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: ShowSaveDialog
+    path: src/Pl0.Ide/IdeFileDialogService.cs
+    startLine: 34
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  example: []
+  syntax:
+    content: public string? ShowSaveDialog(string? currentPath)
+    parameters:
+    - id: currentPath
+      type: System.String
+    return:
+      type: System.String
+    content.vb: Public Function ShowSaveDialog(currentPath As String) As String
+  overload: Pl0.Ide.TerminalGuiIdeFileDialogService.ShowSaveDialog*
+  implements:
+  - Pl0.Ide.IIdeFileDialogService.ShowSaveDialog(System.String)
+  nameWithType.vb: TerminalGuiIdeFileDialogService.ShowSaveDialog(String)
+  fullName.vb: Pl0.Ide.TerminalGuiIdeFileDialogService.ShowSaveDialog(String)
+  name.vb: ShowSaveDialog(String)
+- uid: Pl0.Ide.TerminalGuiIdeFileDialogService.ShowExportDialog(Pl0.Ide.IdeEmitMode,System.String)
+  commentId: M:Pl0.Ide.TerminalGuiIdeFileDialogService.ShowExportDialog(Pl0.Ide.IdeEmitMode,System.String)
+  id: ShowExportDialog(Pl0.Ide.IdeEmitMode,System.String)
+  parent: Pl0.Ide.TerminalGuiIdeFileDialogService
+  langs:
+  - csharp
+  - vb
+  name: ShowExportDialog(IdeEmitMode, string?)
+  nameWithType: TerminalGuiIdeFileDialogService.ShowExportDialog(IdeEmitMode, string?)
+  fullName: Pl0.Ide.TerminalGuiIdeFileDialogService.ShowExportDialog(Pl0.Ide.IdeEmitMode, string?)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeFileDialogService.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: ShowExportDialog
+    path: src/Pl0.Ide/IdeFileDialogService.cs
+    startLine: 59
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  example: []
+  syntax:
+    content: public string? ShowExportDialog(IdeEmitMode mode, string? suggestedPath)
+    parameters:
+    - id: mode
+      type: Pl0.Ide.IdeEmitMode
+    - id: suggestedPath
+      type: System.String
+    return:
+      type: System.String
+    content.vb: Public Function ShowExportDialog(mode As IdeEmitMode, suggestedPath As String) As String
+  overload: Pl0.Ide.TerminalGuiIdeFileDialogService.ShowExportDialog*
+  implements:
+  - Pl0.Ide.IIdeFileDialogService.ShowExportDialog(Pl0.Ide.IdeEmitMode,System.String)
+  nameWithType.vb: TerminalGuiIdeFileDialogService.ShowExportDialog(IdeEmitMode, String)
+  fullName.vb: Pl0.Ide.TerminalGuiIdeFileDialogService.ShowExportDialog(Pl0.Ide.IdeEmitMode, String)
+  name.vb: ShowExportDialog(IdeEmitMode, String)
+- uid: Pl0.Ide.TerminalGuiIdeFileDialogService.ResolveSelectedPath(System.String,System.String,System.String)
+  commentId: M:Pl0.Ide.TerminalGuiIdeFileDialogService.ResolveSelectedPath(System.String,System.String,System.String)
+  id: ResolveSelectedPath(System.String,System.String,System.String)
+  parent: Pl0.Ide.TerminalGuiIdeFileDialogService
+  langs:
+  - csharp
+  - vb
+  name: ResolveSelectedPath(string?, string?, string?)
+  nameWithType: TerminalGuiIdeFileDialogService.ResolveSelectedPath(string?, string?, string?)
+  fullName: Pl0.Ide.TerminalGuiIdeFileDialogService.ResolveSelectedPath(string?, string?, string?)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeFileDialogService.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: ResolveSelectedPath
+    path: src/Pl0.Ide/IdeFileDialogService.cs
+    startLine: 87
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: private static string? ResolveSelectedPath(string? selectedPath, string? fallbackFileName, string? basePath)
+    parameters:
+    - id: selectedPath
+      type: System.String
+    - id: fallbackFileName
+      type: System.String
+    - id: basePath
+      type: System.String
+    return:
+      type: System.String
+    content.vb: Private Shared Function ResolveSelectedPath(selectedPath As String, fallbackFileName As String, basePath As String) As String
+  overload: Pl0.Ide.TerminalGuiIdeFileDialogService.ResolveSelectedPath*
+  nameWithType.vb: TerminalGuiIdeFileDialogService.ResolveSelectedPath(String, String, String)
+  fullName.vb: Pl0.Ide.TerminalGuiIdeFileDialogService.ResolveSelectedPath(String, String, String)
+  name.vb: ResolveSelectedPath(String, String, String)
+- uid: Pl0.Ide.TerminalGuiIdeFileDialogService.CombineWithBasePathOrCurrentDirectory(System.String,System.String)
+  commentId: M:Pl0.Ide.TerminalGuiIdeFileDialogService.CombineWithBasePathOrCurrentDirectory(System.String,System.String)
+  id: CombineWithBasePathOrCurrentDirectory(System.String,System.String)
+  parent: Pl0.Ide.TerminalGuiIdeFileDialogService
+  langs:
+  - csharp
+  - vb
+  name: CombineWithBasePathOrCurrentDirectory(string, string?)
+  nameWithType: TerminalGuiIdeFileDialogService.CombineWithBasePathOrCurrentDirectory(string, string?)
+  fullName: Pl0.Ide.TerminalGuiIdeFileDialogService.CombineWithBasePathOrCurrentDirectory(string, string?)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeFileDialogService.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: CombineWithBasePathOrCurrentDirectory
+    path: src/Pl0.Ide/IdeFileDialogService.cs
+    startLine: 106
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: private static string CombineWithBasePathOrCurrentDirectory(string selectedPath, string? basePath)
+    parameters:
+    - id: selectedPath
+      type: System.String
+    - id: basePath
+      type: System.String
+    return:
+      type: System.String
+    content.vb: Private Shared Function CombineWithBasePathOrCurrentDirectory(selectedPath As String, basePath As String) As String
+  overload: Pl0.Ide.TerminalGuiIdeFileDialogService.CombineWithBasePathOrCurrentDirectory*
+  nameWithType.vb: TerminalGuiIdeFileDialogService.CombineWithBasePathOrCurrentDirectory(String, String)
+  fullName.vb: Pl0.Ide.TerminalGuiIdeFileDialogService.CombineWithBasePathOrCurrentDirectory(String, String)
+  name.vb: CombineWithBasePathOrCurrentDirectory(String, String)
+- uid: Pl0.Ide.TerminalGuiIdeFileDialogService.DetermineBaseDirectory(System.String)
+  commentId: M:Pl0.Ide.TerminalGuiIdeFileDialogService.DetermineBaseDirectory(System.String)
+  id: DetermineBaseDirectory(System.String)
+  parent: Pl0.Ide.TerminalGuiIdeFileDialogService
+  langs:
+  - csharp
+  - vb
+  name: DetermineBaseDirectory(string?)
+  nameWithType: TerminalGuiIdeFileDialogService.DetermineBaseDirectory(string?)
+  fullName: Pl0.Ide.TerminalGuiIdeFileDialogService.DetermineBaseDirectory(string?)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeFileDialogService.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: DetermineBaseDirectory
+    path: src/Pl0.Ide/IdeFileDialogService.cs
+    startLine: 117
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: private static string? DetermineBaseDirectory(string? basePath)
+    parameters:
+    - id: basePath
+      type: System.String
+    return:
+      type: System.String
+    content.vb: Private Shared Function DetermineBaseDirectory(basePath As String) As String
+  overload: Pl0.Ide.TerminalGuiIdeFileDialogService.DetermineBaseDirectory*
+  nameWithType.vb: TerminalGuiIdeFileDialogService.DetermineBaseDirectory(String)
+  fullName.vb: Pl0.Ide.TerminalGuiIdeFileDialogService.DetermineBaseDirectory(String)
+  name.vb: DetermineBaseDirectory(String)
+- uid: Pl0.Ide.TerminalGuiIdeFileDialogService.CreateOpenAllowedTypes
+  commentId: M:Pl0.Ide.TerminalGuiIdeFileDialogService.CreateOpenAllowedTypes
+  id: CreateOpenAllowedTypes
+  parent: Pl0.Ide.TerminalGuiIdeFileDialogService
+  langs:
+  - csharp
+  - vb
+  name: CreateOpenAllowedTypes()
+  nameWithType: TerminalGuiIdeFileDialogService.CreateOpenAllowedTypes()
+  fullName: Pl0.Ide.TerminalGuiIdeFileDialogService.CreateOpenAllowedTypes()
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeFileDialogService.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: CreateOpenAllowedTypes
+    path: src/Pl0.Ide/IdeFileDialogService.cs
+    startLine: 133
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: internal static List<IAllowedType> CreateOpenAllowedTypes()
+    return:
+      type: System.Collections.Generic.List{Terminal.Gui.IAllowedType}
+    content.vb: Friend Shared Function CreateOpenAllowedTypes() As List(Of IAllowedType)
+  overload: Pl0.Ide.TerminalGuiIdeFileDialogService.CreateOpenAllowedTypes*
+- uid: Pl0.Ide.TerminalGuiIdeFileDialogService.CreateSaveAllowedTypes
+  commentId: M:Pl0.Ide.TerminalGuiIdeFileDialogService.CreateSaveAllowedTypes
+  id: CreateSaveAllowedTypes
+  parent: Pl0.Ide.TerminalGuiIdeFileDialogService
+  langs:
+  - csharp
+  - vb
+  name: CreateSaveAllowedTypes()
+  nameWithType: TerminalGuiIdeFileDialogService.CreateSaveAllowedTypes()
+  fullName: Pl0.Ide.TerminalGuiIdeFileDialogService.CreateSaveAllowedTypes()
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeFileDialogService.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: CreateSaveAllowedTypes
+    path: src/Pl0.Ide/IdeFileDialogService.cs
+    startLine: 142
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: internal static List<IAllowedType> CreateSaveAllowedTypes()
+    return:
+      type: System.Collections.Generic.List{Terminal.Gui.IAllowedType}
+    content.vb: Friend Shared Function CreateSaveAllowedTypes() As List(Of IAllowedType)
+  overload: Pl0.Ide.TerminalGuiIdeFileDialogService.CreateSaveAllowedTypes*
+- uid: Pl0.Ide.TerminalGuiIdeFileDialogService.CreateExportAsmAllowedTypes
+  commentId: M:Pl0.Ide.TerminalGuiIdeFileDialogService.CreateExportAsmAllowedTypes
+  id: CreateExportAsmAllowedTypes
+  parent: Pl0.Ide.TerminalGuiIdeFileDialogService
+  langs:
+  - csharp
+  - vb
+  name: CreateExportAsmAllowedTypes()
+  nameWithType: TerminalGuiIdeFileDialogService.CreateExportAsmAllowedTypes()
+  fullName: Pl0.Ide.TerminalGuiIdeFileDialogService.CreateExportAsmAllowedTypes()
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeFileDialogService.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: CreateExportAsmAllowedTypes
+    path: src/Pl0.Ide/IdeFileDialogService.cs
+    startLine: 151
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: internal static List<IAllowedType> CreateExportAsmAllowedTypes()
+    return:
+      type: System.Collections.Generic.List{Terminal.Gui.IAllowedType}
+    content.vb: Friend Shared Function CreateExportAsmAllowedTypes() As List(Of IAllowedType)
+  overload: Pl0.Ide.TerminalGuiIdeFileDialogService.CreateExportAsmAllowedTypes*
+- uid: Pl0.Ide.TerminalGuiIdeFileDialogService.CreateExportCodAllowedTypes
+  commentId: M:Pl0.Ide.TerminalGuiIdeFileDialogService.CreateExportCodAllowedTypes
+  id: CreateExportCodAllowedTypes
+  parent: Pl0.Ide.TerminalGuiIdeFileDialogService
+  langs:
+  - csharp
+  - vb
+  name: CreateExportCodAllowedTypes()
+  nameWithType: TerminalGuiIdeFileDialogService.CreateExportCodAllowedTypes()
+  fullName: Pl0.Ide.TerminalGuiIdeFileDialogService.CreateExportCodAllowedTypes()
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeFileDialogService.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: CreateExportCodAllowedTypes
+    path: src/Pl0.Ide/IdeFileDialogService.cs
+    startLine: 160
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: internal static List<IAllowedType> CreateExportCodAllowedTypes()
+    return:
+      type: System.Collections.Generic.List{Terminal.Gui.IAllowedType}
+    content.vb: Friend Shared Function CreateExportCodAllowedTypes() As List(Of IAllowedType)
+  overload: Pl0.Ide.TerminalGuiIdeFileDialogService.CreateExportCodAllowedTypes*
+references:
+- uid: Pl0.Ide
+  commentId: N:Pl0.Ide
+  href: Pl0.html
+  name: Pl0.Ide
+  nameWithType: Pl0.Ide
+  fullName: Pl0.Ide
+  spec.csharp:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Ide
+    name: Ide
+    href: Pl0.Ide.html
+  spec.vb:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Ide
+    name: Ide
+    href: Pl0.Ide.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Pl0.Ide.IIdeFileDialogService
+  commentId: T:Pl0.Ide.IIdeFileDialogService
+  parent: Pl0.Ide
+  href: Pl0.Ide.IIdeFileDialogService.html
+  name: IIdeFileDialogService
+  nameWithType: IIdeFileDialogService
+  fullName: Pl0.Ide.IIdeFileDialogService
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Pl0.Ide.TerminalGuiIdeFileDialogService.ShowOpenDialog*
+  commentId: Overload:Pl0.Ide.TerminalGuiIdeFileDialogService.ShowOpenDialog
+  href: Pl0.Ide.TerminalGuiIdeFileDialogService.html#Pl0_Ide_TerminalGuiIdeFileDialogService_ShowOpenDialog
+  name: ShowOpenDialog
+  nameWithType: TerminalGuiIdeFileDialogService.ShowOpenDialog
+  fullName: Pl0.Ide.TerminalGuiIdeFileDialogService.ShowOpenDialog
+- uid: Pl0.Ide.IIdeFileDialogService.ShowOpenDialog
+  commentId: M:Pl0.Ide.IIdeFileDialogService.ShowOpenDialog
+  parent: Pl0.Ide.IIdeFileDialogService
+  href: Pl0.Ide.IIdeFileDialogService.html#Pl0_Ide_IIdeFileDialogService_ShowOpenDialog
+  name: ShowOpenDialog()
+  nameWithType: IIdeFileDialogService.ShowOpenDialog()
+  fullName: Pl0.Ide.IIdeFileDialogService.ShowOpenDialog()
+  spec.csharp:
+  - uid: Pl0.Ide.IIdeFileDialogService.ShowOpenDialog
+    name: ShowOpenDialog
+    href: Pl0.Ide.IIdeFileDialogService.html#Pl0_Ide_IIdeFileDialogService_ShowOpenDialog
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Pl0.Ide.IIdeFileDialogService.ShowOpenDialog
+    name: ShowOpenDialog
+    href: Pl0.Ide.IIdeFileDialogService.html#Pl0_Ide_IIdeFileDialogService_ShowOpenDialog
+  - name: (
+  - name: )
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Pl0.Ide.TerminalGuiIdeFileDialogService.ShowSaveDialog*
+  commentId: Overload:Pl0.Ide.TerminalGuiIdeFileDialogService.ShowSaveDialog
+  href: Pl0.Ide.TerminalGuiIdeFileDialogService.html#Pl0_Ide_TerminalGuiIdeFileDialogService_ShowSaveDialog_System_String_
+  name: ShowSaveDialog
+  nameWithType: TerminalGuiIdeFileDialogService.ShowSaveDialog
+  fullName: Pl0.Ide.TerminalGuiIdeFileDialogService.ShowSaveDialog
+- uid: Pl0.Ide.IIdeFileDialogService.ShowSaveDialog(System.String)
+  commentId: M:Pl0.Ide.IIdeFileDialogService.ShowSaveDialog(System.String)
+  parent: Pl0.Ide.IIdeFileDialogService
+  isExternal: true
+  href: Pl0.Ide.IIdeFileDialogService.html#Pl0_Ide_IIdeFileDialogService_ShowSaveDialog_System_String_
+  name: ShowSaveDialog(string)
+  nameWithType: IIdeFileDialogService.ShowSaveDialog(string)
+  fullName: Pl0.Ide.IIdeFileDialogService.ShowSaveDialog(string)
+  nameWithType.vb: IIdeFileDialogService.ShowSaveDialog(String)
+  fullName.vb: Pl0.Ide.IIdeFileDialogService.ShowSaveDialog(String)
+  name.vb: ShowSaveDialog(String)
+  spec.csharp:
+  - uid: Pl0.Ide.IIdeFileDialogService.ShowSaveDialog(System.String)
+    name: ShowSaveDialog
+    href: Pl0.Ide.IIdeFileDialogService.html#Pl0_Ide_IIdeFileDialogService_ShowSaveDialog_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Pl0.Ide.IIdeFileDialogService.ShowSaveDialog(System.String)
+    name: ShowSaveDialog
+    href: Pl0.Ide.IIdeFileDialogService.html#Pl0_Ide_IIdeFileDialogService_ShowSaveDialog_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Pl0.Ide.TerminalGuiIdeFileDialogService.ShowExportDialog*
+  commentId: Overload:Pl0.Ide.TerminalGuiIdeFileDialogService.ShowExportDialog
+  href: Pl0.Ide.TerminalGuiIdeFileDialogService.html#Pl0_Ide_TerminalGuiIdeFileDialogService_ShowExportDialog_Pl0_Ide_IdeEmitMode_System_String_
+  name: ShowExportDialog
+  nameWithType: TerminalGuiIdeFileDialogService.ShowExportDialog
+  fullName: Pl0.Ide.TerminalGuiIdeFileDialogService.ShowExportDialog
+- uid: Pl0.Ide.IIdeFileDialogService.ShowExportDialog(Pl0.Ide.IdeEmitMode,System.String)
+  commentId: M:Pl0.Ide.IIdeFileDialogService.ShowExportDialog(Pl0.Ide.IdeEmitMode,System.String)
+  parent: Pl0.Ide.IIdeFileDialogService
+  isExternal: true
+  href: Pl0.Ide.IIdeFileDialogService.html#Pl0_Ide_IIdeFileDialogService_ShowExportDialog_Pl0_Ide_IdeEmitMode_System_String_
+  name: ShowExportDialog(IdeEmitMode, string)
+  nameWithType: IIdeFileDialogService.ShowExportDialog(IdeEmitMode, string)
+  fullName: Pl0.Ide.IIdeFileDialogService.ShowExportDialog(Pl0.Ide.IdeEmitMode, string)
+  nameWithType.vb: IIdeFileDialogService.ShowExportDialog(IdeEmitMode, String)
+  fullName.vb: Pl0.Ide.IIdeFileDialogService.ShowExportDialog(Pl0.Ide.IdeEmitMode, String)
+  name.vb: ShowExportDialog(IdeEmitMode, String)
+  spec.csharp:
+  - uid: Pl0.Ide.IIdeFileDialogService.ShowExportDialog(Pl0.Ide.IdeEmitMode,System.String)
+    name: ShowExportDialog
+    href: Pl0.Ide.IIdeFileDialogService.html#Pl0_Ide_IIdeFileDialogService_ShowExportDialog_Pl0_Ide_IdeEmitMode_System_String_
+  - name: (
+  - uid: Pl0.Ide.IdeEmitMode
+    name: IdeEmitMode
+    href: Pl0.Ide.IdeEmitMode.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Pl0.Ide.IIdeFileDialogService.ShowExportDialog(Pl0.Ide.IdeEmitMode,System.String)
+    name: ShowExportDialog
+    href: Pl0.Ide.IIdeFileDialogService.html#Pl0_Ide_IIdeFileDialogService_ShowExportDialog_Pl0_Ide_IdeEmitMode_System_String_
+  - name: (
+  - uid: Pl0.Ide.IdeEmitMode
+    name: IdeEmitMode
+    href: Pl0.Ide.IdeEmitMode.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Pl0.Ide.IdeEmitMode
+  commentId: T:Pl0.Ide.IdeEmitMode
+  parent: Pl0.Ide
+  href: Pl0.Ide.IdeEmitMode.html
+  name: IdeEmitMode
+  nameWithType: IdeEmitMode
+  fullName: Pl0.Ide.IdeEmitMode
+- uid: Pl0.Ide.TerminalGuiIdeFileDialogService.ResolveSelectedPath*
+  commentId: Overload:Pl0.Ide.TerminalGuiIdeFileDialogService.ResolveSelectedPath
+  href: Pl0.Ide.TerminalGuiIdeFileDialogService.html#Pl0_Ide_TerminalGuiIdeFileDialogService_ResolveSelectedPath_System_String_System_String_System_String_
+  name: ResolveSelectedPath
+  nameWithType: TerminalGuiIdeFileDialogService.ResolveSelectedPath
+  fullName: Pl0.Ide.TerminalGuiIdeFileDialogService.ResolveSelectedPath
+- uid: Pl0.Ide.TerminalGuiIdeFileDialogService.CombineWithBasePathOrCurrentDirectory*
+  commentId: Overload:Pl0.Ide.TerminalGuiIdeFileDialogService.CombineWithBasePathOrCurrentDirectory
+  href: Pl0.Ide.TerminalGuiIdeFileDialogService.html#Pl0_Ide_TerminalGuiIdeFileDialogService_CombineWithBasePathOrCurrentDirectory_System_String_System_String_
+  name: CombineWithBasePathOrCurrentDirectory
+  nameWithType: TerminalGuiIdeFileDialogService.CombineWithBasePathOrCurrentDirectory
+  fullName: Pl0.Ide.TerminalGuiIdeFileDialogService.CombineWithBasePathOrCurrentDirectory
+- uid: Pl0.Ide.TerminalGuiIdeFileDialogService.DetermineBaseDirectory*
+  commentId: Overload:Pl0.Ide.TerminalGuiIdeFileDialogService.DetermineBaseDirectory
+  href: Pl0.Ide.TerminalGuiIdeFileDialogService.html#Pl0_Ide_TerminalGuiIdeFileDialogService_DetermineBaseDirectory_System_String_
+  name: DetermineBaseDirectory
+  nameWithType: TerminalGuiIdeFileDialogService.DetermineBaseDirectory
+  fullName: Pl0.Ide.TerminalGuiIdeFileDialogService.DetermineBaseDirectory
+- uid: Pl0.Ide.TerminalGuiIdeFileDialogService.CreateOpenAllowedTypes*
+  commentId: Overload:Pl0.Ide.TerminalGuiIdeFileDialogService.CreateOpenAllowedTypes
+  href: Pl0.Ide.TerminalGuiIdeFileDialogService.html#Pl0_Ide_TerminalGuiIdeFileDialogService_CreateOpenAllowedTypes
+  name: CreateOpenAllowedTypes
+  nameWithType: TerminalGuiIdeFileDialogService.CreateOpenAllowedTypes
+  fullName: Pl0.Ide.TerminalGuiIdeFileDialogService.CreateOpenAllowedTypes
+- uid: System.Collections.Generic.List{Terminal.Gui.IAllowedType}
+  commentId: T:System.Collections.Generic.List{Terminal.Gui.IAllowedType}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<IAllowedType>
+  nameWithType: List<IAllowedType>
+  fullName: System.Collections.Generic.List<Terminal.Gui.IAllowedType>
+  nameWithType.vb: List(Of IAllowedType)
+  fullName.vb: System.Collections.Generic.List(Of Terminal.Gui.IAllowedType)
+  name.vb: List(Of IAllowedType)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: Terminal.Gui.IAllowedType
+    name: IAllowedType
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Terminal.Gui.IAllowedType
+    name: IAllowedType
+    isExternal: true
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Pl0.Ide.TerminalGuiIdeFileDialogService.CreateSaveAllowedTypes*
+  commentId: Overload:Pl0.Ide.TerminalGuiIdeFileDialogService.CreateSaveAllowedTypes
+  href: Pl0.Ide.TerminalGuiIdeFileDialogService.html#Pl0_Ide_TerminalGuiIdeFileDialogService_CreateSaveAllowedTypes
+  name: CreateSaveAllowedTypes
+  nameWithType: TerminalGuiIdeFileDialogService.CreateSaveAllowedTypes
+  fullName: Pl0.Ide.TerminalGuiIdeFileDialogService.CreateSaveAllowedTypes
+- uid: Pl0.Ide.TerminalGuiIdeFileDialogService.CreateExportAsmAllowedTypes*
+  commentId: Overload:Pl0.Ide.TerminalGuiIdeFileDialogService.CreateExportAsmAllowedTypes
+  href: Pl0.Ide.TerminalGuiIdeFileDialogService.html#Pl0_Ide_TerminalGuiIdeFileDialogService_CreateExportAsmAllowedTypes
+  name: CreateExportAsmAllowedTypes
+  nameWithType: TerminalGuiIdeFileDialogService.CreateExportAsmAllowedTypes
+  fullName: Pl0.Ide.TerminalGuiIdeFileDialogService.CreateExportAsmAllowedTypes
+- uid: Pl0.Ide.TerminalGuiIdeFileDialogService.CreateExportCodAllowedTypes*
+  commentId: Overload:Pl0.Ide.TerminalGuiIdeFileDialogService.CreateExportCodAllowedTypes
+  href: Pl0.Ide.TerminalGuiIdeFileDialogService.html#Pl0_Ide_TerminalGuiIdeFileDialogService_CreateExportCodAllowedTypes
+  name: CreateExportCodAllowedTypes
+  nameWithType: TerminalGuiIdeFileDialogService.CreateExportCodAllowedTypes
+  fullName: Pl0.Ide.TerminalGuiIdeFileDialogService.CreateExportCodAllowedTypes

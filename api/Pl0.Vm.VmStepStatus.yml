@@ -1,0 +1,147 @@
+### YamlMime:ManagedReference
+items:
+- uid: Pl0.Vm.VmStepStatus
+  commentId: T:Pl0.Vm.VmStepStatus
+  id: VmStepStatus
+  parent: Pl0.Vm
+  children:
+  - Pl0.Vm.VmStepStatus.Error
+  - Pl0.Vm.VmStepStatus.Halted
+  - Pl0.Vm.VmStepStatus.Running
+  langs:
+  - csharp
+  - vb
+  name: VmStepStatus
+  nameWithType: VmStepStatus
+  fullName: Pl0.Vm.VmStepStatus
+  type: Enum
+  source:
+    remote:
+      path: src/Pl0.Vm/VmStepStatus.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: VmStepStatus
+    path: src/Pl0.Vm/VmStepStatus.cs
+    startLine: 5
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  summary: Status of a single VM step.
+  example: []
+  syntax:
+    content: public enum VmStepStatus
+    content.vb: Public Enum VmStepStatus
+- uid: Pl0.Vm.VmStepStatus.Running
+  commentId: F:Pl0.Vm.VmStepStatus.Running
+  id: Running
+  parent: Pl0.Vm.VmStepStatus
+  langs:
+  - csharp
+  - vb
+  name: Running
+  nameWithType: VmStepStatus.Running
+  fullName: Pl0.Vm.VmStepStatus.Running
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/VmStepStatus.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: Running
+    path: src/Pl0.Vm/VmStepStatus.cs
+    startLine: 10
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  summary: Execution can continue.
+  example: []
+  syntax:
+    content: Running = 0
+    return:
+      type: Pl0.Vm.VmStepStatus
+- uid: Pl0.Vm.VmStepStatus.Halted
+  commentId: F:Pl0.Vm.VmStepStatus.Halted
+  id: Halted
+  parent: Pl0.Vm.VmStepStatus
+  langs:
+  - csharp
+  - vb
+  name: Halted
+  nameWithType: VmStepStatus.Halted
+  fullName: Pl0.Vm.VmStepStatus.Halted
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/VmStepStatus.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: Halted
+    path: src/Pl0.Vm/VmStepStatus.cs
+    startLine: 15
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  summary: Program has terminated.
+  example: []
+  syntax:
+    content: Halted = 1
+    return:
+      type: Pl0.Vm.VmStepStatus
+- uid: Pl0.Vm.VmStepStatus.Error
+  commentId: F:Pl0.Vm.VmStepStatus.Error
+  id: Error
+  parent: Pl0.Vm.VmStepStatus
+  langs:
+  - csharp
+  - vb
+  name: Error
+  nameWithType: VmStepStatus.Error
+  fullName: Pl0.Vm.VmStepStatus.Error
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/VmStepStatus.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: Error
+    path: src/Pl0.Vm/VmStepStatus.cs
+    startLine: 20
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  summary: A runtime error occurred.
+  example: []
+  syntax:
+    content: Error = 2
+    return:
+      type: Pl0.Vm.VmStepStatus
+references:
+- uid: Pl0.Vm
+  commentId: N:Pl0.Vm
+  href: Pl0.html
+  name: Pl0.Vm
+  nameWithType: Pl0.Vm
+  fullName: Pl0.Vm
+  spec.csharp:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Vm
+    name: Vm
+    href: Pl0.Vm.html
+  spec.vb:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Vm
+    name: Vm
+    href: Pl0.Vm.html
+- uid: Pl0.Vm.VmStepStatus
+  commentId: T:Pl0.Vm.VmStepStatus
+  parent: Pl0.Vm
+  href: Pl0.Vm.VmStepStatus.html
+  name: VmStepStatus
+  nameWithType: VmStepStatus
+  fullName: Pl0.Vm.VmStepStatus

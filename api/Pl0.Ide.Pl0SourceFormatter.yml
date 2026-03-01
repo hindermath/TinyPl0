@@ -1,0 +1,925 @@
+### YamlMime:ManagedReference
+items:
+- uid: Pl0.Ide.Pl0SourceFormatter
+  commentId: T:Pl0.Ide.Pl0SourceFormatter
+  id: Pl0SourceFormatter
+  parent: Pl0.Ide
+  children:
+  - Pl0.Ide.Pl0SourceFormatter.AppendIndent(System.Text.StringBuilder,System.Int32)
+  - Pl0.Ide.Pl0SourceFormatter.AppendNewLine(System.Text.StringBuilder,System.Boolean@)
+  - Pl0.Ide.Pl0SourceFormatter.EnsureSpaceBeforeToken(System.Text.StringBuilder,System.Boolean)
+  - Pl0.Ide.Pl0SourceFormatter.FormatTokens(System.Collections.Generic.IReadOnlyList{Pl0.Core.Pl0Token})
+  - Pl0.Ide.Pl0SourceFormatter.IndentSize
+  - Pl0.Ide.Pl0SourceFormatter.IsStatementStartToken(Pl0.Core.TokenKind,Pl0.Core.TokenKind)
+  - Pl0.Ide.Pl0SourceFormatter.MarkProcedureStatementStart(Pl0.Core.TokenKind,Pl0.Core.TokenKind,System.Collections.Generic.Stack{Pl0.Ide.Pl0SourceFormatter.ProcedureFrame})
+  - Pl0.Ide.Pl0SourceFormatter.TrimTrailingSpaces(System.Text.StringBuilder)
+  - Pl0.Ide.Pl0SourceFormatter.TryFormat(System.String,System.String@,Pl0.Core.CompilerOptions)
+  langs:
+  - csharp
+  - vb
+  name: Pl0SourceFormatter
+  nameWithType: Pl0SourceFormatter
+  fullName: Pl0.Ide.Pl0SourceFormatter
+  type: Class
+  source:
+    remote:
+      path: src/Pl0.Ide/Pl0SourceFormatter.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: Pl0SourceFormatter
+    path: src/Pl0.Ide/Pl0SourceFormatter.cs
+    startLine: 5
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: internal static class Pl0SourceFormatter
+    content.vb: Friend Module Pl0SourceFormatter
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Pl0.Ide.Pl0SourceFormatter.IndentSize
+  commentId: F:Pl0.Ide.Pl0SourceFormatter.IndentSize
+  id: IndentSize
+  parent: Pl0.Ide.Pl0SourceFormatter
+  langs:
+  - csharp
+  - vb
+  name: IndentSize
+  nameWithType: Pl0SourceFormatter.IndentSize
+  fullName: Pl0.Ide.Pl0SourceFormatter.IndentSize
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Ide/Pl0SourceFormatter.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: IndentSize
+    path: src/Pl0.Ide/Pl0SourceFormatter.cs
+    startLine: 7
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: private const int IndentSize = 2
+    return:
+      type: System.Int32
+    content.vb: Private Const IndentSize As Integer = 2
+- uid: Pl0.Ide.Pl0SourceFormatter.TryFormat(System.String,System.String@,Pl0.Core.CompilerOptions)
+  commentId: M:Pl0.Ide.Pl0SourceFormatter.TryFormat(System.String,System.String@,Pl0.Core.CompilerOptions)
+  id: TryFormat(System.String,System.String@,Pl0.Core.CompilerOptions)
+  parent: Pl0.Ide.Pl0SourceFormatter
+  langs:
+  - csharp
+  - vb
+  name: TryFormat(string, out string, CompilerOptions?)
+  nameWithType: Pl0SourceFormatter.TryFormat(string, out string, CompilerOptions?)
+  fullName: Pl0.Ide.Pl0SourceFormatter.TryFormat(string, out string, Pl0.Core.CompilerOptions?)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Ide/Pl0SourceFormatter.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: TryFormat
+    path: src/Pl0.Ide/Pl0SourceFormatter.cs
+    startLine: 9
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: public static bool TryFormat(string source, out string formattedSource, CompilerOptions? options = null)
+    parameters:
+    - id: source
+      type: System.String
+    - id: formattedSource
+      type: System.String
+    - id: options
+      type: Pl0.Core.CompilerOptions
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function TryFormat(source As String, formattedSource As String, options As CompilerOptions = Nothing) As Boolean
+  overload: Pl0.Ide.Pl0SourceFormatter.TryFormat*
+  nameWithType.vb: Pl0SourceFormatter.TryFormat(String, String, CompilerOptions)
+  fullName.vb: Pl0.Ide.Pl0SourceFormatter.TryFormat(String, String, Pl0.Core.CompilerOptions)
+  name.vb: TryFormat(String, String, CompilerOptions)
+- uid: Pl0.Ide.Pl0SourceFormatter.FormatTokens(System.Collections.Generic.IReadOnlyList{Pl0.Core.Pl0Token})
+  commentId: M:Pl0.Ide.Pl0SourceFormatter.FormatTokens(System.Collections.Generic.IReadOnlyList{Pl0.Core.Pl0Token})
+  id: FormatTokens(System.Collections.Generic.IReadOnlyList{Pl0.Core.Pl0Token})
+  parent: Pl0.Ide.Pl0SourceFormatter
+  langs:
+  - csharp
+  - vb
+  name: FormatTokens(IReadOnlyList<Pl0Token>)
+  nameWithType: Pl0SourceFormatter.FormatTokens(IReadOnlyList<Pl0Token>)
+  fullName: Pl0.Ide.Pl0SourceFormatter.FormatTokens(System.Collections.Generic.IReadOnlyList<Pl0.Core.Pl0Token>)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Ide/Pl0SourceFormatter.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: FormatTokens
+    path: src/Pl0.Ide/Pl0SourceFormatter.cs
+    startLine: 27
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: private static string FormatTokens(IReadOnlyList<Pl0Token> tokens)
+    parameters:
+    - id: tokens
+      type: System.Collections.Generic.IReadOnlyList{Pl0.Core.Pl0Token}
+    return:
+      type: System.String
+    content.vb: Private Shared Function FormatTokens(tokens As IReadOnlyList(Of Pl0Token)) As String
+  overload: Pl0.Ide.Pl0SourceFormatter.FormatTokens*
+  nameWithType.vb: Pl0SourceFormatter.FormatTokens(IReadOnlyList(Of Pl0Token))
+  fullName.vb: Pl0.Ide.Pl0SourceFormatter.FormatTokens(System.Collections.Generic.IReadOnlyList(Of Pl0.Core.Pl0Token))
+  name.vb: FormatTokens(IReadOnlyList(Of Pl0Token))
+- uid: Pl0.Ide.Pl0SourceFormatter.MarkProcedureStatementStart(Pl0.Core.TokenKind,Pl0.Core.TokenKind,System.Collections.Generic.Stack{Pl0.Ide.Pl0SourceFormatter.ProcedureFrame})
+  commentId: M:Pl0.Ide.Pl0SourceFormatter.MarkProcedureStatementStart(Pl0.Core.TokenKind,Pl0.Core.TokenKind,System.Collections.Generic.Stack{Pl0.Ide.Pl0SourceFormatter.ProcedureFrame})
+  id: MarkProcedureStatementStart(Pl0.Core.TokenKind,Pl0.Core.TokenKind,System.Collections.Generic.Stack{Pl0.Ide.Pl0SourceFormatter.ProcedureFrame})
+  parent: Pl0.Ide.Pl0SourceFormatter
+  langs:
+  - csharp
+  - vb
+  name: MarkProcedureStatementStart(TokenKind, TokenKind, Stack<ProcedureFrame>)
+  nameWithType: Pl0SourceFormatter.MarkProcedureStatementStart(TokenKind, TokenKind, Stack<Pl0SourceFormatter.ProcedureFrame>)
+  fullName: Pl0.Ide.Pl0SourceFormatter.MarkProcedureStatementStart(Pl0.Core.TokenKind, Pl0.Core.TokenKind, System.Collections.Generic.Stack<Pl0.Ide.Pl0SourceFormatter.ProcedureFrame>)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Ide/Pl0SourceFormatter.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: MarkProcedureStatementStart
+    path: src/Pl0.Ide/Pl0SourceFormatter.cs
+    startLine: 159
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: private static void MarkProcedureStatementStart(TokenKind tokenKind, TokenKind previousKind, Stack<Pl0SourceFormatter.ProcedureFrame> procedureFrames)
+    parameters:
+    - id: tokenKind
+      type: Pl0.Core.TokenKind
+    - id: previousKind
+      type: Pl0.Core.TokenKind
+    - id: procedureFrames
+      type: System.Collections.Generic.Stack{Pl0.Ide.Pl0SourceFormatter.ProcedureFrame}
+    content.vb: Private Shared Sub MarkProcedureStatementStart(tokenKind As TokenKind, previousKind As TokenKind, procedureFrames As Stack(Of Pl0SourceFormatter.ProcedureFrame))
+  overload: Pl0.Ide.Pl0SourceFormatter.MarkProcedureStatementStart*
+  nameWithType.vb: Pl0SourceFormatter.MarkProcedureStatementStart(TokenKind, TokenKind, Stack(Of Pl0SourceFormatter.ProcedureFrame))
+  fullName.vb: Pl0.Ide.Pl0SourceFormatter.MarkProcedureStatementStart(Pl0.Core.TokenKind, Pl0.Core.TokenKind, System.Collections.Generic.Stack(Of Pl0.Ide.Pl0SourceFormatter.ProcedureFrame))
+  name.vb: MarkProcedureStatementStart(TokenKind, TokenKind, Stack(Of ProcedureFrame))
+- uid: Pl0.Ide.Pl0SourceFormatter.IsStatementStartToken(Pl0.Core.TokenKind,Pl0.Core.TokenKind)
+  commentId: M:Pl0.Ide.Pl0SourceFormatter.IsStatementStartToken(Pl0.Core.TokenKind,Pl0.Core.TokenKind)
+  id: IsStatementStartToken(Pl0.Core.TokenKind,Pl0.Core.TokenKind)
+  parent: Pl0.Ide.Pl0SourceFormatter
+  langs:
+  - csharp
+  - vb
+  name: IsStatementStartToken(TokenKind, TokenKind)
+  nameWithType: Pl0SourceFormatter.IsStatementStartToken(TokenKind, TokenKind)
+  fullName: Pl0.Ide.Pl0SourceFormatter.IsStatementStartToken(Pl0.Core.TokenKind, Pl0.Core.TokenKind)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Ide/Pl0SourceFormatter.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: IsStatementStartToken
+    path: src/Pl0.Ide/Pl0SourceFormatter.cs
+    startLine: 183
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: private static bool IsStatementStartToken(TokenKind tokenKind, TokenKind previousKind)
+    parameters:
+    - id: tokenKind
+      type: Pl0.Core.TokenKind
+    - id: previousKind
+      type: Pl0.Core.TokenKind
+    return:
+      type: System.Boolean
+    content.vb: Private Shared Function IsStatementStartToken(tokenKind As TokenKind, previousKind As TokenKind) As Boolean
+  overload: Pl0.Ide.Pl0SourceFormatter.IsStatementStartToken*
+- uid: Pl0.Ide.Pl0SourceFormatter.EnsureSpaceBeforeToken(System.Text.StringBuilder,System.Boolean)
+  commentId: M:Pl0.Ide.Pl0SourceFormatter.EnsureSpaceBeforeToken(System.Text.StringBuilder,System.Boolean)
+  id: EnsureSpaceBeforeToken(System.Text.StringBuilder,System.Boolean)
+  parent: Pl0.Ide.Pl0SourceFormatter
+  langs:
+  - csharp
+  - vb
+  name: EnsureSpaceBeforeToken(StringBuilder, bool)
+  nameWithType: Pl0SourceFormatter.EnsureSpaceBeforeToken(StringBuilder, bool)
+  fullName: Pl0.Ide.Pl0SourceFormatter.EnsureSpaceBeforeToken(System.Text.StringBuilder, bool)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Ide/Pl0SourceFormatter.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: EnsureSpaceBeforeToken
+    path: src/Pl0.Ide/Pl0SourceFormatter.cs
+    startLine: 203
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: private static void EnsureSpaceBeforeToken(StringBuilder builder, bool lineStart)
+    parameters:
+    - id: builder
+      type: System.Text.StringBuilder
+    - id: lineStart
+      type: System.Boolean
+    content.vb: Private Shared Sub EnsureSpaceBeforeToken(builder As StringBuilder, lineStart As Boolean)
+  overload: Pl0.Ide.Pl0SourceFormatter.EnsureSpaceBeforeToken*
+  nameWithType.vb: Pl0SourceFormatter.EnsureSpaceBeforeToken(StringBuilder, Boolean)
+  fullName.vb: Pl0.Ide.Pl0SourceFormatter.EnsureSpaceBeforeToken(System.Text.StringBuilder, Boolean)
+  name.vb: EnsureSpaceBeforeToken(StringBuilder, Boolean)
+- uid: Pl0.Ide.Pl0SourceFormatter.AppendIndent(System.Text.StringBuilder,System.Int32)
+  commentId: M:Pl0.Ide.Pl0SourceFormatter.AppendIndent(System.Text.StringBuilder,System.Int32)
+  id: AppendIndent(System.Text.StringBuilder,System.Int32)
+  parent: Pl0.Ide.Pl0SourceFormatter
+  langs:
+  - csharp
+  - vb
+  name: AppendIndent(StringBuilder, int)
+  nameWithType: Pl0SourceFormatter.AppendIndent(StringBuilder, int)
+  fullName: Pl0.Ide.Pl0SourceFormatter.AppendIndent(System.Text.StringBuilder, int)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Ide/Pl0SourceFormatter.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: AppendIndent
+    path: src/Pl0.Ide/Pl0SourceFormatter.cs
+    startLine: 219
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: private static void AppendIndent(StringBuilder builder, int indentationLevel)
+    parameters:
+    - id: builder
+      type: System.Text.StringBuilder
+    - id: indentationLevel
+      type: System.Int32
+    content.vb: Private Shared Sub AppendIndent(builder As StringBuilder, indentationLevel As Integer)
+  overload: Pl0.Ide.Pl0SourceFormatter.AppendIndent*
+  nameWithType.vb: Pl0SourceFormatter.AppendIndent(StringBuilder, Integer)
+  fullName.vb: Pl0.Ide.Pl0SourceFormatter.AppendIndent(System.Text.StringBuilder, Integer)
+  name.vb: AppendIndent(StringBuilder, Integer)
+- uid: Pl0.Ide.Pl0SourceFormatter.AppendNewLine(System.Text.StringBuilder,System.Boolean@)
+  commentId: M:Pl0.Ide.Pl0SourceFormatter.AppendNewLine(System.Text.StringBuilder,System.Boolean@)
+  id: AppendNewLine(System.Text.StringBuilder,System.Boolean@)
+  parent: Pl0.Ide.Pl0SourceFormatter
+  langs:
+  - csharp
+  - vb
+  name: AppendNewLine(StringBuilder, ref bool)
+  nameWithType: Pl0SourceFormatter.AppendNewLine(StringBuilder, ref bool)
+  fullName: Pl0.Ide.Pl0SourceFormatter.AppendNewLine(System.Text.StringBuilder, ref bool)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Ide/Pl0SourceFormatter.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: AppendNewLine
+    path: src/Pl0.Ide/Pl0SourceFormatter.cs
+    startLine: 229
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: private static void AppendNewLine(StringBuilder builder, ref bool lineStart)
+    parameters:
+    - id: builder
+      type: System.Text.StringBuilder
+    - id: lineStart
+      type: System.Boolean
+    content.vb: Private Shared Sub AppendNewLine(builder As StringBuilder, lineStart As Boolean)
+  overload: Pl0.Ide.Pl0SourceFormatter.AppendNewLine*
+  nameWithType.vb: Pl0SourceFormatter.AppendNewLine(StringBuilder, Boolean)
+  fullName.vb: Pl0.Ide.Pl0SourceFormatter.AppendNewLine(System.Text.StringBuilder, Boolean)
+  name.vb: AppendNewLine(StringBuilder, Boolean)
+- uid: Pl0.Ide.Pl0SourceFormatter.TrimTrailingSpaces(System.Text.StringBuilder)
+  commentId: M:Pl0.Ide.Pl0SourceFormatter.TrimTrailingSpaces(System.Text.StringBuilder)
+  id: TrimTrailingSpaces(System.Text.StringBuilder)
+  parent: Pl0.Ide.Pl0SourceFormatter
+  langs:
+  - csharp
+  - vb
+  name: TrimTrailingSpaces(StringBuilder)
+  nameWithType: Pl0SourceFormatter.TrimTrailingSpaces(StringBuilder)
+  fullName: Pl0.Ide.Pl0SourceFormatter.TrimTrailingSpaces(System.Text.StringBuilder)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Ide/Pl0SourceFormatter.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: TrimTrailingSpaces
+    path: src/Pl0.Ide/Pl0SourceFormatter.cs
+    startLine: 242
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: private static void TrimTrailingSpaces(StringBuilder builder)
+    parameters:
+    - id: builder
+      type: System.Text.StringBuilder
+    content.vb: Private Shared Sub TrimTrailingSpaces(builder As StringBuilder)
+  overload: Pl0.Ide.Pl0SourceFormatter.TrimTrailingSpaces*
+references:
+- uid: Pl0.Ide
+  commentId: N:Pl0.Ide
+  href: Pl0.html
+  name: Pl0.Ide
+  nameWithType: Pl0.Ide
+  fullName: Pl0.Ide
+  spec.csharp:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Ide
+    name: Ide
+    href: Pl0.Ide.html
+  spec.vb:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Ide
+    name: Ide
+    href: Pl0.Ide.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Pl0.Ide.Pl0SourceFormatter.TryFormat*
+  commentId: Overload:Pl0.Ide.Pl0SourceFormatter.TryFormat
+  href: Pl0.Ide.Pl0SourceFormatter.html#Pl0_Ide_Pl0SourceFormatter_TryFormat_System_String_System_String__Pl0_Core_CompilerOptions_
+  name: TryFormat
+  nameWithType: Pl0SourceFormatter.TryFormat
+  fullName: Pl0.Ide.Pl0SourceFormatter.TryFormat
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Pl0.Core.CompilerOptions
+  commentId: T:Pl0.Core.CompilerOptions
+  parent: Pl0.Core
+  href: Pl0.Core.CompilerOptions.html
+  name: CompilerOptions
+  nameWithType: CompilerOptions
+  fullName: Pl0.Core.CompilerOptions
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Pl0.Core
+  commentId: N:Pl0.Core
+  href: Pl0.html
+  name: Pl0.Core
+  nameWithType: Pl0.Core
+  fullName: Pl0.Core
+  spec.csharp:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Core
+    name: Core
+    href: Pl0.Core.html
+  spec.vb:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Core
+    name: Core
+    href: Pl0.Core.html
+- uid: Pl0.Ide.Pl0SourceFormatter.FormatTokens*
+  commentId: Overload:Pl0.Ide.Pl0SourceFormatter.FormatTokens
+  href: Pl0.Ide.Pl0SourceFormatter.html#Pl0_Ide_Pl0SourceFormatter_FormatTokens_System_Collections_Generic_IReadOnlyList_Pl0_Core_Pl0Token__
+  name: FormatTokens
+  nameWithType: Pl0SourceFormatter.FormatTokens
+  fullName: Pl0.Ide.Pl0SourceFormatter.FormatTokens
+- uid: System.Collections.Generic.IReadOnlyList{Pl0.Core.Pl0Token}
+  commentId: T:System.Collections.Generic.IReadOnlyList{Pl0.Core.Pl0Token}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<Pl0Token>
+  nameWithType: IReadOnlyList<Pl0Token>
+  fullName: System.Collections.Generic.IReadOnlyList<Pl0.Core.Pl0Token>
+  nameWithType.vb: IReadOnlyList(Of Pl0Token)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of Pl0.Core.Pl0Token)
+  name.vb: IReadOnlyList(Of Pl0Token)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: Pl0.Core.Pl0Token
+    name: Pl0Token
+    href: Pl0.Core.Pl0Token.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Pl0.Core.Pl0Token
+    name: Pl0Token
+    href: Pl0.Core.Pl0Token.html
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Pl0.Ide.Pl0SourceFormatter.MarkProcedureStatementStart*
+  commentId: Overload:Pl0.Ide.Pl0SourceFormatter.MarkProcedureStatementStart
+  href: Pl0.Ide.Pl0SourceFormatter.html#Pl0_Ide_Pl0SourceFormatter_MarkProcedureStatementStart_Pl0_Core_TokenKind_Pl0_Core_TokenKind_System_Collections_Generic_Stack_Pl0_Ide_Pl0SourceFormatter_ProcedureFrame__
+  name: MarkProcedureStatementStart
+  nameWithType: Pl0SourceFormatter.MarkProcedureStatementStart
+  fullName: Pl0.Ide.Pl0SourceFormatter.MarkProcedureStatementStart
+- uid: Pl0.Core.TokenKind
+  commentId: T:Pl0.Core.TokenKind
+  parent: Pl0.Core
+  href: Pl0.Core.TokenKind.html
+  name: TokenKind
+  nameWithType: TokenKind
+  fullName: Pl0.Core.TokenKind
+- uid: System.Collections.Generic.Stack{Pl0.Ide.Pl0SourceFormatter.ProcedureFrame}
+  commentId: T:System.Collections.Generic.Stack{Pl0.Ide.Pl0SourceFormatter.ProcedureFrame}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Stack`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.stack-1
+  name: Stack<Pl0SourceFormatter.ProcedureFrame>
+  nameWithType: Stack<Pl0SourceFormatter.ProcedureFrame>
+  fullName: System.Collections.Generic.Stack<Pl0.Ide.Pl0SourceFormatter.ProcedureFrame>
+  nameWithType.vb: Stack(Of Pl0SourceFormatter.ProcedureFrame)
+  fullName.vb: System.Collections.Generic.Stack(Of Pl0.Ide.Pl0SourceFormatter.ProcedureFrame)
+  name.vb: Stack(Of Pl0SourceFormatter.ProcedureFrame)
+  spec.csharp:
+  - uid: System.Collections.Generic.Stack`1
+    name: Stack
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.stack-1
+  - name: <
+  - uid: Pl0.Ide.Pl0SourceFormatter
+    name: Pl0SourceFormatter
+    href: Pl0.Ide.Pl0SourceFormatter.html
+  - name: .
+  - uid: Pl0.Ide.Pl0SourceFormatter.ProcedureFrame
+    name: ProcedureFrame
+    href: Pl0.Ide.Pl0SourceFormatter.ProcedureFrame.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Stack`1
+    name: Stack
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.stack-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Pl0.Ide.Pl0SourceFormatter
+    name: Pl0SourceFormatter
+    href: Pl0.Ide.Pl0SourceFormatter.html
+  - name: .
+  - uid: Pl0.Ide.Pl0SourceFormatter.ProcedureFrame
+    name: ProcedureFrame
+    href: Pl0.Ide.Pl0SourceFormatter.ProcedureFrame.html
+  - name: )
+- uid: System.Collections.Generic.Stack`1
+  commentId: T:System.Collections.Generic.Stack`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.stack-1
+  name: Stack<T>
+  nameWithType: Stack<T>
+  fullName: System.Collections.Generic.Stack<T>
+  nameWithType.vb: Stack(Of T)
+  fullName.vb: System.Collections.Generic.Stack(Of T)
+  name.vb: Stack(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.Stack`1
+    name: Stack
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.stack-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Stack`1
+    name: Stack
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.stack-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Pl0.Ide.Pl0SourceFormatter.IsStatementStartToken*
+  commentId: Overload:Pl0.Ide.Pl0SourceFormatter.IsStatementStartToken
+  href: Pl0.Ide.Pl0SourceFormatter.html#Pl0_Ide_Pl0SourceFormatter_IsStatementStartToken_Pl0_Core_TokenKind_Pl0_Core_TokenKind_
+  name: IsStatementStartToken
+  nameWithType: Pl0SourceFormatter.IsStatementStartToken
+  fullName: Pl0.Ide.Pl0SourceFormatter.IsStatementStartToken
+- uid: Pl0.Ide.Pl0SourceFormatter.EnsureSpaceBeforeToken*
+  commentId: Overload:Pl0.Ide.Pl0SourceFormatter.EnsureSpaceBeforeToken
+  href: Pl0.Ide.Pl0SourceFormatter.html#Pl0_Ide_Pl0SourceFormatter_EnsureSpaceBeforeToken_System_Text_StringBuilder_System_Boolean_
+  name: EnsureSpaceBeforeToken
+  nameWithType: Pl0SourceFormatter.EnsureSpaceBeforeToken
+  fullName: Pl0.Ide.Pl0SourceFormatter.EnsureSpaceBeforeToken
+- uid: System.Text.StringBuilder
+  commentId: T:System.Text.StringBuilder
+  parent: System.Text
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.text.stringbuilder
+  name: StringBuilder
+  nameWithType: StringBuilder
+  fullName: System.Text.StringBuilder
+- uid: System.Text
+  commentId: N:System.Text
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Text
+  nameWithType: System.Text
+  fullName: System.Text
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Text
+    name: Text
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Text
+    name: Text
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text
+- uid: Pl0.Ide.Pl0SourceFormatter.AppendIndent*
+  commentId: Overload:Pl0.Ide.Pl0SourceFormatter.AppendIndent
+  href: Pl0.Ide.Pl0SourceFormatter.html#Pl0_Ide_Pl0SourceFormatter_AppendIndent_System_Text_StringBuilder_System_Int32_
+  name: AppendIndent
+  nameWithType: Pl0SourceFormatter.AppendIndent
+  fullName: Pl0.Ide.Pl0SourceFormatter.AppendIndent
+- uid: Pl0.Ide.Pl0SourceFormatter.AppendNewLine*
+  commentId: Overload:Pl0.Ide.Pl0SourceFormatter.AppendNewLine
+  href: Pl0.Ide.Pl0SourceFormatter.html#Pl0_Ide_Pl0SourceFormatter_AppendNewLine_System_Text_StringBuilder_System_Boolean__
+  name: AppendNewLine
+  nameWithType: Pl0SourceFormatter.AppendNewLine
+  fullName: Pl0.Ide.Pl0SourceFormatter.AppendNewLine
+- uid: Pl0.Ide.Pl0SourceFormatter.TrimTrailingSpaces*
+  commentId: Overload:Pl0.Ide.Pl0SourceFormatter.TrimTrailingSpaces
+  href: Pl0.Ide.Pl0SourceFormatter.html#Pl0_Ide_Pl0SourceFormatter_TrimTrailingSpaces_System_Text_StringBuilder_
+  name: TrimTrailingSpaces
+  nameWithType: Pl0SourceFormatter.TrimTrailingSpaces
+  fullName: Pl0.Ide.Pl0SourceFormatter.TrimTrailingSpaces

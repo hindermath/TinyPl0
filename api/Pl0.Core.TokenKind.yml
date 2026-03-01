@@ -48,7 +48,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/TokenKind.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: TokenKind
     path: src/Pl0.Core/TokenKind.cs
@@ -75,7 +75,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/TokenKind.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: Nul
     path: src/Pl0.Core/TokenKind.cs
@@ -103,7 +103,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/TokenKind.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: Ident
     path: src/Pl0.Core/TokenKind.cs
@@ -131,7 +131,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/TokenKind.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: Number
     path: src/Pl0.Core/TokenKind.cs
@@ -159,7 +159,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/TokenKind.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: Plus
     path: src/Pl0.Core/TokenKind.cs
@@ -187,7 +187,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/TokenKind.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: Minus
     path: src/Pl0.Core/TokenKind.cs
@@ -215,7 +215,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/TokenKind.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: Times
     path: src/Pl0.Core/TokenKind.cs
@@ -243,7 +243,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/TokenKind.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: Slash
     path: src/Pl0.Core/TokenKind.cs
@@ -271,7 +271,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/TokenKind.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: Odd
     path: src/Pl0.Core/TokenKind.cs
@@ -299,7 +299,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/TokenKind.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: Equal
     path: src/Pl0.Core/TokenKind.cs
@@ -327,7 +327,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/TokenKind.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: NotEqual
     path: src/Pl0.Core/TokenKind.cs
@@ -355,7 +355,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/TokenKind.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: Less
     path: src/Pl0.Core/TokenKind.cs
@@ -383,7 +383,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/TokenKind.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: LessOrEqual
     path: src/Pl0.Core/TokenKind.cs
@@ -411,7 +411,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/TokenKind.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: Greater
     path: src/Pl0.Core/TokenKind.cs
@@ -439,7 +439,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/TokenKind.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: GreaterOrEqual
     path: src/Pl0.Core/TokenKind.cs
@@ -467,7 +467,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/TokenKind.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: LParen
     path: src/Pl0.Core/TokenKind.cs
@@ -495,7 +495,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/TokenKind.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: RParen
     path: src/Pl0.Core/TokenKind.cs
@@ -523,7 +523,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/TokenKind.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: Comma
     path: src/Pl0.Core/TokenKind.cs
@@ -551,7 +551,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/TokenKind.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: Semicolon
     path: src/Pl0.Core/TokenKind.cs
@@ -579,7 +579,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/TokenKind.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: Period
     path: src/Pl0.Core/TokenKind.cs
@@ -607,7 +607,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/TokenKind.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: Becomes
     path: src/Pl0.Core/TokenKind.cs
@@ -635,7 +635,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/TokenKind.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: Begin
     path: src/Pl0.Core/TokenKind.cs
@@ -663,7 +663,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/TokenKind.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: End
     path: src/Pl0.Core/TokenKind.cs
@@ -691,7 +691,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/TokenKind.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: If
     path: src/Pl0.Core/TokenKind.cs
@@ -719,7 +719,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/TokenKind.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: Then
     path: src/Pl0.Core/TokenKind.cs
@@ -747,7 +747,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/TokenKind.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: While
     path: src/Pl0.Core/TokenKind.cs
@@ -775,7 +775,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/TokenKind.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: Do
     path: src/Pl0.Core/TokenKind.cs
@@ -803,7 +803,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/TokenKind.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: Call
     path: src/Pl0.Core/TokenKind.cs
@@ -831,7 +831,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/TokenKind.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: Const
     path: src/Pl0.Core/TokenKind.cs
@@ -859,7 +859,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/TokenKind.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: Var
     path: src/Pl0.Core/TokenKind.cs
@@ -887,7 +887,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/TokenKind.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: Procedure
     path: src/Pl0.Core/TokenKind.cs
@@ -915,7 +915,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/TokenKind.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: Question
     path: src/Pl0.Core/TokenKind.cs
@@ -943,7 +943,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/TokenKind.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: Bang
     path: src/Pl0.Core/TokenKind.cs
@@ -971,7 +971,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/TokenKind.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: EndOfFile
     path: src/Pl0.Core/TokenKind.cs

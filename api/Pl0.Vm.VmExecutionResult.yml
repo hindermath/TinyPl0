@@ -20,7 +20,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionResult.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: VmExecutionResult
     path: src/Pl0.Vm/VmExecutionResult.cs
@@ -56,7 +56,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionResult.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: .ctor
     path: src/Pl0.Vm/VmExecutionResult.cs
@@ -97,7 +97,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionResult.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: StackSnapshot
     path: src/Pl0.Vm/VmExecutionResult.cs
@@ -128,7 +128,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionResult.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: Top
     path: src/Pl0.Vm/VmExecutionResult.cs
@@ -159,7 +159,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionResult.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: Diagnostics
     path: src/Pl0.Vm/VmExecutionResult.cs
@@ -190,7 +190,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionResult.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: Success
     path: src/Pl0.Vm/VmExecutionResult.cs

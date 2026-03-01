@@ -17,7 +17,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/ConsolePl0Io.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: ConsolePl0Io
     path: src/Pl0.Vm/ConsolePl0Io.cs
@@ -55,7 +55,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/ConsolePl0Io.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: ReadInt
     path: src/Pl0.Vm/ConsolePl0Io.cs
@@ -88,7 +88,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/ConsolePl0Io.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: WriteInt
     path: src/Pl0.Vm/ConsolePl0Io.cs

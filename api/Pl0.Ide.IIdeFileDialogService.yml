@@ -1,0 +1,195 @@
+### YamlMime:ManagedReference
+items:
+- uid: Pl0.Ide.IIdeFileDialogService
+  commentId: T:Pl0.Ide.IIdeFileDialogService
+  id: IIdeFileDialogService
+  parent: Pl0.Ide
+  children:
+  - Pl0.Ide.IIdeFileDialogService.ShowExportDialog(Pl0.Ide.IdeEmitMode,System.String)
+  - Pl0.Ide.IIdeFileDialogService.ShowOpenDialog
+  - Pl0.Ide.IIdeFileDialogService.ShowSaveDialog(System.String)
+  langs:
+  - csharp
+  - vb
+  name: IIdeFileDialogService
+  nameWithType: IIdeFileDialogService
+  fullName: Pl0.Ide.IIdeFileDialogService
+  type: Interface
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeFileDialogService.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: IIdeFileDialogService
+    path: src/Pl0.Ide/IdeFileDialogService.cs
+    startLine: 4
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: internal interface IIdeFileDialogService
+    content.vb: Friend Interface IIdeFileDialogService
+- uid: Pl0.Ide.IIdeFileDialogService.ShowOpenDialog
+  commentId: M:Pl0.Ide.IIdeFileDialogService.ShowOpenDialog
+  id: ShowOpenDialog
+  parent: Pl0.Ide.IIdeFileDialogService
+  langs:
+  - csharp
+  - vb
+  name: ShowOpenDialog()
+  nameWithType: IIdeFileDialogService.ShowOpenDialog()
+  fullName: Pl0.Ide.IIdeFileDialogService.ShowOpenDialog()
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeFileDialogService.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: ShowOpenDialog
+    path: src/Pl0.Ide/IdeFileDialogService.cs
+    startLine: 6
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: string? ShowOpenDialog()
+    return:
+      type: System.String
+    content.vb: Function ShowOpenDialog() As String
+  overload: Pl0.Ide.IIdeFileDialogService.ShowOpenDialog*
+- uid: Pl0.Ide.IIdeFileDialogService.ShowSaveDialog(System.String)
+  commentId: M:Pl0.Ide.IIdeFileDialogService.ShowSaveDialog(System.String)
+  id: ShowSaveDialog(System.String)
+  parent: Pl0.Ide.IIdeFileDialogService
+  langs:
+  - csharp
+  - vb
+  name: ShowSaveDialog(string?)
+  nameWithType: IIdeFileDialogService.ShowSaveDialog(string?)
+  fullName: Pl0.Ide.IIdeFileDialogService.ShowSaveDialog(string?)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeFileDialogService.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: ShowSaveDialog
+    path: src/Pl0.Ide/IdeFileDialogService.cs
+    startLine: 7
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: string? ShowSaveDialog(string? currentPath)
+    parameters:
+    - id: currentPath
+      type: System.String
+    return:
+      type: System.String
+    content.vb: Function ShowSaveDialog(currentPath As String) As String
+  overload: Pl0.Ide.IIdeFileDialogService.ShowSaveDialog*
+  nameWithType.vb: IIdeFileDialogService.ShowSaveDialog(String)
+  fullName.vb: Pl0.Ide.IIdeFileDialogService.ShowSaveDialog(String)
+  name.vb: ShowSaveDialog(String)
+- uid: Pl0.Ide.IIdeFileDialogService.ShowExportDialog(Pl0.Ide.IdeEmitMode,System.String)
+  commentId: M:Pl0.Ide.IIdeFileDialogService.ShowExportDialog(Pl0.Ide.IdeEmitMode,System.String)
+  id: ShowExportDialog(Pl0.Ide.IdeEmitMode,System.String)
+  parent: Pl0.Ide.IIdeFileDialogService
+  langs:
+  - csharp
+  - vb
+  name: ShowExportDialog(IdeEmitMode, string?)
+  nameWithType: IIdeFileDialogService.ShowExportDialog(IdeEmitMode, string?)
+  fullName: Pl0.Ide.IIdeFileDialogService.ShowExportDialog(Pl0.Ide.IdeEmitMode, string?)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeFileDialogService.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: ShowExportDialog
+    path: src/Pl0.Ide/IdeFileDialogService.cs
+    startLine: 8
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: string? ShowExportDialog(IdeEmitMode mode, string? suggestedPath)
+    parameters:
+    - id: mode
+      type: Pl0.Ide.IdeEmitMode
+    - id: suggestedPath
+      type: System.String
+    return:
+      type: System.String
+    content.vb: Function ShowExportDialog(mode As IdeEmitMode, suggestedPath As String) As String
+  overload: Pl0.Ide.IIdeFileDialogService.ShowExportDialog*
+  nameWithType.vb: IIdeFileDialogService.ShowExportDialog(IdeEmitMode, String)
+  fullName.vb: Pl0.Ide.IIdeFileDialogService.ShowExportDialog(Pl0.Ide.IdeEmitMode, String)
+  name.vb: ShowExportDialog(IdeEmitMode, String)
+references:
+- uid: Pl0.Ide
+  commentId: N:Pl0.Ide
+  href: Pl0.html
+  name: Pl0.Ide
+  nameWithType: Pl0.Ide
+  fullName: Pl0.Ide
+  spec.csharp:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Ide
+    name: Ide
+    href: Pl0.Ide.html
+  spec.vb:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Ide
+    name: Ide
+    href: Pl0.Ide.html
+- uid: Pl0.Ide.IIdeFileDialogService.ShowOpenDialog*
+  commentId: Overload:Pl0.Ide.IIdeFileDialogService.ShowOpenDialog
+  href: Pl0.Ide.IIdeFileDialogService.html#Pl0_Ide_IIdeFileDialogService_ShowOpenDialog
+  name: ShowOpenDialog
+  nameWithType: IIdeFileDialogService.ShowOpenDialog
+  fullName: Pl0.Ide.IIdeFileDialogService.ShowOpenDialog
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Pl0.Ide.IIdeFileDialogService.ShowSaveDialog*
+  commentId: Overload:Pl0.Ide.IIdeFileDialogService.ShowSaveDialog
+  href: Pl0.Ide.IIdeFileDialogService.html#Pl0_Ide_IIdeFileDialogService_ShowSaveDialog_System_String_
+  name: ShowSaveDialog
+  nameWithType: IIdeFileDialogService.ShowSaveDialog
+  fullName: Pl0.Ide.IIdeFileDialogService.ShowSaveDialog
+- uid: Pl0.Ide.IIdeFileDialogService.ShowExportDialog*
+  commentId: Overload:Pl0.Ide.IIdeFileDialogService.ShowExportDialog
+  href: Pl0.Ide.IIdeFileDialogService.html#Pl0_Ide_IIdeFileDialogService_ShowExportDialog_Pl0_Ide_IdeEmitMode_System_String_
+  name: ShowExportDialog
+  nameWithType: IIdeFileDialogService.ShowExportDialog
+  fullName: Pl0.Ide.IIdeFileDialogService.ShowExportDialog
+- uid: Pl0.Ide.IdeEmitMode
+  commentId: T:Pl0.Ide.IdeEmitMode
+  parent: Pl0.Ide
+  href: Pl0.Ide.IdeEmitMode.html
+  name: IdeEmitMode
+  nameWithType: IdeEmitMode
+  fullName: Pl0.Ide.IdeEmitMode

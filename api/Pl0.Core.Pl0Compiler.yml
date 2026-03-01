@@ -16,7 +16,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Compiler.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: Pl0Compiler
     path: src/Pl0.Core/Pl0Compiler.cs
@@ -52,7 +52,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Compiler.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: Compile
     path: src/Pl0.Core/Pl0Compiler.cs

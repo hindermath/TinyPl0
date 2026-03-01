@@ -1,0 +1,1474 @@
+### YamlMime:ManagedReference
+items:
+- uid: Pl0.Vm.SteppableVirtualMachine
+  commentId: T:Pl0.Vm.SteppableVirtualMachine
+  id: SteppableVirtualMachine
+  parent: Pl0.Vm
+  children:
+  - Pl0.Vm.SteppableVirtualMachine.BinaryOp(System.Func{System.Int32,System.Int32,System.Int32})
+  - Pl0.Vm.SteppableVirtualMachine.CaptureState
+  - Pl0.Vm.SteppableVirtualMachine.DivisionByZeroExitCode
+  - Pl0.Vm.SteppableVirtualMachine.ExecuteInstruction(Pl0.Core.Instruction)
+  - Pl0.Vm.SteppableVirtualMachine.ExecuteOpr(System.Int32)
+  - Pl0.Vm.SteppableVirtualMachine.Initialize(System.Collections.Generic.IReadOnlyList{Pl0.Core.Instruction},Pl0.Vm.IPl0Io,Pl0.Vm.VirtualMachineOptions)
+  - Pl0.Vm.SteppableVirtualMachine.InputEofExitCode
+  - Pl0.Vm.SteppableVirtualMachine.InputFormatExitCode
+  - Pl0.Vm.SteppableVirtualMachine.IsRunning
+  - Pl0.Vm.SteppableVirtualMachine.IsValidStackIndex(System.Int32)
+  - Pl0.Vm.SteppableVirtualMachine.ResolveBase(System.Int32)
+  - Pl0.Vm.SteppableVirtualMachine.RuntimeErrorExitCode
+  - Pl0.Vm.SteppableVirtualMachine.State
+  - Pl0.Vm.SteppableVirtualMachine.Step
+  - Pl0.Vm.SteppableVirtualMachine.TryPeek(System.Int32)
+  - Pl0.Vm.SteppableVirtualMachine.TryPush
+  - Pl0.Vm.SteppableVirtualMachine.b
+  - Pl0.Vm.SteppableVirtualMachine.diagnostics
+  - Pl0.Vm.SteppableVirtualMachine.initialized
+  - Pl0.Vm.SteppableVirtualMachine.io
+  - Pl0.Vm.SteppableVirtualMachine.options
+  - Pl0.Vm.SteppableVirtualMachine.p
+  - Pl0.Vm.SteppableVirtualMachine.program
+  - Pl0.Vm.SteppableVirtualMachine.stack
+  - Pl0.Vm.SteppableVirtualMachine.t
+  langs:
+  - csharp
+  - vb
+  name: SteppableVirtualMachine
+  nameWithType: SteppableVirtualMachine
+  fullName: Pl0.Vm.SteppableVirtualMachine
+  type: Class
+  source:
+    remote:
+      path: src/Pl0.Vm/SteppableVirtualMachine.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: SteppableVirtualMachine
+    path: src/Pl0.Vm/SteppableVirtualMachine.cs
+    startLine: 7
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  summary: Stateful PL/0 virtual machine with explicit single-step execution.
+  example: []
+  syntax:
+    content: public sealed class SteppableVirtualMachine
+    content.vb: Public NotInheritable Class SteppableVirtualMachine
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Pl0.Vm.SteppableVirtualMachine.RuntimeErrorExitCode
+  commentId: F:Pl0.Vm.SteppableVirtualMachine.RuntimeErrorExitCode
+  id: RuntimeErrorExitCode
+  parent: Pl0.Vm.SteppableVirtualMachine
+  langs:
+  - csharp
+  - vb
+  name: RuntimeErrorExitCode
+  nameWithType: SteppableVirtualMachine.RuntimeErrorExitCode
+  fullName: Pl0.Vm.SteppableVirtualMachine.RuntimeErrorExitCode
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/SteppableVirtualMachine.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: RuntimeErrorExitCode
+    path: src/Pl0.Vm/SteppableVirtualMachine.cs
+    startLine: 9
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private const int RuntimeErrorExitCode = 99
+    return:
+      type: System.Int32
+    content.vb: Private Const RuntimeErrorExitCode As Integer = 99
+- uid: Pl0.Vm.SteppableVirtualMachine.InputEofExitCode
+  commentId: F:Pl0.Vm.SteppableVirtualMachine.InputEofExitCode
+  id: InputEofExitCode
+  parent: Pl0.Vm.SteppableVirtualMachine
+  langs:
+  - csharp
+  - vb
+  name: InputEofExitCode
+  nameWithType: SteppableVirtualMachine.InputEofExitCode
+  fullName: Pl0.Vm.SteppableVirtualMachine.InputEofExitCode
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/SteppableVirtualMachine.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: InputEofExitCode
+    path: src/Pl0.Vm/SteppableVirtualMachine.cs
+    startLine: 10
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private const int InputEofExitCode = 98
+    return:
+      type: System.Int32
+    content.vb: Private Const InputEofExitCode As Integer = 98
+- uid: Pl0.Vm.SteppableVirtualMachine.InputFormatExitCode
+  commentId: F:Pl0.Vm.SteppableVirtualMachine.InputFormatExitCode
+  id: InputFormatExitCode
+  parent: Pl0.Vm.SteppableVirtualMachine
+  langs:
+  - csharp
+  - vb
+  name: InputFormatExitCode
+  nameWithType: SteppableVirtualMachine.InputFormatExitCode
+  fullName: Pl0.Vm.SteppableVirtualMachine.InputFormatExitCode
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/SteppableVirtualMachine.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: InputFormatExitCode
+    path: src/Pl0.Vm/SteppableVirtualMachine.cs
+    startLine: 11
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private const int InputFormatExitCode = 97
+    return:
+      type: System.Int32
+    content.vb: Private Const InputFormatExitCode As Integer = 97
+- uid: Pl0.Vm.SteppableVirtualMachine.DivisionByZeroExitCode
+  commentId: F:Pl0.Vm.SteppableVirtualMachine.DivisionByZeroExitCode
+  id: DivisionByZeroExitCode
+  parent: Pl0.Vm.SteppableVirtualMachine
+  langs:
+  - csharp
+  - vb
+  name: DivisionByZeroExitCode
+  nameWithType: SteppableVirtualMachine.DivisionByZeroExitCode
+  fullName: Pl0.Vm.SteppableVirtualMachine.DivisionByZeroExitCode
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/SteppableVirtualMachine.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: DivisionByZeroExitCode
+    path: src/Pl0.Vm/SteppableVirtualMachine.cs
+    startLine: 12
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private const int DivisionByZeroExitCode = 206
+    return:
+      type: System.Int32
+    content.vb: Private Const DivisionByZeroExitCode As Integer = 206
+- uid: Pl0.Vm.SteppableVirtualMachine.program
+  commentId: F:Pl0.Vm.SteppableVirtualMachine.program
+  id: program
+  parent: Pl0.Vm.SteppableVirtualMachine
+  langs:
+  - csharp
+  - vb
+  name: program
+  nameWithType: SteppableVirtualMachine.program
+  fullName: Pl0.Vm.SteppableVirtualMachine.program
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/SteppableVirtualMachine.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: program
+    path: src/Pl0.Vm/SteppableVirtualMachine.cs
+    startLine: 14
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private IReadOnlyList<Instruction> program
+    return:
+      type: System.Collections.Generic.IReadOnlyList{Pl0.Core.Instruction}
+    content.vb: Private program As IReadOnlyList(Of Instruction)
+- uid: Pl0.Vm.SteppableVirtualMachine.io
+  commentId: F:Pl0.Vm.SteppableVirtualMachine.io
+  id: io
+  parent: Pl0.Vm.SteppableVirtualMachine
+  langs:
+  - csharp
+  - vb
+  name: io
+  nameWithType: SteppableVirtualMachine.io
+  fullName: Pl0.Vm.SteppableVirtualMachine.io
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/SteppableVirtualMachine.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: io
+    path: src/Pl0.Vm/SteppableVirtualMachine.cs
+    startLine: 15
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private IPl0Io io
+    return:
+      type: Pl0.Vm.IPl0Io
+    content.vb: Private io As IPl0Io
+- uid: Pl0.Vm.SteppableVirtualMachine.options
+  commentId: F:Pl0.Vm.SteppableVirtualMachine.options
+  id: options
+  parent: Pl0.Vm.SteppableVirtualMachine
+  langs:
+  - csharp
+  - vb
+  name: options
+  nameWithType: SteppableVirtualMachine.options
+  fullName: Pl0.Vm.SteppableVirtualMachine.options
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/SteppableVirtualMachine.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: options
+    path: src/Pl0.Vm/SteppableVirtualMachine.cs
+    startLine: 16
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private VirtualMachineOptions options
+    return:
+      type: Pl0.Vm.VirtualMachineOptions
+    content.vb: Private options As VirtualMachineOptions
+- uid: Pl0.Vm.SteppableVirtualMachine.diagnostics
+  commentId: F:Pl0.Vm.SteppableVirtualMachine.diagnostics
+  id: diagnostics
+  parent: Pl0.Vm.SteppableVirtualMachine
+  langs:
+  - csharp
+  - vb
+  name: diagnostics
+  nameWithType: SteppableVirtualMachine.diagnostics
+  fullName: Pl0.Vm.SteppableVirtualMachine.diagnostics
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/SteppableVirtualMachine.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: diagnostics
+    path: src/Pl0.Vm/SteppableVirtualMachine.cs
+    startLine: 17
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private readonly List<VmDiagnostic> diagnostics
+    return:
+      type: System.Collections.Generic.List{Pl0.Vm.VmDiagnostic}
+    content.vb: Private ReadOnly diagnostics As List(Of VmDiagnostic)
+- uid: Pl0.Vm.SteppableVirtualMachine.stack
+  commentId: F:Pl0.Vm.SteppableVirtualMachine.stack
+  id: stack
+  parent: Pl0.Vm.SteppableVirtualMachine
+  langs:
+  - csharp
+  - vb
+  name: stack
+  nameWithType: SteppableVirtualMachine.stack
+  fullName: Pl0.Vm.SteppableVirtualMachine.stack
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/SteppableVirtualMachine.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: stack
+    path: src/Pl0.Vm/SteppableVirtualMachine.cs
+    startLine: 18
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private int[] stack
+    return:
+      type: System.Int32[]
+    content.vb: Private stack As Integer()
+- uid: Pl0.Vm.SteppableVirtualMachine.p
+  commentId: F:Pl0.Vm.SteppableVirtualMachine.p
+  id: p
+  parent: Pl0.Vm.SteppableVirtualMachine
+  langs:
+  - csharp
+  - vb
+  name: p
+  nameWithType: SteppableVirtualMachine.p
+  fullName: Pl0.Vm.SteppableVirtualMachine.p
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/SteppableVirtualMachine.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: p
+    path: src/Pl0.Vm/SteppableVirtualMachine.cs
+    startLine: 19
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private int p
+    return:
+      type: System.Int32
+    content.vb: Private p As Integer
+- uid: Pl0.Vm.SteppableVirtualMachine.b
+  commentId: F:Pl0.Vm.SteppableVirtualMachine.b
+  id: b
+  parent: Pl0.Vm.SteppableVirtualMachine
+  langs:
+  - csharp
+  - vb
+  name: b
+  nameWithType: SteppableVirtualMachine.b
+  fullName: Pl0.Vm.SteppableVirtualMachine.b
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/SteppableVirtualMachine.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: b
+    path: src/Pl0.Vm/SteppableVirtualMachine.cs
+    startLine: 20
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private int b
+    return:
+      type: System.Int32
+    content.vb: Private b As Integer
+- uid: Pl0.Vm.SteppableVirtualMachine.t
+  commentId: F:Pl0.Vm.SteppableVirtualMachine.t
+  id: t
+  parent: Pl0.Vm.SteppableVirtualMachine
+  langs:
+  - csharp
+  - vb
+  name: t
+  nameWithType: SteppableVirtualMachine.t
+  fullName: Pl0.Vm.SteppableVirtualMachine.t
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/SteppableVirtualMachine.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: t
+    path: src/Pl0.Vm/SteppableVirtualMachine.cs
+    startLine: 21
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private int t
+    return:
+      type: System.Int32
+    content.vb: Private t As Integer
+- uid: Pl0.Vm.SteppableVirtualMachine.initialized
+  commentId: F:Pl0.Vm.SteppableVirtualMachine.initialized
+  id: initialized
+  parent: Pl0.Vm.SteppableVirtualMachine
+  langs:
+  - csharp
+  - vb
+  name: initialized
+  nameWithType: SteppableVirtualMachine.initialized
+  fullName: Pl0.Vm.SteppableVirtualMachine.initialized
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/SteppableVirtualMachine.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: initialized
+    path: src/Pl0.Vm/SteppableVirtualMachine.cs
+    startLine: 22
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private bool initialized
+    return:
+      type: System.Boolean
+    content.vb: Private initialized As Boolean
+- uid: Pl0.Vm.SteppableVirtualMachine.State
+  commentId: P:Pl0.Vm.SteppableVirtualMachine.State
+  id: State
+  parent: Pl0.Vm.SteppableVirtualMachine
+  langs:
+  - csharp
+  - vb
+  name: State
+  nameWithType: SteppableVirtualMachine.State
+  fullName: Pl0.Vm.SteppableVirtualMachine.State
+  type: Property
+  source:
+    remote:
+      path: src/Pl0.Vm/SteppableVirtualMachine.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: State
+    path: src/Pl0.Vm/SteppableVirtualMachine.cs
+    startLine: 27
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  summary: Gets the current VM state snapshot.
+  example: []
+  syntax:
+    content: public VmState State { get; private set; }
+    parameters: []
+    return:
+      type: Pl0.Vm.VmState
+    content.vb: Public Property State As VmState
+  overload: Pl0.Vm.SteppableVirtualMachine.State*
+- uid: Pl0.Vm.SteppableVirtualMachine.IsRunning
+  commentId: P:Pl0.Vm.SteppableVirtualMachine.IsRunning
+  id: IsRunning
+  parent: Pl0.Vm.SteppableVirtualMachine
+  langs:
+  - csharp
+  - vb
+  name: IsRunning
+  nameWithType: SteppableVirtualMachine.IsRunning
+  fullName: Pl0.Vm.SteppableVirtualMachine.IsRunning
+  type: Property
+  source:
+    remote:
+      path: src/Pl0.Vm/SteppableVirtualMachine.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: IsRunning
+    path: src/Pl0.Vm/SteppableVirtualMachine.cs
+    startLine: 32
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  summary: Gets a value indicating whether execution can continue.
+  example: []
+  syntax:
+    content: public bool IsRunning { get; private set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsRunning As Boolean
+  overload: Pl0.Vm.SteppableVirtualMachine.IsRunning*
+- uid: Pl0.Vm.SteppableVirtualMachine.Initialize(System.Collections.Generic.IReadOnlyList{Pl0.Core.Instruction},Pl0.Vm.IPl0Io,Pl0.Vm.VirtualMachineOptions)
+  commentId: M:Pl0.Vm.SteppableVirtualMachine.Initialize(System.Collections.Generic.IReadOnlyList{Pl0.Core.Instruction},Pl0.Vm.IPl0Io,Pl0.Vm.VirtualMachineOptions)
+  id: Initialize(System.Collections.Generic.IReadOnlyList{Pl0.Core.Instruction},Pl0.Vm.IPl0Io,Pl0.Vm.VirtualMachineOptions)
+  parent: Pl0.Vm.SteppableVirtualMachine
+  langs:
+  - csharp
+  - vb
+  name: Initialize(IReadOnlyList<Instruction>, IPl0Io?, VirtualMachineOptions?)
+  nameWithType: SteppableVirtualMachine.Initialize(IReadOnlyList<Instruction>, IPl0Io?, VirtualMachineOptions?)
+  fullName: Pl0.Vm.SteppableVirtualMachine.Initialize(System.Collections.Generic.IReadOnlyList<Pl0.Core.Instruction>, Pl0.Vm.IPl0Io?, Pl0.Vm.VirtualMachineOptions?)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Vm/SteppableVirtualMachine.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: Initialize
+    path: src/Pl0.Vm/SteppableVirtualMachine.cs
+    startLine: 40
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  summary: Initializes the VM and resets state for debugging.
+  example: []
+  syntax:
+    content: public void Initialize(IReadOnlyList<Instruction> program, IPl0Io? io = null, VirtualMachineOptions? options = null)
+    parameters:
+    - id: program
+      type: System.Collections.Generic.IReadOnlyList{Pl0.Core.Instruction}
+      description: P-Code instructions to execute.
+    - id: io
+      type: Pl0.Vm.IPl0Io
+      description: Optional I/O abstraction.
+    - id: options
+      type: Pl0.Vm.VirtualMachineOptions
+      description: Optional VM options.
+    content.vb: Public Sub Initialize(program As IReadOnlyList(Of Instruction), io As IPl0Io = Nothing, options As VirtualMachineOptions = Nothing)
+  overload: Pl0.Vm.SteppableVirtualMachine.Initialize*
+  nameWithType.vb: SteppableVirtualMachine.Initialize(IReadOnlyList(Of Instruction), IPl0Io, VirtualMachineOptions)
+  fullName.vb: Pl0.Vm.SteppableVirtualMachine.Initialize(System.Collections.Generic.IReadOnlyList(Of Pl0.Core.Instruction), Pl0.Vm.IPl0Io, Pl0.Vm.VirtualMachineOptions)
+  name.vb: Initialize(IReadOnlyList(Of Instruction), IPl0Io, VirtualMachineOptions)
+- uid: Pl0.Vm.SteppableVirtualMachine.Step
+  commentId: M:Pl0.Vm.SteppableVirtualMachine.Step
+  id: Step
+  parent: Pl0.Vm.SteppableVirtualMachine
+  langs:
+  - csharp
+  - vb
+  name: Step()
+  nameWithType: SteppableVirtualMachine.Step()
+  fullName: Pl0.Vm.SteppableVirtualMachine.Step()
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Vm/SteppableVirtualMachine.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: Step
+    path: src/Pl0.Vm/SteppableVirtualMachine.cs
+    startLine: 67
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  summary: Executes exactly one instruction.
+  example: []
+  syntax:
+    content: public VmStepResult Step()
+    return:
+      type: Pl0.Vm.VmStepResult
+      description: Step result with updated state and status.
+    content.vb: Public Function [Step]() As VmStepResult
+  overload: Pl0.Vm.SteppableVirtualMachine.Step*
+- uid: Pl0.Vm.SteppableVirtualMachine.ExecuteInstruction(Pl0.Core.Instruction)
+  commentId: M:Pl0.Vm.SteppableVirtualMachine.ExecuteInstruction(Pl0.Core.Instruction)
+  id: ExecuteInstruction(Pl0.Core.Instruction)
+  parent: Pl0.Vm.SteppableVirtualMachine
+  langs:
+  - csharp
+  - vb
+  name: ExecuteInstruction(Instruction)
+  nameWithType: SteppableVirtualMachine.ExecuteInstruction(Instruction)
+  fullName: Pl0.Vm.SteppableVirtualMachine.ExecuteInstruction(Pl0.Core.Instruction)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Vm/SteppableVirtualMachine.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: ExecuteInstruction
+    path: src/Pl0.Vm/SteppableVirtualMachine.cs
+    startLine: 127
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private bool ExecuteInstruction(Instruction instruction)
+    parameters:
+    - id: instruction
+      type: Pl0.Core.Instruction
+    return:
+      type: System.Boolean
+    content.vb: Private Function ExecuteInstruction(instruction As Instruction) As Boolean
+  overload: Pl0.Vm.SteppableVirtualMachine.ExecuteInstruction*
+- uid: Pl0.Vm.SteppableVirtualMachine.ExecuteOpr(System.Int32)
+  commentId: M:Pl0.Vm.SteppableVirtualMachine.ExecuteOpr(System.Int32)
+  id: ExecuteOpr(System.Int32)
+  parent: Pl0.Vm.SteppableVirtualMachine
+  langs:
+  - csharp
+  - vb
+  name: ExecuteOpr(int)
+  nameWithType: SteppableVirtualMachine.ExecuteOpr(int)
+  fullName: Pl0.Vm.SteppableVirtualMachine.ExecuteOpr(int)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Vm/SteppableVirtualMachine.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: ExecuteOpr
+    path: src/Pl0.Vm/SteppableVirtualMachine.cs
+    startLine: 258
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private bool ExecuteOpr(int code)
+    parameters:
+    - id: code
+      type: System.Int32
+    return:
+      type: System.Boolean
+    content.vb: Private Function ExecuteOpr(code As Integer) As Boolean
+  overload: Pl0.Vm.SteppableVirtualMachine.ExecuteOpr*
+  nameWithType.vb: SteppableVirtualMachine.ExecuteOpr(Integer)
+  fullName.vb: Pl0.Vm.SteppableVirtualMachine.ExecuteOpr(Integer)
+  name.vb: ExecuteOpr(Integer)
+- uid: Pl0.Vm.SteppableVirtualMachine.BinaryOp(System.Func{System.Int32,System.Int32,System.Int32})
+  commentId: M:Pl0.Vm.SteppableVirtualMachine.BinaryOp(System.Func{System.Int32,System.Int32,System.Int32})
+  id: BinaryOp(System.Func{System.Int32,System.Int32,System.Int32})
+  parent: Pl0.Vm.SteppableVirtualMachine
+  langs:
+  - csharp
+  - vb
+  name: BinaryOp(Func<int, int, int>)
+  nameWithType: SteppableVirtualMachine.BinaryOp(Func<int, int, int>)
+  fullName: Pl0.Vm.SteppableVirtualMachine.BinaryOp(System.Func<int, int, int>)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Vm/SteppableVirtualMachine.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: BinaryOp
+    path: src/Pl0.Vm/SteppableVirtualMachine.cs
+    startLine: 369
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private bool BinaryOp(Func<int, int, int> op)
+    parameters:
+    - id: op
+      type: System.Func{System.Int32,System.Int32,System.Int32}
+    return:
+      type: System.Boolean
+    content.vb: Private Function BinaryOp(op As Func(Of Integer, Integer, Integer)) As Boolean
+  overload: Pl0.Vm.SteppableVirtualMachine.BinaryOp*
+  nameWithType.vb: SteppableVirtualMachine.BinaryOp(Func(Of Integer, Integer, Integer))
+  fullName.vb: Pl0.Vm.SteppableVirtualMachine.BinaryOp(System.Func(Of Integer, Integer, Integer))
+  name.vb: BinaryOp(Func(Of Integer, Integer, Integer))
+- uid: Pl0.Vm.SteppableVirtualMachine.ResolveBase(System.Int32)
+  commentId: M:Pl0.Vm.SteppableVirtualMachine.ResolveBase(System.Int32)
+  id: ResolveBase(System.Int32)
+  parent: Pl0.Vm.SteppableVirtualMachine
+  langs:
+  - csharp
+  - vb
+  name: ResolveBase(int)
+  nameWithType: SteppableVirtualMachine.ResolveBase(int)
+  fullName: Pl0.Vm.SteppableVirtualMachine.ResolveBase(int)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Vm/SteppableVirtualMachine.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: ResolveBase
+    path: src/Pl0.Vm/SteppableVirtualMachine.cs
+    startLine: 381
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private int ResolveBase(int level)
+    parameters:
+    - id: level
+      type: System.Int32
+    return:
+      type: System.Int32
+    content.vb: Private Function ResolveBase(level As Integer) As Integer
+  overload: Pl0.Vm.SteppableVirtualMachine.ResolveBase*
+  nameWithType.vb: SteppableVirtualMachine.ResolveBase(Integer)
+  fullName.vb: Pl0.Vm.SteppableVirtualMachine.ResolveBase(Integer)
+  name.vb: ResolveBase(Integer)
+- uid: Pl0.Vm.SteppableVirtualMachine.TryPush
+  commentId: M:Pl0.Vm.SteppableVirtualMachine.TryPush
+  id: TryPush
+  parent: Pl0.Vm.SteppableVirtualMachine
+  langs:
+  - csharp
+  - vb
+  name: TryPush()
+  nameWithType: SteppableVirtualMachine.TryPush()
+  fullName: Pl0.Vm.SteppableVirtualMachine.TryPush()
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Vm/SteppableVirtualMachine.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: TryPush
+    path: src/Pl0.Vm/SteppableVirtualMachine.cs
+    startLine: 401
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private bool TryPush()
+    return:
+      type: System.Boolean
+    content.vb: Private Function TryPush() As Boolean
+  overload: Pl0.Vm.SteppableVirtualMachine.TryPush*
+- uid: Pl0.Vm.SteppableVirtualMachine.TryPeek(System.Int32)
+  commentId: M:Pl0.Vm.SteppableVirtualMachine.TryPeek(System.Int32)
+  id: TryPeek(System.Int32)
+  parent: Pl0.Vm.SteppableVirtualMachine
+  langs:
+  - csharp
+  - vb
+  name: TryPeek(int)
+  nameWithType: SteppableVirtualMachine.TryPeek(int)
+  fullName: Pl0.Vm.SteppableVirtualMachine.TryPeek(int)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Vm/SteppableVirtualMachine.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: TryPeek
+    path: src/Pl0.Vm/SteppableVirtualMachine.cs
+    startLine: 413
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private bool TryPeek(int index)
+    parameters:
+    - id: index
+      type: System.Int32
+    return:
+      type: System.Boolean
+    content.vb: Private Function TryPeek(index As Integer) As Boolean
+  overload: Pl0.Vm.SteppableVirtualMachine.TryPeek*
+  nameWithType.vb: SteppableVirtualMachine.TryPeek(Integer)
+  fullName.vb: Pl0.Vm.SteppableVirtualMachine.TryPeek(Integer)
+  name.vb: TryPeek(Integer)
+- uid: Pl0.Vm.SteppableVirtualMachine.IsValidStackIndex(System.Int32)
+  commentId: M:Pl0.Vm.SteppableVirtualMachine.IsValidStackIndex(System.Int32)
+  id: IsValidStackIndex(System.Int32)
+  parent: Pl0.Vm.SteppableVirtualMachine
+  langs:
+  - csharp
+  - vb
+  name: IsValidStackIndex(int)
+  nameWithType: SteppableVirtualMachine.IsValidStackIndex(int)
+  fullName: Pl0.Vm.SteppableVirtualMachine.IsValidStackIndex(int)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Vm/SteppableVirtualMachine.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: IsValidStackIndex
+    path: src/Pl0.Vm/SteppableVirtualMachine.cs
+    startLine: 424
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private bool IsValidStackIndex(int index)
+    parameters:
+    - id: index
+      type: System.Int32
+    return:
+      type: System.Boolean
+    content.vb: Private Function IsValidStackIndex(index As Integer) As Boolean
+  overload: Pl0.Vm.SteppableVirtualMachine.IsValidStackIndex*
+  nameWithType.vb: SteppableVirtualMachine.IsValidStackIndex(Integer)
+  fullName.vb: Pl0.Vm.SteppableVirtualMachine.IsValidStackIndex(Integer)
+  name.vb: IsValidStackIndex(Integer)
+- uid: Pl0.Vm.SteppableVirtualMachine.CaptureState
+  commentId: M:Pl0.Vm.SteppableVirtualMachine.CaptureState
+  id: CaptureState
+  parent: Pl0.Vm.SteppableVirtualMachine
+  langs:
+  - csharp
+  - vb
+  name: CaptureState()
+  nameWithType: SteppableVirtualMachine.CaptureState()
+  fullName: Pl0.Vm.SteppableVirtualMachine.CaptureState()
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Vm/SteppableVirtualMachine.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: CaptureState
+    path: src/Pl0.Vm/SteppableVirtualMachine.cs
+    startLine: 426
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private VmState CaptureState()
+    return:
+      type: Pl0.Vm.VmState
+    content.vb: Private Function CaptureState() As VmState
+  overload: Pl0.Vm.SteppableVirtualMachine.CaptureState*
+references:
+- uid: Pl0.Vm
+  commentId: N:Pl0.Vm
+  href: Pl0.html
+  name: Pl0.Vm
+  nameWithType: Pl0.Vm
+  fullName: Pl0.Vm
+  spec.csharp:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Vm
+    name: Vm
+    href: Pl0.Vm.html
+  spec.vb:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Vm
+    name: Vm
+    href: Pl0.Vm.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Collections.Generic.IReadOnlyList{Pl0.Core.Instruction}
+  commentId: T:System.Collections.Generic.IReadOnlyList{Pl0.Core.Instruction}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<Instruction>
+  nameWithType: IReadOnlyList<Instruction>
+  fullName: System.Collections.Generic.IReadOnlyList<Pl0.Core.Instruction>
+  nameWithType.vb: IReadOnlyList(Of Instruction)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of Pl0.Core.Instruction)
+  name.vb: IReadOnlyList(Of Instruction)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: Pl0.Core.Instruction
+    name: Instruction
+    href: Pl0.Core.Instruction.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Pl0.Core.Instruction
+    name: Instruction
+    href: Pl0.Core.Instruction.html
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Pl0.Vm.IPl0Io
+  commentId: T:Pl0.Vm.IPl0Io
+  parent: Pl0.Vm
+  href: Pl0.Vm.IPl0Io.html
+  name: IPl0Io
+  nameWithType: IPl0Io
+  fullName: Pl0.Vm.IPl0Io
+- uid: Pl0.Vm.VirtualMachineOptions
+  commentId: T:Pl0.Vm.VirtualMachineOptions
+  parent: Pl0.Vm
+  href: Pl0.Vm.VirtualMachineOptions.html
+  name: VirtualMachineOptions
+  nameWithType: VirtualMachineOptions
+  fullName: Pl0.Vm.VirtualMachineOptions
+- uid: System.Collections.Generic.List{Pl0.Vm.VmDiagnostic}
+  commentId: T:System.Collections.Generic.List{Pl0.Vm.VmDiagnostic}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<VmDiagnostic>
+  nameWithType: List<VmDiagnostic>
+  fullName: System.Collections.Generic.List<Pl0.Vm.VmDiagnostic>
+  nameWithType.vb: List(Of VmDiagnostic)
+  fullName.vb: System.Collections.Generic.List(Of Pl0.Vm.VmDiagnostic)
+  name.vb: List(Of VmDiagnostic)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: Pl0.Vm.VmDiagnostic
+    name: VmDiagnostic
+    href: Pl0.Vm.VmDiagnostic.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Pl0.Vm.VmDiagnostic
+    name: VmDiagnostic
+    href: Pl0.Vm.VmDiagnostic.html
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Int32[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int[]
+  nameWithType: int[]
+  fullName: int[]
+  nameWithType.vb: Integer()
+  fullName.vb: Integer()
+  name.vb: Integer()
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: (
+  - name: )
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Pl0.Vm.SteppableVirtualMachine.State*
+  commentId: Overload:Pl0.Vm.SteppableVirtualMachine.State
+  href: Pl0.Vm.SteppableVirtualMachine.html#Pl0_Vm_SteppableVirtualMachine_State
+  name: State
+  nameWithType: SteppableVirtualMachine.State
+  fullName: Pl0.Vm.SteppableVirtualMachine.State
+- uid: Pl0.Vm.VmState
+  commentId: T:Pl0.Vm.VmState
+  parent: Pl0.Vm
+  href: Pl0.Vm.VmState.html
+  name: VmState
+  nameWithType: VmState
+  fullName: Pl0.Vm.VmState
+- uid: Pl0.Vm.SteppableVirtualMachine.IsRunning*
+  commentId: Overload:Pl0.Vm.SteppableVirtualMachine.IsRunning
+  href: Pl0.Vm.SteppableVirtualMachine.html#Pl0_Vm_SteppableVirtualMachine_IsRunning
+  name: IsRunning
+  nameWithType: SteppableVirtualMachine.IsRunning
+  fullName: Pl0.Vm.SteppableVirtualMachine.IsRunning
+- uid: Pl0.Vm.SteppableVirtualMachine.Initialize*
+  commentId: Overload:Pl0.Vm.SteppableVirtualMachine.Initialize
+  href: Pl0.Vm.SteppableVirtualMachine.html#Pl0_Vm_SteppableVirtualMachine_Initialize_System_Collections_Generic_IReadOnlyList_Pl0_Core_Instruction__Pl0_Vm_IPl0Io_Pl0_Vm_VirtualMachineOptions_
+  name: Initialize
+  nameWithType: SteppableVirtualMachine.Initialize
+  fullName: Pl0.Vm.SteppableVirtualMachine.Initialize
+- uid: Pl0.Vm.SteppableVirtualMachine.Step*
+  commentId: Overload:Pl0.Vm.SteppableVirtualMachine.Step
+  href: Pl0.Vm.SteppableVirtualMachine.html#Pl0_Vm_SteppableVirtualMachine_Step
+  name: Step
+  nameWithType: SteppableVirtualMachine.Step
+  fullName: Pl0.Vm.SteppableVirtualMachine.Step
+- uid: Pl0.Vm.VmStepResult
+  commentId: T:Pl0.Vm.VmStepResult
+  parent: Pl0.Vm
+  href: Pl0.Vm.VmStepResult.html
+  name: VmStepResult
+  nameWithType: VmStepResult
+  fullName: Pl0.Vm.VmStepResult
+- uid: Pl0.Vm.SteppableVirtualMachine.ExecuteInstruction*
+  commentId: Overload:Pl0.Vm.SteppableVirtualMachine.ExecuteInstruction
+  href: Pl0.Vm.SteppableVirtualMachine.html#Pl0_Vm_SteppableVirtualMachine_ExecuteInstruction_Pl0_Core_Instruction_
+  name: ExecuteInstruction
+  nameWithType: SteppableVirtualMachine.ExecuteInstruction
+  fullName: Pl0.Vm.SteppableVirtualMachine.ExecuteInstruction
+- uid: Pl0.Core.Instruction
+  commentId: T:Pl0.Core.Instruction
+  parent: Pl0.Core
+  href: Pl0.Core.Instruction.html
+  name: Instruction
+  nameWithType: Instruction
+  fullName: Pl0.Core.Instruction
+- uid: Pl0.Core
+  commentId: N:Pl0.Core
+  href: Pl0.html
+  name: Pl0.Core
+  nameWithType: Pl0.Core
+  fullName: Pl0.Core
+  spec.csharp:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Core
+    name: Core
+    href: Pl0.Core.html
+  spec.vb:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Core
+    name: Core
+    href: Pl0.Core.html
+- uid: Pl0.Vm.SteppableVirtualMachine.ExecuteOpr*
+  commentId: Overload:Pl0.Vm.SteppableVirtualMachine.ExecuteOpr
+  href: Pl0.Vm.SteppableVirtualMachine.html#Pl0_Vm_SteppableVirtualMachine_ExecuteOpr_System_Int32_
+  name: ExecuteOpr
+  nameWithType: SteppableVirtualMachine.ExecuteOpr
+  fullName: Pl0.Vm.SteppableVirtualMachine.ExecuteOpr
+- uid: Pl0.Vm.SteppableVirtualMachine.BinaryOp*
+  commentId: Overload:Pl0.Vm.SteppableVirtualMachine.BinaryOp
+  href: Pl0.Vm.SteppableVirtualMachine.html#Pl0_Vm_SteppableVirtualMachine_BinaryOp_System_Func_System_Int32_System_Int32_System_Int32__
+  name: BinaryOp
+  nameWithType: SteppableVirtualMachine.BinaryOp
+  fullName: Pl0.Vm.SteppableVirtualMachine.BinaryOp
+- uid: System.Func{System.Int32,System.Int32,System.Int32}
+  commentId: T:System.Func{System.Int32,System.Int32,System.Int32}
+  parent: System
+  definition: System.Func`3
+  href: https://learn.microsoft.com/dotnet/api/system.func-3
+  name: Func<int, int, int>
+  nameWithType: Func<int, int, int>
+  fullName: System.Func<int, int, int>
+  nameWithType.vb: Func(Of Integer, Integer, Integer)
+  fullName.vb: System.Func(Of Integer, Integer, Integer)
+  name.vb: Func(Of Integer, Integer, Integer)
+  spec.csharp:
+  - uid: System.Func`3
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-3
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`3
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-3
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: System.Func`3
+  commentId: T:System.Func`3
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.func-3
+  name: Func<T1, T2, TResult>
+  nameWithType: Func<T1, T2, TResult>
+  fullName: System.Func<T1, T2, TResult>
+  nameWithType.vb: Func(Of T1, T2, TResult)
+  fullName.vb: System.Func(Of T1, T2, TResult)
+  name.vb: Func(Of T1, T2, TResult)
+  spec.csharp:
+  - uid: System.Func`3
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-3
+  - name: <
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`3
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-3
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: Pl0.Vm.SteppableVirtualMachine.ResolveBase*
+  commentId: Overload:Pl0.Vm.SteppableVirtualMachine.ResolveBase
+  href: Pl0.Vm.SteppableVirtualMachine.html#Pl0_Vm_SteppableVirtualMachine_ResolveBase_System_Int32_
+  name: ResolveBase
+  nameWithType: SteppableVirtualMachine.ResolveBase
+  fullName: Pl0.Vm.SteppableVirtualMachine.ResolveBase
+- uid: Pl0.Vm.SteppableVirtualMachine.TryPush*
+  commentId: Overload:Pl0.Vm.SteppableVirtualMachine.TryPush
+  href: Pl0.Vm.SteppableVirtualMachine.html#Pl0_Vm_SteppableVirtualMachine_TryPush
+  name: TryPush
+  nameWithType: SteppableVirtualMachine.TryPush
+  fullName: Pl0.Vm.SteppableVirtualMachine.TryPush
+- uid: Pl0.Vm.SteppableVirtualMachine.TryPeek*
+  commentId: Overload:Pl0.Vm.SteppableVirtualMachine.TryPeek
+  href: Pl0.Vm.SteppableVirtualMachine.html#Pl0_Vm_SteppableVirtualMachine_TryPeek_System_Int32_
+  name: TryPeek
+  nameWithType: SteppableVirtualMachine.TryPeek
+  fullName: Pl0.Vm.SteppableVirtualMachine.TryPeek
+- uid: Pl0.Vm.SteppableVirtualMachine.IsValidStackIndex*
+  commentId: Overload:Pl0.Vm.SteppableVirtualMachine.IsValidStackIndex
+  href: Pl0.Vm.SteppableVirtualMachine.html#Pl0_Vm_SteppableVirtualMachine_IsValidStackIndex_System_Int32_
+  name: IsValidStackIndex
+  nameWithType: SteppableVirtualMachine.IsValidStackIndex
+  fullName: Pl0.Vm.SteppableVirtualMachine.IsValidStackIndex
+- uid: Pl0.Vm.SteppableVirtualMachine.CaptureState*
+  commentId: Overload:Pl0.Vm.SteppableVirtualMachine.CaptureState
+  href: Pl0.Vm.SteppableVirtualMachine.html#Pl0_Vm_SteppableVirtualMachine_CaptureState
+  name: CaptureState
+  nameWithType: SteppableVirtualMachine.CaptureState
+  fullName: Pl0.Vm.SteppableVirtualMachine.CaptureState

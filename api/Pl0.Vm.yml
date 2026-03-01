@@ -7,10 +7,14 @@ items:
   - Pl0.Vm.BufferedPl0Io
   - Pl0.Vm.ConsolePl0Io
   - Pl0.Vm.IPl0Io
+  - Pl0.Vm.SteppableVirtualMachine
   - Pl0.Vm.VirtualMachine
   - Pl0.Vm.VirtualMachineOptions
   - Pl0.Vm.VmDiagnostic
   - Pl0.Vm.VmExecutionResult
+  - Pl0.Vm.VmState
+  - Pl0.Vm.VmStepResult
+  - Pl0.Vm.VmStepStatus
   langs:
   - csharp
   - vb
@@ -40,8 +44,16 @@ references:
   name: IPl0Io
   nameWithType: IPl0Io
   fullName: Pl0.Vm.IPl0Io
+- uid: Pl0.Vm.SteppableVirtualMachine
+  commentId: T:Pl0.Vm.SteppableVirtualMachine
+  parent: Pl0.Vm
+  href: Pl0.Vm.SteppableVirtualMachine.html
+  name: SteppableVirtualMachine
+  nameWithType: SteppableVirtualMachine
+  fullName: Pl0.Vm.SteppableVirtualMachine
 - uid: Pl0.Vm.VirtualMachine
   commentId: T:Pl0.Vm.VirtualMachine
+  parent: Pl0.Vm
   href: Pl0.Vm.VirtualMachine.html
   name: VirtualMachine
   nameWithType: VirtualMachine
@@ -66,6 +78,27 @@ references:
   name: VmExecutionResult
   nameWithType: VmExecutionResult
   fullName: Pl0.Vm.VmExecutionResult
+- uid: Pl0.Vm.VmState
+  commentId: T:Pl0.Vm.VmState
+  parent: Pl0.Vm
+  href: Pl0.Vm.VmState.html
+  name: VmState
+  nameWithType: VmState
+  fullName: Pl0.Vm.VmState
+- uid: Pl0.Vm.VmStepResult
+  commentId: T:Pl0.Vm.VmStepResult
+  parent: Pl0.Vm
+  href: Pl0.Vm.VmStepResult.html
+  name: VmStepResult
+  nameWithType: VmStepResult
+  fullName: Pl0.Vm.VmStepResult
+- uid: Pl0.Vm.VmStepStatus
+  commentId: T:Pl0.Vm.VmStepStatus
+  parent: Pl0.Vm
+  href: Pl0.Vm.VmStepStatus.html
+  name: VmStepStatus
+  nameWithType: VmStepStatus
+  fullName: Pl0.Vm.VmStepStatus
 - uid: Pl0.Vm
   commentId: N:Pl0.Vm
   href: Pl0.html

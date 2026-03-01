@@ -86,6 +86,97 @@ items:
   - uid: Pl0.Core.TokenKind
     name: TokenKind
     type: Enum
+- uid: Pl0.Ide
+  name: Pl0.Ide
+  type: Namespace
+  items:
+  - uid: Pl0.Ide.IIdeAboutDialogService
+    name: IIdeAboutDialogService
+    type: Interface
+  - uid: Pl0.Ide.IIdeCompilerSettingsDialogService
+    name: IIdeCompilerSettingsDialogService
+    type: Interface
+  - uid: Pl0.Ide.IIdeFileDialogService
+    name: IIdeFileDialogService
+    type: Interface
+  - uid: Pl0.Ide.IIdeFileStorage
+    name: IIdeFileStorage
+    type: Interface
+  - uid: Pl0.Ide.IIdeMessageDialogService
+    name: IIdeMessageDialogService
+    type: Interface
+  - uid: Pl0.Ide.IIdeRuntimeDialogService
+    name: IIdeRuntimeDialogService
+    type: Interface
+  - uid: Pl0.Ide.IdeCodeDisplayMode
+    name: IdeCodeDisplayMode
+    type: Enum
+  - uid: Pl0.Ide.IdeCompilerOptionsRules
+    name: IdeCompilerOptionsRules
+    type: Class
+  - uid: Pl0.Ide.IdeCompilerSettingsDialogResult
+    name: IdeCompilerSettingsDialogResult
+    type: Class
+  - uid: Pl0.Ide.IdeCompilerSettingsDialogState
+    name: IdeCompilerSettingsDialogState
+    type: Class
+  - uid: Pl0.Ide.IdeDebugHighlightKind
+    name: IdeDebugHighlightKind
+    type: Enum
+  - uid: Pl0.Ide.IdeDebugHighlightSpan
+    name: IdeDebugHighlightSpan
+    type: Struct
+  - uid: Pl0.Ide.IdeDebugView
+    name: IdeDebugView
+    type: Class
+  - uid: Pl0.Ide.IdeEmitMode
+    name: IdeEmitMode
+    type: Enum
+  - uid: Pl0.Ide.IdeLookAndFeel
+    name: IdeLookAndFeel
+    type: Class
+  - uid: Pl0.Ide.IdeMainView
+    name: IdeMainView
+    type: Class
+  - uid: Pl0.Ide.IdeRainbowAsciiArtView
+    name: IdeRainbowAsciiArtView
+    type: Class
+  - uid: Pl0.Ide.IdeRuntimeIo
+    name: IdeRuntimeIo
+    type: Class
+  - uid: Pl0.Ide.PhysicalIdeFileStorage
+    name: PhysicalIdeFileStorage
+    type: Class
+  - uid: Pl0.Ide.Pl0HighlightKind
+    name: Pl0HighlightKind
+    type: Enum
+  - uid: Pl0.Ide.Pl0SourceEditorView
+    name: Pl0SourceEditorView
+    type: Class
+  - uid: Pl0.Ide.Pl0SourceFormatter
+    name: Pl0SourceFormatter
+    type: Class
+  - uid: Pl0.Ide.Pl0SourceFormatter.ProcedureFrame
+    name: Pl0SourceFormatter.ProcedureFrame
+    type: Class
+  - uid: Pl0.Ide.Program
+    name: Program
+    type: Class
+  - uid: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService
+    name: TerminalGuiIdeCompilerSettingsDialogService
+    type: Class
+  - uid: Pl0.Ide.TerminalGuiIdeFileDialogService
+    name: TerminalGuiIdeFileDialogService
+    type: Class
+  - uid: Pl0.Ide.TerminalGuiIdeFileDialogService.Pl0SaveAllowedType
+    name: TerminalGuiIdeFileDialogService.Pl0SaveAllowedType
+    type: Class
+  - uid: Pl0.Ide.TerminalGuiIdeMessageDialogService
+    name: TerminalGuiIdeMessageDialogService
+    type: Class
+  - uid: Pl0.Ide.TerminalGuiIdeRuntimeDialogService
+    name: TerminalGuiIdeRuntimeDialogService
+    type: Class
 - uid: Pl0.Vm
   name: Pl0.Vm
   type: Namespace
@@ -99,6 +190,9 @@ items:
   - uid: Pl0.Vm.IPl0Io
     name: IPl0Io
     type: Interface
+  - uid: Pl0.Vm.SteppableVirtualMachine
+    name: SteppableVirtualMachine
+    type: Class
   - uid: Pl0.Vm.VirtualMachine
     name: VirtualMachine
     type: Class
@@ -111,4 +205,13 @@ items:
   - uid: Pl0.Vm.VmExecutionResult
     name: VmExecutionResult
     type: Class
+  - uid: Pl0.Vm.VmState
+    name: VmState
+    type: Class
+  - uid: Pl0.Vm.VmStepResult
+    name: VmStepResult
+    type: Class
+  - uid: Pl0.Vm.VmStepStatus
+    name: VmStepStatus
+    type: Enum
 memberLayout: SamePage

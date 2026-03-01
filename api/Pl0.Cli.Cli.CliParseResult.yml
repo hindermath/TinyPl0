@@ -20,7 +20,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CliParseResult.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: CliParseResult
     path: src/Pl0.Cli/Cli/CliParseResult.cs
@@ -56,7 +56,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CliParseResult.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: .ctor
     path: src/Pl0.Cli/Cli/CliParseResult.cs
@@ -94,7 +94,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CliParseResult.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: Options
     path: src/Pl0.Cli/Cli/CliParseResult.cs
@@ -125,7 +125,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CliParseResult.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: Diagnostics
     path: src/Pl0.Cli/Cli/CliParseResult.cs
@@ -156,7 +156,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CliParseResult.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: HasErrors
     path: src/Pl0.Cli/Cli/CliParseResult.cs
@@ -187,7 +187,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CliParseResult.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: ExitCode
     path: src/Pl0.Cli/Cli/CliParseResult.cs

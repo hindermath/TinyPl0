@@ -19,7 +19,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VirtualMachineOptions.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: VirtualMachineOptions
     path: src/Pl0.Vm/VirtualMachineOptions.cs
@@ -57,7 +57,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VirtualMachineOptions.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: .ctor
     path: src/Pl0.Vm/VirtualMachineOptions.cs
@@ -95,7 +95,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VirtualMachineOptions.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: StackSize
     path: src/Pl0.Vm/VirtualMachineOptions.cs
@@ -126,7 +126,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VirtualMachineOptions.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: EnableStoreTrace
     path: src/Pl0.Vm/VirtualMachineOptions.cs
@@ -157,7 +157,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VirtualMachineOptions.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: Default
     path: src/Pl0.Vm/VirtualMachineOptions.cs

@@ -55,6 +55,7 @@ references:
   fullName: Pl0.Core.CompilerOptions
 - uid: Pl0.Core.Instruction
   commentId: T:Pl0.Core.Instruction
+  parent: Pl0.Core
   href: Pl0.Core.Instruction.html
   name: Instruction
   nameWithType: Instruction
@@ -87,6 +88,7 @@ references:
   fullName: Pl0.Core.PCodeSerializer
 - uid: Pl0.Core.Pl0Compiler
   commentId: T:Pl0.Core.Pl0Compiler
+  parent: Pl0.Core
   href: Pl0.Core.Pl0Compiler.html
   name: Pl0Compiler
   nameWithType: Pl0Compiler
