@@ -1,0 +1,161 @@
+### YamlMime:ManagedReference
+items:
+- uid: Pl0.Ide.IIdeRuntimeDialogService
+  commentId: T:Pl0.Ide.IIdeRuntimeDialogService
+  id: IIdeRuntimeDialogService
+  parent: Pl0.Ide
+  children:
+  - Pl0.Ide.IIdeRuntimeDialogService.ReadInt(System.String)
+  langs:
+  - csharp
+  - vb
+  name: IIdeRuntimeDialogService
+  nameWithType: IIdeRuntimeDialogService
+  fullName: Pl0.Ide.IIdeRuntimeDialogService
+  type: Interface
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeRuntimeDialogService.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: IIdeRuntimeDialogService
+    path: src/Pl0.Ide/IdeRuntimeDialogService.cs
+    startLine: 5
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: internal interface IIdeRuntimeDialogService
+    content.vb: Friend Interface IIdeRuntimeDialogService
+- uid: Pl0.Ide.IIdeRuntimeDialogService.ReadInt(System.String)
+  commentId: M:Pl0.Ide.IIdeRuntimeDialogService.ReadInt(System.String)
+  id: ReadInt(System.String)
+  parent: Pl0.Ide.IIdeRuntimeDialogService
+  langs:
+  - csharp
+  - vb
+  name: ReadInt(string)
+  nameWithType: IIdeRuntimeDialogService.ReadInt(string)
+  fullName: Pl0.Ide.IIdeRuntimeDialogService.ReadInt(string)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeRuntimeDialogService.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: ReadInt
+    path: src/Pl0.Ide/IdeRuntimeDialogService.cs
+    startLine: 7
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: int? ReadInt(string prompt)
+    parameters:
+    - id: prompt
+      type: System.String
+    return:
+      type: System.Nullable{System.Int32}
+    content.vb: Function ReadInt(prompt As String) As Integer?
+  overload: Pl0.Ide.IIdeRuntimeDialogService.ReadInt*
+  nameWithType.vb: IIdeRuntimeDialogService.ReadInt(String)
+  fullName.vb: Pl0.Ide.IIdeRuntimeDialogService.ReadInt(String)
+  name.vb: ReadInt(String)
+references:
+- uid: Pl0.Ide
+  commentId: N:Pl0.Ide
+  href: Pl0.html
+  name: Pl0.Ide
+  nameWithType: Pl0.Ide
+  fullName: Pl0.Ide
+  spec.csharp:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Ide
+    name: Ide
+    href: Pl0.Ide.html
+  spec.vb:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Ide
+    name: Ide
+    href: Pl0.Ide.html
+- uid: Pl0.Ide.IIdeRuntimeDialogService.ReadInt*
+  commentId: Overload:Pl0.Ide.IIdeRuntimeDialogService.ReadInt
+  href: Pl0.Ide.IIdeRuntimeDialogService.html#Pl0_Ide_IIdeRuntimeDialogService_ReadInt_System_String_
+  name: ReadInt
+  nameWithType: IIdeRuntimeDialogService.ReadInt
+  fullName: Pl0.Ide.IIdeRuntimeDialogService.ReadInt
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Nullable{System.Int32}
+  commentId: T:System.Nullable{System.Int32}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int?
+  nameWithType: int?
+  fullName: int?
+  nameWithType.vb: Integer?
+  fullName.vb: Integer?
+  name.vb: Integer?
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )

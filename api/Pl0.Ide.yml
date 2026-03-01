@@ -1,0 +1,287 @@
+### YamlMime:ManagedReference
+items:
+- uid: Pl0.Ide
+  commentId: N:Pl0.Ide
+  id: Pl0.Ide
+  children:
+  - Pl0.Ide.IIdeAboutDialogService
+  - Pl0.Ide.IIdeCompilerSettingsDialogService
+  - Pl0.Ide.IIdeFileDialogService
+  - Pl0.Ide.IIdeFileStorage
+  - Pl0.Ide.IIdeMessageDialogService
+  - Pl0.Ide.IIdeRuntimeDialogService
+  - Pl0.Ide.IdeCodeDisplayMode
+  - Pl0.Ide.IdeCompilerOptionsRules
+  - Pl0.Ide.IdeCompilerSettingsDialogResult
+  - Pl0.Ide.IdeCompilerSettingsDialogState
+  - Pl0.Ide.IdeDebugHighlightKind
+  - Pl0.Ide.IdeDebugHighlightSpan
+  - Pl0.Ide.IdeDebugView
+  - Pl0.Ide.IdeEmitMode
+  - Pl0.Ide.IdeLookAndFeel
+  - Pl0.Ide.IdeMainView
+  - Pl0.Ide.IdeRainbowAsciiArtView
+  - Pl0.Ide.IdeRuntimeIo
+  - Pl0.Ide.PhysicalIdeFileStorage
+  - Pl0.Ide.Pl0HighlightKind
+  - Pl0.Ide.Pl0SourceEditorView
+  - Pl0.Ide.Pl0SourceFormatter
+  - Pl0.Ide.Pl0SourceFormatter.ProcedureFrame
+  - Pl0.Ide.Program
+  - Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService
+  - Pl0.Ide.TerminalGuiIdeFileDialogService
+  - Pl0.Ide.TerminalGuiIdeFileDialogService.Pl0SaveAllowedType
+  - Pl0.Ide.TerminalGuiIdeMessageDialogService
+  - Pl0.Ide.TerminalGuiIdeRuntimeDialogService
+  langs:
+  - csharp
+  - vb
+  name: Pl0.Ide
+  nameWithType: Pl0.Ide
+  fullName: Pl0.Ide
+  type: Namespace
+  assemblies:
+  - Pl0.Ide
+references:
+- uid: Pl0.Ide.IdeCodeDisplayMode
+  commentId: T:Pl0.Ide.IdeCodeDisplayMode
+  parent: Pl0.Ide
+  href: Pl0.Ide.IdeCodeDisplayMode.html
+  name: IdeCodeDisplayMode
+  nameWithType: IdeCodeDisplayMode
+  fullName: Pl0.Ide.IdeCodeDisplayMode
+- uid: Pl0.Ide.IdeCompilerSettingsDialogResult
+  commentId: T:Pl0.Ide.IdeCompilerSettingsDialogResult
+  parent: Pl0.Ide
+  href: Pl0.Ide.IdeCompilerSettingsDialogResult.html
+  name: IdeCompilerSettingsDialogResult
+  nameWithType: IdeCompilerSettingsDialogResult
+  fullName: Pl0.Ide.IdeCompilerSettingsDialogResult
+- uid: Pl0.Ide.IdeCompilerOptionsRules
+  commentId: T:Pl0.Ide.IdeCompilerOptionsRules
+  href: Pl0.Ide.IdeCompilerOptionsRules.html
+  name: IdeCompilerOptionsRules
+  nameWithType: IdeCompilerOptionsRules
+  fullName: Pl0.Ide.IdeCompilerOptionsRules
+- uid: Pl0.Ide.IIdeCompilerSettingsDialogService
+  commentId: T:Pl0.Ide.IIdeCompilerSettingsDialogService
+  parent: Pl0.Ide
+  href: Pl0.Ide.IIdeCompilerSettingsDialogService.html
+  name: IIdeCompilerSettingsDialogService
+  nameWithType: IIdeCompilerSettingsDialogService
+  fullName: Pl0.Ide.IIdeCompilerSettingsDialogService
+- uid: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService
+  commentId: T:Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService
+  href: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.html
+  name: TerminalGuiIdeCompilerSettingsDialogService
+  nameWithType: TerminalGuiIdeCompilerSettingsDialogService
+  fullName: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService
+- uid: Pl0.Ide.IdeCompilerSettingsDialogState
+  commentId: T:Pl0.Ide.IdeCompilerSettingsDialogState
+  parent: Pl0.Ide
+  href: Pl0.Ide.IdeCompilerSettingsDialogState.html
+  name: IdeCompilerSettingsDialogState
+  nameWithType: IdeCompilerSettingsDialogState
+  fullName: Pl0.Ide.IdeCompilerSettingsDialogState
+- uid: Pl0.Ide.IdeDebugHighlightKind
+  commentId: T:Pl0.Ide.IdeDebugHighlightKind
+  parent: Pl0.Ide
+  href: Pl0.Ide.IdeDebugHighlightKind.html
+  name: IdeDebugHighlightKind
+  nameWithType: IdeDebugHighlightKind
+  fullName: Pl0.Ide.IdeDebugHighlightKind
+- uid: Pl0.Ide.IdeDebugHighlightSpan
+  commentId: T:Pl0.Ide.IdeDebugHighlightSpan
+  href: Pl0.Ide.IdeDebugHighlightSpan.html
+  name: IdeDebugHighlightSpan
+  nameWithType: IdeDebugHighlightSpan
+  fullName: Pl0.Ide.IdeDebugHighlightSpan
+- uid: Pl0.Ide.IdeDebugView
+  commentId: T:Pl0.Ide.IdeDebugView
+  parent: Pl0.Ide
+  href: Pl0.Ide.IdeDebugView.html
+  name: IdeDebugView
+  nameWithType: IdeDebugView
+  fullName: Pl0.Ide.IdeDebugView
+- uid: Pl0.Ide.IdeEmitMode
+  commentId: T:Pl0.Ide.IdeEmitMode
+  parent: Pl0.Ide
+  href: Pl0.Ide.IdeEmitMode.html
+  name: IdeEmitMode
+  nameWithType: IdeEmitMode
+  fullName: Pl0.Ide.IdeEmitMode
+- uid: Pl0.Ide.IIdeFileDialogService
+  commentId: T:Pl0.Ide.IIdeFileDialogService
+  parent: Pl0.Ide
+  href: Pl0.Ide.IIdeFileDialogService.html
+  name: IIdeFileDialogService
+  nameWithType: IIdeFileDialogService
+  fullName: Pl0.Ide.IIdeFileDialogService
+- uid: Pl0.Ide.TerminalGuiIdeFileDialogService
+  commentId: T:Pl0.Ide.TerminalGuiIdeFileDialogService
+  href: Pl0.Ide.TerminalGuiIdeFileDialogService.html
+  name: TerminalGuiIdeFileDialogService
+  nameWithType: TerminalGuiIdeFileDialogService
+  fullName: Pl0.Ide.TerminalGuiIdeFileDialogService
+- uid: Pl0.Ide.TerminalGuiIdeFileDialogService.Pl0SaveAllowedType
+  commentId: T:Pl0.Ide.TerminalGuiIdeFileDialogService.Pl0SaveAllowedType
+  href: Pl0.Ide.TerminalGuiIdeFileDialogService.html
+  name: TerminalGuiIdeFileDialogService.Pl0SaveAllowedType
+  nameWithType: TerminalGuiIdeFileDialogService.Pl0SaveAllowedType
+  fullName: Pl0.Ide.TerminalGuiIdeFileDialogService.Pl0SaveAllowedType
+  spec.csharp:
+  - uid: Pl0.Ide.TerminalGuiIdeFileDialogService
+    name: TerminalGuiIdeFileDialogService
+    href: Pl0.Ide.TerminalGuiIdeFileDialogService.html
+  - name: .
+  - uid: Pl0.Ide.TerminalGuiIdeFileDialogService.Pl0SaveAllowedType
+    name: Pl0SaveAllowedType
+    href: Pl0.Ide.TerminalGuiIdeFileDialogService.Pl0SaveAllowedType.html
+  spec.vb:
+  - uid: Pl0.Ide.TerminalGuiIdeFileDialogService
+    name: TerminalGuiIdeFileDialogService
+    href: Pl0.Ide.TerminalGuiIdeFileDialogService.html
+  - name: .
+  - uid: Pl0.Ide.TerminalGuiIdeFileDialogService.Pl0SaveAllowedType
+    name: Pl0SaveAllowedType
+    href: Pl0.Ide.TerminalGuiIdeFileDialogService.Pl0SaveAllowedType.html
+- uid: Pl0.Ide.IIdeFileStorage
+  commentId: T:Pl0.Ide.IIdeFileStorage
+  parent: Pl0.Ide
+  href: Pl0.Ide.IIdeFileStorage.html
+  name: IIdeFileStorage
+  nameWithType: IIdeFileStorage
+  fullName: Pl0.Ide.IIdeFileStorage
+- uid: Pl0.Ide.PhysicalIdeFileStorage
+  commentId: T:Pl0.Ide.PhysicalIdeFileStorage
+  href: Pl0.Ide.PhysicalIdeFileStorage.html
+  name: PhysicalIdeFileStorage
+  nameWithType: PhysicalIdeFileStorage
+  fullName: Pl0.Ide.PhysicalIdeFileStorage
+- uid: Pl0.Ide.IdeLookAndFeel
+  commentId: T:Pl0.Ide.IdeLookAndFeel
+  href: Pl0.Ide.IdeLookAndFeel.html
+  name: IdeLookAndFeel
+  nameWithType: IdeLookAndFeel
+  fullName: Pl0.Ide.IdeLookAndFeel
+- uid: Pl0.Ide.IdeMainView
+  commentId: T:Pl0.Ide.IdeMainView
+  href: Pl0.Ide.IdeMainView.html
+  name: IdeMainView
+  nameWithType: IdeMainView
+  fullName: Pl0.Ide.IdeMainView
+- uid: Pl0.Ide.IIdeMessageDialogService
+  commentId: T:Pl0.Ide.IIdeMessageDialogService
+  parent: Pl0.Ide
+  href: Pl0.Ide.IIdeMessageDialogService.html
+  name: IIdeMessageDialogService
+  nameWithType: IIdeMessageDialogService
+  fullName: Pl0.Ide.IIdeMessageDialogService
+- uid: Pl0.Ide.IIdeAboutDialogService
+  commentId: T:Pl0.Ide.IIdeAboutDialogService
+  parent: Pl0.Ide
+  href: Pl0.Ide.IIdeAboutDialogService.html
+  name: IIdeAboutDialogService
+  nameWithType: IIdeAboutDialogService
+  fullName: Pl0.Ide.IIdeAboutDialogService
+- uid: Pl0.Ide.TerminalGuiIdeMessageDialogService
+  commentId: T:Pl0.Ide.TerminalGuiIdeMessageDialogService
+  href: Pl0.Ide.TerminalGuiIdeMessageDialogService.html
+  name: TerminalGuiIdeMessageDialogService
+  nameWithType: TerminalGuiIdeMessageDialogService
+  fullName: Pl0.Ide.TerminalGuiIdeMessageDialogService
+- uid: Pl0.Ide.IdeRainbowAsciiArtView
+  commentId: T:Pl0.Ide.IdeRainbowAsciiArtView
+  href: Pl0.Ide.IdeRainbowAsciiArtView.html
+  name: IdeRainbowAsciiArtView
+  nameWithType: IdeRainbowAsciiArtView
+  fullName: Pl0.Ide.IdeRainbowAsciiArtView
+- uid: Pl0.Ide.IIdeRuntimeDialogService
+  commentId: T:Pl0.Ide.IIdeRuntimeDialogService
+  parent: Pl0.Ide
+  href: Pl0.Ide.IIdeRuntimeDialogService.html
+  name: IIdeRuntimeDialogService
+  nameWithType: IIdeRuntimeDialogService
+  fullName: Pl0.Ide.IIdeRuntimeDialogService
+- uid: Pl0.Ide.TerminalGuiIdeRuntimeDialogService
+  commentId: T:Pl0.Ide.TerminalGuiIdeRuntimeDialogService
+  href: Pl0.Ide.TerminalGuiIdeRuntimeDialogService.html
+  name: TerminalGuiIdeRuntimeDialogService
+  nameWithType: TerminalGuiIdeRuntimeDialogService
+  fullName: Pl0.Ide.TerminalGuiIdeRuntimeDialogService
+- uid: Pl0.Ide.IdeRuntimeIo
+  commentId: T:Pl0.Ide.IdeRuntimeIo
+  href: Pl0.Ide.IdeRuntimeIo.html
+  name: IdeRuntimeIo
+  nameWithType: IdeRuntimeIo
+  fullName: Pl0.Ide.IdeRuntimeIo
+- uid: Pl0.Ide.Pl0HighlightKind
+  commentId: T:Pl0.Ide.Pl0HighlightKind
+  parent: Pl0.Ide
+  href: Pl0.Ide.Pl0HighlightKind.html
+  name: Pl0HighlightKind
+  nameWithType: Pl0HighlightKind
+  fullName: Pl0.Ide.Pl0HighlightKind
+- uid: Pl0.Ide.Pl0SourceEditorView
+  commentId: T:Pl0.Ide.Pl0SourceEditorView
+  parent: Pl0.Ide
+  href: Pl0.Ide.Pl0SourceEditorView.html
+  name: Pl0SourceEditorView
+  nameWithType: Pl0SourceEditorView
+  fullName: Pl0.Ide.Pl0SourceEditorView
+- uid: Pl0.Ide.Pl0SourceFormatter
+  commentId: T:Pl0.Ide.Pl0SourceFormatter
+  href: Pl0.Ide.Pl0SourceFormatter.html
+  name: Pl0SourceFormatter
+  nameWithType: Pl0SourceFormatter
+  fullName: Pl0.Ide.Pl0SourceFormatter
+- uid: Pl0.Ide.Pl0SourceFormatter.ProcedureFrame
+  commentId: T:Pl0.Ide.Pl0SourceFormatter.ProcedureFrame
+  href: Pl0.Ide.Pl0SourceFormatter.html
+  name: Pl0SourceFormatter.ProcedureFrame
+  nameWithType: Pl0SourceFormatter.ProcedureFrame
+  fullName: Pl0.Ide.Pl0SourceFormatter.ProcedureFrame
+  spec.csharp:
+  - uid: Pl0.Ide.Pl0SourceFormatter
+    name: Pl0SourceFormatter
+    href: Pl0.Ide.Pl0SourceFormatter.html
+  - name: .
+  - uid: Pl0.Ide.Pl0SourceFormatter.ProcedureFrame
+    name: ProcedureFrame
+    href: Pl0.Ide.Pl0SourceFormatter.ProcedureFrame.html
+  spec.vb:
+  - uid: Pl0.Ide.Pl0SourceFormatter
+    name: Pl0SourceFormatter
+    href: Pl0.Ide.Pl0SourceFormatter.html
+  - name: .
+  - uid: Pl0.Ide.Pl0SourceFormatter.ProcedureFrame
+    name: ProcedureFrame
+    href: Pl0.Ide.Pl0SourceFormatter.ProcedureFrame.html
+- uid: Pl0.Ide.Program
+  commentId: T:Pl0.Ide.Program
+  href: Pl0.Ide.Program.html
+  name: Program
+  nameWithType: Program
+  fullName: Pl0.Ide.Program
+- uid: Pl0.Ide
+  commentId: N:Pl0.Ide
+  href: Pl0.html
+  name: Pl0.Ide
+  nameWithType: Pl0.Ide
+  fullName: Pl0.Ide
+  spec.csharp:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Ide
+    name: Ide
+    href: Pl0.Ide.html
+  spec.vb:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Ide
+    name: Ide
+    href: Pl0.Ide.html

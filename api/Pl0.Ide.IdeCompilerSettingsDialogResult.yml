@@ -1,0 +1,488 @@
+### YamlMime:ManagedReference
+items:
+- uid: Pl0.Ide.IdeCompilerSettingsDialogResult
+  commentId: T:Pl0.Ide.IdeCompilerSettingsDialogResult
+  id: IdeCompilerSettingsDialogResult
+  parent: Pl0.Ide
+  children:
+  - Pl0.Ide.IdeCompilerSettingsDialogResult.#ctor(Pl0.Core.CompilerOptions,Pl0.Ide.IdeCodeDisplayMode)
+  - Pl0.Ide.IdeCompilerSettingsDialogResult.CodeDisplayMode
+  - Pl0.Ide.IdeCompilerSettingsDialogResult.CompilerOptions
+  langs:
+  - csharp
+  - vb
+  name: IdeCompilerSettingsDialogResult
+  nameWithType: IdeCompilerSettingsDialogResult
+  fullName: Pl0.Ide.IdeCompilerSettingsDialogResult
+  type: Class
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeCodeDisplayMode.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: IdeCompilerSettingsDialogResult
+    path: src/Pl0.Ide/IdeCodeDisplayMode.cs
+    startLine: 10
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: 'internal sealed record IdeCompilerSettingsDialogResult : IEquatable<IdeCompilerSettingsDialogResult>'
+    content.vb: Friend NotInheritable Class IdeCompilerSettingsDialogResult Implements IEquatable(Of IdeCompilerSettingsDialogResult)
+  inheritance:
+  - System.Object
+  implements:
+  - System.IEquatable{Pl0.Ide.IdeCompilerSettingsDialogResult}
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Pl0.Ide.IdeCompilerSettingsDialogResult.#ctor(Pl0.Core.CompilerOptions,Pl0.Ide.IdeCodeDisplayMode)
+  commentId: M:Pl0.Ide.IdeCompilerSettingsDialogResult.#ctor(Pl0.Core.CompilerOptions,Pl0.Ide.IdeCodeDisplayMode)
+  id: '#ctor(Pl0.Core.CompilerOptions,Pl0.Ide.IdeCodeDisplayMode)'
+  parent: Pl0.Ide.IdeCompilerSettingsDialogResult
+  langs:
+  - csharp
+  - vb
+  name: IdeCompilerSettingsDialogResult(CompilerOptions, IdeCodeDisplayMode)
+  nameWithType: IdeCompilerSettingsDialogResult.IdeCompilerSettingsDialogResult(CompilerOptions, IdeCodeDisplayMode)
+  fullName: Pl0.Ide.IdeCompilerSettingsDialogResult.IdeCompilerSettingsDialogResult(Pl0.Core.CompilerOptions, Pl0.Ide.IdeCodeDisplayMode)
+  type: Constructor
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeCodeDisplayMode.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: .ctor
+    path: src/Pl0.Ide/IdeCodeDisplayMode.cs
+    startLine: 10
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: public IdeCompilerSettingsDialogResult(CompilerOptions CompilerOptions, IdeCodeDisplayMode CodeDisplayMode)
+    parameters:
+    - id: CompilerOptions
+      type: Pl0.Core.CompilerOptions
+    - id: CodeDisplayMode
+      type: Pl0.Ide.IdeCodeDisplayMode
+    content.vb: Public Sub New(CompilerOptions As CompilerOptions, CodeDisplayMode As IdeCodeDisplayMode)
+  overload: Pl0.Ide.IdeCompilerSettingsDialogResult.#ctor*
+  nameWithType.vb: IdeCompilerSettingsDialogResult.New(CompilerOptions, IdeCodeDisplayMode)
+  fullName.vb: Pl0.Ide.IdeCompilerSettingsDialogResult.New(Pl0.Core.CompilerOptions, Pl0.Ide.IdeCodeDisplayMode)
+  name.vb: New(CompilerOptions, IdeCodeDisplayMode)
+- uid: Pl0.Ide.IdeCompilerSettingsDialogResult.CompilerOptions
+  commentId: P:Pl0.Ide.IdeCompilerSettingsDialogResult.CompilerOptions
+  id: CompilerOptions
+  parent: Pl0.Ide.IdeCompilerSettingsDialogResult
+  langs:
+  - csharp
+  - vb
+  name: CompilerOptions
+  nameWithType: IdeCompilerSettingsDialogResult.CompilerOptions
+  fullName: Pl0.Ide.IdeCompilerSettingsDialogResult.CompilerOptions
+  type: Property
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeCodeDisplayMode.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: CompilerOptions
+    path: src/Pl0.Ide/IdeCodeDisplayMode.cs
+    startLine: 10
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: public CompilerOptions CompilerOptions { get; init; }
+    parameters: []
+    return:
+      type: Pl0.Core.CompilerOptions
+    content.vb: Public Property CompilerOptions As CompilerOptions
+  overload: Pl0.Ide.IdeCompilerSettingsDialogResult.CompilerOptions*
+- uid: Pl0.Ide.IdeCompilerSettingsDialogResult.CodeDisplayMode
+  commentId: P:Pl0.Ide.IdeCompilerSettingsDialogResult.CodeDisplayMode
+  id: CodeDisplayMode
+  parent: Pl0.Ide.IdeCompilerSettingsDialogResult
+  langs:
+  - csharp
+  - vb
+  name: CodeDisplayMode
+  nameWithType: IdeCompilerSettingsDialogResult.CodeDisplayMode
+  fullName: Pl0.Ide.IdeCompilerSettingsDialogResult.CodeDisplayMode
+  type: Property
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeCodeDisplayMode.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: CodeDisplayMode
+    path: src/Pl0.Ide/IdeCodeDisplayMode.cs
+    startLine: 10
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: public IdeCodeDisplayMode CodeDisplayMode { get; init; }
+    parameters: []
+    return:
+      type: Pl0.Ide.IdeCodeDisplayMode
+    content.vb: Public Property CodeDisplayMode As IdeCodeDisplayMode
+  overload: Pl0.Ide.IdeCompilerSettingsDialogResult.CodeDisplayMode*
+references:
+- uid: Pl0.Ide
+  commentId: N:Pl0.Ide
+  href: Pl0.html
+  name: Pl0.Ide
+  nameWithType: Pl0.Ide
+  fullName: Pl0.Ide
+  spec.csharp:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Ide
+    name: Ide
+    href: Pl0.Ide.html
+  spec.vb:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Ide
+    name: Ide
+    href: Pl0.Ide.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IEquatable{Pl0.Ide.IdeCompilerSettingsDialogResult}
+  commentId: T:System.IEquatable{Pl0.Ide.IdeCompilerSettingsDialogResult}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<IdeCompilerSettingsDialogResult>
+  nameWithType: IEquatable<IdeCompilerSettingsDialogResult>
+  fullName: System.IEquatable<Pl0.Ide.IdeCompilerSettingsDialogResult>
+  nameWithType.vb: IEquatable(Of IdeCompilerSettingsDialogResult)
+  fullName.vb: System.IEquatable(Of Pl0.Ide.IdeCompilerSettingsDialogResult)
+  name.vb: IEquatable(Of IdeCompilerSettingsDialogResult)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: Pl0.Ide.IdeCompilerSettingsDialogResult
+    name: IdeCompilerSettingsDialogResult
+    href: Pl0.Ide.IdeCompilerSettingsDialogResult.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Pl0.Ide.IdeCompilerSettingsDialogResult
+    name: IdeCompilerSettingsDialogResult
+    href: Pl0.Ide.IdeCompilerSettingsDialogResult.html
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Pl0.Ide.IdeCompilerSettingsDialogResult.#ctor*
+  commentId: Overload:Pl0.Ide.IdeCompilerSettingsDialogResult.#ctor
+  href: Pl0.Ide.IdeCompilerSettingsDialogResult.html#Pl0_Ide_IdeCompilerSettingsDialogResult__ctor_Pl0_Core_CompilerOptions_Pl0_Ide_IdeCodeDisplayMode_
+  name: IdeCompilerSettingsDialogResult
+  nameWithType: IdeCompilerSettingsDialogResult.IdeCompilerSettingsDialogResult
+  fullName: Pl0.Ide.IdeCompilerSettingsDialogResult.IdeCompilerSettingsDialogResult
+  nameWithType.vb: IdeCompilerSettingsDialogResult.New
+  fullName.vb: Pl0.Ide.IdeCompilerSettingsDialogResult.New
+  name.vb: New
+- uid: Pl0.Core.CompilerOptions
+  commentId: T:Pl0.Core.CompilerOptions
+  parent: Pl0.Core
+  href: Pl0.Core.CompilerOptions.html
+  name: CompilerOptions
+  nameWithType: CompilerOptions
+  fullName: Pl0.Core.CompilerOptions
+- uid: Pl0.Ide.IdeCodeDisplayMode
+  commentId: T:Pl0.Ide.IdeCodeDisplayMode
+  parent: Pl0.Ide
+  href: Pl0.Ide.IdeCodeDisplayMode.html
+  name: IdeCodeDisplayMode
+  nameWithType: IdeCodeDisplayMode
+  fullName: Pl0.Ide.IdeCodeDisplayMode
+- uid: Pl0.Core
+  commentId: N:Pl0.Core
+  href: Pl0.html
+  name: Pl0.Core
+  nameWithType: Pl0.Core
+  fullName: Pl0.Core
+  spec.csharp:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Core
+    name: Core
+    href: Pl0.Core.html
+  spec.vb:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Core
+    name: Core
+    href: Pl0.Core.html
+- uid: Pl0.Ide.IdeCompilerSettingsDialogResult.CompilerOptions*
+  commentId: Overload:Pl0.Ide.IdeCompilerSettingsDialogResult.CompilerOptions
+  href: Pl0.Ide.IdeCompilerSettingsDialogResult.html#Pl0_Ide_IdeCompilerSettingsDialogResult_CompilerOptions
+  name: CompilerOptions
+  nameWithType: IdeCompilerSettingsDialogResult.CompilerOptions
+  fullName: Pl0.Ide.IdeCompilerSettingsDialogResult.CompilerOptions
+- uid: Pl0.Ide.IdeCompilerSettingsDialogResult.CodeDisplayMode*
+  commentId: Overload:Pl0.Ide.IdeCompilerSettingsDialogResult.CodeDisplayMode
+  href: Pl0.Ide.IdeCompilerSettingsDialogResult.html#Pl0_Ide_IdeCompilerSettingsDialogResult_CodeDisplayMode
+  name: CodeDisplayMode
+  nameWithType: IdeCompilerSettingsDialogResult.CodeDisplayMode
+  fullName: Pl0.Ide.IdeCompilerSettingsDialogResult.CodeDisplayMode

@@ -1,0 +1,166 @@
+### YamlMime:ManagedReference
+items:
+- uid: Pl0.Ide.Pl0HighlightKind
+  commentId: T:Pl0.Ide.Pl0HighlightKind
+  id: Pl0HighlightKind
+  parent: Pl0.Ide
+  children:
+  - Pl0.Ide.Pl0HighlightKind.Keyword
+  - Pl0.Ide.Pl0HighlightKind.None
+  - Pl0.Ide.Pl0HighlightKind.Number
+  - Pl0.Ide.Pl0HighlightKind.Operator
+  langs:
+  - csharp
+  - vb
+  name: Pl0HighlightKind
+  nameWithType: Pl0HighlightKind
+  fullName: Pl0.Ide.Pl0HighlightKind
+  type: Enum
+  source:
+    remote:
+      path: src/Pl0.Ide/Pl0SourceEditorView.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: Pl0HighlightKind
+    path: src/Pl0.Ide/Pl0SourceEditorView.cs
+    startLine: 5
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: internal enum Pl0HighlightKind
+    content.vb: Friend Enum Pl0HighlightKind
+- uid: Pl0.Ide.Pl0HighlightKind.None
+  commentId: F:Pl0.Ide.Pl0HighlightKind.None
+  id: None
+  parent: Pl0.Ide.Pl0HighlightKind
+  langs:
+  - csharp
+  - vb
+  name: None
+  nameWithType: Pl0HighlightKind.None
+  fullName: Pl0.Ide.Pl0HighlightKind.None
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Ide/Pl0SourceEditorView.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: None
+    path: src/Pl0.Ide/Pl0SourceEditorView.cs
+    startLine: 7
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: None = 0
+    return:
+      type: Pl0.Ide.Pl0HighlightKind
+- uid: Pl0.Ide.Pl0HighlightKind.Keyword
+  commentId: F:Pl0.Ide.Pl0HighlightKind.Keyword
+  id: Keyword
+  parent: Pl0.Ide.Pl0HighlightKind
+  langs:
+  - csharp
+  - vb
+  name: Keyword
+  nameWithType: Pl0HighlightKind.Keyword
+  fullName: Pl0.Ide.Pl0HighlightKind.Keyword
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Ide/Pl0SourceEditorView.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: Keyword
+    path: src/Pl0.Ide/Pl0SourceEditorView.cs
+    startLine: 8
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: Keyword = 1
+    return:
+      type: Pl0.Ide.Pl0HighlightKind
+- uid: Pl0.Ide.Pl0HighlightKind.Number
+  commentId: F:Pl0.Ide.Pl0HighlightKind.Number
+  id: Number
+  parent: Pl0.Ide.Pl0HighlightKind
+  langs:
+  - csharp
+  - vb
+  name: Number
+  nameWithType: Pl0HighlightKind.Number
+  fullName: Pl0.Ide.Pl0HighlightKind.Number
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Ide/Pl0SourceEditorView.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: Number
+    path: src/Pl0.Ide/Pl0SourceEditorView.cs
+    startLine: 9
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: Number = 2
+    return:
+      type: Pl0.Ide.Pl0HighlightKind
+- uid: Pl0.Ide.Pl0HighlightKind.Operator
+  commentId: F:Pl0.Ide.Pl0HighlightKind.Operator
+  id: Operator
+  parent: Pl0.Ide.Pl0HighlightKind
+  langs:
+  - csharp
+  - vb
+  name: Operator
+  nameWithType: Pl0HighlightKind.Operator
+  fullName: Pl0.Ide.Pl0HighlightKind.Operator
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Ide/Pl0SourceEditorView.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: Operator
+    path: src/Pl0.Ide/Pl0SourceEditorView.cs
+    startLine: 10
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: Operator = 3
+    return:
+      type: Pl0.Ide.Pl0HighlightKind
+references:
+- uid: Pl0.Ide
+  commentId: N:Pl0.Ide
+  href: Pl0.html
+  name: Pl0.Ide
+  nameWithType: Pl0.Ide
+  fullName: Pl0.Ide
+  spec.csharp:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Ide
+    name: Ide
+    href: Pl0.Ide.html
+  spec.vb:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Ide
+    name: Ide
+    href: Pl0.Ide.html
+- uid: Pl0.Ide.Pl0HighlightKind
+  commentId: T:Pl0.Ide.Pl0HighlightKind
+  parent: Pl0.Ide
+  href: Pl0.Ide.Pl0HighlightKind.html
+  name: Pl0HighlightKind
+  nameWithType: Pl0HighlightKind
+  fullName: Pl0.Ide.Pl0HighlightKind

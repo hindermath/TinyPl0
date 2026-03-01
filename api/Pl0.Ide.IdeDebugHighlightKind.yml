@@ -1,0 +1,139 @@
+### YamlMime:ManagedReference
+items:
+- uid: Pl0.Ide.IdeDebugHighlightKind
+  commentId: T:Pl0.Ide.IdeDebugHighlightKind
+  id: IdeDebugHighlightKind
+  parent: Pl0.Ide
+  children:
+  - Pl0.Ide.IdeDebugHighlightKind.BasePointer
+  - Pl0.Ide.IdeDebugHighlightKind.None
+  - Pl0.Ide.IdeDebugHighlightKind.StackPointer
+  langs:
+  - csharp
+  - vb
+  name: IdeDebugHighlightKind
+  nameWithType: IdeDebugHighlightKind
+  fullName: Pl0.Ide.IdeDebugHighlightKind
+  type: Enum
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeDebugView.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: IdeDebugHighlightKind
+    path: src/Pl0.Ide/IdeDebugView.cs
+    startLine: 4
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: internal enum IdeDebugHighlightKind
+    content.vb: Friend Enum IdeDebugHighlightKind
+- uid: Pl0.Ide.IdeDebugHighlightKind.None
+  commentId: F:Pl0.Ide.IdeDebugHighlightKind.None
+  id: None
+  parent: Pl0.Ide.IdeDebugHighlightKind
+  langs:
+  - csharp
+  - vb
+  name: None
+  nameWithType: IdeDebugHighlightKind.None
+  fullName: Pl0.Ide.IdeDebugHighlightKind.None
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeDebugView.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: None
+    path: src/Pl0.Ide/IdeDebugView.cs
+    startLine: 6
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: None = 0
+    return:
+      type: Pl0.Ide.IdeDebugHighlightKind
+- uid: Pl0.Ide.IdeDebugHighlightKind.BasePointer
+  commentId: F:Pl0.Ide.IdeDebugHighlightKind.BasePointer
+  id: BasePointer
+  parent: Pl0.Ide.IdeDebugHighlightKind
+  langs:
+  - csharp
+  - vb
+  name: BasePointer
+  nameWithType: IdeDebugHighlightKind.BasePointer
+  fullName: Pl0.Ide.IdeDebugHighlightKind.BasePointer
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeDebugView.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: BasePointer
+    path: src/Pl0.Ide/IdeDebugView.cs
+    startLine: 7
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: BasePointer = 1
+    return:
+      type: Pl0.Ide.IdeDebugHighlightKind
+- uid: Pl0.Ide.IdeDebugHighlightKind.StackPointer
+  commentId: F:Pl0.Ide.IdeDebugHighlightKind.StackPointer
+  id: StackPointer
+  parent: Pl0.Ide.IdeDebugHighlightKind
+  langs:
+  - csharp
+  - vb
+  name: StackPointer
+  nameWithType: IdeDebugHighlightKind.StackPointer
+  fullName: Pl0.Ide.IdeDebugHighlightKind.StackPointer
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeDebugView.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: StackPointer
+    path: src/Pl0.Ide/IdeDebugView.cs
+    startLine: 8
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: StackPointer = 2
+    return:
+      type: Pl0.Ide.IdeDebugHighlightKind
+references:
+- uid: Pl0.Ide
+  commentId: N:Pl0.Ide
+  href: Pl0.html
+  name: Pl0.Ide
+  nameWithType: Pl0.Ide
+  fullName: Pl0.Ide
+  spec.csharp:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Ide
+    name: Ide
+    href: Pl0.Ide.html
+  spec.vb:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Ide
+    name: Ide
+    href: Pl0.Ide.html
+- uid: Pl0.Ide.IdeDebugHighlightKind
+  commentId: T:Pl0.Ide.IdeDebugHighlightKind
+  parent: Pl0.Ide
+  href: Pl0.Ide.IdeDebugHighlightKind.html
+  name: IdeDebugHighlightKind
+  nameWithType: IdeDebugHighlightKind
+  fullName: Pl0.Ide.IdeDebugHighlightKind

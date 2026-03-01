@@ -1,0 +1,621 @@
+### YamlMime:ManagedReference
+items:
+- uid: Pl0.Ide.IdeRuntimeIo
+  commentId: T:Pl0.Ide.IdeRuntimeIo
+  id: IdeRuntimeIo
+  parent: Pl0.Ide
+  children:
+  - Pl0.Ide.IdeRuntimeIo.#ctor(System.Func{System.Nullable{System.Int32}},System.Action{System.Int32})
+  - Pl0.Ide.IdeRuntimeIo.ReadInt
+  - Pl0.Ide.IdeRuntimeIo.WriteInt(System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: IdeRuntimeIo
+  nameWithType: IdeRuntimeIo
+  fullName: Pl0.Ide.IdeRuntimeIo
+  type: Class
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeRuntimeIo.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: IdeRuntimeIo
+    path: src/Pl0.Ide/IdeRuntimeIo.cs
+    startLine: 4
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: 'internal sealed class IdeRuntimeIo : IPl0Io'
+    content.vb: Friend NotInheritable Class IdeRuntimeIo Implements IPl0Io
+  inheritance:
+  - System.Object
+  implements:
+  - Pl0.Vm.IPl0Io
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Pl0.Ide.IdeRuntimeIo.#ctor(System.Func{System.Nullable{System.Int32}},System.Action{System.Int32})
+  commentId: M:Pl0.Ide.IdeRuntimeIo.#ctor(System.Func{System.Nullable{System.Int32}},System.Action{System.Int32})
+  id: '#ctor(System.Func{System.Nullable{System.Int32}},System.Action{System.Int32})'
+  parent: Pl0.Ide.IdeRuntimeIo
+  langs:
+  - csharp
+  - vb
+  name: IdeRuntimeIo(Func<int?>, Action<int>)
+  nameWithType: IdeRuntimeIo.IdeRuntimeIo(Func<int?>, Action<int>)
+  fullName: Pl0.Ide.IdeRuntimeIo.IdeRuntimeIo(System.Func<int?>, System.Action<int>)
+  type: Constructor
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeRuntimeIo.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: .ctor
+    path: src/Pl0.Ide/IdeRuntimeIo.cs
+    startLine: 4
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: public IdeRuntimeIo(Func<int?> readInt, Action<int> writeInt)
+    parameters:
+    - id: readInt
+      type: System.Func{System.Nullable{System.Int32}}
+    - id: writeInt
+      type: System.Action{System.Int32}
+    content.vb: Public Sub New(readInt As Func(Of Integer?), writeInt As Action(Of Integer))
+  overload: Pl0.Ide.IdeRuntimeIo.#ctor*
+  nameWithType.vb: IdeRuntimeIo.New(Func(Of Integer?), Action(Of Integer))
+  fullName.vb: Pl0.Ide.IdeRuntimeIo.New(System.Func(Of Integer?), System.Action(Of Integer))
+  name.vb: New(Func(Of Integer?), Action(Of Integer))
+- uid: Pl0.Ide.IdeRuntimeIo.ReadInt
+  commentId: M:Pl0.Ide.IdeRuntimeIo.ReadInt
+  id: ReadInt
+  parent: Pl0.Ide.IdeRuntimeIo
+  langs:
+  - csharp
+  - vb
+  name: ReadInt()
+  nameWithType: IdeRuntimeIo.ReadInt()
+  fullName: Pl0.Ide.IdeRuntimeIo.ReadInt()
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeRuntimeIo.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: ReadInt
+    path: src/Pl0.Ide/IdeRuntimeIo.cs
+    startLine: 6
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  summary: Reads an integer value from the input source.
+  example: []
+  syntax:
+    content: public int ReadInt()
+    return:
+      type: System.Int32
+      description: The read integer.
+    content.vb: Public Function ReadInt() As Integer
+  overload: Pl0.Ide.IdeRuntimeIo.ReadInt*
+  implements:
+  - Pl0.Vm.IPl0Io.ReadInt
+- uid: Pl0.Ide.IdeRuntimeIo.WriteInt(System.Int32)
+  commentId: M:Pl0.Ide.IdeRuntimeIo.WriteInt(System.Int32)
+  id: WriteInt(System.Int32)
+  parent: Pl0.Ide.IdeRuntimeIo
+  langs:
+  - csharp
+  - vb
+  name: WriteInt(int)
+  nameWithType: IdeRuntimeIo.WriteInt(int)
+  fullName: Pl0.Ide.IdeRuntimeIo.WriteInt(int)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeRuntimeIo.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: WriteInt
+    path: src/Pl0.Ide/IdeRuntimeIo.cs
+    startLine: 17
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  summary: Writes an integer value to the output destination.
+  example: []
+  syntax:
+    content: public void WriteInt(int value)
+    parameters:
+    - id: value
+      type: System.Int32
+      description: Value to write.
+    content.vb: Public Sub WriteInt(value As Integer)
+  overload: Pl0.Ide.IdeRuntimeIo.WriteInt*
+  implements:
+  - Pl0.Vm.IPl0Io.WriteInt(System.Int32)
+  nameWithType.vb: IdeRuntimeIo.WriteInt(Integer)
+  fullName.vb: Pl0.Ide.IdeRuntimeIo.WriteInt(Integer)
+  name.vb: WriteInt(Integer)
+references:
+- uid: Pl0.Ide
+  commentId: N:Pl0.Ide
+  href: Pl0.html
+  name: Pl0.Ide
+  nameWithType: Pl0.Ide
+  fullName: Pl0.Ide
+  spec.csharp:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Ide
+    name: Ide
+    href: Pl0.Ide.html
+  spec.vb:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Ide
+    name: Ide
+    href: Pl0.Ide.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Pl0.Vm.IPl0Io
+  commentId: T:Pl0.Vm.IPl0Io
+  parent: Pl0.Vm
+  href: Pl0.Vm.IPl0Io.html
+  name: IPl0Io
+  nameWithType: IPl0Io
+  fullName: Pl0.Vm.IPl0Io
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Pl0.Vm
+  commentId: N:Pl0.Vm
+  href: Pl0.html
+  name: Pl0.Vm
+  nameWithType: Pl0.Vm
+  fullName: Pl0.Vm
+  spec.csharp:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Vm
+    name: Vm
+    href: Pl0.Vm.html
+  spec.vb:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Vm
+    name: Vm
+    href: Pl0.Vm.html
+- uid: Pl0.Ide.IdeRuntimeIo.#ctor*
+  commentId: Overload:Pl0.Ide.IdeRuntimeIo.#ctor
+  href: Pl0.Ide.IdeRuntimeIo.html#Pl0_Ide_IdeRuntimeIo__ctor_System_Func_System_Nullable_System_Int32___System_Action_System_Int32__
+  name: IdeRuntimeIo
+  nameWithType: IdeRuntimeIo.IdeRuntimeIo
+  fullName: Pl0.Ide.IdeRuntimeIo.IdeRuntimeIo
+  nameWithType.vb: IdeRuntimeIo.New
+  fullName.vb: Pl0.Ide.IdeRuntimeIo.New
+  name.vb: New
+- uid: System.Func{System.Nullable{System.Int32}}
+  commentId: T:System.Func{System.Nullable{System.Int32}}
+  parent: System
+  definition: System.Func`1
+  href: https://learn.microsoft.com/dotnet/api/system.func-1
+  name: Func<int?>
+  nameWithType: Func<int?>
+  fullName: System.Func<int?>
+  nameWithType.vb: Func(Of Integer?)
+  fullName.vb: System.Func(Of Integer?)
+  name.vb: Func(Of Integer?)
+  spec.csharp:
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-1
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+  - name: )
+- uid: System.Action{System.Int32}
+  commentId: T:System.Action{System.Int32}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<int>
+  nameWithType: Action<int>
+  fullName: System.Action<int>
+  nameWithType.vb: Action(Of Integer)
+  fullName.vb: System.Action(Of Integer)
+  name.vb: Action(Of Integer)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: System.Func`1
+  commentId: T:System.Func`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.func-1
+  name: Func<TResult>
+  nameWithType: Func<TResult>
+  fullName: System.Func<TResult>
+  nameWithType.vb: Func(Of TResult)
+  fullName.vb: System.Func(Of TResult)
+  name.vb: Func(Of TResult)
+  spec.csharp:
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Action`1
+  commentId: T:System.Action`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Pl0.Ide.IdeRuntimeIo.ReadInt*
+  commentId: Overload:Pl0.Ide.IdeRuntimeIo.ReadInt
+  href: Pl0.Ide.IdeRuntimeIo.html#Pl0_Ide_IdeRuntimeIo_ReadInt
+  name: ReadInt
+  nameWithType: IdeRuntimeIo.ReadInt
+  fullName: Pl0.Ide.IdeRuntimeIo.ReadInt
+- uid: Pl0.Vm.IPl0Io.ReadInt
+  commentId: M:Pl0.Vm.IPl0Io.ReadInt
+  parent: Pl0.Vm.IPl0Io
+  href: Pl0.Vm.IPl0Io.html#Pl0_Vm_IPl0Io_ReadInt
+  name: ReadInt()
+  nameWithType: IPl0Io.ReadInt()
+  fullName: Pl0.Vm.IPl0Io.ReadInt()
+  spec.csharp:
+  - uid: Pl0.Vm.IPl0Io.ReadInt
+    name: ReadInt
+    href: Pl0.Vm.IPl0Io.html#Pl0_Vm_IPl0Io_ReadInt
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Pl0.Vm.IPl0Io.ReadInt
+    name: ReadInt
+    href: Pl0.Vm.IPl0Io.html#Pl0_Vm_IPl0Io_ReadInt
+  - name: (
+  - name: )
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Pl0.Ide.IdeRuntimeIo.WriteInt*
+  commentId: Overload:Pl0.Ide.IdeRuntimeIo.WriteInt
+  href: Pl0.Ide.IdeRuntimeIo.html#Pl0_Ide_IdeRuntimeIo_WriteInt_System_Int32_
+  name: WriteInt
+  nameWithType: IdeRuntimeIo.WriteInt
+  fullName: Pl0.Ide.IdeRuntimeIo.WriteInt
+- uid: Pl0.Vm.IPl0Io.WriteInt(System.Int32)
+  commentId: M:Pl0.Vm.IPl0Io.WriteInt(System.Int32)
+  parent: Pl0.Vm.IPl0Io
+  isExternal: true
+  href: Pl0.Vm.IPl0Io.html#Pl0_Vm_IPl0Io_WriteInt_System_Int32_
+  name: WriteInt(int)
+  nameWithType: IPl0Io.WriteInt(int)
+  fullName: Pl0.Vm.IPl0Io.WriteInt(int)
+  nameWithType.vb: IPl0Io.WriteInt(Integer)
+  fullName.vb: Pl0.Vm.IPl0Io.WriteInt(Integer)
+  name.vb: WriteInt(Integer)
+  spec.csharp:
+  - uid: Pl0.Vm.IPl0Io.WriteInt(System.Int32)
+    name: WriteInt
+    href: Pl0.Vm.IPl0Io.html#Pl0_Vm_IPl0Io_WriteInt_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Pl0.Vm.IPl0Io.WriteInt(System.Int32)
+    name: WriteInt
+    href: Pl0.Vm.IPl0Io.html#Pl0_Vm_IPl0Io_WriteInt_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )

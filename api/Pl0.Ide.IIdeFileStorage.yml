@@ -1,0 +1,151 @@
+### YamlMime:ManagedReference
+items:
+- uid: Pl0.Ide.IIdeFileStorage
+  commentId: T:Pl0.Ide.IIdeFileStorage
+  id: IIdeFileStorage
+  parent: Pl0.Ide
+  children:
+  - Pl0.Ide.IIdeFileStorage.ReadAllText(System.String)
+  - Pl0.Ide.IIdeFileStorage.WriteAllText(System.String,System.String)
+  langs:
+  - csharp
+  - vb
+  name: IIdeFileStorage
+  nameWithType: IIdeFileStorage
+  fullName: Pl0.Ide.IIdeFileStorage
+  type: Interface
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeFileStorage.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: IIdeFileStorage
+    path: src/Pl0.Ide/IdeFileStorage.cs
+    startLine: 2
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: internal interface IIdeFileStorage
+    content.vb: Friend Interface IIdeFileStorage
+- uid: Pl0.Ide.IIdeFileStorage.ReadAllText(System.String)
+  commentId: M:Pl0.Ide.IIdeFileStorage.ReadAllText(System.String)
+  id: ReadAllText(System.String)
+  parent: Pl0.Ide.IIdeFileStorage
+  langs:
+  - csharp
+  - vb
+  name: ReadAllText(string)
+  nameWithType: IIdeFileStorage.ReadAllText(string)
+  fullName: Pl0.Ide.IIdeFileStorage.ReadAllText(string)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeFileStorage.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: ReadAllText
+    path: src/Pl0.Ide/IdeFileStorage.cs
+    startLine: 4
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: string ReadAllText(string path)
+    parameters:
+    - id: path
+      type: System.String
+    return:
+      type: System.String
+    content.vb: Function ReadAllText(path As String) As String
+  overload: Pl0.Ide.IIdeFileStorage.ReadAllText*
+  nameWithType.vb: IIdeFileStorage.ReadAllText(String)
+  fullName.vb: Pl0.Ide.IIdeFileStorage.ReadAllText(String)
+  name.vb: ReadAllText(String)
+- uid: Pl0.Ide.IIdeFileStorage.WriteAllText(System.String,System.String)
+  commentId: M:Pl0.Ide.IIdeFileStorage.WriteAllText(System.String,System.String)
+  id: WriteAllText(System.String,System.String)
+  parent: Pl0.Ide.IIdeFileStorage
+  langs:
+  - csharp
+  - vb
+  name: WriteAllText(string, string)
+  nameWithType: IIdeFileStorage.WriteAllText(string, string)
+  fullName: Pl0.Ide.IIdeFileStorage.WriteAllText(string, string)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeFileStorage.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: WriteAllText
+    path: src/Pl0.Ide/IdeFileStorage.cs
+    startLine: 5
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: void WriteAllText(string path, string content)
+    parameters:
+    - id: path
+      type: System.String
+    - id: content
+      type: System.String
+    content.vb: Sub WriteAllText(path As String, content As String)
+  overload: Pl0.Ide.IIdeFileStorage.WriteAllText*
+  nameWithType.vb: IIdeFileStorage.WriteAllText(String, String)
+  fullName.vb: Pl0.Ide.IIdeFileStorage.WriteAllText(String, String)
+  name.vb: WriteAllText(String, String)
+references:
+- uid: Pl0.Ide
+  commentId: N:Pl0.Ide
+  href: Pl0.html
+  name: Pl0.Ide
+  nameWithType: Pl0.Ide
+  fullName: Pl0.Ide
+  spec.csharp:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Ide
+    name: Ide
+    href: Pl0.Ide.html
+  spec.vb:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Ide
+    name: Ide
+    href: Pl0.Ide.html
+- uid: Pl0.Ide.IIdeFileStorage.ReadAllText*
+  commentId: Overload:Pl0.Ide.IIdeFileStorage.ReadAllText
+  href: Pl0.Ide.IIdeFileStorage.html#Pl0_Ide_IIdeFileStorage_ReadAllText_System_String_
+  name: ReadAllText
+  nameWithType: IIdeFileStorage.ReadAllText
+  fullName: Pl0.Ide.IIdeFileStorage.ReadAllText
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Pl0.Ide.IIdeFileStorage.WriteAllText*
+  commentId: Overload:Pl0.Ide.IIdeFileStorage.WriteAllText
+  href: Pl0.Ide.IIdeFileStorage.html#Pl0_Ide_IIdeFileStorage_WriteAllText_System_String_System_String_
+  name: WriteAllText
+  nameWithType: IIdeFileStorage.WriteAllText
+  fullName: Pl0.Ide.IIdeFileStorage.WriteAllText

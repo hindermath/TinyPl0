@@ -1,0 +1,134 @@
+### YamlMime:ManagedReference
+items:
+- uid: Pl0.Ide.IIdeCompilerSettingsDialogService
+  commentId: T:Pl0.Ide.IIdeCompilerSettingsDialogService
+  id: IIdeCompilerSettingsDialogService
+  parent: Pl0.Ide
+  children:
+  - Pl0.Ide.IIdeCompilerSettingsDialogService.ShowCompilerSettingsDialog(Pl0.Core.CompilerOptions,Pl0.Ide.IdeCodeDisplayMode)
+  langs:
+  - csharp
+  - vb
+  name: IIdeCompilerSettingsDialogService
+  nameWithType: IIdeCompilerSettingsDialogService
+  fullName: Pl0.Ide.IIdeCompilerSettingsDialogService
+  type: Interface
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: IIdeCompilerSettingsDialogService
+    path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
+    startLine: 6
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: internal interface IIdeCompilerSettingsDialogService
+    content.vb: Friend Interface IIdeCompilerSettingsDialogService
+- uid: Pl0.Ide.IIdeCompilerSettingsDialogService.ShowCompilerSettingsDialog(Pl0.Core.CompilerOptions,Pl0.Ide.IdeCodeDisplayMode)
+  commentId: M:Pl0.Ide.IIdeCompilerSettingsDialogService.ShowCompilerSettingsDialog(Pl0.Core.CompilerOptions,Pl0.Ide.IdeCodeDisplayMode)
+  id: ShowCompilerSettingsDialog(Pl0.Core.CompilerOptions,Pl0.Ide.IdeCodeDisplayMode)
+  parent: Pl0.Ide.IIdeCompilerSettingsDialogService
+  langs:
+  - csharp
+  - vb
+  name: ShowCompilerSettingsDialog(CompilerOptions, IdeCodeDisplayMode)
+  nameWithType: IIdeCompilerSettingsDialogService.ShowCompilerSettingsDialog(CompilerOptions, IdeCodeDisplayMode)
+  fullName: Pl0.Ide.IIdeCompilerSettingsDialogService.ShowCompilerSettingsDialog(Pl0.Core.CompilerOptions, Pl0.Ide.IdeCodeDisplayMode)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: ShowCompilerSettingsDialog
+    path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
+    startLine: 8
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: IdeCompilerSettingsDialogResult? ShowCompilerSettingsDialog(CompilerOptions currentOptions, IdeCodeDisplayMode currentCodeDisplayMode)
+    parameters:
+    - id: currentOptions
+      type: Pl0.Core.CompilerOptions
+    - id: currentCodeDisplayMode
+      type: Pl0.Ide.IdeCodeDisplayMode
+    return:
+      type: Pl0.Ide.IdeCompilerSettingsDialogResult
+    content.vb: Function ShowCompilerSettingsDialog(currentOptions As CompilerOptions, currentCodeDisplayMode As IdeCodeDisplayMode) As IdeCompilerSettingsDialogResult
+  overload: Pl0.Ide.IIdeCompilerSettingsDialogService.ShowCompilerSettingsDialog*
+references:
+- uid: Pl0.Ide
+  commentId: N:Pl0.Ide
+  href: Pl0.html
+  name: Pl0.Ide
+  nameWithType: Pl0.Ide
+  fullName: Pl0.Ide
+  spec.csharp:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Ide
+    name: Ide
+    href: Pl0.Ide.html
+  spec.vb:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Ide
+    name: Ide
+    href: Pl0.Ide.html
+- uid: Pl0.Ide.IIdeCompilerSettingsDialogService.ShowCompilerSettingsDialog*
+  commentId: Overload:Pl0.Ide.IIdeCompilerSettingsDialogService.ShowCompilerSettingsDialog
+  href: Pl0.Ide.IIdeCompilerSettingsDialogService.html#Pl0_Ide_IIdeCompilerSettingsDialogService_ShowCompilerSettingsDialog_Pl0_Core_CompilerOptions_Pl0_Ide_IdeCodeDisplayMode_
+  name: ShowCompilerSettingsDialog
+  nameWithType: IIdeCompilerSettingsDialogService.ShowCompilerSettingsDialog
+  fullName: Pl0.Ide.IIdeCompilerSettingsDialogService.ShowCompilerSettingsDialog
+- uid: Pl0.Core.CompilerOptions
+  commentId: T:Pl0.Core.CompilerOptions
+  parent: Pl0.Core
+  href: Pl0.Core.CompilerOptions.html
+  name: CompilerOptions
+  nameWithType: CompilerOptions
+  fullName: Pl0.Core.CompilerOptions
+- uid: Pl0.Ide.IdeCodeDisplayMode
+  commentId: T:Pl0.Ide.IdeCodeDisplayMode
+  parent: Pl0.Ide
+  href: Pl0.Ide.IdeCodeDisplayMode.html
+  name: IdeCodeDisplayMode
+  nameWithType: IdeCodeDisplayMode
+  fullName: Pl0.Ide.IdeCodeDisplayMode
+- uid: Pl0.Ide.IdeCompilerSettingsDialogResult
+  commentId: T:Pl0.Ide.IdeCompilerSettingsDialogResult
+  parent: Pl0.Ide
+  href: Pl0.Ide.IdeCompilerSettingsDialogResult.html
+  name: IdeCompilerSettingsDialogResult
+  nameWithType: IdeCompilerSettingsDialogResult
+  fullName: Pl0.Ide.IdeCompilerSettingsDialogResult
+- uid: Pl0.Core
+  commentId: N:Pl0.Core
+  href: Pl0.html
+  name: Pl0.Core
+  nameWithType: Pl0.Core
+  fullName: Pl0.Core
+  spec.csharp:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Core
+    name: Core
+    href: Pl0.Core.html
+  spec.vb:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Core
+    name: Core
+    href: Pl0.Core.html

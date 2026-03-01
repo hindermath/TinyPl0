@@ -1,0 +1,834 @@
+### YamlMime:ManagedReference
+items:
+- uid: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService
+  commentId: T:Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService
+  id: TerminalGuiIdeCompilerSettingsDialogService
+  parent: Pl0.Ide
+  children:
+  - Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.ApplyStateToFields(Pl0.Ide.IdeCompilerSettingsDialogState,Terminal.Gui.RadioGroup,Terminal.Gui.RadioGroup,Terminal.Gui.TextField,Terminal.Gui.TextField,Terminal.Gui.TextField,Terminal.Gui.TextField,Terminal.Gui.TextField,Terminal.Gui.TextField)
+  - Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.CreateLabel(System.String,System.Int32)
+  - Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.CreateNumericField(System.Int32)
+  - Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.GetDialectForSelectedIndex(System.Int32)
+  - Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.GetDisplayModeForSelectedIndex(System.Int32)
+  - Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.GetSelectedIndexForDialect(Pl0.Core.Pl0Dialect)
+  - Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.GetSelectedIndexForDisplayMode(Pl0.Ide.IdeCodeDisplayMode)
+  - Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.ShowCompilerSettingsDialog(Pl0.Core.CompilerOptions,Pl0.Ide.IdeCodeDisplayMode)
+  - Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.TryParseField(Terminal.Gui.TextField,System.String,System.Int32@,System.String@)
+  langs:
+  - csharp
+  - vb
+  name: TerminalGuiIdeCompilerSettingsDialogService
+  nameWithType: TerminalGuiIdeCompilerSettingsDialogService
+  fullName: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService
+  type: Class
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: TerminalGuiIdeCompilerSettingsDialogService
+    path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
+    startLine: 11
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: 'internal sealed class TerminalGuiIdeCompilerSettingsDialogService : IIdeCompilerSettingsDialogService'
+    content.vb: Friend NotInheritable Class TerminalGuiIdeCompilerSettingsDialogService Implements IIdeCompilerSettingsDialogService
+  inheritance:
+  - System.Object
+  implements:
+  - Pl0.Ide.IIdeCompilerSettingsDialogService
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.ShowCompilerSettingsDialog(Pl0.Core.CompilerOptions,Pl0.Ide.IdeCodeDisplayMode)
+  commentId: M:Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.ShowCompilerSettingsDialog(Pl0.Core.CompilerOptions,Pl0.Ide.IdeCodeDisplayMode)
+  id: ShowCompilerSettingsDialog(Pl0.Core.CompilerOptions,Pl0.Ide.IdeCodeDisplayMode)
+  parent: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService
+  langs:
+  - csharp
+  - vb
+  name: ShowCompilerSettingsDialog(CompilerOptions, IdeCodeDisplayMode)
+  nameWithType: TerminalGuiIdeCompilerSettingsDialogService.ShowCompilerSettingsDialog(CompilerOptions, IdeCodeDisplayMode)
+  fullName: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.ShowCompilerSettingsDialog(Pl0.Core.CompilerOptions, Pl0.Ide.IdeCodeDisplayMode)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: ShowCompilerSettingsDialog
+    path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
+    startLine: 13
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  example: []
+  syntax:
+    content: public IdeCompilerSettingsDialogResult? ShowCompilerSettingsDialog(CompilerOptions currentOptions, IdeCodeDisplayMode currentCodeDisplayMode)
+    parameters:
+    - id: currentOptions
+      type: Pl0.Core.CompilerOptions
+    - id: currentCodeDisplayMode
+      type: Pl0.Ide.IdeCodeDisplayMode
+    return:
+      type: Pl0.Ide.IdeCompilerSettingsDialogResult
+    content.vb: Public Function ShowCompilerSettingsDialog(currentOptions As CompilerOptions, currentCodeDisplayMode As IdeCodeDisplayMode) As IdeCompilerSettingsDialogResult
+  overload: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.ShowCompilerSettingsDialog*
+  implements:
+  - Pl0.Ide.IIdeCompilerSettingsDialogService.ShowCompilerSettingsDialog(Pl0.Core.CompilerOptions,Pl0.Ide.IdeCodeDisplayMode)
+- uid: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.CreateLabel(System.String,System.Int32)
+  commentId: M:Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.CreateLabel(System.String,System.Int32)
+  id: CreateLabel(System.String,System.Int32)
+  parent: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService
+  langs:
+  - csharp
+  - vb
+  name: CreateLabel(string, int)
+  nameWithType: TerminalGuiIdeCompilerSettingsDialogService.CreateLabel(string, int)
+  fullName: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.CreateLabel(string, int)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: CreateLabel
+    path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
+    startLine: 173
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: private static Label CreateLabel(string text, int y)
+    parameters:
+    - id: text
+      type: System.String
+    - id: y
+      type: System.Int32
+    return:
+      type: Terminal.Gui.Label
+    content.vb: Private Shared Function CreateLabel(text As String, y As Integer) As Label
+  overload: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.CreateLabel*
+  nameWithType.vb: TerminalGuiIdeCompilerSettingsDialogService.CreateLabel(String, Integer)
+  fullName.vb: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.CreateLabel(String, Integer)
+  name.vb: CreateLabel(String, Integer)
+- uid: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.CreateNumericField(System.Int32)
+  commentId: M:Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.CreateNumericField(System.Int32)
+  id: CreateNumericField(System.Int32)
+  parent: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService
+  langs:
+  - csharp
+  - vb
+  name: CreateNumericField(int)
+  nameWithType: TerminalGuiIdeCompilerSettingsDialogService.CreateNumericField(int)
+  fullName: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.CreateNumericField(int)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: CreateNumericField
+    path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
+    startLine: 183
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: private static TextField CreateNumericField(int y)
+    parameters:
+    - id: y
+      type: System.Int32
+    return:
+      type: Terminal.Gui.TextField
+    content.vb: Private Shared Function CreateNumericField(y As Integer) As TextField
+  overload: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.CreateNumericField*
+  nameWithType.vb: TerminalGuiIdeCompilerSettingsDialogService.CreateNumericField(Integer)
+  fullName.vb: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.CreateNumericField(Integer)
+  name.vb: CreateNumericField(Integer)
+- uid: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.ApplyStateToFields(Pl0.Ide.IdeCompilerSettingsDialogState,Terminal.Gui.RadioGroup,Terminal.Gui.RadioGroup,Terminal.Gui.TextField,Terminal.Gui.TextField,Terminal.Gui.TextField,Terminal.Gui.TextField,Terminal.Gui.TextField,Terminal.Gui.TextField)
+  commentId: M:Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.ApplyStateToFields(Pl0.Ide.IdeCompilerSettingsDialogState,Terminal.Gui.RadioGroup,Terminal.Gui.RadioGroup,Terminal.Gui.TextField,Terminal.Gui.TextField,Terminal.Gui.TextField,Terminal.Gui.TextField,Terminal.Gui.TextField,Terminal.Gui.TextField)
+  id: ApplyStateToFields(Pl0.Ide.IdeCompilerSettingsDialogState,Terminal.Gui.RadioGroup,Terminal.Gui.RadioGroup,Terminal.Gui.TextField,Terminal.Gui.TextField,Terminal.Gui.TextField,Terminal.Gui.TextField,Terminal.Gui.TextField,Terminal.Gui.TextField)
+  parent: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService
+  langs:
+  - csharp
+  - vb
+  name: ApplyStateToFields(IdeCompilerSettingsDialogState, RadioGroup, RadioGroup, TextField, TextField, TextField, TextField, TextField, TextField)
+  nameWithType: TerminalGuiIdeCompilerSettingsDialogService.ApplyStateToFields(IdeCompilerSettingsDialogState, RadioGroup, RadioGroup, TextField, TextField, TextField, TextField, TextField, TextField)
+  fullName: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.ApplyStateToFields(Pl0.Ide.IdeCompilerSettingsDialogState, Terminal.Gui.RadioGroup, Terminal.Gui.RadioGroup, Terminal.Gui.TextField, Terminal.Gui.TextField, Terminal.Gui.TextField, Terminal.Gui.TextField, Terminal.Gui.TextField, Terminal.Gui.TextField)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: ApplyStateToFields
+    path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
+    startLine: 193
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: private static void ApplyStateToFields(IdeCompilerSettingsDialogState state, RadioGroup dialectRadio, RadioGroup displayModeRadio, TextField maxLevelField, TextField maxAddressField, TextField maxIdentifierLengthField, TextField maxNumberDigitsField, TextField maxSymbolCountField, TextField maxCodeLengthField)
+    parameters:
+    - id: state
+      type: Pl0.Ide.IdeCompilerSettingsDialogState
+    - id: dialectRadio
+      type: Terminal.Gui.RadioGroup
+    - id: displayModeRadio
+      type: Terminal.Gui.RadioGroup
+    - id: maxLevelField
+      type: Terminal.Gui.TextField
+    - id: maxAddressField
+      type: Terminal.Gui.TextField
+    - id: maxIdentifierLengthField
+      type: Terminal.Gui.TextField
+    - id: maxNumberDigitsField
+      type: Terminal.Gui.TextField
+    - id: maxSymbolCountField
+      type: Terminal.Gui.TextField
+    - id: maxCodeLengthField
+      type: Terminal.Gui.TextField
+    content.vb: Private Shared Sub ApplyStateToFields(state As IdeCompilerSettingsDialogState, dialectRadio As RadioGroup, displayModeRadio As RadioGroup, maxLevelField As TextField, maxAddressField As TextField, maxIdentifierLengthField As TextField, maxNumberDigitsField As TextField, maxSymbolCountField As TextField, maxCodeLengthField As TextField)
+  overload: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.ApplyStateToFields*
+- uid: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.TryParseField(Terminal.Gui.TextField,System.String,System.Int32@,System.String@)
+  commentId: M:Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.TryParseField(Terminal.Gui.TextField,System.String,System.Int32@,System.String@)
+  id: TryParseField(Terminal.Gui.TextField,System.String,System.Int32@,System.String@)
+  parent: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService
+  langs:
+  - csharp
+  - vb
+  name: TryParseField(TextField, string, out int, out string?)
+  nameWithType: TerminalGuiIdeCompilerSettingsDialogService.TryParseField(TextField, string, out int, out string?)
+  fullName: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.TryParseField(Terminal.Gui.TextField, string, out int, out string?)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: TryParseField
+    path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
+    startLine: 214
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: private static bool TryParseField(TextField field, string fieldName, out int value, out string? error)
+    parameters:
+    - id: field
+      type: Terminal.Gui.TextField
+    - id: fieldName
+      type: System.String
+    - id: value
+      type: System.Int32
+    - id: error
+      type: System.String
+    return:
+      type: System.Boolean
+    content.vb: Private Shared Function TryParseField(field As TextField, fieldName As String, value As Integer, [error] As String) As Boolean
+  overload: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.TryParseField*
+  nameWithType.vb: TerminalGuiIdeCompilerSettingsDialogService.TryParseField(TextField, String, Integer, String)
+  fullName.vb: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.TryParseField(Terminal.Gui.TextField, String, Integer, String)
+  name.vb: TryParseField(TextField, String, Integer, String)
+- uid: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.GetSelectedIndexForDialect(Pl0.Core.Pl0Dialect)
+  commentId: M:Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.GetSelectedIndexForDialect(Pl0.Core.Pl0Dialect)
+  id: GetSelectedIndexForDialect(Pl0.Core.Pl0Dialect)
+  parent: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService
+  langs:
+  - csharp
+  - vb
+  name: GetSelectedIndexForDialect(Pl0Dialect)
+  nameWithType: TerminalGuiIdeCompilerSettingsDialogService.GetSelectedIndexForDialect(Pl0Dialect)
+  fullName: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.GetSelectedIndexForDialect(Pl0.Core.Pl0Dialect)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: GetSelectedIndexForDialect
+    path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
+    startLine: 226
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: private static int GetSelectedIndexForDialect(Pl0Dialect dialect)
+    parameters:
+    - id: dialect
+      type: Pl0.Core.Pl0Dialect
+    return:
+      type: System.Int32
+    content.vb: Private Shared Function GetSelectedIndexForDialect(dialect As Pl0Dialect) As Integer
+  overload: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.GetSelectedIndexForDialect*
+- uid: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.GetDialectForSelectedIndex(System.Int32)
+  commentId: M:Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.GetDialectForSelectedIndex(System.Int32)
+  id: GetDialectForSelectedIndex(System.Int32)
+  parent: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService
+  langs:
+  - csharp
+  - vb
+  name: GetDialectForSelectedIndex(int)
+  nameWithType: TerminalGuiIdeCompilerSettingsDialogService.GetDialectForSelectedIndex(int)
+  fullName: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.GetDialectForSelectedIndex(int)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: GetDialectForSelectedIndex
+    path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
+    startLine: 231
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: private static Pl0Dialect GetDialectForSelectedIndex(int selectedItem)
+    parameters:
+    - id: selectedItem
+      type: System.Int32
+    return:
+      type: Pl0.Core.Pl0Dialect
+    content.vb: Private Shared Function GetDialectForSelectedIndex(selectedItem As Integer) As Pl0Dialect
+  overload: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.GetDialectForSelectedIndex*
+  nameWithType.vb: TerminalGuiIdeCompilerSettingsDialogService.GetDialectForSelectedIndex(Integer)
+  fullName.vb: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.GetDialectForSelectedIndex(Integer)
+  name.vb: GetDialectForSelectedIndex(Integer)
+- uid: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.GetSelectedIndexForDisplayMode(Pl0.Ide.IdeCodeDisplayMode)
+  commentId: M:Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.GetSelectedIndexForDisplayMode(Pl0.Ide.IdeCodeDisplayMode)
+  id: GetSelectedIndexForDisplayMode(Pl0.Ide.IdeCodeDisplayMode)
+  parent: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService
+  langs:
+  - csharp
+  - vb
+  name: GetSelectedIndexForDisplayMode(IdeCodeDisplayMode)
+  nameWithType: TerminalGuiIdeCompilerSettingsDialogService.GetSelectedIndexForDisplayMode(IdeCodeDisplayMode)
+  fullName: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.GetSelectedIndexForDisplayMode(Pl0.Ide.IdeCodeDisplayMode)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: GetSelectedIndexForDisplayMode
+    path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
+    startLine: 236
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: private static int GetSelectedIndexForDisplayMode(IdeCodeDisplayMode codeDisplayMode)
+    parameters:
+    - id: codeDisplayMode
+      type: Pl0.Ide.IdeCodeDisplayMode
+    return:
+      type: System.Int32
+    content.vb: Private Shared Function GetSelectedIndexForDisplayMode(codeDisplayMode As IdeCodeDisplayMode) As Integer
+  overload: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.GetSelectedIndexForDisplayMode*
+- uid: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.GetDisplayModeForSelectedIndex(System.Int32)
+  commentId: M:Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.GetDisplayModeForSelectedIndex(System.Int32)
+  id: GetDisplayModeForSelectedIndex(System.Int32)
+  parent: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService
+  langs:
+  - csharp
+  - vb
+  name: GetDisplayModeForSelectedIndex(int)
+  nameWithType: TerminalGuiIdeCompilerSettingsDialogService.GetDisplayModeForSelectedIndex(int)
+  fullName: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.GetDisplayModeForSelectedIndex(int)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: GetDisplayModeForSelectedIndex
+    path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
+    startLine: 241
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: private static IdeCodeDisplayMode GetDisplayModeForSelectedIndex(int selectedItem)
+    parameters:
+    - id: selectedItem
+      type: System.Int32
+    return:
+      type: Pl0.Ide.IdeCodeDisplayMode
+    content.vb: Private Shared Function GetDisplayModeForSelectedIndex(selectedItem As Integer) As IdeCodeDisplayMode
+  overload: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.GetDisplayModeForSelectedIndex*
+  nameWithType.vb: TerminalGuiIdeCompilerSettingsDialogService.GetDisplayModeForSelectedIndex(Integer)
+  fullName.vb: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.GetDisplayModeForSelectedIndex(Integer)
+  name.vb: GetDisplayModeForSelectedIndex(Integer)
+references:
+- uid: Pl0.Ide
+  commentId: N:Pl0.Ide
+  href: Pl0.html
+  name: Pl0.Ide
+  nameWithType: Pl0.Ide
+  fullName: Pl0.Ide
+  spec.csharp:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Ide
+    name: Ide
+    href: Pl0.Ide.html
+  spec.vb:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Ide
+    name: Ide
+    href: Pl0.Ide.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Pl0.Ide.IIdeCompilerSettingsDialogService
+  commentId: T:Pl0.Ide.IIdeCompilerSettingsDialogService
+  parent: Pl0.Ide
+  href: Pl0.Ide.IIdeCompilerSettingsDialogService.html
+  name: IIdeCompilerSettingsDialogService
+  nameWithType: IIdeCompilerSettingsDialogService
+  fullName: Pl0.Ide.IIdeCompilerSettingsDialogService
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.ShowCompilerSettingsDialog*
+  commentId: Overload:Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.ShowCompilerSettingsDialog
+  href: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.html#Pl0_Ide_TerminalGuiIdeCompilerSettingsDialogService_ShowCompilerSettingsDialog_Pl0_Core_CompilerOptions_Pl0_Ide_IdeCodeDisplayMode_
+  name: ShowCompilerSettingsDialog
+  nameWithType: TerminalGuiIdeCompilerSettingsDialogService.ShowCompilerSettingsDialog
+  fullName: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.ShowCompilerSettingsDialog
+- uid: Pl0.Ide.IIdeCompilerSettingsDialogService.ShowCompilerSettingsDialog(Pl0.Core.CompilerOptions,Pl0.Ide.IdeCodeDisplayMode)
+  commentId: M:Pl0.Ide.IIdeCompilerSettingsDialogService.ShowCompilerSettingsDialog(Pl0.Core.CompilerOptions,Pl0.Ide.IdeCodeDisplayMode)
+  parent: Pl0.Ide.IIdeCompilerSettingsDialogService
+  href: Pl0.Ide.IIdeCompilerSettingsDialogService.html#Pl0_Ide_IIdeCompilerSettingsDialogService_ShowCompilerSettingsDialog_Pl0_Core_CompilerOptions_Pl0_Ide_IdeCodeDisplayMode_
+  name: ShowCompilerSettingsDialog(CompilerOptions, IdeCodeDisplayMode)
+  nameWithType: IIdeCompilerSettingsDialogService.ShowCompilerSettingsDialog(CompilerOptions, IdeCodeDisplayMode)
+  fullName: Pl0.Ide.IIdeCompilerSettingsDialogService.ShowCompilerSettingsDialog(Pl0.Core.CompilerOptions, Pl0.Ide.IdeCodeDisplayMode)
+  spec.csharp:
+  - uid: Pl0.Ide.IIdeCompilerSettingsDialogService.ShowCompilerSettingsDialog(Pl0.Core.CompilerOptions,Pl0.Ide.IdeCodeDisplayMode)
+    name: ShowCompilerSettingsDialog
+    href: Pl0.Ide.IIdeCompilerSettingsDialogService.html#Pl0_Ide_IIdeCompilerSettingsDialogService_ShowCompilerSettingsDialog_Pl0_Core_CompilerOptions_Pl0_Ide_IdeCodeDisplayMode_
+  - name: (
+  - uid: Pl0.Core.CompilerOptions
+    name: CompilerOptions
+    href: Pl0.Core.CompilerOptions.html
+  - name: ','
+  - name: " "
+  - uid: Pl0.Ide.IdeCodeDisplayMode
+    name: IdeCodeDisplayMode
+    href: Pl0.Ide.IdeCodeDisplayMode.html
+  - name: )
+  spec.vb:
+  - uid: Pl0.Ide.IIdeCompilerSettingsDialogService.ShowCompilerSettingsDialog(Pl0.Core.CompilerOptions,Pl0.Ide.IdeCodeDisplayMode)
+    name: ShowCompilerSettingsDialog
+    href: Pl0.Ide.IIdeCompilerSettingsDialogService.html#Pl0_Ide_IIdeCompilerSettingsDialogService_ShowCompilerSettingsDialog_Pl0_Core_CompilerOptions_Pl0_Ide_IdeCodeDisplayMode_
+  - name: (
+  - uid: Pl0.Core.CompilerOptions
+    name: CompilerOptions
+    href: Pl0.Core.CompilerOptions.html
+  - name: ','
+  - name: " "
+  - uid: Pl0.Ide.IdeCodeDisplayMode
+    name: IdeCodeDisplayMode
+    href: Pl0.Ide.IdeCodeDisplayMode.html
+  - name: )
+- uid: Pl0.Core.CompilerOptions
+  commentId: T:Pl0.Core.CompilerOptions
+  parent: Pl0.Core
+  href: Pl0.Core.CompilerOptions.html
+  name: CompilerOptions
+  nameWithType: CompilerOptions
+  fullName: Pl0.Core.CompilerOptions
+- uid: Pl0.Ide.IdeCodeDisplayMode
+  commentId: T:Pl0.Ide.IdeCodeDisplayMode
+  parent: Pl0.Ide
+  href: Pl0.Ide.IdeCodeDisplayMode.html
+  name: IdeCodeDisplayMode
+  nameWithType: IdeCodeDisplayMode
+  fullName: Pl0.Ide.IdeCodeDisplayMode
+- uid: Pl0.Ide.IdeCompilerSettingsDialogResult
+  commentId: T:Pl0.Ide.IdeCompilerSettingsDialogResult
+  parent: Pl0.Ide
+  href: Pl0.Ide.IdeCompilerSettingsDialogResult.html
+  name: IdeCompilerSettingsDialogResult
+  nameWithType: IdeCompilerSettingsDialogResult
+  fullName: Pl0.Ide.IdeCompilerSettingsDialogResult
+- uid: Pl0.Core
+  commentId: N:Pl0.Core
+  href: Pl0.html
+  name: Pl0.Core
+  nameWithType: Pl0.Core
+  fullName: Pl0.Core
+  spec.csharp:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Core
+    name: Core
+    href: Pl0.Core.html
+  spec.vb:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Core
+    name: Core
+    href: Pl0.Core.html
+- uid: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.CreateLabel*
+  commentId: Overload:Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.CreateLabel
+  href: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.html#Pl0_Ide_TerminalGuiIdeCompilerSettingsDialogService_CreateLabel_System_String_System_Int32_
+  name: CreateLabel
+  nameWithType: TerminalGuiIdeCompilerSettingsDialogService.CreateLabel
+  fullName: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.CreateLabel
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Terminal.Gui.Label
+  commentId: T:Terminal.Gui.Label
+  parent: Terminal.Gui
+  isExternal: true
+  name: Label
+  nameWithType: Label
+  fullName: Terminal.Gui.Label
+- uid: Terminal.Gui
+  commentId: N:Terminal.Gui
+  isExternal: true
+  name: Terminal.Gui
+  nameWithType: Terminal.Gui
+  fullName: Terminal.Gui
+  spec.csharp:
+  - uid: Terminal
+    name: Terminal
+    isExternal: true
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    isExternal: true
+  spec.vb:
+  - uid: Terminal
+    name: Terminal
+    isExternal: true
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    isExternal: true
+- uid: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.CreateNumericField*
+  commentId: Overload:Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.CreateNumericField
+  href: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.html#Pl0_Ide_TerminalGuiIdeCompilerSettingsDialogService_CreateNumericField_System_Int32_
+  name: CreateNumericField
+  nameWithType: TerminalGuiIdeCompilerSettingsDialogService.CreateNumericField
+  fullName: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.CreateNumericField
+- uid: Terminal.Gui.TextField
+  commentId: T:Terminal.Gui.TextField
+  parent: Terminal.Gui
+  isExternal: true
+  name: TextField
+  nameWithType: TextField
+  fullName: Terminal.Gui.TextField
+- uid: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.ApplyStateToFields*
+  commentId: Overload:Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.ApplyStateToFields
+  href: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.html#Pl0_Ide_TerminalGuiIdeCompilerSettingsDialogService_ApplyStateToFields_Pl0_Ide_IdeCompilerSettingsDialogState_Terminal_Gui_RadioGroup_Terminal_Gui_RadioGroup_Terminal_Gui_TextField_Terminal_Gui_TextField_Terminal_Gui_TextField_Terminal_Gui_TextField_Terminal_Gui_TextField_Terminal_Gui_TextField_
+  name: ApplyStateToFields
+  nameWithType: TerminalGuiIdeCompilerSettingsDialogService.ApplyStateToFields
+  fullName: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.ApplyStateToFields
+- uid: Pl0.Ide.IdeCompilerSettingsDialogState
+  commentId: T:Pl0.Ide.IdeCompilerSettingsDialogState
+  parent: Pl0.Ide
+  href: Pl0.Ide.IdeCompilerSettingsDialogState.html
+  name: IdeCompilerSettingsDialogState
+  nameWithType: IdeCompilerSettingsDialogState
+  fullName: Pl0.Ide.IdeCompilerSettingsDialogState
+- uid: Terminal.Gui.RadioGroup
+  commentId: T:Terminal.Gui.RadioGroup
+  parent: Terminal.Gui
+  isExternal: true
+  name: RadioGroup
+  nameWithType: RadioGroup
+  fullName: Terminal.Gui.RadioGroup
+- uid: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.TryParseField*
+  commentId: Overload:Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.TryParseField
+  href: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.html#Pl0_Ide_TerminalGuiIdeCompilerSettingsDialogService_TryParseField_Terminal_Gui_TextField_System_String_System_Int32__System_String__
+  name: TryParseField
+  nameWithType: TerminalGuiIdeCompilerSettingsDialogService.TryParseField
+  fullName: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.TryParseField
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.GetSelectedIndexForDialect*
+  commentId: Overload:Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.GetSelectedIndexForDialect
+  href: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.html#Pl0_Ide_TerminalGuiIdeCompilerSettingsDialogService_GetSelectedIndexForDialect_Pl0_Core_Pl0Dialect_
+  name: GetSelectedIndexForDialect
+  nameWithType: TerminalGuiIdeCompilerSettingsDialogService.GetSelectedIndexForDialect
+  fullName: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.GetSelectedIndexForDialect
+- uid: Pl0.Core.Pl0Dialect
+  commentId: T:Pl0.Core.Pl0Dialect
+  parent: Pl0.Core
+  href: Pl0.Core.Pl0Dialect.html
+  name: Pl0Dialect
+  nameWithType: Pl0Dialect
+  fullName: Pl0.Core.Pl0Dialect
+- uid: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.GetDialectForSelectedIndex*
+  commentId: Overload:Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.GetDialectForSelectedIndex
+  href: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.html#Pl0_Ide_TerminalGuiIdeCompilerSettingsDialogService_GetDialectForSelectedIndex_System_Int32_
+  name: GetDialectForSelectedIndex
+  nameWithType: TerminalGuiIdeCompilerSettingsDialogService.GetDialectForSelectedIndex
+  fullName: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.GetDialectForSelectedIndex
+- uid: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.GetSelectedIndexForDisplayMode*
+  commentId: Overload:Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.GetSelectedIndexForDisplayMode
+  href: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.html#Pl0_Ide_TerminalGuiIdeCompilerSettingsDialogService_GetSelectedIndexForDisplayMode_Pl0_Ide_IdeCodeDisplayMode_
+  name: GetSelectedIndexForDisplayMode
+  nameWithType: TerminalGuiIdeCompilerSettingsDialogService.GetSelectedIndexForDisplayMode
+  fullName: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.GetSelectedIndexForDisplayMode
+- uid: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.GetDisplayModeForSelectedIndex*
+  commentId: Overload:Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.GetDisplayModeForSelectedIndex
+  href: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.html#Pl0_Ide_TerminalGuiIdeCompilerSettingsDialogService_GetDisplayModeForSelectedIndex_System_Int32_
+  name: GetDisplayModeForSelectedIndex
+  nameWithType: TerminalGuiIdeCompilerSettingsDialogService.GetDisplayModeForSelectedIndex
+  fullName: Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService.GetDisplayModeForSelectedIndex

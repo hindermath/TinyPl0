@@ -1,0 +1,665 @@
+### YamlMime:ManagedReference
+items:
+- uid: Pl0.Vm.VmState
+  commentId: T:Pl0.Vm.VmState
+  id: VmState
+  parent: Pl0.Vm
+  children:
+  - Pl0.Vm.VmState.#ctor(System.Int32,System.Int32,System.Int32,System.Int32[],System.Nullable{Pl0.Core.Instruction})
+  - Pl0.Vm.VmState.B
+  - Pl0.Vm.VmState.CurrentInstruction
+  - Pl0.Vm.VmState.P
+  - Pl0.Vm.VmState.Stack
+  - Pl0.Vm.VmState.T
+  langs:
+  - csharp
+  - vb
+  name: VmState
+  nameWithType: VmState
+  fullName: Pl0.Vm.VmState
+  type: Class
+  source:
+    remote:
+      path: src/Pl0.Vm/VmState.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: VmState
+    path: src/Pl0.Vm/VmState.cs
+    startLine: 12
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  summary: Snapshot of the current VM state.
+  example: []
+  syntax:
+    content: 'public sealed record VmState : IEquatable<VmState>'
+    content.vb: Public NotInheritable Class VmState Implements IEquatable(Of VmState)
+  inheritance:
+  - System.Object
+  implements:
+  - System.IEquatable{Pl0.Vm.VmState}
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Pl0.Vm.VmState.#ctor(System.Int32,System.Int32,System.Int32,System.Int32[],System.Nullable{Pl0.Core.Instruction})
+  commentId: M:Pl0.Vm.VmState.#ctor(System.Int32,System.Int32,System.Int32,System.Int32[],System.Nullable{Pl0.Core.Instruction})
+  id: '#ctor(System.Int32,System.Int32,System.Int32,System.Int32[],System.Nullable{Pl0.Core.Instruction})'
+  parent: Pl0.Vm.VmState
+  langs:
+  - csharp
+  - vb
+  name: VmState(int, int, int, int[], Instruction?)
+  nameWithType: VmState.VmState(int, int, int, int[], Instruction?)
+  fullName: Pl0.Vm.VmState.VmState(int, int, int, int[], Pl0.Core.Instruction?)
+  type: Constructor
+  source:
+    remote:
+      path: src/Pl0.Vm/VmState.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: .ctor
+    path: src/Pl0.Vm/VmState.cs
+    startLine: 12
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  summary: Snapshot of the current VM state.
+  example: []
+  syntax:
+    content: public VmState(int P, int B, int T, int[] Stack, Instruction? CurrentInstruction)
+    parameters:
+    - id: P
+      type: System.Int32
+      description: Program counter.
+    - id: B
+      type: System.Int32
+      description: Base pointer.
+    - id: T
+      type: System.Int32
+      description: Top-of-stack pointer.
+    - id: Stack
+      type: System.Int32[]
+      description: Stack snapshot.
+    - id: CurrentInstruction
+      type: System.Nullable{Pl0.Core.Instruction}
+      description: Instruction at the current program counter.
+    content.vb: Public Sub New(P As Integer, B As Integer, T As Integer, Stack As Integer(), CurrentInstruction As Instruction?)
+  overload: Pl0.Vm.VmState.#ctor*
+  nameWithType.vb: VmState.New(Integer, Integer, Integer, Integer(), Instruction?)
+  fullName.vb: Pl0.Vm.VmState.New(Integer, Integer, Integer, Integer(), Pl0.Core.Instruction?)
+  name.vb: New(Integer, Integer, Integer, Integer(), Instruction?)
+- uid: Pl0.Vm.VmState.P
+  commentId: P:Pl0.Vm.VmState.P
+  id: P
+  parent: Pl0.Vm.VmState
+  langs:
+  - csharp
+  - vb
+  name: P
+  nameWithType: VmState.P
+  fullName: Pl0.Vm.VmState.P
+  type: Property
+  source:
+    remote:
+      path: src/Pl0.Vm/VmState.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: P
+    path: src/Pl0.Vm/VmState.cs
+    startLine: 13
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  summary: Program counter.
+  example: []
+  syntax:
+    content: public int P { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property P As Integer
+  overload: Pl0.Vm.VmState.P*
+- uid: Pl0.Vm.VmState.B
+  commentId: P:Pl0.Vm.VmState.B
+  id: B
+  parent: Pl0.Vm.VmState
+  langs:
+  - csharp
+  - vb
+  name: B
+  nameWithType: VmState.B
+  fullName: Pl0.Vm.VmState.B
+  type: Property
+  source:
+    remote:
+      path: src/Pl0.Vm/VmState.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: B
+    path: src/Pl0.Vm/VmState.cs
+    startLine: 14
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  summary: Base pointer.
+  example: []
+  syntax:
+    content: public int B { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property B As Integer
+  overload: Pl0.Vm.VmState.B*
+- uid: Pl0.Vm.VmState.T
+  commentId: P:Pl0.Vm.VmState.T
+  id: T
+  parent: Pl0.Vm.VmState
+  langs:
+  - csharp
+  - vb
+  name: T
+  nameWithType: VmState.T
+  fullName: Pl0.Vm.VmState.T
+  type: Property
+  source:
+    remote:
+      path: src/Pl0.Vm/VmState.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: T
+    path: src/Pl0.Vm/VmState.cs
+    startLine: 15
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  summary: Top-of-stack pointer.
+  example: []
+  syntax:
+    content: public int T { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property T As Integer
+  overload: Pl0.Vm.VmState.T*
+- uid: Pl0.Vm.VmState.Stack
+  commentId: P:Pl0.Vm.VmState.Stack
+  id: Stack
+  parent: Pl0.Vm.VmState
+  langs:
+  - csharp
+  - vb
+  name: Stack
+  nameWithType: VmState.Stack
+  fullName: Pl0.Vm.VmState.Stack
+  type: Property
+  source:
+    remote:
+      path: src/Pl0.Vm/VmState.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: Stack
+    path: src/Pl0.Vm/VmState.cs
+    startLine: 16
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  summary: Stack snapshot.
+  example: []
+  syntax:
+    content: public int[] Stack { get; init; }
+    parameters: []
+    return:
+      type: System.Int32[]
+    content.vb: Public Property Stack As Integer()
+  overload: Pl0.Vm.VmState.Stack*
+- uid: Pl0.Vm.VmState.CurrentInstruction
+  commentId: P:Pl0.Vm.VmState.CurrentInstruction
+  id: CurrentInstruction
+  parent: Pl0.Vm.VmState
+  langs:
+  - csharp
+  - vb
+  name: CurrentInstruction
+  nameWithType: VmState.CurrentInstruction
+  fullName: Pl0.Vm.VmState.CurrentInstruction
+  type: Property
+  source:
+    remote:
+      path: src/Pl0.Vm/VmState.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: CurrentInstruction
+    path: src/Pl0.Vm/VmState.cs
+    startLine: 17
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  summary: Instruction at the current program counter.
+  example: []
+  syntax:
+    content: public Instruction? CurrentInstruction { get; init; }
+    parameters: []
+    return:
+      type: System.Nullable{Pl0.Core.Instruction}
+    content.vb: Public Property CurrentInstruction As Instruction?
+  overload: Pl0.Vm.VmState.CurrentInstruction*
+references:
+- uid: Pl0.Vm
+  commentId: N:Pl0.Vm
+  href: Pl0.html
+  name: Pl0.Vm
+  nameWithType: Pl0.Vm
+  fullName: Pl0.Vm
+  spec.csharp:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Vm
+    name: Vm
+    href: Pl0.Vm.html
+  spec.vb:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Vm
+    name: Vm
+    href: Pl0.Vm.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IEquatable{Pl0.Vm.VmState}
+  commentId: T:System.IEquatable{Pl0.Vm.VmState}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<VmState>
+  nameWithType: IEquatable<VmState>
+  fullName: System.IEquatable<Pl0.Vm.VmState>
+  nameWithType.vb: IEquatable(Of VmState)
+  fullName.vb: System.IEquatable(Of Pl0.Vm.VmState)
+  name.vb: IEquatable(Of VmState)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: Pl0.Vm.VmState
+    name: VmState
+    href: Pl0.Vm.VmState.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Pl0.Vm.VmState
+    name: VmState
+    href: Pl0.Vm.VmState.html
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Pl0.Vm.VmState.#ctor*
+  commentId: Overload:Pl0.Vm.VmState.#ctor
+  href: Pl0.Vm.VmState.html#Pl0_Vm_VmState__ctor_System_Int32_System_Int32_System_Int32_System_Int32___System_Nullable_Pl0_Core_Instruction__
+  name: VmState
+  nameWithType: VmState.VmState
+  fullName: Pl0.Vm.VmState.VmState
+  nameWithType.vb: VmState.New
+  fullName.vb: Pl0.Vm.VmState.New
+  name.vb: New
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Int32[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int[]
+  nameWithType: int[]
+  fullName: int[]
+  nameWithType.vb: Integer()
+  fullName.vb: Integer()
+  name.vb: Integer()
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: (
+  - name: )
+- uid: System.Nullable{Pl0.Core.Instruction}
+  commentId: T:System.Nullable{Pl0.Core.Instruction}
+  parent: System
+  definition: System.Nullable`1
+  href: Pl0.Core.Instruction.html
+  name: Instruction?
+  nameWithType: Instruction?
+  fullName: Pl0.Core.Instruction?
+  spec.csharp:
+  - uid: Pl0.Core.Instruction
+    name: Instruction
+    href: Pl0.Core.Instruction.html
+  - name: '?'
+  spec.vb:
+  - uid: Pl0.Core.Instruction
+    name: Instruction
+    href: Pl0.Core.Instruction.html
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Pl0.Vm.VmState.P*
+  commentId: Overload:Pl0.Vm.VmState.P
+  href: Pl0.Vm.VmState.html#Pl0_Vm_VmState_P
+  name: P
+  nameWithType: VmState.P
+  fullName: Pl0.Vm.VmState.P
+- uid: Pl0.Vm.VmState.B*
+  commentId: Overload:Pl0.Vm.VmState.B
+  href: Pl0.Vm.VmState.html#Pl0_Vm_VmState_B
+  name: B
+  nameWithType: VmState.B
+  fullName: Pl0.Vm.VmState.B
+- uid: Pl0.Vm.VmState.T*
+  commentId: Overload:Pl0.Vm.VmState.T
+  href: Pl0.Vm.VmState.html#Pl0_Vm_VmState_T
+  name: T
+  nameWithType: VmState.T
+  fullName: Pl0.Vm.VmState.T
+- uid: Pl0.Vm.VmState.Stack*
+  commentId: Overload:Pl0.Vm.VmState.Stack
+  href: Pl0.Vm.VmState.html#Pl0_Vm_VmState_Stack
+  name: Stack
+  nameWithType: VmState.Stack
+  fullName: Pl0.Vm.VmState.Stack
+- uid: Pl0.Vm.VmState.CurrentInstruction*
+  commentId: Overload:Pl0.Vm.VmState.CurrentInstruction
+  href: Pl0.Vm.VmState.html#Pl0_Vm_VmState_CurrentInstruction
+  name: CurrentInstruction
+  nameWithType: VmState.CurrentInstruction
+  fullName: Pl0.Vm.VmState.CurrentInstruction

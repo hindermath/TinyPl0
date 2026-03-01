@@ -1,0 +1,110 @@
+### YamlMime:ManagedReference
+items:
+- uid: Pl0.Ide.IIdeMessageDialogService
+  commentId: T:Pl0.Ide.IIdeMessageDialogService
+  id: IIdeMessageDialogService
+  parent: Pl0.Ide
+  children:
+  - Pl0.Ide.IIdeMessageDialogService.ShowInfo(System.String,System.String)
+  langs:
+  - csharp
+  - vb
+  name: IIdeMessageDialogService
+  nameWithType: IIdeMessageDialogService
+  fullName: Pl0.Ide.IIdeMessageDialogService
+  type: Interface
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeMessageDialogService.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: IIdeMessageDialogService
+    path: src/Pl0.Ide/IdeMessageDialogService.cs
+    startLine: 4
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: internal interface IIdeMessageDialogService
+    content.vb: Friend Interface IIdeMessageDialogService
+- uid: Pl0.Ide.IIdeMessageDialogService.ShowInfo(System.String,System.String)
+  commentId: M:Pl0.Ide.IIdeMessageDialogService.ShowInfo(System.String,System.String)
+  id: ShowInfo(System.String,System.String)
+  parent: Pl0.Ide.IIdeMessageDialogService
+  langs:
+  - csharp
+  - vb
+  name: ShowInfo(string, string)
+  nameWithType: IIdeMessageDialogService.ShowInfo(string, string)
+  fullName: Pl0.Ide.IIdeMessageDialogService.ShowInfo(string, string)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeMessageDialogService.cs
+      branch: docs/docfx-add-ide-exclude-claude-md
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: ShowInfo
+    path: src/Pl0.Ide/IdeMessageDialogService.cs
+    startLine: 6
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: void ShowInfo(string title, string message)
+    parameters:
+    - id: title
+      type: System.String
+    - id: message
+      type: System.String
+    content.vb: Sub ShowInfo(title As String, message As String)
+  overload: Pl0.Ide.IIdeMessageDialogService.ShowInfo*
+  nameWithType.vb: IIdeMessageDialogService.ShowInfo(String, String)
+  fullName.vb: Pl0.Ide.IIdeMessageDialogService.ShowInfo(String, String)
+  name.vb: ShowInfo(String, String)
+references:
+- uid: Pl0.Ide
+  commentId: N:Pl0.Ide
+  href: Pl0.html
+  name: Pl0.Ide
+  nameWithType: Pl0.Ide
+  fullName: Pl0.Ide
+  spec.csharp:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Ide
+    name: Ide
+    href: Pl0.Ide.html
+  spec.vb:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Ide
+    name: Ide
+    href: Pl0.Ide.html
+- uid: Pl0.Ide.IIdeMessageDialogService.ShowInfo*
+  commentId: Overload:Pl0.Ide.IIdeMessageDialogService.ShowInfo
+  href: Pl0.Ide.IIdeMessageDialogService.html#Pl0_Ide_IIdeMessageDialogService_ShowInfo_System_String_System_String_
+  name: ShowInfo
+  nameWithType: IIdeMessageDialogService.ShowInfo
+  fullName: Pl0.Ide.IIdeMessageDialogService.ShowInfo
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
