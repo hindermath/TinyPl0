@@ -19,7 +19,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CliCommand.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: CliCommand
     path: src/Pl0.Cli/Cli/CliCommand.cs
@@ -46,7 +46,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CliCommand.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: None
     path: src/Pl0.Cli/Cli/CliCommand.cs
@@ -74,7 +74,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CliCommand.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: Compile
     path: src/Pl0.Cli/Cli/CliCommand.cs
@@ -102,7 +102,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CliCommand.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: Run
     path: src/Pl0.Cli/Cli/CliCommand.cs
@@ -130,7 +130,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CliCommand.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: RunPCode
     path: src/Pl0.Cli/Cli/CliCommand.cs

@@ -37,7 +37,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: Pl0Lexer
     path: src/Pl0.Core/Pl0Lexer.cs
@@ -73,7 +73,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: _options
     path: src/Pl0.Core/Pl0Lexer.cs
@@ -102,7 +102,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: _text
     path: src/Pl0.Core/Pl0Lexer.cs
@@ -131,7 +131,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: _tokens
     path: src/Pl0.Core/Pl0Lexer.cs
@@ -160,7 +160,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: _diagnostics
     path: src/Pl0.Core/Pl0Lexer.cs
@@ -189,7 +189,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: _index
     path: src/Pl0.Core/Pl0Lexer.cs
@@ -218,7 +218,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: _line
     path: src/Pl0.Core/Pl0Lexer.cs
@@ -247,7 +247,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: _column
     path: src/Pl0.Core/Pl0Lexer.cs
@@ -276,7 +276,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: .ctor
     path: src/Pl0.Core/Pl0Lexer.cs
@@ -314,7 +314,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: Lex
     path: src/Pl0.Core/Pl0Lexer.cs
@@ -345,7 +345,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: Current
     path: src/Pl0.Core/Pl0Lexer.cs
@@ -376,7 +376,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: Peek
     path: src/Pl0.Core/Pl0Lexer.cs
@@ -414,7 +414,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: CurrentPosition
     path: src/Pl0.Core/Pl0Lexer.cs
@@ -445,7 +445,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: Advance
     path: src/Pl0.Core/Pl0Lexer.cs
@@ -473,7 +473,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: SkipWhiteSpace
     path: src/Pl0.Core/Pl0Lexer.cs
@@ -501,7 +501,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: AddSingleCharToken
     path: src/Pl0.Core/Pl0Lexer.cs
@@ -533,7 +533,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: LexIdentifierOrKeyword
     path: src/Pl0.Core/Pl0Lexer.cs
@@ -561,7 +561,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: LexNumber
     path: src/Pl0.Core/Pl0Lexer.cs
@@ -589,7 +589,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: LexLessOrLessEqual
     path: src/Pl0.Core/Pl0Lexer.cs
@@ -617,7 +617,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: LexGreaterOrGreaterEqual
     path: src/Pl0.Core/Pl0Lexer.cs
@@ -645,7 +645,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: LexBecomesOrDiagnostic
     path: src/Pl0.Core/Pl0Lexer.cs
@@ -673,7 +673,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: ReportUnexpectedCharacter
     path: src/Pl0.Core/Pl0Lexer.cs
@@ -708,7 +708,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: MapIdentifierKind
     path: src/Pl0.Core/Pl0Lexer.cs

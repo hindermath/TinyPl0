@@ -26,7 +26,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CompilerCliOptions.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: CompilerCliOptions
     path: src/Pl0.Cli/Cli/CompilerCliOptions.cs
@@ -62,7 +62,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CompilerCliOptions.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: Command
     path: src/Pl0.Cli/Cli/CompilerCliOptions.cs
@@ -93,7 +93,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CompilerCliOptions.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: ShowHelp
     path: src/Pl0.Cli/Cli/CompilerCliOptions.cs
@@ -124,7 +124,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CompilerCliOptions.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: LongErrorMessages
     path: src/Pl0.Cli/Cli/CompilerCliOptions.cs
@@ -155,7 +155,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CompilerCliOptions.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: WriteOpcodesInListing
     path: src/Pl0.Cli/Cli/CompilerCliOptions.cs
@@ -186,7 +186,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CompilerCliOptions.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: ListCode
     path: src/Pl0.Cli/Cli/CompilerCliOptions.cs
@@ -217,7 +217,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CompilerCliOptions.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: CompileOnly
     path: src/Pl0.Cli/Cli/CompilerCliOptions.cs
@@ -248,7 +248,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CompilerCliOptions.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: EmitRequested
     path: src/Pl0.Cli/Cli/CompilerCliOptions.cs
@@ -279,7 +279,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CompilerCliOptions.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: ShowApi
     path: src/Pl0.Cli/Cli/CompilerCliOptions.cs
@@ -310,7 +310,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CompilerCliOptions.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: EmitMode
     path: src/Pl0.Cli/Cli/CompilerCliOptions.cs
@@ -341,7 +341,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CompilerCliOptions.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: SourcePath
     path: src/Pl0.Cli/Cli/CompilerCliOptions.cs
@@ -372,7 +372,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CompilerCliOptions.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: OutputPath
     path: src/Pl0.Cli/Cli/CompilerCliOptions.cs

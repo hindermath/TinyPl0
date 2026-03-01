@@ -23,7 +23,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Opcode.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: Opcode
     path: src/Pl0.Core/Opcode.cs
@@ -50,7 +50,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Opcode.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: Lit
     path: src/Pl0.Core/Opcode.cs
@@ -78,7 +78,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Opcode.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: Opr
     path: src/Pl0.Core/Opcode.cs
@@ -106,7 +106,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Opcode.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: Lod
     path: src/Pl0.Core/Opcode.cs
@@ -134,7 +134,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Opcode.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: Sto
     path: src/Pl0.Core/Opcode.cs
@@ -162,7 +162,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Opcode.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: Cal
     path: src/Pl0.Core/Opcode.cs
@@ -190,7 +190,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Opcode.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: Int
     path: src/Pl0.Core/Opcode.cs
@@ -218,7 +218,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Opcode.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: Jmp
     path: src/Pl0.Core/Opcode.cs
@@ -246,7 +246,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Opcode.cs
-      branch: main
+      branch: docs/docfx-add-ide-exclude-claude-md
       repo: https://github.com/hindermath/TinyPl0.git
     id: Jpc
     path: src/Pl0.Core/Opcode.cs
