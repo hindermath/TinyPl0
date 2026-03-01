@@ -4,6 +4,7 @@
     {
       "src": [
         { "files": ["src/Pl0.Cli/Pl0.Cli.csproj"] },
+        { "files": ["src/Pl0.Ide/Pl0.Ide.csproj"] },
         { "files": ["src/Pl0.Core/Pl0.Core.csproj"] },
         { "files": ["src/Pl0.Vm/Pl0.Vm.csproj"] }
       ],
@@ -19,7 +20,7 @@
       { "src": "docfx", "files": ["**.md", "**/toc.yml"], "exclude": ["index.md", "toc.yml"], "dest": "docfx" },
       { "files": ["api/**.yml", "api/toc.yml"] },
       { "files": ["docs/**.md"] },
-      { "files": ["*.md"], "exclude": ["README.md", "AGENTS.md", "GEMINI.md"] }
+      { "files": ["*.md"], "exclude": ["README.md", "AGENTS.md", "GEMINI.md", "CLAUDE.md"] }
     ],
     "resource": [
       { "src": "docfx", "files": ["images/**"], "dest": "." },
@@ -43,7 +44,7 @@
       { "files": ["docfx/index.md"] },
       { "files": ["docfx/**.md", "docfx/**/toc.yml"], "exclude": ["docfx/index.md"] },
       { "files": ["docs/**.md"] },
-      { "files": ["*.md"], "exclude": ["README.md", "AGENTS.md", "GEMINI.md"] }
+      { "files": ["*.md"], "exclude": ["README.md", "AGENTS.md", "GEMINI.md", "CLAUDE.md"] }
     ],
     "resource": [
       { "files": ["docfx/images/**"] }
