@@ -118,6 +118,18 @@ Activation records use three reserved cells: Static Link, Dynamic Link, Return A
 
 **8 opcodes:** `Lit`, `Opr`, `Lod`, `Sto`, `Cal`, `Int`, `Jmp`, `Jpc`. See `docs/VM_INSTRUCTION_SET.md` for full reference.
 
+### I/O Abstraction
+
+The VM uses the `IPl0Io` interface for all input/output:
+- `ConsolePl0Io`: Default implementation used by CLI and IDE (reads/writes to console)
+- `BufferedPl0Io`: Used in tests — accepts pre-set integer input and captures integer output for assertions
+
+Inject `IPl0Io` when constructing `VirtualMachine`; never read from `Console` directly inside the VM or parser.
+
+### Step Debugging
+
+`SteppableVirtualMachine` (in `Pl0.Vm`) wraps `VirtualMachine` and exposes `Step()` and a `VmState` snapshot (registers P/B/T + stack slice). The IDE debug view uses this to single-step through P-Code execution.
+
 ## Code Conventions and Patterns
 
 ### Error Handling
@@ -189,6 +201,12 @@ When modifying parser or lexer:
 - Check if the feature applies to `classic`, `extended`, or both.
 - Use `CompilerOptions.Dialect` to control behavior.
 - Classic mode must remain strictly compatible with the Pascal reference source (`pl0c.pas`).
+
+## Git Workflow
+
+- `main` is protected — never commit or push directly to `main`.
+- For every change, create a new branch first. Agent/bot branch naming: `codex/<topic>`.
+- Open a pull request to merge into `main`.
 
 ## Key Documentation Files
 
