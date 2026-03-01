@@ -22,7 +22,8 @@ Folgende Elemente müssen lokalisiert werden:
 * Hilfe-Texte der Kommandozeile (CLI).
 * Statusmeldungen während des Kompiliervorgangs.
 * Das Interface der IDE (Pl0.Ide).
-
+-> Lies dir von @Lastenheft_L10N.md die Abschnitte 1., 2., 3., 3.1, 3.2 durch. In
+  dieser Spezifizierung soll nur die src/Pl0.Ide angepasst werden.
 
 ### 3.3 Technischer Standard
 * **Zeichenkodierung:** Alle Sprachdateien müssen in UTF-8 kodiert sein.
