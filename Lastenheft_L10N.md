@@ -7,11 +7,12 @@ Dieses Dokument beschreibt die Anforderungen an die Lokalisierung (L10N) für da
 * Trennung von Programmlogik und sprachspezifischen Ressourcen.
 * Unterstützung von Deutsch (de-DE) und Englisch (en-US).
 * Einfache Erweiterbarkeit um weitere Sprachen.
+* Pl0.Cli soll die Lokalisierung unterstützen und einen Sprachenparameter erhalten.
+* In der Pl0.Ide soll die Sprache in den Einstellungen einstellbar sein.
 
 ## 3. Anforderungen
 
 ### 3.1 Unterstützte Sprachen
-Die Anwendung muss zur Laufzeit oder über Konfigurationsdateien zwischen folgenden Sprachen wählen können:
 * **Deutsch (Standard):** Alle Ausgaben und Fehlermeldungen in deutscher Sprache.
 * **Englisch:** Alle Ausgaben und Fehlermeldungen in englischer Sprache.
 
@@ -20,10 +21,12 @@ Folgende Elemente müssen lokalisiert werden:
 * Fehlermeldungen des Compilers/Interpreters.
 * Hilfe-Texte der Kommandozeile (CLI).
 * Statusmeldungen während des Kompiliervorgangs.
+* Das Interface der IDE (Pl0.Ide).
+
 
 ### 3.3 Technischer Standard
 * **Zeichenkodierung:** Alle Sprachdateien müssen in UTF-8 kodiert sein.
-* **Ressourcen-Management:** Verwendung von Standard-Mechanismen (z.B. `.resx` Dateien in .NET oder JSON/Properties-Dateien) zur Speicherung der Strings.
+* **Ressourcen-Management:** Verwendung von Standard-Mechanismen des .Net Core Frameworks zur Speicherung der Strings.
 
 ## 4. Glossar
 * **L10N (Localization):** Anpassung der Software an einen spezifischen Zielmarkt.
