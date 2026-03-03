@@ -180,3 +180,10 @@ Use `CompilerOptions.Dialect` when modifying parser/lexer. Classic mode must sta
 - No compiler optimizations (no peephole, SSA, etc.)
 - VM target only — no JIT or IL backend
 - Code prioritizes clarity over performance (pedagogical project)
+
+## Active Technologies
+- C# 14 / .NET 10 + .NET SDK (`.resx`, `ResourceManager`, `CultureInfo`) — kein zusätzliches NuGet-Pake (001-l10n-backend)
+- Satellite Assemblies (automatisch vom SDK aus `.resx` generiert) (001-l10n-backend)
+
+## Recent Changes
+- 001-l10n-backend: Added C# 14 / .NET 10 + .NET SDK (`.resx`, `ResourceManager`, `CultureInfo`) — kein zusätzliches NuGet-Pake
