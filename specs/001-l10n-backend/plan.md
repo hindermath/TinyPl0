@@ -12,7 +12,7 @@ Lastenheft_L10N.md Glossar Abschnitt 4:
   mehrsprachige Unterstützung — `.resx`-Infrastruktur, `ResourceManager`,
   BCP-47-Sprachcodes, Fallback-Kette, Erweiterbarkeit ohne Code-Änderungen.
 - **L10N (Localization)**: Konkrete Anpassung für Deutsch (Standard) und
-  Englisch (erste Zielsprache) — Übersetzung aller ~50 Diagnosetexte und
+  Englisch (erste Zielsprache) — Übersetzung aller ~75 Diagnosetexte und
   CLI-Meldungen.
 
 Sprachübergabe: explizites `Language`-Feld in `CompilerOptions` und
@@ -30,7 +30,7 @@ strongly-typed Designer-Klassen und `ResourceManager` (kein NuGet-Paket).
 **Project Type**: Compiler + CLI (multi-module)
 **Performance Goals**: N/A (String-Lookup-Overhead vernachlässigbar)
 **Constraints**: Keine neuen NuGet-Pakete; keine Architektur-Grenzenverletzungen; alle bestehenden Exit-Codes stabil
-**Scale/Scope**: ~50 lokalisierbare Strings; 3 Module; 2 Sprachen initial
+**Scale/Scope**: ~75 lokalisierbare Strings; 3 Module; 2 Sprachen initial
 
 ## I18N-Betrachtung (Lastenheft_L10N.md §4, Punkt 2)
 
@@ -62,7 +62,7 @@ sowohl die I18N-Schicht (Infrastruktur) als auch die L10N-Schicht (DE + EN).
 |---------|--------|-----------|
 | I. Didaktische Klarheit | ✅ Pass | `.resx` + Designer-Klassen sind Standard .NET; Ressourcen-Keys mit Fehlercode im Namen fördern Verständlichkeit |
 | II. Historische Kompatibilität | ✅ Pass | Keine PL/0-Sprachänderungen; Fehlercodes unveränderlich; nur Texte werden lokalisiert |
-| III. Testgetriebene Qualität | ✅ Pass | Bestehende Tests prüfen keine Diagnosetexte → keine Regressionen (zu validieren, spec.md Assumptions); neue `L10nTests`-Klasse deckt alle ~50 Keys einzeln ab, via `--lang`-Parameter, mit `BufferedPl0Io` für VM-Tests |
+| III. Testgetriebene Qualität | ✅ Pass | Bestehende Tests prüfen keine Diagnosetexte → keine Regressionen (zu validieren, spec.md Assumptions); neue `L10nTests`-Klasse deckt alle ~75 Keys einzeln ab, via `--lang`-Parameter, mit `BufferedPl0Io` für VM-Tests |
 | IV. Strikte Modularchitektur | ✅ Pass | Keine neuen NuGet-Pakete; Dependency-Regeln unverändert; `.resx` ist SDK-Feature ohne externe Deps |
 | V. Fehlerdiagnose statt Ausnahmen | ✅ Pass | `CompilerDiagnostic`/`LexerDiagnostic`/`VmDiagnostic` Strukturen unverändert; nur Message-Strings werden lokalisiert |
 | VI. Git-Workflow | ✅ Pass | Feature-Branch `001-l10n-backend` existiert; alle Änderungen über PR |
@@ -114,7 +114,7 @@ src/Pl0.Cli/
 │   └── Pl0CliMessages.Designer.cs   NEU     — Autogeneriert vom SDK
 
 tests/Pl0.Tests/
-└── L10nTests.cs                     NEU     — Dedizierte L10N/I18N-Testklasse (alle ~50 Keys)
+└── L10nTests.cs                     NEU     — Dedizierte L10N/I18N-Testklasse (alle ~75 Keys)
 
 tests/data/pl0/l10n/                 NEU     — Testdaten-Programme für L10nTests
 ├── undeclared_ident.pl0             NEU     — Parser_E11_UndeclaredIdent auslösen
@@ -123,14 +123,10 @@ tests/data/pl0/l10n/                 NEU     — Testdaten-Programme für L10nTe
 ├── number_too_large.pl0             NEU     — Lexer_E30_NumberTooLarge auslösen
 └── ...                              NEU     — je 1 Programm pro Fehlercode
 
-src/Pl0.Core/Resources/
-└── Pl0CoreMessages.se.resx          NEU     — Schwedische Dummy-Texte (Erweiterbarkeitstest SC-004)
-
-src/Pl0.Vm/Resources/
-└── Pl0VmMessages.se.resx            NEU     — Schwedische Dummy-Texte (Erweiterbarkeitstest SC-004)
-
-src/Pl0.Cli/Resources/
-└── Pl0CliMessages.se.resx           NEU     — Schwedische Dummy-Texte (Erweiterbarkeitstest SC-004)
+tests/Pl0.Tests/Resources/           NEU     — Test-Fixtures für Erweiterbarkeitstest SC-004
+├── Pl0CoreMessages.se.resx          NEU     — Schwedische Dummy-Texte (Core, nicht in Produktions-Build)
+├── Pl0VmMessages.se.resx            NEU     — Schwedische Dummy-Texte (Vm, nicht in Produktions-Build)
+└── Pl0CliMessages.se.resx           NEU     — Schwedische Dummy-Texte (Cli, nicht in Produktions-Build)
 ```
 
 **Structure Decision**: Single-project layout je Modul; Ressourcen unter `Resources/`
@@ -167,42 +163,55 @@ vollständig sein. PR-Reviewer prüft alle englischen Keys gegen diese Tabelle.
 
 #### Pl0.Core
 
-1. `CompilerOptions.cs`: Neues optionales `string Language = "de"` am Ende der
-   Parameterliste (record primary constructor — nicht-breaking).
+1. `CompilerOptions.cs`: Zwei neue optionale Parameter am Ende des record primary constructors
+   (nicht-breaking):
+   - `string Language = "de"` — BCP-47-Sprachcode
+   - `ResourceManager? Messages = null` — Default: `Pl0CoreMessages.ResourceManager` (FR-008)
 
 2. `Resources/Pl0CoreMessages.resx` anlegen:
    - Build-Action: `EmbeddedResource`; Custom Tool: `ResXFileCodeGenerator`
    - Namespace: `Pl0.Core`; Klasse: `Pl0CoreMessages`; Access: `internal`
-   - Alle ~30 Lexer- und Parser-Fehlertexte auf Deutsch
+   - Alle ~37 Lexer- und Parser-Fehlertexte auf Deutsch, **exakt gemäss**
+     `data-model.md §3` (normative Vorgabe, spec.md Clarifications Runde 7, Q5)
 
 3. `Resources/Pl0CoreMessages.en.resx` anlegen:
-   - Gleiche Keys, englische Werte
+   - Gleiche Keys; Werte aus bestehenden Inline-Strings in `Pl0Lexer.cs`/`Pl0Parser.cs`
+     übernehmen und an NFR-002 (Sentence case: PL/0-Keywords grossschreiben, z. B.
+     `"call must..."` → `"CALL must..."`) sowie Terminologietabelle §7 anpassen
+     (spec.md Clarifications Runde 7, Q4)
 
 4. `Pl0Lexer.cs` und `Pl0Parser.cs`:
-   - `CultureInfo culture = CultureInfo.GetCultureInfo(_options.Language)` ableiten
-   - Alle String-Literals ersetzen durch `Pl0CoreMessages.ResourceManager.GetString("Key", culture)`
+   - `ResourceManager rm = _options.Messages ?? Pl0CoreMessages.ResourceManager`
+   - `CultureInfo culture = CultureInfo.GetCultureInfo(_options.Language)`
+   - Alle String-Literals ersetzen durch `rm.GetString("Key", culture)`
    - Formatierte Strings: `string.Format(culture, template, args)`
 
 #### Pl0.Vm
 
-1. `VirtualMachineOptions.cs`: Analog — `string Language = "de"`.
+1. `VirtualMachineOptions.cs`: Analog — `string Language = "de"` und
+   `ResourceManager? Messages = null` (Default: `Pl0VmMessages.ResourceManager`).
 2. `Resources/Pl0VmMessages.resx` + `.en.resx` — 13 VM-Fehlertexte.
-3. `VirtualMachine.cs`: `_culture` im Konstruktor speichern; alle Fehlertexte
-   über `Pl0VmMessages.ResourceManager.GetString(key, _culture)`.
+3. `VirtualMachine.cs`: `_rm` und `_culture` im Konstruktor aus Options ableiten;
+   alle Fehlertexte über `_rm.GetString(key, _culture)`.
 
 #### Pl0.Cli
 
-1. `CliOptionsParser.cs`: `--lang <code>` parsen; ungültiger Code → Warnung `stderr`
-   + Fallback `"de"`; eigene Parse-Fehlertexte über `Pl0CliMessages`.
-2. `CliHelpPrinter.cs`: Hilfe-Texte via `Pl0CliMessages` + `CultureInfo`.
-3. `Program.cs`: Language aus Parse-Ergebnis → `CompilerOptions` + `VirtualMachineOptions`.
+1. `CliOptionsParser.cs`:
+   - Optionaler Konstruktor-Parameter `TextWriter errorOutput = null` (Default: `Console.Error`) — FR-009
+   - Optionaler Konstruktor-Parameter `ResourceManager? cliMessages = null` (Default: `Pl0CliMessages.ResourceManager`) — FR-008
+   - `--lang <code>` parsen; ungültiger Code → `errorOutput.WriteLine(warnung)` + Fallback `"de"`
+   - Eigene Parse-Fehlertexte über injiziertem `cliMessages`-ResourceManager
+2. `CliHelpPrinter.cs`: Hilfe-Texte via injiziertem ResourceManager + `CultureInfo`.
+3. `Program.cs`: Language aus Parse-Ergebnis → `CompilerOptions` + `VirtualMachineOptions`
+   (beide mit Default-`Messages = null`).
 
 #### Pl0.Tests — neue `L10nTests.cs`
 
 **Test-Infrastruktur-Anforderungen** (aus spec.md Assumptions + SC-002):
-- Alle Tests verwenden den **`--lang`-Parameter** via `CliOptionsParser` — nicht direkt `CompilerOptions.Language`
-- VM-Fehlertexte werden über **`BufferedPl0Io`** (simuliertes I/O) geprüft, da `ConsolePl0Io` nicht fangbar ist
-- `stderr`-Ausgaben (Fallback-Warnung) werden über die `IPl0Io`-Schnittstelle gefangen — als Anforderung, nicht Implementierungsdetail
+- Alle Tests für Lexer-, Parser- und PL/0-ausloesbare VM-Keys verwenden den **`--lang`-Parameter** via `CliOptionsParser` — nicht direkt `CompilerOptions.Language`
+- VM-Fehlertexte, die durch PL/0-Programme ausloesbar sind, werden über **`BufferedPl0Io`** (simuliertes I/O) geprüft, da `ConsolePl0Io` nicht fangbar ist
+- VM-interne Fehler (nur durch ungültige P-Code-Sequenzen ausloesbar: `IPOutOfRange`, `UnsupportedOpcode`, `InvalidLodIndex`, `InvalidStoIndex`, `StackOverflowCallFrame`, `StackOverflowInt`, `UnsupportedOpr`, `InvalidBasePointer`, `StackOverflow`, `StackUnderflow`) werden direkt via `VirtualMachine` mit `VirtualMachineOptions { Language = "en" }` getestet — kein CLI-Pfad (spec.md Clarifications Runde 6)
+- `stderr`-Ausgaben (Fallback-Warnung) werden über einen `StringWriter` gefangen, der an `CliOptionsParser(errorOutput: writer)` übergeben wird — `IPl0Io` bleibt unverändert
 - Testdaten-`.pl0`-Programme liegen in `tests/data/pl0/l10n/`
 
 **Lexer-Keys** (5 Testmethoden — alle Keys einzeln):
@@ -212,17 +221,26 @@ vollständig sein. PR-Reviewer prüft alle englischen Keys gegen diese Tabelle.
 - `Lexer_UnexpectedColon_En_ContainsEnglishMessage()`
 - `Lexer_UnexpectedChar_En_ContainsEnglishMessage()`
 
-**Parser-Keys** (~27 Testmethoden — alle Keys einzeln):
+**Parser-Keys** (32 Testmethoden — alle Keys einzeln, vollständig aus Quellcode enumeriert):
 - `Parser_UseEqualNotAssign_En_ContainsEnglishMessage()`
+- `Parser_NumberAfterEquals_En_ContainsEnglishMessage()`
+- `Parser_EqualAfterIdent_En_ContainsEnglishMessage()`
+- `Parser_IdentAfterConst_En_ContainsEnglishMessage()`
+- `Parser_IdentAfterVar_En_ContainsEnglishMessage()`
+- `Parser_IdentAfterProc_En_ContainsEnglishMessage()`
+- `Parser_IdentAfterInput_En_ContainsEnglishMessage()`
+- `Parser_SemiOrComma_En_ContainsEnglishMessage()`
 - `Parser_PeriodExpected_En_ContainsEnglishMessage()`
 - `Parser_UndeclaredIdent_En_ContainsEnglishMessage()`
 - `Parser_AssignToConst_En_ContainsEnglishMessage()`
 - `Parser_InputTargetMustBeVar_En_ContainsEnglishMessage()`
+- `Parser_AssignOpExpected_En_ContainsEnglishMessage()`
 - `Parser_CallNeedsIdent_En_ContainsEnglishMessage()`
 - `Parser_CallConstOrVar_En_ContainsEnglishMessage()`
 - `Parser_ThenExpected_En_ContainsEnglishMessage()`
 - `Parser_SemiOrEndExpected_En_ContainsEnglishMessage()`
 - `Parser_DoExpected_En_ContainsEnglishMessage()`
+- `Parser_IncorrectSymbol_En_ContainsEnglishMessage()`
 - `Parser_InputNotInClassic_En_ContainsEnglishMessage()`
 - `Parser_OutputNotInClassic_En_ContainsEnglishMessage()`
 - `Parser_RelOpExpected_En_ContainsEnglishMessage()`
@@ -235,9 +253,16 @@ vollständig sein. PR-Reviewer prüft alle englischen Keys gegen diese Tabelle.
 - `Parser_ProgramTooLong_En_ContainsEnglishMessage()`
 - `Parser_UnexpectedEndOfInput_En_ContainsEnglishMessage()`
 - `Parser_InvalidLexLevel_En_ContainsEnglishMessage()`
-- *(weitere Expect-Methoden je verbleibendem Key aus data-model.md §3)*
+- `Parser_UnexpectedTermination_En_ContainsEnglishMessage()`
 
-**VM-Keys** (13 Testmethoden — alle Keys einzeln, via `BufferedPl0Io`):
+**VM-Keys via `CliOptionsParser` + `BufferedPl0Io`** (PL/0-ausloesbar, 3 Testmethoden):
+- `Vm_DivisionByZero_En_ContainsEnglishMessage()` — `division_by_zero.pl0`
+- `Vm_EndOfInput_En_ContainsEnglishMessage()` — `end_of_input.pl0` (Leseoperation ohne Input)
+- `Vm_InputFormatError_En_ContainsEnglishMessage()` — `input_format_error.pl0` (nicht-ganzzahliger Input)
+
+**VM-Keys via direkter `VirtualMachine`-Konstruktion** (nur durch ungültige P-Code ausloesbar, 10 Testmethoden):
+  P-Code wird als `Instruction[]` direkt im Testcode konstruiert — keine externen Fixture-Dateien
+  (spec.md Clarifications Runde 6, Q2).
 - `Vm_IPOutOfRange_En_ContainsEnglishMessage()`
 - `Vm_InvalidLodIndex_En_ContainsEnglishMessage()`
 - `Vm_InvalidStoIndex_En_ContainsEnglishMessage()`
@@ -248,18 +273,36 @@ vollständig sein. PR-Reviewer prüft alle englischen Keys gegen diese Tabelle.
 - `Vm_InvalidBasePointer_En_ContainsEnglishMessage()`
 - `Vm_StackOverflow_En_ContainsEnglishMessage()`
 - `Vm_StackUnderflow_En_ContainsEnglishMessage()`
-- `Vm_EndOfInput_En_ContainsEnglishMessage()`
-- `Vm_InputFormatError_En_ContainsEnglishMessage()`
-- `Vm_DivisionByZero_En_ContainsEnglishMessage()`
 
-**CLI-Keys** (~9 Testmethoden):
-- `Cli_Help_En_ContainsEnglishText()`
-- `Cli_Help_Contains_LangParameter()`
+**CLI-Keys — Err/Status** (8 Testmethoden — alle Keys einzeln):
+- `Cli_Err_UnexpectedPositional_En_ContainsEnglishMessage()`
+- `Cli_Err_MissingValueForOut_En_ContainsEnglishMessage()`
+- `Cli_Err_NoEmitMode_En_ContainsEnglishMessage()`
+- `Cli_Err_UnknownSwitch_En_ContainsEnglishMessage()`
+- `Cli_Err_ConflictingEmitModes_En_ContainsEnglishMessage()`
+- `Cli_Err_UnknownLanguage_En_ContainsEnglishMessage()`
 - `Cli_Status_CompileSuccess_En_ContainsEnglishMessage()`
 - `Cli_Status_CompileError_En_ContainsEnglishMessage()`
-- `Cli_Err_UnknownSwitch_En_ContainsEnglishMessage()`
-- `Cli_Err_UnknownLanguage_En_ContainsEnglishMessage()`
-- *(weitere Cli_Err_*-Methoden je Key aus data-model.md §5)*
+
+**CLI-Keys — Help** (17 Testmethoden — alle Keys einzeln, via `--lang en --help`):
+- `Cli_Help_UsageHeader_En_ContainsEnglishText()`
+- `Cli_Help_HelpLine_En_ContainsEnglishText()`
+- `Cli_Help_CompileLine_En_ContainsEnglishText()`
+- `Cli_Help_RunLine_En_ContainsEnglishText()`
+- `Cli_Help_RunPcodeLine_En_ContainsEnglishText()`
+- `Cli_Help_RunPcodeDirectLine_En_ContainsEnglishText()`
+- `Cli_Help_ApiLine_En_ContainsEnglishText()`
+- `Cli_Help_LegacyLine_En_ContainsEnglishText()`
+- `Cli_Help_SwitchesHeader_En_ContainsEnglishText()`
+- `Cli_Help_SwitchErrmsg_En_ContainsEnglishText()`
+- `Cli_Help_SwitchWopcod_En_ContainsEnglishText()`
+- `Cli_Help_SwitchListCode_En_ContainsEnglishText()`
+- `Cli_Help_SwitchApi_En_ContainsEnglishText()`
+- `Cli_Help_SwitchConly_En_ContainsEnglishText()`
+- `Cli_Help_SwitchEmitFormat_En_ContainsEnglishText()`
+- `Cli_Help_SwitchEmit_En_ContainsEnglishText()`
+- `Cli_Help_SwitchOut_En_ContainsEnglishText()`
+- `Cli_Help_SwitchLang_En_ContainsEnglishText()` — SC-005: --lang in help output
 
 **Deutsch-Baseline** (Stichprobe — stellt sicher dass DE ohne `--lang` funktioniert):
 - `CompilerDiagnostic_De_ContainsGermanMessage()`
@@ -271,10 +314,10 @@ vollständig sein. PR-Reviewer prüft alle englischen Keys gegen diese Tabelle.
 - `EmptyLanguage_FallsBackToGerman()` — `--lang ""` → DE
 - `UnknownLanguage_FallsBackToGerman_WithStderrWarning()` — `--lang xx` → DE + `stderr`-Warnung enthält `"xx"`
 
-**Erweiterbarkeitstest SC-004** (automatisiert, Dummy-Sprache Schwedisch):
-- `NewLocale_Se_LoadsFromResxWithoutCodeChange_Core()` — schwedischer Core-Key erscheint mit `--lang se`
-- `NewLocale_Se_LoadsFromResxWithoutCodeChange_Vm()` — schwedischer Vm-Key erscheint mit `--lang se`
-- `NewLocale_Se_LoadsFromResxWithoutCodeChange_Cli()` — schwedischer Cli-Key erscheint mit `--lang se`
+**Erweiterbarkeitstest SC-004** (automatisiert, Dummy-Sprache Schwedisch, via ResourceManager-Injection):
+- `NewLocale_Se_InjectedResourceManager_Core_ReturnsSwedishMessage()` — Swedish `ResourceManager` (EmbeddedResource aus `tests/Pl0.Tests/Resources/Pl0CoreMessages.se.resx`) via `CompilerOptions.Messages` injiziert; Core-Key auf Schwedisch prüfen
+- `NewLocale_Se_InjectedResourceManager_Vm_ReturnsSwedishMessage()` — analog via `VirtualMachineOptions.Messages`
+- `NewLocale_Se_InjectedResourceManager_Cli_ReturnsSwedishMessage()` — analog via `CliOptionsParser(cliMessages: swResourceManager)`
 
 ### Constitution Check (Post-Design): alle 6 Prinzipien ✅
 
