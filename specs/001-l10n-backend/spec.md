@@ -37,10 +37,13 @@ Dieses Dokument beschreibt die Lokalisierung (L10N) ausschliesslich fuer:
   uebernommen. Sie werden an NFR-002 (Sentence case, insbesondere PL/0-Schluesselwoerter
   wie `CALL`, `THEN`, `DO` in Grossbuchstaben) und data-model.md §7 (Terminologietabelle)
   angepasst. Kein englischer Inhalt wird von Grund auf neu verfasst.
-- **Test-Annahme (zu validieren)**: Bestehende Tests pruefen keine Diagnosetexte.
-  Status: _muss durch Quellcode-Pruefung validiert werden_. Falls Diagnosetexte
-  in bestehenden Tests gefunden werden, muessen betroffene Tests mit explizitem
-  `--lang de` und `--lang en` ergaenzt werden.
+- **Test-Annahme (validiert, 2026-03-04)**: Bestehende Tests pruefen keine
+  Diagnosetexte des Compilers oder der VM. Quellcode-Pruefung ergab:
+  `CompilationDiagnosticsTests.cs` konstruiert `CompilerDiagnostic`-Objekte
+  manuell (kein Compilerlauf — prueft Formatierung, nicht den Lokalisierungspfad);
+  `CatalogCasesTests.cs` prueft ausschliesslich Fehlercodes, nicht Texte;
+  `IdeBootstrapTests.cs` prueft Pl0.Ide-Strings (explizit ausser L10N-Scope).
+  Keine bestehenden Tests muessen angepasst werden.
 
 ---
 
