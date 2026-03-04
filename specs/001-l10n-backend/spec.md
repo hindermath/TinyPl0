@@ -2,7 +2,7 @@
 
 **Feature Branch**: `001-l10n-backend`
 **Created**: 2026-03-01
-**Status**: Draft
+**Status**: Draft — aktualisiert 2026-03-04 (Checklist-Remediation Runde 3)
 **Input**: Lastenheft_L10N.md Abschnitte 1–3.2; Scope begrenzt auf Pl0.Core, Pl0.Vm, Pl0.Cli.
 
 ## Scope
@@ -27,6 +27,14 @@ Dieses Dokument beschreibt die Lokalisierung (L10N) ausschliesslich fuer:
   expliziter Parameter in `CompilerOptions` (fuer `Pl0.Core`) und in den
   VM-Optionen (fuer `Pl0.Vm`) weitergegeben — kein globaler Zustand, kein
   Ambient-Culture-Ansatz.
+- **Test-Infrastruktur**: `L10nTests` pruefen englische VM-Fehlertexte ueber
+  `BufferedPl0Io` (simuliertes I/O), da `ConsolePl0Io` in Tests nicht fangbar ist.
+  Tests verwenden den `--lang`-Parameter (via `CliOptionsParser`), nicht direkt
+  `CompilerOptions.Language`, um den vollstaendigen CLI-Pfad zu verifizieren.
+- **Test-Annahme (zu validieren)**: Bestehende Tests pruefen keine Diagnosetexte.
+  Status: _muss durch Quellcode-Pruefung validiert werden_. Falls Diagnosetexte
+  in bestehenden Tests gefunden werden, muessen betroffene Tests mit explizitem
+  `--lang de` und `--lang en` ergaenzt werden.
 
 ---
 
@@ -142,25 +150,82 @@ uebergeben, pruefen dass die neuen Texte verwendet werden.
   sprachneutral und werden NICHT lokalisiert.
 - **FR-003**: Alle Compiler-Diagnosetexte aus `Pl0.Core` MUESSEN in Deutsch und
   Englisch verfuegbar sein; die Sprachauswahl erfolgt ueber ein neues Feld
-  in `CompilerOptions` (BCP-47-Sprachcode).
+  in `CompilerOptions` (BCP-47-Sprachcode). Englische Texte MUESSEN semantisch
+  aequivalent zur deutschen Vorlage sein: gleiche Bedeutung, gleicher
+  Fehlercode-Kontext, gleiche Platzhalter-Semantik und gleiche Platzhalter-Reihenfolge.
+  Die Aequivalenz MUSS ohne Deutschkenntnisse anhand der Terminologietabelle
+  (`data-model.md §7`) und des Fehlercodes pruefbar sein.
 - **FR-004**: Alle VM-Laufzeit-Fehlermeldungen aus `Pl0.Vm` MUESSEN in Deutsch und
   Englisch verfuegbar sein; die Sprachauswahl erfolgt ueber ein neues Feld
-  in `VirtualMachineOptions`.
+  in `VirtualMachineOptions`. Fuer englische Texte gilt dieselbe Anforderung an
+  semantische Aequivalenz wie in FR-003 (gleiche Bedeutung, gleicher Kontext,
+  gleiche Platzhalter-Semantik; pruefbar ohne Deutschkenntnisse).
 - **FR-005**: Sprachspezifische Texte MUESSEN von der Programmlogik getrennt in
-  Ressourcendateien (UTF-8) abgelegt sein (gemaess Lastenheft 3.3).
+  Ressourcendateien abgelegt sein (gemaess Lastenheft 3.3). Alle `.resx`-Dateien
+  (Deutsch und Englisch) MUESSEN UTF-8-kodiert sein; eine ASCII-only-Einschraenkung
+  gilt nicht.
 - **FR-006**: Fehlende Uebersetzungen MUESSEN automatisch auf die deutsche
-  Standardressource zurueckfallen (Fallback-Kette).
+  Standardressource zurueckfallen (Fallback-Kette). Testbare Akzeptanzkriterien:
+  (1) `--lang en-US` → ResourceManager sucht `en-US.resx`, faellt auf `en.resx` zurueck
+  → englischer Text erscheint; (2) `--lang fr` → kein `fr.resx` vorhanden → deutscher
+  Fallback-Text erscheint; (3) `--lang ""` → identisch zu fehlendem `--lang` → Deutsch.
 - **FR-007**: Numerische Fehlercodes DUERFEN sich nicht aendern; Lokalisierung
   betrifft ausschliesslich Beschreibungstexte.
 - **FR-008**: Das System MUSS fuer weitere Sprachen erweiterbar sein, ohne
   Quellcode-Aenderungen in `Pl0.Core`, `Pl0.Vm` oder `Pl0.Cli`.
 - **FR-009**: Bei unbekanntem Sprachcode MUSS eine Warnung auf `stderr` ausgegeben
   und Deutsch als Fallback verwendet werden; `stdout` bleibt unbeeintraechtigt,
-  der Prozess laeuft weiter.
+  der Prozess laeuft weiter. Testbares Akzeptanzkriterium: `--lang xx` → `stderr`
+  enthaelt Warnung mit Sprachcode `xx`; `stdout` enthaelt deutschen Text.
+  `stderr`-Ausgaben MUESSEN in `L10nTests` ueber die `IPl0Io`-Schnittstelle
+  fangbar sein — dies ist Anforderung, nicht Implementierungsdetail.
 - **FR-010**: Alle bestehenden CLI-Switches MUESSEN unveraendert funktionieren;
   `--lang` ist ein additiver Parameter.
 - **FR-011**: `--lang` MUSS fuer alle Befehle gelten (`compile`, `run`, `run-pcode`);
   VM-Fehlermeldungen werden in jedem Ausfuehrungspfad lokalisiert.
+
+### Non-Functional Requirements
+
+- **NFR-001 — Sprachniveau B2 (CEFR)**: Alle englischen Fehlertexte MUESSEN auf CEFR-Niveau B2
+  formuliert sein: klare, einfache Saetze, gaengige Vokabeln — soweit PL/0-Terminologie
+  (`CONST`, `VAR`, `LOD` etc.) es zulaesst. Pruefung: PR-Review durch KI-Agenten.
+- **NFR-002 — Groesschreibungskonvention (Sentence case)**: Alle englischen Fehlertexte in
+  Pl0.Core, Pl0.Vm und Pl0.Cli MUESSEN Sentence case verwenden: nur das erste Wort und
+  Eigennamen werden grossgeschrieben. PL/0-Schluesselwoerter (`CONST`, `VAR`, `BEGIN`, `END`,
+  `CALL`, `ODD`, `PROCEDURE`) bleiben stets in Grossbuchstaben. VM-Opcode-Namen (`LOD`,
+  `STO`, `INT`, `OPR`, `Lit`, `Jmp`, `Jpc`, `Cal`) bleiben unveraendert.
+- **NFR-003 — Konsistente Terminologie**: Alle englischen Texte MUESSEN die normative
+  Terminologietabelle aus `data-model.md §7` verwenden. Abweichungen gelten als Fehler
+  und blockieren den PR-Merge.
+
+### Textstil-Konventionen
+
+Die folgenden Konventionen gelten als normative Anforderungen fuer alle englischen Texte
+und werden im PR-Review gegen die Terminologietabelle (`data-model.md §7`) geprueft:
+
+| Konvention | Regel |
+|------------|-------|
+| Grossschreibung | Sentence case (NFR-002) |
+| Abschliessende Interpunktion | Pflichtpunkt `.` am Satzende, analog deutschen Vorlagen |
+| PL/0-Schluesselwoerter | Unveraendert in Grossbuchstaben: `CONST`, `VAR`, `PROCEDURE`, `BEGIN`, `END`, `CALL`, `ODD` |
+| VM-Opcodes | Unveraendert wie definiert: `Lit`, `Opr`, `Lod`, `Sto`, `Cal`, `Int`, `Jmp`, `Jpc` |
+| Platzhalter | Reihenfolge `{0}`, `{1}` identisch zur deutschen Vorlage — keine Umstellung |
+| Terminologie | Gemaess normativer Tabelle `data-model.md §7` |
+
+### Reviewer-Verantwortlichkeit
+
+Der **PR-Reviewer** ist verantwortlich fuer die inhaltliche Korrektheit aller englischen
+Uebersetzungen. Der Entwickler liefert die Uebersetzungen; der Reviewer prueft und
+verantwortet die Qualitaet anhand der folgenden Kriterien:
+
+1. **Terminologietabelle** (`data-model.md §7`): Alle Begriffe stimmen mit der normativen
+   Tabelle ueberein — keine unkontrollierten Synonyme.
+2. **Sentence case** (NFR-002): Grossschreibungskonvention eingehalten.
+3. **B2-Niveau** (NFR-001): Texte sind fuer nicht-muttersprachliche Lernende verstaendlich;
+   bei Zweifel Pruefung durch KI-Agenten im PR-Review.
+4. **Interpunktion**: Jeder Satz schliesst mit `.`.
+5. **Semantische Aequivalenz** (FR-003/FR-004): Bedeutung und Kontext stimmen mit
+   der deutschen Vorlage ueberein — pruefbar ohne Deutschkenntnisse.
 
 ### Key Entities
 
@@ -184,6 +249,19 @@ uebergeben, pruefen dass die neuen Texte verwendet werden.
 - Q: Gilt `--lang` auch fuer den `run-pcode`-Befehl? → A: Ja; `--lang` gilt fuer alle Befehle inkl. `run-pcode`.
 - Q: Ausgabekanal der Fallback-Warnung bei unbekanntem Sprachcode? → A: `stderr`; `stdout` bleibt sauber fuer maschinenlesbare Ausgaben.
 
+### Session 2026-03-03 (Runde 3 — Checklist-Remediation)
+
+- Q: Muss semantische Aequivalenz ohne Deutschkenntnisse pruefbar sein? → A: Ja; Definition in FR-003/FR-004 aufgenommen, Terminologietabelle als normatives Artefakt definiert.
+- Q: Welche Grossschreibungskonvention gilt fuer englische Fehlertexte? → A: Sentence case fuer alle drei Module; NFR-002 hinzugefuegt.
+- Q: Wie wird B2-Sprachniveau geprueft? → A: Durch KI-Agenten im PR-Review; NFR-001 hinzugefuegt.
+- Q: Sollen L10nTests direkt `CompilerOptions.Language` setzen oder den `--lang`-Parameter nutzen? → A: `--lang`-Parameter via `CliOptionsParser`; in SC-002 und Assumptions festgelegt.
+- Q: Sollen VM-Fehlertexte in Tests ueber `BufferedPl0Io` oder `ConsolePl0Io` geprueft werden? → A: `BufferedPl0Io`, da `ConsolePl0Io` nicht fangbar; in SC-002 und Assumptions festgelegt.
+- Q: Ist der Erweiterbarkeitstest (SC-004) manuell oder automatisiert? → A: Automatisierter Test; Dummy-Sprache Schwedisch (`--lang se`), Keys aller Module; SC-004 entsprechend praezisiert.
+- Q: Muessen alle ~50 Keys einzeln getestet werden oder reicht eine Stichprobe? → A: Alle Keys einzeln; SC-002/SC-003 praezisiert.
+- Q: UTF-8-Anforderung fuer englische .resx-Dateien explizit? → A: Ja; FR-005 ergaenzt.
+- Q: Wer verantwortet englische Uebersetzungsqualitaet? → A: PR-Reviewer; neuer Abschnitt "Reviewer-Verantwortlichkeit" hinzugefuegt.
+- Q: Testdaten-Ablageort fuer L10nTests? → A: `tests/data/pl0/l10n/`; in SC-004 festgelegt.
+
 ---
 
 ## Success Criteria
@@ -193,11 +271,18 @@ uebergeben, pruefen dass die neuen Texte verwendet werden.
 - **SC-001**: Alle bestehenden Tests (`dotnet test`) laufen nach der Aenderung fehlerfrei
   durch — keine Regressionen (bestehende Tests pruefen keine Diagnosetexte und
   bleiben unveraendert).
-- **SC-002**: Neue dedizierte L10N-Tests verifizieren, dass mit `--lang en` englische
-  und mit `--lang de` / ohne `--lang` deutsche Diagnosetexte ausgegeben werden.
+- **SC-002**: Neue dedizierte L10N-Tests verifizieren **alle ~50 englischen Keys einzeln**
+  in `Pl0.Tests/L10nTests.cs`. Tests nutzen den `--lang`-Parameter (via `CliOptionsParser`);
+  VM-Fehlertexte werden ueber `BufferedPl0Io` geprueft. Fallback-Kette und `stderr`-Warnung
+  sind ebenfalls durch konkrete Eingabe/Ausgabe-Paare verifiziert.
 - **SC-003**: Alle Compiler-Fehlertexte der Traceability-Matrix sind in beiden Sprachen
-  verfuegbar und durch die neuen L10N-Tests verifiziert.
+  verfuegbar und key-fuer-key durch die neuen L10N-Tests verifiziert (kein Key ohne
+  individuellen Testfall).
 - **SC-004**: Eine neue Sprache kann durch Hinzufuegen je einer Ressourcendatei pro Modul
-  eingebunden werden — nachgewiesen durch einen Smoketest mit Dummy-Sprache.
+  eingebunden werden — nachgewiesen durch einen **automatisierten Test** in `L10nTests.cs`
+  mit Dummy-Sprache Schwedisch (`--lang se`): Je eine `.resx`-Datei fuer Pl0.Core,
+  Pl0.Vm und Pl0.Cli mit schwedischen Texten fuer eine Stichprobe von Keys aller Module;
+  der Test prueft, dass schwedische Texte ausgegeben werden. Test-Daten `.pl0`-Programme
+  liegen in `tests/data/pl0/l10n/`.
 - **SC-005**: Der Parameter `--lang` erscheint in der `--help`-Ausgabe beider Sprachen
   mit Beschreibung und Beispiel.
