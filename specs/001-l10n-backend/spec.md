@@ -31,6 +31,12 @@ Dieses Dokument beschreibt die Lokalisierung (L10N) ausschliesslich fuer:
   `BufferedPl0Io` (simuliertes I/O), da `ConsolePl0Io` in Tests nicht fangbar ist.
   Tests verwenden den `--lang`-Parameter (via `CliOptionsParser`), nicht direkt
   `CompilerOptions.Language`, um den vollstaendigen CLI-Pfad zu verifizieren.
+- **EN-Quellbasis**: Die bestehenden englischen Inline-Strings in `Pl0Parser.cs`,
+  `Pl0Lexer.cs` und `VirtualMachine.cs` werden als Ausgangsbasis fuer
+  `Pl0CoreMessages.en.resx` / `Pl0VmMessages.en.resx` / `Pl0CliMessages.en.resx`
+  uebernommen. Sie werden an NFR-002 (Sentence case, insbesondere PL/0-Schluesselwoerter
+  wie `CALL`, `THEN`, `DO` in Grossbuchstaben) und data-model.md §7 (Terminologietabelle)
+  angepasst. Kein englischer Inhalt wird von Grund auf neu verfasst.
 - **Test-Annahme (zu validieren)**: Bestehende Tests pruefen keine Diagnosetexte.
   Status: _muss durch Quellcode-Pruefung validiert werden_. Falls Diagnosetexte
   in bestehenden Tests gefunden werden, muessen betroffene Tests mit explizitem
@@ -81,7 +87,9 @@ und pruefen, dass kurze und lange Diagnosetexte auf Englisch erscheinen.
 2. **Given** dasselbe Programm, **When** ohne `--lang` kompiliert,
    **Then** enthaelt jede Diagnose einen deutschen Text.
 3. **Given** `--errmsg` ist aktiv, **When** Fehler auftreten,
-   **Then** sind sowohl kurze als auch lange Fehlertexte lokalisiert.
+   **Then** enthaelt der `Message`-Inhalt lokalisierten Text. Das Kurz-Format
+   `"Error {code} at {line}:{col}."` ist sprachneutral (nur Codes und Zahlen)
+   und wird **nicht** lokalisiert.
 
 ---
 
@@ -150,14 +158,16 @@ uebergeben, pruefen dass die neuen Texte verwendet werden.
   sprachneutral und werden NICHT lokalisiert.
 - **FR-003**: Alle Compiler-Diagnosetexte aus `Pl0.Core` MUESSEN in Deutsch und
   Englisch verfuegbar sein; die Sprachauswahl erfolgt ueber ein neues Feld
-  in `CompilerOptions` (BCP-47-Sprachcode). Englische Texte MUESSEN semantisch
+  in `CompilerOptions` (BCP-47-Sprachcode). Die deutschen Texte MUESSEN exakt den
+  normativen Vorgaben in `data-model.md §3` entsprechen. Englische Texte MUESSEN semantisch
   aequivalent zur deutschen Vorlage sein: gleiche Bedeutung, gleicher
   Fehlercode-Kontext, gleiche Platzhalter-Semantik und gleiche Platzhalter-Reihenfolge.
   Die Aequivalenz MUSS ohne Deutschkenntnisse anhand der Terminologietabelle
   (`data-model.md §7`) und des Fehlercodes pruefbar sein.
 - **FR-004**: Alle VM-Laufzeit-Fehlermeldungen aus `Pl0.Vm` MUESSEN in Deutsch und
   Englisch verfuegbar sein; die Sprachauswahl erfolgt ueber ein neues Feld
-  in `VirtualMachineOptions`. Fuer englische Texte gilt dieselbe Anforderung an
+  in `VirtualMachineOptions`. Die deutschen Texte MUESSEN exakt den normativen
+  Vorgaben in `data-model.md §4` entsprechen. Fuer englische Texte gilt dieselbe Anforderung an
   semantische Aequivalenz wie in FR-003 (gleiche Bedeutung, gleicher Kontext,
   gleiche Platzhalter-Semantik; pruefbar ohne Deutschkenntnisse).
 - **FR-005**: Sprachspezifische Texte MUESSEN von der Programmlogik getrennt in
@@ -172,13 +182,24 @@ uebergeben, pruefen dass die neuen Texte verwendet werden.
 - **FR-007**: Numerische Fehlercodes DUERFEN sich nicht aendern; Lokalisierung
   betrifft ausschliesslich Beschreibungstexte.
 - **FR-008**: Das System MUSS fuer weitere Sprachen erweiterbar sein, ohne
-  Quellcode-Aenderungen in `Pl0.Core`, `Pl0.Vm` oder `Pl0.Cli`.
+  Quellcode-Aenderungen in `Pl0.Core`, `Pl0.Vm` oder `Pl0.Cli`. Alle drei Module
+  unterstuetzen `ResourceManager`-Injection:
+  (a) `CompilerOptions` erhaelt optionalen `ResourceManager? Messages = null`
+  (Default: `Pl0CoreMessages.ResourceManager`);
+  (b) `VirtualMachineOptions` erhaelt optionalen `ResourceManager? Messages = null`
+  (Default: `Pl0VmMessages.ResourceManager`);
+  (c) `CliOptionsParser` erhaelt optionalen `ResourceManager? cliMessages = null`
+  (Default: `Pl0CliMessages.ResourceManager`).
+  Tests und Erweiterungen koennen einen eigenen `ResourceManager` injizieren,
+  ohne Produktionscode zu aendern.
 - **FR-009**: Bei unbekanntem Sprachcode MUSS eine Warnung auf `stderr` ausgegeben
   und Deutsch als Fallback verwendet werden; `stdout` bleibt unbeeintraechtigt,
   der Prozess laeuft weiter. Testbares Akzeptanzkriterium: `--lang xx` → `stderr`
   enthaelt Warnung mit Sprachcode `xx`; `stdout` enthaelt deutschen Text.
-  `stderr`-Ausgaben MUESSEN in `L10nTests` ueber die `IPl0Io`-Schnittstelle
-  fangbar sein — dies ist Anforderung, nicht Implementierungsdetail.
+  `CliOptionsParser` MUSS einen optionalen `TextWriter errorOutput`-Parameter
+  akzeptieren (Default: `Console.Error`); in `L10nTests` wird ein `StringWriter`
+  uebergeben, um die Warnung zu pruefen — dies ist Anforderung, nicht
+  Implementierungsdetail.
 - **FR-010**: Alle bestehenden CLI-Switches MUESSEN unveraendert funktionieren;
   `--lang` ist ein additiver Parameter.
 - **FR-011**: `--lang` MUSS fuer alle Befehle gelten (`compile`, `run`, `run-pcode`);
@@ -249,6 +270,27 @@ verantwortet die Qualitaet anhand der folgenden Kriterien:
 - Q: Gilt `--lang` auch fuer den `run-pcode`-Befehl? → A: Ja; `--lang` gilt fuer alle Befehle inkl. `run-pcode`.
 - Q: Ausgabekanal der Fallback-Warnung bei unbekanntem Sprachcode? → A: `stderr`; `stdout` bleibt sauber fuer maschinenlesbare Ausgaben.
 
+### Session 2026-03-04 (Runde 4)
+
+- Q: Wie soll die `stderr`-Fallback-Warnung (FR-009) in `L10nTests` testbar sein? `IPl0Io` hat keinen stderr-Kanal. → A: `CliOptionsParser` akzeptiert optionalen `TextWriter errorOutput`-Parameter (Default: `Console.Error`); Tests uebergeben `StringWriter`. `IPl0Io` bleibt unveraendert.
+- Q: SC-004-Erweiterbarkeitstest — Swedish `.resx` in `tests/` wuerden nicht von `Pl0.Core`-ResourceManager gefunden (Satellite-Assembly-Pfad). Loesung? → A: `CompilerOptions`/`VirtualMachineOptions` erhalten optionalen `ResourceManager? Messages`-Parameter (FR-008); Test injiziert ResourceManager aus Swedish EmbeddedResource in Test-Assembly. Kein schwedischer Inhalt in Produktions-Build.
+- Q: Soll `CliOptionsParser` fuer SC-004 analog zu Core/Vm einen injizierbaren `ResourceManager? cliMessages`-Parameter erhalten? → A: Ja — konsistentes Injektionsmuster fuer alle drei Module; FR-008 entsprechend ergaenzt.
+- Q: Sollen die schwedischen Dummy-`.resx`-Dateien fuer SC-004 in Produktionscode (`src/`) oder als Test-Fixtures abgelegt werden? → A: Test-Fixtures in `tests/Pl0.Tests/Resources/` — kein Einfluss auf Release-Binary.
+- Q: Soll das CLI-Kurz-Format `"Error {code} at {line}:{col}."` lokalisiert werden, oder nur der `Message`-Inhalt (sichtbar mit `--errmsg`)? → A: Kurz-Format ist sprachneutral (nur Codes/Zahlen); lokalisiert wird ausschliesslich `Message`. US-2 Szenario 3 entsprechend praezisiert.
+
+### Session 2026-03-04 (Runde 7)
+
+- Q: Fehlercode E4 wird im Parser an 4 Stellen mit unterschiedlichen Kontextmeldungen verwendet. Sollen diese als separate Resource-Keys oder als ein generischer Key gespeichert werden? → A: 4 separate Keys (`Parser_E04_IdentAfterConst`, `Parser_E04_IdentAfterVar`, `Parser_E04_IdentAfterProc`, `Parser_E04_IdentAfterInput`) — kontextspezifische Meldungen bleiben erhalten. Quellcode-Analyse ergibt ausserdem 10 bisher fehlende Parser-Keys; Gesamtanzahl korrigiert auf ~75 Keys. data-model.md §3 entsprechend vollstaendig ergaenzt.
+- Q: `data-model.md §7` (Terminologietabelle) ist als normatives Artefakt referenziert aber nicht vorhanden — soll sie jetzt erstellt oder als Task aufgenommen werden? → A: Jetzt erstellt; Schema und Termini aus Quellcode-Analyse abgeleitet und in data-model.md §7 eingetragen (NFR-003-Grundlage fuer alle Uebersetzungsaufgaben).
+- Q: Granularitaet der CLI-Help-Keys — 1 Key pro Zeile, 2-3 Block-Keys, oder 1 Gesamt-Key? → A: 1 Key pro logischer Zeile (~17 CLI-Help-Keys: `Cli_Help_UsageHeader`, `Cli_Help_CompileLine`, `Cli_Help_SwitchLang` etc.); data-model.md §5 entsprechend vollstaendig ergaenzt. Gesamtanzahl korrigiert auf ~75 Keys (5 Lexer + 32 Parser + 13 VM + 8 Err/Status + 17 Help).
+- Q: Bestehende englische Inline-Strings in `Pl0Parser.cs` / `Pl0Lexer.cs` / `VirtualMachine.cs` — werden sie als EN-`.resx`-Basis uebernommen oder neu verfasst? → A: Uebernommen als Basis fuer `Pl0CoreMessages.en.resx` / `Pl0VmMessages.en.resx`; angepasst an NFR-002 (Sentence case, PL/0-Schluesselwoerter in Grossbuchstaben) und Terminologietabelle §7. Kein Inhalt wird von Grund auf neu geschrieben.
+- Q: Sind die deutschen Texte in `data-model.md §3/§4/§5` normativ (1:1 in `Pl0CoreMessages.resx` uebernehmen) oder illustrativ (Entwickler schreibt selbst)? → A: Normativ — Entwickler uebernimmt die deutschen Texte aus `data-model.md` exakt als `.resx`-Inhalt; Abweichungen blockieren den PR-Merge.
+
+### Session 2026-03-04 (Runde 6)
+
+- Q: VM-interne Fehler (`Vm_E99_IPOutOfRange`, `Vm_E99_UnsupportedOpcode`, `Vm_E99_InvalidLodIndex` etc.) koennen nur durch ungueltige P-Code-Sequenzen ausgeloest werden, nicht durch PL/0-Quellprogramme. Sollen diese Keys via `CliOptionsParser --lang en` oder direkt via `VirtualMachine` mit `VirtualMachineOptions { Language = "en" }` getestet werden? → A: Direkt via `VirtualMachine(options: new VirtualMachineOptions { Language = "en" })` ohne CLI-Pfad; SC-002 entsprechend praezisiert.
+- Q: Wie soll der ungueltige P-Code fuer VM-interne Tests bereitgestellt werden? → A: `Instruction[]` direkt im Testcode konstruieren (z. B. `new[] { new Instruction(Opcode.Opr, 0, 99) }`) — keine externen Fixture-Dateien, vollstaendig inline.
+
 ### Session 2026-03-03 (Runde 3 — Checklist-Remediation)
 
 - Q: Muss semantische Aequivalenz ohne Deutschkenntnisse pruefbar sein? → A: Ja; Definition in FR-003/FR-004 aufgenommen, Terminologietabelle als normatives Artefakt definiert.
@@ -257,7 +299,7 @@ verantwortet die Qualitaet anhand der folgenden Kriterien:
 - Q: Sollen L10nTests direkt `CompilerOptions.Language` setzen oder den `--lang`-Parameter nutzen? → A: `--lang`-Parameter via `CliOptionsParser`; in SC-002 und Assumptions festgelegt.
 - Q: Sollen VM-Fehlertexte in Tests ueber `BufferedPl0Io` oder `ConsolePl0Io` geprueft werden? → A: `BufferedPl0Io`, da `ConsolePl0Io` nicht fangbar; in SC-002 und Assumptions festgelegt.
 - Q: Ist der Erweiterbarkeitstest (SC-004) manuell oder automatisiert? → A: Automatisierter Test; Dummy-Sprache Schwedisch (`--lang se`), Keys aller Module; SC-004 entsprechend praezisiert.
-- Q: Muessen alle ~50 Keys einzeln getestet werden oder reicht eine Stichprobe? → A: Alle Keys einzeln; SC-002/SC-003 praezisiert.
+- Q: Muessen alle ~75 Keys einzeln getestet werden oder reicht eine Stichprobe? → A: Alle Keys einzeln; SC-002/SC-003 praezisiert.
 - Q: UTF-8-Anforderung fuer englische .resx-Dateien explizit? → A: Ja; FR-005 ergaenzt.
 - Q: Wer verantwortet englische Uebersetzungsqualitaet? → A: PR-Reviewer; neuer Abschnitt "Reviewer-Verantwortlichkeit" hinzugefuegt.
 - Q: Testdaten-Ablageort fuer L10nTests? → A: `tests/data/pl0/l10n/`; in SC-004 festgelegt.
@@ -271,18 +313,27 @@ verantwortet die Qualitaet anhand der folgenden Kriterien:
 - **SC-001**: Alle bestehenden Tests (`dotnet test`) laufen nach der Aenderung fehlerfrei
   durch — keine Regressionen (bestehende Tests pruefen keine Diagnosetexte und
   bleiben unveraendert).
-- **SC-002**: Neue dedizierte L10N-Tests verifizieren **alle ~50 englischen Keys einzeln**
+- **SC-002**: Neue dedizierte L10N-Tests verifizieren **alle ~75 englischen Keys einzeln**
   in `Pl0.Tests/L10nTests.cs`. Tests nutzen den `--lang`-Parameter (via `CliOptionsParser`);
-  VM-Fehlertexte werden ueber `BufferedPl0Io` geprueft. Fallback-Kette und `stderr`-Warnung
-  sind ebenfalls durch konkrete Eingabe/Ausgabe-Paare verifiziert.
+  VM-Fehlertexte, die durch PL/0-Programme ausloesbar sind (z. B. Division durch null,
+  End-of-Input), werden ueber `BufferedPl0Io` geprueft. VM-interne Fehler, die nur durch
+  ungueltige P-Code-Sequenzen ausloesbar sind (z. B. `Vm_E99_IPOutOfRange`,
+  `Vm_E99_UnsupportedOpcode`, `Vm_E99_InvalidLodIndex`), werden direkt ueber `VirtualMachine`
+  mit `VirtualMachineOptions { Language = "en" }` getestet — nicht via `CliOptionsParser`.
+  Fallback-Kette und `stderr`-Warnung sind ebenfalls durch konkrete Eingabe/Ausgabe-Paare
+  verifiziert.
 - **SC-003**: Alle Compiler-Fehlertexte der Traceability-Matrix sind in beiden Sprachen
   verfuegbar und key-fuer-key durch die neuen L10N-Tests verifiziert (kein Key ohne
   individuellen Testfall).
 - **SC-004**: Eine neue Sprache kann durch Hinzufuegen je einer Ressourcendatei pro Modul
   eingebunden werden — nachgewiesen durch einen **automatisierten Test** in `L10nTests.cs`
-  mit Dummy-Sprache Schwedisch (`--lang se`): Je eine `.resx`-Datei fuer Pl0.Core,
-  Pl0.Vm und Pl0.Cli mit schwedischen Texten fuer eine Stichprobe von Keys aller Module;
-  der Test prueft, dass schwedische Texte ausgegeben werden. Test-Daten `.pl0`-Programme
-  liegen in `tests/data/pl0/l10n/`.
+  mit Dummy-Sprache Schwedisch (`--lang se`). Mechanismus: Je eine `.resx`-Datei fuer
+  Pl0.Core, Pl0.Vm und Pl0.Cli mit schwedischen Dummy-Texten wird als `EmbeddedResource`
+  in `tests/Pl0.Tests/Resources/` kompiliert; der Test erstellt daraus einen
+  `ResourceManager` und injiziert ihn via `CompilerOptions.Messages` /
+  `VirtualMachineOptions.Messages` / `CliOptionsParser(cliMessages:)` (FR-008, alle drei
+  Module). Der Test prueft, dass schwedische Texte ausgegeben werden. Kein schwedischer
+  Inhalt landet im Produktions-Build.
+  Test-Daten `.pl0`-Programme liegen in `tests/data/pl0/l10n/`.
 - **SC-005**: Der Parameter `--lang` erscheint in der `--help`-Ausgabe beider Sprachen
   mit Beschreibung und Beispiel.
