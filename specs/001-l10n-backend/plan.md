@@ -62,7 +62,7 @@ sowohl die I18N-Schicht (Infrastruktur) als auch die L10N-Schicht (DE + EN).
 |---------|--------|-----------|
 | I. Didaktische Klarheit | ✅ Pass | `.resx` + Designer-Klassen sind Standard .NET; Ressourcen-Keys mit Fehlercode im Namen fördern Verständlichkeit |
 | II. Historische Kompatibilität | ✅ Pass | Keine PL/0-Sprachänderungen; Fehlercodes unveränderlich; nur Texte werden lokalisiert |
-| III. Testgetriebene Qualität | ✅ Pass | Bestehende Tests prüfen keine Diagnosetexte → keine Regressionen (zu validieren, spec.md Assumptions); neue `L10nTests`-Klasse deckt alle ~75 Keys einzeln ab, via `--lang`-Parameter, mit `BufferedPl0Io` für VM-Tests |
+| III. Testgetriebene Qualität | ✅ Pass | Bestehende Tests prüfen keine Diagnosetexte → keine Regressionen (validiert 2026-03-04, spec.md Assumptions); neue `L10nTests`-Klasse deckt alle ~75 Keys einzeln ab, via `--lang`-Parameter, mit `BufferedPl0Io` für VM-Tests |
 | IV. Strikte Modularchitektur | ✅ Pass | Keine neuen NuGet-Pakete; Dependency-Regeln unverändert; `.resx` ist SDK-Feature ohne externe Deps |
 | V. Fehlerdiagnose statt Ausnahmen | ✅ Pass | `CompilerDiagnostic`/`LexerDiagnostic`/`VmDiagnostic` Strukturen unverändert; nur Message-Strings werden lokalisiert |
 | VI. Git-Workflow | ✅ Pass | Feature-Branch `001-l10n-backend` existiert; alle Änderungen über PR |
