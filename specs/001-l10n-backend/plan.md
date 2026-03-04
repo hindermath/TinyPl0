@@ -1,6 +1,6 @@
 # Implementation Plan: L10N Backend (Pl0.Core / Pl0.Vm / Pl0.Cli)
 
-**Branch**: `001-l10n-backend` | **Date**: 2026-03-03 | **Spec**: [spec.md](spec.md)
+**Branch**: `001-l10n-backend` | **Date**: 2026-03-04 (aktualisiert) | **Spec**: [spec.md](spec.md)
 **Input**: Feature specification from `/specs/001-l10n-backend/spec.md`
 
 ## Summary
@@ -62,7 +62,7 @@ sowohl die I18N-Schicht (Infrastruktur) als auch die L10N-Schicht (DE + EN).
 |---------|--------|-----------|
 | I. Didaktische Klarheit | ✅ Pass | `.resx` + Designer-Klassen sind Standard .NET; Ressourcen-Keys mit Fehlercode im Namen fördern Verständlichkeit |
 | II. Historische Kompatibilität | ✅ Pass | Keine PL/0-Sprachänderungen; Fehlercodes unveränderlich; nur Texte werden lokalisiert |
-| III. Testgetriebene Qualität | ✅ Pass | Bestehende Tests prüfen keine Diagnosetexte → keine Regressionen; neue `L10nTests`-Klasse deckt beide Sprachen ab |
+| III. Testgetriebene Qualität | ✅ Pass | Bestehende Tests prüfen keine Diagnosetexte → keine Regressionen (zu validieren, spec.md Assumptions); neue `L10nTests`-Klasse deckt alle ~50 Keys einzeln ab, via `--lang`-Parameter, mit `BufferedPl0Io` für VM-Tests |
 | IV. Strikte Modularchitektur | ✅ Pass | Keine neuen NuGet-Pakete; Dependency-Regeln unverändert; `.resx` ist SDK-Feature ohne externe Deps |
 | V. Fehlerdiagnose statt Ausnahmen | ✅ Pass | `CompilerDiagnostic`/`LexerDiagnostic`/`VmDiagnostic` Strukturen unverändert; nur Message-Strings werden lokalisiert |
 | VI. Git-Workflow | ✅ Pass | Feature-Branch `001-l10n-backend` existiert; alle Änderungen über PR |
@@ -114,7 +114,23 @@ src/Pl0.Cli/
 │   └── Pl0CliMessages.Designer.cs   NEU     — Autogeneriert vom SDK
 
 tests/Pl0.Tests/
-└── L10nTests.cs                     NEU     — Dedizierte L10N/I18N-Testklasse
+└── L10nTests.cs                     NEU     — Dedizierte L10N/I18N-Testklasse (alle ~50 Keys)
+
+tests/data/pl0/l10n/                 NEU     — Testdaten-Programme für L10nTests
+├── undeclared_ident.pl0             NEU     — Parser_E11_UndeclaredIdent auslösen
+├── assign_to_const.pl0              NEU     — Parser_E12_AssignToConst auslösen
+├── division_by_zero.pl0             NEU     — Vm_E206_DivisionByZero auslösen
+├── number_too_large.pl0             NEU     — Lexer_E30_NumberTooLarge auslösen
+└── ...                              NEU     — je 1 Programm pro Fehlercode
+
+src/Pl0.Core/Resources/
+└── Pl0CoreMessages.se.resx          NEU     — Schwedische Dummy-Texte (Erweiterbarkeitstest SC-004)
+
+src/Pl0.Vm/Resources/
+└── Pl0VmMessages.se.resx            NEU     — Schwedische Dummy-Texte (Erweiterbarkeitstest SC-004)
+
+src/Pl0.Cli/Resources/
+└── Pl0CliMessages.se.resx           NEU     — Schwedische Dummy-Texte (Erweiterbarkeitstest SC-004)
 ```
 
 **Structure Decision**: Single-project layout je Modul; Ressourcen unter `Resources/`
@@ -139,9 +155,13 @@ tests/Pl0.Tests/
 **Status**: ✅ Abgeschlossen
 
 Artefakte:
-- [data-model.md](data-model.md) — alle Ressourcen-Keys, Entitäten, Beziehungen
+- [data-model.md](data-model.md) — alle Ressourcen-Keys, Entitäten, Beziehungen, **Terminologietabelle §7**
 - [contracts/cli-contract.md](contracts/cli-contract.md) — `--lang`-Parameter-Spec, API-Verträge
 - [quickstart.md](quickstart.md) — Smoke-Tests nach Implementierung
+
+**Abhängigkeit für Translation-Review**: `data-model.md §7` (Terminologietabelle) ist normativer
+Standard für alle englischen Texte. Sie muss vor Implementierung der `.resx`-Inhalte
+vollständig sein. PR-Reviewer prüft alle englischen Keys gegen diese Tabelle.
 
 ### Implementierungsdetails pro Modul
 
@@ -179,15 +199,82 @@ Artefakte:
 
 #### Pl0.Tests — neue `L10nTests.cs`
 
-Verifiziert I18N-Infrastruktur und L10N-Inhalte:
-- `Help_En_ContainsEnglishText()`
-- `CompilerDiagnostic_En_ContainsEnglishMessage()`
+**Test-Infrastruktur-Anforderungen** (aus spec.md Assumptions + SC-002):
+- Alle Tests verwenden den **`--lang`-Parameter** via `CliOptionsParser` — nicht direkt `CompilerOptions.Language`
+- VM-Fehlertexte werden über **`BufferedPl0Io`** (simuliertes I/O) geprüft, da `ConsolePl0Io` nicht fangbar ist
+- `stderr`-Ausgaben (Fallback-Warnung) werden über die `IPl0Io`-Schnittstelle gefangen — als Anforderung, nicht Implementierungsdetail
+- Testdaten-`.pl0`-Programme liegen in `tests/data/pl0/l10n/`
+
+**Lexer-Keys** (5 Testmethoden — alle Keys einzeln):
+- `Lexer_NumberTooManyDigits_En_ContainsEnglishMessage()`
+- `Lexer_NumberTooLarge_En_ContainsEnglishMessage()`
+- `Lexer_IdentifierTooLong_En_ContainsEnglishMessage()`
+- `Lexer_UnexpectedColon_En_ContainsEnglishMessage()`
+- `Lexer_UnexpectedChar_En_ContainsEnglishMessage()`
+
+**Parser-Keys** (~27 Testmethoden — alle Keys einzeln):
+- `Parser_UseEqualNotAssign_En_ContainsEnglishMessage()`
+- `Parser_PeriodExpected_En_ContainsEnglishMessage()`
+- `Parser_UndeclaredIdent_En_ContainsEnglishMessage()`
+- `Parser_AssignToConst_En_ContainsEnglishMessage()`
+- `Parser_InputTargetMustBeVar_En_ContainsEnglishMessage()`
+- `Parser_CallNeedsIdent_En_ContainsEnglishMessage()`
+- `Parser_CallConstOrVar_En_ContainsEnglishMessage()`
+- `Parser_ThenExpected_En_ContainsEnglishMessage()`
+- `Parser_SemiOrEndExpected_En_ContainsEnglishMessage()`
+- `Parser_DoExpected_En_ContainsEnglishMessage()`
+- `Parser_InputNotInClassic_En_ContainsEnglishMessage()`
+- `Parser_OutputNotInClassic_En_ContainsEnglishMessage()`
+- `Parser_RelOpExpected_En_ContainsEnglishMessage()`
+- `Parser_ProcInExpr_En_ContainsEnglishMessage()`
+- `Parser_RightParenMissing_En_ContainsEnglishMessage()`
+- `Parser_BadExprStart_En_ContainsEnglishMessage()`
+- `Parser_NumberTooLarge_En_ContainsEnglishMessage()`
+- `Parser_NestingTooDeep_En_ContainsEnglishMessage()`
+- `Parser_SymbolTableOverflow_En_ContainsEnglishMessage()`
+- `Parser_ProgramTooLong_En_ContainsEnglishMessage()`
+- `Parser_UnexpectedEndOfInput_En_ContainsEnglishMessage()`
+- `Parser_InvalidLexLevel_En_ContainsEnglishMessage()`
+- *(weitere Expect-Methoden je verbleibendem Key aus data-model.md §3)*
+
+**VM-Keys** (13 Testmethoden — alle Keys einzeln, via `BufferedPl0Io`):
+- `Vm_IPOutOfRange_En_ContainsEnglishMessage()`
+- `Vm_InvalidLodIndex_En_ContainsEnglishMessage()`
+- `Vm_InvalidStoIndex_En_ContainsEnglishMessage()`
+- `Vm_StackOverflowCallFrame_En_ContainsEnglishMessage()`
+- `Vm_StackOverflowInt_En_ContainsEnglishMessage()`
+- `Vm_UnsupportedOpcode_En_ContainsEnglishMessage()`
+- `Vm_UnsupportedOpr_En_ContainsEnglishMessage()`
+- `Vm_InvalidBasePointer_En_ContainsEnglishMessage()`
+- `Vm_StackOverflow_En_ContainsEnglishMessage()`
+- `Vm_StackUnderflow_En_ContainsEnglishMessage()`
+- `Vm_EndOfInput_En_ContainsEnglishMessage()`
+- `Vm_InputFormatError_En_ContainsEnglishMessage()`
+- `Vm_DivisionByZero_En_ContainsEnglishMessage()`
+
+**CLI-Keys** (~9 Testmethoden):
+- `Cli_Help_En_ContainsEnglishText()`
+- `Cli_Help_Contains_LangParameter()`
+- `Cli_Status_CompileSuccess_En_ContainsEnglishMessage()`
+- `Cli_Status_CompileError_En_ContainsEnglishMessage()`
+- `Cli_Err_UnknownSwitch_En_ContainsEnglishMessage()`
+- `Cli_Err_UnknownLanguage_En_ContainsEnglishMessage()`
+- *(weitere Cli_Err_*-Methoden je Key aus data-model.md §5)*
+
+**Deutsch-Baseline** (Stichprobe — stellt sicher dass DE ohne `--lang` funktioniert):
 - `CompilerDiagnostic_De_ContainsGermanMessage()`
-- `VmDiagnostic_En_ContainsEnglishMessage()`
-- `UnknownLanguage_FallsBackToGerman_WithStderrWarning()`
-- `EmptyLanguage_FallsBackToGerman()`
-- `Help_Contains_LangParameter()`
-- `NewLocale_LoadsFromResxWithoutCodeChange()` — I18N-Erweiterbarkeitstest
+- `VmDiagnostic_De_ContainsGermanMessage()`
+
+**Fallback-Ketten-Tests** (konkrete I/O-Paare aus spec.md FR-006/FR-009):
+- `LangEnUs_FallsBackToEn_WhenEnUsResxMissing()` — `--lang en-US` → EN-Text erscheint
+- `LangFr_FallsBackToGerman_WhenFrResxMissing()` — `--lang fr` → DE-Fallback-Text erscheint
+- `EmptyLanguage_FallsBackToGerman()` — `--lang ""` → DE
+- `UnknownLanguage_FallsBackToGerman_WithStderrWarning()` — `--lang xx` → DE + `stderr`-Warnung enthält `"xx"`
+
+**Erweiterbarkeitstest SC-004** (automatisiert, Dummy-Sprache Schwedisch):
+- `NewLocale_Se_LoadsFromResxWithoutCodeChange_Core()` — schwedischer Core-Key erscheint mit `--lang se`
+- `NewLocale_Se_LoadsFromResxWithoutCodeChange_Vm()` — schwedischer Vm-Key erscheint mit `--lang se`
+- `NewLocale_Se_LoadsFromResxWithoutCodeChange_Cli()` — schwedischer Cli-Key erscheint mit `--lang se`
 
 ### Constitution Check (Post-Design): alle 6 Prinzipien ✅
 
