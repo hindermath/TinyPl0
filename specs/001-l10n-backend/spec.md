@@ -119,21 +119,21 @@ und pruefen, dass die VM-Fehlermeldung auf Englisch erscheint.
 
 ### User Story 4 — Neue Sprache ohne Quellcode-Aenderung erweiterbar (Priority: P3)
 
-Ein Ausbilder kann eine dritte Sprache (z. B. Franzoesisch) hinzufuegen, indem er
+Ein Ausbilder kann eine dritte Sprache (z. B. Schwedisch) hinzufuegen, indem er
 je eine neue Ressourcendatei pro Modul anlegt, ohne Quellcode in `Pl0.Core`,
 `Pl0.Vm` oder `Pl0.Cli` zu aendern.
 
 **Why this priority**: Erweiterbarkeit ist langfristig relevant, aber kein MVP-Blocker;
 das Design muss sie ermoeglichen.
 
-**Independent Test**: Dummy-Ressourcendatei fuer `fr-FR` anlegen, `--lang fr`
-uebergeben, pruefen dass die neuen Texte verwendet werden.
+**Independent Test**: Dummy-Ressourcendatei fuer `se` anlegen, `--lang se`
+uebergeben, pruefen dass die neuen Texte verwendet werden (nachgewiesen durch SC-004).
 
 **Acceptance Scenarios**:
 
-1. **Given** neue `.resx`-Dateien fuer `fr-FR` sind vorhanden,
-   **When** `--lang fr` uebergeben wird,
-   **Then** verwendet die CLI die franzosischen Texte ohne Neukompilierung.
+1. **Given** neue `.resx`-Dateien fuer `se` (Schwedisch) sind vorhanden,
+   **When** `--lang se` uebergeben wird,
+   **Then** verwendet die CLI die schwedischen Texte ohne Neukompilierung.
 2. **Given** die neue Ressourcendatei ist unvollstaendig,
    **When** ein fehlender Key abgefragt wird,
    **Then** wird der deutsche Fallback-Text verwendet.
@@ -325,9 +325,11 @@ verantwortet die Qualitaet anhand der folgenden Kriterien:
   mit `VirtualMachineOptions { Language = "en" }` getestet — nicht via `CliOptionsParser`.
   Fallback-Kette und `stderr`-Warnung sind ebenfalls durch konkrete Eingabe/Ausgabe-Paare
   verifiziert.
-- **SC-003**: Alle Compiler-Fehlertexte der Traceability-Matrix sind in beiden Sprachen
-  verfuegbar und key-fuer-key durch die neuen L10N-Tests verifiziert (kein Key ohne
-  individuellen Testfall).
+- **SC-003**: Jeder Fehlercode, der in `tests/data/expected/traceability/matrix.json`
+  aufgefuehrt ist, hat einen korrespondierenden Eintrag in `Pl0CoreMessages.resx` und
+  `Pl0CoreMessages.en.resx`. Die Traceability-Matrix bleibt vollstaendig (kein Fehlercode
+  ohne Ressourcen-Key). Verifiziert durch T023/T024 (L10N-Tests) in Kombination mit den
+  bestehenden `TraceabilityMatrixTests`.
 - **SC-004**: Eine neue Sprache kann durch Hinzufuegen je einer Ressourcendatei pro Modul
   eingebunden werden — nachgewiesen durch einen **automatisierten Test** in `L10nTests.cs`
   mit Dummy-Sprache Schwedisch (`--lang se`). Mechanismus: Je eine `.resx`-Datei fuer
