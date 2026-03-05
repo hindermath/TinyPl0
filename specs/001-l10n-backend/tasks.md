@@ -34,9 +34,10 @@
 
 **⚠️ CRITICAL**: Keine User-Story-Arbeit kann beginnen, bis diese Phase abgeschlossen ist
 
-- [ ] T007 [P] `src/Pl0.Core/CompilerOptions.cs` erweitern — optionale Parameter `string Language = "de"` und `ResourceManager? Messages = null` am Ende des primary constructors hinzufügen (nicht-breaking; bestehende Aufrufe bleiben gültig; Kommentar auf Deutsch)
-- [ ] T008 [P] `src/Pl0.Vm/VirtualMachineOptions.cs` erweitern — analog: optionale Parameter `string Language = "de"` und `ResourceManager? Messages = null` hinzufügen
-- [ ] T009 `src/Pl0.Cli/Cli/CliOptionsParser.cs` erweitern — zwei optionale Konstruktor-Parameter hinzufügen: `TextWriter? errorOutput = null` (Default: `Console.Error`, für FR-009 stderr-Capture) und `ResourceManager? cliMessages = null` (Default: `Pl0CliMessages.ResourceManager`, für FR-008 Injection); `--lang <code>` parsen: `CultureInfo.GetCultureInfo(code)` aufrufen; bei `CultureNotFoundException` Warnung auf `errorOutput` schreiben und auf `"de"` zurückfallen; geparsten Code in `ParsedOptions.Language` ablegen
+- [ ] T007 [P] `src/Pl0.Core/CompilerOptions.cs` erweitern — optionale Parameter `string Language = "de"` und `ResourceManager? Messages = null` am Ende des primary constructors hinzufügen (nicht-breaking; bestehende Aufrufe bleiben gültig; Kommentar auf Deutsch); XML-Dokumentationskommentare (`<param>`) für beide neuen Parameter auf Deutsch ergänzen (Constitution I)
+- [ ] T008 [P] `src/Pl0.Vm/VirtualMachineOptions.cs` erweitern — analog: optionale Parameter `string Language = "de"` und `ResourceManager? Messages = null` hinzufügen; XML-Dokumentationskommentare (`<param>`) für beide neuen Parameter auf Deutsch ergänzen (Constitution I)
+- [ ] T009 `src/Pl0.Cli/Cli/CliOptionsParser.cs` erweitern — zwei optionale Konstruktor-Parameter hinzufügen: `TextWriter? errorOutput = null` (Default: `Console.Error`, für FR-009 stderr-Capture) und `ResourceManager? cliMessages = null` (für FR-008 Injection); `--lang <code>` parsen: `CultureInfo.GetCultureInfo(code)` aufrufen; bei `CultureNotFoundException` Warnung auf `errorOutput` schreiben und auf `"de"` zurückfallen; geparsten Code in `ParsedOptions.Language` ablegen; XML-Dokumentationskommentare (`<param>`) für beide neuen Parameter auf Deutsch ergänzen (Constitution I)
+  ⚠️ HINWEIS: `Pl0CliMessages` (Designer-Klasse) existiert erst nach T010 (`.resx`-Erstellung + Build). Den `cliMessages`-Parameter vorerst nur mit `null` verwenden; die interne Auflösung `_cliMessages = cliMessages ?? Pl0CliMessages.ResourceManager` im Konstruktor-Body erst in T013 ergänzen, sobald die Designer-Klasse verfügbar ist.
 
 **Checkpoint**: Foundation bereit — User Stories können beginnen
 
@@ -48,18 +49,18 @@
 
 **Independent Test**: `dotnet run --project src/Pl0.Cli -- --lang en --help` → Usage-Text vollständig auf Englisch; `--lang de --help` → Deutsch; `--lang xx` → stderr-Warnung + Deutsch
 
-### Tests für User Story 1
-
-- [ ] T010 [US1] `tests/Pl0.Tests/L10nTests.cs` — 17 Testmethoden für alle `Cli_Help_*`-Keys: `Cli_Help_UsageHeader_En`, `Cli_Help_SwitchesHeader_En`, `Cli_Help_CompileLine_En` usw.; prüfen via `CliOptionsParser(cliMessages: ...) + --lang en + --help`; erwartete EN-Texte aus `data-model.md §5`
-- [ ] T011 [US1] `tests/Pl0.Tests/L10nTests.cs` — 6 Testmethoden für `Cli_Err_*`-Keys und 2 für `Cli_Status_*`-Keys (8 gesamt): `Cli_Err_UnknownSwitch_En`, `Cli_Err_UnknownLanguage_En`, `Cli_Status_CompileSuccess_En` usw.
-- [ ] T012 [US1] `tests/Pl0.Tests/L10nTests.cs` — 4 Fallback-Ketten-Tests: `LangEnUs_FallsBackToEn`, `LangFr_FallsBackToGerman`, `EmptyLanguage_FallsBackToGerman`, `UnknownLanguage_FallsBackToGerman_WithStderrWarning` (prüft `StringWriter`-Inhalt auf Sprachcode `"xx"`)
-
 ### Implementation für User Story 1
 
-- [ ] T013 [US1] `src/Pl0.Cli/Resources/Pl0CliMessages.resx` anlegen — alle 25 deutschen CLI-Strings exakt gemäss `data-model.md §5`; Build-Action `EmbeddedResource`; Custom Tool `ResXFileCodeGenerator`; Namespace `Pl0.Cli`; Klasse `Pl0CliMessages`; Access `internal`
-- [ ] T014 [P] [US1] `src/Pl0.Cli/Resources/Pl0CliMessages.en.resx` anlegen — alle 25 englischen CLI-Strings exakt gemäss `data-model.md §5 Beispiel (en)`; gleiche Keys; Build-Action `EmbeddedResource`
-- [ ] T015 [US1] `src/Pl0.Cli/Cli/CliHelpPrinter.cs` refaktorieren — alle 17 `Cli_Help_*`-Hardcoded-Strings durch `ResourceManager`-Lookups ersetzen (`rm.GetString(key, culture)` wobei `rm` und `culture` aus injiziertem `cliMessages` + `Language` abgeleitet); Kommentare auf Deutsch
-- [ ] T016 [US1] `src/Pl0.Cli/Cli/CliOptionsParser.cs` ergänzen — verbleibende Hardcoded-Strings (`Cli_Err_*`, `Cli_Status_*`) durch ResourceManager-Lookups via `cliMessages` ersetzen; Status-Meldungen in `Program.cs` oder `CliRunner` analog behandeln
+- [ ] T010 [US1] `src/Pl0.Cli/Resources/Pl0CliMessages.resx` anlegen — alle 25 deutschen CLI-Strings exakt gemäss `data-model.md §5`; Build-Action `EmbeddedResource`; Custom Tool `ResXFileCodeGenerator`; Namespace `Pl0.Cli`; Klasse `Pl0CliMessages`; Access `internal`
+- [ ] T011 [P] [US1] `src/Pl0.Cli/Resources/Pl0CliMessages.en.resx` anlegen — alle 25 englischen CLI-Strings exakt gemäss `data-model.md §5 Beispiel (en)`; gleiche Keys; Build-Action `EmbeddedResource`
+- [ ] T012 [US1] `src/Pl0.Cli/Cli/CliHelpPrinter.cs` refaktorieren — alle 17 `Cli_Help_*`-Hardcoded-Strings durch `ResourceManager`-Lookups ersetzen (`rm.GetString(key, culture)` wobei `rm` und `culture` aus injiziertem `cliMessages` + `Language` abgeleitet); Kommentare auf Deutsch
+- [ ] T013 [US1] `src/Pl0.Cli/Cli/CliOptionsParser.cs` ergänzen — verbleibende Hardcoded-Strings (`Cli_Err_*`, `Cli_Status_*`) durch ResourceManager-Lookups via `cliMessages` ersetzen; `_cliMessages = cliMessages ?? Pl0CliMessages.ResourceManager` im Konstruktor-Body ergänzen (Pl0CliMessages ist jetzt nach T010 verfügbar); Status-Meldungen in `Program.cs` oder `CliRunner` analog behandeln; `ParsedOptions.Language` in **allen drei Befehlspfaden** (`compile`, `run`, `run-pcode`) an `CompilerOptions(Language:)` und `VirtualMachineOptions(Language:)` weitergeben (FR-011)
+
+### Tests für User Story 1
+
+- [ ] T014 [US1] `tests/Pl0.Tests/L10nTests.cs` — 17 Testmethoden für alle `Cli_Help_*`-Keys: `Cli_Help_UsageHeader_En`, `Cli_Help_SwitchesHeader_En`, `Cli_Help_CompileLine_En` usw.; prüfen via `CliOptionsParser(cliMessages: ...) + --lang en + --help`; erwartete EN-Texte aus `data-model.md §5`
+- [ ] T015 [US1] `tests/Pl0.Tests/L10nTests.cs` — 6 Testmethoden für `Cli_Err_*`-Keys und 2 für `Cli_Status_*`-Keys (8 gesamt): `Cli_Err_UnknownSwitch_En`, `Cli_Err_UnknownLanguage_En`, `Cli_Status_CompileSuccess_En` usw.
+- [ ] T016 [US1] `tests/Pl0.Tests/L10nTests.cs` — 4 Fallback-Ketten-Tests: `LangEnUs_FallsBackToEn`, `LangFr_FallsBackToGerman`, `EmptyLanguage_FallsBackToGerman`, `UnknownLanguage_FallsBackToGerman_WithStderrWarning` (prüft `StringWriter`-Inhalt auf Sprachcode `"xx"`)
 
 **Checkpoint**: User Story 1 vollständig und unabhängig testbar — `dotnet test --filter L10nTests`
 
@@ -71,20 +72,20 @@
 
 **Independent Test**: `dotnet run --project src/Pl0.Cli -- --lang en run tests/data/pl0/l10n/undeclared_ident.pl0` → englischer Diagnosetext `"Undeclared identifier."`; ohne `--lang` → `"Nicht deklarierter Bezeichner."`
 
-### Tests für User Story 2
-
-- [ ] T017 [P] [US2] Testdaten-Programme in `tests/data/pl0/l10n/` anlegen für alle 5 Lexer-Fehler: `number_too_many_digits.pl0` (E30), `number_too_large_lexer.pl0` (E30), `ident_too_long.pl0` (E33), `unexpected_colon.pl0` (E99), `unexpected_char.pl0` (E99)
-- [ ] T018 [P] [US2] Testdaten-Programme in `tests/data/pl0/l10n/` anlegen für Parser-Fehler: `use_equal_not_assign.pl0` (E01), `undeclared_ident.pl0` (E11), `assign_to_const.pl0` (E12), `missing_then.pl0` (E16), `missing_do.pl0` (E18), `period_expected.pl0` (E09), `nesting_too_deep.pl0` (E32), und weitere je Fehlercode gemäss `plan.md §Source-Code-Structure`
-- [ ] T019 [US2] `tests/Pl0.Tests/L10nTests.cs` — 5 Testmethoden für alle Lexer-Keys (`Lexer_NumberTooManyDigits_En`, `Lexer_NumberTooLarge_En`, `Lexer_IdentifierTooLong_En`, `Lexer_UnexpectedColon_En`, `Lexer_UnexpectedChar_En`); via `CliOptionsParser --lang en`; erwartete Texte aus `data-model.md §3 Beispiel (en)`
-- [ ] T020 [US2] `tests/Pl0.Tests/L10nTests.cs` — 32 Testmethoden für alle Parser-Keys (vollständige Liste in `plan.md §Parser-Keys`); via `CliOptionsParser --lang en`; je eine Testmethode pro Key; erwartete Texte aus `data-model.md §3 Beispiel (en)`
-- [ ] T021 [US2] `tests/Pl0.Tests/L10nTests.cs` — DE-Baseline-Tests: `CompilerDiagnostic_De_ContainsGermanMessage` und `LexerDiagnostic_De_ContainsGermanMessage` (prüfen dass DE ohne `--lang` korrekt erscheint)
-
 ### Implementation für User Story 2
 
-- [ ] T022 [P] [US2] `src/Pl0.Core/Resources/Pl0CoreMessages.resx` anlegen — alle 37 deutschen Lexer/Parser-Fehlertexte exakt gemäss `data-model.md §3 Beispiel (de)`; Build-Action `EmbeddedResource`; Custom Tool `ResXFileCodeGenerator`; Namespace `Pl0.Core`; Klasse `Pl0CoreMessages`; Access `internal`
-- [ ] T023 [P] [US2] `src/Pl0.Core/Resources/Pl0CoreMessages.en.resx` anlegen — alle 37 englischen Texte exakt gemäss `data-model.md §3 Beispiel (en)`; gleiche Keys wie `.resx`
-- [ ] T024 [US2] `src/Pl0.Core/Pl0Lexer.cs` refaktorieren — `ResourceManager rm = _options.Messages ?? Pl0CoreMessages.ResourceManager` und `CultureInfo culture = CultureInfo.GetCultureInfo(_options.Language)` im Lexer-Kontext ableiten; alle 5 Inline-Error-Strings durch `rm.GetString("Key", culture)` ersetzen; Formatierung via `string.Format(culture, template, args)`; Kommentare auf Deutsch
-- [ ] T025 [US2] `src/Pl0.Core/Pl0Parser.cs` refaktorieren — analog zu T024; alle 32 Inline-Error-Strings der Parser-Diagnosen durch ResourceManager-Lookups ersetzen; `_options.Messages` und `_options.Language` verwenden
+- [ ] T017 [P] [US2] `src/Pl0.Core/Resources/Pl0CoreMessages.resx` anlegen — alle 37 deutschen Lexer/Parser-Fehlertexte exakt gemäss `data-model.md §3 Beispiel (de)`; Build-Action `EmbeddedResource`; Custom Tool `ResXFileCodeGenerator`; Namespace `Pl0.Core`; Klasse `Pl0CoreMessages`; Access `internal`
+- [ ] T018 [P] [US2] `src/Pl0.Core/Resources/Pl0CoreMessages.en.resx` anlegen — alle 37 englischen Texte exakt gemäss `data-model.md §3 Beispiel (en)`; gleiche Keys wie `.resx`
+- [ ] T019 [US2] `src/Pl0.Core/Pl0Lexer.cs` refaktorieren — `ResourceManager rm = _options.Messages ?? Pl0CoreMessages.ResourceManager` und `CultureInfo culture = CultureInfo.GetCultureInfo(_options.Language)` im Lexer-Kontext ableiten; alle 5 Inline-Error-Strings durch `rm.GetString("Key", culture)` ersetzen; Formatierung via `string.Format(culture, template, args)`; Kommentare auf Deutsch
+- [ ] T020 [US2] `src/Pl0.Core/Pl0Parser.cs` refaktorieren — analog zu T019; alle 32 Inline-Error-Strings der Parser-Diagnosen durch ResourceManager-Lookups ersetzen; `_options.Messages` und `_options.Language` verwenden
+
+### Tests für User Story 2
+
+- [ ] T021 [P] [US2] Testdaten-Programme in `tests/data/pl0/l10n/` anlegen für alle 5 Lexer-Fehler: `number_too_many_digits.pl0` (E30), `number_too_large_lexer.pl0` (E30), `ident_too_long.pl0` (E33), `unexpected_colon.pl0` (E99), `unexpected_char.pl0` (E99)
+- [ ] T022 [P] [US2] Testdaten-Programme in `tests/data/pl0/l10n/` anlegen für Parser-Fehler: `use_equal_not_assign.pl0` (E01), `undeclared_ident.pl0` (E11), `assign_to_const.pl0` (E12), `missing_then.pl0` (E16), `missing_do.pl0` (E18), `period_expected.pl0` (E09), `nesting_too_deep.pl0` (E32), und weitere je Fehlercode gemäss `plan.md §Source-Code-Structure`
+- [ ] T023 [US2] `tests/Pl0.Tests/L10nTests.cs` — 5 Testmethoden für alle Lexer-Keys (`Lexer_NumberTooManyDigits_En`, `Lexer_NumberTooLarge_En`, `Lexer_IdentifierTooLong_En`, `Lexer_UnexpectedColon_En`, `Lexer_UnexpectedChar_En`); via `CliOptionsParser --lang en`; erwartete Texte aus `data-model.md §3 Beispiel (en)`
+- [ ] T024 [US2] `tests/Pl0.Tests/L10nTests.cs` — 32 Testmethoden für alle Parser-Keys (vollständige Liste in `plan.md §Parser-Keys`); via `CliOptionsParser --lang en`; je eine Testmethode pro Key; erwartete Texte aus `data-model.md §3 Beispiel (en)`
+- [ ] T025 [US2] `tests/Pl0.Tests/L10nTests.cs` — DE-Baseline-Tests: `CompilerDiagnostic_De_ContainsGermanMessage` und `LexerDiagnostic_De_ContainsGermanMessage` (prüfen dass DE ohne `--lang` korrekt erscheint)
 
 **Checkpoint**: User Stories 1 und 2 funktionieren unabhängig
 
@@ -96,18 +97,18 @@
 
 **Independent Test**: `dotnet run --project src/Pl0.Cli -- --lang en run tests/data/pl0/l10n/division_by_zero.pl0` → `"Division by zero."`; ohne `--lang` → `"Division durch null."`
 
-### Tests für User Story 3
-
-- [ ] T026 [P] [US3] Testdaten-Programme in `tests/data/pl0/l10n/` anlegen: `division_by_zero.pl0` (E206), `end_of_input.pl0` (E98 — Leseoperation ohne buffered Input), `input_format_error.pl0` (E97 — nicht-ganzzahliger Input)
-- [ ] T027 [US3] `tests/Pl0.Tests/L10nTests.cs` — 3 Testmethoden für PL/0-auslösbare VM-Keys via `CliOptionsParser --lang en` + `BufferedPl0Io`: `Vm_DivisionByZero_En`, `Vm_EndOfInput_En`, `Vm_InputFormatError_En`; erwartete Texte aus `data-model.md §4 Beispiel (en)`
-- [ ] T028 [US3] `tests/Pl0.Tests/L10nTests.cs` — 10 Testmethoden für VM-interne Keys via direkter `VirtualMachine`-Konstruktion mit `VirtualMachineOptions { Language = "en" }` und `Instruction[]`-inline-P-Code: `Vm_IPOutOfRange_En`, `Vm_InvalidLodIndex_En`, `Vm_InvalidStoIndex_En`, `Vm_StackOverflowCallFrame_En`, `Vm_StackOverflowInt_En`, `Vm_UnsupportedOpcode_En`, `Vm_UnsupportedOpr_En`, `Vm_InvalidBasePointer_En`, `Vm_StackOverflow_En`, `Vm_StackUnderflow_En`
-- [ ] T029 [US3] `tests/Pl0.Tests/L10nTests.cs` — DE-Baseline-Test: `VmDiagnostic_De_ContainsGermanMessage` (prüft Division-durch-null auf Deutsch)
-
 ### Implementation für User Story 3
 
-- [ ] T030 [P] [US3] `src/Pl0.Vm/Resources/Pl0VmMessages.resx` anlegen — alle 13 deutschen VM-Fehlertexte exakt gemäss `data-model.md §4 Beispiel (de)`; Build-Action `EmbeddedResource`; Custom Tool `ResXFileCodeGenerator`; Namespace `Pl0.Vm`; Klasse `Pl0VmMessages`; Access `internal`
-- [ ] T031 [P] [US3] `src/Pl0.Vm/Resources/Pl0VmMessages.en.resx` anlegen — alle 13 englischen Texte exakt gemäss `data-model.md §4 Beispiel (en)`
-- [ ] T032 [US3] `src/Pl0.Vm/VirtualMachine.cs` refaktorieren — `_rm = options.Messages ?? Pl0VmMessages.ResourceManager` und `_culture = CultureInfo.GetCultureInfo(options.Language)` im Konstruktor ableiten; alle 11 Inline-Fehlertexte aus `throw`-Statements und Diagnose-Erstellungen durch `_rm.GetString(key, _culture)` ersetzen; Formatierung via `string.Format(_culture, template, args)`; E98/E97 (EndOfInput, InputFormatError) werden durch Exception-Catching im VM-Run-Loop lokalisiert: Exception-Message durch `_rm.GetString("Vm_E98_EndOfInput", _culture)` bzw. `_rm.GetString("Vm_E97_InputFormatError", _culture)` ersetzen; Kommentare auf Deutsch
+- [ ] T026 [P] [US3] `src/Pl0.Vm/Resources/Pl0VmMessages.resx` anlegen — alle 13 deutschen VM-Fehlertexte exakt gemäss `data-model.md §4 Beispiel (de)`; Build-Action `EmbeddedResource`; Custom Tool `ResXFileCodeGenerator`; Namespace `Pl0.Vm`; Klasse `Pl0VmMessages`; Access `internal`
+- [ ] T027 [P] [US3] `src/Pl0.Vm/Resources/Pl0VmMessages.en.resx` anlegen — alle 13 englischen Texte exakt gemäss `data-model.md §4 Beispiel (en)`
+- [ ] T028 [US3] `src/Pl0.Vm/VirtualMachine.cs` refaktorieren — `_rm = options.Messages ?? Pl0VmMessages.ResourceManager` und `_culture = CultureInfo.GetCultureInfo(options.Language)` im Konstruktor ableiten; alle 11 Inline-Fehlertexte aus `throw`-Statements und Diagnose-Erstellungen durch `_rm.GetString(key, _culture)` ersetzen; Formatierung via `string.Format(_culture, template, args)`; E98/E97 (EndOfInput, InputFormatError) werden durch Exception-Catching im VM-Run-Loop lokalisiert: Exception-Message durch `_rm.GetString("Vm_E98_EndOfInput", _culture)` bzw. `_rm.GetString("Vm_E97_InputFormatError", _culture)` ersetzen; Kommentare auf Deutsch
+
+### Tests für User Story 3
+
+- [ ] T029 [P] [US3] Testdaten-Programme in `tests/data/pl0/l10n/` anlegen: `division_by_zero.pl0` (E206), `end_of_input.pl0` (E98 — Leseoperation ohne buffered Input), `input_format_error.pl0` (E97 — nicht-ganzzahliger Input)
+- [ ] T030 [US3] `tests/Pl0.Tests/L10nTests.cs` — 3 Testmethoden für PL/0-auslösbare VM-Keys via `CliOptionsParser --lang en` + `BufferedPl0Io`: `Vm_DivisionByZero_En`, `Vm_EndOfInput_En`, `Vm_InputFormatError_En`; erwartete Texte aus `data-model.md §4 Beispiel (en)`
+- [ ] T031 [US3] `tests/Pl0.Tests/L10nTests.cs` — 10 Testmethoden für VM-interne Keys via direkter `VirtualMachine`-Konstruktion mit `VirtualMachineOptions { Language = "en" }` und `Instruction[]`-inline-P-Code: `Vm_IPOutOfRange_En`, `Vm_InvalidLodIndex_En`, `Vm_InvalidStoIndex_En`, `Vm_StackOverflowCallFrame_En`, `Vm_StackOverflowInt_En`, `Vm_UnsupportedOpcode_En`, `Vm_UnsupportedOpr_En`, `Vm_InvalidBasePointer_En`, `Vm_StackOverflow_En`, `Vm_StackUnderflow_En`
+- [ ] T032 [US3] `tests/Pl0.Tests/L10nTests.cs` — DE-Baseline-Test: `VmDiagnostic_De_ContainsGermanMessage` (prüft Division-durch-null auf Deutsch)
 
 **Checkpoint**: User Stories 1, 2 und 3 funktionieren unabhängig
 
@@ -119,16 +120,16 @@
 
 **Independent Test**: `dotnet test --filter NewLocale_Se_` → alle 3 Swedish-Extensibility-Tests grün
 
-### Tests für User Story 4
-
-- [ ] T033 [US4] `tests/Pl0.Tests/L10nTests.cs` — 3 Testmethoden für SC-004 Extensibility: `NewLocale_Se_InjectedResourceManager_Core_ReturnsSwedishMessage`, `NewLocale_Se_InjectedResourceManager_Vm_ReturnsSwedishMessage`, `NewLocale_Se_InjectedResourceManager_Cli_ReturnsSwedishMessage`; jede Methode erstellt `ResourceManager` aus EmbeddedResource in `tests/Pl0.Tests/Resources/` und injiziert ihn via `CompilerOptions.Messages` / `VirtualMachineOptions.Messages` / `CliOptionsParser(cliMessages:)`
-
 ### Implementation für User Story 4
 
-- [ ] T034 [P] [US4] `tests/Pl0.Tests/Resources/Pl0CoreMessages.se.resx` anlegen — schwedische Dummy-Texte für mindestens 1 Core-Key (z. B. `Parser_E11_UndeclaredIdent` → `"Odefinierad identifierare."`); Build-Action `EmbeddedResource` in `Pl0.Tests.csproj`; kein Produktions-Build-Einfluss
-- [ ] T035 [P] [US4] `tests/Pl0.Tests/Resources/Pl0VmMessages.se.resx` anlegen — schwedischer Dummy-Text für mindestens 1 VM-Key (z. B. `Vm_E206_DivisionByZero` → `"Division med noll."`)
-- [ ] T036 [P] [US4] `tests/Pl0.Tests/Resources/Pl0CliMessages.se.resx` anlegen — schwedischer Dummy-Text für mindestens 1 CLI-Key (z. B. `Cli_Status_CompileSuccess` → `"Kompileringen lyckades."`)
-- [ ] T037 [US4] `tests/Pl0.Tests/Pl0.Tests.csproj` anpassen — alle drei `.se.resx`-Dateien als `<EmbeddedResource>` einbinden, damit `ResourceManager`-Lookup in Tests funktioniert
+- [ ] T033 [P] [US4] `tests/Pl0.Tests/Resources/Pl0CoreMessages.se.resx` anlegen — schwedische Dummy-Texte für mindestens 1 Core-Key (z. B. `Parser_E11_UndeclaredIdent` → `"Odefinierad identifierare."`); Build-Action `EmbeddedResource` in `Pl0.Tests.csproj`; kein Produktions-Build-Einfluss
+- [ ] T034 [P] [US4] `tests/Pl0.Tests/Resources/Pl0VmMessages.se.resx` anlegen — schwedischer Dummy-Text für mindestens 1 VM-Key (z. B. `Vm_E206_DivisionByZero` → `"Division med noll."`)
+- [ ] T035 [P] [US4] `tests/Pl0.Tests/Resources/Pl0CliMessages.se.resx` anlegen — schwedischer Dummy-Text für mindestens 1 CLI-Key (z. B. `Cli_Status_CompileSuccess` → `"Kompileringen lyckades."`)
+- [ ] T036 [US4] `tests/Pl0.Tests/Pl0.Tests.csproj` anpassen — alle drei `.se.resx`-Dateien als `<EmbeddedResource>` einbinden, damit `ResourceManager`-Lookup in Tests funktioniert
+
+### Tests für User Story 4
+
+- [ ] T037 [US4] `tests/Pl0.Tests/L10nTests.cs` — 3 Testmethoden für SC-004 Extensibility: `NewLocale_Se_InjectedResourceManager_Core_ReturnsSwedishMessage`, `NewLocale_Se_InjectedResourceManager_Vm_ReturnsSwedishMessage`, `NewLocale_Se_InjectedResourceManager_Cli_ReturnsSwedishMessage`; jede Methode erstellt `ResourceManager` aus EmbeddedResource in `tests/Pl0.Tests/Resources/` und injiziert ihn via `CompilerOptions.Messages` / `VirtualMachineOptions.Messages` / `CliOptionsParser(cliMessages:)`
 
 **Checkpoint**: Alle vier User Stories vollständig funktional und unabhängig testbar
 
@@ -140,7 +141,8 @@
 
 - [ ] T038 [P] `dotnet build --configuration Release` ausführen und prüfen dass Satellite Assemblies (`de/`, `en/`) in `bin/Release/` erzeugt werden — beweist dass SDK-automatische `.resx`-Kompilierung funktioniert
 - [ ] T039 `dotnet test` ausführen — alle bestehenden Tests müssen weiterhin grün sein (SC-001: keine Regressionen); alle neuen L10nTests ebenfalls grün
-- [ ] T040 Quickstart-Smoke-Tests aus `quickstart.md` manuell ausführen (§1–§8) — Ende-zu-Ende-Validierung der vollständigen L10N-Kette in echter CLI-Umgebung
+- [ ] T040 [P] Alle englischen `.en.resx`-Inhalte aller drei Module gegen `data-model.md §7` (Terminologietabelle) und NFR-001 (B2 CEFR) prüfen; Abweichungen als Review-Kommentar im PR dokumentieren (NFR-001, NFR-003)
+- [ ] T041 Quickstart-Smoke-Tests aus `quickstart.md` manuell ausführen (§1–§8) — Ende-zu-Ende-Validierung der vollständigen L10N-Kette in echter CLI-Umgebung
 
 ---
 
@@ -151,8 +153,8 @@
 - **Setup (Phase 1)**: Keine Abhängigkeiten — sofort startbar
 - **Foundational (Phase 2)**: Hängt von Phase 1 ab — **BLOCKER für alle User Stories**
 - **User Story 1 (Phase 3)**: Hängt von Phase 2 ab; keine Abhängigkeit von US2/US3/US4
-- **User Story 2 (Phase 4)**: Hängt von Phase 2 ab; CliOptionsParser aus Phase 3 (T009) muss vorliegen da Tests via `--lang` testen
-- **User Story 3 (Phase 5)**: Hängt von Phase 2 ab; CliOptionsParser aus Phase 3 (T009) muss vorliegen für PL/0-auslösbare VM-Tests
+- **User Story 2 (Phase 4)**: Hängt von Phase 2 ab; CliOptionsParser aus Phase 2 (T009) muss vorliegen da Tests via `--lang` testen
+- **User Story 3 (Phase 5)**: Hängt von Phase 2 ab; CliOptionsParser aus Phase 2 (T009) muss vorliegen für PL/0-auslösbare VM-Tests
 - **User Story 4 (Phase 6)**: Hängt von Phase 2 (T007, T008, T009) ab; benötigt ResourceManager-Injection aus allen drei Modulen
 - **Polish (Phase 7)**: Hängt von allen User Stories ab
 
@@ -173,10 +175,10 @@
 
 - Alle Setup-Tasks (T001–T006) können parallel laufen
 - T007, T008, T009 (Foundational) können parallel laufen
-- T013 + T014 (`.resx`-Dateien für US1) parallel
-- T022 + T023 (`.resx`-Dateien für US2) parallel; T017 + T018 (Testdaten) parallel
-- T030 + T031 (`.resx`-Dateien für US3) parallel; T026 (Testdaten) parallel
-- T034 + T035 + T036 (Swedish Fixtures für US4) alle drei parallel
+- T010 + T011 (`.resx`-Dateien für US1) parallel
+- T017 + T018 (`.resx`-Dateien für US2) parallel; T021 + T022 (Testdaten) parallel
+- T026 + T027 (`.resx`-Dateien für US3) parallel; T029 (Testdaten) parallel
+- T033 + T034 + T035 (Swedish `.se.resx`-Fixtures für US4) alle drei parallel
 
 ---
 
@@ -184,16 +186,16 @@
 
 ```bash
 # Parallel: resx-Dateien anlegen
-Task: T022 — src/Pl0.Core/Resources/Pl0CoreMessages.resx (DE)
-Task: T023 — src/Pl0.Core/Resources/Pl0CoreMessages.en.resx (EN)
+Task: T017 — src/Pl0.Core/Resources/Pl0CoreMessages.resx (DE)
+Task: T018 — src/Pl0.Core/Resources/Pl0CoreMessages.en.resx (EN)
 
 # Parallel: Testdaten anlegen (während resx-Dateien entstehen)
-Task: T017 — tests/data/pl0/l10n/ Lexer-Testprogramme
-Task: T018 — tests/data/pl0/l10n/ Parser-Testprogramme
+Task: T021 — tests/data/pl0/l10n/ Lexer-Testprogramme
+Task: T022 — tests/data/pl0/l10n/ Parser-Testprogramme
 
-# Nach Abschluss von T022/T023: Quellcode-Refactoring
-Task: T024 — src/Pl0.Core/Pl0Lexer.cs
-Task: T025 — src/Pl0.Core/Pl0Parser.cs
+# Nach Abschluss von T017/T018: Quellcode-Refactoring
+Task: T019 — src/Pl0.Core/Pl0Lexer.cs
+Task: T020 — src/Pl0.Core/Pl0Parser.cs
 ```
 
 ---
@@ -233,8 +235,8 @@ Mit einem Entwickler sequenziell:
 
 - [P] = unterschiedliche Dateien, keine offenen Abhängigkeiten auf nicht abgeschlossene Tasks
 - Alle `.resx`-Inhalte exakt gemäss normativer Vorgabe in `data-model.md §3/§4/§5` (Spalten DE und EN)
-- VM-interne Tests (T028): P-Code via `new[] { new Instruction(Opcode.X, ...) }` direkt im Testcode — keine externen Fixture-Dateien
-- PL/0-auslösbare VM-Tests (T027): via `CliOptionsParser --lang en` + `BufferedPl0Io` (nicht `ConsolePl0Io`)
+- VM-interne Tests (T031): P-Code via `new[] { new Instruction(Opcode.X, ...) }` direkt im Testcode — keine externen Fixture-Dateien
+- PL/0-auslösbare VM-Tests (T030): via `CliOptionsParser --lang en` + `BufferedPl0Io` (nicht `ConsolePl0Io`)
 - Alle Kommentare im Produktionscode auf Deutsch (Constitution Prinzip I)
 - `dotnet test` nach jeder Phase ausführen; bei Regression sofort stoppen und beheben
 - Keine neuen NuGet-Pakete; keine Architektur-Grenzenverletzungen; bestehende Exit-Codes stabil
