@@ -1168,8 +1168,3 @@ fabric.properties
 _site/
 **/toc.pdf
 **/doc.pdf
-.claude
-.codex
-.gemini
-.junie
-.opencode
