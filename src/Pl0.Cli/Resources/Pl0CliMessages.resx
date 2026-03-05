@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Cli_Err_UnexpectedPositional" xml:space="preserve">
+    <value>Unerwartetes Argument: '{0}'.</value>
+  </data>
+  <data name="Cli_Err_MissingValueForOut" xml:space="preserve">
+    <value>Fehlender Wert für '--out'.</value>
+  </data>
+  <data name="Cli_Err_NoEmitMode" xml:space="preserve">
+    <value>Kein Ausgabemodus angegeben. Nutze '--emit asm' oder '--emit cod'.</value>
+  </data>
+  <data name="Cli_Err_UnknownSwitch" xml:space="preserve">
+    <value>Unbekannter Schalter: '{0}'.</value>
+  </data>
+  <data name="Cli_Err_ConflictingEmitModes" xml:space="preserve">
+    <value>Widersprüchliche Ausgabemodi. Nur einen von 'asm' oder 'cod' angeben.</value>
+  </data>
+  <data name="Cli_Err_UnknownLanguage" xml:space="preserve">
+    <value>Unbekannter Sprachcode '{0}', verwende Fallback 'de'.</value>
+  </data>
+  <data name="Cli_Status_CompileSuccess" xml:space="preserve">
+    <value>Kompilierung erfolgreich.</value>
+  </data>
+  <data name="Cli_Status_CompileError" xml:space="preserve">
+    <value>Kompilierung fehlgeschlagen.</value>
+  </data>
+  <data name="Cli_Help_UsageHeader" xml:space="preserve">
+    <value>Verwendung:</value>
+  </data>
+  <data name="Cli_Help_HelpLine" xml:space="preserve">
+    <value>{0} [-|/]h | [-|/]? | --help</value>
+  </data>
+  <data name="Cli_Help_CompileLine" xml:space="preserve">
+    <value>{0} compile &lt;datei.pl0&gt; [--out &lt;datei.pcode&gt;] [--emit asm|cod] [--list-code]</value>
+  </data>
+  <data name="Cli_Help_RunLine" xml:space="preserve">
+    <value>{0} run &lt;datei.pl0&gt; [--emit asm|cod] [--list-code]</value>
+  </data>
+  <data name="Cli_Help_RunPcodeLine" xml:space="preserve">
+    <value>{0} run-pcode &lt;datei.pcode&gt; [--list-code]</value>
+  </data>
+  <data name="Cli_Help_RunPcodeDirectLine" xml:space="preserve">
+    <value>{0} &lt;datei.pcode&gt; | &lt;datei.cod&gt; [P-Code direkt ausführen]</value>
+  </data>
+  <data name="Cli_Help_ApiLine" xml:space="preserve">
+    <value>{0} --api</value>
+  </data>
+  <data name="Cli_Help_LegacyLine" xml:space="preserve">
+    <value>{0} &lt;datei.pl0&gt; [Legacy-Modus; kompilieren und ausführen]</value>
+  </data>
+  <data name="Cli_Help_SwitchesHeader" xml:space="preserve">
+    <value>Schalter:</value>
+  </data>
+  <data name="Cli_Help_SwitchErrmsg" xml:space="preserve">
+    <value>  [-|/]errmsg | --errmsg                lange Compiler-Fehlermeldungen anzeigen</value>
+  </data>
+  <data name="Cli_Help_SwitchWopcod" xml:space="preserve">
+    <value>  [-|/]wopcod | --wopcod                numerische Opcodes in Listing-Ausgabe</value>
+  </data>
+  <data name="Cli_Help_SwitchListCode" xml:space="preserve">
+    <value>  --list-code                            erzeugten/geladenen Code-Listing ausgeben</value>
+  </data>
+  <data name="Cli_Help_SwitchApi" xml:space="preserve">
+    <value>  --api                                  Webserver zur Dokumentation starten</value>
+  </data>
+  <data name="Cli_Help_SwitchConly" xml:space="preserve">
+    <value>  [-|/]conly | --conly | --compile-only  nur kompilieren, VM nicht starten</value>
+  </data>
+  <data name="Cli_Help_SwitchEmitFormat" xml:space="preserve">
+    <value>  [-|/]emit {[-|/]asm | [-|/]cod}</value>
+  </data>
+  <data name="Cli_Help_SwitchEmit" xml:space="preserve">
+    <value>  --emit asm|cod                         PL/0-Code auf STDOUT ausgeben</value>
+  </data>
+  <data name="Cli_Help_SwitchOut" xml:space="preserve">
+    <value>  --out &lt;datei&gt;                           Ausgabepfad für 'compile'-Befehl</value>
+  </data>
+  <data name="Cli_Help_SwitchLang" xml:space="preserve">
+    <value>  --lang &lt;code&gt;                           Ausgabesprache setzen (z. B. de, en)</value>
+  </data>
+</root>
