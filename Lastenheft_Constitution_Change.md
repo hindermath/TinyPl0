@@ -17,8 +17,7 @@ Hinzufügen/Änderungen zu ### I. Didaktische Klarheit (Pedagogical Clarity)
 - Texte zusätzlich in Englisch. Der deutsche Textblock zuerst und danach der englische Textblock.
 - die deutsche und englischen Texte sollen dem Sprachniveau B2 (nach Gemeinsamer Europäischer Referenzrahmen für Sprachen – abgekürzt GER bzw. international CEFR (Common European Framework of Reference for Languages). ) entsprechen, da auch nicht-muttersprachliche Auszubildenden an diesem Projekt ausgebildet werden und sollen alles in dem Projekt verstehen können.
 - I. Didaktische Klarheit (Pedagogical Clarity) ändern zu I. Didaktische und sprachliche Klarheit (Pedagogical and Linguistic Clarity)
-
-- **Rationale**: TinyPl0 is a teaching artefact. A trainee reading the code must be able to trace
-the full compilation pipeline step-by-step without expert guidance.
-
+- XML-Kommentare sollen für alle Methoden, Klassen, Variablen  etc. im Quellcode verwendet werden.
+- An geeigneten Stellen kann der Quellcode darüber hinaus noch mit Block- oder Zeilen-Kommentaren versehen werden um auf wichtige Didaktische Aspekte hinzuweisen. Auch diese in Deutsch und Englisch.
+- 
 
