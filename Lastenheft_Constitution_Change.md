@@ -26,5 +26,36 @@ Comments explain the why (decision, trade-off, constraint), not only the what.
 - When API signatures or XML comments change, the docfx output MUST be regenerated in the same commit/PR.
 - Use CLAUDE.md, GEMINI.md, copilot-instructions.md and AGENTS.md for runtime agent-specific development guidance.
 - Es sollte imer nochmal überprüft werden, ob die Dokumentationsrichtlinien eingehalten worden sind. Wenn nicht, sollen die Fehlende Dokumentation nachgeholt werden.
-- 
+
+# 3. Erklärung für das Sprachniveau B2
+Ein Auszubildender sollte mindestens das Sprachniveau B1, besser B2, besitzen, um eine Ausbildung zum Fachinformatiker erfolgreich absolvieren zu können. Das ergibt sich nicht aus einer expliziten gesetzlichen Vorgabe, sondern aus den tatsächlichen Anforderungen der Ausbildungsordnung und des Berufsschulunterrichts.
+## 3.1🧩 Warum B1 das Minimum ist
+Die Ausbildungsordnung für Fachinformatiker verlangt u.a.:
+- Sachverhalte präsentieren und kommunizieren, auch mit Kunden
+  (z.B. „Kunden informieren sowie Sachverhalte präsentieren und dabei deutsche und englische Fachbegriffe anwenden“)
+- Arbeitsaufträge verstehen, analysieren und dokumentieren
+- Teamarbeit, Abstimmung, Problemlösung
+- Berufsschulunterricht in Fächern wie Wirtschaft, Sozialkunde, Informatik, Englisch
+  Diese Tätigkeiten setzen voraus, dass ein Auszubildender zusammenhängende Texte verstehen, sich mündlich verständigen und schriftlich klar ausdrücken kann – typische Merkmale des Niveaus B1.
+
+## 3.2🧠 Warum B2 deutlich besser ist
+In der Praxis zeigt sich, dass Auszubildende mit B2:
+- komplexe technische Inhalte schneller erfassen
+- Projektdokumentationen sicherer schreiben
+- Prüfungsaufgaben (insbesondere die schriftlichen) besser bewältigen
+- im Kundenkontakt souveräner auftreten
+- weniger sprachbedingte Lernhürden haben
+  Gerade die Abschlussprüfung enthält viele textlastige Aufgaben, die ein gutes Sprachverständnis erfordern.
+
+## 3.3📘 Anforderungen der Berufsschule
+Berufsschulen orientieren sich in der Regel an B1–B2, weil:
+- Fachtexte gelesen und verstanden werden müssen
+- Präsentationen und Projektberichte verlangt werden
+- Englisch als Fachsprache genutzt wird
+- Prüfungen sprachlich anspruchsvoll sind
+## 3.4 Empfehlung für die Praxis
+- B1 → Ausbildung ist möglich, aber der Azubi braucht oft zusätzliche Sprachförderung.
+- B2 → Idealer Startpunkt für eine erfolgreiche Ausbildung ohne größere sprachliche Hürden.
+- C1 → Vorteilhaft, aber nicht notwendig.
+
 
