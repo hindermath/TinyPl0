@@ -1168,10 +1168,3 @@ fabric.properties
 _site/
 **/toc.pdf
 **/doc.pdf
-
-# AI Chat CLI Tools
-.claude
-.codex
-.gemini
-.junie
-.opencode
