@@ -17,7 +17,8 @@ var executableName = Path.GetFileName(Environment.GetCommandLineArgs()[0]);
 
 if (result.Options.ShowHelp)
 {
-    CliHelpPrinter.PrintUsage(Console.Error, executableName);
+    var helpCulture = System.Globalization.CultureInfo.GetCultureInfo(result.Options.Language);
+    CliHelpPrinter.PrintUsage(Console.Error, executableName, parser.CliMessages, helpCulture);
     Environment.ExitCode = HelpExitCode;
     return;
 }
@@ -123,7 +124,7 @@ else
 {
     var source = await File.ReadAllTextAsync(result.Options.SourcePath);
     var compiler = new Pl0Compiler();
-    var compilation = compiler.Compile(source, CompilerOptions.Default);
+    var compilation = compiler.Compile(source, new CompilerOptions(Pl0Dialect.Extended, Language: result.Options.Language));
 
     if (!compilation.Success)
     {
@@ -192,7 +193,7 @@ var shouldRun = result.Options.Command switch
 if (shouldRun)
 {
     var vm = new VirtualMachine();
-    var vmResult = vm.Run(instructions, new ConsolePl0Io(), VirtualMachineOptions.Default);
+    var vmResult = vm.Run(instructions, new ConsolePl0Io(), new VirtualMachineOptions(Language: result.Options.Language));
     if (!vmResult.Success)
     {
         foreach (var diagnostic in vmResult.Diagnostics)

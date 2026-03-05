@@ -59,4 +59,9 @@ public sealed class CompilerCliOptions
     /// Gets the output path for emitted P-Code.
     /// </summary>
     public string? OutputPath { get; init; }
+
+    /// <summary>
+    /// Gets the BCP-47-Sprachcode aus dem --lang-Parameter (Standard: "de").
+    /// </summary>
+    public string Language { get; init; } = "de";
 }

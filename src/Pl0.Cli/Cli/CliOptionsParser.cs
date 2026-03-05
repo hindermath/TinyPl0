@@ -1,26 +1,47 @@
 using System.Globalization;
+using System.Resources;
 
 namespace Pl0.Cli.Cli;
 
 /// <summary>
-/// Parses CLI arguments into compiler options and diagnostics.
+/// Parst CLI-Argumente in Compiler-Optionen und Diagnosen.
 /// </summary>
 public sealed class CliOptionsParser
 {
     /// <summary>
-    /// Exit code when an emit mode is requested but missing.
+    /// Exit-Code wenn ein Emit-Modus angefordert, aber nicht angegeben wurde.
     /// </summary>
     private const int EmitModeMissingExitCode = 96;
     /// <summary>
-    /// Exit code for unexpected arguments or switches.
+    /// Exit-Code für unerwartete Argumente oder Schalter.
     /// </summary>
     private const int UnexpectedTerminationExitCode = 99;
 
     /// <summary>
-    /// Parses the provided argument list.
+    /// Ausgabe-Stream für Fallback-Warnungen (z. B. unbekannter Sprachcode).
     /// </summary>
-    /// <param name="args">CLI arguments.</param>
-    /// <returns>Parse result containing options and diagnostics.</returns>
+    private readonly TextWriter _errorOutput;
+    /// <summary>
+    /// ResourceManager für CLI-Meldungen; ermöglicht Dependency Injection in Tests.
+    /// </summary>
+    private readonly ResourceManager _cliMessages;
+
+    /// <summary>
+    /// Erstellt einen CliOptionsParser mit optionaler Dependency Injection.
+    /// </summary>
+    /// <param name="errorOutput">Optionaler TextWriter für Fallback-Warnungen; Standard: Console.Error.</param>
+    /// <param name="cliMessages">Optionaler ResourceManager für CLI-Meldungen; Standard: Pl0CliMessages.ResourceManager.</param>
+    public CliOptionsParser(TextWriter? errorOutput = null, ResourceManager? cliMessages = null)
+    {
+        _errorOutput = errorOutput ?? Console.Error;
+        _cliMessages = cliMessages ?? Pl0CliMessages.ResourceManager;
+    }
+
+    /// <summary>
+    /// Parst die übergebene Argumentliste.
+    /// </summary>
+    /// <param name="args">CLI-Argumente.</param>
+    /// <returns>Parse-Ergebnis mit Optionen und Diagnosen.</returns>
     public CliParseResult Parse(IReadOnlyList<string> args)
     {
         var diagnostics = new List<CliDiagnostic>();
@@ -37,6 +58,7 @@ public sealed class CliOptionsParser
         var command = CliCommand.None;
         string? sourcePath = null;
         string? outputPath = null;
+        var language = "de";
 
         for (var i = 0; i < args.Count; i++)
         {
@@ -54,7 +76,8 @@ public sealed class CliOptionsParser
                     UnexpectedTerminationExitCode,
                     string.Format(
                         CultureInfo.InvariantCulture,
-                        "Unexpected positional argument: '{0}'.",
+                        _cliMessages.GetString("Cli_Err_UnexpectedPositional", CultureInfo.InvariantCulture)
+                            ?? "Unexpected argument: '{0}'.",
                         arg)));
                 continue;
             }
@@ -82,7 +105,8 @@ public sealed class CliOptionsParser
                     UnexpectedTerminationExitCode,
                     string.Format(
                         CultureInfo.InvariantCulture,
-                        "Unexpected positional argument: '{0}'.",
+                        _cliMessages.GetString("Cli_Err_UnexpectedPositional", CultureInfo.InvariantCulture)
+                            ?? "Unexpected argument: '{0}'.",
                         arg)));
                 continue;
             }
@@ -120,9 +144,16 @@ public sealed class CliOptionsParser
                     {
                         diagnostics.Add(new CliDiagnostic(
                             UnexpectedTerminationExitCode,
-                            "Missing value for '--out'."));
+                            _cliMessages.GetString("Cli_Err_MissingValueForOut", CultureInfo.InvariantCulture)
+                                ?? "Missing value for '--out'."));
                     }
 
+                    break;
+                case "lang":
+                    if (TryReadOptionValue(args, ref i, out var langValue))
+                    {
+                        language = ParseLanguageCode(langValue);
+                    }
                     break;
                 case "emit":
                     emitRequested = true;
@@ -150,7 +181,8 @@ public sealed class CliOptionsParser
                         UnexpectedTerminationExitCode,
                         string.Format(
                             CultureInfo.InvariantCulture,
-                            "Unknown switch: '{0}'.",
+                            _cliMessages.GetString("Cli_Err_UnknownSwitch", CultureInfo.InvariantCulture)
+                                ?? "Unknown switch: '{0}'.",
                             arg)));
                     break;
             }
@@ -160,7 +192,8 @@ public sealed class CliOptionsParser
         {
             diagnostics.Add(new CliDiagnostic(
                 EmitModeMissingExitCode,
-                "No emitter mode found. Use '--emit asm' or '--emit cod'."));
+                _cliMessages.GetString("Cli_Err_NoEmitMode", CultureInfo.InvariantCulture)
+                    ?? "No emit mode specified. Use '--emit asm' or '--emit cod'."));
         }
 
         if (command == CliCommand.Compile)
@@ -185,18 +218,54 @@ public sealed class CliOptionsParser
             ShowApi = showApi,
             SourcePath = sourcePath,
             OutputPath = outputPath,
+            Language = language,
         };
 
         return new CliParseResult(options, diagnostics);
     }
 
     /// <summary>
-    /// Reads the next argument as an option value.
+    /// Gibt den ResourceManager für CLI-Meldungen zurück (für CliHelpPrinter).
     /// </summary>
-    /// <param name="args">Argument list.</param>
-    /// <param name="index">Current index (advanced on success).</param>
-    /// <param name="value">Parsed value.</param>
-    /// <returns>True if a value was read.</returns>
+    internal ResourceManager CliMessages => _cliMessages;
+
+    /// <summary>
+    /// Parst einen Sprachcode und fällt bei ungültigem Code auf "de" zurück.
+    /// </summary>
+    /// <param name="code">BCP-47-Sprachcode.</param>
+    /// <returns>Gültiger Sprachcode oder "de".</returns>
+    private string ParseLanguageCode(string code)
+    {
+        if (string.IsNullOrWhiteSpace(code))
+        {
+            return "de";
+        }
+
+        try
+        {
+            // predefinedOnly: true → plattformkonsistente Validierung auch unter ICU (macOS/Linux)
+            CultureInfo.GetCultureInfo(code, predefinedOnly: true);
+            return code;
+        }
+        catch (CultureNotFoundException)
+        {
+            var warning = string.Format(
+                CultureInfo.InvariantCulture,
+                _cliMessages.GetString("Cli_Err_UnknownLanguage", CultureInfo.InvariantCulture)
+                    ?? "Unknown language code '{0}', using fallback 'de'.",
+                code);
+            _errorOutput.WriteLine(warning);
+            return "de";
+        }
+    }
+
+    /// <summary>
+    /// Liest den nächsten Wert aus der Argumentliste.
+    /// </summary>
+    /// <param name="args">Argumentliste.</param>
+    /// <param name="index">Aktueller Index (wird bei Erfolg erhöht).</param>
+    /// <param name="value">Gelesener Wert.</param>
+    /// <returns>True wenn ein Wert gelesen wurde.</returns>
     private static bool TryReadOptionValue(IReadOnlyList<string> args, ref int index, out string value)
     {
         value = string.Empty;
@@ -211,11 +280,11 @@ public sealed class CliOptionsParser
     }
 
     /// <summary>
-    /// Parses a command token.
+    /// Parst ein Befehls-Token.
     /// </summary>
-    /// <param name="token">Command token.</param>
-    /// <param name="command">Parsed command.</param>
-    /// <returns>True if a valid command was found.</returns>
+    /// <param name="token">Befehls-Token.</param>
+    /// <param name="command">Geparster Befehl.</param>
+    /// <returns>True wenn ein gültiger Befehl gefunden wurde.</returns>
     private static bool TryParseCommand(string token, out CliCommand command)
     {
         command = token.ToLowerInvariant() switch
@@ -230,26 +299,26 @@ public sealed class CliOptionsParser
     }
 
     /// <summary>
-    /// Determines whether a switch indicates help.
+    /// Ermittelt ob ein Schalter ein Hilfe-Schalter ist.
     /// </summary>
-    /// <param name="sw">Switch value.</param>
-    /// <returns>True if the switch is a help switch.</returns>
+    /// <param name="sw">Schalter-Wert.</param>
+    /// <returns>True wenn es ein Hilfe-Schalter ist.</returns>
     private static bool IsHelpSwitch(string sw) =>
         sw is "?" or "h" or "help";
 
     /// <summary>
-    /// Checks if a value looks like an absolute Unix path.
+    /// Prüft ob ein Wert wie ein absoluter Unix-Pfad aussieht.
     /// </summary>
-    /// <param name="value">Value to check.</param>
-    /// <returns>True if the value is an absolute Unix path.</returns>
+    /// <param name="value">Zu prüfender Wert.</param>
+    /// <returns>True wenn der Wert ein absoluter Unix-Pfad ist.</returns>
     private static bool IsUnixAbsolutePath(string value) =>
         !string.IsNullOrWhiteSpace(value) && value.Length > 1 && value[0] == '/';
 
     /// <summary>
-    /// Determines whether a slash-prefixed token is a known legacy switch.
+    /// Ermittelt ob ein Schrägstrich-Token ein bekannter Legacy-Schalter ist.
     /// </summary>
-    /// <param name="value">Switch token.</param>
-    /// <returns>True if it is a known legacy switch.</returns>
+    /// <param name="value">Schalter-Token.</param>
+    /// <returns>True wenn es ein bekannter Legacy-Schalter ist.</returns>
     private static bool IsKnownLegacySlashSwitch(string value)
     {
         if (!value.StartsWith("/", StringComparison.Ordinal) || value.Length <= 1)
@@ -259,7 +328,7 @@ public sealed class CliOptionsParser
 
         var sw = value[1..].ToLowerInvariant();
         if (sw is "?" or "h" or "help" or "errmsg" or "wopcod" or "conly" or "compile-only" or "list-code"
-            or "out" or "emit" or "asm" or "cod")
+            or "out" or "emit" or "asm" or "cod" or "lang")
         {
             return true;
         }
@@ -268,11 +337,11 @@ public sealed class CliOptionsParser
     }
 
     /// <summary>
-    /// Parses a switch token into a canonical switch string.
+    /// Parst ein Schalter-Token in einen kanonischen Schalter-String.
     /// </summary>
-    /// <param name="value">Token to parse.</param>
-    /// <param name="sw">Parsed switch value.</param>
-    /// <returns>True if the token is a switch.</returns>
+    /// <param name="value">Zu parsendes Token.</param>
+    /// <param name="sw">Geparster Schalter-Wert.</param>
+    /// <returns>True wenn das Token ein Schalter ist.</returns>
     private static bool TryParseSwitch(string value, out string sw)
     {
         sw = string.Empty;
@@ -307,11 +376,11 @@ public sealed class CliOptionsParser
     }
 
     /// <summary>
-    /// Tries to parse an emit mode from a token.
+    /// Versucht einen Emit-Modus aus einem Token zu parsen.
     /// </summary>
-    /// <param name="token">Token value.</param>
-    /// <param name="mode">Parsed emit mode.</param>
-    /// <returns>True if an emit mode was parsed.</returns>
+    /// <param name="token">Token-Wert.</param>
+    /// <param name="mode">Geparster Emit-Modus.</param>
+    /// <returns>True wenn ein Emit-Modus geparst wurde.</returns>
     private static bool TryParseEmitModeFromToken(string token, out EmitMode mode)
     {
         mode = EmitMode.None;
@@ -336,11 +405,11 @@ public sealed class CliOptionsParser
     }
 
     /// <summary>
-    /// Parses --emit=&lt;mode&gt; values.
+    /// Parst --emit=&lt;mode&gt;-Werte.
     /// </summary>
-    /// <param name="switchValue">Switch value to parse.</param>
-    /// <param name="mode">Parsed emit mode.</param>
-    /// <returns>True if a valid emit mode was parsed.</returns>
+    /// <param name="switchValue">Zu parsender Schalter-Wert.</param>
+    /// <param name="mode">Geparster Emit-Modus.</param>
+    /// <returns>True wenn ein gültiger Emit-Modus geparst wurde.</returns>
     private static bool TryParseEmitEqualsValue(string switchValue, out EmitMode mode)
     {
         mode = EmitMode.None;
@@ -366,13 +435,13 @@ public sealed class CliOptionsParser
     }
 
     /// <summary>
-    /// Merges a candidate emit mode into the current mode and reports conflicts.
+    /// Führt zwei Emit-Modi zusammen und meldet Konflikte.
     /// </summary>
-    /// <param name="current">Current mode.</param>
-    /// <param name="candidate">Candidate mode.</param>
-    /// <param name="diagnostics">Diagnostics collection.</param>
-    /// <returns>The merged emit mode.</returns>
-    private static EmitMode MergeEmitMode(EmitMode current, EmitMode candidate, IList<CliDiagnostic> diagnostics)
+    /// <param name="current">Aktueller Modus.</param>
+    /// <param name="candidate">Kandidaten-Modus.</param>
+    /// <param name="diagnostics">Diagnosen-Sammlung.</param>
+    /// <returns>Der zusammengeführte Emit-Modus.</returns>
+    private EmitMode MergeEmitMode(EmitMode current, EmitMode candidate, IList<CliDiagnostic> diagnostics)
     {
         if (current == EmitMode.None || current == candidate)
         {
@@ -381,7 +450,8 @@ public sealed class CliOptionsParser
 
         diagnostics.Add(new CliDiagnostic(
             UnexpectedTerminationExitCode,
-            "Conflicting emitter modes. Use only one of 'asm' or 'cod'."));
+            _cliMessages.GetString("Cli_Err_ConflictingEmitModes", CultureInfo.InvariantCulture)
+                ?? "Conflicting emit modes. Specify only one of 'asm' or 'cod'."));
         return current;
     }
 }

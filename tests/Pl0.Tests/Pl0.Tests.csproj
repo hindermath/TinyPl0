@@ -31,4 +31,9 @@
     <ProjectReference Include="..\..\src\Pl0.Vm\Pl0.Vm.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <!-- Schwedische Dummy-Fixtures für SC-004 (Extensibility) — SDK generiert automatisch Satellite Assemblies aus *.se.resx -->
+    <!-- Die Dateien werden automatisch als EmbeddedResource erkannt; kein expliziter Eintrag nötig -->
+  </ItemGroup>
+
 </Project>

@@ -1,3 +1,5 @@
+using System.Resources;
+
 namespace Pl0.Core;
 
 /// <summary>
@@ -10,6 +12,8 @@ namespace Pl0.Core;
 /// <param name="MaxNumberDigits">Maximum digits in numeric literals.</param>
 /// <param name="MaxSymbolCount">Maximum number of symbols in the table.</param>
 /// <param name="MaxCodeLength">Maximum number of generated instructions.</param>
+/// <param name="Language">BCP-47-Sprachcode für Diagnosetexte (Standard: "de").</param>
+/// <param name="Messages">Optionaler ResourceManager für Dependency Injection (z. B. in Tests); Standard: Pl0CoreMessages.ResourceManager.</param>
 public sealed record CompilerOptions(
     Pl0Dialect Dialect,
     int MaxLevel = 3,
@@ -17,7 +21,9 @@ public sealed record CompilerOptions(
     int MaxIdentifierLength = 10,
     int MaxNumberDigits = 14,
     int MaxSymbolCount = 100,
-    int MaxCodeLength = 200)
+    int MaxCodeLength = 200,
+    string Language = "de",
+    ResourceManager? Messages = null)
 {
     /// <summary>
     /// Default compiler options using the extended dialect.

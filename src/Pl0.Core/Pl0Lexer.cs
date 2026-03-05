@@ -1,56 +1,67 @@
 using System.Globalization;
+using System.Resources;
 
 namespace Pl0.Core;
 
 /// <summary>
-/// Tokenizes PL/0 source code into a sequence of tokens with diagnostics.
+/// Tokenisiert PL/0-Quellcode in eine Folge von Token mit Diagnosen.
 /// </summary>
 public sealed class Pl0Lexer
 {
     /// <summary>
-    /// Compiler options controlling lexer limits and dialects.
+    /// Compiler-Optionen für Grenzwerte und Dialekte.
     /// </summary>
     private readonly CompilerOptions _options;
     /// <summary>
-    /// Source text being tokenized.
+    /// Zu tokenisierender Quelltext.
     /// </summary>
     private readonly string _text;
     /// <summary>
-    /// Accumulated tokens.
+    /// Gesammelte Token.
     /// </summary>
     private readonly List<Pl0Token> _tokens = [];
     /// <summary>
-    /// Accumulated lexer diagnostics.
+    /// Gesammelte Lexer-Diagnosen.
     /// </summary>
     private readonly List<LexerDiagnostic> _diagnostics = [];
     /// <summary>
-    /// Current absolute index in the source text.
+    /// Aktueller absoluter Index im Quelltext.
     /// </summary>
     private int _index;
     /// <summary>
-    /// Current 1-based line number.
+    /// Aktuelle 1-basierte Zeilennummer.
     /// </summary>
     private int _line = 1;
     /// <summary>
-    /// Current 1-based column number.
+    /// Aktuelle 1-basierte Spaltennummer.
     /// </summary>
     private int _column = 1;
+    /// <summary>
+    /// ResourceManager für lokalisierte Fehlertexte.
+    /// </summary>
+    private readonly ResourceManager _rm;
+    /// <summary>
+    /// Zielsprache für Fehlertexte.
+    /// </summary>
+    private readonly CultureInfo _culture;
 
     /// <summary>
-    /// Creates a lexer for the provided source text.
+    /// Erstellt einen Lexer für den angegebenen Quelltext.
     /// </summary>
-    /// <param name="text">The PL/0 source text.</param>
-    /// <param name="options">Optional compiler options; defaults are used when null.</param>
+    /// <param name="text">Der PL/0-Quelltext.</param>
+    /// <param name="options">Optionale Compiler-Optionen; Standard wird verwendet wenn null.</param>
     public Pl0Lexer(string text, CompilerOptions? options = null)
     {
         _text = text ?? string.Empty;
         _options = options ?? CompilerOptions.Default;
+        _rm = _options.Messages ?? Pl0CoreMessages.ResourceManager;
+        _culture = CultureInfo.GetCultureInfo(_options.Language);
     }
 
     /// <summary>
-    /// Performs lexical analysis and returns tokens and diagnostics.
+    /// Führt die lexikalische Analyse durch und gibt Token und Diagnosen zurück.
     /// </summary>
-    /// <returns>The lexer result with tokens and diagnostics.</returns>
+    /// <returns>Das Lexer-Ergebnis mit Token und Diagnosen.</returns>
     public LexerResult Lex()
     {
         while (true)
@@ -144,15 +155,15 @@ public sealed class Pl0Lexer
     }
 
     /// <summary>
-    /// Gets the current character or null terminator at end of input.
+    /// Gibt das aktuelle Zeichen oder den Null-Terminator am Eingabeende zurück.
     /// </summary>
     private char Current => _index >= _text.Length ? '\0' : _text[_index];
 
     /// <summary>
-    /// Peeks ahead by a given offset without advancing.
+    /// Liest voraus um einen gegebenen Offset ohne Vorrücken.
     /// </summary>
-    /// <param name="offset">Character offset from current index.</param>
-    /// <returns>The character at the offset or null terminator.</returns>
+    /// <param name="offset">Zeichen-Offset vom aktuellen Index.</param>
+    /// <returns>Das Zeichen am Offset oder Null-Terminator.</returns>
     private char Peek(int offset)
     {
         var pos = _index + offset;
@@ -160,12 +171,12 @@ public sealed class Pl0Lexer
     }
 
     /// <summary>
-    /// Gets the current text position.
+    /// Gibt die aktuelle Textposition zurück.
     /// </summary>
     private TextPosition CurrentPosition => new(_line, _column, _index);
 
     /// <summary>
-    /// Advances the lexer by one character, updating line and column counters.
+    /// Rückt den Lexer um ein Zeichen vor und aktualisiert Zeilen- und Spaltenzähler.
     /// </summary>
     private void Advance()
     {
@@ -187,7 +198,7 @@ public sealed class Pl0Lexer
     }
 
     /// <summary>
-    /// Skips whitespace characters.
+    /// Überspringt Leerzeichen.
     /// </summary>
     private void SkipWhiteSpace()
     {
@@ -198,9 +209,9 @@ public sealed class Pl0Lexer
     }
 
     /// <summary>
-    /// Adds a token that is represented by a single character.
+    /// Fügt ein Token hinzu, das durch ein einzelnes Zeichen repräsentiert wird.
     /// </summary>
-    /// <param name="kind">Token kind to emit.</param>
+    /// <param name="kind">Auszugebende Token-Art.</param>
     private void AddSingleCharToken(TokenKind kind)
     {
         var start = CurrentPosition;
@@ -210,7 +221,7 @@ public sealed class Pl0Lexer
     }
 
     /// <summary>
-    /// Lexes an identifier or keyword token.
+    /// Liest einen Bezeichner oder ein Schlüsselwort-Token.
     /// </summary>
     private void LexIdentifierOrKeyword()
     {
@@ -226,7 +237,10 @@ public sealed class Pl0Lexer
         {
             _diagnostics.Add(new LexerDiagnostic(
                 33,
-                $"Identifier is too long: '{lexeme}'. Max length is {_options.MaxIdentifierLength}.",
+                string.Format(_culture,
+                    _rm.GetString("Lexer_E33_IdentifierTooLong", _culture)
+                        ?? "Identifier too long: '{0}'. Max: {1}.",
+                    lexeme, _options.MaxIdentifierLength),
                 start));
         }
 
@@ -234,7 +248,7 @@ public sealed class Pl0Lexer
     }
 
     /// <summary>
-    /// Lexes a numeric literal token.
+    /// Liest ein numerisches Literal-Token.
     /// </summary>
     private void LexNumber()
     {
@@ -250,7 +264,10 @@ public sealed class Pl0Lexer
         {
             _diagnostics.Add(new LexerDiagnostic(
                 30,
-                $"Number has too many digits: '{lexeme}'. Max digits is {_options.MaxNumberDigits}.",
+                string.Format(_culture,
+                    _rm.GetString("Lexer_E30_NumberTooManyDigits", _culture)
+                        ?? "Number has too many digits: '{0}'. Max: {1}.",
+                    lexeme, _options.MaxNumberDigits),
                 start));
             _tokens.Add(new Pl0Token(TokenKind.Number, lexeme, start));
             return;
@@ -258,7 +275,13 @@ public sealed class Pl0Lexer
 
         if (!int.TryParse(lexeme, NumberStyles.None, CultureInfo.InvariantCulture, out var value))
         {
-            _diagnostics.Add(new LexerDiagnostic(30, $"Number is too large: '{lexeme}'.", start));
+            _diagnostics.Add(new LexerDiagnostic(
+                30,
+                string.Format(_culture,
+                    _rm.GetString("Lexer_E30_NumberTooLarge", _culture)
+                        ?? "Number is too large: '{0}'.",
+                    lexeme),
+                start));
             _tokens.Add(new Pl0Token(TokenKind.Number, lexeme, start));
             return;
         }
@@ -267,7 +290,7 @@ public sealed class Pl0Lexer
     }
 
     /// <summary>
-    /// Lexes the &lt; or &lt;= operator.
+    /// Liest den &lt;- oder &lt;=-Operator.
     /// </summary>
     private void LexLessOrLessEqual()
     {
@@ -285,7 +308,7 @@ public sealed class Pl0Lexer
     }
 
     /// <summary>
-    /// Lexes the &gt; or &gt;= operator.
+    /// Liest den &gt;- oder &gt;=-Operator.
     /// </summary>
     private void LexGreaterOrGreaterEqual()
     {
@@ -303,7 +326,7 @@ public sealed class Pl0Lexer
     }
 
     /// <summary>
-    /// Lexes the := operator or reports an error for a bare ':'.
+    /// Liest den :=-Operator oder meldet einen Fehler für ein einzelnes ':'.
     /// </summary>
     private void LexBecomesOrDiagnostic()
     {
@@ -317,28 +340,35 @@ public sealed class Pl0Lexer
             return;
         }
 
-        _diagnostics.Add(new LexerDiagnostic(99, "Unexpected ':'; expected ':='.", start));
+        _diagnostics.Add(new LexerDiagnostic(
+            99,
+            _rm.GetString("Lexer_E99_UnexpectedColon", _culture)
+                ?? "Unexpected ':'; expected ':='.",
+            start));
         Advance();
         _tokens.Add(new Pl0Token(TokenKind.Nul, ":", start));
     }
 
     /// <summary>
-    /// Reports a diagnostic for an unexpected character.
+    /// Meldet eine Diagnose für ein unerwartetes Zeichen.
     /// </summary>
-    /// <param name="ch">The unexpected character.</param>
+    /// <param name="ch">Das unerwartete Zeichen.</param>
     private void ReportUnexpectedCharacter(char ch)
     {
         _diagnostics.Add(new LexerDiagnostic(
             99,
-            $"Unexpected character '{ch}'.",
+            string.Format(_culture,
+                _rm.GetString("Lexer_E99_UnexpectedChar", _culture)
+                    ?? "Unexpected character '{0}'.",
+                ch),
             CurrentPosition));
     }
 
     /// <summary>
-    /// Maps an identifier lexeme to its keyword token kind when applicable.
+    /// Ordnet ein Bezeichner-Lexem seiner Schlüsselwort-Token-Art zu, wenn zutreffend.
     /// </summary>
-    /// <param name="lexeme">The identifier text.</param>
-    /// <returns>The token kind for the lexeme.</returns>
+    /// <param name="lexeme">Der Bezeichnertext.</param>
+    /// <returns>Die Token-Art für das Lexem.</returns>
     private static TokenKind MapIdentifierKind(string lexeme) =>
         lexeme switch
         {

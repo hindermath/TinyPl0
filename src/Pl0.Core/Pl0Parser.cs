@@ -1,106 +1,117 @@
+using System.Globalization;
+using System.Resources;
+
 namespace Pl0.Core;
 
 /// <summary>
-/// Recursive-descent parser that produces P-Code and diagnostics.
+/// Rekursiv-absteigender Parser, der P-Code und Diagnosen erzeugt.
 /// </summary>
 public sealed class Pl0Parser
 {
     /// <summary>
-    /// OPR opcode for unary negation.
+    /// OPR-Opcode für unäre Negation.
     /// </summary>
     private const int OprNegate = 1;
     /// <summary>
-    /// OPR opcode for addition.
+    /// OPR-Opcode für Addition.
     /// </summary>
     private const int OprAdd = 2;
     /// <summary>
-    /// OPR opcode for subtraction.
+    /// OPR-Opcode für Subtraktion.
     /// </summary>
     private const int OprSub = 3;
     /// <summary>
-    /// OPR opcode for multiplication.
+    /// OPR-Opcode für Multiplikation.
     /// </summary>
     private const int OprMul = 4;
     /// <summary>
-    /// OPR opcode for division.
+    /// OPR-Opcode für Division.
     /// </summary>
     private const int OprDiv = 5;
     /// <summary>
-    /// OPR opcode for odd test.
+    /// OPR-Opcode für Ungerade-Test.
     /// </summary>
     private const int OprOdd = 6;
     /// <summary>
-    /// OPR opcode for equality comparison.
+    /// OPR-Opcode für Gleichheitsvergleich.
     /// </summary>
     private const int OprEq = 8;
     /// <summary>
-    /// OPR opcode for inequality comparison.
+    /// OPR-Opcode für Ungleichheitsvergleich.
     /// </summary>
     private const int OprNeq = 9;
     /// <summary>
-    /// OPR opcode for less-than comparison.
+    /// OPR-Opcode für Kleiner-als-Vergleich.
     /// </summary>
     private const int OprLt = 10;
     /// <summary>
-    /// OPR opcode for greater-or-equal comparison.
+    /// OPR-Opcode für Größer-gleich-Vergleich.
     /// </summary>
     private const int OprGeq = 11;
     /// <summary>
-    /// OPR opcode for greater-than comparison.
+    /// OPR-Opcode für Größer-als-Vergleich.
     /// </summary>
     private const int OprGt = 12;
     /// <summary>
-    /// OPR opcode for less-or-equal comparison.
+    /// OPR-Opcode für Kleiner-gleich-Vergleich.
     /// </summary>
     private const int OprLeq = 13;
     /// <summary>
-    /// OPR opcode for input read.
+    /// OPR-Opcode für Eingabe-Lesen.
     /// </summary>
     private const int OprRead = 14;
     /// <summary>
-    /// OPR opcode for output write.
+    /// OPR-Opcode für Ausgabe-Schreiben.
     /// </summary>
     private const int OprWrite = 15;
     /// <summary>
-    /// Diagnostic code for programs that exceed the maximum instruction count.
+    /// Diagnose-Code für Programme, die die maximale Befehlsanzahl überschreiten.
     /// </summary>
     private const int ErrorProgramTooLong = 35;
     /// <summary>
-    /// Diagnostic code for symbol table overflow.
+    /// Diagnose-Code für Symboltabellen-Überlauf.
     /// </summary>
     private const int ErrorSymbolTableOverflow = 34;
 
     /// <summary>
-    /// Tokens to parse.
+    /// Zu parsende Token.
     /// </summary>
     private readonly IReadOnlyList<Pl0Token> _tokens;
     /// <summary>
-    /// Compiler options controlling limits and dialect.
+    /// Compiler-Optionen für Grenzwerte und Dialekt.
     /// </summary>
     private readonly CompilerOptions _options;
     /// <summary>
-    /// Symbol table for the current parse.
+    /// Symboltabelle für den aktuellen Parse-Vorgang.
     /// </summary>
     private readonly SymbolTable _symbols = new();
     /// <summary>
-    /// Generated P-Code instructions.
+    /// Erzeugte P-Code-Befehle.
     /// </summary>
     private readonly List<Instruction> _code = [];
     /// <summary>
-    /// Compilation diagnostics.
+    /// Compiler-Diagnosen.
     /// </summary>
     private readonly List<CompilerDiagnostic> _diagnostics = [];
     /// <summary>
-    /// Tracks if unexpected EOF has been reported.
+    /// Verfolgt ob unerwartetes EOF bereits gemeldet wurde.
     /// </summary>
     private bool _reportedUnexpectedEof;
     /// <summary>
-    /// Current token position in the token list.
+    /// Aktuelle Token-Position in der Token-Liste.
     /// </summary>
     private int _position;
+    /// <summary>
+    /// ResourceManager für lokalisierte Fehlertexte.
+    /// </summary>
+    private readonly ResourceManager _rm;
+    /// <summary>
+    /// Zielsprache für Fehlertexte.
+    /// </summary>
+    private readonly CultureInfo _culture;
 
     /// <summary>
-    /// Tokens that can start a statement.
+    /// Token, die eine Anweisung beginnen können.
     /// </summary>
     private static readonly TokenKind[] StatementStartTokens =
     [
@@ -114,7 +125,7 @@ public sealed class Pl0Parser
     ];
 
     /// <summary>
-    /// Tokens that can continue a block after declarations.
+    /// Token, die einen Block nach Deklarationen fortsetzen können.
     /// </summary>
     private static readonly TokenKind[] BlockContinuationTokens =
     [
@@ -133,7 +144,7 @@ public sealed class Pl0Parser
     ];
 
     /// <summary>
-    /// Tokens that can follow a statement.
+    /// Token, die einer Anweisung folgen können.
     /// </summary>
     private static readonly TokenKind[] StatementFollowTokens =
     [
@@ -143,7 +154,7 @@ public sealed class Pl0Parser
     ];
 
     /// <summary>
-    /// Tokens that can follow an expression.
+    /// Token, die einem Ausdruck folgen können.
     /// </summary>
     private static readonly TokenKind[] ExpressionFollowTokens =
     [
@@ -162,46 +173,48 @@ public sealed class Pl0Parser
     ];
 
     /// <summary>
-    /// Creates a parser for the given token stream and options.
+    /// Erstellt einen Parser für den gegebenen Token-Strom und Optionen.
     /// </summary>
-    /// <param name="tokens">Tokens produced by the lexer.</param>
-    /// <param name="options">Compiler options.</param>
+    /// <param name="tokens">Vom Lexer erzeugte Token.</param>
+    /// <param name="options">Compiler-Optionen.</param>
     public Pl0Parser(IReadOnlyList<Pl0Token> tokens, CompilerOptions options)
     {
         _tokens = tokens;
         _options = options;
+        _rm = options.Messages ?? Pl0CoreMessages.ResourceManager;
+        _culture = CultureInfo.GetCultureInfo(options.Language);
     }
 
     /// <summary>
-    /// Parses tokens into P-Code instructions and diagnostics.
+    /// Parst Token in P-Code-Befehle und Diagnosen.
     /// </summary>
-    /// <returns>The compilation result.</returns>
+    /// <returns>Das Kompilierungsergebnis.</returns>
     public CompilationResult Parse()
     {
         ParseBlock(level: 0, owner: null);
         if (!TryMatch(TokenKind.Period))
         {
-            Report(9, "Period expected.");
+            Report(9, Msg("Parser_E09_PeriodExpected"));
             if (Current.Kind == TokenKind.EndOfFile)
             {
                 ReportUnexpectedEofOnce();
             }
         }
 
-        Expect(TokenKind.EndOfFile, 99, "Unexpected termination.");
+        Expect(TokenKind.EndOfFile, 99, Msg("Parser_E99_UnexpectedTermination"));
         return new CompilationResult(_code, _diagnostics);
     }
 
     /// <summary>
-    /// Parses a block with declarations and a statement body.
+    /// Parst einen Block mit Deklarationen und Anweisungsrumpf.
     /// </summary>
-    /// <param name="level">Current lexical level.</param>
-    /// <param name="owner">Procedure symbol owning this block, if any.</param>
+    /// <param name="level">Aktuelle lexikalische Ebene.</param>
+    /// <param name="owner">Prozedur-Symbol, das diesen Block besitzt, wenn vorhanden.</param>
     private void ParseBlock(int level, SymbolEntry? owner)
     {
         if (level > _options.MaxLevel)
         {
-            Report(32, "Maximum block nesting level exceeded.");
+            Report(32, Msg("Parser_E32_NestingTooDeep"));
         }
 
         _symbols.EnterScope();
@@ -217,7 +230,7 @@ public sealed class Pl0Parser
                 ParseConstDeclaration(level);
             }
 
-            ExpectOrSync(TokenKind.Semicolon, 5, "Semicolon or comma missing.", BlockContinuationTokens);
+            ExpectOrSync(TokenKind.Semicolon, 5, Msg("Parser_E05_SemiOrComma"), BlockContinuationTokens);
         }
 
         if (TryMatch(TokenKind.Var))
@@ -228,18 +241,18 @@ public sealed class Pl0Parser
                 ParseVarDeclaration(level, ref dataIndex);
             }
 
-            ExpectOrSync(TokenKind.Semicolon, 5, "Semicolon or comma missing.", BlockContinuationTokens);
+            ExpectOrSync(TokenKind.Semicolon, 5, Msg("Parser_E05_SemiOrComma"), BlockContinuationTokens);
         }
 
         while (TryMatch(TokenKind.Procedure))
         {
-            var name = Expect(TokenKind.Ident, 4, "Procedure must be followed by an identifier.");
+            var name = Expect(TokenKind.Ident, 4, Msg("Parser_E04_IdentAfterProc"));
             var procedure = new SymbolEntry(name.Lexeme, SymbolKind.Procedure, level, address: 0);
             TryDeclare(procedure, 31, "Duplicate identifier in scope.");
 
-            ExpectOrSync(TokenKind.Semicolon, 5, "Semicolon or comma missing.", BlockContinuationTokens);
+            ExpectOrSync(TokenKind.Semicolon, 5, Msg("Parser_E05_SemiOrComma"), BlockContinuationTokens);
             ParseBlock(level + 1, procedure);
-            ExpectOrSync(TokenKind.Semicolon, 5, "Semicolon or comma missing.", BlockContinuationTokens);
+            ExpectOrSync(TokenKind.Semicolon, 5, Msg("Parser_E05_SemiOrComma"), BlockContinuationTokens);
         }
 
         var bodyStart = _code.Count;
@@ -257,26 +270,26 @@ public sealed class Pl0Parser
     }
 
     /// <summary>
-    /// Parses a const declaration within the current block.
+    /// Parst eine Konstantendeklaration im aktuellen Block.
     /// </summary>
-    /// <param name="level">Current lexical level.</param>
+    /// <param name="level">Aktuelle lexikalische Ebene.</param>
     private void ParseConstDeclaration(int level)
     {
-        var name = Expect(TokenKind.Ident, 4, "const must be followed by an identifier.");
+        var name = Expect(TokenKind.Ident, 4, Msg("Parser_E04_IdentAfterConst"));
         if (TryMatch(TokenKind.Becomes))
         {
-            Report(1, "Use '=' instead of ':='.");
+            Report(1, Msg("Parser_E01_UseEqualNotAssign"));
         }
         else
         {
-            Expect(TokenKind.Equal, 3, "Identifier must be followed by '='.");
+            Expect(TokenKind.Equal, 3, Msg("Parser_E03_EqualAfterIdent"));
         }
 
-        var number = Expect(TokenKind.Number, 2, "'=' must be followed by a number.");
+        var number = Expect(TokenKind.Number, 2, Msg("Parser_E02_NumberAfterEquals"));
         var value = number.NumberValue ?? 0;
         if (value > _options.MaxAddress)
         {
-            Report(30, "This number is too large.", number.Position);
+            Report(30, Msg("Parser_E30_NumberTooLarge"), number.Position);
             value = 0;
         }
 
@@ -285,21 +298,21 @@ public sealed class Pl0Parser
     }
 
     /// <summary>
-    /// Parses a var declaration and allocates a stack address.
+    /// Parst eine Variablendeklaration und weist eine Stack-Adresse zu.
     /// </summary>
-    /// <param name="level">Current lexical level.</param>
-    /// <param name="dataIndex">Current data allocation index.</param>
+    /// <param name="level">Aktuelle lexikalische Ebene.</param>
+    /// <param name="dataIndex">Aktueller Datenzuweisungsindex.</param>
     private void ParseVarDeclaration(int level, ref int dataIndex)
     {
-        var name = Expect(TokenKind.Ident, 4, "var must be followed by an identifier.");
+        var name = Expect(TokenKind.Ident, 4, Msg("Parser_E04_IdentAfterVar"));
         var variable = new SymbolEntry(name.Lexeme, SymbolKind.Variable, level, dataIndex++);
         TryDeclare(variable, 31, "Duplicate identifier in scope.");
     }
 
     /// <summary>
-    /// Parses a single statement.
+    /// Parst eine einzelne Anweisung.
     /// </summary>
-    /// <param name="level">Current lexical level.</param>
+    /// <param name="level">Aktuelle lexikalische Ebene.</param>
     private void ParseStatement(int level)
     {
         switch (Current.Kind)
@@ -331,20 +344,20 @@ public sealed class Pl0Parser
     }
 
     /// <summary>
-    /// Parses an assignment statement.
+    /// Parst eine Zuweisungsanweisung.
     /// </summary>
-    /// <param name="level">Current lexical level.</param>
+    /// <param name="level">Aktuelle lexikalische Ebene.</param>
     private void ParseAssignment(int level)
     {
-        var name = Expect(TokenKind.Ident, 11, "Undeclared identifier.");
+        var name = Expect(TokenKind.Ident, 11, Msg("Parser_E11_UndeclaredIdent"));
         var symbol = Lookup(name.Lexeme, name.Position);
         if (symbol is not null && symbol.Kind != SymbolKind.Variable)
         {
-            Report(12, "Assignment to constant or procedure is not allowed.", name.Position);
+            Report(12, Msg("Parser_E12_AssignToConst"), name.Position);
             symbol = null;
         }
 
-        Expect(TokenKind.Becomes, 13, "Assignment operator ':=' expected.");
+        Expect(TokenKind.Becomes, 13, Msg("Parser_E13_AssignOpExpected"));
         ParseExpression(level);
 
         if (symbol is not null)
@@ -354,13 +367,13 @@ public sealed class Pl0Parser
     }
 
     /// <summary>
-    /// Parses a procedure call statement.
+    /// Parst eine Prozeduraufruf-Anweisung.
     /// </summary>
-    /// <param name="level">Current lexical level.</param>
+    /// <param name="level">Aktuelle lexikalische Ebene.</param>
     private void ParseCall(int level)
     {
         Advance();
-        var name = Expect(TokenKind.Ident, 14, "call must be followed by an identifier.");
+        var name = Expect(TokenKind.Ident, 14, Msg("Parser_E14_CallNeedsIdent"));
         var symbol = Lookup(name.Lexeme, name.Position);
         if (symbol is null)
         {
@@ -369,7 +382,7 @@ public sealed class Pl0Parser
 
         if (symbol.Kind != SymbolKind.Procedure)
         {
-            Report(15, "Call of a constant or a variable is meaningless.", name.Position);
+            Report(15, Msg("Parser_E15_CallConstOrVar"), name.Position);
             return;
         }
 
@@ -377,9 +390,9 @@ public sealed class Pl0Parser
     }
 
     /// <summary>
-    /// Parses a begin/end statement sequence.
+    /// Parst eine BEGIN-END-Anweisungsfolge.
     /// </summary>
-    /// <param name="level">Current lexical level.</param>
+    /// <param name="level">Aktuelle lexikalische Ebene.</param>
     private void ParseBeginEnd(int level)
     {
         Advance();
@@ -389,50 +402,50 @@ public sealed class Pl0Parser
             ParseStatement(level);
         }
 
-        ExpectOrSync(TokenKind.End, 17, "Semicolon or 'end' expected.", StatementFollowTokens);
+        ExpectOrSync(TokenKind.End, 17, Msg("Parser_E17_SemiOrEndExpected"), StatementFollowTokens);
     }
 
     /// <summary>
-    /// Parses an if-then statement.
+    /// Parst eine IF-THEN-Anweisung.
     /// </summary>
-    /// <param name="level">Current lexical level.</param>
+    /// <param name="level">Aktuelle lexikalische Ebene.</param>
     private void ParseIf(int level)
     {
         Advance();
         ParseCondition(level);
-        ExpectOrSync(TokenKind.Then, 16, "'then' expected.", StatementStartTokens);
+        ExpectOrSync(TokenKind.Then, 16, Msg("Parser_E16_ThenExpected"), StatementStartTokens);
         var jumpIfFalse = Emit(Opcode.Jpc, 0, 0);
         ParseStatement(level);
         PatchArgument(jumpIfFalse, _code.Count);
     }
 
     /// <summary>
-    /// Parses a while-do loop.
+    /// Parst eine WHILE-DO-Schleife.
     /// </summary>
-    /// <param name="level">Current lexical level.</param>
+    /// <param name="level">Aktuelle lexikalische Ebene.</param>
     private void ParseWhile(int level)
     {
         Advance();
         var conditionStart = _code.Count;
         ParseCondition(level);
         var jumpIfFalse = Emit(Opcode.Jpc, 0, 0);
-        ExpectOrSync(TokenKind.Do, 18, "'do' expected.", StatementStartTokens);
+        ExpectOrSync(TokenKind.Do, 18, Msg("Parser_E18_DoExpected"), StatementStartTokens);
         ParseStatement(level);
         Emit(Opcode.Jmp, 0, conditionStart);
         PatchArgument(jumpIfFalse, _code.Count);
     }
 
     /// <summary>
-    /// Parses an input statement.
+    /// Parst eine Eingabeanweisung.
     /// </summary>
-    /// <param name="level">Current lexical level.</param>
+    /// <param name="level">Aktuelle lexikalische Ebene.</param>
     private void ParseInput(int level)
     {
-        var question = Expect(TokenKind.Question, 19, "Incorrect symbol following statement.");
-        var name = Expect(TokenKind.Ident, 4, "Identifier expected after '?'.");
+        var question = Expect(TokenKind.Question, 19, Msg("Parser_E19_IncorrectSymbol"));
+        var name = Expect(TokenKind.Ident, 4, Msg("Parser_E04_IdentAfterInput"));
         if (!_options.EnableIoStatements)
         {
-            Report(19, "Input statement '?' is not available in classic mode.", question.Position);
+            Report(19, Msg("Parser_E19_InputNotInClassic"), question.Position);
             return;
         }
 
@@ -444,7 +457,7 @@ public sealed class Pl0Parser
 
         if (symbol.Kind != SymbolKind.Variable)
         {
-            Report(12, "Input target must be a variable.", name.Position);
+            Report(12, Msg("Parser_E12_InputTargetMustBeVar"), name.Position);
             return;
         }
 
@@ -453,16 +466,16 @@ public sealed class Pl0Parser
     }
 
     /// <summary>
-    /// Parses an output statement.
+    /// Parst eine Ausgabeanweisung.
     /// </summary>
-    /// <param name="level">Current lexical level.</param>
+    /// <param name="level">Aktuelle lexikalische Ebene.</param>
     private void ParseOutput(int level)
     {
-        var bang = Expect(TokenKind.Bang, 19, "Incorrect symbol following statement.");
+        var bang = Expect(TokenKind.Bang, 19, Msg("Parser_E19_IncorrectSymbol"));
         ParseExpression(level);
         if (!_options.EnableIoStatements)
         {
-            Report(19, "Output statement '!' is not available in classic mode.", bang.Position);
+            Report(19, Msg("Parser_E19_OutputNotInClassic"), bang.Position);
             return;
         }
 
@@ -470,9 +483,9 @@ public sealed class Pl0Parser
     }
 
     /// <summary>
-    /// Parses a condition expression.
+    /// Parst einen Bedingungsausdruck.
     /// </summary>
-    /// <param name="level">Current lexical level.</param>
+    /// <param name="level">Aktuelle lexikalische Ebene.</param>
     private void ParseCondition(int level)
     {
         if (TryMatch(TokenKind.Odd))
@@ -486,7 +499,7 @@ public sealed class Pl0Parser
         var relation = Current.Kind;
         if (!IsRelation(relation))
         {
-            Report(20, "Relational operator expected.");
+            Report(20, Msg("Parser_E20_RelOpExpected"));
             return;
         }
 
@@ -507,9 +520,9 @@ public sealed class Pl0Parser
     }
 
     /// <summary>
-    /// Parses an arithmetic expression.
+    /// Parst einen arithmetischen Ausdruck.
     /// </summary>
-    /// <param name="level">Current lexical level.</param>
+    /// <param name="level">Aktuelle lexikalische Ebene.</param>
     private void ParseExpression(int level)
     {
         var unaryMinus = false;
@@ -535,9 +548,9 @@ public sealed class Pl0Parser
     }
 
     /// <summary>
-    /// Parses a term within an expression.
+    /// Parst einen Term innerhalb eines Ausdrucks.
     /// </summary>
-    /// <param name="level">Current lexical level.</param>
+    /// <param name="level">Aktuelle lexikalische Ebene.</param>
     private void ParseTerm(int level)
     {
         ParseFactor(level);
@@ -551,9 +564,9 @@ public sealed class Pl0Parser
     }
 
     /// <summary>
-    /// Parses a factor within a term.
+    /// Parst einen Faktor innerhalb eines Terms.
     /// </summary>
-    /// <param name="level">Current lexical level.</param>
+    /// <param name="level">Aktuelle lexikalische Ebene.</param>
     private void ParseFactor(int level)
     {
         switch (Current.Kind)
@@ -576,7 +589,7 @@ public sealed class Pl0Parser
                         Emit(Opcode.Lod, ComputeLevelDifference(level, symbol), symbol.Address);
                         break;
                     case SymbolKind.Procedure:
-                        Report(21, "Expression must not contain a procedure identifier.", name.Position);
+                        Report(21, Msg("Parser_E21_ProcInExpr"), name.Position);
                         break;
                 }
 
@@ -588,7 +601,7 @@ public sealed class Pl0Parser
                 var value = number.NumberValue ?? 0;
                 if (value > _options.MaxAddress)
                 {
-                    Report(30, "This number is too large.", number.Position);
+                    Report(30, Msg("Parser_E30_NumberTooLarge"), number.Position);
                     value = 0;
                 }
 
@@ -598,38 +611,38 @@ public sealed class Pl0Parser
             case TokenKind.LParen:
                 Advance();
                 ParseExpression(level);
-                ExpectOrSync(TokenKind.RParen, 22, "Right parenthesis missing.", ExpressionFollowTokens);
+                ExpectOrSync(TokenKind.RParen, 22, Msg("Parser_E22_RightParenMissing"), ExpressionFollowTokens);
                 return;
             default:
-                Report(24, "An expression cannot begin with this symbol.");
+                Report(24, Msg("Parser_E24_BadExprStart"));
                 Advance();
                 return;
         }
     }
 
     /// <summary>
-    /// Looks up a symbol and reports an error if it is missing.
+    /// Schlägt ein Symbol nach und meldet einen Fehler wenn es fehlt.
     /// </summary>
-    /// <param name="name">Symbol name.</param>
-    /// <param name="position">Position for diagnostics.</param>
-    /// <returns>The symbol entry or null.</returns>
+    /// <param name="name">Symbolname.</param>
+    /// <param name="position">Position für Diagnosen.</param>
+    /// <returns>Der Symboltabelleneintrag oder null.</returns>
     private SymbolEntry? Lookup(string name, TextPosition position)
     {
         var symbol = _symbols.Lookup(name);
         if (symbol is null)
         {
-            Report(11, "Undeclared identifier.", position);
+            Report(11, Msg("Parser_E11_UndeclaredIdent"), position);
         }
 
         return symbol;
     }
 
     /// <summary>
-    /// Computes the lexical level difference for a symbol reference.
+    /// Berechnet den lexikalischen Ebenenunterschied für eine Symbolreferenz.
     /// </summary>
-    /// <param name="currentLevel">Current lexical level.</param>
-    /// <param name="symbol">Symbol being referenced.</param>
-    /// <returns>The non-negative level difference.</returns>
+    /// <param name="currentLevel">Aktuelle lexikalische Ebene.</param>
+    /// <param name="symbol">Referenziertes Symbol.</param>
+    /// <returns>Der nicht-negative Ebenenunterschied.</returns>
     private int ComputeLevelDifference(int currentLevel, SymbolEntry symbol)
     {
         var diff = currentLevel - symbol.Level;
@@ -638,21 +651,25 @@ public sealed class Pl0Parser
             return diff;
         }
 
-        Report(99, "Invalid lexical level reference.");
+        Report(99, Msg("Parser_E99_InvalidLexLevel"));
         return 0;
     }
 
     /// <summary>
-    /// Declares a symbol or reports duplicate/overflow errors.
+    /// Deklariert ein Symbol oder meldet Duplikat-/Überlauf-Fehler.
     /// </summary>
-    /// <param name="entry">Symbol to declare.</param>
-    /// <param name="code">Diagnostic code on failure.</param>
-    /// <param name="message">Diagnostic message on failure.</param>
+    /// <param name="entry">Zu deklarierendes Symbol.</param>
+    /// <param name="code">Diagnose-Code bei Fehler.</param>
+    /// <param name="message">Diagnose-Meldung bei Fehler.</param>
     private void TryDeclare(SymbolEntry entry, int code, string message)
     {
         if (_symbols.Count >= _options.MaxSymbolCount)
         {
-            Report(ErrorSymbolTableOverflow, $"Symbol table overflow (max {_options.MaxSymbolCount}).");
+            Report(ErrorSymbolTableOverflow,
+                string.Format(_culture,
+                    _rm.GetString("Parser_E34_SymbolTableOverflow", _culture)
+                        ?? "Symbol table full (max {0}).",
+                    _options.MaxSymbolCount));
             return;
         }
 
@@ -665,19 +682,22 @@ public sealed class Pl0Parser
     }
 
     /// <summary>
-    /// Emits a P-Code instruction and returns its index.
+    /// Gibt einen P-Code-Befehl aus und gibt seinen Index zurück.
     /// </summary>
-    /// <param name="opcode">Opcode to emit.</param>
-    /// <param name="level">Lexical level argument.</param>
-    /// <param name="argument">Instruction argument.</param>
-    /// <returns>Instruction index.</returns>
+    /// <param name="opcode">Auszugebender Opcode.</param>
+    /// <param name="level">Lexikalisches Ebenen-Argument.</param>
+    /// <param name="argument">Befehlsargument.</param>
+    /// <returns>Befehlsindex.</returns>
     private int Emit(Opcode opcode, int level, int argument)
     {
         if (_code.Count >= _options.MaxCodeLength)
         {
             Report(
                 ErrorProgramTooLong,
-                $"Program too long (max {_options.MaxCodeLength} instructions).");
+                string.Format(_culture,
+                    _rm.GetString("Parser_E35_ProgramTooLong", _culture)
+                        ?? "Program too long (max {0} instructions).",
+                    _options.MaxCodeLength));
             return _code.Count == 0 ? 0 : _code.Count - 1;
         }
 
@@ -687,10 +707,10 @@ public sealed class Pl0Parser
     }
 
     /// <summary>
-    /// Patches the argument of a previously emitted instruction.
+    /// Patcht das Argument eines zuvor ausgegebenen Befehls.
     /// </summary>
-    /// <param name="index">Instruction index.</param>
-    /// <param name="argument">New argument value.</param>
+    /// <param name="index">Befehlsindex.</param>
+    /// <param name="argument">Neuer Argumentwert.</param>
     private void PatchArgument(int index, int argument)
     {
         if (index < 0 || index >= _code.Count)
@@ -703,10 +723,10 @@ public sealed class Pl0Parser
     }
 
     /// <summary>
-    /// Consumes the current token if it matches the expected kind.
+    /// Verbraucht das aktuelle Token wenn es der erwarteten Art entspricht.
     /// </summary>
-    /// <param name="kind">Expected token kind.</param>
-    /// <returns>True when matched and consumed.</returns>
+    /// <param name="kind">Erwartete Token-Art.</param>
+    /// <returns>True wenn gefunden und verbraucht.</returns>
     private bool TryMatch(TokenKind kind)
     {
         if (Current.Kind != kind)
@@ -719,12 +739,12 @@ public sealed class Pl0Parser
     }
 
     /// <summary>
-    /// Expects a token of a given kind or reports a diagnostic.
+    /// Erwartet ein Token einer bestimmten Art oder meldet eine Diagnose.
     /// </summary>
-    /// <param name="kind">Expected token kind.</param>
-    /// <param name="code">Diagnostic code on mismatch.</param>
-    /// <param name="message">Diagnostic message on mismatch.</param>
-    /// <returns>The consumed token.</returns>
+    /// <param name="kind">Erwartete Token-Art.</param>
+    /// <param name="code">Diagnose-Code bei Nichtübereinstimmung.</param>
+    /// <param name="message">Diagnose-Meldung bei Nichtübereinstimmung.</param>
+    /// <returns>Das verbrauchte Token.</returns>
     private Pl0Token Expect(TokenKind kind, int code, string message)
     {
         if (Current.Kind == kind)
@@ -743,13 +763,13 @@ public sealed class Pl0Parser
     }
 
     /// <summary>
-    /// Expects a token or synchronizes to a recovery set.
+    /// Erwartet ein Token oder synchronisiert zu einer Wiederherstellungsmenge.
     /// </summary>
-    /// <param name="kind">Expected token kind.</param>
-    /// <param name="code">Diagnostic code on mismatch.</param>
-    /// <param name="message">Diagnostic message on mismatch.</param>
-    /// <param name="syncTokens">Tokens used for synchronization.</param>
-    /// <returns>The consumed token when found.</returns>
+    /// <param name="kind">Erwartete Token-Art.</param>
+    /// <param name="code">Diagnose-Code bei Nichtübereinstimmung.</param>
+    /// <param name="message">Diagnose-Meldung bei Nichtübereinstimmung.</param>
+    /// <param name="syncTokens">Token zur Synchronisation.</param>
+    /// <returns>Das verbrauchte Token wenn gefunden.</returns>
     private Pl0Token ExpectOrSync(TokenKind kind, int code, string message, params TokenKind[] syncTokens)
     {
         if (Current.Kind == kind)
@@ -774,9 +794,9 @@ public sealed class Pl0Parser
     }
 
     /// <summary>
-    /// Advances tokens until a synchronization token is found.
+    /// Rückt Token vor bis ein Synchronisations-Token gefunden wird.
     /// </summary>
-    /// <param name="syncTokens">Synchronization tokens.</param>
+    /// <param name="syncTokens">Synchronisations-Token.</param>
     private void Synchronize(IEnumerable<TokenKind> syncTokens)
     {
         var sync = new HashSet<TokenKind>(syncTokens)
@@ -791,9 +811,9 @@ public sealed class Pl0Parser
     }
 
     /// <summary>
-    /// Advances to the next token and returns the previous token.
+    /// Rückt zum nächsten Token vor und gibt das vorherige zurück.
     /// </summary>
-    /// <returns>The consumed token.</returns>
+    /// <returns>Das verbrauchte Token.</returns>
     private Pl0Token Advance()
     {
         if (_position < _tokens.Count - 1)
@@ -810,15 +830,15 @@ public sealed class Pl0Parser
     }
 
     /// <summary>
-    /// Gets the current token.
+    /// Gibt das aktuelle Token zurück.
     /// </summary>
     private Pl0Token Current => _position < _tokens.Count ? _tokens[_position] : _tokens[^1];
 
     /// <summary>
-    /// Determines whether a token kind is a relational operator.
+    /// Ermittelt ob eine Token-Art ein Vergleichsoperator ist.
     /// </summary>
-    /// <param name="kind">Token kind to check.</param>
-    /// <returns>True if the token is a relation operator.</returns>
+    /// <param name="kind">Zu prüfende Token-Art.</param>
+    /// <returns>True wenn das Token ein Vergleichsoperator ist.</returns>
     private static bool IsRelation(TokenKind kind) =>
         kind is TokenKind.Equal
             or TokenKind.NotEqual
@@ -828,28 +848,28 @@ public sealed class Pl0Parser
             or TokenKind.GreaterOrEqual;
 
     /// <summary>
-    /// Reports a diagnostic at the current token position.
+    /// Meldet eine Diagnose an der aktuellen Token-Position.
     /// </summary>
-    /// <param name="code">Diagnostic code.</param>
-    /// <param name="message">Diagnostic message.</param>
+    /// <param name="code">Diagnose-Code.</param>
+    /// <param name="message">Diagnose-Meldung.</param>
     private void Report(int code, string message)
     {
         _diagnostics.Add(new CompilerDiagnostic(code, message, Current.Position));
     }
 
     /// <summary>
-    /// Reports a diagnostic at a specified position.
+    /// Meldet eine Diagnose an einer angegebenen Position.
     /// </summary>
-    /// <param name="code">Diagnostic code.</param>
-    /// <param name="message">Diagnostic message.</param>
-    /// <param name="position">Source position.</param>
+    /// <param name="code">Diagnose-Code.</param>
+    /// <param name="message">Diagnose-Meldung.</param>
+    /// <param name="position">Quellposition.</param>
     private void Report(int code, string message, TextPosition position)
     {
         _diagnostics.Add(new CompilerDiagnostic(code, message, position));
     }
 
     /// <summary>
-    /// Reports unexpected end-of-file once per parse.
+    /// Meldet unerwartetes Dateiende einmalig pro Parse-Vorgang.
     /// </summary>
     private void ReportUnexpectedEofOnce()
     {
@@ -858,7 +878,17 @@ public sealed class Pl0Parser
             return;
         }
 
-        _diagnostics.Add(new CompilerDiagnostic(98, "Program incomplete: unexpected end of input.", Current.Position));
+        _diagnostics.Add(new CompilerDiagnostic(
+            98,
+            Msg("Parser_E98_UnexpectedEndOfInput"),
+            Current.Position));
         _reportedUnexpectedEof = true;
     }
+
+    /// <summary>
+    /// Gibt den lokalisierten Meldungstext für den angegebenen Schlüssel zurück.
+    /// </summary>
+    /// <param name="key">Ressourcen-Schlüssel.</param>
+    /// <returns>Lokalisierter Meldungstext oder der Schlüssel als Fallback.</returns>
+    private string Msg(string key) => _rm.GetString(key, _culture) ?? key;
 }
