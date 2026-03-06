@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Vm_E99_IPOutOfRange" xml:space="preserve">
+    <value>Instruction pointer out of range: {0}.</value>
+  </data>
+  <data name="Vm_E99_InvalidLodIndex" xml:space="preserve">
+    <value>Invalid LOD access at stack index {0}.</value>
+  </data>
+  <data name="Vm_E99_InvalidStoIndex" xml:space="preserve">
+    <value>Invalid STO access at stack index {0}.</value>
+  </data>
+  <data name="Vm_E99_StackOverflowCallFrame" xml:space="preserve">
+    <value>Stack overflow while creating call frame.</value>
+  </data>
+  <data name="Vm_E99_StackOverflowInt" xml:space="preserve">
+    <value>Stack overflow on INT.</value>
+  </data>
+  <data name="Vm_E99_UnsupportedOpcode" xml:space="preserve">
+    <value>Unsupported opcode: {0}.</value>
+  </data>
+  <data name="Vm_E99_UnsupportedOpr" xml:space="preserve">
+    <value>Unsupported OPR code: {0}.</value>
+  </data>
+  <data name="Vm_E99_InvalidBasePointer" xml:space="preserve">
+    <value>Invalid base pointer while resolving level: {0}.</value>
+  </data>
+  <data name="Vm_E99_StackOverflow" xml:space="preserve">
+    <value>Stack overflow.</value>
+  </data>
+  <data name="Vm_E99_StackUnderflow" xml:space="preserve">
+    <value>Stack underflow.</value>
+  </data>
+  <data name="Vm_E98_EndOfInput" xml:space="preserve">
+    <value>End of input while reading.</value>
+  </data>
+  <data name="Vm_E97_InputFormatError" xml:space="preserve">
+    <value>Invalid input format.</value>
+  </data>
+  <data name="Vm_E206_DivisionByZero" xml:space="preserve">
+    <value>Division by zero.</value>
+  </data>
+</root>

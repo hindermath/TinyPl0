@@ -1,3 +1,5 @@
+using System.Globalization;
+using System.Resources;
 using Pl0.Core;
 
 namespace Pl0.Vm;
@@ -25,6 +27,15 @@ public sealed class VirtualMachine
     private const int DivisionByZeroExitCode = 206;
 
     /// <summary>
+    /// ResourceManager für lokalisierte Fehlertexte; wird in Run() gesetzt.
+    /// </summary>
+    private ResourceManager _rm = Pl0VmMessages.ResourceManager;
+    /// <summary>
+    /// Zielsprache für Fehlertexte; wird in Run() gesetzt.
+    /// </summary>
+    private CultureInfo _culture = CultureInfo.InvariantCulture;
+
+    /// <summary>
     /// Runs a program and returns the execution result.
     /// </summary>
     /// <param name="program">P-Code instructions to execute.</param>
@@ -38,6 +49,8 @@ public sealed class VirtualMachine
     {
         io ??= new ConsolePl0Io();
         options ??= VirtualMachineOptions.Default;
+        _rm = options.Messages ?? Pl0VmMessages.ResourceManager;
+        _culture = CultureInfo.GetCultureInfo(options.Language);
 
         var diagnostics = new List<VmDiagnostic>();
         var stack = new int[options.StackSize + 1];
@@ -55,7 +68,10 @@ public sealed class VirtualMachine
             {
                 diagnostics.Add(new VmDiagnostic(
                     RuntimeErrorExitCode,
-                    $"Instruction pointer out of range: {p}."));
+                    string.Format(_culture,
+                        _rm.GetString("Vm_E99_IPOutOfRange", _culture)
+                            ?? "Instruction pointer out of range: {0}.",
+                        p)));
                 break;
             }
 
@@ -93,7 +109,10 @@ public sealed class VirtualMachine
                     {
                         diagnostics.Add(new VmDiagnostic(
                             RuntimeErrorExitCode,
-                            $"Invalid LOD access at stack index {index}."));
+                            string.Format(_culture,
+                                _rm.GetString("Vm_E99_InvalidLodIndex", _culture)
+                                    ?? "Invalid LOD access at stack index {0}.",
+                                index)));
                         return BuildResult(stack, t, diagnostics);
                     }
 
@@ -114,7 +133,10 @@ public sealed class VirtualMachine
                     {
                         diagnostics.Add(new VmDiagnostic(
                             RuntimeErrorExitCode,
-                            $"Invalid STO access at stack index {index}."));
+                            string.Format(_culture,
+                                _rm.GetString("Vm_E99_InvalidStoIndex", _culture)
+                                    ?? "Invalid STO access at stack index {0}.",
+                                index)));
                         return BuildResult(stack, t, diagnostics);
                     }
 
@@ -145,7 +167,8 @@ public sealed class VirtualMachine
                     {
                         diagnostics.Add(new VmDiagnostic(
                             RuntimeErrorExitCode,
-                            "Stack overflow while creating call frame."));
+                            _rm.GetString("Vm_E99_StackOverflowCallFrame", _culture)
+                                ?? "Stack overflow while creating call frame."));
                         return BuildResult(stack, t, diagnostics);
                     }
 
@@ -163,7 +186,8 @@ public sealed class VirtualMachine
                     {
                         diagnostics.Add(new VmDiagnostic(
                             RuntimeErrorExitCode,
-                            "Stack overflow on INT."));
+                            _rm.GetString("Vm_E99_StackOverflowInt", _culture)
+                                ?? "Stack overflow on INT."));
                         return BuildResult(stack, t, diagnostics);
                     }
                     break;
@@ -189,7 +213,10 @@ public sealed class VirtualMachine
                 default:
                     diagnostics.Add(new VmDiagnostic(
                         RuntimeErrorExitCode,
-                        $"Unsupported opcode: {instruction.Op}."));
+                        string.Format(_culture,
+                            _rm.GetString("Vm_E99_UnsupportedOpcode", _culture)
+                                ?? "Unsupported opcode: {0}.",
+                            instruction.Op)));
                     return BuildResult(stack, t, diagnostics);
             }
 
@@ -214,7 +241,7 @@ public sealed class VirtualMachine
     /// <param name="options">VM options.</param>
     /// <param name="diagnostics">Diagnostics collection.</param>
     /// <returns>True if execution should continue.</returns>
-    private static bool ExecuteOpr(
+    private bool ExecuteOpr(
         int code,
         ref int p,
         ref int b,
@@ -258,7 +285,10 @@ public sealed class VirtualMachine
 
                 if (stack[t] == 0)
                 {
-                    diagnostics.Add(new VmDiagnostic(DivisionByZeroExitCode, "Division by zero."));
+                    diagnostics.Add(new VmDiagnostic(
+                        DivisionByZeroExitCode,
+                        _rm.GetString("Vm_E206_DivisionByZero", _culture)
+                            ?? "Division by zero."));
                     return false;
                 }
 
@@ -304,14 +334,20 @@ public sealed class VirtualMachine
                     stack[t] = io.ReadInt();
                     return true;
                 }
-                catch (EndOfStreamException ex)
+                catch (EndOfStreamException)
                 {
-                    diagnostics.Add(new VmDiagnostic(InputEofExitCode, ex.Message));
+                    diagnostics.Add(new VmDiagnostic(
+                        InputEofExitCode,
+                        _rm.GetString("Vm_E98_EndOfInput", _culture)
+                            ?? "End of input while reading."));
                     return false;
                 }
-                catch (FormatException ex)
+                catch (FormatException)
                 {
-                    diagnostics.Add(new VmDiagnostic(InputFormatExitCode, ex.Message));
+                    diagnostics.Add(new VmDiagnostic(
+                        InputFormatExitCode,
+                        _rm.GetString("Vm_E97_InputFormatError", _culture)
+                            ?? "Invalid input format."));
                     return false;
                 }
 
@@ -328,7 +364,10 @@ public sealed class VirtualMachine
             default:
                 diagnostics.Add(new VmDiagnostic(
                     RuntimeErrorExitCode,
-                    $"Unsupported OPR code: {code}."));
+                    string.Format(_culture,
+                        _rm.GetString("Vm_E99_UnsupportedOpr", _culture)
+                            ?? "Unsupported OPR code: {0}.",
+                        code)));
                 return false;
         }
     }
@@ -341,7 +380,7 @@ public sealed class VirtualMachine
     /// <param name="diagnostics">Diagnostics collection.</param>
     /// <param name="op">Operation to execute.</param>
     /// <returns>True if execution should continue.</returns>
-    private static bool BinaryOp(
+    private bool BinaryOp(
         ref int t,
         int[] stack,
         IList<VmDiagnostic> diagnostics,
@@ -365,7 +404,7 @@ public sealed class VirtualMachine
     /// <param name="stack">Stack storage.</param>
     /// <param name="diagnostics">Diagnostics collection.</param>
     /// <returns>Resolved base address.</returns>
-    private static int ResolveBase(int level, int currentBase, int[] stack, IList<VmDiagnostic> diagnostics)
+    private int ResolveBase(int level, int currentBase, int[] stack, IList<VmDiagnostic> diagnostics)
     {
         var baseAddress = currentBase;
         while (level > 0)
@@ -374,7 +413,10 @@ public sealed class VirtualMachine
             {
                 diagnostics.Add(new VmDiagnostic(
                     RuntimeErrorExitCode,
-                    $"Invalid base pointer while resolving level: {baseAddress}."));
+                    string.Format(_culture,
+                        _rm.GetString("Vm_E99_InvalidBasePointer", _culture)
+                            ?? "Invalid base pointer while resolving level: {0}.",
+                        baseAddress)));
                 return 0;
             }
 
@@ -392,11 +434,13 @@ public sealed class VirtualMachine
     /// <param name="stackSize">Maximum stack size.</param>
     /// <param name="diagnostics">Diagnostics collection.</param>
     /// <returns>True if push is possible.</returns>
-    private static bool TryPush(ref int t, int stackSize, IList<VmDiagnostic> diagnostics)
+    private bool TryPush(ref int t, int stackSize, IList<VmDiagnostic> diagnostics)
     {
         if (t + 1 > stackSize)
         {
-            diagnostics.Add(new VmDiagnostic(RuntimeErrorExitCode, "Stack overflow."));
+            diagnostics.Add(new VmDiagnostic(
+                RuntimeErrorExitCode,
+                _rm.GetString("Vm_E99_StackOverflow", _culture) ?? "Stack overflow."));
             return false;
         }
 
@@ -410,11 +454,13 @@ public sealed class VirtualMachine
     /// <param name="index">Stack index.</param>
     /// <param name="diagnostics">Diagnostics collection.</param>
     /// <returns>True if the index is valid.</returns>
-    private static bool TryPeek(int index, IList<VmDiagnostic> diagnostics)
+    private bool TryPeek(int index, IList<VmDiagnostic> diagnostics)
     {
         if (index < 1)
         {
-            diagnostics.Add(new VmDiagnostic(RuntimeErrorExitCode, "Stack underflow."));
+            diagnostics.Add(new VmDiagnostic(
+                RuntimeErrorExitCode,
+                _rm.GetString("Vm_E99_StackUnderflow", _culture) ?? "Stack underflow."));
             return false;
         }
 

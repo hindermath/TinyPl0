@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Lexer_E30_NumberTooManyDigits" xml:space="preserve">
+    <value>Number has too many digits: '{0}'. Max: {1}.</value>
+  </data>
+  <data name="Lexer_E30_NumberTooLarge" xml:space="preserve">
+    <value>Number is too large: '{0}'.</value>
+  </data>
+  <data name="Lexer_E33_IdentifierTooLong" xml:space="preserve">
+    <value>Identifier too long: '{0}'. Max: {1}.</value>
+  </data>
+  <data name="Lexer_E99_UnexpectedColon" xml:space="preserve">
+    <value>Unexpected ':'; expected ':='.</value>
+  </data>
+  <data name="Lexer_E99_UnexpectedChar" xml:space="preserve">
+    <value>Unexpected character '{0}'.</value>
+  </data>
+  <data name="Parser_E01_UseEqualNotAssign" xml:space="preserve">
+    <value>Use '=' instead of ':='.</value>
+  </data>
+  <data name="Parser_E02_NumberAfterEquals" xml:space="preserve">
+    <value>'=' must be followed by a number.</value>
+  </data>
+  <data name="Parser_E03_EqualAfterIdent" xml:space="preserve">
+    <value>Identifier must be followed by '='.</value>
+  </data>
+  <data name="Parser_E04_IdentAfterConst" xml:space="preserve">
+    <value>CONST must be followed by an identifier.</value>
+  </data>
+  <data name="Parser_E04_IdentAfterVar" xml:space="preserve">
+    <value>VAR must be followed by an identifier.</value>
+  </data>
+  <data name="Parser_E04_IdentAfterProc" xml:space="preserve">
+    <value>PROCEDURE must be followed by an identifier.</value>
+  </data>
+  <data name="Parser_E04_IdentAfterInput" xml:space="preserve">
+    <value>An identifier must follow '?'.</value>
+  </data>
+  <data name="Parser_E05_SemiOrComma" xml:space="preserve">
+    <value>Semicolon or comma missing.</value>
+  </data>
+  <data name="Parser_E09_PeriodExpected" xml:space="preserve">
+    <value>Period expected.</value>
+  </data>
+  <data name="Parser_E11_UndeclaredIdent" xml:space="preserve">
+    <value>Undeclared identifier.</value>
+  </data>
+  <data name="Parser_E12_AssignToConst" xml:space="preserve">
+    <value>Assignment to CONST or PROCEDURE not allowed.</value>
+  </data>
+  <data name="Parser_E12_InputTargetMustBeVar" xml:space="preserve">
+    <value>Input target must be a variable.</value>
+  </data>
+  <data name="Parser_E13_AssignOpExpected" xml:space="preserve">
+    <value>Assignment operator ':=' expected.</value>
+  </data>
+  <data name="Parser_E14_CallNeedsIdent" xml:space="preserve">
+    <value>CALL must be followed by an identifier.</value>
+  </data>
+  <data name="Parser_E15_CallConstOrVar" xml:space="preserve">
+    <value>Calling a constant or variable is not meaningful.</value>
+  </data>
+  <data name="Parser_E16_ThenExpected" xml:space="preserve">
+    <value>THEN expected.</value>
+  </data>
+  <data name="Parser_E17_SemiOrEndExpected" xml:space="preserve">
+    <value>Semicolon or END expected.</value>
+  </data>
+  <data name="Parser_E18_DoExpected" xml:space="preserve">
+    <value>DO expected.</value>
+  </data>
+  <data name="Parser_E19_IncorrectSymbol" xml:space="preserve">
+    <value>Incorrect symbol after statement.</value>
+  </data>
+  <data name="Parser_E19_InputNotInClassic" xml:space="preserve">
+    <value>Input '?' is not available in classic mode.</value>
+  </data>
+  <data name="Parser_E19_OutputNotInClassic" xml:space="preserve">
+    <value>Output '!' is not available in classic mode.</value>
+  </data>
+  <data name="Parser_E20_RelOpExpected" xml:space="preserve">
+    <value>Relational operator expected.</value>
+  </data>
+  <data name="Parser_E21_ProcInExpr" xml:space="preserve">
+    <value>Procedure identifier not allowed in expression.</value>
+  </data>
+  <data name="Parser_E22_RightParenMissing" xml:space="preserve">
+    <value>Closing parenthesis missing.</value>
+  </data>
+  <data name="Parser_E24_BadExprStart" xml:space="preserve">
+    <value>Expression cannot start with this symbol.</value>
+  </data>
+  <data name="Parser_E30_NumberTooLarge" xml:space="preserve">
+    <value>This number is too large.</value>
+  </data>
+  <data name="Parser_E32_NestingTooDeep" xml:space="preserve">
+    <value>Maximum nesting level exceeded.</value>
+  </data>
+  <data name="Parser_E34_SymbolTableOverflow" xml:space="preserve">
+    <value>Symbol table full (max {0}).</value>
+  </data>
+  <data name="Parser_E35_ProgramTooLong" xml:space="preserve">
+    <value>Program too long (max {0} instructions).</value>
+  </data>
+  <data name="Parser_E98_UnexpectedEndOfInput" xml:space="preserve">
+    <value>Program incomplete: unexpected end of input.</value>
+  </data>
+  <data name="Parser_E99_InvalidLexLevel" xml:space="preserve">
+    <value>Invalid lexical level reference.</value>
+  </data>
+  <data name="Parser_E99_UnexpectedTermination" xml:space="preserve">
+    <value>Unexpected end of program.</value>
+  </data>
+</root>

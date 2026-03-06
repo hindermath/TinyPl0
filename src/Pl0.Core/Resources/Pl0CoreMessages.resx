@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Lexer_E30_NumberTooManyDigits" xml:space="preserve">
+    <value>Zahl hat zu viele Ziffern: '{0}'. Max: {1}.</value>
+  </data>
+  <data name="Lexer_E30_NumberTooLarge" xml:space="preserve">
+    <value>Zahl zu groß: '{0}'.</value>
+  </data>
+  <data name="Lexer_E33_IdentifierTooLong" xml:space="preserve">
+    <value>Bezeichner zu lang: '{0}'. Max: {1}.</value>
+  </data>
+  <data name="Lexer_E99_UnexpectedColon" xml:space="preserve">
+    <value>Unerwartetes ':'; erwartet ':='.</value>
+  </data>
+  <data name="Lexer_E99_UnexpectedChar" xml:space="preserve">
+    <value>Unerwartetes Zeichen '{0}'.</value>
+  </data>
+  <data name="Parser_E01_UseEqualNotAssign" xml:space="preserve">
+    <value>Benutze '=' statt ':='.</value>
+  </data>
+  <data name="Parser_E02_NumberAfterEquals" xml:space="preserve">
+    <value>Auf '=' muss eine Zahl folgen.</value>
+  </data>
+  <data name="Parser_E03_EqualAfterIdent" xml:space="preserve">
+    <value>Auf den Bezeichner muss '=' folgen.</value>
+  </data>
+  <data name="Parser_E04_IdentAfterConst" xml:space="preserve">
+    <value>Auf 'const' muss ein Bezeichner folgen.</value>
+  </data>
+  <data name="Parser_E04_IdentAfterVar" xml:space="preserve">
+    <value>Auf 'var' muss ein Bezeichner folgen.</value>
+  </data>
+  <data name="Parser_E04_IdentAfterProc" xml:space="preserve">
+    <value>Auf 'procedure' muss ein Bezeichner folgen.</value>
+  </data>
+  <data name="Parser_E04_IdentAfterInput" xml:space="preserve">
+    <value>Nach '?' wird ein Bezeichner erwartet.</value>
+  </data>
+  <data name="Parser_E05_SemiOrComma" xml:space="preserve">
+    <value>Semikolon oder Komma fehlt.</value>
+  </data>
+  <data name="Parser_E09_PeriodExpected" xml:space="preserve">
+    <value>Punkt erwartet.</value>
+  </data>
+  <data name="Parser_E11_UndeclaredIdent" xml:space="preserve">
+    <value>Nicht deklarierter Bezeichner.</value>
+  </data>
+  <data name="Parser_E12_AssignToConst" xml:space="preserve">
+    <value>Zuweisung an Konstante oder Prozedur nicht erlaubt.</value>
+  </data>
+  <data name="Parser_E12_InputTargetMustBeVar" xml:space="preserve">
+    <value>Eingabeziel muss eine Variable sein.</value>
+  </data>
+  <data name="Parser_E13_AssignOpExpected" xml:space="preserve">
+    <value>Zuweisungsoperator ':=' erwartet.</value>
+  </data>
+  <data name="Parser_E14_CallNeedsIdent" xml:space="preserve">
+    <value>'call' muss von einem Bezeichner gefolgt werden.</value>
+  </data>
+  <data name="Parser_E15_CallConstOrVar" xml:space="preserve">
+    <value>Aufruf von Konstante oder Variable sinnlos.</value>
+  </data>
+  <data name="Parser_E16_ThenExpected" xml:space="preserve">
+    <value>'then' erwartet.</value>
+  </data>
+  <data name="Parser_E17_SemiOrEndExpected" xml:space="preserve">
+    <value>Semikolon oder 'end' erwartet.</value>
+  </data>
+  <data name="Parser_E18_DoExpected" xml:space="preserve">
+    <value>'do' erwartet.</value>
+  </data>
+  <data name="Parser_E19_IncorrectSymbol" xml:space="preserve">
+    <value>Falsches Symbol nach Anweisung.</value>
+  </data>
+  <data name="Parser_E19_InputNotInClassic" xml:space="preserve">
+    <value>Eingabe '?' im classic-Modus nicht verfügbar.</value>
+  </data>
+  <data name="Parser_E19_OutputNotInClassic" xml:space="preserve">
+    <value>Ausgabe '!' im classic-Modus nicht verfügbar.</value>
+  </data>
+  <data name="Parser_E20_RelOpExpected" xml:space="preserve">
+    <value>Vergleichsoperator erwartet.</value>
+  </data>
+  <data name="Parser_E21_ProcInExpr" xml:space="preserve">
+    <value>Prozedurbezeichner in Ausdruck nicht erlaubt.</value>
+  </data>
+  <data name="Parser_E22_RightParenMissing" xml:space="preserve">
+    <value>Schließende Klammer fehlt.</value>
+  </data>
+  <data name="Parser_E24_BadExprStart" xml:space="preserve">
+    <value>Ausdruck kann nicht mit diesem Symbol beginnen.</value>
+  </data>
+  <data name="Parser_E30_NumberTooLarge" xml:space="preserve">
+    <value>Diese Zahl ist zu groß.</value>
+  </data>
+  <data name="Parser_E32_NestingTooDeep" xml:space="preserve">
+    <value>Maximale Blockschachtelungstiefe überschritten.</value>
+  </data>
+  <data name="Parser_E34_SymbolTableOverflow" xml:space="preserve">
+    <value>Symboltabelle voll (max {0}).</value>
+  </data>
+  <data name="Parser_E35_ProgramTooLong" xml:space="preserve">
+    <value>Programm zu lang (max {0} Befehle).</value>
+  </data>
+  <data name="Parser_E98_UnexpectedEndOfInput" xml:space="preserve">
+    <value>Programm unvollständig: unerwartetes Eingabeende.</value>
+  </data>
+  <data name="Parser_E99_InvalidLexLevel" xml:space="preserve">
+    <value>Ungültige lexikalische Ebenenreferenz.</value>
+  </data>
+  <data name="Parser_E99_UnexpectedTermination" xml:space="preserve">
+    <value>Unerwartetes Programmende.</value>
+  </data>
+</root>

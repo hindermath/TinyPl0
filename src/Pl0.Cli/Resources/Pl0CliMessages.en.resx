@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Cli_Err_UnexpectedPositional" xml:space="preserve">
+    <value>Unexpected argument: '{0}'.</value>
+  </data>
+  <data name="Cli_Err_MissingValueForOut" xml:space="preserve">
+    <value>Missing value for '--out'.</value>
+  </data>
+  <data name="Cli_Err_NoEmitMode" xml:space="preserve">
+    <value>No emit mode specified. Use '--emit asm' or '--emit cod'.</value>
+  </data>
+  <data name="Cli_Err_UnknownSwitch" xml:space="preserve">
+    <value>Unknown switch: '{0}'.</value>
+  </data>
+  <data name="Cli_Err_ConflictingEmitModes" xml:space="preserve">
+    <value>Conflicting emit modes. Specify only one of 'asm' or 'cod'.</value>
+  </data>
+  <data name="Cli_Err_UnknownLanguage" xml:space="preserve">
+    <value>Unknown language code '{0}', using fallback 'de'.</value>
+  </data>
+  <data name="Cli_Status_CompileSuccess" xml:space="preserve">
+    <value>Compilation successful.</value>
+  </data>
+  <data name="Cli_Status_CompileError" xml:space="preserve">
+    <value>Compilation failed.</value>
+  </data>
+  <data name="Cli_Help_UsageHeader" xml:space="preserve">
+    <value>Usage:</value>
+  </data>
+  <data name="Cli_Help_HelpLine" xml:space="preserve">
+    <value>{0} [-|/]h | [-|/]? | --help</value>
+  </data>
+  <data name="Cli_Help_CompileLine" xml:space="preserve">
+    <value>{0} compile &lt;file.pl0&gt; [--out &lt;file.pcode&gt;] [--emit asm|cod] [--list-code]</value>
+  </data>
+  <data name="Cli_Help_RunLine" xml:space="preserve">
+    <value>{0} run &lt;file.pl0&gt; [--emit asm|cod] [--list-code]</value>
+  </data>
+  <data name="Cli_Help_RunPcodeLine" xml:space="preserve">
+    <value>{0} run-pcode &lt;file.pcode&gt; [--list-code]</value>
+  </data>
+  <data name="Cli_Help_RunPcodeDirectLine" xml:space="preserve">
+    <value>{0} &lt;file.pcode&gt; | &lt;file.cod&gt; [run P-Code directly]</value>
+  </data>
+  <data name="Cli_Help_ApiLine" xml:space="preserve">
+    <value>{0} --api</value>
+  </data>
+  <data name="Cli_Help_LegacyLine" xml:space="preserve">
+    <value>{0} &lt;file.pl0&gt; [legacy mode; compile and run]</value>
+  </data>
+  <data name="Cli_Help_SwitchesHeader" xml:space="preserve">
+    <value>Switches:</value>
+  </data>
+  <data name="Cli_Help_SwitchErrmsg" xml:space="preserve">
+    <value>  [-|/]errmsg | --errmsg                show long compiler error messages</value>
+  </data>
+  <data name="Cli_Help_SwitchWopcod" xml:space="preserve">
+    <value>  [-|/]wopcod | --wopcod                numeric opcodes in listing output</value>
+  </data>
+  <data name="Cli_Help_SwitchListCode" xml:space="preserve">
+    <value>  --list-code                            output generated/loaded code listing</value>
+  </data>
+  <data name="Cli_Help_SwitchApi" xml:space="preserve">
+    <value>  --api                                  start documentation web server</value>
+  </data>
+  <data name="Cli_Help_SwitchConly" xml:space="preserve">
+    <value>  [-|/]conly | --conly | --compile-only  compile only, do not run VM</value>
+  </data>
+  <data name="Cli_Help_SwitchEmitFormat" xml:space="preserve">
+    <value>  [-|/]emit {[-|/]asm | [-|/]cod}</value>
+  </data>
+  <data name="Cli_Help_SwitchEmit" xml:space="preserve">
+    <value>  --emit asm|cod                         output PL/0 code to STDOUT</value>
+  </data>
+  <data name="Cli_Help_SwitchOut" xml:space="preserve">
+    <value>  --out &lt;file&gt;                            output path for 'compile' command</value>
+  </data>
+  <data name="Cli_Help_SwitchLang" xml:space="preserve">
+    <value>  --lang &lt;code&gt;                           set output language (e.g. de, en)</value>
+  </data>
+</root>

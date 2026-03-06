@@ -1,0 +1,5 @@
+var x;
+begin
+  while x < 5
+  begin x := x + 1 end
+end.
