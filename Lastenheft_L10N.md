@@ -299,7 +299,7 @@ Release-Build, vollständiger Regressionstest, Terminologie-Audit und Quickstart
 
 ### 6.3 Aufgetretene Probleme und Lösungen
 
-Auf dem Weg zur grünen Test-Suite traten drei nicht-triviale Probleme auf. Sie sind hier ausführlich dokumentiert, weil sie typische Fallstricke bei der .NET-Lokalisierung darstellen.
+Auf dem Weg zur grünen Test-Suite traten vier nicht-triviale Probleme auf. Sie sind hier ausführlich dokumentiert, weil sie typische Fallstricke bei der .NET-Lokalisierung darstellen.
 
 ---
 
