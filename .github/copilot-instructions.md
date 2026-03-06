@@ -132,6 +132,13 @@ Inject `IPl0Io` when constructing `VirtualMachine`; never read from `Console` di
 
 ## Code Conventions and Patterns
 
+### Language and Documentation
+- Learner-facing documentation and explanatory comments are bilingual: German first, English second.
+- Both language blocks should target CEFR/GER B2 readability for mixed-language trainee cohorts.
+- For changed APIs, provide complete XML docs where applicable (`<summary>`, `<param>`, `<returns>`, `<exception>`; optional `<remarks>`/`<example>` when instructive).
+- Public XML documentation gaps are build-breaking (CS1591 must not be globally suppressed).
+- If API signatures or XML docs change, run `docfx` from repository root (`docfx.json`) in the same commit/PR.
+
 ### Error Handling
 - **Do NOT throw exceptions during compilation.** Collect all errors in diagnostics instead.
 - Use `CompilerDiagnostic` (in `Pl0.Core`) to report parser/compiler errors.

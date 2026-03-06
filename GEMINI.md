@@ -36,6 +36,9 @@ The project uses Golden Master tests for the lexer and parser. To update these a
 
 ## Development Conventions
 
+- **Language & Didactics:** Learner-facing documentation and comments are bilingual (German first, English second) and should target CEFR/GER B2 readability.
+- **XML Documentation:** For changed APIs, provide complete XML docs where applicable (`<summary>`, `<param>`, `<returns>`, `<exception>`; `<remarks>`/`<example>` when useful). Public XML doc gaps are build-breaking (CS1591 must not be globally suppressed).
+- **DocFX Regeneration:** If API signatures or XML docs change, run `docfx` from repository root (`docfx.json`) in the same commit/PR.
 - **Documentation:** Follow the specifications in `Pflichtenheft_PL0_CSharp_DotNet10.md`. Extensive documentation is available in the `docs/` and `docfx/` directories.
 - **Code Style:** Adhere to standard C# naming conventions (PascalCase for classes/methods, camelCase for local variables).
 - **Testing:**

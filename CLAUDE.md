@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-TinyPl0 is a C# .NET 10 port of the historical PL/0 compiler (originally in Pascal). It's a pedagogical reference for compiler construction targeting German vocational IT training (Fachinformatiker-Ausbildung). All documentation and comments are in German.
+TinyPl0 is a C# .NET 10 port of the historical PL/0 compiler (originally in Pascal). It's a pedagogical reference for compiler construction targeting German vocational IT training (Fachinformatiker-Ausbildung). Learner-facing documentation and comments are bilingual (German first, English second) with CEFR/GER B2 readability.
 
 ## Build, Test, and Run Commands
 
@@ -121,7 +121,8 @@ Align `Version`, `AssemblyVersion`, and `FileVersion` in `Pl0.Ide.csproj` whenev
 - Test classes: `public sealed class`, suffix `Tests`, use xUnit `[Fact]`
 - Namespaces: all in `Pl0.*`
 - 4-space indentation, opening brace on same line
-- XML doc comments (`<summary>`, `<param>`) required for all public APIs
+- XML doc comments are required for changed APIs and must be complete where applicable (`<summary>`, `<param>`, `<returns>`, `<exception>`; `<remarks>`/`<example>` when useful)
+- Missing public XML docs are build-breaking (CS1591 must not be globally suppressed); run `docfx` from repo root when API docs/signatures change
 
 **Error handling — critical:** Do NOT throw exceptions during compilation. All errors go into `CompilerDiagnostic` / `LexerDiagnostic`. Check `CompilationResult.Success` (true when `Diagnostics.Count == 0`) before execution.
 

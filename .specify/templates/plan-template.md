@@ -31,7 +31,17 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+- [ ] Principle I: Didactic and linguistic clarity is enforced (German-first + English-second,
+      CEFR/GER B2 level for learner-facing text).
+- [ ] Principle I: XML documentation scope and CS1591 policy are defined for touched APIs
+      (no global CS1591 suppression).
+- [ ] Principle II: Historical compatibility impact assessed (`classic` fidelity and quirks).
+- [ ] Principle III: Test strategy includes observable fail-first evidence and traceability impact.
+- [ ] Principle III: Catalog/golden/matrix update needs are explicitly decided.
+- [ ] Principle IV: Module dependency impact remains compliant with architecture guard rules.
+- [ ] Principle V: Diagnostics-over-exceptions behavior preserved for compiler and VM surfaces.
+- [ ] Principle VI: Branch/PR/versioning workflow constraints are satisfied.
+- [ ] Development Workflow: documentation changes include planned `docfx` run from repo root.
 
 ## Project Structure
 

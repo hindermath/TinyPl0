@@ -102,8 +102,10 @@ Update golden artifacts after intentional changes:
 - Check `CompilationResult.Success` before execution
 
 ### Documentation
-- XML doc comments for public APIs (`<summary>`, `<param>`)
-- Target audience: German vocational students (German comments in docs)
+- Bilingual learner-facing documentation/comments are mandatory: German block first, English block second, both at CEFR/GER B2 readability.
+- XML doc comments are mandatory for changed APIs and must be complete where applicable (`<summary>`, `<param>`, `<returns>`, `<exception>`; `<remarks>`/`<example>` when instructive).
+- Missing XML documentation on public API members is a build error; CS1591 must not be globally suppressed.
+- If API signatures or XML comments change, regenerate docs with `docfx` (repository root `docfx.json`) in the same commit/PR.
 
 ## Module Dependencies (Must Follow)
 
@@ -157,7 +159,7 @@ Enforced by `ArchitectureGuardTests` - do not violate these rules.
 
 ## Important Notes
 
-- All user-facing documentation in German.
+- Learner-facing documentation/comments are bilingual (DE first, EN second) with B2 readability target.
 - Code prioritizes clarity over performance.
 - No language extensions beyond PL/0 definition.
 - No compiler optimizations (no peephole, SSA, etc.).

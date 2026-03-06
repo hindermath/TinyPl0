@@ -2,14 +2,18 @@
 
 ## Sprache und Zielgruppe
 ### DE
-Dieses Projekt und seine gesamte Dokumentation sind **in deutscher Sprache** verfasst. Der Grund dafür ist die Ausrichtung auf die **Fachinformatiker-Ausbildung in Deutschland**. Das Projekt dient als Lernwerkzeug für Auszubildende im deutschsprachigen Raum und nutzt daher die deutsche Sprache zur optimalen Verständlichkeit und Vermittlung von Compilerbau-Konzepten.
-
-Eine englische Variante der Dokumentation ist derzeit nicht geplant, steht aber für zukünftige Versionen zur Diskussion.
+Dieses Projekt ist auf die **Fachinformatiker-Ausbildung in Deutschland** ausgerichtet.
+Lernrelevante Dokumentation und Kommentare werden **zweisprachig** gepflegt:
+zuerst Deutsch, danach Englisch. Beide Textblöcke sollen ein gut verständliches
+Sprachniveau **B2 (GER/CEFR)** einhalten, damit auch nicht-muttersprachliche
+Auszubildende alle Inhalte sicher nachvollziehen können.
 
 ### EN
-This project and its entire documentation are written in **German**. The reason for this is its focus on **vocational IT training (Fachinformatiker) in Germany**. The project serves as a learning tool for trainees in German-speaking regions and therefore uses German to ensure optimal comprehensibility and to effectively teach compiler construction concepts.
-
-An English version of the documentation is currently not planned, but it may be considered for future versions.
+This project targets **vocational IT training (Fachinformatiker) in Germany**.
+Learner-facing documentation and comments are maintained **bilingually**:
+German first, English second. Both language blocks are expected to follow
+**B2 (CEFR/GER)** readability so non-native trainees can fully understand
+compiler construction concepts and project workflows.
 
 ## Zielsetzung
 Dieses Repository dient der Portierung des historischen PL/0-Beispielcompilers (Pascal) nach C# auf .NET 10.

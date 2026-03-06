@@ -90,6 +90,18 @@
 - **FR-004**: System MUST [data requirement, e.g., "persist user preferences"]
 - **FR-005**: System MUST [behavior, e.g., "log all security events"]
 
+### Documentation & Didactic Requirements *(mandatory for TinyPl0)*
+
+- **DR-001**: Learner-facing documentation and comments MUST be bilingual, with German block first
+  and English block second.
+- **DR-002**: Both language blocks MUST target CEFR/GER B2 readability.
+- **DR-003**: Changed or added APIs MUST include complete XML documentation where applicable
+  (`<summary>`, `<param>`, `<returns>`, `<exception>`; `<remarks>`/`<example>` when useful).
+- **DR-004**: Public API XML documentation gaps MUST be treated as build errors
+  (CS1591 MUST NOT be globally suppressed).
+- **DR-005**: If API signatures or XML docs change, the related work MUST include a `docfx` run
+  from repository root and regeneration of documentation artifacts.
+
 *Example of marking unclear requirements:*
 
 - **FR-006**: System MUST authenticate users via [NEEDS CLARIFICATION: auth method not specified - email/password, SSO, OAuth?]
