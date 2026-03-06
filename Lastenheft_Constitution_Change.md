@@ -26,6 +26,7 @@ Comments explain the why (decision, trade-off, constraint), not only the what.
 - When API signatures or XML comments change, the docfx output MUST be regenerated in the same commit/PR.
 - Use CLAUDE.md, GEMINI.md, copilot-instructions.md and AGENTS.md for runtime agent-specific development guidance.
 - Es sollte imer nochmal überprüft werden, ob die Dokumentationsrichtlinien eingehalten worden sind. Wenn nicht, sollen die Fehlende Dokumentation nachgeholt werden.
+- Bei Änderungen an der Dokumentation soll ein docfx-Lauf mit dem externen Befehl docfx stattfinden. Die docfx.json befindet sich im Projecthauptverzeichnis.
 
 # 3. Erklärung für das Sprachniveau B2
 Ein Auszubildender sollte mindestens das Sprachniveau B1, besser B2, besitzen, um eine Ausbildung zum Fachinformatiker erfolgreich absolvieren zu können. Das ergibt sich nicht aus einer expliziten gesetzlichen Vorgabe, sondern aus den tatsächlichen Anforderungen der Ausbildungsordnung und des Berufsschulunterrichts.
@@ -58,4 +59,7 @@ Berufsschulen orientieren sich in der Regel an B1–B2, weil:
 - B2 → Idealer Startpunkt für eine erfolgreiche Ausbildung ohne größere sprachliche Hürden.
 - C1 → Vorteilhaft, aber nicht notwendig.
 
-
+## 4. Unit Tests
+- Unit Tests sollen möglichst TDD-konform von Rot nach Grün entwickelt werden. 
+- Bei allen neuen Features sollen möglichst zuerst die Tests erstellt werden und kompiliert werden. Das ergibt rot. Danach soll gegen die Tests entwickelt werden, so dass dieses nach und ach alle grün werden. Das zeigt den Auszubildenden, wie Test Driven Defelopment durchgeführt werden soll.
+- 
