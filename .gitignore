@@ -1168,3 +1168,4 @@ fabric.properties
 _site/
 **/toc.pdf
 **/doc.pdf
+!/.codex/auth.json
