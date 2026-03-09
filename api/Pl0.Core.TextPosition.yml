@@ -19,7 +19,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/TextPosition.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: TextPosition
     path: src/Pl0.Core/TextPosition.cs
@@ -55,7 +55,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/TextPosition.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: .ctor
     path: src/Pl0.Core/TextPosition.cs
@@ -96,7 +96,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/TextPosition.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: Line
     path: src/Pl0.Core/TextPosition.cs
@@ -127,7 +127,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/TextPosition.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: Column
     path: src/Pl0.Core/TextPosition.cs
@@ -158,7 +158,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/TextPosition.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: Offset
     path: src/Pl0.Core/TextPosition.cs

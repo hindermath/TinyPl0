@@ -21,7 +21,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeDebugView.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: IdeDebugView
     path: src/Pl0.Ide/IdeDebugView.cs
@@ -299,7 +299,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeDebugView.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: highlightMap
     path: src/Pl0.Ide/IdeDebugView.cs
@@ -326,7 +326,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeDebugView.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: .ctor
     path: src/Pl0.Ide/IdeDebugView.cs
@@ -355,7 +355,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeDebugView.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: SetDebugContent
     path: src/Pl0.Ide/IdeDebugView.cs
@@ -389,7 +389,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeDebugView.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: GetHighlightKindAt
     path: src/Pl0.Ide/IdeDebugView.cs
@@ -425,7 +425,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeDebugView.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: OnDrawNormalColor
     path: src/Pl0.Ide/IdeDebugView.cs
@@ -472,7 +472,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeDebugView.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: RebuildHighlightMap
     path: src/Pl0.Ide/IdeDebugView.cs

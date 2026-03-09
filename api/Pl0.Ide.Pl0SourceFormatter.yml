@@ -24,7 +24,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/Pl0SourceFormatter.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: Pl0SourceFormatter
     path: src/Pl0.Ide/Pl0SourceFormatter.cs
@@ -59,7 +59,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/Pl0SourceFormatter.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: IndentSize
     path: src/Pl0.Ide/Pl0SourceFormatter.cs
@@ -86,7 +86,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/Pl0SourceFormatter.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: TryFormat
     path: src/Pl0.Ide/Pl0SourceFormatter.cs
@@ -124,7 +124,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/Pl0SourceFormatter.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: FormatTokens
     path: src/Pl0.Ide/Pl0SourceFormatter.cs
@@ -158,7 +158,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/Pl0SourceFormatter.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: MarkProcedureStatementStart
     path: src/Pl0.Ide/Pl0SourceFormatter.cs
@@ -194,7 +194,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/Pl0SourceFormatter.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: IsStatementStartToken
     path: src/Pl0.Ide/Pl0SourceFormatter.cs
@@ -227,7 +227,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/Pl0SourceFormatter.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: EnsureSpaceBeforeToken
     path: src/Pl0.Ide/Pl0SourceFormatter.cs
@@ -261,7 +261,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/Pl0SourceFormatter.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: AppendIndent
     path: src/Pl0.Ide/Pl0SourceFormatter.cs
@@ -295,7 +295,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/Pl0SourceFormatter.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: AppendNewLine
     path: src/Pl0.Ide/Pl0SourceFormatter.cs
@@ -329,7 +329,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/Pl0SourceFormatter.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: TrimTrailingSpaces
     path: src/Pl0.Ide/Pl0SourceFormatter.cs

@@ -1,5 +1,12 @@
 ### YamlMime:TableOfContent
 items:
+- uid: Pl0.Cli
+  name: Pl0.Cli
+  type: Namespace
+  items:
+  - uid: Pl0.Cli.Pl0CliMessages
+    name: Pl0CliMessages
+    type: Class
 - uid: Pl0.Cli.Cli
   name: Pl0.Cli.Cli
   type: Namespace
@@ -58,6 +65,9 @@ items:
     type: Class
   - uid: Pl0.Core.Pl0Compiler
     name: Pl0Compiler
+    type: Class
+  - uid: Pl0.Core.Pl0CoreMessages
+    name: Pl0CoreMessages
     type: Class
   - uid: Pl0.Core.Pl0Dialect
     name: Pl0Dialect
@@ -190,6 +200,9 @@ items:
   - uid: Pl0.Vm.IPl0Io
     name: IPl0Io
     type: Interface
+  - uid: Pl0.Vm.Pl0VmMessages
+    name: Pl0VmMessages
+    type: Class
   - uid: Pl0.Vm.SteppableVirtualMachine
     name: SteppableVirtualMachine
     type: Class

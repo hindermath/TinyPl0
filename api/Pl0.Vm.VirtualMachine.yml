@@ -17,6 +17,8 @@ items:
   - Pl0.Vm.VirtualMachine.RuntimeErrorExitCode
   - Pl0.Vm.VirtualMachine.TryPeek(System.Int32,System.Collections.Generic.IList{Pl0.Vm.VmDiagnostic})
   - Pl0.Vm.VirtualMachine.TryPush(System.Int32@,System.Int32,System.Collections.Generic.IList{Pl0.Vm.VmDiagnostic})
+  - Pl0.Vm.VirtualMachine._culture
+  - Pl0.Vm.VirtualMachine._rm
   langs:
   - csharp
   - vb
@@ -27,11 +29,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VirtualMachine.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: VirtualMachine
     path: src/Pl0.Vm/VirtualMachine.cs
-    startLine: 7
+    startLine: 9
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -63,11 +65,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VirtualMachine.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: RuntimeErrorExitCode
     path: src/Pl0.Vm/VirtualMachine.cs
-    startLine: 12
+    startLine: 14
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -92,11 +94,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VirtualMachine.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: InputEofExitCode
     path: src/Pl0.Vm/VirtualMachine.cs
-    startLine: 16
+    startLine: 18
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -121,11 +123,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VirtualMachine.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: InputFormatExitCode
     path: src/Pl0.Vm/VirtualMachine.cs
-    startLine: 20
+    startLine: 22
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -150,11 +152,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VirtualMachine.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: DivisionByZeroExitCode
     path: src/Pl0.Vm/VirtualMachine.cs
-    startLine: 24
+    startLine: 26
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -165,6 +167,64 @@ items:
     return:
       type: System.Int32
     content.vb: Private Const DivisionByZeroExitCode As Integer = 206
+- uid: Pl0.Vm.VirtualMachine._rm
+  commentId: F:Pl0.Vm.VirtualMachine._rm
+  id: _rm
+  parent: Pl0.Vm.VirtualMachine
+  langs:
+  - csharp
+  - vb
+  name: _rm
+  nameWithType: VirtualMachine._rm
+  fullName: Pl0.Vm.VirtualMachine._rm
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/VirtualMachine.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: _rm
+    path: src/Pl0.Vm/VirtualMachine.cs
+    startLine: 31
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  summary: ResourceManager für lokalisierte Fehlertexte; wird in Run() gesetzt.
+  example: []
+  syntax:
+    content: private ResourceManager _rm
+    return:
+      type: System.Resources.ResourceManager
+    content.vb: Private _rm As ResourceManager
+- uid: Pl0.Vm.VirtualMachine._culture
+  commentId: F:Pl0.Vm.VirtualMachine._culture
+  id: _culture
+  parent: Pl0.Vm.VirtualMachine
+  langs:
+  - csharp
+  - vb
+  name: _culture
+  nameWithType: VirtualMachine._culture
+  fullName: Pl0.Vm.VirtualMachine._culture
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/VirtualMachine.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: _culture
+    path: src/Pl0.Vm/VirtualMachine.cs
+    startLine: 35
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  summary: Zielsprache für Fehlertexte; wird in Run() gesetzt.
+  example: []
+  syntax:
+    content: private CultureInfo _culture
+    return:
+      type: System.Globalization.CultureInfo
+    content.vb: Private _culture As CultureInfo
 - uid: Pl0.Vm.VirtualMachine.Run(System.Collections.Generic.IReadOnlyList{Pl0.Core.Instruction},Pl0.Vm.IPl0Io,Pl0.Vm.VirtualMachineOptions)
   commentId: M:Pl0.Vm.VirtualMachine.Run(System.Collections.Generic.IReadOnlyList{Pl0.Core.Instruction},Pl0.Vm.IPl0Io,Pl0.Vm.VirtualMachineOptions)
   id: Run(System.Collections.Generic.IReadOnlyList{Pl0.Core.Instruction},Pl0.Vm.IPl0Io,Pl0.Vm.VirtualMachineOptions)
@@ -179,11 +239,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VirtualMachine.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: Run
     path: src/Pl0.Vm/VirtualMachine.cs
-    startLine: 33
+    startLine: 44
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -223,18 +283,18 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VirtualMachine.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: ExecuteOpr
     path: src/Pl0.Vm/VirtualMachine.cs
-    startLine: 216
+    startLine: 243
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
   summary: Executes an OPR instruction.
   example: []
   syntax:
-    content: private static bool ExecuteOpr(int code, ref int p, ref int b, ref int t, int[] stack, IPl0Io io, VirtualMachineOptions options, IList<VmDiagnostic> diagnostics)
+    content: private bool ExecuteOpr(int code, ref int p, ref int b, ref int t, int[] stack, IPl0Io io, VirtualMachineOptions options, IList<VmDiagnostic> diagnostics)
     parameters:
     - id: code
       type: System.Int32
@@ -263,7 +323,7 @@ items:
     return:
       type: System.Boolean
       description: True if execution should continue.
-    content.vb: Private Shared Function ExecuteOpr(code As Integer, p As Integer, b As Integer, t As Integer, stack As Integer(), io As IPl0Io, options As VirtualMachineOptions, diagnostics As IList(Of VmDiagnostic)) As Boolean
+    content.vb: Private Function ExecuteOpr(code As Integer, p As Integer, b As Integer, t As Integer, stack As Integer(), io As IPl0Io, options As VirtualMachineOptions, diagnostics As IList(Of VmDiagnostic)) As Boolean
   overload: Pl0.Vm.VirtualMachine.ExecuteOpr*
   nameWithType.vb: VirtualMachine.ExecuteOpr(Integer, Integer, Integer, Integer, Integer(), IPl0Io, VirtualMachineOptions, IList(Of VmDiagnostic))
   fullName.vb: Pl0.Vm.VirtualMachine.ExecuteOpr(Integer, Integer, Integer, Integer, Integer(), Pl0.Vm.IPl0Io, Pl0.Vm.VirtualMachineOptions, System.Collections.Generic.IList(Of Pl0.Vm.VmDiagnostic))
@@ -282,18 +342,18 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VirtualMachine.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: BinaryOp
     path: src/Pl0.Vm/VirtualMachine.cs
-    startLine: 343
+    startLine: 382
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
   summary: Executes a binary operation on the stack.
   example: []
   syntax:
-    content: private static bool BinaryOp(ref int t, int[] stack, IList<VmDiagnostic> diagnostics, Func<int, int, int> op)
+    content: private bool BinaryOp(ref int t, int[] stack, IList<VmDiagnostic> diagnostics, Func<int, int, int> op)
     parameters:
     - id: t
       type: System.Int32
@@ -310,7 +370,7 @@ items:
     return:
       type: System.Boolean
       description: True if execution should continue.
-    content.vb: Private Shared Function BinaryOp(t As Integer, stack As Integer(), diagnostics As IList(Of VmDiagnostic), op As Func(Of Integer, Integer, Integer)) As Boolean
+    content.vb: Private Function BinaryOp(t As Integer, stack As Integer(), diagnostics As IList(Of VmDiagnostic), op As Func(Of Integer, Integer, Integer)) As Boolean
   overload: Pl0.Vm.VirtualMachine.BinaryOp*
   nameWithType.vb: VirtualMachine.BinaryOp(Integer, Integer(), IList(Of VmDiagnostic), Func(Of Integer, Integer, Integer))
   fullName.vb: Pl0.Vm.VirtualMachine.BinaryOp(Integer, Integer(), System.Collections.Generic.IList(Of Pl0.Vm.VmDiagnostic), System.Func(Of Integer, Integer, Integer))
@@ -329,18 +389,18 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VirtualMachine.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: ResolveBase
     path: src/Pl0.Vm/VirtualMachine.cs
-    startLine: 367
+    startLine: 406
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
   summary: Resolves the base pointer for a given lexical level.
   example: []
   syntax:
-    content: private static int ResolveBase(int level, int currentBase, int[] stack, IList<VmDiagnostic> diagnostics)
+    content: private int ResolveBase(int level, int currentBase, int[] stack, IList<VmDiagnostic> diagnostics)
     parameters:
     - id: level
       type: System.Int32
@@ -357,7 +417,7 @@ items:
     return:
       type: System.Int32
       description: Resolved base address.
-    content.vb: Private Shared Function ResolveBase(level As Integer, currentBase As Integer, stack As Integer(), diagnostics As IList(Of VmDiagnostic)) As Integer
+    content.vb: Private Function ResolveBase(level As Integer, currentBase As Integer, stack As Integer(), diagnostics As IList(Of VmDiagnostic)) As Integer
   overload: Pl0.Vm.VirtualMachine.ResolveBase*
   nameWithType.vb: VirtualMachine.ResolveBase(Integer, Integer, Integer(), IList(Of VmDiagnostic))
   fullName.vb: Pl0.Vm.VirtualMachine.ResolveBase(Integer, Integer, Integer(), System.Collections.Generic.IList(Of Pl0.Vm.VmDiagnostic))
@@ -376,18 +436,18 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VirtualMachine.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: TryPush
     path: src/Pl0.Vm/VirtualMachine.cs
-    startLine: 394
+    startLine: 436
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
   summary: Attempts to push a value onto the stack.
   example: []
   syntax:
-    content: private static bool TryPush(ref int t, int stackSize, IList<VmDiagnostic> diagnostics)
+    content: private bool TryPush(ref int t, int stackSize, IList<VmDiagnostic> diagnostics)
     parameters:
     - id: t
       type: System.Int32
@@ -401,7 +461,7 @@ items:
     return:
       type: System.Boolean
       description: True if push is possible.
-    content.vb: Private Shared Function TryPush(t As Integer, stackSize As Integer, diagnostics As IList(Of VmDiagnostic)) As Boolean
+    content.vb: Private Function TryPush(t As Integer, stackSize As Integer, diagnostics As IList(Of VmDiagnostic)) As Boolean
   overload: Pl0.Vm.VirtualMachine.TryPush*
   nameWithType.vb: VirtualMachine.TryPush(Integer, Integer, IList(Of VmDiagnostic))
   fullName.vb: Pl0.Vm.VirtualMachine.TryPush(Integer, Integer, System.Collections.Generic.IList(Of Pl0.Vm.VmDiagnostic))
@@ -420,18 +480,18 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VirtualMachine.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: TryPeek
     path: src/Pl0.Vm/VirtualMachine.cs
-    startLine: 412
+    startLine: 456
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
   summary: Ensures a stack index is valid for reading.
   example: []
   syntax:
-    content: private static bool TryPeek(int index, IList<VmDiagnostic> diagnostics)
+    content: private bool TryPeek(int index, IList<VmDiagnostic> diagnostics)
     parameters:
     - id: index
       type: System.Int32
@@ -442,7 +502,7 @@ items:
     return:
       type: System.Boolean
       description: True if the index is valid.
-    content.vb: Private Shared Function TryPeek(index As Integer, diagnostics As IList(Of VmDiagnostic)) As Boolean
+    content.vb: Private Function TryPeek(index As Integer, diagnostics As IList(Of VmDiagnostic)) As Boolean
   overload: Pl0.Vm.VirtualMachine.TryPeek*
   nameWithType.vb: VirtualMachine.TryPeek(Integer, IList(Of VmDiagnostic))
   fullName.vb: Pl0.Vm.VirtualMachine.TryPeek(Integer, System.Collections.Generic.IList(Of Pl0.Vm.VmDiagnostic))
@@ -461,11 +521,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VirtualMachine.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: IsValidStackIndex
     path: src/Pl0.Vm/VirtualMachine.cs
-    startLine: 429
+    startLine: 475
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -502,11 +562,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VirtualMachine.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: BuildResult
     path: src/Pl0.Vm/VirtualMachine.cs
-    startLine: 438
+    startLine: 484
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -779,6 +839,76 @@ references:
   nameWithType.vb: Integer
   fullName.vb: Integer
   name.vb: Integer
+- uid: System.Resources.ResourceManager
+  commentId: T:System.Resources.ResourceManager
+  parent: System.Resources
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.resources.resourcemanager
+  name: ResourceManager
+  nameWithType: ResourceManager
+  fullName: System.Resources.ResourceManager
+- uid: System.Resources
+  commentId: N:System.Resources
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Resources
+  nameWithType: System.Resources
+  fullName: System.Resources
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Resources
+    name: Resources
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.resources
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Resources
+    name: Resources
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.resources
+- uid: System.Globalization.CultureInfo
+  commentId: T:System.Globalization.CultureInfo
+  parent: System.Globalization
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.globalization.cultureinfo
+  name: CultureInfo
+  nameWithType: CultureInfo
+  fullName: System.Globalization.CultureInfo
+- uid: System.Globalization
+  commentId: N:System.Globalization
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Globalization
+  nameWithType: System.Globalization
+  fullName: System.Globalization
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Globalization
+    name: Globalization
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.globalization
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Globalization
+    name: Globalization
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.globalization
 - uid: Pl0.Vm.VirtualMachine.Run*
   commentId: Overload:Pl0.Vm.VirtualMachine.Run
   href: Pl0.Vm.VirtualMachine.html#Pl0_Vm_VirtualMachine_Run_System_Collections_Generic_IReadOnlyList_Pl0_Core_Instruction__Pl0_Vm_IPl0Io_Pl0_Vm_VirtualMachineOptions_

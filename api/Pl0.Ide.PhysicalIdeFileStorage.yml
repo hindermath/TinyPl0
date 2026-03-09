@@ -17,7 +17,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeFileStorage.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: PhysicalIdeFileStorage
     path: src/Pl0.Ide/IdeFileStorage.cs
@@ -53,7 +53,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeFileStorage.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: ReadAllText
     path: src/Pl0.Ide/IdeFileStorage.cs
@@ -90,7 +90,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeFileStorage.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: WriteAllText
     path: src/Pl0.Ide/IdeFileStorage.cs

@@ -14,35 +14,11 @@ OPCODE LEVEL ARG
 
 ## Instruktionen
 
-### LIT
+### LIT (0)
 
 Laedt eine Konstante auf den Stack.
 
-### LOD
-
-Laedt eine Variable von einer (LEVEL, ARG)-Adresse auf den Stack.
-
-### STO
-
-Speichert den Wert vom Stack in eine Variable an (LEVEL, ARG).
-
-### CAL
-
-Ruft eine Prozedur an der Zieladresse auf und legt einen neuen Stack-Frame an.
-
-### INT
-
-Reserviert Speicher auf dem Stack fuer lokale Variablen.
-
-### JMP
-
-Unbedingter Sprung zur Zieladresse.
-
-### JPC
-
-Bedingter Sprung zur Zieladresse, wenn der Stack-Top 0 (false) ist.
-
-### OPR
+### OPR (1)
 
 Fuehrt Operationen aus. Die Bedeutung von `ARG` ist:
 
@@ -61,5 +37,29 @@ Fuehrt Operationen aus. Die Bedeutung von `ARG` ist:
 - 13: Kleiner gleich
 - 14: Read (Eingabe)
 - 15: Write (Ausgabe)
+
+### LOD (2)
+
+Laedt eine Variable von einer (LEVEL, ARG)-Adresse auf den Stack.
+
+### STO (3)
+
+Speichert den Wert vom Stack in eine Variable an (LEVEL, ARG).
+
+### CAL (4)
+
+Ruft eine Prozedur an der Zieladresse auf und legt einen neuen Stack-Frame an.
+
+### INT (5)
+
+Reserviert Speicher auf dem Stack fuer lokale Variablen.
+
+### JMP (6)
+
+Unbedingter Sprung zur Zieladresse.
+
+### JPC (7)
+
+Bedingter Sprung zur Zieladresse, wenn der Stack-Top 0 (false) ist.
 
 Die vollstaendige Referenz wird zusaetzlich aus dem VM-Instruction-Set kuratiert eingebunden.

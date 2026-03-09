@@ -16,7 +16,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMessageDialogService.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: IIdeAboutDialogService
     path: src/Pl0.Ide/IdeMessageDialogService.cs
@@ -41,7 +41,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMessageDialogService.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: ShowAboutDialog
     path: src/Pl0.Ide/IdeMessageDialogService.cs

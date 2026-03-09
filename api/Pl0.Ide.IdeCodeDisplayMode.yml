@@ -17,7 +17,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeCodeDisplayMode.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: IdeCodeDisplayMode
     path: src/Pl0.Ide/IdeCodeDisplayMode.cs
@@ -42,7 +42,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeCodeDisplayMode.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: PCode
     path: src/Pl0.Ide/IdeCodeDisplayMode.cs
@@ -68,7 +68,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeCodeDisplayMode.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: Assembler
     path: src/Pl0.Ide/IdeCodeDisplayMode.cs

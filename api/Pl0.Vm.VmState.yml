@@ -21,7 +21,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmState.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: VmState
     path: src/Pl0.Vm/VmState.cs
@@ -59,7 +59,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmState.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: .ctor
     path: src/Pl0.Vm/VmState.cs
@@ -106,7 +106,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmState.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: P
     path: src/Pl0.Vm/VmState.cs
@@ -137,7 +137,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmState.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: B
     path: src/Pl0.Vm/VmState.cs
@@ -168,7 +168,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmState.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: T
     path: src/Pl0.Vm/VmState.cs
@@ -199,7 +199,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmState.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: Stack
     path: src/Pl0.Vm/VmState.cs
@@ -230,7 +230,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmState.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: CurrentInstruction
     path: src/Pl0.Vm/VmState.cs

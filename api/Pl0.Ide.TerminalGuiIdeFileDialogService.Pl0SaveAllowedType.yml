@@ -17,7 +17,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeFileDialogService.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: Pl0SaveAllowedType
     path: src/Pl0.Ide/IdeFileDialogService.cs
@@ -52,7 +52,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeFileDialogService.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: IsAllowed
     path: src/Pl0.Ide/IdeFileDialogService.cs
@@ -95,7 +95,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeFileDialogService.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: ToString
     path: src/Pl0.Ide/IdeFileDialogService.cs

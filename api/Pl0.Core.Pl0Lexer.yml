@@ -21,10 +21,12 @@ items:
   - Pl0.Core.Pl0Lexer.ReportUnexpectedCharacter(System.Char)
   - Pl0.Core.Pl0Lexer.SkipWhiteSpace
   - Pl0.Core.Pl0Lexer._column
+  - Pl0.Core.Pl0Lexer._culture
   - Pl0.Core.Pl0Lexer._diagnostics
   - Pl0.Core.Pl0Lexer._index
   - Pl0.Core.Pl0Lexer._line
   - Pl0.Core.Pl0Lexer._options
+  - Pl0.Core.Pl0Lexer._rm
   - Pl0.Core.Pl0Lexer._text
   - Pl0.Core.Pl0Lexer._tokens
   langs:
@@ -37,15 +39,15 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: Pl0Lexer
     path: src/Pl0.Core/Pl0Lexer.cs
-    startLine: 7
+    startLine: 8
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
-  summary: Tokenizes PL/0 source code into a sequence of tokens with diagnostics.
+  summary: Tokenisiert PL/0-Quellcode in eine Folge von Token mit Diagnosen.
   example: []
   syntax:
     content: public sealed class Pl0Lexer
@@ -73,15 +75,15 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: _options
     path: src/Pl0.Core/Pl0Lexer.cs
-    startLine: 12
+    startLine: 13
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
-  summary: Compiler options controlling lexer limits and dialects.
+  summary: Compiler-Optionen für Grenzwerte und Dialekte.
   example: []
   syntax:
     content: private readonly CompilerOptions _options
@@ -102,15 +104,15 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: _text
     path: src/Pl0.Core/Pl0Lexer.cs
-    startLine: 16
+    startLine: 17
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
-  summary: Source text being tokenized.
+  summary: Zu tokenisierender Quelltext.
   example: []
   syntax:
     content: private readonly string _text
@@ -131,15 +133,15 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: _tokens
     path: src/Pl0.Core/Pl0Lexer.cs
-    startLine: 20
+    startLine: 21
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
-  summary: Accumulated tokens.
+  summary: Gesammelte Token.
   example: []
   syntax:
     content: private readonly List<Pl0Token> _tokens
@@ -160,15 +162,15 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: _diagnostics
     path: src/Pl0.Core/Pl0Lexer.cs
-    startLine: 24
+    startLine: 25
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
-  summary: Accumulated lexer diagnostics.
+  summary: Gesammelte Lexer-Diagnosen.
   example: []
   syntax:
     content: private readonly List<LexerDiagnostic> _diagnostics
@@ -189,15 +191,15 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: _index
     path: src/Pl0.Core/Pl0Lexer.cs
-    startLine: 28
+    startLine: 29
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
-  summary: Current absolute index in the source text.
+  summary: Aktueller absoluter Index im Quelltext.
   example: []
   syntax:
     content: private int _index
@@ -218,15 +220,15 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: _line
     path: src/Pl0.Core/Pl0Lexer.cs
-    startLine: 32
+    startLine: 33
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
-  summary: Current 1-based line number.
+  summary: Aktuelle 1-basierte Zeilennummer.
   example: []
   syntax:
     content: private int _line
@@ -247,21 +249,79 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: _column
     path: src/Pl0.Core/Pl0Lexer.cs
-    startLine: 36
+    startLine: 37
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
-  summary: Current 1-based column number.
+  summary: Aktuelle 1-basierte Spaltennummer.
   example: []
   syntax:
     content: private int _column
     return:
       type: System.Int32
     content.vb: Private _column As Integer
+- uid: Pl0.Core.Pl0Lexer._rm
+  commentId: F:Pl0.Core.Pl0Lexer._rm
+  id: _rm
+  parent: Pl0.Core.Pl0Lexer
+  langs:
+  - csharp
+  - vb
+  name: _rm
+  nameWithType: Pl0Lexer._rm
+  fullName: Pl0.Core.Pl0Lexer._rm
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Core/Pl0Lexer.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: _rm
+    path: src/Pl0.Core/Pl0Lexer.cs
+    startLine: 41
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  summary: ResourceManager für lokalisierte Fehlertexte.
+  example: []
+  syntax:
+    content: private readonly ResourceManager _rm
+    return:
+      type: System.Resources.ResourceManager
+    content.vb: Private ReadOnly _rm As ResourceManager
+- uid: Pl0.Core.Pl0Lexer._culture
+  commentId: F:Pl0.Core.Pl0Lexer._culture
+  id: _culture
+  parent: Pl0.Core.Pl0Lexer
+  langs:
+  - csharp
+  - vb
+  name: _culture
+  nameWithType: Pl0Lexer._culture
+  fullName: Pl0.Core.Pl0Lexer._culture
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Core/Pl0Lexer.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: _culture
+    path: src/Pl0.Core/Pl0Lexer.cs
+    startLine: 45
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  summary: Zielsprache für Fehlertexte.
+  example: []
+  syntax:
+    content: private readonly CultureInfo _culture
+    return:
+      type: System.Globalization.CultureInfo
+    content.vb: Private ReadOnly _culture As CultureInfo
 - uid: Pl0.Core.Pl0Lexer.#ctor(System.String,Pl0.Core.CompilerOptions)
   commentId: M:Pl0.Core.Pl0Lexer.#ctor(System.String,Pl0.Core.CompilerOptions)
   id: '#ctor(System.String,Pl0.Core.CompilerOptions)'
@@ -276,25 +336,25 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: .ctor
     path: src/Pl0.Core/Pl0Lexer.cs
-    startLine: 43
+    startLine: 52
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
-  summary: Creates a lexer for the provided source text.
+  summary: Erstellt einen Lexer für den angegebenen Quelltext.
   example: []
   syntax:
     content: public Pl0Lexer(string text, CompilerOptions? options = null)
     parameters:
     - id: text
       type: System.String
-      description: The PL/0 source text.
+      description: Der PL/0-Quelltext.
     - id: options
       type: Pl0.Core.CompilerOptions
-      description: Optional compiler options; defaults are used when null.
+      description: Optionale Compiler-Optionen; Standard wird verwendet wenn null.
     content.vb: Public Sub New(text As String, options As CompilerOptions = Nothing)
   overload: Pl0.Core.Pl0Lexer.#ctor*
   nameWithType.vb: Pl0Lexer.New(String, CompilerOptions)
@@ -314,21 +374,21 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: Lex
     path: src/Pl0.Core/Pl0Lexer.cs
-    startLine: 53
+    startLine: 64
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
-  summary: Performs lexical analysis and returns tokens and diagnostics.
+  summary: Führt die lexikalische Analyse durch und gibt Token und Diagnosen zurück.
   example: []
   syntax:
     content: public LexerResult Lex()
     return:
       type: Pl0.Core.LexerResult
-      description: The lexer result with tokens and diagnostics.
+      description: Das Lexer-Ergebnis mit Token und Diagnosen.
     content.vb: Public Function Lex() As LexerResult
   overload: Pl0.Core.Pl0Lexer.Lex*
 - uid: Pl0.Core.Pl0Lexer.Current
@@ -345,15 +405,15 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: Current
     path: src/Pl0.Core/Pl0Lexer.cs
-    startLine: 148
+    startLine: 159
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
-  summary: Gets the current character or null terminator at end of input.
+  summary: Gibt das aktuelle Zeichen oder den Null-Terminator am Eingabeende zurück.
   example: []
   syntax:
     content: private char Current { get; }
@@ -376,25 +436,25 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: Peek
     path: src/Pl0.Core/Pl0Lexer.cs
-    startLine: 155
+    startLine: 166
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
-  summary: Peeks ahead by a given offset without advancing.
+  summary: Liest voraus um einen gegebenen Offset ohne Vorrücken.
   example: []
   syntax:
     content: private char Peek(int offset)
     parameters:
     - id: offset
       type: System.Int32
-      description: Character offset from current index.
+      description: Zeichen-Offset vom aktuellen Index.
     return:
       type: System.Char
-      description: The character at the offset or null terminator.
+      description: Das Zeichen am Offset oder Null-Terminator.
     content.vb: Private Function Peek(offset As Integer) As Char
   overload: Pl0.Core.Pl0Lexer.Peek*
   nameWithType.vb: Pl0Lexer.Peek(Integer)
@@ -414,15 +474,15 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: CurrentPosition
     path: src/Pl0.Core/Pl0Lexer.cs
-    startLine: 164
+    startLine: 175
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
-  summary: Gets the current text position.
+  summary: Gibt die aktuelle Textposition zurück.
   example: []
   syntax:
     content: private TextPosition CurrentPosition { get; }
@@ -445,15 +505,15 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: Advance
     path: src/Pl0.Core/Pl0Lexer.cs
-    startLine: 169
+    startLine: 180
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
-  summary: Advances the lexer by one character, updating line and column counters.
+  summary: Rückt den Lexer um ein Zeichen vor und aktualisiert Zeilen- und Spaltenzähler.
   example: []
   syntax:
     content: private void Advance()
@@ -473,15 +533,15 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: SkipWhiteSpace
     path: src/Pl0.Core/Pl0Lexer.cs
-    startLine: 191
+    startLine: 202
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
-  summary: Skips whitespace characters.
+  summary: Überspringt Leerzeichen.
   example: []
   syntax:
     content: private void SkipWhiteSpace()
@@ -501,22 +561,22 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: AddSingleCharToken
     path: src/Pl0.Core/Pl0Lexer.cs
-    startLine: 203
+    startLine: 214
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
-  summary: Adds a token that is represented by a single character.
+  summary: Fügt ein Token hinzu, das durch ein einzelnes Zeichen repräsentiert wird.
   example: []
   syntax:
     content: private void AddSingleCharToken(TokenKind kind)
     parameters:
     - id: kind
       type: Pl0.Core.TokenKind
-      description: Token kind to emit.
+      description: Auszugebende Token-Art.
     content.vb: Private Sub AddSingleCharToken(kind As TokenKind)
   overload: Pl0.Core.Pl0Lexer.AddSingleCharToken*
 - uid: Pl0.Core.Pl0Lexer.LexIdentifierOrKeyword
@@ -533,15 +593,15 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: LexIdentifierOrKeyword
     path: src/Pl0.Core/Pl0Lexer.cs
-    startLine: 214
+    startLine: 225
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
-  summary: Lexes an identifier or keyword token.
+  summary: Liest einen Bezeichner oder ein Schlüsselwort-Token.
   example: []
   syntax:
     content: private void LexIdentifierOrKeyword()
@@ -561,15 +621,15 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: LexNumber
     path: src/Pl0.Core/Pl0Lexer.cs
-    startLine: 238
+    startLine: 252
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
-  summary: Lexes a numeric literal token.
+  summary: Liest ein numerisches Literal-Token.
   example: []
   syntax:
     content: private void LexNumber()
@@ -589,15 +649,15 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: LexLessOrLessEqual
     path: src/Pl0.Core/Pl0Lexer.cs
-    startLine: 271
+    startLine: 294
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
-  summary: Lexes the &lt; or &lt;= operator.
+  summary: Liest den &lt;- oder &lt;=-Operator.
   example: []
   syntax:
     content: private void LexLessOrLessEqual()
@@ -617,15 +677,15 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: LexGreaterOrGreaterEqual
     path: src/Pl0.Core/Pl0Lexer.cs
-    startLine: 289
+    startLine: 312
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
-  summary: Lexes the &gt; or &gt;= operator.
+  summary: Liest den &gt;- oder &gt;=-Operator.
   example: []
   syntax:
     content: private void LexGreaterOrGreaterEqual()
@@ -645,15 +705,15 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: LexBecomesOrDiagnostic
     path: src/Pl0.Core/Pl0Lexer.cs
-    startLine: 307
+    startLine: 330
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
-  summary: Lexes the := operator or reports an error for a bare ':'.
+  summary: Liest den :=-Operator oder meldet einen Fehler für ein einzelnes ':'.
   example: []
   syntax:
     content: private void LexBecomesOrDiagnostic()
@@ -673,22 +733,22 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: ReportUnexpectedCharacter
     path: src/Pl0.Core/Pl0Lexer.cs
-    startLine: 328
+    startLine: 355
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
-  summary: Reports a diagnostic for an unexpected character.
+  summary: Meldet eine Diagnose für ein unerwartetes Zeichen.
   example: []
   syntax:
     content: private void ReportUnexpectedCharacter(char ch)
     parameters:
     - id: ch
       type: System.Char
-      description: The unexpected character.
+      description: Das unerwartete Zeichen.
     content.vb: Private Sub ReportUnexpectedCharacter(ch As Char)
   overload: Pl0.Core.Pl0Lexer.ReportUnexpectedCharacter*
   nameWithType.vb: Pl0Lexer.ReportUnexpectedCharacter(Char)
@@ -708,25 +768,25 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: MapIdentifierKind
     path: src/Pl0.Core/Pl0Lexer.cs
-    startLine: 341
+    startLine: 371
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
-  summary: Maps an identifier lexeme to its keyword token kind when applicable.
+  summary: Ordnet ein Bezeichner-Lexem seiner Schlüsselwort-Token-Art zu, wenn zutreffend.
   example: []
   syntax:
     content: private static TokenKind MapIdentifierKind(string lexeme)
     parameters:
     - id: lexeme
       type: System.String
-      description: The identifier text.
+      description: Der Bezeichnertext.
     return:
       type: Pl0.Core.TokenKind
-      description: The token kind for the lexeme.
+      description: Die Token-Art für das Lexem.
     content.vb: Private Shared Function MapIdentifierKind(lexeme As String) As TokenKind
   overload: Pl0.Core.Pl0Lexer.MapIdentifierKind*
   nameWithType.vb: Pl0Lexer.MapIdentifierKind(String)
@@ -1128,6 +1188,76 @@ references:
   nameWithType.vb: Integer
   fullName.vb: Integer
   name.vb: Integer
+- uid: System.Resources.ResourceManager
+  commentId: T:System.Resources.ResourceManager
+  parent: System.Resources
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.resources.resourcemanager
+  name: ResourceManager
+  nameWithType: ResourceManager
+  fullName: System.Resources.ResourceManager
+- uid: System.Resources
+  commentId: N:System.Resources
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Resources
+  nameWithType: System.Resources
+  fullName: System.Resources
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Resources
+    name: Resources
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.resources
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Resources
+    name: Resources
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.resources
+- uid: System.Globalization.CultureInfo
+  commentId: T:System.Globalization.CultureInfo
+  parent: System.Globalization
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.globalization.cultureinfo
+  name: CultureInfo
+  nameWithType: CultureInfo
+  fullName: System.Globalization.CultureInfo
+- uid: System.Globalization
+  commentId: N:System.Globalization
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Globalization
+  nameWithType: System.Globalization
+  fullName: System.Globalization
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Globalization
+    name: Globalization
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.globalization
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Globalization
+    name: Globalization
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.globalization
 - uid: Pl0.Core.Pl0Lexer.#ctor*
   commentId: Overload:Pl0.Core.Pl0Lexer.#ctor
   href: Pl0.Core.Pl0Lexer.html#Pl0_Core_Pl0Lexer__ctor_System_String_Pl0_Core_CompilerOptions_

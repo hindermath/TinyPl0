@@ -13,6 +13,7 @@ items:
   - Pl0.Core.Opcode
   - Pl0.Core.PCodeSerializer
   - Pl0.Core.Pl0Compiler
+  - Pl0.Core.Pl0CoreMessages
   - Pl0.Core.Pl0Dialect
   - Pl0.Core.Pl0Lexer
   - Pl0.Core.Pl0Parser
@@ -119,6 +120,12 @@ references:
   name: Pl0Token
   nameWithType: Pl0Token
   fullName: Pl0.Core.Pl0Token
+- uid: Pl0.Core.Pl0CoreMessages
+  commentId: T:Pl0.Core.Pl0CoreMessages
+  href: Pl0.Core.Pl0CoreMessages.html
+  name: Pl0CoreMessages
+  nameWithType: Pl0CoreMessages
+  fullName: Pl0.Core.Pl0CoreMessages
 - uid: Pl0.Core.SymbolEntry
   commentId: T:Pl0.Core.SymbolEntry
   parent: Pl0.Core

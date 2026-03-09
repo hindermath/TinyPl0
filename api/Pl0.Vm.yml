@@ -7,6 +7,7 @@ items:
   - Pl0.Vm.BufferedPl0Io
   - Pl0.Vm.ConsolePl0Io
   - Pl0.Vm.IPl0Io
+  - Pl0.Vm.Pl0VmMessages
   - Pl0.Vm.SteppableVirtualMachine
   - Pl0.Vm.VirtualMachine
   - Pl0.Vm.VirtualMachineOptions
@@ -44,6 +45,12 @@ references:
   name: IPl0Io
   nameWithType: IPl0Io
   fullName: Pl0.Vm.IPl0Io
+- uid: Pl0.Vm.Pl0VmMessages
+  commentId: T:Pl0.Vm.Pl0VmMessages
+  href: Pl0.Vm.Pl0VmMessages.html
+  name: Pl0VmMessages
+  nameWithType: Pl0VmMessages
+  fullName: Pl0.Vm.Pl0VmMessages
 - uid: Pl0.Vm.SteppableVirtualMachine
   commentId: T:Pl0.Vm.SteppableVirtualMachine
   parent: Pl0.Vm

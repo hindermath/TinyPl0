@@ -17,7 +17,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/Program.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: Program
     path: src/Pl0.Ide/Program.cs
@@ -52,7 +52,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/Program.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: Main
     path: src/Pl0.Ide/Program.cs
@@ -80,7 +80,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/Program.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: CreateApplication
     path: src/Pl0.Ide/Program.cs

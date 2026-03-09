@@ -25,7 +25,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeFileDialogService.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: TerminalGuiIdeFileDialogService
     path: src/Pl0.Ide/IdeFileDialogService.cs
@@ -61,7 +61,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeFileDialogService.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: ShowOpenDialog
     path: src/Pl0.Ide/IdeFileDialogService.cs
@@ -92,7 +92,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeFileDialogService.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: ShowSaveDialog
     path: src/Pl0.Ide/IdeFileDialogService.cs
@@ -129,7 +129,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeFileDialogService.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: ShowExportDialog
     path: src/Pl0.Ide/IdeFileDialogService.cs
@@ -168,7 +168,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeFileDialogService.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: ResolveSelectedPath
     path: src/Pl0.Ide/IdeFileDialogService.cs
@@ -206,7 +206,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeFileDialogService.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: CombineWithBasePathOrCurrentDirectory
     path: src/Pl0.Ide/IdeFileDialogService.cs
@@ -242,7 +242,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeFileDialogService.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: DetermineBaseDirectory
     path: src/Pl0.Ide/IdeFileDialogService.cs
@@ -276,7 +276,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeFileDialogService.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: CreateOpenAllowedTypes
     path: src/Pl0.Ide/IdeFileDialogService.cs
@@ -304,7 +304,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeFileDialogService.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: CreateSaveAllowedTypes
     path: src/Pl0.Ide/IdeFileDialogService.cs
@@ -332,7 +332,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeFileDialogService.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: CreateExportAsmAllowedTypes
     path: src/Pl0.Ide/IdeFileDialogService.cs
@@ -360,7 +360,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeFileDialogService.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: CreateExportCodAllowedTypes
     path: src/Pl0.Ide/IdeFileDialogService.cs

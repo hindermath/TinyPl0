@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: Pl0.Cli
+  commentId: N:Pl0.Cli
+  id: Pl0.Cli
+  children:
+  - Pl0.Cli.Pl0CliMessages
+  langs:
+  - csharp
+  - vb
+  name: Pl0.Cli
+  nameWithType: Pl0.Cli
+  fullName: Pl0.Cli
+  type: Namespace
+  assemblies:
+  - Pl0.Cli
+references:
+- uid: Pl0.Cli.Pl0CliMessages
+  commentId: T:Pl0.Cli.Pl0CliMessages
+  href: Pl0.Cli.Pl0CliMessages.html
+  name: Pl0CliMessages
+  nameWithType: Pl0CliMessages
+  fullName: Pl0.Cli.Pl0CliMessages

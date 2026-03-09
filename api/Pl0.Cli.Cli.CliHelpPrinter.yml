@@ -6,7 +6,9 @@ items:
   parent: Pl0.Cli.Cli
   children:
   - Pl0.Cli.Cli.CliHelpPrinter.GetUsageLines(System.String)
+  - Pl0.Cli.Cli.CliHelpPrinter.GetUsageLines(System.String,System.Resources.ResourceManager,System.Globalization.CultureInfo)
   - Pl0.Cli.Cli.CliHelpPrinter.PrintUsage(System.IO.TextWriter,System.String)
+  - Pl0.Cli.Cli.CliHelpPrinter.PrintUsage(System.IO.TextWriter,System.String,System.Resources.ResourceManager,System.Globalization.CultureInfo)
   langs:
   - csharp
   - vb
@@ -17,15 +19,15 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CliHelpPrinter.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: CliHelpPrinter
     path: src/Pl0.Cli/Cli/CliHelpPrinter.cs
-    startLine: 5
+    startLine: 8
   assemblies:
   - Pl0.Cli
   namespace: Pl0.Cli.Cli
-  summary: Prints CLI usage information.
+  summary: Gibt CLI-Hilfetexte aus.
   example: []
   syntax:
     content: public static class CliHelpPrinter
@@ -54,30 +56,74 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CliHelpPrinter.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: PrintUsage
     path: src/Pl0.Cli/Cli/CliHelpPrinter.cs
-    startLine: 12
+    startLine: 15
   assemblies:
   - Pl0.Cli
   namespace: Pl0.Cli.Cli
-  summary: Writes usage lines to the provided writer.
+  summary: Schreibt Verwendungszeilen in den angegebenen Writer.
   example: []
   syntax:
     content: public static void PrintUsage(TextWriter writer, string executableName)
     parameters:
     - id: writer
       type: System.IO.TextWriter
-      description: Destination writer.
+      description: Ziel-Writer.
     - id: executableName
       type: System.String
-      description: Executable name to display.
+      description: Anzeigename der ausführbaren Datei.
     content.vb: Public Shared Sub PrintUsage(writer As TextWriter, executableName As String)
   overload: Pl0.Cli.Cli.CliHelpPrinter.PrintUsage*
   nameWithType.vb: CliHelpPrinter.PrintUsage(TextWriter, String)
   fullName.vb: Pl0.Cli.Cli.CliHelpPrinter.PrintUsage(System.IO.TextWriter, String)
   name.vb: PrintUsage(TextWriter, String)
+- uid: Pl0.Cli.Cli.CliHelpPrinter.PrintUsage(System.IO.TextWriter,System.String,System.Resources.ResourceManager,System.Globalization.CultureInfo)
+  commentId: M:Pl0.Cli.Cli.CliHelpPrinter.PrintUsage(System.IO.TextWriter,System.String,System.Resources.ResourceManager,System.Globalization.CultureInfo)
+  id: PrintUsage(System.IO.TextWriter,System.String,System.Resources.ResourceManager,System.Globalization.CultureInfo)
+  parent: Pl0.Cli.Cli.CliHelpPrinter
+  langs:
+  - csharp
+  - vb
+  name: PrintUsage(TextWriter, string, ResourceManager, CultureInfo)
+  nameWithType: CliHelpPrinter.PrintUsage(TextWriter, string, ResourceManager, CultureInfo)
+  fullName: Pl0.Cli.Cli.CliHelpPrinter.PrintUsage(System.IO.TextWriter, string, System.Resources.ResourceManager, System.Globalization.CultureInfo)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Cli/Cli/CliHelpPrinter.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: PrintUsage
+    path: src/Pl0.Cli/Cli/CliHelpPrinter.cs
+    startLine: 30
+  assemblies:
+  - Pl0.Cli
+  namespace: Pl0.Cli.Cli
+  summary: Schreibt Verwendungszeilen in den angegebenen Writer mit lokalisiertem ResourceManager.
+  example: []
+  syntax:
+    content: public static void PrintUsage(TextWriter writer, string executableName, ResourceManager rm, CultureInfo culture)
+    parameters:
+    - id: writer
+      type: System.IO.TextWriter
+      description: Ziel-Writer.
+    - id: executableName
+      type: System.String
+      description: Anzeigename der ausführbaren Datei.
+    - id: rm
+      type: System.Resources.ResourceManager
+      description: ResourceManager für Hilfetexte.
+    - id: culture
+      type: System.Globalization.CultureInfo
+      description: Zielsprache.
+    content.vb: Public Shared Sub PrintUsage(writer As TextWriter, executableName As String, rm As ResourceManager, culture As CultureInfo)
+  overload: Pl0.Cli.Cli.CliHelpPrinter.PrintUsage*
+  nameWithType.vb: CliHelpPrinter.PrintUsage(TextWriter, String, ResourceManager, CultureInfo)
+  fullName.vb: Pl0.Cli.Cli.CliHelpPrinter.PrintUsage(System.IO.TextWriter, String, System.Resources.ResourceManager, System.Globalization.CultureInfo)
+  name.vb: PrintUsage(TextWriter, String, ResourceManager, CultureInfo)
 - uid: Pl0.Cli.Cli.CliHelpPrinter.GetUsageLines(System.String)
   commentId: M:Pl0.Cli.Cli.CliHelpPrinter.GetUsageLines(System.String)
   id: GetUsageLines(System.String)
@@ -92,30 +138,74 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CliHelpPrinter.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: GetUsageLines
     path: src/Pl0.Cli/Cli/CliHelpPrinter.cs
-    startLine: 25
+    startLine: 43
   assemblies:
   - Pl0.Cli
   namespace: Pl0.Cli.Cli
-  summary: Returns the usage lines for the CLI.
+  summary: Gibt die Verwendungszeilen für die CLI zurück (Standardsprache Deutsch).
   example: []
   syntax:
     content: public static IReadOnlyList<string> GetUsageLines(string executableName)
     parameters:
     - id: executableName
       type: System.String
-      description: Executable name to display.
+      description: Anzeigename der ausführbaren Datei.
     return:
       type: System.Collections.Generic.IReadOnlyList{System.String}
-      description: List of usage lines.
+      description: Liste der Verwendungszeilen.
     content.vb: Public Shared Function GetUsageLines(executableName As String) As IReadOnlyList(Of String)
   overload: Pl0.Cli.Cli.CliHelpPrinter.GetUsageLines*
   nameWithType.vb: CliHelpPrinter.GetUsageLines(String)
   fullName.vb: Pl0.Cli.Cli.CliHelpPrinter.GetUsageLines(String)
   name.vb: GetUsageLines(String)
+- uid: Pl0.Cli.Cli.CliHelpPrinter.GetUsageLines(System.String,System.Resources.ResourceManager,System.Globalization.CultureInfo)
+  commentId: M:Pl0.Cli.Cli.CliHelpPrinter.GetUsageLines(System.String,System.Resources.ResourceManager,System.Globalization.CultureInfo)
+  id: GetUsageLines(System.String,System.Resources.ResourceManager,System.Globalization.CultureInfo)
+  parent: Pl0.Cli.Cli.CliHelpPrinter
+  langs:
+  - csharp
+  - vb
+  name: GetUsageLines(string, ResourceManager, CultureInfo)
+  nameWithType: CliHelpPrinter.GetUsageLines(string, ResourceManager, CultureInfo)
+  fullName: Pl0.Cli.Cli.CliHelpPrinter.GetUsageLines(string, System.Resources.ResourceManager, System.Globalization.CultureInfo)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Cli/Cli/CliHelpPrinter.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: GetUsageLines
+    path: src/Pl0.Cli/Cli/CliHelpPrinter.cs
+    startLine: 53
+  assemblies:
+  - Pl0.Cli
+  namespace: Pl0.Cli.Cli
+  summary: Gibt die Verwendungszeilen für die CLI zurück, lokalisiert über den angegebenen ResourceManager.
+  example: []
+  syntax:
+    content: public static IReadOnlyList<string> GetUsageLines(string executableName, ResourceManager rm, CultureInfo culture)
+    parameters:
+    - id: executableName
+      type: System.String
+      description: Anzeigename der ausführbaren Datei.
+    - id: rm
+      type: System.Resources.ResourceManager
+      description: ResourceManager für Hilfetexte.
+    - id: culture
+      type: System.Globalization.CultureInfo
+      description: Zielsprache.
+    return:
+      type: System.Collections.Generic.IReadOnlyList{System.String}
+      description: Liste der Verwendungszeilen.
+    content.vb: Public Shared Function GetUsageLines(executableName As String, rm As ResourceManager, culture As CultureInfo) As IReadOnlyList(Of String)
+  overload: Pl0.Cli.Cli.CliHelpPrinter.GetUsageLines*
+  nameWithType.vb: CliHelpPrinter.GetUsageLines(String, ResourceManager, CultureInfo)
+  fullName.vb: Pl0.Cli.Cli.CliHelpPrinter.GetUsageLines(String, System.Resources.ResourceManager, System.Globalization.CultureInfo)
+  name.vb: GetUsageLines(String, ResourceManager, CultureInfo)
 references:
 - uid: Pl0.Cli.Cli
   commentId: N:Pl0.Cli.Cli
@@ -436,6 +526,76 @@ references:
     name: IO
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.io
+- uid: System.Resources.ResourceManager
+  commentId: T:System.Resources.ResourceManager
+  parent: System.Resources
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.resources.resourcemanager
+  name: ResourceManager
+  nameWithType: ResourceManager
+  fullName: System.Resources.ResourceManager
+- uid: System.Globalization.CultureInfo
+  commentId: T:System.Globalization.CultureInfo
+  parent: System.Globalization
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.globalization.cultureinfo
+  name: CultureInfo
+  nameWithType: CultureInfo
+  fullName: System.Globalization.CultureInfo
+- uid: System.Resources
+  commentId: N:System.Resources
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Resources
+  nameWithType: System.Resources
+  fullName: System.Resources
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Resources
+    name: Resources
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.resources
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Resources
+    name: Resources
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.resources
+- uid: System.Globalization
+  commentId: N:System.Globalization
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Globalization
+  nameWithType: System.Globalization
+  fullName: System.Globalization
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Globalization
+    name: Globalization
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.globalization
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Globalization
+    name: Globalization
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.globalization
 - uid: Pl0.Cli.Cli.CliHelpPrinter.GetUsageLines*
   commentId: Overload:Pl0.Cli.Cli.CliHelpPrinter.GetUsageLines
   href: Pl0.Cli.Cli.CliHelpPrinter.html#Pl0_Cli_Cli_CliHelpPrinter_GetUsageLines_System_String_

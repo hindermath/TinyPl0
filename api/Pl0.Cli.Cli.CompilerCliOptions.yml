@@ -9,6 +9,7 @@ items:
   - Pl0.Cli.Cli.CompilerCliOptions.CompileOnly
   - Pl0.Cli.Cli.CompilerCliOptions.EmitMode
   - Pl0.Cli.Cli.CompilerCliOptions.EmitRequested
+  - Pl0.Cli.Cli.CompilerCliOptions.Language
   - Pl0.Cli.Cli.CompilerCliOptions.ListCode
   - Pl0.Cli.Cli.CompilerCliOptions.LongErrorMessages
   - Pl0.Cli.Cli.CompilerCliOptions.OutputPath
@@ -26,7 +27,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CompilerCliOptions.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: CompilerCliOptions
     path: src/Pl0.Cli/Cli/CompilerCliOptions.cs
@@ -62,7 +63,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CompilerCliOptions.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: Command
     path: src/Pl0.Cli/Cli/CompilerCliOptions.cs
@@ -93,7 +94,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CompilerCliOptions.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: ShowHelp
     path: src/Pl0.Cli/Cli/CompilerCliOptions.cs
@@ -124,7 +125,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CompilerCliOptions.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: LongErrorMessages
     path: src/Pl0.Cli/Cli/CompilerCliOptions.cs
@@ -155,7 +156,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CompilerCliOptions.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: WriteOpcodesInListing
     path: src/Pl0.Cli/Cli/CompilerCliOptions.cs
@@ -186,7 +187,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CompilerCliOptions.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: ListCode
     path: src/Pl0.Cli/Cli/CompilerCliOptions.cs
@@ -217,7 +218,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CompilerCliOptions.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: CompileOnly
     path: src/Pl0.Cli/Cli/CompilerCliOptions.cs
@@ -248,7 +249,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CompilerCliOptions.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: EmitRequested
     path: src/Pl0.Cli/Cli/CompilerCliOptions.cs
@@ -279,7 +280,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CompilerCliOptions.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: ShowApi
     path: src/Pl0.Cli/Cli/CompilerCliOptions.cs
@@ -310,7 +311,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CompilerCliOptions.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: EmitMode
     path: src/Pl0.Cli/Cli/CompilerCliOptions.cs
@@ -341,7 +342,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CompilerCliOptions.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: SourcePath
     path: src/Pl0.Cli/Cli/CompilerCliOptions.cs
@@ -372,7 +373,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CompilerCliOptions.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: OutputPath
     path: src/Pl0.Cli/Cli/CompilerCliOptions.cs
@@ -389,6 +390,37 @@ items:
       type: System.String
     content.vb: Public Property OutputPath As String
   overload: Pl0.Cli.Cli.CompilerCliOptions.OutputPath*
+- uid: Pl0.Cli.Cli.CompilerCliOptions.Language
+  commentId: P:Pl0.Cli.Cli.CompilerCliOptions.Language
+  id: Language
+  parent: Pl0.Cli.Cli.CompilerCliOptions
+  langs:
+  - csharp
+  - vb
+  name: Language
+  nameWithType: CompilerCliOptions.Language
+  fullName: Pl0.Cli.Cli.CompilerCliOptions.Language
+  type: Property
+  source:
+    remote:
+      path: src/Pl0.Cli/Cli/CompilerCliOptions.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: Language
+    path: src/Pl0.Cli/Cli/CompilerCliOptions.cs
+    startLine: 65
+  assemblies:
+  - Pl0.Cli
+  namespace: Pl0.Cli.Cli
+  summary: 'Gets the BCP-47-Sprachcode aus dem --lang-Parameter (Standard: "de").'
+  example: []
+  syntax:
+    content: public string Language { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Language As String
+  overload: Pl0.Cli.Cli.CompilerCliOptions.Language*
 references:
 - uid: Pl0.Cli.Cli
   commentId: N:Pl0.Cli.Cli
@@ -735,3 +767,9 @@ references:
   name: OutputPath
   nameWithType: CompilerCliOptions.OutputPath
   fullName: Pl0.Cli.Cli.CompilerCliOptions.OutputPath
+- uid: Pl0.Cli.Cli.CompilerCliOptions.Language*
+  commentId: Overload:Pl0.Cli.Cli.CompilerCliOptions.Language
+  href: Pl0.Cli.Cli.CompilerCliOptions.html#Pl0_Cli_Cli_CompilerCliOptions_Language
+  name: Language
+  nameWithType: CompilerCliOptions.Language
+  fullName: Pl0.Cli.Cli.CompilerCliOptions.Language

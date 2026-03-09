@@ -5,9 +5,11 @@ items:
   id: VirtualMachineOptions
   parent: Pl0.Vm
   children:
-  - Pl0.Vm.VirtualMachineOptions.#ctor(System.Int32,System.Boolean)
+  - Pl0.Vm.VirtualMachineOptions.#ctor(System.Int32,System.Boolean,System.String,System.Resources.ResourceManager)
   - Pl0.Vm.VirtualMachineOptions.Default
   - Pl0.Vm.VirtualMachineOptions.EnableStoreTrace
+  - Pl0.Vm.VirtualMachineOptions.Language
+  - Pl0.Vm.VirtualMachineOptions.Messages
   - Pl0.Vm.VirtualMachineOptions.StackSize
   langs:
   - csharp
@@ -19,11 +21,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VirtualMachineOptions.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: VirtualMachineOptions
     path: src/Pl0.Vm/VirtualMachineOptions.cs
-    startLine: 7
+    startLine: 11
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -43,32 +45,32 @@ items:
   - System.Object.GetType
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-- uid: Pl0.Vm.VirtualMachineOptions.#ctor(System.Int32,System.Boolean)
-  commentId: M:Pl0.Vm.VirtualMachineOptions.#ctor(System.Int32,System.Boolean)
-  id: '#ctor(System.Int32,System.Boolean)'
+- uid: Pl0.Vm.VirtualMachineOptions.#ctor(System.Int32,System.Boolean,System.String,System.Resources.ResourceManager)
+  commentId: M:Pl0.Vm.VirtualMachineOptions.#ctor(System.Int32,System.Boolean,System.String,System.Resources.ResourceManager)
+  id: '#ctor(System.Int32,System.Boolean,System.String,System.Resources.ResourceManager)'
   parent: Pl0.Vm.VirtualMachineOptions
   langs:
   - csharp
   - vb
-  name: VirtualMachineOptions(int, bool)
-  nameWithType: VirtualMachineOptions.VirtualMachineOptions(int, bool)
-  fullName: Pl0.Vm.VirtualMachineOptions.VirtualMachineOptions(int, bool)
+  name: VirtualMachineOptions(int, bool, string, ResourceManager?)
+  nameWithType: VirtualMachineOptions.VirtualMachineOptions(int, bool, string, ResourceManager?)
+  fullName: Pl0.Vm.VirtualMachineOptions.VirtualMachineOptions(int, bool, string, System.Resources.ResourceManager?)
   type: Constructor
   source:
     remote:
       path: src/Pl0.Vm/VirtualMachineOptions.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: .ctor
     path: src/Pl0.Vm/VirtualMachineOptions.cs
-    startLine: 7
+    startLine: 11
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
   summary: Configuration options for the PL/0 virtual machine.
   example: []
   syntax:
-    content: public VirtualMachineOptions(int StackSize = 500, bool EnableStoreTrace = false)
+    content: public VirtualMachineOptions(int StackSize = 500, bool EnableStoreTrace = false, string Language = "de", ResourceManager? Messages = null)
     parameters:
     - id: StackSize
       type: System.Int32
@@ -76,11 +78,17 @@ items:
     - id: EnableStoreTrace
       type: System.Boolean
       description: Whether STO writes are echoed to output.
-    content.vb: Public Sub New(StackSize As Integer = 500, EnableStoreTrace As Boolean = False)
+    - id: Language
+      type: System.String
+      description: 'BCP-47-Sprachcode für VM-Fehlertexte (Standard: "de").'
+    - id: Messages
+      type: System.Resources.ResourceManager
+      description: 'Optionaler ResourceManager für Dependency Injection (z. B. in Tests); Standard: Pl0VmMessages.ResourceManager.'
+    content.vb: Public Sub New(StackSize As Integer = 500, EnableStoreTrace As Boolean = False, Language As String = "de", Messages As ResourceManager = Nothing)
   overload: Pl0.Vm.VirtualMachineOptions.#ctor*
-  nameWithType.vb: VirtualMachineOptions.New(Integer, Boolean)
-  fullName.vb: Pl0.Vm.VirtualMachineOptions.New(Integer, Boolean)
-  name.vb: New(Integer, Boolean)
+  nameWithType.vb: VirtualMachineOptions.New(Integer, Boolean, String, ResourceManager)
+  fullName.vb: Pl0.Vm.VirtualMachineOptions.New(Integer, Boolean, String, System.Resources.ResourceManager)
+  name.vb: New(Integer, Boolean, String, ResourceManager)
 - uid: Pl0.Vm.VirtualMachineOptions.StackSize
   commentId: P:Pl0.Vm.VirtualMachineOptions.StackSize
   id: StackSize
@@ -95,11 +103,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VirtualMachineOptions.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: StackSize
     path: src/Pl0.Vm/VirtualMachineOptions.cs
-    startLine: 8
+    startLine: 12
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -126,11 +134,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VirtualMachineOptions.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: EnableStoreTrace
     path: src/Pl0.Vm/VirtualMachineOptions.cs
-    startLine: 9
+    startLine: 13
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -143,6 +151,68 @@ items:
       type: System.Boolean
     content.vb: Public Property EnableStoreTrace As Boolean
   overload: Pl0.Vm.VirtualMachineOptions.EnableStoreTrace*
+- uid: Pl0.Vm.VirtualMachineOptions.Language
+  commentId: P:Pl0.Vm.VirtualMachineOptions.Language
+  id: Language
+  parent: Pl0.Vm.VirtualMachineOptions
+  langs:
+  - csharp
+  - vb
+  name: Language
+  nameWithType: VirtualMachineOptions.Language
+  fullName: Pl0.Vm.VirtualMachineOptions.Language
+  type: Property
+  source:
+    remote:
+      path: src/Pl0.Vm/VirtualMachineOptions.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: Language
+    path: src/Pl0.Vm/VirtualMachineOptions.cs
+    startLine: 14
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  summary: 'BCP-47-Sprachcode für VM-Fehlertexte (Standard: "de").'
+  example: []
+  syntax:
+    content: public string Language { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Language As String
+  overload: Pl0.Vm.VirtualMachineOptions.Language*
+- uid: Pl0.Vm.VirtualMachineOptions.Messages
+  commentId: P:Pl0.Vm.VirtualMachineOptions.Messages
+  id: Messages
+  parent: Pl0.Vm.VirtualMachineOptions
+  langs:
+  - csharp
+  - vb
+  name: Messages
+  nameWithType: VirtualMachineOptions.Messages
+  fullName: Pl0.Vm.VirtualMachineOptions.Messages
+  type: Property
+  source:
+    remote:
+      path: src/Pl0.Vm/VirtualMachineOptions.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: Messages
+    path: src/Pl0.Vm/VirtualMachineOptions.cs
+    startLine: 15
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  summary: 'Optionaler ResourceManager für Dependency Injection (z. B. in Tests); Standard: Pl0VmMessages.ResourceManager.'
+  example: []
+  syntax:
+    content: public ResourceManager? Messages { get; init; }
+    parameters: []
+    return:
+      type: System.Resources.ResourceManager
+    content.vb: Public Property Messages As ResourceManager
+  overload: Pl0.Vm.VirtualMachineOptions.Messages*
 - uid: Pl0.Vm.VirtualMachineOptions.Default
   commentId: P:Pl0.Vm.VirtualMachineOptions.Default
   id: Default
@@ -157,11 +227,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VirtualMachineOptions.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: Default
     path: src/Pl0.Vm/VirtualMachineOptions.cs
-    startLine: 14
+    startLine: 20
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -473,7 +543,7 @@ references:
   - name: )
 - uid: Pl0.Vm.VirtualMachineOptions.#ctor*
   commentId: Overload:Pl0.Vm.VirtualMachineOptions.#ctor
-  href: Pl0.Vm.VirtualMachineOptions.html#Pl0_Vm_VirtualMachineOptions__ctor_System_Int32_System_Boolean_
+  href: Pl0.Vm.VirtualMachineOptions.html#Pl0_Vm_VirtualMachineOptions__ctor_System_Int32_System_Boolean_System_String_System_Resources_ResourceManager_
   name: VirtualMachineOptions
   nameWithType: VirtualMachineOptions.VirtualMachineOptions
   fullName: Pl0.Vm.VirtualMachineOptions.VirtualMachineOptions
@@ -502,6 +572,52 @@ references:
   nameWithType.vb: Boolean
   fullName.vb: Boolean
   name.vb: Boolean
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Resources.ResourceManager
+  commentId: T:System.Resources.ResourceManager
+  parent: System.Resources
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.resources.resourcemanager
+  name: ResourceManager
+  nameWithType: ResourceManager
+  fullName: System.Resources.ResourceManager
+- uid: System.Resources
+  commentId: N:System.Resources
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Resources
+  nameWithType: System.Resources
+  fullName: System.Resources
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Resources
+    name: Resources
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.resources
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Resources
+    name: Resources
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.resources
 - uid: Pl0.Vm.VirtualMachineOptions.StackSize*
   commentId: Overload:Pl0.Vm.VirtualMachineOptions.StackSize
   href: Pl0.Vm.VirtualMachineOptions.html#Pl0_Vm_VirtualMachineOptions_StackSize
@@ -514,6 +630,18 @@ references:
   name: EnableStoreTrace
   nameWithType: VirtualMachineOptions.EnableStoreTrace
   fullName: Pl0.Vm.VirtualMachineOptions.EnableStoreTrace
+- uid: Pl0.Vm.VirtualMachineOptions.Language*
+  commentId: Overload:Pl0.Vm.VirtualMachineOptions.Language
+  href: Pl0.Vm.VirtualMachineOptions.html#Pl0_Vm_VirtualMachineOptions_Language
+  name: Language
+  nameWithType: VirtualMachineOptions.Language
+  fullName: Pl0.Vm.VirtualMachineOptions.Language
+- uid: Pl0.Vm.VirtualMachineOptions.Messages*
+  commentId: Overload:Pl0.Vm.VirtualMachineOptions.Messages
+  href: Pl0.Vm.VirtualMachineOptions.html#Pl0_Vm_VirtualMachineOptions_Messages
+  name: Messages
+  nameWithType: VirtualMachineOptions.Messages
+  fullName: Pl0.Vm.VirtualMachineOptions.Messages
 - uid: Pl0.Vm.VirtualMachineOptions.Default*
   commentId: Overload:Pl0.Vm.VirtualMachineOptions.Default
   href: Pl0.Vm.VirtualMachineOptions.html#Pl0_Vm_VirtualMachineOptions_Default

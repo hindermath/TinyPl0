@@ -17,7 +17,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeEmitMode.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: IdeEmitMode
     path: src/Pl0.Ide/IdeEmitMode.cs
@@ -42,7 +42,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeEmitMode.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: Asm
     path: src/Pl0.Ide/IdeEmitMode.cs
@@ -68,7 +68,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeEmitMode.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: Cod
     path: src/Pl0.Ide/IdeEmitMode.cs

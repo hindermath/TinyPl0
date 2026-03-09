@@ -21,7 +21,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/BufferedPl0Io.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: BufferedPl0Io
     path: src/Pl0.Vm/BufferedPl0Io.cs
@@ -59,7 +59,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/BufferedPl0Io.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: _input
     path: src/Pl0.Vm/BufferedPl0Io.cs
@@ -88,7 +88,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/BufferedPl0Io.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: _output
     path: src/Pl0.Vm/BufferedPl0Io.cs
@@ -117,7 +117,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/BufferedPl0Io.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: .ctor
     path: src/Pl0.Vm/BufferedPl0Io.cs
@@ -152,7 +152,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/BufferedPl0Io.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: Output
     path: src/Pl0.Vm/BufferedPl0Io.cs
@@ -183,7 +183,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/BufferedPl0Io.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: ReadInt
     path: src/Pl0.Vm/BufferedPl0Io.cs
@@ -216,7 +216,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/BufferedPl0Io.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: WriteInt
     path: src/Pl0.Vm/BufferedPl0Io.cs

@@ -17,7 +17,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeLookAndFeel.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: IdeLookAndFeel
     path: src/Pl0.Ide/IdeLookAndFeel.cs
@@ -52,7 +52,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeLookAndFeel.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: TurboPascalThemeName
     path: src/Pl0.Ide/IdeLookAndFeel.cs
@@ -79,7 +79,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeLookAndFeel.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: ApplyTurboPascalThemeIfAvailable
     path: src/Pl0.Ide/IdeLookAndFeel.cs

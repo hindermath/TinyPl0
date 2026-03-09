@@ -22,7 +22,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/PCodeSerializer.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: PCodeSerializer
     path: src/Pl0.Core/PCodeSerializer.cs
@@ -59,7 +59,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/PCodeSerializer.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: ToAsm
     path: src/Pl0.Core/PCodeSerializer.cs
@@ -97,7 +97,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/PCodeSerializer.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: ToCod
     path: src/Pl0.Core/PCodeSerializer.cs
@@ -135,7 +135,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/PCodeSerializer.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: Parse
     path: src/Pl0.Core/PCodeSerializer.cs
@@ -173,7 +173,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/PCodeSerializer.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: StripComment
     path: src/Pl0.Core/PCodeSerializer.cs
@@ -211,7 +211,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/PCodeSerializer.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: ParseInt
     path: src/Pl0.Core/PCodeSerializer.cs
@@ -255,7 +255,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/PCodeSerializer.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: ParseOpcode
     path: src/Pl0.Core/PCodeSerializer.cs
@@ -296,7 +296,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/PCodeSerializer.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: ToMnemonic
     path: src/Pl0.Core/PCodeSerializer.cs

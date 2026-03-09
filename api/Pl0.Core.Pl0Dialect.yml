@@ -17,7 +17,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Dialect.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: Pl0Dialect
     path: src/Pl0.Core/Pl0Dialect.cs
@@ -44,7 +44,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Dialect.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: Classic
     path: src/Pl0.Core/Pl0Dialect.cs
@@ -72,7 +72,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Dialect.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: Extended
     path: src/Pl0.Core/Pl0Dialect.cs

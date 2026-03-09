@@ -1,154 +1,112 @@
 ### YamlMime:ManagedReference
 items:
-- uid: Pl0.Cli.Cli.CliDiagnostic
-  commentId: T:Pl0.Cli.Cli.CliDiagnostic
-  id: CliDiagnostic
-  parent: Pl0.Cli.Cli
+- uid: Pl0.Cli.Pl0CliMessages
+  commentId: T:Pl0.Cli.Pl0CliMessages
+  id: Pl0CliMessages
+  parent: Pl0.Cli
   children:
-  - Pl0.Cli.Cli.CliDiagnostic.#ctor(System.Int32,System.String)
-  - Pl0.Cli.Cli.CliDiagnostic.Code
-  - Pl0.Cli.Cli.CliDiagnostic.Message
+  - Pl0.Cli.Pl0CliMessages.ResourceManager
+  - Pl0.Cli.Pl0CliMessages._resourceManager
   langs:
   - csharp
   - vb
-  name: CliDiagnostic
-  nameWithType: CliDiagnostic
-  fullName: Pl0.Cli.Cli.CliDiagnostic
+  name: Pl0CliMessages
+  nameWithType: Pl0CliMessages
+  fullName: Pl0.Cli.Pl0CliMessages
   type: Class
   source:
     remote:
-      path: src/Pl0.Cli/Cli/CliDiagnostic.cs
+      path: src/Pl0.Cli/Resources/Pl0CliMessages.cs
       branch: main
       repo: https://github.com/hindermath/TinyPl0.git
-    id: CliDiagnostic
-    path: src/Pl0.Cli/Cli/CliDiagnostic.cs
+    id: Pl0CliMessages
+    path: src/Pl0.Cli/Resources/Pl0CliMessages.cs
     startLine: 7
   assemblies:
   - Pl0.Cli
-  namespace: Pl0.Cli.Cli
-  summary: Represents a CLI diagnostic with code and message.
+  namespace: Pl0.Cli
+  summary: Bietet Zugriff auf den ResourceManager für CLI-Meldungen.
   example: []
   syntax:
-    content: 'public sealed record CliDiagnostic : IEquatable<CliDiagnostic>'
-    content.vb: Public NotInheritable Class CliDiagnostic Implements IEquatable(Of CliDiagnostic)
+    content: internal static class Pl0CliMessages
+    content.vb: Friend Module Pl0CliMessages
   inheritance:
   - System.Object
-  implements:
-  - System.IEquatable{Pl0.Cli.Cli.CliDiagnostic}
   inheritedMembers:
   - System.Object.Equals(System.Object)
   - System.Object.Equals(System.Object,System.Object)
   - System.Object.GetHashCode
   - System.Object.GetType
+  - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-- uid: Pl0.Cli.Cli.CliDiagnostic.#ctor(System.Int32,System.String)
-  commentId: M:Pl0.Cli.Cli.CliDiagnostic.#ctor(System.Int32,System.String)
-  id: '#ctor(System.Int32,System.String)'
-  parent: Pl0.Cli.Cli.CliDiagnostic
+- uid: Pl0.Cli.Pl0CliMessages._resourceManager
+  commentId: F:Pl0.Cli.Pl0CliMessages._resourceManager
+  id: _resourceManager
+  parent: Pl0.Cli.Pl0CliMessages
   langs:
   - csharp
   - vb
-  name: CliDiagnostic(int, string)
-  nameWithType: CliDiagnostic.CliDiagnostic(int, string)
-  fullName: Pl0.Cli.Cli.CliDiagnostic.CliDiagnostic(int, string)
-  type: Constructor
+  name: _resourceManager
+  nameWithType: Pl0CliMessages._resourceManager
+  fullName: Pl0.Cli.Pl0CliMessages._resourceManager
+  type: Field
   source:
     remote:
-      path: src/Pl0.Cli/Cli/CliDiagnostic.cs
+      path: src/Pl0.Cli/Resources/Pl0CliMessages.cs
       branch: main
       repo: https://github.com/hindermath/TinyPl0.git
-    id: .ctor
-    path: src/Pl0.Cli/Cli/CliDiagnostic.cs
-    startLine: 7
+    id: _resourceManager
+    path: src/Pl0.Cli/Resources/Pl0CliMessages.cs
+    startLine: 12
   assemblies:
   - Pl0.Cli
-  namespace: Pl0.Cli.Cli
-  summary: Represents a CLI diagnostic with code and message.
+  namespace: Pl0.Cli
+  summary: Statischer Cache für den ResourceManager.
   example: []
   syntax:
-    content: public CliDiagnostic(int Code, string Message)
-    parameters:
-    - id: Code
-      type: System.Int32
-      description: Diagnostic code.
-    - id: Message
-      type: System.String
-      description: Diagnostic message.
-    content.vb: Public Sub New(Code As Integer, Message As String)
-  overload: Pl0.Cli.Cli.CliDiagnostic.#ctor*
-  nameWithType.vb: CliDiagnostic.New(Integer, String)
-  fullName.vb: Pl0.Cli.Cli.CliDiagnostic.New(Integer, String)
-  name.vb: New(Integer, String)
-- uid: Pl0.Cli.Cli.CliDiagnostic.Code
-  commentId: P:Pl0.Cli.Cli.CliDiagnostic.Code
-  id: Code
-  parent: Pl0.Cli.Cli.CliDiagnostic
+    content: private static ResourceManager? _resourceManager
+    return:
+      type: System.Resources.ResourceManager
+    content.vb: Private Shared _resourceManager As ResourceManager
+- uid: Pl0.Cli.Pl0CliMessages.ResourceManager
+  commentId: P:Pl0.Cli.Pl0CliMessages.ResourceManager
+  id: ResourceManager
+  parent: Pl0.Cli.Pl0CliMessages
   langs:
   - csharp
   - vb
-  name: Code
-  nameWithType: CliDiagnostic.Code
-  fullName: Pl0.Cli.Cli.CliDiagnostic.Code
+  name: ResourceManager
+  nameWithType: Pl0CliMessages.ResourceManager
+  fullName: Pl0.Cli.Pl0CliMessages.ResourceManager
   type: Property
   source:
     remote:
-      path: src/Pl0.Cli/Cli/CliDiagnostic.cs
+      path: src/Pl0.Cli/Resources/Pl0CliMessages.cs
       branch: main
       repo: https://github.com/hindermath/TinyPl0.git
-    id: Code
-    path: src/Pl0.Cli/Cli/CliDiagnostic.cs
-    startLine: 7
+    id: ResourceManager
+    path: src/Pl0.Cli/Resources/Pl0CliMessages.cs
+    startLine: 17
   assemblies:
   - Pl0.Cli
-  namespace: Pl0.Cli.Cli
-  summary: Diagnostic code.
+  namespace: Pl0.Cli
+  summary: Gibt den ResourceManager für Pl0CliMessages zurück.
   example: []
   syntax:
-    content: public int Code { get; init; }
+    content: internal static ResourceManager ResourceManager { get; }
     parameters: []
     return:
-      type: System.Int32
-    content.vb: Public Property Code As Integer
-  overload: Pl0.Cli.Cli.CliDiagnostic.Code*
-- uid: Pl0.Cli.Cli.CliDiagnostic.Message
-  commentId: P:Pl0.Cli.Cli.CliDiagnostic.Message
-  id: Message
-  parent: Pl0.Cli.Cli.CliDiagnostic
-  langs:
-  - csharp
-  - vb
-  name: Message
-  nameWithType: CliDiagnostic.Message
-  fullName: Pl0.Cli.Cli.CliDiagnostic.Message
-  type: Property
-  source:
-    remote:
-      path: src/Pl0.Cli/Cli/CliDiagnostic.cs
-      branch: main
-      repo: https://github.com/hindermath/TinyPl0.git
-    id: Message
-    path: src/Pl0.Cli/Cli/CliDiagnostic.cs
-    startLine: 7
-  assemblies:
-  - Pl0.Cli
-  namespace: Pl0.Cli.Cli
-  summary: Diagnostic message.
-  example: []
-  syntax:
-    content: public string Message { get; init; }
-    parameters: []
-    return:
-      type: System.String
-    content.vb: Public Property Message As String
-  overload: Pl0.Cli.Cli.CliDiagnostic.Message*
+      type: System.Resources.ResourceManager
+    content.vb: Friend Shared ReadOnly Property ResourceManager As ResourceManager
+  overload: Pl0.Cli.Pl0CliMessages.ResourceManager*
 references:
-- uid: Pl0.Cli.Cli
-  commentId: N:Pl0.Cli.Cli
+- uid: Pl0.Cli
+  commentId: N:Pl0.Cli
   href: Pl0.html
-  name: Pl0.Cli.Cli
-  nameWithType: Pl0.Cli.Cli
-  fullName: Pl0.Cli.Cli
+  name: Pl0.Cli
+  nameWithType: Pl0.Cli
+  fullName: Pl0.Cli
   spec.csharp:
   - uid: Pl0
     name: Pl0
@@ -157,10 +115,6 @@ references:
   - uid: Pl0.Cli
     name: Cli
     href: Pl0.Cli.html
-  - name: .
-  - uid: Pl0.Cli.Cli
-    name: Cli
-    href: Pl0.Cli.Cli.html
   spec.vb:
   - uid: Pl0
     name: Pl0
@@ -169,10 +123,6 @@ references:
   - uid: Pl0.Cli
     name: Cli
     href: Pl0.Cli.html
-  - name: .
-  - uid: Pl0.Cli.Cli
-    name: Cli
-    href: Pl0.Cli.Cli.html
 - uid: System.Object
   commentId: T:System.Object
   parent: System
@@ -184,39 +134,6 @@ references:
   nameWithType.vb: Object
   fullName.vb: Object
   name.vb: Object
-- uid: System.IEquatable{Pl0.Cli.Cli.CliDiagnostic}
-  commentId: T:System.IEquatable{Pl0.Cli.Cli.CliDiagnostic}
-  parent: System
-  definition: System.IEquatable`1
-  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
-  name: IEquatable<CliDiagnostic>
-  nameWithType: IEquatable<CliDiagnostic>
-  fullName: System.IEquatable<Pl0.Cli.Cli.CliDiagnostic>
-  nameWithType.vb: IEquatable(Of CliDiagnostic)
-  fullName.vb: System.IEquatable(Of Pl0.Cli.Cli.CliDiagnostic)
-  name.vb: IEquatable(Of CliDiagnostic)
-  spec.csharp:
-  - uid: System.IEquatable`1
-    name: IEquatable
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
-  - name: <
-  - uid: Pl0.Cli.Cli.CliDiagnostic
-    name: CliDiagnostic
-    href: Pl0.Cli.Cli.CliDiagnostic.html
-  - name: '>'
-  spec.vb:
-  - uid: System.IEquatable`1
-    name: IEquatable
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: Pl0.Cli.Cli.CliDiagnostic
-    name: CliDiagnostic
-    href: Pl0.Cli.Cli.CliDiagnostic.html
-  - name: )
 - uid: System.Object.Equals(System.Object)
   commentId: M:System.Object.Equals(System.Object)
   parent: System.Object
@@ -343,6 +260,30 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.object.gettype
   - name: (
   - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
 - uid: System.Object.ReferenceEquals(System.Object,System.Object)
   commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
   parent: System.Object
@@ -419,74 +360,44 @@ references:
   name: System
   nameWithType: System
   fullName: System
-- uid: System.IEquatable`1
-  commentId: T:System.IEquatable`1
+- uid: System.Resources.ResourceManager
+  commentId: T:System.Resources.ResourceManager
+  parent: System.Resources
   isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
-  name: IEquatable<T>
-  nameWithType: IEquatable<T>
-  fullName: System.IEquatable<T>
-  nameWithType.vb: IEquatable(Of T)
-  fullName.vb: System.IEquatable(Of T)
-  name.vb: IEquatable(Of T)
+  href: https://learn.microsoft.com/dotnet/api/system.resources.resourcemanager
+  name: ResourceManager
+  nameWithType: ResourceManager
+  fullName: System.Resources.ResourceManager
+- uid: System.Resources
+  commentId: N:System.Resources
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Resources
+  nameWithType: System.Resources
+  fullName: System.Resources
   spec.csharp:
-  - uid: System.IEquatable`1
-    name: IEquatable
+  - uid: System
+    name: System
     isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
-  - name: <
-  - name: T
-  - name: '>'
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Resources
+    name: Resources
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.resources
   spec.vb:
-  - uid: System.IEquatable`1
-    name: IEquatable
+  - uid: System
+    name: System
     isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
-  - name: (
-  - name: Of
-  - name: " "
-  - name: T
-  - name: )
-- uid: Pl0.Cli.Cli.CliDiagnostic.#ctor*
-  commentId: Overload:Pl0.Cli.Cli.CliDiagnostic.#ctor
-  href: Pl0.Cli.Cli.CliDiagnostic.html#Pl0_Cli_Cli_CliDiagnostic__ctor_System_Int32_System_String_
-  name: CliDiagnostic
-  nameWithType: CliDiagnostic.CliDiagnostic
-  fullName: Pl0.Cli.Cli.CliDiagnostic.CliDiagnostic
-  nameWithType.vb: CliDiagnostic.New
-  fullName.vb: Pl0.Cli.Cli.CliDiagnostic.New
-  name.vb: New
-- uid: System.Int32
-  commentId: T:System.Int32
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.int32
-  name: int
-  nameWithType: int
-  fullName: int
-  nameWithType.vb: Integer
-  fullName.vb: Integer
-  name.vb: Integer
-- uid: System.String
-  commentId: T:System.String
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.string
-  name: string
-  nameWithType: string
-  fullName: string
-  nameWithType.vb: String
-  fullName.vb: String
-  name.vb: String
-- uid: Pl0.Cli.Cli.CliDiagnostic.Code*
-  commentId: Overload:Pl0.Cli.Cli.CliDiagnostic.Code
-  href: Pl0.Cli.Cli.CliDiagnostic.html#Pl0_Cli_Cli_CliDiagnostic_Code
-  name: Code
-  nameWithType: CliDiagnostic.Code
-  fullName: Pl0.Cli.Cli.CliDiagnostic.Code
-- uid: Pl0.Cli.Cli.CliDiagnostic.Message*
-  commentId: Overload:Pl0.Cli.Cli.CliDiagnostic.Message
-  href: Pl0.Cli.Cli.CliDiagnostic.html#Pl0_Cli_Cli_CliDiagnostic_Message
-  name: Message
-  nameWithType: CliDiagnostic.Message
-  fullName: Pl0.Cli.Cli.CliDiagnostic.Message
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Resources
+    name: Resources
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.resources
+- uid: Pl0.Cli.Pl0CliMessages.ResourceManager*
+  commentId: Overload:Pl0.Cli.Pl0CliMessages.ResourceManager
+  href: Pl0.Cli.Pl0CliMessages.html#Pl0_Cli_Pl0CliMessages_ResourceManager
+  name: ResourceManager
+  nameWithType: Pl0CliMessages.ResourceManager
+  fullName: Pl0.Cli.Pl0CliMessages.ResourceManager

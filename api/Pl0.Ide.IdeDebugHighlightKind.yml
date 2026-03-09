@@ -18,7 +18,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeDebugView.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: IdeDebugHighlightKind
     path: src/Pl0.Ide/IdeDebugView.cs
@@ -43,7 +43,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeDebugView.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: None
     path: src/Pl0.Ide/IdeDebugView.cs
@@ -69,7 +69,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeDebugView.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: BasePointer
     path: src/Pl0.Ide/IdeDebugView.cs
@@ -95,7 +95,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeDebugView.cs
-      branch: docs/docfx-add-ide-exclude-claude-md
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: StackPointer
     path: src/Pl0.Ide/IdeDebugView.cs
