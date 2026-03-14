@@ -43,6 +43,9 @@ jobs:
       - name: Restore solution
         run: dotnet restore TinyPl0.sln
 
+      - name: Clean generated site output
+        run: rm -rf _site
+
       - name: Build HTML documentation
         run: docfx docfx.json
 
