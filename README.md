@@ -56,6 +56,8 @@ Referenzquellen im Repository:
   - `docs/TRACEABILITY_MATRIX.md`
 - Qualitäts- und Coverage-Übersicht:
   - `docs/QUALITY.md`
+- Veröffentlichtes DocFX-Handbuch über GitHub Pages:
+  - `https://hindermath.github.io/TinyPl0/`
 
 ## Build und Ausführung
 
