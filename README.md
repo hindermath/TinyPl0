@@ -1,5 +1,8 @@
 # TinyPl0
 
+[![Docs](https://img.shields.io/badge/docs-GitHub%20Pages-2ea44f)](https://hindermath.github.io/TinyPl0/)
+[![Docs Pages](https://github.com/hindermath/TinyPl0/actions/workflows/docs-pages.yml/badge.svg)](https://github.com/hindermath/TinyPl0/actions/workflows/docs-pages.yml)
+
 ## Sprache und Zielgruppe
 ### DE
 Dieses Projekt ist auf die **Fachinformatiker-Ausbildung in Deutschland** ausgerichtet.
