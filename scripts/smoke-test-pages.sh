@@ -24,7 +24,7 @@ for check in "${checks[@]}"; do
   url="${base_url}${path}"
 
   echo "Smoke testing ${url}"
-  body="$(curl --fail --silent --show-error --location "${url}")"
+  body="$(curl --fail --silent --show-error --location --retry 10 --retry-delay 1 --retry-connrefused "${url}")"
 
   if ! BODY="${body}" python3 - "${needle}" <<'PY'
 import html
