@@ -55,6 +55,12 @@ jobs:
       - name: Build PDF documentation
         run: docfx pdf docfx.json
 
+      - name: Start local preview server
+        run: python3 -m http.server 8080 --directory _site > /tmp/tinypl0-docs-server.log 2>&1 &
+
+      - name: Smoke test generated site
+        run: ./scripts/smoke-test-pages.sh http://127.0.0.1:8080
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
@@ -67,6 +73,8 @@ jobs:
     permissions:
       pages: write
       id-token: write
+    outputs:
+      page_url: ${{ steps.deployment.outputs.page_url }}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -75,3 +83,15 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  smoke-test-pages:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Smoke test published site
+        run: ./scripts/smoke-test-pages.sh "${{ needs.deploy.outputs.page_url }}"
