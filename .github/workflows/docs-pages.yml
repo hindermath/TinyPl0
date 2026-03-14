@@ -43,11 +43,11 @@ jobs:
       - name: Restore solution
         run: dotnet restore TinyPl0.sln
 
+      - name: Clean generated site output
+        run: rm -rf _site
+
       - name: Build HTML documentation
         run: docfx docfx.json
-
-      - name: Build PDF documentation
-        run: docfx pdf docfx.json
 
       - name: Start local preview server
         run: python3 -m http.server 8080 --directory _site > /tmp/tinypl0-docs-server.log 2>&1 &
