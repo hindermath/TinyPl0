@@ -188,3 +188,9 @@ Use `CompilerOptions.Dialect` when modifying parser/lexer. Classic mode must sta
 
 ## Recent Changes
 - 001-l10n-backend: Added C# 14 / .NET 10 + .NET SDK (`.resx`, `ResourceManager`, `CultureInfo`) — kein zusätzliches NuGet-Pake
+
+## Project Statistics
+
+- Maintain `docs/project-statistics.md` as the living statistics ledger for the repository.
+- Update the file after each completed Spec-Kit implementation phase, after each agent-driven repository change, or when a refresh is explicitly requested.
+- Each update must capture branch or phase, observable work window, production/test/documentation line counts, main work packages, and the conservative manual baseline of 80 code lines per day for an experienced developer.

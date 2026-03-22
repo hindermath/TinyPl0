@@ -42,6 +42,7 @@
 - [ ] Principle V: Diagnostics-over-exceptions behavior preserved for compiler and VM surfaces.
 - [ ] Principle VI: Branch/PR/versioning workflow constraints are satisfied.
 - [ ] Development Workflow: documentation changes include planned `docfx` run from repo root.
+- [ ] Statistical-documentation impact identified; plan update for `docs/project-statistics.md` when the feature phase or agent-delivered change lands.
 
 ## Project Structure
 

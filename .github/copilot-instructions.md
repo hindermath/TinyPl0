@@ -218,6 +218,13 @@ When modifying parser or lexer:
 ## Key Documentation Files
 
 - `Pflichtenheft_PL0_CSharp_DotNet10.md`: Requirements and technical specification
+- `docs/project-statistics.md`: Living project statistics ledger with code/doc counts and manual-effort baseline
+
+## Project Statistics
+
+- Maintain `docs/project-statistics.md` as the living statistics ledger for the repository.
+- Update the file after each completed Spec-Kit implementation phase, after each agent-driven repository change, or when a refresh is explicitly requested.
+- Each update must capture branch or phase, observable work window, production/test/documentation line counts, main work packages, and the conservative manual baseline of 80 code lines per day for an experienced developer.
 - `docs/ARCHITECTURE.md`: High-level system architecture
 - `docs/LANGUAGE_EBNF.md`: Formal grammar of PL/0 dialects
 - `docs/VM_INSTRUCTION_SET.md`: P-Code instruction set reference

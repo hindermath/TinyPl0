@@ -154,6 +154,7 @@ Examples of foundational tasks (adjust based on your project):
 - [ ] TXXX [P] Add/update bilingual (DE first, EN second) B2-level learning documentation
 - [ ] TXXX Ensure XML documentation completeness for changed APIs (no CS1591 regressions)
 - [ ] TXXX Run `docfx` from repository root after documentation/API doc changes
+- [ ] TXXX [P] Update `docs/project-statistics.md` with branch/phase scope, code/test/doc line counts, observable work window, and manual-effort baseline
 - [ ] TXXX Code cleanup and refactoring
 - [ ] TXXX Performance optimization across all stories
 - [ ] TXXX [P] Additional unit tests (if requested) in tests/unit/

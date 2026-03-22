@@ -1,22 +1,33 @@
 <!--
 === SYNC IMPACT REPORT ===
-Version change: 1.0.0 → 1.1.0
+Version change: 1.1.0 → 1.2.0
+
+Bump rationale:
+- MINOR: Added a mandatory project-statistics ledger with update triggers,
+  required metrics, and a conservative manual-effort baseline for
+  AI-assisted/spec-driven delivery.
 
 Modified principles:
-- I. Didaktische Klarheit (Pedagogical Clarity) → I. Didaktische und sprachliche Klarheit (Pedagogical and Linguistic Clarity)
-- III. Testgetriebene Qualität (Test-Driven Quality) → III. Testgetriebene und nachweisbare Qualität (Test-Driven and Verifiable Quality)
+- Keine
 
 Added sections:
-- Keine
+- Development Workflow → Statistical Documentation
 
 Removed sections:
 - Keine
 
 Templates requiring updates:
 - .specify/templates/plan-template.md ✅ updated
-- .specify/templates/spec-template.md ✅ updated
+- .specify/templates/spec-template.md ✅ reviewed; no change required
 - .specify/templates/tasks-template.md ✅ updated
 - .specify/templates/commands/*.md ⚠ pending (Verzeichnis nicht vorhanden)
+
+Runtime guidance docs requiring updates:
+- AGENTS.md ✅ updated
+- CLAUDE.md ✅ updated
+- GEMINI.md ✅ updated
+- .github/copilot-instructions.md ✅ updated
+- docs/project-statistics.md ✅ added
 
 Follow-up TODOs:
 - Keine
@@ -154,6 +165,31 @@ teaching and reproducible releases.
 7. **No over-engineering**: implement only required scope.
 8. **Commit via PR**: open PR for each logical work unit; never push to `main`.
 
+### Statistical Documentation
+
+`docs/project-statistics.md` is the mandatory, living statistical ledger for the
+repository. It MUST be updated whenever one of the following happens:
+
+1. A Spec-Kit implementation phase is completed or materially re-scoped.
+2. An agent-driven work package changes repository content (code, tests, specs,
+   plans, tasks, governance, or operational docs).
+3. A contributor explicitly requests a statistics refresh.
+
+Every update MUST record, at minimum:
+
+- branch or phase identifier and current status,
+- observable git-based work window (first and last date, commit days where possible),
+- current or change-based counts for production code, test code, and
+  documentation,
+- the main work packages or delivered artefacts,
+- whether the numbers come from committed history, the working tree, or both,
+- a conservative manual-effort baseline using **80 code lines per day** for an
+  experienced developer.
+
+Manual-effort estimates for a small team MAY be derived from that baseline, but
+the formula and assumptions MUST be stated explicitly. Documentation effort is
+tracked separately and MUST NOT be hidden inside the code-line estimate.
+
 ## Governance
 
 This constitution supersedes all other informal practices and conventions for TinyPl0.
@@ -173,5 +209,7 @@ Missing required documentation MUST be completed before merge.
 
 Use `CLAUDE.md`, `GEMINI.md`, `AGENTS.md`, and
 `.github/copilot-instructions.md` as runtime agent-specific guidance files.
+Use `docs/project-statistics.md` for the living project-statistics ledger and
+manual-effort baseline tracking.
 
-**Version**: 1.1.0 | **Ratified**: 2026-02-19 | **Last Amended**: 2026-03-06
+**Version**: 1.2.0 | **Ratified**: 2026-02-19 | **Last Amended**: 2026-03-21
