@@ -1,25 +1,25 @@
 <!--
 === SYNC IMPACT REPORT ===
-Version change: 1.1.0 → 1.2.0
+Version change: 1.2.0 → 1.3.0
 
 Bump rationale:
-- MINOR: Added a mandatory project-statistics ledger with update triggers,
-  required metrics, and a conservative manual-effort baseline for
-  AI-assisted/spec-driven delivery.
+- MINOR: Expanded the statistical documentation policy so manual-effort
+  estimates now include production code, test code, and documentation
+  together, and added explicit month and TVoeD calendar assumptions.
 
 Modified principles:
 - Keine
 
 Added sections:
-- Development Workflow → Statistical Documentation
+- Keine
 
 Removed sections:
 - Keine
 
 Templates requiring updates:
-- .specify/templates/plan-template.md ✅ updated
+- .specify/templates/plan-template.md ⚠ pending review
 - .specify/templates/spec-template.md ✅ reviewed; no change required
-- .specify/templates/tasks-template.md ✅ updated
+- .specify/templates/tasks-template.md ⚠ pending review
 - .specify/templates/commands/*.md ⚠ pending (Verzeichnis nicht vorhanden)
 
 Runtime guidance docs requiring updates:
@@ -27,10 +27,10 @@ Runtime guidance docs requiring updates:
 - CLAUDE.md ✅ updated
 - GEMINI.md ✅ updated
 - .github/copilot-instructions.md ✅ updated
-- docs/project-statistics.md ✅ added
+- docs/project-statistics.md ✅ updated
 
 Follow-up TODOs:
-- Keine
+- Plan- und Task-Templates bei weiterer Propagierung auf denselben Wortlaut pruefen.
 === END SYNC IMPACT REPORT ===
 -->
 
@@ -183,12 +183,15 @@ Every update MUST record, at minimum:
   documentation,
 - the main work packages or delivered artefacts,
 - whether the numbers come from committed history, the working tree, or both,
-- a conservative manual-effort baseline using **80 code lines per day** for an
-  experienced developer.
+- a conservative manual-effort baseline using **80 manually created lines per
+  workday** for an experienced developer across production code, test code, and
+  documentation,
+- when time spans are derived, the assumptions for monthly conversion
+  (21-22 workdays, typically 21.5) and, if used, TVoeD-style annual leave
+  assumptions such as 30 vacation days per year.
 
 Manual-effort estimates for a small team MAY be derived from that baseline, but
-the formula and assumptions MUST be stated explicitly. Documentation effort is
-tracked separately and MUST NOT be hidden inside the code-line estimate.
+the formula and assumptions MUST be stated explicitly.
 
 ## Governance
 
@@ -212,4 +215,4 @@ Use `CLAUDE.md`, `GEMINI.md`, `AGENTS.md`, and
 Use `docs/project-statistics.md` for the living project-statistics ledger and
 manual-effort baseline tracking.
 
-**Version**: 1.2.0 | **Ratified**: 2026-02-19 | **Last Amended**: 2026-03-21
+**Version**: 1.3.0 | **Ratified**: 2026-02-19 | **Last Amended**: 2026-03-22
