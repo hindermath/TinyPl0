@@ -29,6 +29,9 @@ fortgeschrieben.
   unter TVoeD-Annahme mit 30 Urlaubstagen pro Jahr ergeben sich
   `21.5 * 12 - 30 = 228` produktive Arbeitstage pro Jahr bzw.
   durchschnittlich 19.0 produktive Tage pro Kalendermonat.
+- TVoeD-Stundenbasis in dieser Datei:
+  `7.8 Stunden` bzw. `7 Stunden 48 Minuten` pro Arbeitstag fuer zusaetzliche
+  Stundenumrechnungen.
 - Abgeleitete Formeln in dieser Datei:
   Einzelentwickler `((Produktionscode + Testcode + Dokumentation) / 80)`;
   3er-Team `Einzelentwickler / 3 * 1.2` mit 20 % Koordinationsaufschlag.
@@ -70,9 +73,11 @@ fortgeschrieben.
 | Davon Governance/Agent-Dateien | 5 Dateien / 933 Zeilen |
 | Gesamtbasis fuer Handschaetzung (inkl. Dokumentation) | 25984 Zeilen |
 | Erfahrener Entwickler, konservative Untergrenze | 324.8 Arbeitstage |
+| Erfahrener Entwickler, konservative Untergrenze in Stunden | 2533.4 Stunden (324.8 * 7.8) |
 | Erfahrener Entwickler, brutto | 15.1 Arbeitsmonate (21.5 Tage/Monat) |
 | Erfahrener Entwickler, TVoeD-Annahme | 17.1 Kalendermonate bzw. 1.4 Jahre |
 | Thorsten solo, erfahrungsadjustierte Untergrenze | 207.9 Arbeitstage |
+| Thorsten solo, erfahrungsadjustierte Untergrenze in Stunden | 1621.6 Stunden (207.9 * 7.8) |
 | Thorsten solo, brutto | 9.7 Arbeitsmonate (21.5 Tage/Monat) |
 | Thorsten solo, TVoeD-Annahme | 10.9 Kalendermonate bzw. 0.9 Jahre |
 | Kleines Team (3 Personen, +20 % Koordination), Untergrenze | 129.9 Arbeitstage |
@@ -216,3 +221,4 @@ rekonstruiert.
 | 2026-03-22 | Governance-Synchronisierung zur Statistiklogik | Constitution sowie die gemeinsamen Agent-Hinweise (`AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md`) wurden auf die neue Statistiklogik synchronisiert: Handarbeits-Schaetzung umfasst nun Code, Tests und Dokumentation gemeinsam; Monats- und TVoeD-Annahmen muessen explizit genannt werden. |
 | 2026-03-22 | GitHub-Codex-Spec-Kit-Skills installiert | Die lokale Codex-Skill-Struktur `.agents/skills/` mit den neun `speckit-*`-Skills wurde aus TuiVision in TinyPl0 uebernommen, damit die Spec-Kit-Kommandos auch in diesem Repository direkt als Skills verfuegbar sind. |
 | 2026-03-25 | Erfahrungsadjustierte Beschleunigungsrechnung erweitert | Die Statistik fuehrt jetzt zusaetzlich zur konservativen 80-Zeilen-Referenz eine explizite Thorsten-Solo-Referenz mit Legacy-Portierungsaufschlag; dieselbe Methodik wurde in `AGENTS.md`, `CLAUDE.md`, `GEMINI.md` und `.github/copilot-instructions.md` synchronisiert. |
+| 2026-03-25 | TVoeD-Stundenbasis ergänzt | Die Statistik weist zusaetzlich Stundenwerte auf Basis von `7,8 Stunden` bzw. `7 Stunden 48 Minuten` pro Arbeitstag aus; dieselbe Umrechnungsregel wurde in die gemeinsamen Agent-Dateien aufgenommen. |
