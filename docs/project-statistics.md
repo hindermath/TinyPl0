@@ -1,6 +1,6 @@
 # Projektstatistik TinyPl0
 
-Stand: 2026-03-22
+Stand: 2026-03-25
 
 ## Zweck und Pflege
 
@@ -32,6 +32,28 @@ fortgeschrieben.
 - Abgeleitete Formeln in dieser Datei:
   Einzelentwickler `((Produktionscode + Testcode + Dokumentation) / 80)`;
   3er-Team `Einzelentwickler / 3 * 1.2` mit 20 % Koordinationsaufschlag.
+- Zusatzannahmen fuer die erfahrungsadjustierte Thorsten-Referenz:
+  - Allgemeiner Expertenaufschlag `* 1.25`, weil Thorsten seit Februar 1985
+    mehr als 40 Jahre Softwareentwicklungspraxis einbringt und seit 2001 mit
+    .NET/C# arbeitet.
+  - Legacy-Portierungsaufschlag `* 1.25`, weil TinyPl0 als Pascal-basierte
+    Portierung von 10 bis 15 Jahren Turbo-Pascal-/Legacy-Erfahrung profitiert.
+  - Daraus ergibt sich fuer TinyPl0 eine erfahrungsadjustierte Solo-Referenz
+    von `80 * 1.25 * 1.25 = 125` manuell erstellten Zeilen pro Arbeitstag.
+- Beschleunigungsfaktoren vergleichen Referenz-Arbeitstage mit sichtbaren
+  `Git-Aktivtagen`. Sie sind als repo-weiter Output-zu-Aktivtag-Indikator zu
+  lesen und nicht als exakte Zeiterfassung.
+
+## Erfahrungsprofil und Beschleunigungsmodell
+
+- Referenzprofil fuer die erfahrungsadjustierte Zweitrechnung:
+  - mehr als 40 Jahre Softwareentwicklung seit Februar 1985
+  - langjaehrige .NET-/C#-Praxis seit 2001
+  - 10 bis 15 Jahre Turbo-Pascal-/Legacy-Portierungserfahrung
+- Neben der konservativen 80-Zeilen-Referenz fuehrt TinyPl0 daher eine zweite
+  Thorsten-Solo-Referenz mit `125 Zeilen/Arbeitstag`.
+- Die Beschleunigungsfaktoren beantworten die repo-weite Verdichtungsfrage
+  gegenueber einer klassischen Portierung mit demselben fachlichen Zielbild.
 
 ## Gesamtstand des Repositories
 
@@ -50,8 +72,13 @@ fortgeschrieben.
 | Erfahrener Entwickler, konservative Untergrenze | 324.8 Arbeitstage |
 | Erfahrener Entwickler, brutto | 15.1 Arbeitsmonate (21.5 Tage/Monat) |
 | Erfahrener Entwickler, TVoeD-Annahme | 17.1 Kalendermonate bzw. 1.4 Jahre |
+| Thorsten solo, erfahrungsadjustierte Untergrenze | 207.9 Arbeitstage |
+| Thorsten solo, brutto | 9.7 Arbeitsmonate (21.5 Tage/Monat) |
+| Thorsten solo, TVoeD-Annahme | 10.9 Kalendermonate bzw. 0.9 Jahre |
 | Kleines Team (3 Personen, +20 % Koordination), Untergrenze | 129.9 Arbeitstage |
 | Kleines Team (3 Personen, +20 % Koordination), TVoeD-Annahme | 6.8 Kalendermonate |
+| Repo-weiter Beschleunigungsfaktor vs. konservative Referenz | 16.2x (324.8 / 20 Git-Aktivtage) |
+| Repo-weiter Beschleunigungsfaktor vs. Thorsten-Referenz | 10.4x (207.9 / 20 Git-Aktivtage) |
 
 ## Branch-Ueberblick
 
@@ -170,6 +197,12 @@ rekonstruiert.
 - Unter TVoeD-Annahme mit 30 Urlaubstagen pro Jahr entspricht das fuer einen
   erfahrenen Entwickler ca. 17.1 Kalendermonaten bzw. 1.4 Arbeitsjahren; fuer
   ein 3er-Team mit 20 % Koordinationsaufschlag ca. 6.8 Kalendermonaten.
+- Unter Einbezug von Thorstens Erfahrungsprofil sinkt die klassische
+  Solo-Referenz fuer TinyPl0 auf ca. 207.9 Arbeitstage bzw.
+  10.9 TVoeD-Kalendermonate.
+- Gegen die sichtbaren 20 Git-Aktivtage ergibt sich damit ein repo-weiter
+  Beschleunigungsfaktor von ca. 16.2x gegen die konservative Referenz und
+  ca. 10.4x gegen die erfahrungsadjustierte Thorsten-Referenz.
 - Die Historie zeigt eine massive Verdichtung durch agentische KI und
   spec-getriebene Arbeit: hoher Output in Code, Tests, Spezifikation,
   Lehrdokumentation und Infrastruktur innerhalb weniger Wochen.
@@ -182,3 +215,4 @@ rekonstruiert.
 | 2026-03-22 | Methodik-Update fuer Handarbeits-Schaetzung | Die Statistik rechnet Handarbeit jetzt auf Basis von Produktionscode, Testcode und Dokumentation gemeinsam; zusaetzlich werden Monatswerte auf Basis von 21.5 Arbeitstagen pro Monat sowie TVoeD-Kalenderwerte mit 30 Urlaubstagen pro Jahr ausgewiesen. |
 | 2026-03-22 | Governance-Synchronisierung zur Statistiklogik | Constitution sowie die gemeinsamen Agent-Hinweise (`AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md`) wurden auf die neue Statistiklogik synchronisiert: Handarbeits-Schaetzung umfasst nun Code, Tests und Dokumentation gemeinsam; Monats- und TVoeD-Annahmen muessen explizit genannt werden. |
 | 2026-03-22 | GitHub-Codex-Spec-Kit-Skills installiert | Die lokale Codex-Skill-Struktur `.agents/skills/` mit den neun `speckit-*`-Skills wurde aus TuiVision in TinyPl0 uebernommen, damit die Spec-Kit-Kommandos auch in diesem Repository direkt als Skills verfuegbar sind. |
+| 2026-03-25 | Erfahrungsadjustierte Beschleunigungsrechnung erweitert | Die Statistik fuehrt jetzt zusaetzlich zur konservativen 80-Zeilen-Referenz eine explizite Thorsten-Solo-Referenz mit Legacy-Portierungsaufschlag; dieselbe Methodik wurde in `AGENTS.md`, `CLAUDE.md`, `GEMINI.md` und `.github/copilot-instructions.md` synchronisiert. |
