@@ -130,9 +130,11 @@ and clean CLI exit codes.
 Every change MUST be delivered via pull request.
 
 The `Pl0.Ide` project version (`Major.Minor.Patch.Build` in `Pl0.Ide.csproj`) MUST
-be aligned before each commit: `Minor` = current PR number, `Patch` = commit count in
-PR branch, `Build` = incremented build counter. `Version`, `AssemblyVersion`, and
-`FileVersion` MUST be kept in sync.
+be aligned before each commit: `Minor` = current Spec-Kit feature/branch number,
+interpreted numerically as the canonical PR number for versioning (`002` -> `2`) and
+used immediately even before a GitHub PR exists; `Patch` = commit count in the
+feature/PR branch; `Build` = incremented build counter. `Version`,
+`AssemblyVersion`, and `FileVersion` MUST be kept in sync.
 
 **Rationale**: Traceable history and deterministic versioning are required for
 teaching and reproducible releases.

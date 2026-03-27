@@ -95,8 +95,8 @@ Pl0.Ide  --> Terminal.Gui  (only allowed external NuGet package for Pl0.Ide)
 **IDE components:** source editor, P-Code viewer, assembler viewer, runtime output window, debug window (registers P/B/T + stack), diagnostics window.
 
 **IDE Version Scheme** — `<Version>` in `src/Pl0.Ide/Pl0.Ide.csproj` follows `Major.Minor.Patch.Build`:
-- `Minor` = current PR number
-- `Patch` = current commit count in that PR branch (after committing the current change)
+- `Minor` = current Spec-Kit feature/branch number, interpreted numerically as the canonical PR number for versioning (`002` -> `2`) and used immediately even before a GitHub PR exists
+- `Patch` = current commit count in that feature/PR branch (after committing the current change)
 - `Build` = manual build counter incremented before every `dotnet build` or `dotnet test`
 
 Align `Version`, `AssemblyVersion`, and `FileVersion` in `Pl0.Ide.csproj` whenever a commit is created or the PR branch is updated, before pushing.
