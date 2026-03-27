@@ -1,6 +1,6 @@
 # Projektstatistik TinyPl0
 
-Stand: 2026-03-25
+Stand: 2026-03-27
 
 ## Zweck und Pflege
 
@@ -90,6 +90,7 @@ fortgeschrieben.
 
 | Branch/Ref | Letzte sichtbare Aktivitaet | Einordnung |
 |---|---|---|
+| `002-vm-inc-compat` | 2026-03-27 | Aktiver Feature-Branch fuer die SPEC-Kit-Spezifikation zur `Inc`-/`Int`-VM-Kompatibilitaet |
 | `main` | 2026-03-15 | Integrationsbranch |
 | `origin/main` | 2026-03-15 | Remote-Tracking-Branch |
 
@@ -193,6 +194,33 @@ rekonstruiert.
 - Einordnung: vor allem CI-/Operations- und Prozesshaertung; die
   Zeilen-Schaetzung bleibt hier nur ein grober Naeherungswert.
 
+### 5. Branch `002-vm-inc-compat` - SPEC-Kit-Spezifikation fuer `Inc`/`Int`
+
+- Status: in Arbeit auf Feature-Branch `002-vm-inc-compat`
+- Beobachtbarer Zeitraum: 2026-03-27 bis 2026-03-27
+- Commit-Bild: noch nicht in `main`, aktueller Aenderungssatz vor dem ersten Branch-Commit
+- Grundlegende Arbeiten: Lastenheft fuer die historische `Inc`-Alias-Anforderung
+  in eine SPEC-Kit-taugliche Feature-Beschreibung ueberfuehrt, `spec.md` fuer
+  die VM-Kompatibilitaet erstellt und Qualitaets-Checkliste fuer die
+  Planungsfreigabe angelegt
+- Git-/Arbeitsbaum-Aenderungsvolumen fuer den aktuellen Aenderungssatz:
+  - Produktionscode: 0 Zeilen
+  - Testcode: 0 Zeilen
+  - Dokumentation: 268 Zeilen in bearbeiteten oder neu angelegten Markdown-Dateien
+- Konservative Handarbeits-Basis fuer Code und Dokumentation:
+  - 268 Zeilen netto gesamt
+  - 3.4 Arbeitstage fuer einen erfahrenen Entwickler
+  - 26.1 Stunden auf TVoeD-Basis (`3.4 * 7.8`)
+  - 0.2 Arbeitsmonate brutto bzw. 0.2 TVoeD-Kalendermonate
+- Thorsten-Solo-Referenz:
+  - 2.1 Arbeitstage
+  - 16.7 Stunden auf TVoeD-Basis (`2.1 * 7.8`)
+  - 0.1 Arbeitsmonate brutto bzw. 0.1 TVoeD-Kalendermonate
+- Blended Repository Speedup gegen sichtbare 1 Git-Aktivtag fuer diesen
+  Aenderungssatz:
+  - 3.4x gegen die konservative 80-Zeilen-Referenz
+  - 2.1x gegen die Thorsten-Solo-Referenz mit 125 Zeilen pro Arbeitstag
+
 ## Einordnung der KI-/Spec-Kit-Wirkung
 
 - Die beobachtbare manuelle Gesamtbasis liegt bereits bei 25984 Zeilen
@@ -220,6 +248,7 @@ rekonstruiert.
 | 2026-03-27 | TVoeD-Urlaubsregel ab 2027 nachgezogen | Die Statistik- und Agentenmethodik wurde auf die neue Stichtagsregel umgestellt: 30 Urlaubstage pro Jahr gelten nur bis einschliesslich 2026, ab dem Kalenderjahr 2027 werden unter TVoeD-Annahme 31 Urlaubstage bei unveraenderter 5-Tage-Woche verwendet. |
 | 2026-03-21 | Erstanlage | Basisstatistik fuer TinyPl0 angelegt; sichtbare Branch-Referenzen ausgewertet, historische Phasen aus Commits rekonstruiert, Constitution, Templates und Agent-Dateien auf Pflegepflicht synchronisiert. |
 | 2026-03-22 | Methodik-Update fuer Handarbeits-Schaetzung | Die Statistik rechnet Handarbeit jetzt auf Basis von Produktionscode, Testcode und Dokumentation gemeinsam; zusaetzlich werden Monatswerte auf Basis von 21.5 Arbeitstagen pro Monat sowie TVoeD-Kalenderwerte mit 30 Urlaubstagen pro Jahr ausgewiesen. |
+| 2026-03-27 | Agentische Spezifikationsarbeit auf `002-vm-inc-compat` | Lastenheft fuer die historische `Inc`-/`Int`-Kompatibilitaet zu einer SPEC-Kit-tauglichen Feature-Beschreibung umgebaut, `specs/002-vm-inc-compat/spec.md` und die Qualitaets-Checkliste angelegt, Branch-Einordnung und Handschaetzung fuer den Aenderungssatz fortgeschrieben. |
 | 2026-03-22 | Governance-Synchronisierung zur Statistiklogik | Constitution sowie die gemeinsamen Agent-Hinweise (`AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md`) wurden auf die neue Statistiklogik synchronisiert: Handarbeits-Schaetzung umfasst nun Code, Tests und Dokumentation gemeinsam; Monats- und TVoeD-Annahmen muessen explizit genannt werden. |
 | 2026-03-22 | GitHub-Codex-Spec-Kit-Skills installiert | Die lokale Codex-Skill-Struktur `.agents/skills/` mit den neun `speckit-*`-Skills wurde aus TuiVision in TinyPl0 uebernommen, damit die Spec-Kit-Kommandos auch in diesem Repository direkt als Skills verfuegbar sind. |
 | 2026-03-25 | Erfahrungsadjustierte Beschleunigungsrechnung erweitert | Die Statistik fuehrt jetzt zusaetzlich zur konservativen 80-Zeilen-Referenz eine explizite Thorsten-Solo-Referenz mit Legacy-Portierungsaufschlag; dieselbe Methodik wurde in `AGENTS.md`, `CLAUDE.md`, `GEMINI.md` und `.github/copilot-instructions.md` synchronisiert. |
