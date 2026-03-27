@@ -25,7 +25,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeRainbowAsciiArtView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: IdeRainbowAsciiArtView
     path: src/Pl0.Ide/IdeRainbowAsciiArtView.cs
@@ -303,7 +303,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeRainbowAsciiArtView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: rainbowMap
     path: src/Pl0.Ide/IdeRainbowAsciiArtView.cs
@@ -330,7 +330,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeRainbowAsciiArtView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: RainbowColors
     path: src/Pl0.Ide/IdeRainbowAsciiArtView.cs
@@ -357,7 +357,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeRainbowAsciiArtView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: .ctor
     path: src/Pl0.Ide/IdeRainbowAsciiArtView.cs
@@ -386,7 +386,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeRainbowAsciiArtView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: SetAsciiArt
     path: src/Pl0.Ide/IdeRainbowAsciiArtView.cs
@@ -418,7 +418,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeRainbowAsciiArtView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: GetRainbowColorIndexAt
     path: src/Pl0.Ide/IdeRainbowAsciiArtView.cs
@@ -454,7 +454,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeRainbowAsciiArtView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: OnDrawNormalColor
     path: src/Pl0.Ide/IdeRainbowAsciiArtView.cs
@@ -501,7 +501,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeRainbowAsciiArtView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: OnDrawReadOnlyColor
     path: src/Pl0.Ide/IdeRainbowAsciiArtView.cs
@@ -548,7 +548,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeRainbowAsciiArtView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: OnDrawUsedColor
     path: src/Pl0.Ide/IdeRainbowAsciiArtView.cs
@@ -595,7 +595,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeRainbowAsciiArtView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: ApplyRainbowColor
     path: src/Pl0.Ide/IdeRainbowAsciiArtView.cs
@@ -633,7 +633,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeRainbowAsciiArtView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: RebuildRainbowMap
     path: src/Pl0.Ide/IdeRainbowAsciiArtView.cs

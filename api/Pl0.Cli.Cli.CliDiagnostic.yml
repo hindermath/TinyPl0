@@ -18,7 +18,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CliDiagnostic.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: CliDiagnostic
     path: src/Pl0.Cli/Cli/CliDiagnostic.cs
@@ -56,7 +56,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CliDiagnostic.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: .ctor
     path: src/Pl0.Cli/Cli/CliDiagnostic.cs
@@ -94,7 +94,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CliDiagnostic.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: Code
     path: src/Pl0.Cli/Cli/CliDiagnostic.cs
@@ -125,7 +125,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CliDiagnostic.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: Message
     path: src/Pl0.Cli/Cli/CliDiagnostic.cs

@@ -18,7 +18,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/SymbolKind.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: SymbolKind
     path: src/Pl0.Core/SymbolKind.cs
@@ -45,7 +45,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/SymbolKind.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: Constant
     path: src/Pl0.Core/SymbolKind.cs
@@ -73,7 +73,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/SymbolKind.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: Variable
     path: src/Pl0.Core/SymbolKind.cs
@@ -101,7 +101,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/SymbolKind.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: Procedure
     path: src/Pl0.Core/SymbolKind.cs

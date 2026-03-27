@@ -17,7 +17,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeFileStorage.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: IIdeFileStorage
     path: src/Pl0.Ide/IdeFileStorage.cs
@@ -28,6 +28,8 @@ items:
   syntax:
     content: internal interface IIdeFileStorage
     content.vb: Friend Interface IIdeFileStorage
+  derivedClasses:
+  - Pl0.Ide.PhysicalIdeFileStorage
 - uid: Pl0.Ide.IIdeFileStorage.ReadAllText(System.String)
   commentId: M:Pl0.Ide.IIdeFileStorage.ReadAllText(System.String)
   id: ReadAllText(System.String)
@@ -42,7 +44,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeFileStorage.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: ReadAllText
     path: src/Pl0.Ide/IdeFileStorage.cs
@@ -76,7 +78,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeFileStorage.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: WriteAllText
     path: src/Pl0.Ide/IdeFileStorage.cs

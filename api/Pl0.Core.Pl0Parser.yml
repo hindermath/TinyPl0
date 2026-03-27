@@ -77,7 +77,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: Pl0Parser
     path: src/Pl0.Core/Pl0Parser.cs
@@ -113,7 +113,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: OprNegate
     path: src/Pl0.Core/Pl0Parser.cs
@@ -142,7 +142,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: OprAdd
     path: src/Pl0.Core/Pl0Parser.cs
@@ -171,7 +171,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: OprSub
     path: src/Pl0.Core/Pl0Parser.cs
@@ -200,7 +200,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: OprMul
     path: src/Pl0.Core/Pl0Parser.cs
@@ -229,7 +229,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: OprDiv
     path: src/Pl0.Core/Pl0Parser.cs
@@ -258,7 +258,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: OprOdd
     path: src/Pl0.Core/Pl0Parser.cs
@@ -287,7 +287,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: OprEq
     path: src/Pl0.Core/Pl0Parser.cs
@@ -316,7 +316,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: OprNeq
     path: src/Pl0.Core/Pl0Parser.cs
@@ -345,7 +345,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: OprLt
     path: src/Pl0.Core/Pl0Parser.cs
@@ -374,7 +374,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: OprGeq
     path: src/Pl0.Core/Pl0Parser.cs
@@ -403,7 +403,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: OprGt
     path: src/Pl0.Core/Pl0Parser.cs
@@ -432,7 +432,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: OprLeq
     path: src/Pl0.Core/Pl0Parser.cs
@@ -461,7 +461,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: OprRead
     path: src/Pl0.Core/Pl0Parser.cs
@@ -490,7 +490,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: OprWrite
     path: src/Pl0.Core/Pl0Parser.cs
@@ -519,7 +519,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: ErrorProgramTooLong
     path: src/Pl0.Core/Pl0Parser.cs
@@ -548,7 +548,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: ErrorSymbolTableOverflow
     path: src/Pl0.Core/Pl0Parser.cs
@@ -577,7 +577,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: _tokens
     path: src/Pl0.Core/Pl0Parser.cs
@@ -606,7 +606,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: _options
     path: src/Pl0.Core/Pl0Parser.cs
@@ -635,7 +635,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: _symbols
     path: src/Pl0.Core/Pl0Parser.cs
@@ -664,7 +664,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: _code
     path: src/Pl0.Core/Pl0Parser.cs
@@ -693,7 +693,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: _diagnostics
     path: src/Pl0.Core/Pl0Parser.cs
@@ -722,7 +722,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: _reportedUnexpectedEof
     path: src/Pl0.Core/Pl0Parser.cs
@@ -751,7 +751,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: _position
     path: src/Pl0.Core/Pl0Parser.cs
@@ -780,7 +780,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: _rm
     path: src/Pl0.Core/Pl0Parser.cs
@@ -809,7 +809,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: _culture
     path: src/Pl0.Core/Pl0Parser.cs
@@ -838,7 +838,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: StatementStartTokens
     path: src/Pl0.Core/Pl0Parser.cs
@@ -867,7 +867,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: BlockContinuationTokens
     path: src/Pl0.Core/Pl0Parser.cs
@@ -896,7 +896,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: StatementFollowTokens
     path: src/Pl0.Core/Pl0Parser.cs
@@ -925,7 +925,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: ExpressionFollowTokens
     path: src/Pl0.Core/Pl0Parser.cs
@@ -954,7 +954,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: .ctor
     path: src/Pl0.Core/Pl0Parser.cs
@@ -992,7 +992,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: Parse
     path: src/Pl0.Core/Pl0Parser.cs
@@ -1023,7 +1023,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: ParseBlock
     path: src/Pl0.Core/Pl0Parser.cs
@@ -1061,7 +1061,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: ParseConstDeclaration
     path: src/Pl0.Core/Pl0Parser.cs
@@ -1096,7 +1096,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: ParseVarDeclaration
     path: src/Pl0.Core/Pl0Parser.cs
@@ -1134,7 +1134,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: ParseStatement
     path: src/Pl0.Core/Pl0Parser.cs
@@ -1169,7 +1169,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: ParseAssignment
     path: src/Pl0.Core/Pl0Parser.cs
@@ -1204,7 +1204,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: ParseCall
     path: src/Pl0.Core/Pl0Parser.cs
@@ -1239,7 +1239,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: ParseBeginEnd
     path: src/Pl0.Core/Pl0Parser.cs
@@ -1274,7 +1274,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: ParseIf
     path: src/Pl0.Core/Pl0Parser.cs
@@ -1309,7 +1309,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: ParseWhile
     path: src/Pl0.Core/Pl0Parser.cs
@@ -1344,7 +1344,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: ParseInput
     path: src/Pl0.Core/Pl0Parser.cs
@@ -1379,7 +1379,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: ParseOutput
     path: src/Pl0.Core/Pl0Parser.cs
@@ -1414,7 +1414,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: ParseCondition
     path: src/Pl0.Core/Pl0Parser.cs
@@ -1449,7 +1449,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: ParseExpression
     path: src/Pl0.Core/Pl0Parser.cs
@@ -1484,7 +1484,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: ParseTerm
     path: src/Pl0.Core/Pl0Parser.cs
@@ -1519,7 +1519,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: ParseFactor
     path: src/Pl0.Core/Pl0Parser.cs
@@ -1554,7 +1554,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: Lookup
     path: src/Pl0.Core/Pl0Parser.cs
@@ -1595,7 +1595,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: ComputeLevelDifference
     path: src/Pl0.Core/Pl0Parser.cs
@@ -1636,7 +1636,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: TryDeclare
     path: src/Pl0.Core/Pl0Parser.cs
@@ -1677,7 +1677,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: Emit
     path: src/Pl0.Core/Pl0Parser.cs
@@ -1721,7 +1721,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: PatchArgument
     path: src/Pl0.Core/Pl0Parser.cs
@@ -1759,7 +1759,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: TryMatch
     path: src/Pl0.Core/Pl0Parser.cs
@@ -1794,7 +1794,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: Expect
     path: src/Pl0.Core/Pl0Parser.cs
@@ -1838,7 +1838,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: ExpectOrSync
     path: src/Pl0.Core/Pl0Parser.cs
@@ -1885,7 +1885,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: Synchronize
     path: src/Pl0.Core/Pl0Parser.cs
@@ -1920,7 +1920,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: Advance
     path: src/Pl0.Core/Pl0Parser.cs
@@ -1951,7 +1951,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: Current
     path: src/Pl0.Core/Pl0Parser.cs
@@ -1982,7 +1982,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: IsRelation
     path: src/Pl0.Core/Pl0Parser.cs
@@ -2017,7 +2017,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: Report
     path: src/Pl0.Core/Pl0Parser.cs
@@ -2055,7 +2055,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: Report
     path: src/Pl0.Core/Pl0Parser.cs
@@ -2096,7 +2096,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: ReportUnexpectedEofOnce
     path: src/Pl0.Core/Pl0Parser.cs
@@ -2124,7 +2124,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: Msg
     path: src/Pl0.Core/Pl0Parser.cs

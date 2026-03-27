@@ -20,7 +20,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeDebugView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: IdeDebugHighlightSpan
     path: src/Pl0.Ide/IdeDebugView.cs
@@ -54,7 +54,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeDebugView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: .ctor
     path: src/Pl0.Ide/IdeDebugView.cs
@@ -92,7 +92,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeDebugView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: Row
     path: src/Pl0.Ide/IdeDebugView.cs
@@ -121,7 +121,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeDebugView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: StartColumn
     path: src/Pl0.Ide/IdeDebugView.cs
@@ -150,7 +150,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeDebugView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: Length
     path: src/Pl0.Ide/IdeDebugView.cs
@@ -179,7 +179,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeDebugView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: Kind
     path: src/Pl0.Ide/IdeDebugView.cs
