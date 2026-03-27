@@ -47,6 +47,7 @@ The project uses Golden Master tests for the lexer and parser. To update these a
   - The project maintains a high standard of traceability between requirements and tests (see `docs/TRACEABILITY_MATRIX.md`).
 - **Error Handling:** Use the `DiagnosticBag` in `Pl0.Core` to collect errors instead of throwing exceptions during compilation.
 - **VM Semantics:** The VM uses a stack-based architecture with registers `P` (Program Counter), `B` (Base Pointer), and `T` (Top of Stack).
+- **IDE Version Scheme:** `src/Pl0.Ide/Pl0.Ide.csproj` uses `Major.Minor.Patch.Build`. `Minor` is the current Spec-Kit feature/branch number, interpreted numerically as the canonical PR number for versioning (`002` -> `2`) and used immediately even before a GitHub PR exists. `Patch` is the current commit count in that feature/PR branch after committing the current change. `Build` is the manual build counter incremented before every `dotnet build` or `dotnet test`. Keep `Version`, `AssemblyVersion`, and `FileVersion` aligned before pushing.
 
 ## Key Files
 - `TinyPl0.sln`: Main solution file.
