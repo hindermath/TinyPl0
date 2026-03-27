@@ -69,22 +69,22 @@ fortgeschrieben.
 | Git-Aktivtage | 20 |
 | Produktionscode aktuell | 58 Dateien / 6536 Zeilen |
 | Testcode aktuell | 15 Dateien / 3351 Zeilen |
-| Dokumentation aktuell | 359 Dateien / 16097 Zeilen |
-| Davon Spec-Kit-Artefakte | 12 Dateien / 2212 Zeilen |
-| Davon Governance/Agent-Dateien | 5 Dateien / 933 Zeilen |
-| Gesamtbasis fuer Handschaetzung (inkl. Dokumentation) | 25984 Zeilen |
-| Erfahrener Entwickler, konservative Untergrenze | 324.8 Arbeitstage |
-| Erfahrener Entwickler, konservative Untergrenze in Stunden | 2533.4 Stunden (324.8 * 7.8) |
-| Erfahrener Entwickler, brutto | 15.1 Arbeitsmonate (21.5 Tage/Monat) |
-| Erfahrener Entwickler, TVoeD-Annahme | 17.1 Kalendermonate bzw. 1.4 Jahre |
-| Thorsten solo, erfahrungsadjustierte Untergrenze | 207.9 Arbeitstage |
-| Thorsten solo, erfahrungsadjustierte Untergrenze in Stunden | 1621.6 Stunden (207.9 * 7.8) |
-| Thorsten solo, brutto | 9.7 Arbeitsmonate (21.5 Tage/Monat) |
-| Thorsten solo, TVoeD-Annahme | 10.9 Kalendermonate bzw. 0.9 Jahre |
-| Kleines Team (3 Personen, +20 % Koordination), Untergrenze | 129.9 Arbeitstage |
-| Kleines Team (3 Personen, +20 % Koordination), TVoeD-Annahme | 6.8 Kalendermonate |
-| Repo-weiter Beschleunigungsfaktor vs. konservative Referenz | 16.2x (324.8 / 20 Git-Aktivtage) |
-| Repo-weiter Beschleunigungsfaktor vs. Thorsten-Referenz | 10.4x (207.9 / 20 Git-Aktivtage) |
+| Dokumentation aktuell | 380 Dateien / 19686 Zeilen |
+| Davon Spec-Kit-Artefakte | 21 Dateien / 3291 Zeilen |
+| Davon Governance/Agent-Dateien | 5 Dateien / 976 Zeilen |
+| Gesamtbasis fuer Handschaetzung (inkl. Dokumentation) | 29573 Zeilen |
+| Erfahrener Entwickler, konservative Untergrenze | 369.7 Arbeitstage |
+| Erfahrener Entwickler, konservative Untergrenze in Stunden | 2883.4 Stunden (369.7 * 7.8) |
+| Erfahrener Entwickler, brutto | 17.2 Arbeitsmonate (21.5 Tage/Monat) |
+| Erfahrener Entwickler, TVoeD-Annahme | 19.5 Kalendermonate bzw. 1.6 Jahre |
+| Thorsten solo, erfahrungsadjustierte Untergrenze | 236.6 Arbeitstage |
+| Thorsten solo, erfahrungsadjustierte Untergrenze in Stunden | 1845.4 Stunden (236.6 * 7.8) |
+| Thorsten solo, brutto | 11.0 Arbeitsmonate (21.5 Tage/Monat) |
+| Thorsten solo, TVoeD-Annahme | 12.5 Kalendermonate bzw. 1.0 Jahre |
+| Kleines Team (3 Personen, +20 % Koordination), Untergrenze | 147.9 Arbeitstage |
+| Kleines Team (3 Personen, +20 % Koordination), TVoeD-Annahme | 7.8 Kalendermonate |
+| Repo-weiter Beschleunigungsfaktor vs. konservative Referenz | 18.5x (369.7 / 20 Git-Aktivtage) |
+| Repo-weiter Beschleunigungsfaktor vs. Thorsten-Referenz | 11.8x (236.6 / 20 Git-Aktivtage) |
 
 ## Branch-Ueberblick
 
@@ -201,42 +201,60 @@ rekonstruiert.
 - Commit-Bild: noch nicht in `main`, aktueller Aenderungssatz vor dem ersten Branch-Commit
 - Grundlegende Arbeiten: Lastenheft fuer die historische `Inc`-Alias-Anforderung
   in eine SPEC-Kit-taugliche Feature-Beschreibung ueberfuehrt, `spec.md` fuer
-  die VM-Kompatibilitaet erstellt und Qualitaets-Checkliste fuer die
-  Planungsfreigabe angelegt
+  die VM-Kompatibilitaet erstellt, Qualitaets-Checkliste fuer die
+  Planungsfreigabe angelegt, die Planungsartefakte (`plan.md`, `research.md`,
+  `data-model.md`, `quickstart.md`, `contracts/pcode-text-contract.md`)
+  erzeugt, die Planungs-Checkliste abgearbeitet, `tasks.md` fuer die
+  Implementierungsphase erstellt und der Codex-Agent-Kontext auf den Branch
+  aktualisiert
 - Git-/Arbeitsbaum-Aenderungsvolumen fuer den aktuellen Aenderungssatz:
   - Produktionscode: 0 Zeilen
   - Testcode: 0 Zeilen
-  - Dokumentation: 268 Zeilen in bearbeiteten oder neu angelegten Markdown-Dateien
+  - Dokumentation: 1557 Zeilen in bearbeiteten oder neu angelegten
+    Markdown-Dateien inklusive Governance- und Statistik-Fortschreibung
 - Konservative Handarbeits-Basis fuer Code und Dokumentation:
-  - 268 Zeilen netto gesamt
-  - 3.4 Arbeitstage fuer einen erfahrenen Entwickler
-  - 26.1 Stunden auf TVoeD-Basis (`3.4 * 7.8`)
-  - 0.2 Arbeitsmonate brutto bzw. 0.2 TVoeD-Kalendermonate
+  - 1557 Zeilen netto gesamt
+  - 19.5 Arbeitstage fuer einen erfahrenen Entwickler
+  - 152.0 Stunden auf TVoeD-Basis (`19.5 * 7.8`)
+  - 0.9 Arbeitsmonate brutto bzw. 1.0 TVoeD-Kalendermonate
 - Thorsten-Solo-Referenz:
-  - 2.1 Arbeitstage
-  - 16.7 Stunden auf TVoeD-Basis (`2.1 * 7.8`)
-  - 0.1 Arbeitsmonate brutto bzw. 0.1 TVoeD-Kalendermonate
+  - 12.5 Arbeitstage
+  - 97.2 Stunden auf TVoeD-Basis (`12.5 * 7.8`)
+  - 0.6 Arbeitsmonate brutto bzw. 0.7 TVoeD-Kalendermonate
 - Blended Repository Speedup gegen sichtbare 1 Git-Aktivtag fuer diesen
   Aenderungssatz:
-  - 3.4x gegen die konservative 80-Zeilen-Referenz
-  - 2.1x gegen die Thorsten-Solo-Referenz mit 125 Zeilen pro Arbeitstag
+  - 19.5x gegen die konservative 80-Zeilen-Referenz
+  - 12.5x gegen die Thorsten-Solo-Referenz mit 125 Zeilen pro Arbeitstag
+- Planungsfortschritt innerhalb desselben Branch-Fensters:
+  - Nach der Clarify-Runde wurden `plan.md`, `research.md`, `data-model.md`,
+    `quickstart.md` und ein Vertragsartefakt unter `contracts/` angelegt bzw.
+    fortgeschrieben.
+  - Dadurch ist der Branch nicht mehr nur spezifiziert, sondern fuer die
+    nachfolgende Task-Zerlegung technisch und organisatorisch vorbereitet.
+  - Mit `checklists/planning-quality.md` wurde die Planungsqualitaet formell
+    gegen die aktuellen Artefakte geprueft und dokumentiert.
+  - Mit `tasks.md` liegt jetzt die vollstaendige, story-orientierte
+    Implementierungszerlegung fuer die naechste Spec-Kit-Phase vor.
+  - Nach einer nachgelagerten `speckit-analyze`-Pruefung wurden `plan.md` und
+    `tasks.md` noch einmal gegen Constitution-, DocFX- und
+    Statistikpflege-Luecken nachgeschaerft.
 
 ## Einordnung der KI-/Spec-Kit-Wirkung
 
-- Die beobachtbare manuelle Gesamtbasis liegt bereits bei 25984 Zeilen
+- Die beobachtbare manuelle Gesamtbasis liegt bereits bei 29573 Zeilen
   (Produktionscode + Tests + Dokumentation).
 - Selbst mit der konservativen Obergrenze von 80 manuell erstellten Zeilen pro
-  Arbeitstag ergibt sich bereits eine Untergrenze von 324.8
+  Arbeitstag ergibt sich bereits eine Untergrenze von 369.7
   Entwickler-Arbeitstagen.
 - Unter TVoeD-Annahme mit 30 Urlaubstagen pro Jahr entspricht das fuer einen
-  erfahrenen Entwickler ca. 17.1 Kalendermonaten bzw. 1.4 Arbeitsjahren; fuer
-  ein 3er-Team mit 20 % Koordinationsaufschlag ca. 6.8 Kalendermonaten.
+  erfahrenen Entwickler ca. 19.5 Kalendermonaten bzw. 1.6 Arbeitsjahren; fuer
+  ein 3er-Team mit 20 % Koordinationsaufschlag ca. 7.8 Kalendermonaten.
 - Unter Einbezug von Thorstens Erfahrungsprofil sinkt die klassische
-  Solo-Referenz fuer TinyPl0 auf ca. 207.9 Arbeitstage bzw.
-  10.9 TVoeD-Kalendermonate.
+  Solo-Referenz fuer TinyPl0 auf ca. 236.6 Arbeitstage bzw.
+  12.5 TVoeD-Kalendermonate.
 - Gegen die sichtbaren 20 Git-Aktivtage ergibt sich damit ein repo-weiter
-  Beschleunigungsfaktor von ca. 16.2x gegen die konservative Referenz und
-  ca. 10.4x gegen die erfahrungsadjustierte Thorsten-Referenz.
+  Beschleunigungsfaktor von ca. 18.5x gegen die konservative Referenz und
+  ca. 11.8x gegen die erfahrungsadjustierte Thorsten-Referenz.
 - Die Historie zeigt eine massive Verdichtung durch agentische KI und
   spec-getriebene Arbeit: hoher Output in Code, Tests, Spezifikation,
   Lehrdokumentation und Infrastruktur innerhalb weniger Wochen.
@@ -256,3 +274,8 @@ rekonstruiert.
 | 2026-03-27 | Clarify-Runde fuer `002-vm-inc-compat` | Die Spezifikation wurde in mehreren Klarstellungsschritten an die reale TinyPl0-P-Code-Logik angepasst: Scope auf textuelle VM-/P-Code-Artefakte eingegrenzt, bestehende case-insensitive Eingabelogik fuer Mnemonics uebernommen, textuelle Ausgabe auf das aktuelle lowercase-Mnemonic `int` statt auf eine neue Schreibweise festgelegt und die Terminologie zwischen historischem `Inc`, internem `Int` und textuellem `int` bereinigt. |
 | 2026-03-27 | Governance-Update zur IDE-Versionslogik | Die gemeinsame Agent-Governance (`AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md` und `.specify/memory/constitution.md`) wurde so angepasst, dass fuer `Pl0.Ide` die Spec-Kit-Feature-/Branch-Nummer kuenftig sofort als kanonische PR-Nummer fuer `Minor` gilt, auch wenn die GitHub-PR noch nicht existiert. |
 | 2026-03-27 | Sortierung des Fortschreibungsprotokolls vereinheitlicht | Die Eintraege im Fortschreibungsprotokoll wurden auf strikt chronologische Reihenfolge gebracht: aeltester Eintrag oben, juengster und zuletzt eingetragener Eintrag unten. Dieselbe Regel wurde in der gemeinsamen Agent-Governance fuer dieses Repository festgeschrieben. |
+| 2026-03-27 | Planungsphase fuer `002-vm-inc-compat` | Auf Basis der geklaerten Spezifikation wurden die Spec-Kit-Planungsartefakte `plan.md`, `research.md`, `data-model.md`, `quickstart.md` und `contracts/pcode-text-contract.md` erzeugt, die Implementierungsschneise auf `PCodeSerializer`, Serializer-Tests und VM-Dokumentation eingegrenzt, der Codex-Agent-Kontext in `AGENTS.md` aktualisiert sowie die Statistik fuer den erweiterten agentischen Dokumentationssatz fortgeschrieben. |
+| 2026-03-27 | Review- und Task-Phase fuer `002-vm-inc-compat` | Die Planungsartefakte wurden mit `checklists/planning-quality.md` formal geprueft und punktuell nachgeschaerft; anschliessend wurde `specs/002-vm-inc-compat/tasks.md` mit 14 umsetzbaren, story-orientierten Tasks fuer `PCodeSerializer`, `PCodeSerializerTests`, VM-Dokumentation, `docfx` und Statistikpflege erstellt. |
+| 2026-03-27 | Analyse-Remediation fuer `002-vm-inc-compat` | Nach `speckit-analyze` wurden `specs/002-vm-inc-compat/plan.md` und `specs/002-vm-inc-compat/tasks.md` im Arbeitsbaum nachgeschaerft: DE-/EN-B2-Pflichten jetzt explizit, `docfx/curated/vm-instruction-set.md` als Touchpoint im Plan sichtbar, DocFX-Reihenfolge gegen spaete Doku-Aenderungen abgesichert und Statistikpflege auf die Implementierungsphase umformuliert; Aenderungsumfang dieser Runde vor dieser Ledger-Fortschreibung: 0 Produktionscode-Zeilen, 0 Testcode-Zeilen, +9 Dokumentationszeilen aus dem aktuellen Arbeitsbaum, konservative Handarbeits-Untergrenze 0.1 Arbeitstage bzw. 0.8 Stunden auf TVoeD-Basis, Thorsten-Solo-Referenz 0.1 Arbeitstage bzw. 0.6 Stunden, Monatsannahme weiterhin 21.5 Arbeitstage brutto bzw. 19.0 TVoeD-produktive Tage pro Kalendermonat. |
+| 2026-03-27 | Formale Status-Nachschaerfung fuer `002-vm-inc-compat` | `specs/002-vm-inc-compat/spec.md` wurde nach abgeschlossener Analyse- und Remediation-Runde von `Draft` auf `Ready for Implementation` gesetzt, damit Spezifikation, Plan und Tasks denselben Reifegrad signalisieren; Aenderungsumfang dieser Runde vor dieser Ledger-Fortschreibung: 0 Produktionscode-Zeilen, 0 Testcode-Zeilen, +1 Dokumentationszeile im Arbeitsbaum, konservative Handarbeits-Untergrenze 0.0 Arbeitstage bzw. 0.1 Stunden auf TVoeD-Basis, Thorsten-Solo-Referenz 0.0 Arbeitstage bzw. 0.1 Stunden, Monatsannahme weiterhin 21.5 Arbeitstage brutto bzw. 19.0 TVoeD-produktive Tage pro Kalendermonat. |
+| 2026-03-27 | Commit-/Push-Vorbereitung fuer `002-vm-inc-compat` | Vor dem angeforderten Commit/Pull-Request-Branch-Push wurden in `src/Pl0.Ide/Pl0.Ide.csproj` die Versionsfelder gemaess Governance auf `1.2.200.11` synchronisiert; dieser Schritt betrifft ein projektmetadatenbezogenes Build-Artefakt ausserhalb der Produktionscode-/Testcode-/Markdown-Taxonomie, plus diese Ledger-Fortschreibung mit +1 Dokumentationszeile im Arbeitsbaum, konservative Handarbeits-Untergrenze 0.0 Arbeitstage bzw. 0.1 Stunden auf TVoeD-Basis, Thorsten-Solo-Referenz 0.0 Arbeitstage bzw. 0.1 Stunden, Monatsannahme weiterhin 21.5 Arbeitstage brutto bzw. 19.0 TVoeD-produktive Tage pro Kalendermonat. |

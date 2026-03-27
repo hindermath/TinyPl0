@@ -203,3 +203,10 @@ Activation records use three reserved cells: Static Link, Dynamic Link, Return A
 - When effort is converted into months, use explicit assumptions such as 21.5 workdays per month and, if applicable, 30 vacation days per year through calendar year 2026 and 31 vacation days per year from calendar year 2027 onward under a TVoeD-style 5-day-week calendar.
 - When reporting acceleration, compare both manual references against visible Git active days and label the result as a blended repository speedup rather than a stopwatch measurement.
 - When hour values are shown, convert the day-based estimates with the TVoeD working-day baseline of `7.8 hours` (`7h 48m`) per day.
+
+## Active Technologies
+- C# 14 / .NET 10 + .NET SDK, bestehende Module `Pl0.Core`, `Pl0.Vm`, `Pl0.Cli`, xUnit (002-vm-inc-compat)
+- Textuelle `.pcode`-/Listing-Artefakte als Einlese-Schnittstelle fuer historische `Inc`-/`Int`-Kompatibilitaet (002-vm-inc-compat)
+
+## Recent Changes
+- 002-vm-inc-compat: Planungsartefakte fuer die historische `Inc`-/`Int`-Alias-Kompatibilitaet und den Implementierungsfokus auf `PCodeSerializer`, Tests und VM-Dokumentation hinzugefuegt
