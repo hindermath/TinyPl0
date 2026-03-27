@@ -109,7 +109,11 @@ public static class PCodeSerializer
             "lod" => Opcode.Lod,
             "sto" => Opcode.Sto,
             "cal" => Opcode.Cal,
-            "int" => Opcode.Int,
+            // Deutsch: Historische Unterrichtsartefakte verwenden oft `Inc`
+            // fuer dieselbe Stack-Reservierung wie TinyPl0 mit `int`.
+            // English: Historical teaching artifacts often use `Inc` for the
+            // same stack-reservation operation that TinyPl0 exposes as `int`.
+            "int" or "inc" => Opcode.Int,
             "jmp" => Opcode.Jmp,
             "jpc" => Opcode.Jpc,
             _ => throw new FormatException($"Unknown mnemonic opcode on p-code line {lineNo}: '{value}'."),
