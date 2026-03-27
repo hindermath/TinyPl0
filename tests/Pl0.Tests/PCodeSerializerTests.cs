@@ -5,6 +5,12 @@ namespace Pl0.Tests;
 
 public sealed class PCodeSerializerTests
 {
+    public static TheoryData<string> CurrentIntMnemonics => new() { "int", "Int", "INT" };
+
+    public static TheoryData<string> HistoricalIncMnemonics => new() { "Inc", "inc", "iNc" };
+
+    public static TheoryData<string> InvalidNearMissMnemonics => new() { "Incc", "inta", "imc" };
+
     [Fact]
     public void Roundtrip_Asm_Serialization_Preserves_Instructions()
     {
@@ -55,7 +61,93 @@ public sealed class PCodeSerializerTests
         Assert.Equal([5, 5, 5], io.Output);
     }
 
+    [Theory]
+    [MemberData(nameof(CurrentIntMnemonics))]
+    public void Parse_Current_Int_Mnemonics_Produces_Int_Instruction(string mnemonic)
+    {
+        var parsed = ParseSingleInstruction($"{mnemonic} 0 4");
+
+        Assert.Equal(new Instruction(Opcode.Int, 0, 4), parsed);
+    }
+
+    [Fact]
+    public void ToAsm_Uses_Canonical_Int_Mnemonic_For_Int_Instruction()
+    {
+        var asm = PCodeSerializer.ToAsm([new Instruction(Opcode.Int, 0, 4)]);
+
+        Assert.Equal("int 0 4", asm);
+    }
+
+    [Theory]
+    [MemberData(nameof(HistoricalIncMnemonics))]
+    public void Parse_Historical_Inc_Mnemonics_Produces_Int_Instruction(string mnemonic)
+    {
+        var parsed = ParseSingleInstruction($"{mnemonic} 0 4");
+
+        Assert.Equal(new Instruction(Opcode.Int, 0, 4), parsed);
+    }
+
+    [Theory]
+    [MemberData(nameof(HistoricalIncMnemonics))]
+    public void Historical_Inc_Mnemonics_Run_Like_Int_Programs(string mnemonic)
+    {
+        var historicalProgram = ParseProgram($"""
+            {mnemonic} 0 3
+            Lit 0 7
+            Opr 0 15
+            Opr 0 0
+            """);
+        var currentProgram = ParseProgram("""
+            Int 0 3
+            Lit 0 7
+            Opr 0 15
+            Opr 0 0
+            """);
+
+        Assert.Equal(currentProgram, historicalProgram);
+        Assert.Equal(ExecuteProgram(currentProgram), ExecuteProgram(historicalProgram));
+    }
+
+    [Theory]
+    [MemberData(nameof(HistoricalIncMnemonics))]
+    public void ToAsm_Serializes_Historical_Inc_Parse_Result_As_Canonical_Int(string mnemonic)
+    {
+        var parsed = ParseProgram($"""
+            {mnemonic} 0 4
+            Lit 0 1
+            Opr 0 0
+            """);
+
+        var asm = PCodeSerializer.ToAsm(parsed);
+
+        Assert.StartsWith("int 0 4", asm, StringComparison.Ordinal);
+    }
+
+    [Theory]
+    [MemberData(nameof(InvalidNearMissMnemonics))]
+    public void Parse_Invalid_NearMiss_Mnemonics_Throws_FormatException(string mnemonic)
+    {
+        var exception = Assert.Throws<FormatException>(() => PCodeSerializer.Parse($"{mnemonic} 0 4"));
+
+        Assert.Contains("Unknown mnemonic opcode", exception.Message, StringComparison.Ordinal);
+        Assert.Contains(mnemonic, exception.Message, StringComparison.Ordinal);
+    }
+
     private static string RepoRoot => FindRepoRoot();
+
+    private static Instruction ParseSingleInstruction(string text) =>
+        Assert.Single(PCodeSerializer.Parse(text));
+
+    private static IReadOnlyList<Instruction> ParseProgram(string text) => PCodeSerializer.Parse(text);
+
+    private static IReadOnlyList<int> ExecuteProgram(IReadOnlyList<Instruction> instructions)
+    {
+        var io = new BufferedPl0Io();
+        var vmResult = new VirtualMachine().Run(instructions, io);
+
+        Assert.True(vmResult.Success);
+        return io.Output.ToArray();
+    }
 
     private static string FindRepoRoot()
     {
