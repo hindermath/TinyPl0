@@ -40,7 +40,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: SteppableVirtualMachine
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
@@ -76,7 +76,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: RuntimeErrorExitCode
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
@@ -103,7 +103,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: InputEofExitCode
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
@@ -130,7 +130,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: InputFormatExitCode
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
@@ -157,7 +157,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: DivisionByZeroExitCode
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
@@ -184,7 +184,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: program
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
@@ -211,7 +211,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: io
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
@@ -238,7 +238,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: options
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
@@ -265,7 +265,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: diagnostics
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
@@ -292,7 +292,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: stack
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
@@ -319,7 +319,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: p
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
@@ -346,7 +346,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: b
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
@@ -373,7 +373,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: t
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
@@ -400,7 +400,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: initialized
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
@@ -427,7 +427,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: State
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
@@ -458,7 +458,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: IsRunning
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
@@ -489,7 +489,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: Initialize
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
@@ -530,7 +530,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: Step
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
@@ -561,7 +561,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: ExecuteInstruction
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
@@ -592,7 +592,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: ExecuteOpr
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
@@ -626,7 +626,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: BinaryOp
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
@@ -660,7 +660,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: ResolveBase
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
@@ -694,7 +694,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: TryPush
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
@@ -722,7 +722,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: TryPeek
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
@@ -756,7 +756,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: IsValidStackIndex
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
@@ -790,7 +790,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: CaptureState
     path: src/Pl0.Vm/SteppableVirtualMachine.cs

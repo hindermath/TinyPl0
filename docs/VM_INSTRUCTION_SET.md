@@ -22,6 +22,22 @@ Kodiert in C# als:
 | `jmp` | 6 | Unbedingter Sprung zu `a` |
 | `jpc` | 7 | Bedingter Sprung zu `a` bei `0` auf Stack |
 
+### Klarstellung zu `Inc`, `Int` und `int`
+
+Deutsch:
+Historische P-Code-Artefakte schreiben die Stack-Reservierungsoperation oft als
+`Inc`. TinyPl0 liest diese Eingabe ebenfalls ein und bildet sie intern auf
+denselben Opcode `Int` ab. In TinyPl0-Listings, `ToAsm()`-Ausgaben und der
+gepflegten Dokumentation bleibt die kanonische Textform trotzdem `int`, damit
+aktuelles Lernmaterial und bestehende Artefakte konsistent bleiben.
+
+English:
+Historical P-Code artifacts often write the stack-reservation operation as
+`Inc`. TinyPl0 accepts that input as well and maps it internally to the same
+`Int` opcode. In TinyPl0 listings, `ToAsm()` output, and the maintained
+documentation, the canonical text form still stays `int` so current teaching
+material and existing artifacts remain consistent.
+
 ## OPR-Untercodes
 | Untercode | Bedeutung |
 |---:|---|

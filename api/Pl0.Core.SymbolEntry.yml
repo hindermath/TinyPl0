@@ -21,7 +21,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/SymbolEntry.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: SymbolEntry
     path: src/Pl0.Core/SymbolEntry.cs
@@ -57,7 +57,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/SymbolEntry.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: .ctor
     path: src/Pl0.Core/SymbolEntry.cs
@@ -104,7 +104,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/SymbolEntry.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: Name
     path: src/Pl0.Core/SymbolEntry.cs
@@ -135,7 +135,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/SymbolEntry.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: Kind
     path: src/Pl0.Core/SymbolEntry.cs
@@ -166,7 +166,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/SymbolEntry.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: Level
     path: src/Pl0.Core/SymbolEntry.cs
@@ -197,7 +197,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/SymbolEntry.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: Address
     path: src/Pl0.Core/SymbolEntry.cs
@@ -228,7 +228,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/SymbolEntry.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: Value
     path: src/Pl0.Core/SymbolEntry.cs

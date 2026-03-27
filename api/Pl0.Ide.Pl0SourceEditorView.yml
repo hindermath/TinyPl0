@@ -22,7 +22,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/Pl0SourceEditorView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: Pl0SourceEditorView
     path: src/Pl0.Ide/Pl0SourceEditorView.cs
@@ -300,7 +300,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/Pl0SourceEditorView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: compilerOptions
     path: src/Pl0.Ide/Pl0SourceEditorView.cs
@@ -327,7 +327,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/Pl0SourceEditorView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: highlightMap
     path: src/Pl0.Ide/Pl0SourceEditorView.cs
@@ -354,7 +354,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/Pl0SourceEditorView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: .ctor
     path: src/Pl0.Ide/Pl0SourceEditorView.cs
@@ -386,7 +386,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/Pl0SourceEditorView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: GetHighlightKindAt
     path: src/Pl0.Ide/Pl0SourceEditorView.cs
@@ -422,7 +422,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/Pl0SourceEditorView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: OnDrawNormalColor
     path: src/Pl0.Ide/Pl0SourceEditorView.cs
@@ -469,7 +469,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/Pl0SourceEditorView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: RebuildHighlightMap
     path: src/Pl0.Ide/Pl0SourceEditorView.cs
@@ -495,7 +495,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/Pl0SourceEditorView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: ClassifyToken
     path: src/Pl0.Ide/Pl0SourceEditorView.cs

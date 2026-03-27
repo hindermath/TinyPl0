@@ -22,7 +22,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: IdeCompilerSettingsDialogState
     path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
@@ -56,7 +56,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: .ctor
     path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
@@ -90,7 +90,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: Options
     path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
@@ -119,7 +119,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: CodeDisplayMode
     path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
@@ -148,7 +148,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: SetDialect
     path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
@@ -177,7 +177,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: SetCodeDisplayMode
     path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
@@ -206,7 +206,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: TryApplyValues
     path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
@@ -250,7 +250,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: ResetToDefaults
     path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs

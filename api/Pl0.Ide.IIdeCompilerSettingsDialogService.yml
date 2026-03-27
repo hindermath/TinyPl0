@@ -16,7 +16,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: IIdeCompilerSettingsDialogService
     path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
@@ -27,6 +27,8 @@ items:
   syntax:
     content: internal interface IIdeCompilerSettingsDialogService
     content.vb: Friend Interface IIdeCompilerSettingsDialogService
+  derivedClasses:
+  - Pl0.Ide.TerminalGuiIdeCompilerSettingsDialogService
 - uid: Pl0.Ide.IIdeCompilerSettingsDialogService.ShowCompilerSettingsDialog(Pl0.Core.CompilerOptions,Pl0.Ide.IdeCodeDisplayMode)
   commentId: M:Pl0.Ide.IIdeCompilerSettingsDialogService.ShowCompilerSettingsDialog(Pl0.Core.CompilerOptions,Pl0.Ide.IdeCodeDisplayMode)
   id: ShowCompilerSettingsDialog(Pl0.Core.CompilerOptions,Pl0.Ide.IdeCodeDisplayMode)
@@ -41,7 +43,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: ShowCompilerSettingsDialog
     path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs

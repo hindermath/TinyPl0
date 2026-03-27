@@ -24,7 +24,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: TerminalGuiIdeCompilerSettingsDialogService
     path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
@@ -60,7 +60,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: ShowCompilerSettingsDialog
     path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
@@ -96,7 +96,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: CreateLabel
     path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
@@ -132,7 +132,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: CreateNumericField
     path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
@@ -166,7 +166,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: ApplyStateToFields
     path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
@@ -211,7 +211,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: TryParseField
     path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
@@ -251,7 +251,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: GetSelectedIndexForDialect
     path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
@@ -282,7 +282,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: GetDialectForSelectedIndex
     path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
@@ -316,7 +316,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: GetSelectedIndexForDisplayMode
     path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
@@ -347,7 +347,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: GetDisplayModeForSelectedIndex
     path: src/Pl0.Ide/IdeCompilerSettingsDialogService.cs

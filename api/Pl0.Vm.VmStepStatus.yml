@@ -18,7 +18,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmStepStatus.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: VmStepStatus
     path: src/Pl0.Vm/VmStepStatus.cs
@@ -45,7 +45,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmStepStatus.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: Running
     path: src/Pl0.Vm/VmStepStatus.cs
@@ -73,7 +73,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmStepStatus.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: Halted
     path: src/Pl0.Vm/VmStepStatus.cs
@@ -101,7 +101,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmStepStatus.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: Error
     path: src/Pl0.Vm/VmStepStatus.cs
