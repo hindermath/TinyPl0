@@ -194,9 +194,10 @@ rekonstruiert.
 - Einordnung: vor allem CI-/Operations- und Prozesshaertung; die
   Zeilen-Schaetzung bleibt hier nur ein grober Naeherungswert.
 
-### 5. Branch `002-vm-inc-compat` - SPEC-Kit-Spezifikation fuer `Inc`/`Int`
+### 5. Branch `002-vm-inc-compat` - SPEC-Kit-Spezifikation und Implementierung fuer `Inc`/`Int`
 
-- Status: in Arbeit auf Feature-Branch `002-vm-inc-compat`
+- Status: Implementierung und Verifikation im Arbeitsbaum des Feature-Branches
+  abgeschlossen; noch nicht in `main`
 - Beobachtbarer Zeitraum: 2026-03-27 bis 2026-03-27
 - Commit-Bild: noch nicht in `main`, aktueller Aenderungssatz vor dem ersten Branch-Commit
 - Grundlegende Arbeiten: Lastenheft fuer die historische `Inc`-Alias-Anforderung
@@ -238,6 +239,35 @@ rekonstruiert.
   - Nach einer nachgelagerten `speckit-analyze`-Pruefung wurden `plan.md` und
     `tasks.md` noch einmal gegen Constitution-, DocFX- und
     Statistikpflege-Luecken nachgeschaerft.
+- Implementierungs- und Verifikationsfortschritt innerhalb desselben
+  Branch-Fensters:
+  - `src/Pl0.Core/PCodeSerializer.cs` akzeptiert jetzt ausschliesslich den
+    historischen Alias `inc` zusaetzlich zu `int`, ohne die kanonische Ausgabe
+    `int` oder numerisches Opcode-Parsing zu aendern.
+  - `tests/Pl0.Tests/PCodeSerializerTests.cs` wurde um Baseline-,
+    Alias-, Laufzeitgleichheits-, Kanonform- und Near-Miss-Regressionsfaelle
+    erweitert; der gezielte Lauf ergab danach 19/19 gruene Tests.
+  - `docs/VM_INSTRUCTION_SET.md` erklaert jetzt zweisprachig die Beziehung
+    zwischen historischem `Inc`, internem `Int` und kanonischem `int`; der
+    kuratierte Einstieg in `docfx/curated/vm-instruction-set.md` blieb
+    unveraendert auf dieselbe Quelle verdrahtet.
+  - Vor dieser Ledger-Fortschreibung betraegt der Netto-Aenderungssatz fuer die
+    eigentliche Feature-Implementierung `+4` Produktionscode-Zeilen,
+    `+92` Testcode-Zeilen und `+16` Dokumentationszeilen; in
+    `specs/002-vm-inc-compat/tasks.md` wurden zusaetzlich 14 offene Aufgaben
+    auf erledigt gesetzt, was netto 0 Dokumentationszeilen ergibt.
+  - Daraus folgen fuer die manuelle Referenz `112 / 80 = 1.4`
+    Arbeitstage bzw. `1.4 * 7.8 = 10.9` Stunden auf TVoeD-Basis sowie fuer die
+    Thorsten-Solo-Referenz `112 / 125 = 0.9` Arbeitstage bzw.
+    `0.9 * 7.8 = 7.0` Stunden.
+  - Gegen sichtbare 1 Git-Aktivtag in diesem Branch-Fenster ergibt sich fuer
+    diesen Implementierungssatz ein blended repository speedup von `1.4x`
+    gegen die konservative 80-Zeilen-Referenz und `0.9x` gegen die
+    Thorsten-Solo-Referenz.
+  - Die Abschlussvalidierung verlief erfolgreich mit `docfx docfx.json`
+    ohne Warnungen oder Fehler sowie `dotnet test` mit 264/264 gruenen Tests.
+    Der `docfx`-Lauf regenerierte ausserdem ausgeschlossene `api/*.yml`-
+    Artefakte, die gemaess Methodik nicht in die Handarbeitsbasis eingehen.
 
 ## Einordnung der KI-/Spec-Kit-Wirkung
 
@@ -279,3 +309,4 @@ rekonstruiert.
 | 2026-03-27 | Analyse-Remediation fuer `002-vm-inc-compat` | Nach `speckit-analyze` wurden `specs/002-vm-inc-compat/plan.md` und `specs/002-vm-inc-compat/tasks.md` im Arbeitsbaum nachgeschaerft: DE-/EN-B2-Pflichten jetzt explizit, `docfx/curated/vm-instruction-set.md` als Touchpoint im Plan sichtbar, DocFX-Reihenfolge gegen spaete Doku-Aenderungen abgesichert und Statistikpflege auf die Implementierungsphase umformuliert; Aenderungsumfang dieser Runde vor dieser Ledger-Fortschreibung: 0 Produktionscode-Zeilen, 0 Testcode-Zeilen, +9 Dokumentationszeilen aus dem aktuellen Arbeitsbaum, konservative Handarbeits-Untergrenze 0.1 Arbeitstage bzw. 0.8 Stunden auf TVoeD-Basis, Thorsten-Solo-Referenz 0.1 Arbeitstage bzw. 0.6 Stunden, Monatsannahme weiterhin 21.5 Arbeitstage brutto bzw. 19.0 TVoeD-produktive Tage pro Kalendermonat. |
 | 2026-03-27 | Formale Status-Nachschaerfung fuer `002-vm-inc-compat` | `specs/002-vm-inc-compat/spec.md` wurde nach abgeschlossener Analyse- und Remediation-Runde von `Draft` auf `Ready for Implementation` gesetzt, damit Spezifikation, Plan und Tasks denselben Reifegrad signalisieren; Aenderungsumfang dieser Runde vor dieser Ledger-Fortschreibung: 0 Produktionscode-Zeilen, 0 Testcode-Zeilen, +1 Dokumentationszeile im Arbeitsbaum, konservative Handarbeits-Untergrenze 0.0 Arbeitstage bzw. 0.1 Stunden auf TVoeD-Basis, Thorsten-Solo-Referenz 0.0 Arbeitstage bzw. 0.1 Stunden, Monatsannahme weiterhin 21.5 Arbeitstage brutto bzw. 19.0 TVoeD-produktive Tage pro Kalendermonat. |
 | 2026-03-27 | Commit-/Push-Vorbereitung fuer `002-vm-inc-compat` | Vor dem angeforderten Commit/Pull-Request-Branch-Push wurden in `src/Pl0.Ide/Pl0.Ide.csproj` die Versionsfelder gemaess Governance auf `1.2.200.11` synchronisiert; dieser Schritt betrifft ein projektmetadatenbezogenes Build-Artefakt ausserhalb der Produktionscode-/Testcode-/Markdown-Taxonomie, plus diese Ledger-Fortschreibung mit +1 Dokumentationszeile im Arbeitsbaum, konservative Handarbeits-Untergrenze 0.0 Arbeitstage bzw. 0.1 Stunden auf TVoeD-Basis, Thorsten-Solo-Referenz 0.0 Arbeitstage bzw. 0.1 Stunden, Monatsannahme weiterhin 21.5 Arbeitstage brutto bzw. 19.0 TVoeD-produktive Tage pro Kalendermonat. |
+| 2026-03-27 | Implementierungs- und Verifikationsphase fuer `002-vm-inc-compat` | `src/Pl0.Core/PCodeSerializer.cs` akzeptiert jetzt den historischen Alias `inc` fuer `Opcode.Int`, `tests/Pl0.Tests/PCodeSerializerTests.cs` deckt Baseline-, Alias-, Laufzeitgleichheits-, Kanonform- und Near-Miss-Faelle ab, `docs/VM_INSTRUCTION_SET.md` erklaert die Bruecke `Inc` / `Int` / `int` zweisprachig, `specs/002-vm-inc-compat/tasks.md` wurde vollstaendig abgehakt und die Abschlussvalidierung lief mit 19/19 gezielten Serializer-Tests, `docfx docfx.json` ohne Warnungen/Fehler sowie `dotnet test` mit 264/264 gruenen Tests; Aenderungsumfang dieser Runde vor dieser Ledger-Fortschreibung: +4 Produktionscode-Zeilen, +92 Testcode-Zeilen, +16 Dokumentationszeilen netto, zusaetzlich 14/14 Task-Haken in `tasks.md` ohne Nettoeffekt, konservative Handarbeits-Untergrenze 1.4 Arbeitstage bzw. 10.9 Stunden auf TVoeD-Basis, Thorsten-Solo-Referenz 0.9 Arbeitstage bzw. 7.0 Stunden, Monatsannahme weiterhin 21.5 Arbeitstage brutto bzw. 19.0 TVoeD-produktive Tage pro Kalendermonat; der DocFX-Lauf regenerierte ausserdem ausgeschlossene `api/*.yml`-Artefakte ausserhalb der Handarbeitsbasis. |

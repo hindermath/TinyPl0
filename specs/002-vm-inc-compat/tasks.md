@@ -19,8 +19,8 @@
 
 **Purpose**: Bestehende Touchpoints und wiederverwendbare Teststruktur fuer das kleine Feature sauber vorbereiten
 
-- [ ] T001 Review der aktuellen Touchpoints in `src/Pl0.Core/PCodeSerializer.cs`, `tests/Pl0.Tests/PCodeSerializerTests.cs`, `docs/VM_INSTRUCTION_SET.md` und `docfx/curated/vm-instruction-set.md` durchfuehren und den Edit-Fokus auf diese Dateien begrenzen
-- [ ] T002 Gemeinsame Hilfsdaten und Assertion-Helfer fuer historische, kanonische und ungueltige Mnemonic-Faelle in `tests/Pl0.Tests/PCodeSerializerTests.cs` vorbereiten
+- [X] T001 Review der aktuellen Touchpoints in `src/Pl0.Core/PCodeSerializer.cs`, `tests/Pl0.Tests/PCodeSerializerTests.cs`, `docs/VM_INSTRUCTION_SET.md` und `docfx/curated/vm-instruction-set.md` durchfuehren und den Edit-Fokus auf diese Dateien begrenzen
+- [X] T002 Gemeinsame Hilfsdaten und Assertion-Helfer fuer historische, kanonische und ungueltige Mnemonic-Faelle in `tests/Pl0.Tests/PCodeSerializerTests.cs` vorbereiten
 
 ---
 
@@ -30,7 +30,7 @@
 
 **⚠️ CRITICAL**: Keine User-Story-Arbeit beginnt, bevor die Ausgangsbasis fuer Parsing und Ausgabe abgesichert ist
 
-- [ ] T003 Fail-first Baseline-Regressionsfaelle fuer bestehendes `Int`-Parsing und kanonische `int`-Ausgabe in `tests/Pl0.Tests/PCodeSerializerTests.cs` ergaenzen
+- [X] T003 Fail-first Baseline-Regressionsfaelle fuer bestehendes `Int`-Parsing und kanonische `int`-Ausgabe in `tests/Pl0.Tests/PCodeSerializerTests.cs` ergaenzen
 
 **Checkpoint**: Die aktuelle TinyPl0-Basis fuer `Int` ist testseitig eingefroren; Story-Arbeit kann beginnen
 
@@ -44,12 +44,12 @@
 
 ### Tests for User Story 1
 
-- [ ] T004 [US1] Fail-first Alias- und Laufzeitgleichheits-Tests fuer historische `Inc`-/Mischschreibweisen in `tests/Pl0.Tests/PCodeSerializerTests.cs` ergaenzen
+- [X] T004 [US1] Fail-first Alias- und Laufzeitgleichheits-Tests fuer historische `Inc`-/Mischschreibweisen in `tests/Pl0.Tests/PCodeSerializerTests.cs` ergaenzen
 
 ### Implementation for User Story 1
 
-- [ ] T005 [US1] Historische `Inc`-Alias-Erkennung in `src/Pl0.Core/PCodeSerializer.cs` implementieren, ohne numerisches Opcode-Parsing zu aendern; falls die didaktisch relevante Alias-Stelle einen Kommentar braucht, dort einen begruendenden DE-/EN-Kommentar mit Deutsch zuerst und Englisch danach ergaenzen
-- [ ] T006 [US1] `tests/Pl0.Tests/PCodeSerializerTests.cs` auf den akzeptierten historischen Artefaktpfad fuer `PCodeSerializer.Parse(...)` und VM-Ausfuehrung komplettieren
+- [X] T005 [US1] Historische `Inc`-Alias-Erkennung in `src/Pl0.Core/PCodeSerializer.cs` implementieren, ohne numerisches Opcode-Parsing zu aendern; falls die didaktisch relevante Alias-Stelle einen Kommentar braucht, dort einen begruendenden DE-/EN-Kommentar mit Deutsch zuerst und Englisch danach ergaenzen
+- [X] T006 [US1] `tests/Pl0.Tests/PCodeSerializerTests.cs` auf den akzeptierten historischen Artefaktpfad fuer `PCodeSerializer.Parse(...)` und VM-Ausfuehrung komplettieren
 
 **Checkpoint**: User Story 1 ist vollstaendig und unabhaengig testbar
 
@@ -63,7 +63,7 @@
 
 ### Implementation for User Story 2
 
-- [ ] T007 [P] [US2] Bilingualen Klarstellungstext in `docs/VM_INSTRUCTION_SET.md` fuer `Inc` / `Int` / `int` mit Deutsch zuerst, Englisch danach und B2-Lesbarkeit ergaenzen und den Include-Pfad in `docfx/curated/vm-instruction-set.md` als gepflegten Doku-Einstieg unveraendert mitverwenden
+- [X] T007 [P] [US2] Bilingualen Klarstellungstext in `docs/VM_INSTRUCTION_SET.md` fuer `Inc` / `Int` / `int` mit Deutsch zuerst, Englisch danach und B2-Lesbarkeit ergaenzen und den Include-Pfad in `docfx/curated/vm-instruction-set.md` als gepflegten Doku-Einstieg unveraendert mitverwenden
 
 **Checkpoint**: User Story 2 ist unabhaengig reviewbar
 
@@ -77,11 +77,11 @@
 
 ### Tests for User Story 3
 
-- [ ] T008 [P] [US3] Fail-first Regressionstests fuer bestehende `Int`-Eingaben, kanonische `int`-Ausgabe aus `Inc`-Eingaben und ungueltige Near-Miss-Mnemonics in `tests/Pl0.Tests/PCodeSerializerTests.cs` ergaenzen
+- [X] T008 [P] [US3] Fail-first Regressionstests fuer bestehende `Int`-Eingaben, kanonische `int`-Ausgabe aus `Inc`-Eingaben und ungueltige Near-Miss-Mnemonics in `tests/Pl0.Tests/PCodeSerializerTests.cs` ergaenzen
 
 ### Implementation for User Story 3
 
-- [ ] T009 [US3] `src/Pl0.Core/PCodeSerializer.cs` so nachschaerfen, dass ausschliesslich `inc` als Alias zu `Opcode.Int` hinzukommt, `ToAsm()` bei `int` bleibt und ungueltige Mnemonics weiter dieselben Formatfehler ausloesen
+- [X] T009 [US3] `src/Pl0.Core/PCodeSerializer.cs` so nachschaerfen, dass ausschliesslich `inc` als Alias zu `Opcode.Int` hinzukommt, `ToAsm()` bei `int` bleibt und ungueltige Mnemonics weiter dieselben Formatfehler ausloesen
 
 **Checkpoint**: Alle drei User Stories sind vollstaendig und unabhaengig testbar
 
@@ -91,11 +91,11 @@
 
 **Purpose**: Abschluss-Validierung, Doku-Generierung und Statistikpflege
 
-- [ ] T010 [P] `docs/project-statistics.md` um die abgeschlossene Implementierungs- und Verifikationsphase fuer `002-vm-inc-compat` fortschreiben, inklusive geaenderter Code-, Test- und Dokumentationsumfaenge des Feature-Aenderungssatzes
-- [ ] T011 `tests/Pl0.Tests/PCodeSerializerTests.cs` ueber `dotnet test --filter "FullyQualifiedName~Pl0.Tests.PCodeSerializerTests"` gezielt ausfuehren und verbleibende Alias-/Regressionsthemen beheben
-- [ ] T012 `specs/002-vm-inc-compat/quickstart.md` manuell durchgehen und noetige Formulierungs- oder Nachweisnachschaerfungen in `docs/VM_INSTRUCTION_SET.md` bzw. `tests/Pl0.Tests/PCodeSerializerTests.cs` vor dem finalen DocFX-Lauf nachziehen
-- [ ] T013 `docfx docfx.json` aus dem Repository-Root fuer `docs/VM_INSTRUCTION_SET.md` und `docfx/curated/vm-instruction-set.md` erst nach Abschluss aller Doku-Nachschaerfungen ausfuehren
-- [ ] T014 `TinyPl0.sln` ueber `dotnet test` vollstaendig ausfuehren und bestaetigen, dass ausserhalb der Serializer-Tests keine Regression entsteht
+- [X] T010 [P] `docs/project-statistics.md` um die abgeschlossene Implementierungs- und Verifikationsphase fuer `002-vm-inc-compat` fortschreiben, inklusive geaenderter Code-, Test- und Dokumentationsumfaenge des Feature-Aenderungssatzes
+- [X] T011 `tests/Pl0.Tests/PCodeSerializerTests.cs` ueber `dotnet test --filter "FullyQualifiedName~Pl0.Tests.PCodeSerializerTests"` gezielt ausfuehren und verbleibende Alias-/Regressionsthemen beheben
+- [X] T012 `specs/002-vm-inc-compat/quickstart.md` manuell durchgehen und noetige Formulierungs- oder Nachweisnachschaerfungen in `docs/VM_INSTRUCTION_SET.md` bzw. `tests/Pl0.Tests/PCodeSerializerTests.cs` vor dem finalen DocFX-Lauf nachziehen
+- [X] T013 `docfx docfx.json` aus dem Repository-Root fuer `docs/VM_INSTRUCTION_SET.md` und `docfx/curated/vm-instruction-set.md` erst nach Abschluss aller Doku-Nachschaerfungen ausfuehren
+- [X] T014 `TinyPl0.sln` ueber `dotnet test` vollstaendig ausfuehren und bestaetigen, dass ausserhalb der Serializer-Tests keine Regression entsteht
 
 ---
 
