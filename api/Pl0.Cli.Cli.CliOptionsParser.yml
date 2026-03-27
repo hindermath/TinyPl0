@@ -32,7 +32,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CliOptionsParser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: CliOptionsParser
     path: src/Pl0.Cli/Cli/CliOptionsParser.cs
@@ -68,7 +68,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CliOptionsParser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: EmitModeMissingExitCode
     path: src/Pl0.Cli/Cli/CliOptionsParser.cs
@@ -97,7 +97,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CliOptionsParser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: UnexpectedTerminationExitCode
     path: src/Pl0.Cli/Cli/CliOptionsParser.cs
@@ -126,7 +126,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CliOptionsParser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: _errorOutput
     path: src/Pl0.Cli/Cli/CliOptionsParser.cs
@@ -155,7 +155,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CliOptionsParser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: _cliMessages
     path: src/Pl0.Cli/Cli/CliOptionsParser.cs
@@ -184,7 +184,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CliOptionsParser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: .ctor
     path: src/Pl0.Cli/Cli/CliOptionsParser.cs
@@ -222,7 +222,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CliOptionsParser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: Parse
     path: src/Pl0.Cli/Cli/CliOptionsParser.cs
@@ -260,7 +260,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CliOptionsParser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: CliMessages
     path: src/Pl0.Cli/Cli/CliOptionsParser.cs
@@ -291,7 +291,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CliOptionsParser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: ParseLanguageCode
     path: src/Pl0.Cli/Cli/CliOptionsParser.cs
@@ -329,7 +329,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CliOptionsParser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: TryReadOptionValue
     path: src/Pl0.Cli/Cli/CliOptionsParser.cs
@@ -373,7 +373,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CliOptionsParser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: TryParseCommand
     path: src/Pl0.Cli/Cli/CliOptionsParser.cs
@@ -414,7 +414,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CliOptionsParser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: IsHelpSwitch
     path: src/Pl0.Cli/Cli/CliOptionsParser.cs
@@ -452,7 +452,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CliOptionsParser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: IsUnixAbsolutePath
     path: src/Pl0.Cli/Cli/CliOptionsParser.cs
@@ -490,7 +490,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CliOptionsParser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: IsKnownLegacySlashSwitch
     path: src/Pl0.Cli/Cli/CliOptionsParser.cs
@@ -528,7 +528,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CliOptionsParser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: TryParseSwitch
     path: src/Pl0.Cli/Cli/CliOptionsParser.cs
@@ -569,7 +569,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CliOptionsParser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: TryParseEmitModeFromToken
     path: src/Pl0.Cli/Cli/CliOptionsParser.cs
@@ -610,7 +610,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CliOptionsParser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: TryParseEmitEqualsValue
     path: src/Pl0.Cli/Cli/CliOptionsParser.cs
@@ -651,7 +651,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CliOptionsParser.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: MergeEmitMode
     path: src/Pl0.Cli/Cli/CliOptionsParser.cs

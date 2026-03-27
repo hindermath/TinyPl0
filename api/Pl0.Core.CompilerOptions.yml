@@ -27,7 +27,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/CompilerOptions.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: CompilerOptions
     path: src/Pl0.Core/CompilerOptions.cs
@@ -65,7 +65,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/CompilerOptions.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: .ctor
     path: src/Pl0.Core/CompilerOptions.cs
@@ -124,7 +124,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/CompilerOptions.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: Dialect
     path: src/Pl0.Core/CompilerOptions.cs
@@ -155,7 +155,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/CompilerOptions.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: MaxLevel
     path: src/Pl0.Core/CompilerOptions.cs
@@ -186,7 +186,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/CompilerOptions.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: MaxAddress
     path: src/Pl0.Core/CompilerOptions.cs
@@ -217,7 +217,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/CompilerOptions.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: MaxIdentifierLength
     path: src/Pl0.Core/CompilerOptions.cs
@@ -248,7 +248,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/CompilerOptions.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: MaxNumberDigits
     path: src/Pl0.Core/CompilerOptions.cs
@@ -279,7 +279,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/CompilerOptions.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: MaxSymbolCount
     path: src/Pl0.Core/CompilerOptions.cs
@@ -310,7 +310,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/CompilerOptions.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: MaxCodeLength
     path: src/Pl0.Core/CompilerOptions.cs
@@ -341,7 +341,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/CompilerOptions.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: Language
     path: src/Pl0.Core/CompilerOptions.cs
@@ -372,7 +372,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/CompilerOptions.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: Messages
     path: src/Pl0.Core/CompilerOptions.cs
@@ -403,7 +403,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/CompilerOptions.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: Default
     path: src/Pl0.Core/CompilerOptions.cs
@@ -434,7 +434,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/CompilerOptions.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: EnableIoStatements
     path: src/Pl0.Core/CompilerOptions.cs

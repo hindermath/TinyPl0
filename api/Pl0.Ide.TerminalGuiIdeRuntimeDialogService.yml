@@ -16,7 +16,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeRuntimeDialogService.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: TerminalGuiIdeRuntimeDialogService
     path: src/Pl0.Ide/IdeRuntimeDialogService.cs
@@ -52,7 +52,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeRuntimeDialogService.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: ReadInt
     path: src/Pl0.Ide/IdeRuntimeDialogService.cs

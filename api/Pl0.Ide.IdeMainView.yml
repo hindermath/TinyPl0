@@ -123,7 +123,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: IdeMainView
     path: src/Pl0.Ide/IdeMainView.cs
@@ -356,7 +356,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: NoOp
     path: src/Pl0.Ide/IdeMainView.cs
@@ -383,7 +383,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: SuccessfulExitCode
     path: src/Pl0.Ide/IdeMainView.cs
@@ -410,7 +410,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: SourceWindowBaseTitle
     path: src/Pl0.Ide/IdeMainView.cs
@@ -437,7 +437,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: PCodeWindowBaseTitle
     path: src/Pl0.Ide/IdeMainView.cs
@@ -464,7 +464,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: AssemblerWindowBaseTitle
     path: src/Pl0.Ide/IdeMainView.cs
@@ -491,7 +491,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: RuntimeOutputWindowBaseTitle
     path: src/Pl0.Ide/IdeMainView.cs
@@ -518,7 +518,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: DebugWindowBaseTitle
     path: src/Pl0.Ide/IdeMainView.cs
@@ -545,7 +545,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: AboutAsciiArt
     path: src/Pl0.Ide/IdeMainView.cs
@@ -572,7 +572,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: compiler
     path: src/Pl0.Ide/IdeMainView.cs
@@ -599,7 +599,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: virtualMachine
     path: src/Pl0.Ide/IdeMainView.cs
@@ -626,7 +626,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: steppableVirtualMachine
     path: src/Pl0.Ide/IdeMainView.cs
@@ -653,7 +653,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: fileDialogs
     path: src/Pl0.Ide/IdeMainView.cs
@@ -680,7 +680,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: fileStorage
     path: src/Pl0.Ide/IdeMainView.cs
@@ -707,7 +707,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: compilerSettingsDialog
     path: src/Pl0.Ide/IdeMainView.cs
@@ -734,7 +734,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: runtimeDialogService
     path: src/Pl0.Ide/IdeMainView.cs
@@ -761,7 +761,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: messageDialogService
     path: src/Pl0.Ide/IdeMainView.cs
@@ -788,7 +788,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: sourceWindow
     path: src/Pl0.Ide/IdeMainView.cs
@@ -815,7 +815,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: pCodeWindow
     path: src/Pl0.Ide/IdeMainView.cs
@@ -842,7 +842,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: sourceEditor
     path: src/Pl0.Ide/IdeMainView.cs
@@ -869,7 +869,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: sourceStatusLine
     path: src/Pl0.Ide/IdeMainView.cs
@@ -896,7 +896,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: pCodeOutput
     path: src/Pl0.Ide/IdeMainView.cs
@@ -923,7 +923,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: messagesOutput
     path: src/Pl0.Ide/IdeMainView.cs
@@ -950,7 +950,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: runtimeOutput
     path: src/Pl0.Ide/IdeMainView.cs
@@ -977,7 +977,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: debugOutput
     path: src/Pl0.Ide/IdeMainView.cs
@@ -1004,7 +1004,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: lastCompilationResult
     path: src/Pl0.Ide/IdeMainView.cs
@@ -1031,7 +1031,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: lastDebugStepResult
     path: src/Pl0.Ide/IdeMainView.cs
@@ -1058,7 +1058,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: currentSourcePath
     path: src/Pl0.Ide/IdeMainView.cs
@@ -1085,7 +1085,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: currentCompilerOptions
     path: src/Pl0.Ide/IdeMainView.cs
@@ -1112,7 +1112,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: currentCodeDisplayMode
     path: src/Pl0.Ide/IdeMainView.cs
@@ -1139,7 +1139,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: isDebugSessionActive
     path: src/Pl0.Ide/IdeMainView.cs
@@ -1166,7 +1166,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: lastPersistedSourceText
     path: src/Pl0.Ide/IdeMainView.cs
@@ -1193,7 +1193,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: isSourceDirty
     path: src/Pl0.Ide/IdeMainView.cs
@@ -1220,7 +1220,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: .ctor
     path: src/Pl0.Ide/IdeMainView.cs
@@ -1249,7 +1249,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: .ctor
     path: src/Pl0.Ide/IdeMainView.cs
@@ -1283,7 +1283,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: .ctor
     path: src/Pl0.Ide/IdeMainView.cs
@@ -1319,7 +1319,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: .ctor
     path: src/Pl0.Ide/IdeMainView.cs
@@ -1357,7 +1357,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: .ctor
     path: src/Pl0.Ide/IdeMainView.cs
@@ -1397,7 +1397,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: SourceEditor
     path: src/Pl0.Ide/IdeMainView.cs
@@ -1426,7 +1426,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: PCodeOutput
     path: src/Pl0.Ide/IdeMainView.cs
@@ -1455,7 +1455,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: MessagesOutput
     path: src/Pl0.Ide/IdeMainView.cs
@@ -1484,7 +1484,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: RuntimeOutput
     path: src/Pl0.Ide/IdeMainView.cs
@@ -1513,7 +1513,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: DebugOutput
     path: src/Pl0.Ide/IdeMainView.cs
@@ -1542,7 +1542,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: LastCompilationResult
     path: src/Pl0.Ide/IdeMainView.cs
@@ -1571,7 +1571,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: CurrentSourcePath
     path: src/Pl0.Ide/IdeMainView.cs
@@ -1600,7 +1600,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: SourceWindowTitle
     path: src/Pl0.Ide/IdeMainView.cs
@@ -1629,7 +1629,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: SourceStatusLineText
     path: src/Pl0.Ide/IdeMainView.cs
@@ -1658,7 +1658,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: PCodeWindowTitle
     path: src/Pl0.Ide/IdeMainView.cs
@@ -1687,7 +1687,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: CurrentCompilerOptions
     path: src/Pl0.Ide/IdeMainView.cs
@@ -1716,7 +1716,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: CurrentCodeDisplayMode
     path: src/Pl0.Ide/IdeMainView.cs
@@ -1745,7 +1745,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: IsDebugSessionActive
     path: src/Pl0.Ide/IdeMainView.cs
@@ -1774,7 +1774,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: ExitCode
     path: src/Pl0.Ide/IdeMainView.cs
@@ -1803,7 +1803,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: CreateNewSourceFile
     path: src/Pl0.Ide/IdeMainView.cs
@@ -1829,7 +1829,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: OpenSourceFile
     path: src/Pl0.Ide/IdeMainView.cs
@@ -1857,7 +1857,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: SaveSourceFile
     path: src/Pl0.Ide/IdeMainView.cs
@@ -1885,7 +1885,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: FormatSource
     path: src/Pl0.Ide/IdeMainView.cs
@@ -1913,7 +1913,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: CompileSource
     path: src/Pl0.Ide/IdeMainView.cs
@@ -1941,7 +1941,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: OpenCompilerSettingsDialog
     path: src/Pl0.Ide/IdeMainView.cs
@@ -1969,7 +1969,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: CreateMenuBar
     path: src/Pl0.Ide/IdeMainView.cs
@@ -1997,7 +1997,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: CompileSourceFromMenu
     path: src/Pl0.Ide/IdeMainView.cs
@@ -2023,7 +2023,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: OpenCompilerSettingsDialogFromMenu
     path: src/Pl0.Ide/IdeMainView.cs
@@ -2049,7 +2049,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: ExportAsmFromMenu
     path: src/Pl0.Ide/IdeMainView.cs
@@ -2075,7 +2075,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: ExportCodFromMenu
     path: src/Pl0.Ide/IdeMainView.cs
@@ -2101,7 +2101,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: RunCompiledCodeFromMenu
     path: src/Pl0.Ide/IdeMainView.cs
@@ -2127,7 +2127,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: CompileAndRunFromMenu
     path: src/Pl0.Ide/IdeMainView.cs
@@ -2153,7 +2153,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: StepDebugFromMenu
     path: src/Pl0.Ide/IdeMainView.cs
@@ -2179,7 +2179,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: AbortDebugFromMenu
     path: src/Pl0.Ide/IdeMainView.cs
@@ -2205,7 +2205,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: CreateNewSourceFileFromMenu
     path: src/Pl0.Ide/IdeMainView.cs
@@ -2231,7 +2231,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: OpenSourceFileFromMenu
     path: src/Pl0.Ide/IdeMainView.cs
@@ -2257,7 +2257,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: SaveSourceFileFromMenu
     path: src/Pl0.Ide/IdeMainView.cs
@@ -2283,7 +2283,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: FormatSourceFromMenu
     path: src/Pl0.Ide/IdeMainView.cs
@@ -2309,7 +2309,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: ExitApplicationFromMenu
     path: src/Pl0.Ide/IdeMainView.cs
@@ -2335,7 +2335,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: ShowAboutDialogFromMenu
     path: src/Pl0.Ide/IdeMainView.cs
@@ -2361,7 +2361,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: ExitApplication
     path: src/Pl0.Ide/IdeMainView.cs
@@ -2393,7 +2393,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: ShowAboutDialog
     path: src/Pl0.Ide/IdeMainView.cs
@@ -2419,7 +2419,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: CreateAboutDialogText
     path: src/Pl0.Ide/IdeMainView.cs
@@ -2447,7 +2447,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: BuildAboutDialogText
     path: src/Pl0.Ide/IdeMainView.cs
@@ -2483,7 +2483,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: FormatVersion
     path: src/Pl0.Ide/IdeMainView.cs
@@ -2514,7 +2514,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: NormalizeVersionComponent
     path: src/Pl0.Ide/IdeMainView.cs
@@ -2548,7 +2548,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: HasPl0Extension
     path: src/Pl0.Ide/IdeMainView.cs
@@ -2582,7 +2582,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: EnsurePl0Extension
     path: src/Pl0.Ide/IdeMainView.cs
@@ -2616,7 +2616,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: ExportCompiledCode
     path: src/Pl0.Ide/IdeMainView.cs
@@ -2647,7 +2647,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: RunCompiledCode
     path: src/Pl0.Ide/IdeMainView.cs
@@ -2675,7 +2675,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: CompileAndRun
     path: src/Pl0.Ide/IdeMainView.cs
@@ -2703,7 +2703,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: StepDebug
     path: src/Pl0.Ide/IdeMainView.cs
@@ -2731,7 +2731,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: AbortDebug
     path: src/Pl0.Ide/IdeMainView.cs
@@ -2759,7 +2759,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: CreateSourceEditor
     path: src/Pl0.Ide/IdeMainView.cs
@@ -2787,7 +2787,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: CreateReadOnlyOutputView
     path: src/Pl0.Ide/IdeMainView.cs
@@ -2815,7 +2815,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: CreateDebugOutputView
     path: src/Pl0.Ide/IdeMainView.cs
@@ -2843,7 +2843,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: CreateSourceStatusLine
     path: src/Pl0.Ide/IdeMainView.cs
@@ -2871,7 +2871,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: RefreshSourceEditorState
     path: src/Pl0.Ide/IdeMainView.cs
@@ -2897,7 +2897,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: UpdateSourceDirtyFlag
     path: src/Pl0.Ide/IdeMainView.cs
@@ -2923,7 +2923,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: RefreshSourceCursorStatus
     path: src/Pl0.Ide/IdeMainView.cs
@@ -2949,7 +2949,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: UpdateDocumentTitles
     path: src/Pl0.Ide/IdeMainView.cs
@@ -2975,7 +2975,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: RenderCompilationResult
     path: src/Pl0.Ide/IdeMainView.cs
@@ -3004,7 +3004,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: RenderCodeOutput
     path: src/Pl0.Ide/IdeMainView.cs
@@ -3038,7 +3038,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: RenderDebugState
     path: src/Pl0.Ide/IdeMainView.cs
@@ -3072,7 +3072,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: BuildRegisterLine
     path: src/Pl0.Ide/IdeMainView.cs
@@ -3110,7 +3110,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: FormatDebugStepRegisters
     path: src/Pl0.Ide/IdeMainView.cs
@@ -3141,7 +3141,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: ToDisplayStackIndex
     path: src/Pl0.Ide/IdeMainView.cs
@@ -3175,7 +3175,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: BuildStackLine
     path: src/Pl0.Ide/IdeMainView.cs
@@ -3215,7 +3215,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: FormatCurrentInstruction
     path: src/Pl0.Ide/IdeMainView.cs
@@ -3248,7 +3248,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: FormatDiagnostics
     path: src/Pl0.Ide/IdeMainView.cs
@@ -3282,7 +3282,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: FormatVmDiagnostics
     path: src/Pl0.Ide/IdeMainView.cs
@@ -3316,7 +3316,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: GetCodeWindowBaseTitle
     path: src/Pl0.Ide/IdeMainView.cs
@@ -3344,7 +3344,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: AddLineNumbers
     path: src/Pl0.Ide/IdeMainView.cs
@@ -3380,7 +3380,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: BuildSuggestedExportPath
     path: src/Pl0.Ide/IdeMainView.cs
@@ -3411,7 +3411,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: NormalizeExportPath
     path: src/Pl0.Ide/IdeMainView.cs
@@ -3447,7 +3447,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: AppendRuntimeOutputValue
     path: src/Pl0.Ide/IdeMainView.cs

@@ -18,7 +18,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/EmitMode.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: EmitMode
     path: src/Pl0.Cli/Cli/EmitMode.cs
@@ -45,7 +45,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/EmitMode.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: None
     path: src/Pl0.Cli/Cli/EmitMode.cs
@@ -73,7 +73,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/EmitMode.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: Asm
     path: src/Pl0.Cli/Cli/EmitMode.cs
@@ -101,7 +101,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/EmitMode.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: Cod
     path: src/Pl0.Cli/Cli/EmitMode.cs

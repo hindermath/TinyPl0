@@ -20,7 +20,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Token.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: Pl0Token
     path: src/Pl0.Core/Pl0Token.cs
@@ -56,7 +56,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Token.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: .ctor
     path: src/Pl0.Core/Pl0Token.cs
@@ -100,7 +100,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Token.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: Kind
     path: src/Pl0.Core/Pl0Token.cs
@@ -131,7 +131,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Token.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: Lexeme
     path: src/Pl0.Core/Pl0Token.cs
@@ -162,7 +162,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Token.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: Position
     path: src/Pl0.Core/Pl0Token.cs
@@ -193,7 +193,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Token.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: NumberValue
     path: src/Pl0.Core/Pl0Token.cs

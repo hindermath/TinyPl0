@@ -19,7 +19,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CompilationDiagnostics.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: CompilationDiagnostics
     path: src/Pl0.Cli/Cli/CompilationDiagnostics.cs
@@ -56,7 +56,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CompilationDiagnostics.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: CompilerErrorExitCode
     path: src/Pl0.Cli/Cli/CompilationDiagnostics.cs
@@ -85,7 +85,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CompilationDiagnostics.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: ProgramIncompleteExitCode
     path: src/Pl0.Cli/Cli/CompilationDiagnostics.cs
@@ -114,7 +114,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CompilationDiagnostics.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: SelectExitCode
     path: src/Pl0.Cli/Cli/CompilationDiagnostics.cs
@@ -152,7 +152,7 @@ items:
   source:
     remote:
       path: src/Pl0.Cli/Cli/CompilationDiagnostics.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: FormatCompilerDiagnostic
     path: src/Pl0.Cli/Cli/CompilationDiagnostics.cs

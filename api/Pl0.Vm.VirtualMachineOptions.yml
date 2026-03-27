@@ -21,7 +21,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VirtualMachineOptions.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: VirtualMachineOptions
     path: src/Pl0.Vm/VirtualMachineOptions.cs
@@ -59,7 +59,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VirtualMachineOptions.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: .ctor
     path: src/Pl0.Vm/VirtualMachineOptions.cs
@@ -103,7 +103,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VirtualMachineOptions.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: StackSize
     path: src/Pl0.Vm/VirtualMachineOptions.cs
@@ -134,7 +134,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VirtualMachineOptions.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: EnableStoreTrace
     path: src/Pl0.Vm/VirtualMachineOptions.cs
@@ -165,7 +165,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VirtualMachineOptions.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: Language
     path: src/Pl0.Vm/VirtualMachineOptions.cs
@@ -196,7 +196,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VirtualMachineOptions.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: Messages
     path: src/Pl0.Vm/VirtualMachineOptions.cs
@@ -227,7 +227,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VirtualMachineOptions.cs
-      branch: main
+      branch: codex/002-vm-inc-compat-implement
       repo: https://github.com/hindermath/TinyPl0.git
     id: Default
     path: src/Pl0.Vm/VirtualMachineOptions.cs
