@@ -174,6 +174,7 @@ Use `CompilerOptions.Dialect` when modifying parser/lexer. Classic mode must sta
 
 - `main` is protected — no direct commits or pushes; all changes via pull request.
 - Create a new branch for each change before starting work.
+- Once a dedicated feature branch has implemented a Lastenheft, rename that file to `Lastenheft_<topic>.<feature-branch>.md` so the delivered scope stays traceable.
 
 ## Constraints
 

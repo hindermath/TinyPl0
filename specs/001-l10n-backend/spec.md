@@ -3,7 +3,7 @@
 **Feature Branch**: `001-l10n-backend`
 **Created**: 2026-03-01
 **Status**: Draft — aktualisiert 2026-03-04 (Checklist-Remediation Runde 3)
-**Input**: Lastenheft_L10N.md Abschnitte 1–3.2; Scope begrenzt auf Pl0.Core, Pl0.Vm, Pl0.Cli.
+**Input**: Lastenheft_L10N.001-l10n-backend.md Abschnitte 1–3.2; Scope begrenzt auf Pl0.Core, Pl0.Vm, Pl0.Cli.
 
 ## Scope
 
