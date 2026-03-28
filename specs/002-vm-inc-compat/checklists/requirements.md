@@ -33,5 +33,5 @@
 
 - Validation completed in one pass.
 - No clarification markers were required because scope, compatibility goal, and preservation of the
-  current `Int` behavior could be inferred from `Lastenheft_VM_INC_OpCode.md`.
+  current `Int` behavior could be inferred from `Lastenheft_VM_INC_OpCode.002-vm-inc-compat.md`.
 - The specification is ready for `/speckit.plan`.

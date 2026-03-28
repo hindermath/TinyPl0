@@ -6,7 +6,7 @@
 ## Summary
 
 Dieses Feature implementiert zwei aufeinander aufbauende Schichten gemäss
-Lastenheft_L10N.md Glossar Abschnitt 4:
+Lastenheft_L10N.001-l10n-backend.md Glossar Abschnitt 4:
 
 - **I18N (Internationalization)**: Technische Vorbereitung der Software für
   mehrsprachige Unterstützung — `.resx`-Infrastruktur, `ResourceManager`,
@@ -32,7 +32,7 @@ strongly-typed Designer-Klassen und `ResourceManager` (kein NuGet-Paket).
 **Constraints**: Keine neuen NuGet-Pakete; keine Architektur-Grenzenverletzungen; alle bestehenden Exit-Codes stabil
 **Scale/Scope**: ~75 lokalisierbare Strings; 3 Module; 2 Sprachen initial
 
-## I18N-Betrachtung (Lastenheft_L10N.md §4, Punkt 2)
+## I18N-Betrachtung (Lastenheft_L10N.001-l10n-backend.md §4, Punkt 2)
 
 Das Lastenheft definiert I18N als „Vorbereitung der Software, um mehrere Sprachen
 technisch zu unterstützen." Folgende I18N-Aspekte wurden geprüft:

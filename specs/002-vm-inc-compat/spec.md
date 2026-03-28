@@ -3,7 +3,7 @@
 **Feature Branch**: `[002-vm-inc-compat]`  
 **Created**: 2026-03-27  
 **Status**: Ready for Implementation  
-**Input**: User description: "Erstelle aus der Datei Lastenheft_VM_INC_OpCode.md bitte eine Spezifikation."
+**Input**: User description: "Erstelle aus der Datei Lastenheft_VM_INC_OpCode.002-vm-inc-compat.md bitte eine Spezifikation."
 
 ## Clarifications
 

@@ -57,6 +57,12 @@ The project uses Golden Master tests for the lexer and parser. To update these a
 - `docs/VM_INSTRUCTION_SET.md`: Detailed description of the P-Code instruction set.
 - `pl0c.pas`: Historical Pascal reference source.
 
+## Git Workflow
+
+- `main` is protected: do not commit or push directly to `main`.
+- Create a new branch for each change before starting work.
+- Once a dedicated feature branch has implemented a Lastenheft, rename that file to `Lastenheft_<topic>.<feature-branch>.md` so the delivered scope stays traceable.
+
 ## Project Statistics
 
 - When shared AI-agent guidance, workflow conventions, or statistics methodology changes, review and update `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, and `.github/copilot-instructions.md` together when they are affected.

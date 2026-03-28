@@ -65,6 +65,7 @@ Update golden artifacts after intentional changes:
 - For every change, create a new clean branch first.
 - Open a pull request to merge changes into `main`.
 - Agent branch naming convention: `codex/<topic>`.
+- When a dedicated feature branch has implemented the requirements of a Lastenheft, rename that file to `Lastenheft_<Thema>.<feature-branch>.md` so the fulfilled requirement scope remains traceable in the repository.
 - When interacting with GitHub, prefer the GitHub CLI `gh` whenever it can handle the task.
 - When syncing the local repository with GitHub, prefer `gh repo sync --branch <branch>`; the user is already authenticated via `gh`.
 

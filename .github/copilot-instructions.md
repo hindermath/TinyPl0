@@ -214,6 +214,7 @@ When modifying parser or lexer:
 - `main` is protected — never commit or push directly to `main`.
 - For every change, create a new branch first. Agent/bot branch naming: `codex/<topic>`.
 - Open a pull request to merge into `main`.
+- Once a dedicated feature branch has implemented a Lastenheft, rename that file to `Lastenheft_<topic>.<feature-branch>.md` so the delivered scope stays traceable.
 
 ## Key Documentation Files
 

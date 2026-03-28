@@ -23,14 +23,14 @@ Folgende Elemente müssen lokalisiert werden:
 * Statusmeldungen während des Kompiliervorgangs.
 * Das Interface der IDE (Pl0.Ide).
 * 
--> Lies dir von @Lastenheft_L10N.md die Abschnitte 1., 2., 3., 3.1, 3.2 durch. In
+> Lies dir von @Lastenheft_L10N.001-l10n-backend.md die Abschnitte 1., 2., 3., 3.1, 3.2 durch. In
   dieser Spezifizierung soll nur die src/Pl0.Ide angepasst werden.
 
 ### 3.3 Technischer Standard
 * **Zeichenkodierung:** Alle Sprachdateien müssen in UTF-8 kodiert sein.
 * **Ressourcen-Management:** Verwendung von Standard-Mechanismen des .Net Core Frameworks zur Speicherung der Strings.
 
--> Lies dir vom @Lastenheft_L10N.md Abschnitt 3.2 durch. In dem Plan sollen nur die        
+> Lies dir vom @Lastenheft_L10N.001-l10n-backend.md Abschnitt 3.2 durch. In dem Plan sollen nur die        
 Standard .Net 10/C# 14 Mechanismen genutzt werden, wie in dem Abschnitt beschrieben. Falls .Net 10/C#  
 14 neuere Mechanismen bieten, können die genutzt werden.
 
