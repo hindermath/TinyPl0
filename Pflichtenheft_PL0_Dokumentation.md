@@ -66,9 +66,11 @@ aufbereitet werden.
 - `docs/`-Inhalte sind integriert und kuratiert.
 - README enthaelt die Lizenzzeile.
 - PL0- und P-Code-Handbuch enthalten Beispiele auf drei Lernstufen bzw. Instruktionsbeispiele.
+- Lernrelevante Dokumente, Handbuchtexte und aktive Anforderungsartefakte liegen fuer Auszubildende in Deutsch und Englisch auf CEFR-B2-Niveau vor.
+- Grosse normative Dokumente duerfen als synchron gepflegte `.EN.md`-Parallelfassung gefuehrt werden; die deutsche Fassung bleibt kanonisch, sofern nichts anderes markiert ist.
+- Die bilinguale CEFR-B2-Lieferung und die textorientierte A11Y-Pruefkette sind formale Abschlusskriterien. Fuer die erzeugte HTML-Dokumentation umfasst das `Programmierung #include<everyone>`, WCAG 2.2 AA als praktische Baseline, einen Review nach jedem `docfx`-Neubau bevorzugt mit Playwright + `@axe-core/playwright` und `lynx` sowie Nutzbarkeit fuer Braille-Zeile, Screenreader und Textbrowser.
 
 ## 7. Risiken und Annahmen
 
 - XML-Kommentare muessen ggf. im Code nachgezogen werden.
 - Umfangreiche Beispielprogramme koennen iterative Erweiterung erfordern.
-

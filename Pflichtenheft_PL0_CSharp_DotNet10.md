@@ -584,6 +584,9 @@ Für `runtime/io-edge`-Fälle:
 - Alle Pflichtfälle aus Abschnitt 8.2 (`valid` und `invalid`) laufen im CI stabil durch.
 - Alle Pflichtfallgruppen (`valid`, `invalid`, `compat`, `dialect`, `limits`, `runtime/io-edge`) laufen im CI stabil durch.
 - Die Pascal-Usage-Switches aus `/Users/thorstenhindermann/Codex/TinyPl0/pl0c.pas:657` sind im C#-CLI kompatibel umgesetzt und getestet.
+- Alle lernrelevanten Dokumente und aktiven Anforderungsartefakte liegen fuer Auszubildende nachvollziehbar in Deutsch und Englisch auf CEFR-B2-Niveau vor.
+- Grosse normative Dokumente duerfen dafuer als synchron gepflegte `.EN.md`-Parallelfassung statt als inline zweisprachiger Block bereitgestellt werden; die deutsche Fassung bleibt kanonisch, sofern nichts anderes markiert ist.
+- Die bilinguale CEFR-B2-Lieferung und der dokumentierte A11Y-Nachweis gelten als formale Abschlusskriterien. Fuer erzeugte HTML-/API-Dokumentation umfasst der Nachweis `Programmierung #include<everyone>`, WCAG 2.2 AA als Baseline, einen textorientierten Review nach `docfx` bevorzugt mit Playwright + `@axe-core/playwright` und `lynx` sowie Nutzbarkeit fuer Braille-Zeile, Screenreader und Textbrowser.
 
 ## 9. Risiken und Gegenmaßnahmen
 - Risiko: Semantikabweichungen bei Level-/Frame-Handling.

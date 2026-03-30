@@ -293,13 +293,13 @@ rekonstruiert.
 
 | Datum | Ausloeser | Eintrag |
 |---|---|---|
-| 2026-03-27 | TVoeD-Urlaubsregel ab 2027 nachgezogen | Die Statistik- und Agentenmethodik wurde auf die neue Stichtagsregel umgestellt: 30 Urlaubstage pro Jahr gelten nur bis einschliesslich 2026, ab dem Kalenderjahr 2027 werden unter TVoeD-Annahme 31 Urlaubstage bei unveraenderter 5-Tage-Woche verwendet. |
 | 2026-03-21 | Erstanlage | Basisstatistik fuer TinyPl0 angelegt; sichtbare Branch-Referenzen ausgewertet, historische Phasen aus Commits rekonstruiert, Constitution, Templates und Agent-Dateien auf Pflegepflicht synchronisiert. |
 | 2026-03-22 | Methodik-Update fuer Handarbeits-Schaetzung | Die Statistik rechnet Handarbeit jetzt auf Basis von Produktionscode, Testcode und Dokumentation gemeinsam; zusaetzlich werden Monatswerte auf Basis von 21.5 Arbeitstagen pro Monat sowie TVoeD-Kalenderwerte mit 30 Urlaubstagen pro Jahr ausgewiesen. |
 | 2026-03-22 | Governance-Synchronisierung zur Statistiklogik | Constitution sowie die gemeinsamen Agent-Hinweise (`AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md`) wurden auf die neue Statistiklogik synchronisiert: Handarbeits-Schaetzung umfasst nun Code, Tests und Dokumentation gemeinsam; Monats- und TVoeD-Annahmen muessen explizit genannt werden. |
 | 2026-03-22 | GitHub-Codex-Spec-Kit-Skills installiert | Die lokale Codex-Skill-Struktur `.agents/skills/` mit den neun `speckit-*`-Skills wurde aus TuiVision in TinyPl0 uebernommen, damit die Spec-Kit-Kommandos auch in diesem Repository direkt als Skills verfuegbar sind. |
 | 2026-03-25 | Erfahrungsadjustierte Beschleunigungsrechnung erweitert | Die Statistik fuehrt jetzt zusaetzlich zur konservativen 80-Zeilen-Referenz eine explizite Thorsten-Solo-Referenz mit Legacy-Portierungsaufschlag; dieselbe Methodik wurde in `AGENTS.md`, `CLAUDE.md`, `GEMINI.md` und `.github/copilot-instructions.md` synchronisiert. |
 | 2026-03-25 | TVoeD-Stundenbasis ergänzt | Die Statistik weist zusaetzlich Stundenwerte auf Basis von `7,8 Stunden` bzw. `7 Stunden 48 Minuten` pro Arbeitstag aus; dieselbe Umrechnungsregel wurde in die gemeinsamen Agent-Dateien aufgenommen. |
+| 2026-03-27 | TVoeD-Urlaubsregel ab 2027 nachgezogen | Die Statistik- und Agentenmethodik wurde auf die neue Stichtagsregel umgestellt: 30 Urlaubstage pro Jahr gelten nur bis einschliesslich 2026, ab dem Kalenderjahr 2027 werden unter TVoeD-Annahme 31 Urlaubstage bei unveraenderter 5-Tage-Woche verwendet. |
 | 2026-03-27 | Agentische Spezifikationsarbeit auf `002-vm-inc-compat` | Lastenheft fuer die historische `Inc`-/`Int`-Kompatibilitaet zu einer SPEC-Kit-tauglichen Feature-Beschreibung umgebaut, `specs/002-vm-inc-compat/spec.md` und die Qualitaets-Checkliste angelegt, Branch-Einordnung und Handschaetzung fuer den Aenderungssatz fortgeschrieben. |
 | 2026-03-27 | Clarify-Runde fuer `002-vm-inc-compat` | Die Spezifikation wurde in mehreren Klarstellungsschritten an die reale TinyPl0-P-Code-Logik angepasst: Scope auf textuelle VM-/P-Code-Artefakte eingegrenzt, bestehende case-insensitive Eingabelogik fuer Mnemonics uebernommen, textuelle Ausgabe auf das aktuelle lowercase-Mnemonic `int` statt auf eine neue Schreibweise festgelegt und die Terminologie zwischen historischem `Inc`, internem `Int` und textuellem `int` bereinigt. |
 | 2026-03-27 | Governance-Update zur IDE-Versionslogik | Die gemeinsame Agent-Governance (`AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md` und `.specify/memory/constitution.md`) wurde so angepasst, dass fuer `Pl0.Ide` die Spec-Kit-Feature-/Branch-Nummer kuenftig sofort als kanonische PR-Nummer fuer `Minor` gilt, auch wenn die GitHub-PR noch nicht existiert. |
@@ -312,3 +312,101 @@ rekonstruiert.
 | 2026-03-27 | Implementierungs- und Verifikationsphase fuer `002-vm-inc-compat` | `src/Pl0.Core/PCodeSerializer.cs` akzeptiert jetzt den historischen Alias `inc` fuer `Opcode.Int`, `tests/Pl0.Tests/PCodeSerializerTests.cs` deckt Baseline-, Alias-, Laufzeitgleichheits-, Kanonform- und Near-Miss-Faelle ab, `docs/VM_INSTRUCTION_SET.md` erklaert die Bruecke `Inc` / `Int` / `int` zweisprachig, `specs/002-vm-inc-compat/tasks.md` wurde vollstaendig abgehakt und die Abschlussvalidierung lief mit 19/19 gezielten Serializer-Tests, `docfx docfx.json` ohne Warnungen/Fehler sowie `dotnet test` mit 264/264 gruenen Tests; Aenderungsumfang dieser Runde vor dieser Ledger-Fortschreibung: +4 Produktionscode-Zeilen, +92 Testcode-Zeilen, +16 Dokumentationszeilen netto, zusaetzlich 14/14 Task-Haken in `tasks.md` ohne Nettoeffekt, konservative Handarbeits-Untergrenze 1.4 Arbeitstage bzw. 10.9 Stunden auf TVoeD-Basis, Thorsten-Solo-Referenz 0.9 Arbeitstage bzw. 7.0 Stunden, Monatsannahme weiterhin 21.5 Arbeitstage brutto bzw. 19.0 TVoeD-produktive Tage pro Kalendermonat; der DocFX-Lauf regenerierte ausserdem ausgeschlossene `api/*.yml`-Artefakte ausserhalb der Handarbeitsbasis. |
 | 2026-03-28 | Lastenheft-Benennungsregel fuer implementierte Feature-Branches | Das umgesetzte Lastenheft wurde von `Lastenheft_VM_INC_OpCode.md` nach `Lastenheft_VM_INC_OpCode.002-vm-inc-compat.md` umbenannt, die Referenzen in `specs/002-vm-inc-compat/` nachgezogen und die neue Governance-Regel in `AGENTS.md`, `CLAUDE.md`, `GEMINI.md` sowie `.github/copilot-instructions.md` festgeschrieben: Sobald ein dedizierter Feature-Branch die Anforderungen eines Lastenhefts umgesetzt hat, traegt die Lastenheft-Datei den Branch-Suffix zur dauerhaften Rueckverfolgbarkeit; Aenderungsumfang dieser Runde vor dieser Ledger-Fortschreibung: 0 Produktionscode-Zeilen, 0 Testcode-Zeilen, +9 Dokumentationszeilen netto im Arbeitsbaum zuzueglich einer Dateiumbenennung, konservative Handarbeits-Untergrenze 0.1 Arbeitstage bzw. 0.7 Stunden auf TVoeD-Basis, Thorsten-Solo-Referenz 0.1 Arbeitstage bzw. 0.5 Stunden, Monatsannahme weiterhin 21.5 Arbeitstage brutto bzw. 19.0 TVoeD-produktive Tage pro Kalendermonat. |
 | 2026-03-28 | Lastenheft-Benennungsregel rueckwirkend auf `001-l10n-backend` angewendet | Das bereits umgesetzte L10N-Lastenheft wurde von `Lastenheft_L10N.md` nach `Lastenheft_L10N.001-l10n-backend.md` umbenannt, die Verweise in `specs/001-l10n-backend/` und im Dokument selbst auf den neuen Dateinamen umgestellt und damit die neue Traceability-Regel auch fuer den ersten Spec-Kit-Feature-Branch rueckwirkend konsistent angewendet; Aenderungsumfang dieser Runde vor dieser Ledger-Fortschreibung: 0 Produktionscode-Zeilen, 0 Testcode-Zeilen, +6 Dokumentationszeilen netto im Arbeitsbaum zuzueglich einer Dateiumbenennung, konservative Handarbeits-Untergrenze 0.1 Arbeitstage bzw. 0.5 Stunden auf TVoeD-Basis, Thorsten-Solo-Referenz 0.0 Arbeitstage bzw. 0.3 Stunden, Monatsannahme weiterhin 21.5 Arbeitstage brutto bzw. 19.0 TVoeD-produktive Tage pro Kalendermonat. |
+| 2026-03-30 | Inklusions-Leitsatz und DocFX-A11y-Baseline verankert | `README.md`, `AGENTS.md`, `CLAUDE.md`, `GEMINI.md` und `.github/copilot-instructions.md` wurden um den Leitsatz `Programmierung #include<everyone>` ergaenzt. Fuer TinyPl0 bedeutet das: Lernmaterialien, Handbuchtexte und erzeugte DocFX-/API-Dokumentation muessen fuer Braille-Zeile, Screenreader und Textbrowser nutzbar bleiben. Zusaetzlich ist fuer DocFX-basierte HTML-Dokumentation WCAG 2.2 AA als praktische Baseline vermerkt; nach jedem DocFX-Neubau soll ein textorientierter A11y-Review mit Playwright/axe und `lynx` erfolgen. Diese Runde war reine Governance-/Doku-Arbeit mit `0` Produktionscode-Zeilen, `0` Testcode-Zeilen und ca. `+47` Dokumentationszeilen netto. Konservative Manualreferenz: 80 Zeilen/Tag = `0.6` Tage (ca. `4.7` Stunden); Thorsten-Solo-Referenz: 125 Zeilen/Tag = `0.4` Tage (ca. `3.0` Stunden); sichtbares Arbeitsfenster: 1 kurze Agentensitzung am 2026-03-30. |
+| 2026-03-30 | Bilinguale Abschlusspruefung und A11Y-Gate in Pflichtenheften verankert | `Pflichtenheft_PL0_CSharp_DotNet10.md`, `Pflichtenheft_PL0_Dokumentation.md` und `Pflichtenheft_IDE.md` nennen jetzt ausdruecklich die Abschlusspruefpunkte fuer Bilingualitaet, CEFR-B2-Niveau und A11Y. Zusaetzlich ist fuer grosse normative Dokumente eine synchron gepflegte `.EN.md`-Parallelfassung als zulaessige, uebersichtlichere Lieferform dokumentiert. Fuer DocFX-basierte HTML-Dokumentation ist die A11Y-Pflicht mit WCAG 2.2 AA, textorientiertem Review nach `docfx` sowie Nutzbarkeit fuer Braille-Zeile, Screenreader und Textbrowser Teil der Abnahme. Diese Runde war reine Dokumentationsarbeit mit `0` Produktionscode-Zeilen, `0` Testcode-Zeilen und ca. `+10` Dokumentationszeilen netto. Konservative Manualreferenz: 80 Zeilen/Tag = `0.1` Tage (ca. `1.0` Stunden); Thorsten-Solo-Referenz: 125 Zeilen/Tag = `0.1` Tage (ca. `0.6` Stunden); sichtbares Arbeitsfenster: 1 kurze Agentensitzung am 2026-03-30. |
+| 2026-03-30 | Parent-Guidance bewusst auf repo-uebergreifende Regeln begrenzt | In den lokalen Guidance-Dateien von `TinyPl0` ist jetzt ausdruecklich vermerkt, dass `/Users/thorstenhindermann/RiderProjects/AGENTS.md` nur gemeinsame Basisregeln fuer mehrere Repositories traegt. Repository-spezifische Build-, Test-, Workflow-, Architektur- und Feature-Vorgaben bleiben bewusst in `TinyPl0` selbst und sind dort die spezifischere Autoritaet. Diese Runde war reine Dokumentationsarbeit mit `0` Produktionscode-Zeilen, `0` Testcode-Zeilen und ca. `+10` Dokumentationszeilen netto. Konservative Manualreferenz: 80 Zeilen/Tag = `0.1` Tage (ca. `1.0` Stunden); Thorsten-Solo-Referenz: 125 Zeilen/Tag = `0.1` Tage (ca. `0.6` Stunden); sichtbares Arbeitsfenster: 1 kurze Agentensitzung am 2026-03-30. |
+| 2026-03-30 | Gemeinsame Governance- und Statistik-Baseline mit TuiVision abgeglichen | `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md`, `README.md`, die drei Pflichtenhefte und `docs/project-statistics.md` wurden gegen die repo-uebergreifende Oberbasis aus `/Users/thorstenhindermann/RiderProjects/AGENTS.md`, die Merknote `project-statistics-tail-block.md` und den gemeinsamen Governance-/Doku-Stand von `TuiVision` abgeglichen. Nachgezogen wurden nur gemeinsame Regeln: `.EN.md` fuer grosse normative Dokumente bei kanonischer deutscher Fassung, formale Abschlusskriterien fuer DE-first/EN-second auf CEFR-B2 und fuer den dokumentierten A11Y-Nachweis nach `Programmierung #include<everyone>`, die DocFX-Folgepruefung mit Playwright/axe und `lynx`, text-first-A11Y fuer Braille-Zeile, Screenreader und Textbrowser sowie der finale `## Gesamtstatistik`-Block mit ASCII-Diagrammen. Zusaetzlich wurden fuer den anstehenden Branch-Commit die IDE-Versionsfelder in `src/Pl0.Ide/Pl0.Ide.csproj` auf `1.2.209.14` synchronisiert und der IDE-Worklog in `Pflichtenheft_IDE.md` fortgeschrieben. Diese Runde war reine Governance-/Doku-Arbeit mit `0` Produktionscode-Zeilen, `0` Testcode-Zeilen und ca. `+135` Dokumentationszeilen netto zuzueglich Projektmetadatenpflege ausserhalb der Markdown-Taxonomie. Konservative Manualreferenz: 80 Zeilen/Tag = `1.7` Tage (ca. `13.2` Stunden); Thorsten-Solo-Referenz: 125 Zeilen/Tag = `1.1` Tage (ca. `8.4` Stunden); sichtbares Arbeitsfenster: 1 Agentensitzung am 2026-03-30. |
+
+## Gesamtstatistik
+
+- Stand 2026-03-30: `58` Produktionsdateien mit `6536` Zeilen, `15` Testdateien mit `3351` Zeilen und `380` Dokumentationsdateien mit `19686` Zeilen.
+- Die beobachtbare Gesamtbasis fuer die manuelle Referenz liegt bei `29573` Zeilen. Das entspricht konservativ `369.7` Arbeitstagen fuer einen erfahrenen Entwickler oder `236.6` Arbeitstagen fuer die Thorsten-Solo-Referenz; sichtbar dokumentiert sind `20` Git-Aktivtage.
+- Repo-weite Beschleunigungsfaktoren aus dem aktuellen Ledger: `18.5x` gegen die konservative 80-Zeilen-Referenz und `11.8x` gegen die Thorsten-Solo-Referenz.
+- Phasenkuerzel in den Diagrammen: `0` = Compiler-Basis, `1` = Doku/API, `2` = IDE, `3` = Governance/L10N, `4` = Pages/CI/DocFX, `5` = Branch `002-vm-inc-compat`.
+
+Diese Schlusssektion fasst den aktuellen Repository-Stand bewusst textfreundlich zusammen. Die ASCII-Diagramme bleiben grob und ohne Farbcode, damit sie auf Braille-Zeile, mit Screenreadern und in Textbrowsern gut lesbar bleiben.
+
+This closing section summarizes the current repository state in a deliberately text-first form. The ASCII charts stay approximate and color-free so they remain readable on Braille displays, with screen readers, and in text browsers.
+
+```text
+Aktueller Artefaktmix im Repository (Zeilen)
+Produktion | ########                 |  6536
+Tests      | ####                     |  3351
+Doku       | ######################## | 19686
+```
+
+Dieser Block zeigt, wie stark TinyPl0 inzwischen von Dokumentation, Lehrmaterial und Governance-Artefakten gepraegt ist. Das ist fuer ein Lern- und Referenzprojekt erwartbar: Code, Tests und Dokumentation wachsen hier bewusst zusammen.
+
+This block shows how strongly TinyPl0 is now shaped by documentation, teaching material, and governance artifacts. That is expected for a learning and reference project: code, tests, and documentation intentionally grow together here.
+
+```text
+Dokumentiertes Volumen je Phase/Branch (Zeilen)
+0 Comp  | ##########               |  5308
+1 Doku  | ######################## | 12476
+2 IDE   | ##########               |  5125
+3 Gov   | #################        |  8679
+4 CI    | #                        |    14
+5 002   | ###                      |  1557
+```
+
+Dieses Diagramm zeigt die grossen Lieferpakete ueber die bisher dokumentierten Phasen. Man sieht sofort, dass die Doku/API-Welle und die spaetere Governance-/L10N-Phase fuer TinyPl0 besonders viel sichtbaren Umfang gebracht haben.
+
+This chart shows the major delivery packages across the phases documented so far. It immediately reveals that the documentation/API wave and the later governance/L10N phase contributed especially large visible scope for TinyPl0.
+
+```text
+Dokumentierte Beschleunigungsfaktoren
+Repo80  | ############             | 18.5x
+Repo125 | ########                 | 11.8x
+0 Comp  | ###############          | 22.1x
+1 Doku  | ###############          | 22.3x
+2 IDE   | ##############           | 21.4x
+3 Gov   | ######################## | 36.2x
+4 CI    | #                        |  0.1x
+5 002   | #############            | 19.5x
+```
+
+Hier werden keine Stoppuhrzeiten gemessen. Verglichen wird die dokumentierte Lieferdichte gegen zwei manuelle Referenzen. Hohe Werte bedeuten also: viel sichtbarer Output in wenigen belegten Aktivtagen.
+
+This chart does not measure stopwatch time. It compares documented delivery density against two manual references. High values therefore mean a lot of visible output within only a few evidenced active days.
+
+```text
+Vergleich dokumentierter Gesamtaufwand / sichtbares KI-Lieferfenster
+Erfahren    | ######################## | 369.7 d
+Thorsten    | ###############          | 236.6 d
+KI sichtbar | #                        |  20.0 d
+```
+
+Dieser Vergleich macht die grobe Groessenordnung sichtbar: Zwischen klassischer Handarbeit und dem im Repository sichtbaren Lieferfenster liegt eine deutliche Verdichtung. Genau diese Verdichtung beschreibt das Ledger als blended repository speedup.
+
+This comparison makes the scale visible at a glance: there is clear compression between classical manual effort and the delivery window visible in the repository. That documented compression is what the ledger labels as blended repository speedup.
+
+```text
+X/Y-Diagramm: dokumentiertes Phasenvolumen (X = 0..5, Y = Zeilen)
+12500 |  *
+10000 |
+ 7500 |      *
+ 5000 |*   *
+ 2500 |          *
+    0 |        *
+      +------------
+       0 1 2 3 4 5
+```
+
+Als zweite Ansicht zeigt diese X/Y-Kurve denselben Verlauf ueber die Phasenachse. So werden Spruenge zwischen benachbarten Paketen leichter lesbar als in einer reinen Liste.
+
+As a second view, this X/Y curve shows the same progression across the phase axis. That makes jumps between neighboring packages easier to read than in a plain list.
+
+```text
+X/Y-Diagramm: dokumentierte Beschleunigungsfaktoren (X = 0..5, Y = Faktor)
+ 40 |      *
+ 30 |
+ 20 |* * *     *
+ 10 |
+  0 |        *
+    +------------
+     0 1 2 3 4 5
+```
+
+Diese zweite X/Y-Ansicht zeigt die dokumentierten Beschleunigungsfaktoren je Phase. Fehlende oder sehr kleine Punkte sind nicht automatisch schlecht; sie bedeuten hier nur, dass ein Paket klein war oder dass die sichtbare Aktivtag-Basis kaum Verdichtung zeigt.
+
+This second X/Y view shows the documented acceleration factors per phase. Missing or very small points are not automatically bad; here they only mean that a package was small or that the visible active-day base shows little compression.

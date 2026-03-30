@@ -162,3 +162,14 @@ Neben der praktischen Implementierung eines Compilers dient dieses Projekt auch 
 - **Transparenz:** Wie bleibt die Nachvollziehbarkeit und Validierbarkeit der generierten Artefakte gewährleistet?
 
 Dieses Projekt zeigt, dass Agentic-AI nicht als Ersatz für manuelles Lernen gedacht ist, sondern als **produktive Werkzeug und Lernpartner** für professionelle Softwareentwicklung in der Ausbildung.
+
+## Inklusion und Barrierefreiheit / Inclusion and Accessibility
+
+- Folge dem Leitsatz `Programmierung #include<everyone>`: Lernmaterialien, Guides und erzeugte HTML-/API-Dokumentation muessen fuer Braille-Zeile, Screenreader und Textbrowser nutzbar bleiben.
+- Follow `Programmierung #include<everyone>`: learner-facing material, guides, and generated HTML/API documentation must stay usable on Braille displays, with screen readers, and in text browsers.
+- Fuer erzeugte HTML-Dokumentation gilt WCAG 2.2 Konformitaetsstufe AA als praktische Basis.
+- For generated HTML documentation, WCAG 2.2 conformance level AA is the practical baseline.
+- Nach jedem `docfx`-Neubau soll ein textorientierter A11y-Review folgen, bevorzugt mit Playwright + `@axe-core/playwright` und `lynx`.
+- After every `docfx` regeneration, a text-oriented accessibility review should follow, preferably with Playwright + `@axe-core/playwright` and `lynx`.
+- Fuer lokale DocFX-A11y-Pruefpfade sollen `Node 24 LTS`, `npm`, Playwright, `@axe-core/playwright` und `lynx` als gepflegte Voraussetzung verfuegbar sein.
+- For local DocFX accessibility review paths, keep `Node 24 LTS`, `npm`, Playwright, `@axe-core/playwright`, and `lynx` available as maintained prerequisites.
