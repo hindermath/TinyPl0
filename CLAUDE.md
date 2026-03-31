@@ -117,7 +117,7 @@ Align `Version`, `AssemblyVersion`, and `FileVersion` in `Pl0.Ide.csproj` whenev
 
 ## Code Conventions
 
-- C# 12+ features: collection expressions `[]`, primary constructors, `record` for immutable data
+- C# 14 features: collection expressions `[]`, primary constructors, `record` for immutable data
 - Test classes: `public sealed class`, suffix `Tests`, use xUnit `[Fact]`
 - Namespaces: all in `Pl0.*`
 - 4-space indentation, opening brace on same line

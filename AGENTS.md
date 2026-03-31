@@ -72,7 +72,7 @@ Update golden artifacts after intentional changes:
 ## Code Style Guidelines
 
 ### General
-- Use C# 12+ features (collection expressions, primary constructors)
+- Use C# 14 features (collection expressions, primary constructors)
 - Use `public sealed class` for test classes
 - All code in `Pl0.*` namespaces
 
