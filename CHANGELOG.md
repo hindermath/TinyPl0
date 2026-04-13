@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.2.1](https://github.com/hindermath/TinyPl0/compare/v0.2.0...v0.2.1) (2026-04-13)
+
+
+### Bug Fixes / Fehlerbehebungen
+
+* install ripgrep for windows secret scan ([4234386](https://github.com/hindermath/TinyPl0/commit/4234386b3619bfa60808ac398b2844f937b58e3e))
+* replace broken homogeneity workflow ([77a1ed4](https://github.com/hindermath/TinyPl0/commit/77a1ed4f3e3ecc2785ab487abf355da84b13435c))
+* stabilize windows secret scan CI ([02aac98](https://github.com/hindermath/TinyPl0/commit/02aac98037d7b22d3c7c684b54b777b149ea1d41))
+
 ## [0.2.0](https://github.com/hindermath/TinyPl0/compare/v0.1.0...v0.2.0) (2026-04-12)
 
 
