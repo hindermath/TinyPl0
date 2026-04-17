@@ -94,3 +94,8 @@ The project uses Golden Master tests for the lexer and parser. To update these a
 
 - Die gemeinsamen Dateien `/Users/thorstenhindermann/RiderProjects/AGENTS.md` und `/Users/thorstenhindermann/RiderProjects/GEMINI.md` speichern die repo-uebergreifenden Basisregeln.
 - Diese Projekt-Datei ist die spezifischere Autoritaet fuer projektspezifische Build-Befehle, Workflows, Architektur und Features.
+
+## Hinweise / Notes
+
+- Diese Datei ergaenzt die projektspezifische Dokumentation mit agentischen Arbeitsregeln.
+- This file complements the project-specific documentation with agent-oriented working rules.

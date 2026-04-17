@@ -235,3 +235,8 @@ Activation records use three reserved cells: Static Link, Dynamic Link, Return A
 
 - The shared parent file `/Users/thorstenhindermann/RiderProjects/AGENTS.md` intentionally stores only repo-spanning baseline rules.
 - Keep repository-specific build, test, workflow, architecture, and feature guidance in this repository's own files; when both layers exist, the repository-local files are the more specific authority.
+
+## Hinweise / Notes
+
+- Diese Datei ergaenzt die projektspezifische Dokumentation mit agentischen Arbeitsregeln.
+- This file complements the project-specific documentation with agent-oriented working rules.
