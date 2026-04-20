@@ -1,37 +1,22 @@
 <!--
-=== SYNC IMPACT REPORT ===
-Version change: 1.2.0 → 1.3.0
-
-Bump rationale:
-- MINOR: Expanded the statistical documentation policy so manual-effort
-  estimates now include production code, test code, and documentation
-  together, and added explicit month and TVoeD calendar assumptions.
-
-Modified principles:
-- Keine
-
-Added sections:
-- Keine
-
-Removed sections:
-- Keine
-
-Templates requiring updates:
-- .specify/templates/plan-template.md ⚠ pending review
-- .specify/templates/spec-template.md ✅ reviewed; no change required
-- .specify/templates/tasks-template.md ⚠ pending review
-- .specify/templates/commands/*.md ⚠ pending (Verzeichnis nicht vorhanden)
-
-Runtime guidance docs requiring updates:
-- AGENTS.md ✅ updated
-- CLAUDE.md ✅ updated
-- GEMINI.md ✅ updated
-- .github/copilot-instructions.md ✅ updated
-- docs/project-statistics.md ✅ updated
-
-Follow-up TODOs:
-- Plan- und Task-Templates bei weiterer Propagierung auf denselben Wortlaut pruefen.
-=== END SYNC IMPACT REPORT ===
+Sync Impact Report
+- Version change: 1.3.0 -> 1.4.0
+- Bump rationale:
+  - MINOR: Added workspace-baseline alignment guidance from the repository root `constitution.md` without removing repository-specific principles.
+- Modified principles:
+  - None
+- Added sections:
+  - Workspace Baseline Alignment / Observability & Continuous Measurement
+  - Workspace Baseline Alignment / Programmierung #include<everyone> — Inclusion & Accessibility By Default
+- Removed sections:
+  - None
+- Templates requiring updates:
+  - .specify/templates/plan-template.md: pending review
+  - .specify/templates/spec-template.md: pending review
+  - .specify/templates/tasks-template.md: pending review
+  - .specify/templates/commands/constitution.md: pending review
+- Follow-up TODOs:
+  - Review template and runtime-guidance wording for repository-specific propagation where needed.
 -->
 
 # TinyPl0 Constitution
@@ -198,6 +183,18 @@ Every update MUST record, at minimum:
 Manual-effort estimates for a small team MAY be derived from that baseline, but
 the formula and assumptions MUST be stated explicitly.
 
+## Workspace Baseline Alignment
+
+This Spec-Kit constitution inherits the binding workspace-family governance from `constitution.md` in the repository root. Project-specific rules remain in force; where both apply, the stricter rule wins.
+
+### A. Observability & Continuous Measurement
+
+Every repository MUST maintain `docs/project-statistics.md` as a living statistics ledger. The conservative manual reference is `80` lines/workday. Because this is a C#/.NET repository, the default Thorsten-Solo baseline is `125` lines/workday unless the repository documents and justifies a different project-specific value. The TVöD workday baseline is `7.8 h` (`7h 48m`). Shared statistics guidance MUST stay consistent across `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, and `.github/copilot-instructions.md`.
+
+### B. Programmierung #include<everyone> — Inclusion & Accessibility By Default
+
+`Programmierung #include<everyone>` is a binding repository-wide principle. All user-facing artefacts — including CLI output, documentation and Markdown, HTML and generated websites, graphical user interfaces, and generated templates or scaffolding — MUST follow WCAG 2.2 Level AA wherever the criteria are applicable. They MUST remain usable with keyboard-only interaction, screen readers, Braille displays, and text browsers. Accessibility review is part of completion, not post-processing.
+
 ## Governance
 
 This constitution supersedes all other informal practices and conventions for TinyPl0.
@@ -220,4 +217,4 @@ Use `CLAUDE.md`, `GEMINI.md`, `AGENTS.md`, and
 Use `docs/project-statistics.md` for the living project-statistics ledger and
 manual-effort baseline tracking.
 
-**Version**: 1.3.0 | **Ratified**: 2026-02-19 | **Last Amended**: 2026-03-22
+**Version**: 1.4.0 | **Ratified**: 2026-02-19 | **Last Amended**: 2026-04-20
