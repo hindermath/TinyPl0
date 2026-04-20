@@ -214,6 +214,15 @@ Activation records use three reserved cells: Static Link, Dynamic Link, Return A
 - When reporting acceleration, compare both manual references against visible Git active days and label the result as a blended repository speedup rather than a stopwatch measurement.
 - When hour values are shown, convert the day-based estimates with the TVoeD working-day baseline of `7.8 hours` (`7h 48m`) per day.
 
+
+## Gemeinsame Governance-Ergaenzung / Shared Governance Addendum
+
+- Alle nutzerseitigen Artefakte muessen barrierefrei gedacht und geprueft werden: CLI-Ausgaben, Dokumentation, HTML, UI und generierte Templates; WCAG 2.2 Level AA ist die Standard-Basis, sobald die Kriterien auf das Artefakt anwendbar sind.
+- All user-facing artefacts must be designed and reviewed for accessibility: CLI output, documentation, HTML, UI, and generated templates; WCAG 2.2 Level AA is the default baseline wherever the criteria apply.
+
+- Fuer C#/.NET-Repositories gilt standardmaessig eine Thorsten-Solo-Basis von `125` Zeilen/Arbeitstag, sofern das Repo keinen abweichenden, begruendeten Wert dokumentiert.
+- The default Thorsten-solo baseline for C#/.NET repositories is `125` lines/workday unless the repository documents a justified deviation.
+
 ## Active Technologies
 - C# 14 / .NET 10 + .NET SDK, bestehende Module `Pl0.Core`, `Pl0.Vm`, `Pl0.Cli`, xUnit (002-vm-inc-compat)
 - Textuelle `.pcode`-/Listing-Artefakte als Einlese-Schnittstelle fuer historische `Inc`-/`Int`-Kompatibilitaet (002-vm-inc-compat)
