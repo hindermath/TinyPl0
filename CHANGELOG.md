@@ -1,5 +1,29 @@
 # Changelog
 
+## [0.2.1](https://github.com/hindermath/TinyPl0/compare/v0.2.0...v0.2.1) (2026-04-20)
+
+
+### Bug Fixes / Fehlerbehebungen
+
+* install ripgrep for windows secret scan ([4234386](https://github.com/hindermath/TinyPl0/commit/4234386b3619bfa60808ac398b2844f937b58e3e))
+* replace broken homogeneity workflow ([77a1ed4](https://github.com/hindermath/TinyPl0/commit/77a1ed4f3e3ecc2785ab487abf355da84b13435c))
+* stabilize windows secret scan CI ([02aac98](https://github.com/hindermath/TinyPl0/commit/02aac98037d7b22d3c7c684b54b777b149ea1d41))
+
+
+### Documentation / Dokumentation
+
+* initialize speckit assets and align constitutions ([10e41c8](https://github.com/hindermath/TinyPl0/commit/10e41c8446bcf2ef9e46e4cfe67157c752b4d6df))
+* sync constitution and shared agent guidance ([9232be6](https://github.com/hindermath/TinyPl0/commit/9232be68b709a55b16e949300505d344d885471b))
+* update stats ([b6ea327](https://github.com/hindermath/TinyPl0/commit/b6ea3270da6d2153f3135f248bb10d745f9a38b4))
+
+
+### Maintenance / Wartung
+
+* complete bilingual heading coverage ([1cc3a94](https://github.com/hindermath/TinyPl0/commit/1cc3a94e9c209fce3880615a8718acf346644f57))
+* reconcile local agent artifacts ([001c020](https://github.com/hindermath/TinyPl0/commit/001c02058c061df734134023305ebf02da81069e))
+* sync constitution to v1.4.0 ([3f057a5](https://github.com/hindermath/TinyPl0/commit/3f057a5585cf212426a71e4f1dffa7a744c0e060))
+* update stats ([cfb0d24](https://github.com/hindermath/TinyPl0/commit/cfb0d24c9b890028538c9f3d420f373f8866bb7d))
+
 ## [0.2.0](https://github.com/hindermath/TinyPl0/compare/v0.1.0...v0.2.0) (2026-04-12)
 
 
