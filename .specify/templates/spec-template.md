@@ -90,22 +90,38 @@
 - **FR-004**: System MUST [data requirement, e.g., "persist user preferences"]
 - **FR-005**: System MUST [behavior, e.g., "log all security events"]
 
-### Documentation & Didactic Requirements *(mandatory for TinyPl0)*
-
-- **DR-001**: Learner-facing documentation and comments MUST be bilingual, with German block first
-  and English block second.
-- **DR-002**: Both language blocks MUST target CEFR/GER B2 readability.
-- **DR-003**: Changed or added APIs MUST include complete XML documentation where applicable
-  (`<summary>`, `<param>`, `<returns>`, `<exception>`; `<remarks>`/`<example>` when useful).
-- **DR-004**: Public API XML documentation gaps MUST be treated as build errors
-  (CS1591 MUST NOT be globally suppressed).
-- **DR-005**: If API signatures or XML docs change, the related work MUST include a `docfx` run
-  from repository root and regeneration of documentation artifacts.
-
 *Example of marking unclear requirements:*
 
 - **FR-006**: System MUST authenticate users via [NEEDS CLARIFICATION: auth method not specified - email/password, SSO, OAuth?]
 - **FR-007**: System MUST retain user data for [NEEDS CLARIFICATION: retention period not specified]
+
+### Constitution Requirements *(mandatory)*
+
+- **CR-001**: If this feature targets a listed Level-2 project, the feature MUST
+  use the matching Level-2 Project Environment Registry entry from
+  `constitution.md` as binding project context.
+- **CR-002**: User-facing artefacts MUST identify their A11Y review path
+  (WCAG 2.2 Level AA where applicable, text-first fallback otherwise).
+- **CR-003**: Learner-facing or shared guidance content MUST be DE-first,
+  EN-second unless a synchronized `.EN.md` companion is explicitly chosen.
+- **CR-004**: The feature MUST state whether statistics and AI-agent guidance
+  files require synchronized updates.
+- **CR-005**: The feature MUST name its primary implementation language and
+  either confirm it is on the MSL allow-list (`constitution.md`, Principle XI)
+  or cite the documented non-MSL justification from the Level-2
+  `constitution.md`.
+- **CR-006**: The feature MUST determine the applicable security standards from
+  `constitution.md`, Principles XIV-XVIII, and mark non-applicable standards
+  as `N/A` with justification. `NIST SSDF` and `CWE Top 25` are mandatory for
+  all Level-2 work.
+- **CR-007**: If the feature includes web/API/HTTP/auth-bearing services, it
+  MUST declare the selected `OWASP ASVS` level and verification scope.
+- **CR-008**: If the feature creates releasable or distributable artefacts, it
+  MUST declare the intended `SBOM` / `VEX` evidence path and any required
+  provenance / `SLSA` considerations.
+- **CR-009**: If the feature changes trust boundaries, externally reachable
+  flows, or distributed/service architecture, it MUST state how `CAPEC` and
+  `Zero Trust` applicability will be handled.
 
 ### Key Entities *(include if feature involves data)*
 
@@ -125,3 +141,16 @@
 - **SC-002**: [Measurable metric, e.g., "System handles 1000 concurrent users without degradation"]
 - **SC-003**: [User satisfaction metric, e.g., "90% of users successfully complete primary task on first attempt"]
 - **SC-004**: [Business metric, e.g., "Reduce support tickets related to [X] by 50%"]
+
+## Assumptions
+
+<!--
+  ACTION REQUIRED: The content in this section represents placeholders.
+  Fill them out with the right assumptions based on reasonable defaults
+  chosen when the feature description did not specify certain details.
+-->
+
+- [Assumption about target users, e.g., "Users have stable internet connectivity"]
+- [Assumption about scope boundaries, e.g., "Mobile support is out of scope for v1"]
+- [Assumption about data/environment, e.g., "Existing authentication system will be reused"]
+- [Dependency on existing system/service, e.g., "Requires access to the existing user profile API"]
