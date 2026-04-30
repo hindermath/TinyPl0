@@ -1,5 +1,41 @@
 # Changelog
 
+## [0.2.1](https://github.com/hindermath/TinyPl0/compare/v0.2.0...v0.2.1) (2026-04-30)
+
+
+### Bug Fixes / Fehlerbehebungen
+
+* install ripgrep for windows secret scan ([4234386](https://github.com/hindermath/TinyPl0/commit/4234386b3619bfa60808ac398b2844f937b58e3e))
+* opt release-please into node 24 ([7d1bfdd](https://github.com/hindermath/TinyPl0/commit/7d1bfdd8b2ae138b7a8bb3d775bc6fd68ffb2704))
+* pin release-please node 24 action ([5ac86b9](https://github.com/hindermath/TinyPl0/commit/5ac86b900fdd2fb3bd2e02202a16334f545a6c28))
+* replace broken homogeneity workflow ([77a1ed4](https://github.com/hindermath/TinyPl0/commit/77a1ed4f3e3ecc2785ab487abf355da84b13435c))
+* stabilize windows secret scan CI ([02aac98](https://github.com/hindermath/TinyPl0/commit/02aac98037d7b22d3c7c684b54b777b149ea1d41))
+
+
+### Documentation / Dokumentation
+
+* add security evidence structure ([1632a95](https://github.com/hindermath/TinyPl0/commit/1632a9546a520738a63aa08675c1a7020052b8e3))
+* amend constitution to v1.6.0 ([ffe2ff1](https://github.com/hindermath/TinyPl0/commit/ffe2ff1a13d8ed708542a13e8f0862a271d54337))
+* initialize speckit assets and align constitutions ([10e41c8](https://github.com/hindermath/TinyPl0/commit/10e41c8446bcf2ef9e46e4cfe67157c752b4d6df))
+* propagate constitution v1.10.0 guidance ([f89140e](https://github.com/hindermath/TinyPl0/commit/f89140ee5970ddbedfd5bfa2f5f2a533d179e869))
+* propagate constitution v1.11.0 guidance ([25371e5](https://github.com/hindermath/TinyPl0/commit/25371e5823225c749ff3ff9b4909d6a6d2947247))
+* sync constitution and shared agent guidance ([9232be6](https://github.com/hindermath/TinyPl0/commit/9232be68b709a55b16e949300505d344d885471b))
+* update constitution v1.5.1 ([5e5246c](https://github.com/hindermath/TinyPl0/commit/5e5246c64f79310463e1e2aeb56c203cc53eebd3))
+* update stats ([b6ea327](https://github.com/hindermath/TinyPl0/commit/b6ea3270da6d2153f3135f248bb10d745f9a38b4))
+
+
+### Maintenance / Wartung
+
+* complete bilingual heading coverage ([1cc3a94](https://github.com/hindermath/TinyPl0/commit/1cc3a94e9c209fce3880615a8718acf346644f57))
+* propagate security guidance from home-baseline v1.12.0 ([074646c](https://github.com/hindermath/TinyPl0/commit/074646cc90e123a2097dcb97c56e0229bb378e85))
+* reconcile local agent artifacts ([001c020](https://github.com/hindermath/TinyPl0/commit/001c02058c061df734134023305ebf02da81069e))
+* sync constitution to v1.4.0 ([3f057a5](https://github.com/hindermath/TinyPl0/commit/3f057a5585cf212426a71e4f1dffa7a744c0e060))
+* update homogeneity stats ([09de08a](https://github.com/hindermath/TinyPl0/commit/09de08a82629c19e3aabd7152e28389a9554f3a7))
+* update homogeneity stats ([8f29645](https://github.com/hindermath/TinyPl0/commit/8f296455b65b2f26753334042be0ce607277c398))
+* update spec-kit integrations ([c2cb670](https://github.com/hindermath/TinyPl0/commit/c2cb670044426cb0eab8b8b097b6ff8ea5898c46))
+* update spec-kit integrations to 0.8.3 ([f6adf04](https://github.com/hindermath/TinyPl0/commit/f6adf044e0d00d7dc27a72ffaa990e8790be0553))
+* update stats ([cfb0d24](https://github.com/hindermath/TinyPl0/commit/cfb0d24c9b890028538c9f3d420f373f8866bb7d))
+
 ## [0.2.0](https://github.com/hindermath/TinyPl0/compare/v0.1.0...v0.2.0) (2026-04-12)
 
 
