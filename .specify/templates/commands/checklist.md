@@ -8,6 +8,7 @@ Use this command to generate review checklists for a feature or release.
 2. Include governance checks for:
    - branch/PR compliance
    - constitution gate compliance
+   - architecture evidence completeness (`docs/architecture/`, ADRs, risks, quality scenarios when applicable)
    - test evidence completeness
    - coverage evidence (`>=70%` minimum, `>=80%` target tracking)
    - .NET 10 + C# 14.0 toolchain alignment
