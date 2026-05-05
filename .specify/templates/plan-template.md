@@ -37,6 +37,11 @@
   MUST cite the matching row from the Level-2 Project Environment Registry in
   `constitution.md` and use its runtime, build/test, docs/A11Y, statistics, and
   agent-surface baselines.
+- **General architecture governance**: If this feature affects structure,
+  interfaces, building blocks, runtime behavior, deployment, quality
+  attributes, or technical debt, the plan MUST state which evidence under
+  `docs/architecture/` will be created or updated, whether ADRs are needed,
+  and how architecture risks or trade-offs will be tracked.
 - **Memory-safe languages (MSL)**: State the primary implementation language
   and confirm it is on the MSL allow-list in `constitution.md`, Principle XI.
   If the primary language is not an MSL (e.g. C, C++, Assembly, `cc65`), cite
@@ -78,6 +83,10 @@
   and which manual/Thorsten-Solo baseline applies.
 - **Agent guidance parity**: State whether `AGENTS.md`, `CLAUDE.md`,
   `GEMINI.md`, and `.github/copilot-instructions.md` are affected together.
+- **Architecture evidence**: Prefer `docs/architecture/` for context,
+  building-block, runtime, deployment, quality-scenario, ADR, and
+  architecture-risk evidence. If an equivalent location is used, state it
+  explicitly and justify the deviation.
 
 ## Project Structure
 

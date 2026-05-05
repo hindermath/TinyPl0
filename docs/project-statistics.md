@@ -1,6 +1,6 @@
 # Projektstatistik TinyPl0
 
-Stand: 2026-03-27
+Stand: 2026-05-05
 
 ## Zweck und Pflege
 
@@ -63,34 +63,35 @@ fortgeschrieben.
 
 | Kennzahl | Wert |
 |---|---:|
-| Beobachtbarer Projektzeitraum | 2026-02-08 bis 2026-03-15 |
-| Git-Commits gesamt | 186 |
+| Beobachtbarer Projektzeitraum | 2026-02-08 bis 2026-05-05 |
+| Git-Commits gesamt | 252 |
 | Autoren laut Git | 2 |
-| Git-Aktivtage | 20 |
-| Produktionscode aktuell | 58 Dateien / 6536 Zeilen |
-| Testcode aktuell | 15 Dateien / 3351 Zeilen |
-| Dokumentation aktuell | 380 Dateien / 19686 Zeilen |
-| Davon Spec-Kit-Artefakte | 21 Dateien / 3291 Zeilen |
-| Davon Governance/Agent-Dateien | 5 Dateien / 976 Zeilen |
-| Gesamtbasis fuer Handschaetzung (inkl. Dokumentation) | 29573 Zeilen |
-| Erfahrener Entwickler, konservative Untergrenze | 369.7 Arbeitstage |
-| Erfahrener Entwickler, konservative Untergrenze in Stunden | 2883.4 Stunden (369.7 * 7.8) |
-| Erfahrener Entwickler, brutto | 17.2 Arbeitsmonate (21.5 Tage/Monat) |
-| Erfahrener Entwickler, TVoeD-Annahme | 19.5 Kalendermonate bzw. 1.6 Jahre |
-| Thorsten solo, erfahrungsadjustierte Untergrenze | 236.6 Arbeitstage |
-| Thorsten solo, erfahrungsadjustierte Untergrenze in Stunden | 1845.4 Stunden (236.6 * 7.8) |
-| Thorsten solo, brutto | 11.0 Arbeitsmonate (21.5 Tage/Monat) |
-| Thorsten solo, TVoeD-Annahme | 12.5 Kalendermonate bzw. 1.0 Jahre |
-| Kleines Team (3 Personen, +20 % Koordination), Untergrenze | 147.9 Arbeitstage |
-| Kleines Team (3 Personen, +20 % Koordination), TVoeD-Annahme | 7.8 Kalendermonate |
-| Repo-weiter Beschleunigungsfaktor vs. konservative Referenz | 18.5x (369.7 / 20 Git-Aktivtage) |
-| Repo-weiter Beschleunigungsfaktor vs. Thorsten-Referenz | 11.8x (236.6 / 20 Git-Aktivtage) |
+| Git-Aktivtage | 43 |
+| Produktionscode aktuell | 88 Dateien / 6950 Zeilen |
+| Testcode aktuell | 22 Dateien / 3536 Zeilen |
+| Dokumentation aktuell | 562 Dateien / 36625 Zeilen |
+| Davon Spec-Kit-Artefakte | 155 Dateien / 11436 Zeilen |
+| Davon Governance/Agent-Dateien | 5 Dateien / 2263 Zeilen |
+| Gesamtbasis fuer Handschaetzung (inkl. Dokumentation) | 47111 Zeilen |
+| Erfahrener Entwickler, konservative Untergrenze | 588.9 Arbeitstage |
+| Erfahrener Entwickler, konservative Untergrenze in Stunden | 4593.3 Stunden (588.9 * 7.8) |
+| Erfahrener Entwickler, brutto | 27.4 Arbeitsmonate (21.5 Tage/Monat) |
+| Erfahrener Entwickler, TVoeD-Annahme | 31.0 Kalendermonate bzw. 2.6 Jahre |
+| Thorsten solo, erfahrungsadjustierte Untergrenze | 376.9 Arbeitstage |
+| Thorsten solo, erfahrungsadjustierte Untergrenze in Stunden | 2939.8 Stunden (376.9 * 7.8) |
+| Thorsten solo, brutto | 17.5 Arbeitsmonate (21.5 Tage/Monat) |
+| Thorsten solo, TVoeD-Annahme | 19.8 Kalendermonate bzw. 1.7 Jahre |
+| Kleines Team (3 Personen, +20 % Koordination), Untergrenze | 235.6 Arbeitstage |
+| Kleines Team (3 Personen, +20 % Koordination), TVoeD-Annahme | 12.4 Kalendermonate |
+| Repo-weiter Beschleunigungsfaktor vs. konservative Referenz | 13.7x (588.9 / 43 Git-Aktivtage) |
+| Repo-weiter Beschleunigungsfaktor vs. Thorsten-Referenz | 8.8x (376.9 / 43 Git-Aktivtage) |
 
 ## Branch-Ueberblick
 
 | Branch/Ref | Letzte sichtbare Aktivitaet | Einordnung |
 |---|---|---|
 | `002-vm-inc-compat` | 2026-03-27 | Aktiver Feature-Branch fuer die SPEC-Kit-Spezifikation zur `Inc`-/`Int`-VM-Kompatibilitaet |
+| `codex/constitution-preset-sync` | 2026-05-05 | Arbeitsbranch fuer die Governance-Pruefung nach Installation der sechs neuen Spec-Kit-Presets |
 | `main` | 2026-03-15 | Integrationsbranch |
 | `origin/main` | 2026-03-15 | Remote-Tracking-Branch |
 
@@ -269,6 +270,44 @@ rekonstruiert.
     Der `docfx`-Lauf regenerierte ausserdem ausgeschlossene `api/*.yml`-
     Artefakte, die gemaess Methodik nicht in die Handarbeitsbasis eingehen.
 
+### 6. Constitution-/Preset-Synchronisierung nach sechs neuen Spec-Kit-Presets
+
+- Status: im Arbeitsbranch `codex/constitution-preset-sync` fuer Commit und
+  Push vorbereitet; noch nicht in `main`
+- Beobachtbarer Zeitraum: 2026-05-05 bis 2026-05-05
+- Commit-Bild: aktueller Governance-Aenderungssatz vor dem Branch-Commit
+- Grundlegende Arbeiten: Pruefung der bestehenden Verfassung gegen die sechs
+  neu installierten Presets (`a11y-governance`, `agent-parity-governance`,
+  `architecture-governance`, `cross-platform-governance`,
+  `isaqb-architecture-governance`, `security-governance`), Ergaenzung eines
+  neuen allgemeinen Architektur-Grundsatzes in
+  `.specify/memory/constitution.md`, Synchronisierung der Spec-Kit-Templates
+  und Command-Templates sowie gleichlautende Nachpflege in `AGENTS.md`,
+  `CLAUDE.md`, `GEMINI.md` und `.github/copilot-instructions.md`.
+- Git-/Arbeitsbaum-Aenderungsvolumen fuer den aktuellen Aenderungssatz vor
+  dieser Ledger-Fortschreibung:
+  - Produktionscode: 0 Zeilen
+  - Testcode: 0 Zeilen
+  - Dokumentation: 162 Zeilen netto in Governance-, Template- und
+    Agent-Dateien
+- Konservative Handarbeits-Basis fuer Code und Dokumentation:
+  - 162 Zeilen netto gesamt
+  - 2.0 Arbeitstage fuer einen erfahrenen Entwickler
+  - 15.8 Stunden auf TVoeD-Basis (`2.0 * 7.8`)
+  - 0.1 Arbeitsmonate brutto bzw. 0.1 TVoeD-Kalendermonate
+- Thorsten-Solo-Referenz:
+  - 1.3 Arbeitstage
+  - 10.1 Stunden auf TVoeD-Basis (`1.3 * 7.8`)
+  - 0.1 Arbeitsmonate brutto bzw. 0.1 TVoeD-Kalendermonate
+- Blended Repository Speedup gegen sichtbare 1 Git-Aktivtag fuer diesen
+  Aenderungssatz:
+  - 2.0x gegen die konservative 80-Zeilen-Referenz
+  - 1.3x gegen die Thorsten-Solo-Referenz mit 125 Zeilen pro Arbeitstag
+- Vor dem Commit-/Push-Schritt wurden zusaetzlich die Versionsfelder in
+  `src/Pl0.Ide/Pl0.Ide.csproj` auf den neuen Commit-Zielstand synchronisiert;
+  diese Projektmetadatenpflege liegt ausserhalb der reinen
+  Produktionscode-/Testcode-/Markdown-Taxonomie.
+
 ## Einordnung der KI-/Spec-Kit-Wirkung
 
 - Die beobachtbare manuelle Gesamtbasis liegt bereits bei 29573 Zeilen
@@ -316,13 +355,14 @@ rekonstruiert.
 | 2026-03-30 | Bilinguale Abschlusspruefung und A11Y-Gate in Pflichtenheften verankert | `Pflichtenheft_PL0_CSharp_DotNet10.md`, `Pflichtenheft_PL0_Dokumentation.md` und `Pflichtenheft_IDE.md` nennen jetzt ausdruecklich die Abschlusspruefpunkte fuer Bilingualitaet, CEFR-B2-Niveau und A11Y. Zusaetzlich ist fuer grosse normative Dokumente eine synchron gepflegte `.EN.md`-Parallelfassung als zulaessige, uebersichtlichere Lieferform dokumentiert. Fuer DocFX-basierte HTML-Dokumentation ist die A11Y-Pflicht mit WCAG 2.2 AA, textorientiertem Review nach `docfx` sowie Nutzbarkeit fuer Braille-Zeile, Screenreader und Textbrowser Teil der Abnahme. Diese Runde war reine Dokumentationsarbeit mit `0` Produktionscode-Zeilen, `0` Testcode-Zeilen und ca. `+10` Dokumentationszeilen netto. Konservative Manualreferenz: 80 Zeilen/Tag = `0.1` Tage (ca. `1.0` Stunden); Thorsten-Solo-Referenz: 125 Zeilen/Tag = `0.1` Tage (ca. `0.6` Stunden); sichtbares Arbeitsfenster: 1 kurze Agentensitzung am 2026-03-30. |
 | 2026-03-30 | Parent-Guidance bewusst auf repo-uebergreifende Regeln begrenzt | In den lokalen Guidance-Dateien von `TinyPl0` ist jetzt ausdruecklich vermerkt, dass `/Users/thorstenhindermann/RiderProjects/AGENTS.md` nur gemeinsame Basisregeln fuer mehrere Repositories traegt. Repository-spezifische Build-, Test-, Workflow-, Architektur- und Feature-Vorgaben bleiben bewusst in `TinyPl0` selbst und sind dort die spezifischere Autoritaet. Diese Runde war reine Dokumentationsarbeit mit `0` Produktionscode-Zeilen, `0` Testcode-Zeilen und ca. `+10` Dokumentationszeilen netto. Konservative Manualreferenz: 80 Zeilen/Tag = `0.1` Tage (ca. `1.0` Stunden); Thorsten-Solo-Referenz: 125 Zeilen/Tag = `0.1` Tage (ca. `0.6` Stunden); sichtbares Arbeitsfenster: 1 kurze Agentensitzung am 2026-03-30. |
 | 2026-03-30 | Gemeinsame Governance- und Statistik-Baseline mit TuiVision abgeglichen | `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md`, `README.md`, die drei Pflichtenhefte und `docs/project-statistics.md` wurden gegen die repo-uebergreifende Oberbasis aus `/Users/thorstenhindermann/RiderProjects/AGENTS.md`, die Merknote `project-statistics-tail-block.md` und den gemeinsamen Governance-/Doku-Stand von `TuiVision` abgeglichen. Nachgezogen wurden nur gemeinsame Regeln: `.EN.md` fuer grosse normative Dokumente bei kanonischer deutscher Fassung, formale Abschlusskriterien fuer DE-first/EN-second auf CEFR-B2 und fuer den dokumentierten A11Y-Nachweis nach `Programmierung #include<everyone>`, die DocFX-Folgepruefung mit Playwright/axe und `lynx`, text-first-A11Y fuer Braille-Zeile, Screenreader und Textbrowser sowie der finale `## Gesamtstatistik`-Block mit ASCII-Diagrammen. Zusaetzlich wurden fuer den anstehenden Branch-Commit die IDE-Versionsfelder in `src/Pl0.Ide/Pl0.Ide.csproj` auf `1.2.209.14` synchronisiert und der IDE-Worklog in `Pflichtenheft_IDE.md` fortgeschrieben. Diese Runde war reine Governance-/Doku-Arbeit mit `0` Produktionscode-Zeilen, `0` Testcode-Zeilen und ca. `+135` Dokumentationszeilen netto zuzueglich Projektmetadatenpflege ausserhalb der Markdown-Taxonomie. Konservative Manualreferenz: 80 Zeilen/Tag = `1.7` Tage (ca. `13.2` Stunden); Thorsten-Solo-Referenz: 125 Zeilen/Tag = `1.1` Tage (ca. `8.4` Stunden); sichtbares Arbeitsfenster: 1 Agentensitzung am 2026-03-30. |
+| 2026-05-05 | Constitution- und Preset-Sync nach Sechs-Preset-Integration | Die vorhandene `.specify/memory/constitution.md` wurde gegen die sechs neu installierten Spec-Kit-Presets geprueft. Ergebnis: A11Y-, Agent-Parity-, Cross-Platform-, Security- und Secure-Architecture-Governance waren bereits weitgehend gespiegelt; nachgezogen werden musste der allgemeine iSAQB-/arc42-Architektur-Grundsatz samt Evidenzpfad `docs/architecture/`. Dafuer wurden Constitution, Spec-Kit-Templates, Command-Templates sowie `AGENTS.md`, `CLAUDE.md`, `GEMINI.md` und `.github/copilot-instructions.md` synchron aktualisiert. Vor dem angeforderten Commit/Pull wurden ausserdem die IDE-Versionsfelder auf den neuen Zielstand `1.2.252.14` angehoben. Aenderungsumfang dieser Runde vor dieser Ledger-Fortschreibung: `0` Produktionscode-Zeilen, `0` Testcode-Zeilen und `+162` Dokumentationszeilen netto zuzueglich Projektmetadatenpflege ausserhalb der Markdown-Taxonomie. Konservative Manualreferenz: `2.0` Tage bzw. `15.8` Stunden; Thorsten-Solo-Referenz: `1.3` Tage bzw. `10.1` Stunden; sichtbares Arbeitsfenster: 1 Agentensitzung am 2026-05-05. |
 
 ## Gesamtstatistik
 
-- Stand 2026-03-30: `58` Produktionsdateien mit `6536` Zeilen, `15` Testdateien mit `3351` Zeilen und `380` Dokumentationsdateien mit `19686` Zeilen.
-- Die beobachtbare Gesamtbasis fuer die manuelle Referenz liegt bei `29573` Zeilen. Das entspricht konservativ `369.7` Arbeitstagen fuer einen erfahrenen Entwickler oder `236.6` Arbeitstagen fuer die Thorsten-Solo-Referenz; sichtbar dokumentiert sind `20` Git-Aktivtage.
-- Repo-weite Beschleunigungsfaktoren aus dem aktuellen Ledger: `18.5x` gegen die konservative 80-Zeilen-Referenz und `11.8x` gegen die Thorsten-Solo-Referenz.
-- Phasenkuerzel in den Diagrammen: `0` = Compiler-Basis, `1` = Doku/API, `2` = IDE, `3` = Governance/L10N, `4` = Pages/CI/DocFX, `5` = Branch `002-vm-inc-compat`.
+- Stand 2026-05-05: `88` Produktionsdateien mit `6950` Zeilen, `22` Testdateien mit `3536` Zeilen und `562` Dokumentationsdateien mit `36625` Zeilen.
+- Die beobachtbare Gesamtbasis fuer die manuelle Referenz liegt bei `47111` Zeilen. Das entspricht konservativ `588.9` Arbeitstagen fuer einen erfahrenen Entwickler oder `376.9` Arbeitstagen fuer die Thorsten-Solo-Referenz; sichtbar dokumentiert sind `43` Git-Aktivtage.
+- Repo-weite Beschleunigungsfaktoren aus dem aktuellen Ledger: `13.7x` gegen die konservative 80-Zeilen-Referenz und `8.8x` gegen die Thorsten-Solo-Referenz.
+- Phasenkuerzel in den Diagrammen: `0` = Compiler-Basis, `1` = Doku/API, `2` = IDE, `3` = Governance/L10N, `4` = Pages/CI/DocFX, `5` = Branch `002-vm-inc-compat`, `6` = Constitution-/Preset-Sync.
 
 Diese Schlusssektion fasst den aktuellen Repository-Stand bewusst textfreundlich zusammen. Die ASCII-Diagramme bleiben grob und ohne Farbcode, damit sie auf Braille-Zeile, mit Screenreadern und in Textbrowsern gut lesbar bleiben.
 
@@ -330,9 +370,9 @@ This closing section summarizes the current repository state in a deliberately t
 
 ```text
 Aktueller Artefaktmix im Repository (Zeilen)
-Produktion | ########                 |  6536
-Tests      | ####                     |  3351
-Doku       | ######################## | 19686
+Produktion | #####                    |  6950
+Tests      | ###                      |  3536
+Doku       | ######################## | 36625
 ```
 
 Dieser Block zeigt, wie stark TinyPl0 inzwischen von Dokumentation, Lehrmaterial und Governance-Artefakten gepraegt ist. Das ist fuer ein Lern- und Referenzprojekt erwartbar: Code, Tests und Dokumentation wachsen hier bewusst zusammen.
@@ -347,6 +387,7 @@ Dokumentiertes Volumen je Phase/Branch (Zeilen)
 3 Gov   | #################        |  8679
 4 CI    | #                        |    14
 5 002   | ###                      |  1557
+6 Sync  | #                        |   162
 ```
 
 Dieses Diagramm zeigt die grossen Lieferpakete ueber die bisher dokumentierten Phasen. Man sieht sofort, dass die Doku/API-Welle und die spaetere Governance-/L10N-Phase fuer TinyPl0 besonders viel sichtbaren Umfang gebracht haben.
@@ -355,14 +396,15 @@ This chart shows the major delivery packages across the phases documented so far
 
 ```text
 Dokumentierte Beschleunigungsfaktoren
-Repo80  | ############             | 18.5x
-Repo125 | ########                 | 11.8x
+Repo80  | ###########              | 13.7x
+Repo125 | #######                  |  8.8x
 0 Comp  | ###############          | 22.1x
 1 Doku  | ###############          | 22.3x
 2 IDE   | ##############           | 21.4x
 3 Gov   | ######################## | 36.2x
 4 CI    | #                        |  0.1x
 5 002   | #############            | 19.5x
+6 Sync  | #                        |  2.0x
 ```
 
 Hier werden keine Stoppuhrzeiten gemessen. Verglichen wird die dokumentierte Lieferdichte gegen zwei manuelle Referenzen. Hohe Werte bedeuten also: viel sichtbarer Output in wenigen belegten Aktivtagen.
@@ -371,9 +413,9 @@ This chart does not measure stopwatch time. It compares documented delivery dens
 
 ```text
 Vergleich dokumentierter Gesamtaufwand / sichtbares KI-Lieferfenster
-Erfahren    | ######################## | 369.7 d
-Thorsten    | ###############          | 236.6 d
-KI sichtbar | #                        |  20.0 d
+Erfahren    | ######################## | 588.9 d
+Thorsten    | ###############          | 376.9 d
+KI sichtbar | ##                       |  43.0 d
 ```
 
 Dieser Vergleich macht die grobe Groessenordnung sichtbar: Zwischen klassischer Handarbeit und dem im Repository sichtbaren Lieferfenster liegt eine deutliche Verdichtung. Genau diese Verdichtung beschreibt das Ledger als blended repository speedup.
@@ -381,15 +423,15 @@ Dieser Vergleich macht die grobe Groessenordnung sichtbar: Zwischen klassischer 
 This comparison makes the scale visible at a glance: there is clear compression between classical manual effort and the delivery window visible in the repository. That documented compression is what the ledger labels as blended repository speedup.
 
 ```text
-X/Y-Diagramm: dokumentiertes Phasenvolumen (X = 0..5, Y = Zeilen)
+X/Y-Diagramm: dokumentiertes Phasenvolumen (X = 0..6, Y = Zeilen)
 12500 |  *
 10000 |
  7500 |      *
  5000 |*   *
  2500 |          *
-    0 |        *
-      +------------
-       0 1 2 3 4 5
+    0 |        * *
+      +--------------
+       0 1 2 3 4 5 6
 ```
 
 Als zweite Ansicht zeigt diese X/Y-Kurve denselben Verlauf ueber die Phasenachse. So werden Spruenge zwischen benachbarten Paketen leichter lesbar als in einer reinen Liste.
@@ -397,14 +439,14 @@ Als zweite Ansicht zeigt diese X/Y-Kurve denselben Verlauf ueber die Phasenachse
 As a second view, this X/Y curve shows the same progression across the phase axis. That makes jumps between neighboring packages easier to read than in a plain list.
 
 ```text
-X/Y-Diagramm: dokumentierte Beschleunigungsfaktoren (X = 0..5, Y = Faktor)
+X/Y-Diagramm: dokumentierte Beschleunigungsfaktoren (X = 0..6, Y = Faktor)
  40 |      *
  30 |
  20 |* * *     *
  10 |
-  0 |        *
-    +------------
-     0 1 2 3 4 5
+  0 |        * *
+    +--------------
+     0 1 2 3 4 5 6
 ```
 
 Diese zweite X/Y-Ansicht zeigt die dokumentierten Beschleunigungsfaktoren je Phase. Fehlende oder sehr kleine Punkte sind nicht automatisch schlecht; sie bedeuten hier nur, dass ein Paket klein war oder dass die sichtbare Aktivtag-Basis kaum Verdichtung zeigt.

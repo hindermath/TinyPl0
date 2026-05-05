@@ -1,16 +1,21 @@
 <!--
 Sync Impact Report
-Version change: 1.11.0 -> 1.12.0
+Version change: 1.12.0 -> 1.13.0
 Modified principles:
 - None (purely additive)
 Added sections:
-- None
+- XX. General Architecture Governance (iSAQB / arc42)
 Removed sections:
 - None
 Templates requiring updates:
 - ✅ .specify/templates/plan-template.md
 - ✅ .specify/templates/spec-template.md
 - ✅ .specify/templates/tasks-template.md
+- ✅ .specify/templates/commands/checklist.md
+- ✅ .specify/templates/commands/constitution.md
+- ✅ .specify/templates/commands/plan.md
+- ✅ .specify/templates/commands/spec.md
+- ✅ .specify/templates/commands/tasks.md
 - ✅ .specify/templates/asvs-verification-template.md
 - ✅ .specify/templates/supply-chain-evidence-template.md
 - ✅ .specify/templates/zero-trust-applicability-template.md
@@ -722,6 +727,43 @@ software placed on the EU market. Recording CRA applicability and aligning
 practices proactively reduces legal and reputational risk and builds on the
 security work already required by Principles XII–XVIII.
 
+### XX. General Architecture Governance (iSAQB / arc42)
+
+Software architecture MUST be treated as an explicit design artefact whenever
+changes affect structure, interfaces, quality attributes, runtime behavior,
+deployment, or long-term maintainability. Implementation work without visible
+architecture reasoning creates hidden coupling and unreviewed technical debt.
+
+Mandatory rules:
+- Architecture work SHOULD follow iSAQB/CPSA-F method discipline and use
+  lightweight arc42-compatible documentation where useful.
+- Architecturally significant decisions MUST be documented as Architecture
+  Decision Records (ADRs).
+- Quality attributes MUST be expressed as concrete scenarios, not only as
+  generic claims such as "fast", "maintainable", or "scalable".
+- System context, building blocks, runtime behavior, and deployment
+  constraints MUST be documented when they materially affect the design.
+- Architecture risks, accepted trade-offs, and technical debt MUST be
+  recorded with owner, impact, mitigation or repayment plan, and review
+  trigger.
+- Architecture documentation MUST stay proportional: enough to support
+  review, maintenance, onboarding, and later change decisions.
+- This principle covers general software architecture. Security-specific
+  architecture concerns such as trust boundaries, threat modeling,
+  STRIDE/CAPEC, Zero Trust, S-ADRs, and OWASP SAMM remain governed by
+  Principles XIII and XVII-XVIII and SHOULD be applied together when
+  security is in scope.
+- General architecture evidence defaults to `docs/architecture/`.
+  ADRs default to `docs/architecture/adr/`.
+- `N/A` decisions for architecture evidence MUST be documented with a
+  short rationale; silent omission is not allowed.
+
+**Rationale**: The secure-architecture principles already govern how systems
+must protect assets, but the newly integrated iSAQB/arc42 preset also requires
+an explicit general architecture work product layer. Making this separate
+layer constitutional keeps structure, quality attributes, ADRs, and technical
+debt visible instead of leaving them implicit in implementation diffs.
+
 ## Level-2 Project Environment Registry / Level-2-Projektumgebungsregister
 
 This registry consolidates the constitution-relevant Level-2 project facts
@@ -812,7 +854,7 @@ allowed path.
 `.github/copilot-instructions.md` for per-agent operational guidance. This
 constitution is the authoritative policy layer above all agent-specific files.
 
-**Version**: 1.12.0 | **Ratified**: 2026-03-31 | **Last Amended**: 2026-04-24
+**Version**: 1.13.0 | **Ratified**: 2026-03-31 | **Last Amended**: 2026-05-05
 
 <!-- EN: constitution.md placeholder
 [DE-Zusammenfassung: constitution.md beschreibt die Prinzipien und Standards für alle home-baseline Workspaces.]

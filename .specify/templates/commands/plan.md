@@ -8,6 +8,7 @@ Use this command to produce an implementation plan from an approved specificatio
 2. Execute the Constitution Check gates explicitly:
    - branching and PR flow
    - .NET 10 + C# 14.0 toolchain alignment
+   - general architecture evidence scope (`docs/architecture/`, ADRs, quality scenarios, risks/trade-offs)
    - architecture/layer boundaries
    - bilingual CEFR B2 documentation scope
    - XML documentation + DocFX regeneration scope
@@ -22,3 +23,4 @@ Use this command to produce an implementation plan from an approved specificatio
 
 - No gate is left unresolved without rationale.
 - Test, coverage, dependency, and documentation impacts are planned before implementation.
+- Architecture evidence impacts are planned before implementation.
