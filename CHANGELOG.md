@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.2.2](https://github.com/hindermath/TinyPl0/compare/v0.2.1...v0.2.2) (2026-05-06)
+
+
+### Documentation / Dokumentation
+
+* propagate spec-kit preset governance ([d09b823](https://github.com/hindermath/TinyPl0/commit/d09b823c39297111fb30dbe66d947df0b4ca09bf))
+* sync constitution with installed presets ([3f3a509](https://github.com/hindermath/TinyPl0/commit/3f3a5090689d1146020ca562a9775112cadde5dd))
+* sync constitution with installed presets ([992ccb7](https://github.com/hindermath/TinyPl0/commit/992ccb7b39f0be42ab06497bf324b7e3953c1ab2))
+
+
+### Maintenance / Wartung
+
+* configure spec-kit governance presets ([bccbf11](https://github.com/hindermath/TinyPl0/commit/bccbf119616cc1fc937a3113559be2637955810a))
+
 ## [0.2.1](https://github.com/hindermath/TinyPl0/compare/v0.2.0...v0.2.1) (2026-04-30)
 
 
