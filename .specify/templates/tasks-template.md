@@ -156,6 +156,7 @@ Examples of foundational tasks (adjust based on your project):
 - [ ] TXXX [P] Create or update ADRs in `docs/architecture/adr/` for architecturally significant decisions, trade-offs, or boundary changes
 - [ ] TXXX [P] Define and validate concrete architecture quality scenarios when non-functional requirements materially drive the design
 - [ ] TXXX [P] Record architecture risks, accepted trade-offs, and technical debt with owner and review trigger
+- [ ] TXXX [P] Verify installed Spec-Kit governance presets with `specify preset list`; for C#/.NET Level-2 projects confirm the all-six default or document the justified exception
 - [ ] TXXX [P] Verify primary implementation language against the MSL allow-list in `constitution.md`, Principle XI; cite the Level-2 non-MSL justification if applicable
 - [ ] TXXX [P] Run the required A11Y/text-first review path for affected user-facing artefacts
 - [ ] TXXX [P] Update `docs/project-statistics.md` when the feature changes statistics-relevant artefacts or delivery evidence
