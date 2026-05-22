@@ -152,10 +152,6 @@ Examples of foundational tasks (adjust based on your project):
 
 - [ ] TXXX [P] Documentation updates in docs/
 - [ ] TXXX [P] Verify the implementation against the matching Level-2 Project Environment Registry row in `constitution.md`
-- [ ] TXXX [P] Update the relevant architecture evidence in `docs/architecture/` when system context, interfaces, building blocks, runtime behavior, deployment, or quality attributes changed
-- [ ] TXXX [P] Create or update ADRs in `docs/architecture/adr/` for architecturally significant decisions, trade-offs, or boundary changes
-- [ ] TXXX [P] Define and validate concrete architecture quality scenarios when non-functional requirements materially drive the design
-- [ ] TXXX [P] Record architecture risks, accepted trade-offs, and technical debt with owner and review trigger
 - [ ] TXXX [P] Verify installed Spec-Kit governance presets with `specify preset list`; for C#/.NET Level-2 projects confirm the all-six default or document the justified exception
 - [ ] TXXX [P] Verify primary implementation language against the MSL allow-list in `constitution.md`, Principle XI; cite the Level-2 non-MSL justification if applicable
 - [ ] TXXX [P] Run the required A11Y/text-first review path for affected user-facing artefacts
@@ -173,10 +169,10 @@ Examples of foundational tasks (adjust based on your project):
 - [ ] TXXX [P] Apply `NIST SSDF` and `CWE Top 25` to design/review/remediation evidence; add relevant notes to checklist, threat model, ADR, or PR as appropriate
 - [ ] TXXX [P] If the feature includes web/API/HTTP/auth-bearing services, document the selected `OWASP ASVS` level and verification scope in `docs/security/` or equivalent project-local documentation
 - [ ] TXXX [P] If the feature creates releasable or distributable artefacts, generate/update `SBOM` and, when relevant, `VEX` evidence; capture provenance/SLSA actions for CI/CD or published artefacts
+- [ ] TXXX [P] Record `AI-SBOM` applicability: if AI is only a development tool or absent from the released/operated system, document `N/A` with rationale; if AI models, AI services, datasets, inference infrastructure, or AI runtime components are present, update supply-chain evidence with the G7/BSI AI-SBOM clusters
 - [ ] TXXX [P] If threat boundaries or externally reachable flows changed, update STRIDE threat modeling and add relevant `CAPEC` references for the highest-risk attack paths
 - [ ] TXXX [P] If the system is distributed, service-based, cloud, or remotely managed, document `Zero Trust` applicability; if the project is long-lived, note any `OWASP SAMM` follow-up actions
 - [ ] TXXX [P] Prefer the default evidence files `docs/security/asvs-verification.md`, `docs/security/supply-chain-evidence.md`, `docs/security/zero-trust-applicability.md`, and `docs/security/samm-assessment.md`; document and justify any equivalent governance location
-- [ ] TXXX [P] Run a final architecture consistency review across `spec.md`, `plan.md`, `tasks.md`, and the updated evidence in `docs/architecture/`
 - [ ] TXXX Run quickstart.md validation
 - [ ] TXXX Lastenheft umbenennen / Rename Lastenheft: `bash scripts/rename-lastenheft.sh <LH-Datei> <branch-name>` (macOS/Linux) . `pwsh scripts/rename-lastenheft.ps1 -File <LH-Datei> -BranchName <branch-name>` (Windows) - stamps the feature branch name onto the filename to mark it as archived
 

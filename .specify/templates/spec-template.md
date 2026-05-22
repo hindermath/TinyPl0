@@ -106,23 +106,25 @@
   EN-second unless a synchronized `.EN.md` companion is explicitly chosen.
 - **CR-004**: The feature MUST state whether statistics and AI-agent guidance
   files require synchronized updates.
-- **CR-005**: The feature MUST state whether it affects system context,
-  interfaces, building blocks, runtime behavior, deployment, quality
-  attributes, or technical debt, and whether evidence under
-  `docs/architecture/` or ADRs in `docs/architecture/adr/` are required.
-- **CR-006**: The feature MUST name its primary implementation language and
+- **CR-005**: The feature MUST name its primary implementation language and
   either confirm it is on the MSL allow-list (`constitution.md`, Principle XI)
   or cite the documented non-MSL justification from the Level-2
   `constitution.md`.
-- **CR-007**: The feature MUST determine the applicable security standards from
+- **CR-006**: The feature MUST determine the applicable security standards from
   `constitution.md`, Principles XIV-XVIII, and mark non-applicable standards
   as `N/A` with justification. `NIST SSDF` and `CWE Top 25` are mandatory for
   all Level-2 work.
-- **CR-008**: If the feature includes web/API/HTTP/auth-bearing services, it
+- **CR-007**: If the feature includes web/API/HTTP/auth-bearing services, it
   MUST declare the selected `OWASP ASVS` level and verification scope.
-- **CR-009**: If the feature creates releasable or distributable artefacts, it
+- **CR-008**: If the feature creates releasable or distributable artefacts, it
   MUST declare the intended `SBOM` / `VEX` evidence path and any required
   provenance / `SLSA` considerations.
+- **CR-009**: The feature MUST state whether AI is used only as a development
+  tool, absent from the released/operated system, or present as a runtime or
+  product component. If AI models, AI services, training/embedding datasets,
+  inference infrastructure, or AI runtime components are part of the released
+  or operated system, it MUST declare the intended `AI-SBOM` evidence path;
+  otherwise it MUST record `AI-SBOM` as `N/A` with a short rationale.
 - **CR-010**: If the feature changes trust boundaries, externally reachable
   flows, or distributed/service architecture, it MUST state how `CAPEC` and
   `Zero Trust` applicability will be handled.
@@ -130,6 +132,9 @@
   in `docs/security/` (`asvs-verification.md`, `supply-chain-evidence.md`,
   `zero-trust-applicability.md`, `samm-assessment.md`) or an explicitly
   justified equivalent governance location.
+- **CR-012**: The feature MUST state which installed Spec-Kit governance
+  presets apply. C#/.NET Level-2 projects default to all six home-baseline
+  presets unless a justified exception is documented.
 
 ### Key Entities *(include if feature involves data)*
 
