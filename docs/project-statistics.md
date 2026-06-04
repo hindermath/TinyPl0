@@ -422,16 +422,35 @@ Dieser Vergleich macht die grobe Groessenordnung sichtbar: Zwischen klassischer 
 
 This comparison makes the scale visible at a glance: there is clear compression between classical manual effort and the delivery window visible in the repository. That documented compression is what the ledger labels as blended repository speedup.
 
+Wenn man einen Verlauf ueber die X-Achse sehen will, helfen X/Y-Diagramme
+zusaetzlich. Hier steht die X-Achse fuer die dokumentierten Phasen oder
+Branches. Die X-Positionen nutzen feste Slots: jede Phase behaelt ihren Platz,
+auch wenn einzelne Datenpunkte fehlen. Wenn weitere Spec-Kit-Laeufe die Achse
+zu breit machen, wird sie in Bloecke wie `0..15`, `16..31` und `32..47`
+geteilt; jeder Block bekommt eine eigene Achsenlinie und eigene X-Labels. Die
+Y-Achse zeigt je nach Diagramm Zeilen oder Beschleunigungsfaktoren. Die
+Sternpunkte bleiben grob gebinnt: Sie sollen Trends sichtbar machen, nicht
+mathematische Genauigkeit auf Plotter-Niveau liefern.
+
+If readers want to see progression across the X-axis, X/Y charts help as a
+second view. Here the X-axis stands for the documented phases or branches. The
+X positions use fixed slots: each phase keeps its place, even when individual
+data points are missing. When future Spec-Kit runs make the axis too wide, split
+it into blocks such as `0..15`, `16..31`, and `32..47`; each block gets its own
+axis line and X labels. Depending on the chart, the Y-axis shows lines or
+acceleration factors. The star markers stay roughly binned: they reveal trends,
+not plotter-level mathematical precision.
+
 ```text
-X/Y-Diagramm: dokumentiertes Phasenvolumen (X = 0..6, Y = Zeilen)
-12500 |  *
-10000 |
- 7500 |      *
- 5000 |*   *
- 2500 |          *
-    0 |        * *
-      +--------------
-       0 1 2 3 4 5 6
+X/Y-Diagramm: dokumentiertes Phasenvolumen (X = Phase/Branch, Y = Zeilen)
+12500 |     *                      |
+10000 |                            |
+ 7500 |             *              |
+ 5000 | *       *                  |
+ 2500 |                     *      |
+    0 |                 *       *  |
+      +----------------------------+
+       0   1   2   3   4   5   6
 ```
 
 Als zweite Ansicht zeigt diese X/Y-Kurve denselben Verlauf ueber die Phasenachse. So werden Spruenge zwischen benachbarten Paketen leichter lesbar als in einer reinen Liste.
@@ -439,14 +458,14 @@ Als zweite Ansicht zeigt diese X/Y-Kurve denselben Verlauf ueber die Phasenachse
 As a second view, this X/Y curve shows the same progression across the phase axis. That makes jumps between neighboring packages easier to read than in a plain list.
 
 ```text
-X/Y-Diagramm: dokumentierte Beschleunigungsfaktoren (X = 0..6, Y = Faktor)
- 40 |      *
- 30 |
- 20 |* * *     *
- 10 |
-  0 |        * *
-    +--------------
-     0 1 2 3 4 5 6
+X/Y-Diagramm: dokumentierte Beschleunigungsfaktoren (X = Phase/Branch, Y = Faktor)
+ 40 |             *              |
+ 30 |                            |
+ 20 | *   *   *           *      |
+ 10 |                            |
+  0 |                 *       *  |
+    +----------------------------+
+     0   1   2   3   4   5   6
 ```
 
 Diese zweite X/Y-Ansicht zeigt die dokumentierten Beschleunigungsfaktoren je Phase. Fehlende oder sehr kleine Punkte sind nicht automatisch schlecht; sie bedeuten hier nur, dass ein Paket klein war oder dass die sichtbare Aktivtag-Basis kaum Verdichtung zeigt.

@@ -311,6 +311,7 @@ Diese Regeln gelten für alle Repositories in diesem Workspace. Projektspezifisc
 - `docs/project-statistics.md` als lebendes Ledger pflegen, wenn diese Datei im Repository existiert.
 - Den abschließenden Top-Level-Block `## Gesamtstatistik` als letzten Abschnitt halten.
 - ASCII-Diagramme textbrowserfreundlich halten und **kurze CEFR-B2-Erklärungen direkt neben** das jeweilige Diagramm platzieren.
+- ASCII-X/Y-Diagramme muessen feste X-Slots verwenden: jede dokumentierte Phase behaelt ihren Slot, fehlende Werte bleiben leer, und zu breite kuenftige Reihen werden in beschriftete Bloecke wie `0..15`, `16..31` und `32..47` geteilt, jeweils mit eigener Achsenlinie und eigenen X-Labels.
 - Dokumentierte **Beschleunigungsfaktoren aus Agentic AI plus Spec-Kit/SDD** einschließen sowie einen Vergleich zwischen experienced-developer-Aufwand, Thorsten-solo-Aufwand und dem sichtbaren AI-assisted-Delivery-Fenster (sofern dieses Repository diese Metriken führt).
 
 ### Änderungsdisziplin
