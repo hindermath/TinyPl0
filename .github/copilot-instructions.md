@@ -138,6 +138,9 @@ Inject `IPl0Io` when constructing `VirtualMachine`; never read from `Console` di
 - For changed APIs, provide complete XML docs where applicable (`<summary>`, `<param>`, `<returns>`, `<exception>`; optional `<remarks>`/`<example>` when instructive).
 - Public XML documentation gaps are build-breaking (CS1591 must not be globally suppressed).
 - If API signatures or XML docs change, run `docfx` from repository root (`docfx.json`) in the same commit/PR.
+- New or changed non-trivial logic must be reviewed for didactic inline-comment value when it affects learner understanding or maintainability.
+- Inline comments explain why a decision, trade-off, constraint, historical deviation, or proof boundary exists; do not add comments that merely restate obvious code.
+- Keep inline-comment intensity moderate: normally 1-3 lines before a non-trivial block, with German-first/English-second CEFR-B2 text for didactic explanation blocks.
 
 ### Error Handling
 - **Do NOT throw exceptions during compilation.** Collect all errors in diagnostics instead.

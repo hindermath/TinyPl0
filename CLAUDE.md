@@ -123,6 +123,9 @@ Align `Version`, `AssemblyVersion`, and `FileVersion` in `Pl0.Ide.csproj` whenev
 - 4-space indentation, opening brace on same line
 - XML doc comments are required for changed APIs and must be complete where applicable (`<summary>`, `<param>`, `<returns>`, `<exception>`; `<remarks>`/`<example>` when useful)
 - Missing public XML docs are build-breaking (CS1591 must not be globally suppressed); run `docfx` from repo root when API docs/signatures change
+- New or changed non-trivial logic must be reviewed for didactic inline-comment value when it affects learner understanding or maintainability.
+- Inline comments explain why a decision, trade-off, constraint, historical deviation, or proof boundary exists; do not add comments that merely restate obvious code.
+- Keep inline-comment intensity moderate: normally 1-3 lines before a non-trivial block, with German-first/English-second CEFR-B2 text for didactic explanation blocks.
 
 **Error handling — critical:** Do NOT throw exceptions during compilation. All errors go into `CompilerDiagnostic` / `LexerDiagnostic`. Check `CompilationResult.Success` (true when `Diagnostics.Count == 0`) before execution.
 
