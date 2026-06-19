@@ -72,3 +72,30 @@ this order unless the user gives a different priority.
 - Wenn ein Lauf Architektur, Security oder Governance beruehrt, die passende
   Evidenz in `docs/architecture/`, `docs/security/` oder den Spec-Kit-Artefakten
   fuehren.
+
+
+<!-- secure-development-hardening-order:start -->
+## Automatisch ermittelte Lastenheft-Reihenfolge / Automatically Detected Requirements Order
+
+Diese Tabelle wird aus `Lastenheft*.md` im Repository-Root erzeugt. Sie ist eine Vorbereitung fuer spaetere Spec-Kit-Laeufe und startet selbst keinen Lauf. Manuelle Projektentscheidungen ausserhalb dieses markierten Abschnitts bleiben erhalten.
+
+*This table is generated from `Lastenheft*.md` in the repository root. It prepares later Spec Kit runs and does not start a run. Manual project decisions outside this marked section remain preserved.*
+
+| Rang | Lastenheft | Gruppe | Status |
+|---:|---|---|---|
+| 1 | `Lastenheft_Constitution_Change.md` | Governance/Baseline | aktiv / active |
+| 2 | `Lastenheft_CLR_Assembly.md` | Kernlogik/Runtime | aktiv / active |
+| 3 | `Lastenheft_IDE-Erweiterung-Pl0Ide_PAsm_PCod.md` | Kernlogik/Runtime | aktiv / active |
+| 4 | `Lastenheft_PL0_CSharp_DotNet10.md` | Kernlogik/Runtime | aktiv / active |
+| 5 | `Lastenheft_PL0_Dokumentation.md` | Kernlogik/Runtime | aktiv / active |
+| 6 | `Lastenheft_PL0_Optimierung.md` | Kernlogik/Runtime | aktiv / active |
+| 7 | `Lastenheft_VM_CLI.md` | Kernlogik/Runtime | aktiv / active |
+| 8 | `Lastenheft_VM_INC_OpCode.002-vm-inc-compat.md` | Kernlogik/Runtime | archiviert oder abgeschlossen / archived or completed |
+| 9 | `Lastenheft_A11Y_IDE.md` | UI/A11Y/Dokumentation | aktiv / active |
+| 10 | `Lastenheft_Dokumentation_EN.md` | UI/A11Y/Dokumentation | aktiv / active |
+| 11 | `Lastenheft_IDE.md` | UI/A11Y/Dokumentation | aktiv / active |
+| 12 | `Lastenheft_L10N.001-l10n-backend.md` | UI/A11Y/Dokumentation | archiviert oder abgeschlossen / archived or completed |
+| 13 | `Lastenheft_Secure-Development-Hardening.md` | Secure-Development-Hardening | aktiv / active |
+| 14 | `Lastenheft_Options_Als_Parameter.md` | Weitere Anforderungen | aktiv / active |
+| 15 | `Lastenheft_Quellcode_Doku.md` | Weitere Anforderungen | aktiv / active |
+<!-- secure-development-hardening-order:end -->
