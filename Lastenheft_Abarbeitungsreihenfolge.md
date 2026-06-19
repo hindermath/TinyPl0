@@ -51,7 +51,7 @@ this order unless the user gives a different priority.
 
 | Lastenheft | Einordnung | Naechste Verwendung |
 |---|---|---|
-| `Lastenheft_PL0_CHarp_DotNet10.md` | Basis-Portierung ist im Produktstand enthalten. | Als historische Ausgangsbasis und Traceability-Quelle verwenden, nicht als neuen Spec-Kit-Lauf starten. |
+| `Lastenheft_PL0_CSharp_DotNet10.md` | Basis-Portierung ist im Produktstand enthalten. | Als historische Ausgangsbasis und Traceability-Quelle verwenden, nicht als neuen Spec-Kit-Lauf starten. |
 | `Lastenheft_PL0_Dokumentation.md` | Grosse Teile sind durch DocFX, Guides, API-Doku und Pages-Arbeit umgesetzt. | Als Referenz fuer `006-docfx-english-site` und A11Y-Dokupruefung verwenden. |
 | `Lastenheft_IDE.md` | Core-IDE ist umgesetzt und umfangreich im Pflichtenheft protokolliert. | Als Referenz fuer `007-ide-l10n`, `008-ide-a11y` und `011-ide-pasm-pcod` verwenden. |
 | `Lastenheft_L10N.001-l10n-backend.md` | Backend-L10N fuer Core/VM/CLI ist abgeschlossen; IDE-Teil bleibt offen. | Nur IDE-Teil in `007-ide-l10n` weiterfuehren. |
