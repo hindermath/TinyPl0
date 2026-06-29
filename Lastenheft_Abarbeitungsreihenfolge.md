@@ -103,14 +103,15 @@ Diese Tabelle wird aus `Lastenheft*.md` im Repository-Root erzeugt. Sie ist eine
 | 4 | `Lastenheft_PL0_CSharp_DotNet10.md` | Kernlogik/Runtime | aktiv / active |
 | 5 | `Lastenheft_PL0_Dokumentation.md` | Kernlogik/Runtime | aktiv / active |
 | 6 | `Lastenheft_PL0_Optimierung.md` | Kernlogik/Runtime | aktiv / active |
-| 7 | `Lastenheft_VM_CLI.md` | Kernlogik/Runtime | aktiv / active |
-| 8 | `Lastenheft_VM_INC_OpCode.002-vm-inc-compat.md` | Kernlogik/Runtime | archiviert oder abgeschlossen / archived or completed |
-| 9 | `Lastenheft_A11Y_IDE.md` | UI/A11Y/Dokumentation | aktiv / active |
-| 10 | `Lastenheft_Dokumentation_EN.md` | UI/A11Y/Dokumentation | aktiv / active |
-| 11 | `Lastenheft_IDE.md` | UI/A11Y/Dokumentation | aktiv / active |
-| 12 | `Lastenheft_L10N.001-l10n-backend.md` | UI/A11Y/Dokumentation | archiviert oder abgeschlossen / archived or completed |
-| 13 | `Lastenheft_Secure-Development-Hardening.md` | Secure-Development-Hardening | aktiv / active |
-| 14 | `Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md` | Secure-Development-Hardening | aktiv / active |
-| 15 | `Lastenheft_Options_Als_Parameter.md` | Weitere Anforderungen | aktiv / active |
-| 16 | `Lastenheft_Quellcode_Doku.md` | Weitere Anforderungen | aktiv / active |
+| 7 | `Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md` | Kernlogik/Runtime | aktiv / active |
+| 8 | `Lastenheft_VM_CLI.md` | Kernlogik/Runtime | aktiv / active |
+| 9 | `Lastenheft_VM_INC_OpCode.002-vm-inc-compat.md` | Kernlogik/Runtime | archiviert oder abgeschlossen / archived or completed |
+| 10 | `Lastenheft_A11Y_IDE.md` | UI/A11Y/Dokumentation | aktiv / active |
+| 11 | `Lastenheft_Dokumentation_EN.md` | UI/A11Y/Dokumentation | aktiv / active |
+| 12 | `Lastenheft_IDE.md` | UI/A11Y/Dokumentation | aktiv / active |
+| 13 | `Lastenheft_L10N.001-l10n-backend.md` | UI/A11Y/Dokumentation | archiviert oder abgeschlossen / archived or completed |
+| 14 | `Lastenheft_RL-SE-Checklist-Selbstpruefung.md` | RL-SE-/Checklist-Selbstpruefung | aktiv / active |
+| 15 | `Lastenheft_Secure-Development-Hardening.md` | Secure-Development-Hardening | aktiv / active |
+| 16 | `Lastenheft_Options_Als_Parameter.md` | Weitere Anforderungen | aktiv / active |
+| 17 | `Lastenheft_Quellcode_Doku.md` | Weitere Anforderungen | aktiv / active |
 <!-- secure-development-hardening-order:end -->
