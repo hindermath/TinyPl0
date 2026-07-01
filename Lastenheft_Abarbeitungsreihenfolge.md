@@ -111,7 +111,8 @@ Diese Tabelle wird aus `Lastenheft*.md` im Repository-Root erzeugt. Sie ist eine
 | 12 | `Lastenheft_IDE.md` | UI/A11Y/Dokumentation | aktiv / active |
 | 13 | `Lastenheft_L10N.001-l10n-backend.md` | UI/A11Y/Dokumentation | archiviert oder abgeschlossen / archived or completed |
 | 14 | `Lastenheft_RL-SE-Checklist-Selbstpruefung.md` | RL-SE-/Checklist-Selbstpruefung | aktiv / active |
-| 15 | `Lastenheft_Secure-Development-Hardening.md` | Secure-Development-Hardening | aktiv / active |
-| 16 | `Lastenheft_Options_Als_Parameter.md` | Weitere Anforderungen | aktiv / active |
-| 17 | `Lastenheft_Quellcode_Doku.md` | Weitere Anforderungen | aktiv / active |
+| 15 | `Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md` | GSDB-Spec-Kit-Intensivpruefung | aktiv / active |
+| 16 | `Lastenheft_Secure-Development-Hardening.md` | Secure-Development-Hardening | aktiv / active |
+| 17 | `Lastenheft_Options_Als_Parameter.md` | Weitere Anforderungen | aktiv / active |
+| 18 | `Lastenheft_Quellcode_Doku.md` | Weitere Anforderungen | aktiv / active |
 <!-- secure-development-hardening-order:end -->
