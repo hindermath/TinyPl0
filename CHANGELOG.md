@@ -1,5 +1,56 @@
 # Changelog
 
+## [0.3.0](https://github.com/hindermath/TinyPl0/compare/v0.2.1...v0.3.0) (2026-07-10)
+
+
+### Features / Neue Funktionen
+
+* update architecture governance preset to v0.3.0 ([d8bd046](https://github.com/hindermath/TinyPl0/commit/d8bd04659d941ba70bd569806bb92d9bcef7325e))
+
+
+### Bug Fixes / Fehlerbehebungen
+
+* relax homogeneity EN guidance detection ([f0cea39](https://github.com/hindermath/TinyPl0/commit/f0cea397622efcc250c19c1ec6d33771dfde53a9))
+
+
+### Documentation / Dokumentation
+
+* add didactic inline comment hardening guidance ([4b5f2cf](https://github.com/hindermath/TinyPl0/commit/4b5f2cf4102a8d8b4d42b3855dedb9b6009654c6))
+* add generic secure development guide ([a0594ac](https://github.com/hindermath/TinyPl0/commit/a0594accca3534508bab5b3c08dd7f0ef6453083))
+* add GitHub and GitLab CLI-first guidance ([9d9f7ac](https://github.com/hindermath/TinyPl0/commit/9d9f7ac13d38341e96644b4dad8003c909abb165))
+* add GSDB preflight intake ([17c3cc7](https://github.com/hindermath/TinyPl0/commit/17c3cc777a03d9e251f85f889510dae30d840d30))
+* add lastenheft work order ([#32](https://github.com/hindermath/TinyPl0/issues/32)) ([e6cc1f9](https://github.com/hindermath/TinyPl0/commit/e6cc1f92a70c589a669df31aea8047625b4c4d2d))
+* add sandbox hardening intake ([702b98e](https://github.com/hindermath/TinyPl0/commit/702b98ea9f0b08145fdebd978224584040437d22))
+* add secure development hardening intake ([31a8502](https://github.com/hindermath/TinyPl0/commit/31a85023449c5ec3c21973e483ac71d376197082))
+* add Spec-Kit model routing guidance ([6ca0810](https://github.com/hindermath/TinyPl0/commit/6ca081027409fc688a790d74db135392e9995973))
+* align statistics x-y diagrams ([9b88ec4](https://github.com/hindermath/TinyPl0/commit/9b88ec4991d1934c9a871551e9aa244215bab672))
+* clarify memory-safe language examples ([16d1ce6](https://github.com/hindermath/TinyPl0/commit/16d1ce6bcd23b25630d28725572cc673a70c744c))
+* prepare RL-SE checklist self-assessment ([5f23585](https://github.com/hindermath/TinyPl0/commit/5f23585dfff4f5940f9405cc014cd88ce6647f20))
+* prepare RL-SE checklist self-assessment ([9e3fb63](https://github.com/hindermath/TinyPl0/commit/9e3fb63c6becde1e5fb268d36244b37b3093cb35))
+* prepare RL-SE checklist self-assessment ([cebef2d](https://github.com/hindermath/TinyPl0/commit/cebef2d961db58161f2e93779f85880f244589bf))
+* prepare secure development hardening ([c8e148d](https://github.com/hindermath/TinyPl0/commit/c8e148d15689976c0834cf962079007666318567))
+* prepare secure development hardening ([ebef5b2](https://github.com/hindermath/TinyPl0/commit/ebef5b2d6fb72b84363e22b056c3c9834d1f8809))
+* prepare secure development hardening ([a045df7](https://github.com/hindermath/TinyPl0/commit/a045df7c3be87b5f8df83536b0a18dbc05d57be5))
+* prepare spec kit intake guidance ([38321d2](https://github.com/hindermath/TinyPl0/commit/38321d261f034936ccc69e7705948737412e796f))
+* propagate AI-SBOM governance ([585e94f](https://github.com/hindermath/TinyPl0/commit/585e94f6af0cc86f411def2110b76a0a43044c5a))
+* propagate security-governance v0.4.0 ([7723b60](https://github.com/hindermath/TinyPl0/commit/7723b60c2ac2988b7830ed5bf184ec73130843f9))
+* propagate spec-kit preset governance ([d09b823](https://github.com/hindermath/TinyPl0/commit/d09b823c39297111fb30dbe66d947df0b4ca09bf))
+* record GSDB self-assessment ([bab639d](https://github.com/hindermath/TinyPl0/commit/bab639d1244c3b2e95e58ce9f2ee50adf03a3f3c))
+* reference secure development guide in constitution ([a8886d8](https://github.com/hindermath/TinyPl0/commit/a8886d8e615c27e94a548017186ef2f41ecd02be))
+* sync constitution with installed presets ([3f3a509](https://github.com/hindermath/TinyPl0/commit/3f3a5090689d1146020ca562a9775112cadde5dd))
+* sync constitution with installed presets ([992ccb7](https://github.com/hindermath/TinyPl0/commit/992ccb7b39f0be42ab06497bf324b7e3953c1ab2))
+* update secure development baseline to 3.0.0 ([64517c6](https://github.com/hindermath/TinyPl0/commit/64517c673357fec662430a20410d37e0e2f5ab3c))
+
+
+### Maintenance / Wartung
+
+* configure spec-kit governance presets ([bccbf11](https://github.com/hindermath/TinyPl0/commit/bccbf119616cc1fc937a3113559be2637955810a))
+* **security:** add gitleaks.toml allowlist for secure-development teaching docs ([e0e1f30](https://github.com/hindermath/TinyPl0/commit/e0e1f307b63d0d52ae185efc9bafb110da82fe4e))
+* update agent parity governance to v0.2.0 ([297b7fb](https://github.com/hindermath/TinyPl0/commit/297b7fb8cd70dca1de52592090a573cae8fa9156))
+* update governance presets ([3301149](https://github.com/hindermath/TinyPl0/commit/3301149d520aa7d4a8737b2acfb3642db3204694))
+* update governance presets for audit evidence ([612e1f9](https://github.com/hindermath/TinyPl0/commit/612e1f9516dcab2c4bf26ea8988405cc373c24f6))
+* update spec-kit integrations ([e2eaaed](https://github.com/hindermath/TinyPl0/commit/e2eaaed1383f6626f8824c57d767ccbe19f519f1))
+
 ## [0.2.1](https://github.com/hindermath/TinyPl0/compare/v0.2.0...v0.2.1) (2026-04-30)
 
 
