@@ -897,3 +897,11 @@ constitution is the authoritative policy layer above all agent-specific files.
 - Doku und A11Y / Docs and A11Y: learner-facing compiler documentation, examples, generated API docs, and IDE flows follow DE-first/EN-second and WCAG 2.2 AA-oriented review.
 - Statistik / Statistics: manual conservative baseline 80 lines/workday; C#/.NET Thorsten-Solo baseline 125 lines/workday unless all agent files document a justified deviation.
 - Agentenflaechen / Agent surfaces: AGENTS.md, CLAUDE.md, GEMINI.md, .github/copilot-instructions.md, .codex prompt/rule surfaces, and Spec-Kit surfaces stay synchronized for shared rules; .codex credentials, logs, history, and SQLite state are never tracked.
+
+<!-- statistics-profile-2-governance:begin -->
+## Statistikprofil 2 / Statistics Profile 2
+
+Das Repository verwendet Statistikmethodik 2 mit reproduzierbarer JSON-Konfiguration, ASCII-only-Diagrammen, exakten Werten und bilingualer Textalternative. Der generierte Block in `docs/project-statistics.md` bleibt der letzte Top-Level-Abschnitt. Belastbare Phasenslots bleiben stabil; fehlen sie, wird Monatsvolumen gezeigt. Historische Profil-1-Inhalte werden archiviert und nicht umgeschrieben.
+
+*The repository uses Statistics Methodology 2 with reproducible JSON configuration, ASCII-only charts, exact values, and bilingual text alternatives. The generated block in `docs/project-statistics.md` remains the final top-level section. Verified phase slots stay stable; otherwise monthly volume is shown. Historical Profile 1 content is archived and not rewritten.*
+<!-- statistics-profile-2-governance:end -->
