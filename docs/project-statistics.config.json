@@ -1,0 +1,65 @@
+{
+  "$schema": "../scripts/config/project-statistics.schema.json",
+  "schemaVersion": 1,
+  "methodologyVersion": 2,
+  "repositoryName": "TinyPl0",
+  "timeZone": "Europe/Berlin",
+  "activityWindowWeeks": 52,
+  "references": {
+    "conservativeLinesPerDay": 80,
+    "thorstenLinesPerDay": 125
+  },
+  "phases": [
+    {
+      "slot": 0,
+      "id": "compiler",
+      "labelDe": "Compiler",
+      "labelEn": "Compiler",
+      "netLines": 5308
+    },
+    {
+      "slot": 1,
+      "id": "docs",
+      "labelDe": "Dokumentation",
+      "labelEn": "Documentation",
+      "netLines": 12476
+    },
+    {
+      "slot": 2,
+      "id": "ide",
+      "labelDe": "IDE",
+      "labelEn": "IDE",
+      "netLines": 5125
+    },
+    {
+      "slot": 3,
+      "id": "governance",
+      "labelDe": "Governance",
+      "labelEn": "Governance",
+      "netLines": 8679
+    },
+    {
+      "slot": 4,
+      "id": "ci",
+      "labelDe": "CI",
+      "labelEn": "CI",
+      "netLines": 14
+    },
+    {
+      "slot": 5,
+      "id": "002",
+      "labelDe": "002",
+      "labelEn": "002",
+      "netLines": 1557
+    },
+    {
+      "slot": 6,
+      "id": "sync",
+      "labelDe": "Synchronisierung",
+      "labelEn": "Synchronization",
+      "netLines": 162
+    }
+  ],
+  "excludedPaths": [],
+  "categoryOverrides": []
+}
