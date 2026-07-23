@@ -1,13 +1,13 @@
 {
-  "schemaVersion": "1.1",
-  "reviewId": "1802a845-5024-4c8b-99f4-085510bda4b4",
+  "schemaVersion": "1.0",
+  "reviewId": "7cf238f6-b62e-45fe-8141-b9d302622151",
   "mode": "Series",
   "status": "Ready",
   "policy": "tinypl0-active-lastenhefte-v1",
-  "reviewedAt": "2026-07-23T17:48:23Z",
+  "reviewedAt": "2026-07-23T14:34:36Z",
   "repository": {
     "root": ".",
-    "head": "127c95f13a2612d6696514bf1c4354b4cdb813e9"
+    "head": "c93b9b56017ae79d7de9f6103be0ab37065f6b5e"
   },
   "targets": [
     {
@@ -129,9 +129,5 @@
     "medium": 0,
     "low": 0
   },
-  "supersedes": "7cf238f6-b62e-45fe-8141-b9d302622151",
-  "requestEvidence": {
-    "path": "specs/intake-normalization-20260723/intake-review-request.json",
-    "normalizedSha256": "9d9cc66b4490ca58d9d77b7b7a19430c78bc852165d8e49d36769f9df1dca480"
-  }
+  "supersedes": "N/A"
 }
