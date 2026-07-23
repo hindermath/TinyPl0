@@ -1,6 +1,6 @@
 {
-  "schemaVersion": "1.1",
-  "reviewId": "1802a845-5024-4c8b-99f4-085510bda4b4",
+  "schemaVersion": "1.0",
+  "reviewId": "7cf238f6-b62e-45fe-8141-b9d302622151",
   "mode": "Series",
   "policy": "tinypl0-active-lastenhefte-v1",
   "targets": [
@@ -78,76 +78,7 @@
       "Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
       "Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md"
     ],
-    "roots": [
-      "Lastenheft_Constitution_Change.md"
-    ],
-    "dependencies": [
-      {
-        "from": "Lastenheft_Constitution_Change.md",
-        "to": "Lastenheft_Secure-Development-Hardening.md",
-        "kind": "Precedes"
-      },
-      {
-        "from": "Lastenheft_Secure-Development-Hardening.md",
-        "to": "Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
-        "kind": "Precedes"
-      },
-      {
-        "from": "Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
-        "to": "Lastenheft_Quellcode_Doku.md",
-        "kind": "Precedes"
-      },
-      {
-        "from": "Lastenheft_Quellcode_Doku.md",
-        "to": "Lastenheft_Dokumentation_EN.md",
-        "kind": "Precedes"
-      },
-      {
-        "from": "Lastenheft_Dokumentation_EN.md",
-        "to": "Lastenheft_IDE-L10N.md",
-        "kind": "Precedes"
-      },
-      {
-        "from": "Lastenheft_IDE-L10N.md",
-        "to": "Lastenheft_A11Y_IDE.md",
-        "kind": "Precedes"
-      },
-      {
-        "from": "Lastenheft_A11Y_IDE.md",
-        "to": "Lastenheft_Options_Als_Parameter.md",
-        "kind": "Precedes"
-      },
-      {
-        "from": "Lastenheft_Options_Als_Parameter.md",
-        "to": "Lastenheft_VM_CLI.md",
-        "kind": "Precedes"
-      },
-      {
-        "from": "Lastenheft_VM_CLI.md",
-        "to": "Lastenheft_IDE-Erweiterung-Pl0Ide_PAsm_PCod.md",
-        "kind": "Precedes"
-      },
-      {
-        "from": "Lastenheft_IDE-Erweiterung-Pl0Ide_PAsm_PCod.md",
-        "to": "Lastenheft_PL0_Optimierung.md",
-        "kind": "Precedes"
-      },
-      {
-        "from": "Lastenheft_PL0_Optimierung.md",
-        "to": "Lastenheft_CLR_Assembly.md",
-        "kind": "Precedes"
-      },
-      {
-        "from": "Lastenheft_CLR_Assembly.md",
-        "to": "Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
-        "kind": "Precedes"
-      },
-      {
-        "from": "Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
-        "to": "Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md",
-        "kind": "Precedes"
-      }
-    ]
+    "dependencies": []
   },
   "campaign": {
     "manifestPath": "N/A",
