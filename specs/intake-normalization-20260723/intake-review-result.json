@@ -1,0 +1,133 @@
+{
+  "schemaVersion": "1.0",
+  "reviewId": "7cf238f6-b62e-45fe-8141-b9d302622151",
+  "mode": "Series",
+  "status": "Ready",
+  "policy": "tinypl0-active-lastenhefte-v1",
+  "reviewedAt": "2026-07-23T14:34:36Z",
+  "repository": {
+    "root": ".",
+    "head": "c93b9b56017ae79d7de9f6103be0ab37065f6b5e"
+  },
+  "targets": [
+    {
+      "path": "Lastenheft_Constitution_Change.md",
+      "role": "Primary",
+      "normalizedSha256": "e95d6b1d142618c9904e41b50c46835a14cde312fc393f11b494c32c9dfa4c58",
+      "gitBlob": "N/A"
+    },
+    {
+      "path": "Lastenheft_Secure-Development-Hardening.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "8b883f3569e4ba9000e1c861edb4630e8e74255e980197e6ac6ebf8c7e563215",
+      "gitBlob": "N/A"
+    },
+    {
+      "path": "Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "831217b0f664be74b36f4f29bfa5d5097f36db0b60e541ca1ceaaac0254dcc0c",
+      "gitBlob": "N/A"
+    },
+    {
+      "path": "Lastenheft_Quellcode_Doku.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "048916cd145b7e11bd33ec385370a8a692aaabe515e2b7bca3f6d583f150d1e8",
+      "gitBlob": "N/A"
+    },
+    {
+      "path": "Lastenheft_Dokumentation_EN.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "6e8f67bb20be0a554437221f6003706d958152a4d7174d159c1d0c4272e2985a",
+      "gitBlob": "N/A"
+    },
+    {
+      "path": "Lastenheft_IDE-L10N.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "9ec184ccd5c6e6637c7a0e863ab49203d1767ba1d16e4b90c1168cf4187a5896",
+      "gitBlob": "N/A"
+    },
+    {
+      "path": "Lastenheft_A11Y_IDE.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "1be026b85656c6c4a9a538870ae26f1bbf881f9b37feef7b313c31908ded451e",
+      "gitBlob": "N/A"
+    },
+    {
+      "path": "Lastenheft_Options_Als_Parameter.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "936d09b7f0765a368346b20891cd19324257695ca1ade3e5d40f5ddd25e62cd3",
+      "gitBlob": "N/A"
+    },
+    {
+      "path": "Lastenheft_VM_CLI.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "d65b4b8f652cce5d6209576300d8d458d410205ca9ee5b934bd759bc42097277",
+      "gitBlob": "N/A"
+    },
+    {
+      "path": "Lastenheft_IDE-Erweiterung-Pl0Ide_PAsm_PCod.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "601d28b1164f96e580148d0b2f0915944ed9003bdfdbaef81aa1a8f36e0d3fe3",
+      "gitBlob": "N/A"
+    },
+    {
+      "path": "Lastenheft_PL0_Optimierung.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "961a55b437ec7b720ab7eef2ac632dd3a7105105e94870110402adf51b8968f2",
+      "gitBlob": "N/A"
+    },
+    {
+      "path": "Lastenheft_CLR_Assembly.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "b73dfc928c8eaea3a74220a058087f9f87fcb4a3aeae985e3ce46e9a9d494c0a",
+      "gitBlob": "N/A"
+    },
+    {
+      "path": "Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "afd304778e692319ca0023d14b4fe9ad2f91da2c9f8d0be7fbc900f9c132e94c",
+      "gitBlob": "N/A"
+    },
+    {
+      "path": "Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "87716aba9a9bf07626317eddacc24361619d64df4ec46d9bb4bdc7737c5d4f1e",
+      "gitBlob": "N/A"
+    }
+  ],
+  "findings": [],
+  "questions": [],
+  "acceptedRisks": [],
+  "operatorExceptions": [],
+  "coverage": {
+    "individual": [
+      "Lastenheft_Constitution_Change.md",
+      "Lastenheft_Secure-Development-Hardening.md",
+      "Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
+      "Lastenheft_Quellcode_Doku.md",
+      "Lastenheft_Dokumentation_EN.md",
+      "Lastenheft_IDE-L10N.md",
+      "Lastenheft_A11Y_IDE.md",
+      "Lastenheft_Options_Als_Parameter.md",
+      "Lastenheft_VM_CLI.md",
+      "Lastenheft_IDE-Erweiterung-Pl0Ide_PAsm_PCod.md",
+      "Lastenheft_PL0_Optimierung.md",
+      "Lastenheft_CLR_Assembly.md",
+      "Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
+      "Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md"
+    ],
+    "series": [
+      "All 14 active paths and their exact order",
+      "Repository ordering, predecessor gates, overlap, terminology, authority, and no-auto-start boundaries",
+      "Excluded archive and overview classifications from target-manifest.json"
+    ],
+    "workers": []
+  },
+  "summary": {
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0
+  },
+  "supersedes": "N/A"
+}

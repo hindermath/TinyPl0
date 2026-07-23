@@ -360,6 +360,7 @@ rekonstruiert.
 | 2026-06-18 | Claude-Code-Review fuer Release-Please-Bot freigegeben | Die `action_required` GitHub-Actions-Runs fuer Release-Please-PR `#29` wurden per `gh run rerun` neu gestartet. CI, Gitleaks, Agent-Secret-Scan, Homogeneity Check und Docs Pages liefen danach erfolgreich; der einzige echte Fehler lag im Workflow `Claude Code Review`, weil `anthropics/claude-code-action@v1` den ausloesenden `github-actions[bot]` ohne Allowlist ablehnt. `.github/workflows/claude-code-review.yml` erlaubt jetzt explizit `github-actions[bot]`, ohne `'*'` fuer alle Bots zu setzen. Aenderungsumfang vor dieser Ledger-Fortschreibung: `0` Produktionscode-Zeilen, `0` Testcode-Zeilen und `+1` Workflow-Konfigurationszeile, zusaetzlich Projektmetadatenpflege in `src/Pl0.Ide/Pl0.Ide.csproj` auf `1.2.269.14` und IDE-Worklog-Fortschreibung. Validierung: GitHub-Run-Logs/PR-Checks, Review-Thread-Pruefung ohne offene Kommentare und `git diff --check`; kein lokaler `dotnet build`/`dotnet test`, damit der Buildzaehler nicht ohne fachlichen Build-Lauf erhoeht wird. |
 | 2026-06-19 | Lastenheft-Abarbeitungsreihenfolge fuer spaetere Spec-Kit-Laeufe | `Lastenheft_Abarbeitungsreihenfolge.md` wurde als sichtbarer Root-Arbeitsvorrat angelegt. Es ordnet alle vorhandenen Lastenhefte in aktive Spec-Kit-Reihenfolge, erledigte Referenzdokumente und bewusst blockierte Hochrisiko-Themen ein. Die aktive Reihenfolge startet mit Governance-/Security-/Kommentar- und Dokumentationslaeufen, fuehrt danach IDE-L10N/A11Y, Options-, VM-CLI- und IDE-PAsm/PCod-Arbeit und stellt Optimierung sowie CLR-Backend hinter ein explizites Architektur-/Governance-Gate. Aenderungsumfang vor dieser Ledger-Fortschreibung: `0` Produktionscode-Zeilen, `0` Testcode-Zeilen und `+74` Dokumentationszeilen netto, zusaetzlich Projektmetadatenpflege in `src/Pl0.Ide/Pl0.Ide.csproj` auf `1.2.270.14` und IDE-Worklog-Fortschreibung. Validierung: vollstaendige Lastenheft-Sichtung, Spec-Kit-Artefaktabgleich, YAML-/Build-unabhaengiger Dokumentationscheck via `git diff --check`; kein lokaler `dotnet build`/`dotnet test`, weil nur Dokumentation und Versionsmetadaten geaendert wurden. |
 | 2026-06-19 | Lastenheft-Dateiname `CSharp` fuer PR-Review korrigiert | Die Copilot-Review-Anmerkung in PR `#32` wurde aufgegriffen: Die falsch geschriebene PL0-CSharp-Datei wurde per Git-Rename nach `Lastenheft_PL0_CSharp_DotNet10.md` umbenannt und die sichtbare Referenz in `Lastenheft_Abarbeitungsreihenfolge.md` aktualisiert. Aenderungsumfang vor dieser Ledger-Fortschreibung: `0` Produktionscode-Zeilen, `0` Testcode-Zeilen und `+2` Dokumentationszeilen netto zuzueglich einer Dateiumbenennung, ausserdem Projektmetadatenpflege in `src/Pl0.Ide/Pl0.Ide.csproj` auf `1.2.271.14` und IDE-Worklog-Fortschreibung. Validierung: repo-weite Altname-Suche, Git-Dateiliste, `git diff --check` und erneute PR-Check-Pruefung; kein lokaler `dotnet build`/`dotnet test`, weil nur Dokumentation und Versionsmetadaten geaendert wurden. |
+| 2026-07-23 | Intake Authoring und Review | 13 aktive Alt-Intakes hashgebunden adoptiert und einen neuen IDE-L10N-Intake aus dem archivierten Feature-001-Restscope abgeleitet; 14/14 einzeln und als Serie `Ready`, ohne Produktcodeänderung. |
 
 ## Statistikprofil-1-Archiv / Statistics Profile 1 Archive
 - Stand 2026-05-05: `88` Produktionsdateien mit `6950` Zeilen, `22` Testdateien mit `3536` Zeilen und `562` Dokumentationsdateien mit `36625` Zeilen.
@@ -485,27 +486,27 @@ Profil 2 verwendet Git-getrackte Textdateien und sichtbare Git-Aktivitaet. Die W
 
 | Kennzahl / Metric | Wert / Value |
 |---|---:|
-| Textbasis / Text base | 189377 lines |
-| Textdateien / Text files | 1495 |
+| Textbasis / Text base | 191396 lines |
+| Textdateien / Text files | 1518 |
 | Beobachtbarer Zeitraum / Observable period | 2025-07-27..2026-07-23 |
 | Aktivtage / Active days | 72 |
-| Relevante Commits / Relevant commits | 282 |
-| Zeilen je Aktivtag / Lines per active day | 2630.2 |
+| Relevante Commits / Relevant commits | 283 |
+| Zeilen je Aktivtag / Lines per active day | 2658.3 |
 | Peak-Tag im Fenster / Peak day in window | 2026-02-14 / 177480 |
 | Peak-Woche im Fenster / Peak week in window | 2026-02-08 / 186065 |
 | Laengste Serie / Longest streak | 9 days |
-| Speedup vs. 80 lines/day | 32.9x |
-| Speedup vs. 125 lines/day | 21.0x |
-| Methodik / Methodology | v2; source `ae239870a0c7` |
+| Speedup vs. 80 lines/day | 33.2x |
+| Speedup vs. 125 lines/day | 21.3x |
+| Methodik / Methodology | v2; source `61b0424291df` |
 
 ### Artefaktmix / Artifact Mix
 
 ```text
-Produktiv / Production          [#...................]   3.8% | 7165
+Produktiv / Production          [#...................]   3.7% | 7165
 Tests                           [#...................]   2.7% | 5089
-Dokumentation / Documentation   [###########.........]  52.7% | 99825
+Dokumentation / Documentation   [##########..........]  52.4% | 100385
 Skripte / Scripts               [#...................]   5.0% | 9506
-Konfiguration / Configuration   [#######.............]  33.4% | 63279
+Konfiguration / Configuration   [#######.............]  33.8% | 64738
 Daten und Medien / Data and media [....................]   0.0% | 0
 Sonstiger Text / Other text     [#...................]   2.4% | 4513
 ```
@@ -533,7 +534,7 @@ So/Su  0 0 4 4 4 4 2 1 4 0 0 2 0 0 0 0 0 0 1 0 4 0 0 0 1 4
 Mo/Mo  0 0 1 2 0 0 4 1 0 2 0 1 4 0 4 0 0 0 0 0 0 0 3 1 4 4
 Di/Tu  0 0 1 1 0 0 0 0 0 2 0 0 0 0 2 0 0 3 0 0 0 0 2 0 3 4
 Mi/We  0 0 1 2 0 0 0 1 1 0 0 0 3 0 2 0 0 0 2 0 4 0 2 0 0 2
-Do/Th  0 0 0 3 0 4 0 0 0 0 0 0 0 4 0 0 0 1 1 4 1 0 0 0 1 3
+Do/Th  0 0 0 3 0 4 0 0 0 0 0 0 0 4 0 0 0 1 1 4 1 0 0 0 1 4
 Fr/Fr  0 0 0 3 0 4 0 0 4 4 0 2 4 0 0 0 4 2 2 0 3 2 3 4 4 -
 Sa/Sa  0 0 4 4 0 0 2 0 2 0 0 0 0 0 0 0 0 0 0 0 4 0 4 4 0 -
 ```
@@ -618,8 +619,8 @@ Die festen Slots halten den Phasenvergleich auch bei fehlenden oder spaeter erga
 
 ```text
 Scale: 0..50x
-80 lines/day       [#############.......] 32.9x
-125 lines/day      [########............] 21.0x
+80 lines/day       [#############.......] 33.2x
+125 lines/day      [#########...........] 21.3x
 ```
 
 Die Faktoren vergleichen sichtbare Lieferdichte mit den dokumentierten manuellen Referenzen. Sie messen keine Arbeitszeit.
@@ -632,7 +633,7 @@ Die Faktoren vergleichen sichtbare Lieferdichte mit den dokumentierten manuellen
 Scale: 0..5000 lines/day
 Experienced manual [#...................] 80
 Thorsten solo      [#...................] 125
-Visible repository [###########.........] 2630.2
+Visible repository [###########.........] 2658.3
 ```
 
 Die gemeinsame Skala vergleicht Referenzen und sichtbare Lieferdichte. Sie schreibt die Git-Aktivitaet keiner Person oder KI pauschal zu.
@@ -658,6 +659,6 @@ DE: Das Fenster beginnt am 2025-07-27 und endet am 2026-07-23. Es enthaelt 72 ak
 | 2026-04 | 17036 |
 | 2026-05 | 12329 |
 | 2026-06 | 37668 |
-| 2026-07 | 48802 |
+| 2026-07 | 50851 |
 
 <!-- project-statistics-v2:end -->
