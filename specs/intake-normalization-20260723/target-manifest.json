@@ -1,0 +1,95 @@
+{
+  "schemaVersion": "1.0",
+  "repository": "hindermath/TinyPl0",
+  "baseBranch": "main",
+  "selectionRule": "Active executable intakes only",
+  "targets": [
+    {
+      "path": "Lastenheft_Constitution_Change.md",
+      "profile": "level2-lastenheft"
+    },
+    {
+      "path": "Lastenheft_Secure-Development-Hardening.md",
+      "profile": "level2-lastenheft"
+    },
+    {
+      "path": "Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
+      "profile": "level2-lastenheft"
+    },
+    {
+      "path": "Lastenheft_Quellcode_Doku.md",
+      "profile": "level2-lastenheft"
+    },
+    {
+      "path": "Lastenheft_Dokumentation_EN.md",
+      "profile": "level2-lastenheft"
+    },
+    {
+      "path": "Lastenheft_IDE-L10N.md",
+      "profile": "level2-lastenheft",
+      "provenance": "New",
+      "sourcePaths": [
+        "Lastenheft_L10N.001-l10n-backend.md",
+        "Lastenheft_Abarbeitungsreihenfolge.md"
+      ]
+    },
+    {
+      "path": "Lastenheft_A11Y_IDE.md",
+      "profile": "level2-lastenheft"
+    },
+    {
+      "path": "Lastenheft_Options_Als_Parameter.md",
+      "profile": "level2-lastenheft"
+    },
+    {
+      "path": "Lastenheft_VM_CLI.md",
+      "profile": "level2-lastenheft"
+    },
+    {
+      "path": "Lastenheft_IDE-Erweiterung-Pl0Ide_PAsm_PCod.md",
+      "profile": "level2-lastenheft"
+    },
+    {
+      "path": "Lastenheft_PL0_Optimierung.md",
+      "profile": "level2-lastenheft"
+    },
+    {
+      "path": "Lastenheft_CLR_Assembly.md",
+      "profile": "level2-lastenheft"
+    },
+    {
+      "path": "Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
+      "profile": "level2-lastenheft"
+    },
+    {
+      "path": "Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md",
+      "profile": "level2-lastenheft"
+    }
+  ],
+  "excluded": [
+    {
+      "path": "Lastenheft_Abarbeitungsreihenfolge.md",
+      "reason": "Ordering document"
+    },
+    {
+      "path": "Lastenheft_L10N.001-l10n-backend.md",
+      "reason": "Archived Feature 001; retained as source for the new IDE-only intake"
+    },
+    {
+      "path": "Lastenheft_VM_INC_OpCode.002-vm-inc-compat.md",
+      "reason": "Archived feature"
+    },
+    {
+      "path": "Lastenheft_PL0_CSharp_DotNet10.md",
+      "reason": "Implemented historical baseline"
+    },
+    {
+      "path": "Lastenheft_PL0_Dokumentation.md",
+      "reason": "Implemented reference"
+    },
+    {
+      "path": "Lastenheft_IDE.md",
+      "reason": "Implemented reference"
+    }
+  ]
+}

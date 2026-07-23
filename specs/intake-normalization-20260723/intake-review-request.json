@@ -1,0 +1,88 @@
+{
+  "schemaVersion": "1.0",
+  "reviewId": "7cf238f6-b62e-45fe-8141-b9d302622151",
+  "mode": "Series",
+  "policy": "tinypl0-active-lastenhefte-v1",
+  "targets": [
+    {
+      "path": "Lastenheft_Constitution_Change.md",
+      "role": "Primary"
+    },
+    {
+      "path": "Lastenheft_Secure-Development-Hardening.md",
+      "role": "OrderedMember"
+    },
+    {
+      "path": "Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
+      "role": "OrderedMember"
+    },
+    {
+      "path": "Lastenheft_Quellcode_Doku.md",
+      "role": "OrderedMember"
+    },
+    {
+      "path": "Lastenheft_Dokumentation_EN.md",
+      "role": "OrderedMember"
+    },
+    {
+      "path": "Lastenheft_IDE-L10N.md",
+      "role": "OrderedMember"
+    },
+    {
+      "path": "Lastenheft_A11Y_IDE.md",
+      "role": "OrderedMember"
+    },
+    {
+      "path": "Lastenheft_Options_Als_Parameter.md",
+      "role": "OrderedMember"
+    },
+    {
+      "path": "Lastenheft_VM_CLI.md",
+      "role": "OrderedMember"
+    },
+    {
+      "path": "Lastenheft_IDE-Erweiterung-Pl0Ide_PAsm_PCod.md",
+      "role": "OrderedMember"
+    },
+    {
+      "path": "Lastenheft_PL0_Optimierung.md",
+      "role": "OrderedMember"
+    },
+    {
+      "path": "Lastenheft_CLR_Assembly.md",
+      "role": "OrderedMember"
+    },
+    {
+      "path": "Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
+      "role": "OrderedMember"
+    },
+    {
+      "path": "Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md",
+      "role": "OrderedMember"
+    }
+  ],
+  "series": {
+    "orderedTargetPaths": [
+      "Lastenheft_Constitution_Change.md",
+      "Lastenheft_Secure-Development-Hardening.md",
+      "Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
+      "Lastenheft_Quellcode_Doku.md",
+      "Lastenheft_Dokumentation_EN.md",
+      "Lastenheft_IDE-L10N.md",
+      "Lastenheft_A11Y_IDE.md",
+      "Lastenheft_Options_Als_Parameter.md",
+      "Lastenheft_VM_CLI.md",
+      "Lastenheft_IDE-Erweiterung-Pl0Ide_PAsm_PCod.md",
+      "Lastenheft_PL0_Optimierung.md",
+      "Lastenheft_CLR_Assembly.md",
+      "Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
+      "Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md"
+    ],
+    "dependencies": []
+  },
+  "campaign": {
+    "manifestPath": "N/A",
+    "workers": [],
+    "operatorExceptions": []
+  }
+}
