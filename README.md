@@ -1,5 +1,25 @@
 # TinyPl0
 
+<!-- learner-a11y-baseline:start -->
+## Lernenden- und A11Y-Basis / Learner and A11Y Baseline
+
+Dieses Lern- und Referenzprojekt richtet sich ab dem ersten Ausbildungsjahr an
+Fachinformatiker*innen, Kaufleute für IT-System-Management und Kaufleute für
+Digitalisierungsmanagement. Inhalte stehen auf Deutsch zuerst und Englisch
+danach, verwenden ungefähr CEFR B2, erklären Fachbegriffe beim ersten Auftreten
+und setzen keine Spec-Kit-Erfahrung voraus. Abhängigkeiten, Zustände und
+Entscheidungen bleiben ohne ausschließlich visuelle Darstellung verständlich.
+`Programmierung #include<everyone>` und WCAG 2.2 Level AA sind die Prüfbasis,
+soweit die Kriterien anwendbar sind.
+
+*This learning and reference project targets IT specialist apprentices and both
+IT management occupations from their first training year. Content is
+German-first/English-second at about CEFR B2, explains technical terms at first
+use, assumes no prior Spec Kit experience, and never relies on visual-only
+dependency, state, or decision information. `Programmierung #include<everyone>`
+and WCAG 2.2 Level AA are the review baseline wherever applicable.*
+<!-- learner-a11y-baseline:end -->
+
 [![Docs](https://img.shields.io/badge/docs-GitHub%20Pages-2ea44f)](https://hindermath.github.io/TinyPl0/)
 [![Docs Pages](https://github.com/hindermath/TinyPl0/actions/workflows/docs-pages.yml/badge.svg)](https://github.com/hindermath/TinyPl0/actions/workflows/docs-pages.yml)
 
