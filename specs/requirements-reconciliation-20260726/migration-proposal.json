@@ -1,0 +1,159 @@
+{
+  "schemaVersion": "1.0",
+  "documentType": "RequirementsIntakeMigrationProposal",
+  "repository": "hindermath/TinyPl0",
+  "canonicalIndex": "Pflichtenheft.md",
+  "baselineMoves": [
+    {
+      "from": "Pflichtenheft_PL0_CSharp_DotNet10.md",
+      "to": "requirements/baseline/Pflichtenheft_PL0_CSharp_DotNet10.pre-intake-split.2026-07-26.md",
+      "mode": "ByteIdentical"
+    },
+    {
+      "from": "Pflichtenheft_IDE.md",
+      "to": "requirements/baseline/Pflichtenheft_IDE.pre-intake-split.2026-07-26.md",
+      "mode": "ByteIdentical"
+    },
+    {
+      "from": "Pflichtenheft_PL0_Dokumentation.md",
+      "to": "requirements/baseline/Pflichtenheft_PL0_Dokumentation.pre-intake-split.2026-07-26.md",
+      "mode": "ByteIdentical"
+    }
+  ],
+  "activeIntakes": [
+    {
+      "sourcePath": "Lastenheft_Constitution_Change.md",
+      "targetPath": "requirements/intakes/active/Lastenheft_Constitution_Change.md",
+      "mode": "SupersedingCopy"
+    },
+    {
+      "sourcePath": "Lastenheft_Secure-Development-Hardening.md",
+      "targetPath": "requirements/intakes/active/Lastenheft_Secure-Development-Hardening.md",
+      "mode": "SupersedingCopy"
+    },
+    {
+      "sourcePath": "Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
+      "targetPath": "requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
+      "mode": "SupersedingCopy"
+    },
+    {
+      "sourcePath": "Lastenheft_Quellcode_Doku.md",
+      "targetPath": "requirements/intakes/active/Lastenheft_Quellcode_Doku.md",
+      "mode": "SupersedingCopy"
+    },
+    {
+      "sourcePath": "Lastenheft_Dokumentation_EN.md",
+      "targetPath": "requirements/intakes/active/Lastenheft_Dokumentation_EN.md",
+      "mode": "SupersedingCopy"
+    },
+    {
+      "sourcePath": "Lastenheft_IDE-L10N.md",
+      "targetPath": "requirements/intakes/active/Lastenheft_IDE-L10N.md",
+      "mode": "SupersedingCopy"
+    },
+    {
+      "sourcePath": "Lastenheft_A11Y_IDE.md",
+      "targetPath": "requirements/intakes/active/Lastenheft_A11Y_IDE.md",
+      "mode": "SupersedingCopy"
+    },
+    {
+      "sourcePath": "Lastenheft_Options_Als_Parameter.md",
+      "targetPath": "requirements/intakes/active/Lastenheft_Options_Als_Parameter.md",
+      "mode": "SupersedingCopy"
+    },
+    {
+      "sourcePath": "Lastenheft_VM_CLI.md",
+      "targetPath": "requirements/intakes/active/Lastenheft_VM_CLI.md",
+      "mode": "SupersedingCopy"
+    },
+    {
+      "sourcePath": "Lastenheft_IDE-Erweiterung-Pl0Ide_PAsm_PCod.md",
+      "targetPath": "requirements/intakes/active/Lastenheft_IDE-Erweiterung-Pl0Ide_PAsm_PCod.md",
+      "mode": "SupersedingCopy"
+    },
+    {
+      "sourcePath": "Lastenheft_PL0_Optimierung.md",
+      "targetPath": "requirements/intakes/active/Lastenheft_PL0_Optimierung.md",
+      "mode": "SupersedingCopy"
+    },
+    {
+      "sourcePath": "Lastenheft_CLR_Assembly.md",
+      "targetPath": "requirements/intakes/active/Lastenheft_CLR_Assembly.md",
+      "mode": "SupersedingCopy"
+    },
+    {
+      "sourcePath": "Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
+      "targetPath": "requirements/intakes/active/Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
+      "mode": "SupersedingCopy"
+    },
+    {
+      "sourcePath": "Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md",
+      "targetPath": "requirements/intakes/active/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md",
+      "mode": "SupersedingCopy"
+    }
+  ],
+  "archivedIntakes": [
+    {
+      "sourcePath": "Lastenheft_L10N.001-l10n-backend.md",
+      "targetPath": "requirements/intakes/archive/Lastenheft_L10N.001-l10n-backend.md",
+      "mode": "ByteIdentical"
+    },
+    {
+      "sourcePath": "Lastenheft_VM_INC_OpCode.002-vm-inc-compat.md",
+      "targetPath": "requirements/intakes/archive/Lastenheft_VM_INC_OpCode.002-vm-inc-compat.md",
+      "mode": "ByteIdentical"
+    }
+  ],
+  "historicalReferenceIntakes": [
+    {
+      "sourcePath": "Lastenheft_PL0_CSharp_DotNet10.md",
+      "targetPath": "requirements/intakes/history/pre-intake-split-20260726/Lastenheft_PL0_CSharp_DotNet10.md",
+      "mode": "ByteIdentical"
+    },
+    {
+      "sourcePath": "Lastenheft_IDE.md",
+      "targetPath": "requirements/intakes/history/pre-intake-split-20260726/Lastenheft_IDE.md",
+      "mode": "ByteIdentical"
+    },
+    {
+      "sourcePath": "Lastenheft_PL0_Dokumentation.md",
+      "targetPath": "requirements/intakes/history/pre-intake-split-20260726/Lastenheft_PL0_Dokumentation.md",
+      "mode": "ByteIdentical"
+    }
+  ],
+  "ideWorklog": {
+    "source": "Pflichtenheft_IDE.md",
+    "target": "docs/ide-worklog.md",
+    "rule": "Freeze the baseline byte-identically and append future operational entries only to the separate worklog."
+  },
+  "canonicalSeries": {
+    "path": "requirements/intakes/series/tinypl0-delivery/manifest.json",
+    "preferredNext": "Lastenheft_Constitution_Change.md",
+    "orderedTargets": [
+      "Lastenheft_Constitution_Change.md",
+      "Lastenheft_Secure-Development-Hardening.md",
+      "Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
+      "Lastenheft_Quellcode_Doku.md",
+      "Lastenheft_Dokumentation_EN.md",
+      "Lastenheft_IDE-L10N.md",
+      "Lastenheft_A11Y_IDE.md",
+      "Lastenheft_Options_Als_Parameter.md",
+      "Lastenheft_VM_CLI.md",
+      "Lastenheft_IDE-Erweiterung-Pl0Ide_PAsm_PCod.md",
+      "Lastenheft_PL0_Optimierung.md",
+      "Lastenheft_CLR_Assembly.md",
+      "Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
+      "Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md"
+    ],
+    "blockedArchitectureTargets": [
+      "Lastenheft_PL0_Optimierung.md",
+      "Lastenheft_CLR_Assembly.md"
+    ]
+  },
+  "constraints": [
+    "No Spec Kit feature is started.",
+    "No product, API, dependency, project, or runtime behavior changes.",
+    "Historical specifications and hash-bound evidence remain unchanged.",
+    "The three Pflichtenhefte become immutable baselines; future IDE activity moves to a separate worklog."
+  ]
+}

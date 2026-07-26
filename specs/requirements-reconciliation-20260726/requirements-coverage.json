@@ -1,0 +1,371 @@
+{
+  "schemaVersion": "1.0",
+  "documentType": "RequirementsReconciliation",
+  "repository": "hindermath/TinyPl0",
+  "reviewedAt": "2026-07-26",
+  "sources": [
+    {
+      "sourceId": "TP-CONSTITUTION",
+      "path": "Lastenheft_Constitution_Change.md",
+      "normalizedSha256": "e95d6b1d142618c9904e41b50c46835a14cde312fc393f11b494c32c9dfa4c58",
+      "role": "ActiveIntakeCandidate"
+    },
+    {
+      "sourceId": "TP-SECURITY",
+      "path": "Lastenheft_Secure-Development-Hardening.md",
+      "normalizedSha256": "8b883f3569e4ba9000e1c861edb4630e8e74255e980197e6ac6ebf8c7e563215",
+      "role": "ActiveIntakeCandidate"
+    },
+    {
+      "sourceId": "TP-SANDBOX",
+      "path": "Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
+      "normalizedSha256": "831217b0f664be74b36f4f29bfa5d5097f36db0b60e541ca1ceaaac0254dcc0c",
+      "role": "ActiveIntakeCandidate"
+    },
+    {
+      "sourceId": "TP-COMMENTS",
+      "path": "Lastenheft_Quellcode_Doku.md",
+      "normalizedSha256": "048916cd145b7e11bd33ec385370a8a692aaabe515e2b7bca3f6d583f150d1e8",
+      "role": "ActiveIntakeCandidate"
+    },
+    {
+      "sourceId": "TP-DOC-EN",
+      "path": "Lastenheft_Dokumentation_EN.md",
+      "normalizedSha256": "6e8f67bb20be0a554437221f6003706d958152a4d7174d159c1d0c4272e2985a",
+      "role": "ActiveIntakeCandidate"
+    },
+    {
+      "sourceId": "TP-IDE-L10N",
+      "path": "Lastenheft_IDE-L10N.md",
+      "normalizedSha256": "9ec184ccd5c6e6637c7a0e863ab49203d1767ba1d16e4b90c1168cf4187a5896",
+      "role": "ActiveIntakeCandidate"
+    },
+    {
+      "sourceId": "TP-IDE-A11Y",
+      "path": "Lastenheft_A11Y_IDE.md",
+      "normalizedSha256": "1be026b85656c6c4a9a538870ae26f1bbf881f9b37feef7b313c31908ded451e",
+      "role": "ActiveIntakeCandidate"
+    },
+    {
+      "sourceId": "TP-OPTIONS",
+      "path": "Lastenheft_Options_Als_Parameter.md",
+      "normalizedSha256": "936d09b7f0765a368346b20891cd19324257695ca1ade3e5d40f5ddd25e62cd3",
+      "role": "ActiveIntakeCandidate"
+    },
+    {
+      "sourceId": "TP-VM-CLI",
+      "path": "Lastenheft_VM_CLI.md",
+      "normalizedSha256": "d65b4b8f652cce5d6209576300d8d458d410205ca9ee5b934bd759bc42097277",
+      "role": "ActiveIntakeCandidate"
+    },
+    {
+      "sourceId": "TP-IDE-PASM",
+      "path": "Lastenheft_IDE-Erweiterung-Pl0Ide_PAsm_PCod.md",
+      "normalizedSha256": "601d28b1164f96e580148d0b2f0915944ed9003bdfdbaef81aa1a8f36e0d3fe3",
+      "role": "ActiveIntakeCandidate"
+    },
+    {
+      "sourceId": "TP-OPTIMIZATION",
+      "path": "Lastenheft_PL0_Optimierung.md",
+      "normalizedSha256": "961a55b437ec7b720ab7eef2ac632dd3a7105105e94870110402adf51b8968f2",
+      "role": "ActiveIntakeCandidate"
+    },
+    {
+      "sourceId": "TP-CLR",
+      "path": "Lastenheft_CLR_Assembly.md",
+      "normalizedSha256": "b73dfc928c8eaea3a74220a058087f9f87fcb4a3aeae985e3ce46e9a9d494c0a",
+      "role": "ActiveIntakeCandidate"
+    },
+    {
+      "sourceId": "TP-RLSE",
+      "path": "Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
+      "normalizedSha256": "afd304778e692319ca0023d14b4fe9ad2f91da2c9f8d0be7fbc900f9c132e94c",
+      "role": "ActiveIntakeCandidate"
+    },
+    {
+      "sourceId": "TP-GSDB",
+      "path": "Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md",
+      "normalizedSha256": "87716aba9a9bf07626317eddacc24361619d64df4ec46d9bb4bdc7737c5d4f1e",
+      "role": "ActiveIntakeCandidate"
+    },
+    {
+      "sourceId": "TP-BASELINE-1",
+      "path": "Pflichtenheft_PL0_CSharp_DotNet10.md",
+      "normalizedSha256": "3060a1707d459a2d8a5e18fe5c828a7a8802a502e0ec0884fab3861abec20939",
+      "role": "HistoricalProductBaseline"
+    },
+    {
+      "sourceId": "TP-BASELINE-2",
+      "path": "Pflichtenheft_IDE.md",
+      "normalizedSha256": "d076cfd5b5bb3527eba8c07a60cab21d2448b635f3953b55669163715ef0352f",
+      "role": "HistoricalProductBaseline"
+    },
+    {
+      "sourceId": "TP-BASELINE-3",
+      "path": "Pflichtenheft_PL0_Dokumentation.md",
+      "normalizedSha256": "4ada23de107c4c91f5d2179230c2357f625299404398cd2689dbf41418c3c23f",
+      "role": "HistoricalProductBaseline"
+    },
+    {
+      "path": "Lastenheft_PL0_CSharp_DotNet10.md",
+      "normalizedSha256": "eecda8a5049ba29bd9320b5656d5b4a0e8bd79cc297ce410df9fa1c2fd4b98df",
+      "role": "HistoricalReferenceIntake"
+    },
+    {
+      "path": "Lastenheft_IDE.md",
+      "normalizedSha256": "4911cd4cf4ce997176e2a665f86da62169ebb48cfd43c1711c5336e7151ba07a",
+      "role": "HistoricalReferenceIntake"
+    },
+    {
+      "path": "Lastenheft_PL0_Dokumentation.md",
+      "normalizedSha256": "68bf73b4e2c8712d13505010ea71ae1a9c76a1e023f2ace834c5746c500a390d",
+      "role": "HistoricalReferenceIntake"
+    },
+    {
+      "path": "Lastenheft_L10N.001-l10n-backend.md",
+      "normalizedSha256": "69df8dd22889f9d7cddda5171e818b5d4b7711aa049f00852c299609c0b78f25",
+      "role": "CompletedIntake"
+    },
+    {
+      "path": "Lastenheft_VM_INC_OpCode.002-vm-inc-compat.md",
+      "normalizedSha256": "55af3e4997aa2210d6350534e086d94802a18ed8bac20fbf49cbdaf172382378",
+      "role": "CompletedIntake"
+    },
+    {
+      "sourceId": "TP-ORDER",
+      "path": "Lastenheft_Abarbeitungsreihenfolge.md",
+      "normalizedSha256": "6a444ec359a332dc8c13aaf6864d7eeebaa1ffbd1f40ec1d1026351ce7d5da3c",
+      "role": "CuratedOrder"
+    }
+  ],
+  "summary": {
+    "total": 14,
+    "PartiallySatisfied": 1,
+    "Open": 11,
+    "Blocked": 2
+  },
+  "requirements": [
+    {
+      "requirementId": "TP-RQ-001",
+      "sourceId": "TP-CONSTITUTION",
+      "sourcePath": "Lastenheft_Constitution_Change.md",
+      "sourceNormalizedSha256": "e95d6b1d142618c9904e41b50c46835a14cde312fc393f11b494c32c9dfa4c58",
+      "status": "PartiallySatisfied",
+      "evidencePaths": [
+        "constitution.md",
+        ".specify/memory/constitution.md",
+        "AGENTS.md"
+      ],
+      "proposedOwnerGroup": "Governance",
+      "rationale": "Relevant repository governance exists, but the dedicated intake has no closure decision.",
+      "residualRisk": "The complete intake acceptance criteria remain unverified until a dedicated closure decision exists.",
+      "reevaluationTrigger": "Before executing or archiving Lastenheft_Constitution_Change.md"
+    },
+    {
+      "requirementId": "TP-RQ-002",
+      "sourceId": "TP-SECURITY",
+      "sourcePath": "Lastenheft_Secure-Development-Hardening.md",
+      "sourceNormalizedSha256": "8b883f3569e4ba9000e1c861edb4630e8e74255e980197e6ac6ebf8c7e563215",
+      "status": "Open",
+      "evidencePaths": [
+        "docs/security",
+        ".github/workflows",
+        ".specify"
+      ],
+      "proposedOwnerGroup": "Security",
+      "rationale": "The intake is prepared and reviewed, but no dedicated implementation or closure feature is recorded.",
+      "residualRisk": "The complete intake acceptance criteria remain unverified until a dedicated closure decision exists.",
+      "reevaluationTrigger": "Before executing or archiving Lastenheft_Secure-Development-Hardening.md"
+    },
+    {
+      "requirementId": "TP-RQ-003",
+      "sourceId": "TP-SANDBOX",
+      "sourcePath": "Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
+      "sourceNormalizedSha256": "831217b0f664be74b36f4f29bfa5d5097f36db0b60e541ca1ceaaac0254dcc0c",
+      "status": "Open",
+      "evidencePaths": [
+        "docs/security",
+        ".github/workflows",
+        ".specify"
+      ],
+      "proposedOwnerGroup": "Security",
+      "rationale": "The intake is prepared and reviewed, but no dedicated implementation or closure feature is recorded.",
+      "residualRisk": "The complete intake acceptance criteria remain unverified until a dedicated closure decision exists.",
+      "reevaluationTrigger": "Before executing or archiving Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md"
+    },
+    {
+      "requirementId": "TP-RQ-004",
+      "sourceId": "TP-COMMENTS",
+      "sourcePath": "Lastenheft_Quellcode_Doku.md",
+      "sourceNormalizedSha256": "048916cd145b7e11bd33ec385370a8a692aaabe515e2b7bca3f6d583f150d1e8",
+      "status": "Open",
+      "evidencePaths": [
+        "src",
+        "tests",
+        "docs"
+      ],
+      "proposedOwnerGroup": "Maintainability",
+      "rationale": "The intake is prepared and reviewed, but no dedicated implementation or closure feature is recorded.",
+      "residualRisk": "The complete intake acceptance criteria remain unverified until a dedicated closure decision exists.",
+      "reevaluationTrigger": "Before executing or archiving Lastenheft_Quellcode_Doku.md"
+    },
+    {
+      "requirementId": "TP-RQ-005",
+      "sourceId": "TP-DOC-EN",
+      "sourcePath": "Lastenheft_Dokumentation_EN.md",
+      "sourceNormalizedSha256": "6e8f67bb20be0a554437221f6003706d958152a4d7174d159c1d0c4272e2985a",
+      "status": "Open",
+      "evidencePaths": [
+        "src",
+        "tests",
+        "docs"
+      ],
+      "proposedOwnerGroup": "Documentation",
+      "rationale": "The intake is prepared and reviewed, but no dedicated implementation or closure feature is recorded.",
+      "residualRisk": "The complete intake acceptance criteria remain unverified until a dedicated closure decision exists.",
+      "reevaluationTrigger": "Before executing or archiving Lastenheft_Dokumentation_EN.md"
+    },
+    {
+      "requirementId": "TP-RQ-006",
+      "sourceId": "TP-IDE-L10N",
+      "sourcePath": "Lastenheft_IDE-L10N.md",
+      "sourceNormalizedSha256": "9ec184ccd5c6e6637c7a0e863ab49203d1767ba1d16e4b90c1168cf4187a5896",
+      "status": "Open",
+      "evidencePaths": [
+        "src/Pl0.Ide",
+        "tests/Pl0.Tests",
+        "docs"
+      ],
+      "proposedOwnerGroup": "IDE",
+      "rationale": "The intake is prepared and reviewed, but no dedicated implementation or closure feature is recorded.",
+      "residualRisk": "The complete intake acceptance criteria remain unverified until a dedicated closure decision exists.",
+      "reevaluationTrigger": "Before executing or archiving Lastenheft_IDE-L10N.md"
+    },
+    {
+      "requirementId": "TP-RQ-007",
+      "sourceId": "TP-IDE-A11Y",
+      "sourcePath": "Lastenheft_A11Y_IDE.md",
+      "sourceNormalizedSha256": "1be026b85656c6c4a9a538870ae26f1bbf881f9b37feef7b313c31908ded451e",
+      "status": "Open",
+      "evidencePaths": [
+        "src/Pl0.Ide",
+        "tests/Pl0.Tests",
+        "docs"
+      ],
+      "proposedOwnerGroup": "A11Y",
+      "rationale": "The intake is prepared and reviewed, but no dedicated implementation or closure feature is recorded.",
+      "residualRisk": "The complete intake acceptance criteria remain unverified until a dedicated closure decision exists.",
+      "reevaluationTrigger": "Before executing or archiving Lastenheft_A11Y_IDE.md"
+    },
+    {
+      "requirementId": "TP-RQ-008",
+      "sourceId": "TP-OPTIONS",
+      "sourcePath": "Lastenheft_Options_Als_Parameter.md",
+      "sourceNormalizedSha256": "936d09b7f0765a368346b20891cd19324257695ca1ade3e5d40f5ddd25e62cd3",
+      "status": "Open",
+      "evidencePaths": [
+        "src",
+        "tests",
+        "docs"
+      ],
+      "proposedOwnerGroup": "Compiler",
+      "rationale": "The intake is prepared and reviewed, but no dedicated implementation or closure feature is recorded.",
+      "residualRisk": "The complete intake acceptance criteria remain unverified until a dedicated closure decision exists.",
+      "reevaluationTrigger": "Before executing or archiving Lastenheft_Options_Als_Parameter.md"
+    },
+    {
+      "requirementId": "TP-RQ-009",
+      "sourceId": "TP-VM-CLI",
+      "sourcePath": "Lastenheft_VM_CLI.md",
+      "sourceNormalizedSha256": "d65b4b8f652cce5d6209576300d8d458d410205ca9ee5b934bd759bc42097277",
+      "status": "Open",
+      "evidencePaths": [
+        "src",
+        "tests",
+        "docs"
+      ],
+      "proposedOwnerGroup": "VM",
+      "rationale": "The intake is prepared and reviewed, but no dedicated implementation or closure feature is recorded.",
+      "residualRisk": "The complete intake acceptance criteria remain unverified until a dedicated closure decision exists.",
+      "reevaluationTrigger": "Before executing or archiving Lastenheft_VM_CLI.md"
+    },
+    {
+      "requirementId": "TP-RQ-010",
+      "sourceId": "TP-IDE-PASM",
+      "sourcePath": "Lastenheft_IDE-Erweiterung-Pl0Ide_PAsm_PCod.md",
+      "sourceNormalizedSha256": "601d28b1164f96e580148d0b2f0915944ed9003bdfdbaef81aa1a8f36e0d3fe3",
+      "status": "Open",
+      "evidencePaths": [
+        "src/Pl0.Ide",
+        "tests/Pl0.Tests",
+        "docs"
+      ],
+      "proposedOwnerGroup": "IDE",
+      "rationale": "The intake is prepared and reviewed, but no dedicated implementation or closure feature is recorded.",
+      "residualRisk": "The complete intake acceptance criteria remain unverified until a dedicated closure decision exists.",
+      "reevaluationTrigger": "Before executing or archiving Lastenheft_IDE-Erweiterung-Pl0Ide_PAsm_PCod.md"
+    },
+    {
+      "requirementId": "TP-RQ-011",
+      "sourceId": "TP-OPTIMIZATION",
+      "sourcePath": "Lastenheft_PL0_Optimierung.md",
+      "sourceNormalizedSha256": "961a55b437ec7b720ab7eef2ac632dd3a7105105e94870110402adf51b8968f2",
+      "status": "Blocked",
+      "evidencePaths": [
+        "AGENTS.md",
+        "docs/ARCHITECTURE.md"
+      ],
+      "proposedOwnerGroup": "Architecture",
+      "rationale": "The current repository rules explicitly prohibit this product direction until an architecture decision changes the boundary.",
+      "residualRisk": "The complete intake acceptance criteria remain unverified until a dedicated closure decision exists.",
+      "reevaluationTrigger": "Before executing or archiving Lastenheft_PL0_Optimierung.md"
+    },
+    {
+      "requirementId": "TP-RQ-012",
+      "sourceId": "TP-CLR",
+      "sourcePath": "Lastenheft_CLR_Assembly.md",
+      "sourceNormalizedSha256": "b73dfc928c8eaea3a74220a058087f9f87fcb4a3aeae985e3ce46e9a9d494c0a",
+      "status": "Blocked",
+      "evidencePaths": [
+        "AGENTS.md",
+        "docs/ARCHITECTURE.md"
+      ],
+      "proposedOwnerGroup": "Architecture",
+      "rationale": "The current repository rules explicitly prohibit this product direction until an architecture decision changes the boundary.",
+      "residualRisk": "The complete intake acceptance criteria remain unverified until a dedicated closure decision exists.",
+      "reevaluationTrigger": "Before executing or archiving Lastenheft_CLR_Assembly.md"
+    },
+    {
+      "requirementId": "TP-RQ-013",
+      "sourceId": "TP-RLSE",
+      "sourcePath": "Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
+      "sourceNormalizedSha256": "afd304778e692319ca0023d14b4fe9ad2f91da2c9f8d0be7fbc900f9c132e94c",
+      "status": "Open",
+      "evidencePaths": [
+        "docs/security",
+        ".github/workflows",
+        ".specify"
+      ],
+      "proposedOwnerGroup": "Governance",
+      "rationale": "The intake is prepared and reviewed, but no dedicated implementation or closure feature is recorded.",
+      "residualRisk": "The complete intake acceptance criteria remain unverified until a dedicated closure decision exists.",
+      "reevaluationTrigger": "Before executing or archiving Lastenheft_RL-SE-Checklist-Selbstpruefung.md"
+    },
+    {
+      "requirementId": "TP-RQ-014",
+      "sourceId": "TP-GSDB",
+      "sourcePath": "Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md",
+      "sourceNormalizedSha256": "87716aba9a9bf07626317eddacc24361619d64df4ec46d9bb4bdc7737c5d4f1e",
+      "status": "Open",
+      "evidencePaths": [
+        "docs/security",
+        ".github/workflows",
+        ".specify"
+      ],
+      "proposedOwnerGroup": "Governance",
+      "rationale": "The intake is prepared and reviewed, but no dedicated implementation or closure feature is recorded.",
+      "residualRisk": "The complete intake acceptance criteria remain unverified until a dedicated closure decision exists.",
+      "reevaluationTrigger": "Before executing or archiving Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md"
+    }
+  ]
+}
