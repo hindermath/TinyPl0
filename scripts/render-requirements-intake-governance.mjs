@@ -24,7 +24,7 @@ const seriesReceiptId = stableUuid("series-receipt");
 const seriesOperationId = stableUuid("series-operation");
 const reviewId = stableUuid("review");
 const createdAt = "2026-07-26T22:00:00Z";
-const reviewHead = "REVIEW_HEAD_TO_BE_PINNED";
+const reviewHead = "07dae1c76bdbe0b3a307a366190cec7fbbe2a35f";
 
 const members = [
   ["constitution-change", "Lastenheft_Constitution_Change.md", "Eligible"],

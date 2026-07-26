@@ -7,7 +7,7 @@
   "reviewedAt": "2026-07-26T22:00:00Z",
   "repository": {
     "root": ".",
-    "head": "REVIEW_HEAD_TO_BE_PINNED"
+    "head": "07dae1c76bdbe0b3a307a366190cec7fbbe2a35f"
   },
   "targets": [
     {
