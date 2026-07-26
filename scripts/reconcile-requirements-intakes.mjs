@@ -10,6 +10,23 @@ const outputRoot = "specs/requirements-reconciliation-20260726";
 const normalize = (value) => value.replace(/^\uFEFF/, "").replace(/\r\n?/g, "\n");
 const hash = (value) => crypto.createHash("sha256").update(normalize(value)).digest("hex");
 const hashFile = (relativePath) => hash(fs.readFileSync(path.join(root, relativePath), "utf8"));
+const migratedSourcePaths = new Map([
+  ["Pflichtenheft_PL0_CSharp_DotNet10.md", "requirements/baseline/Pflichtenheft_PL0_CSharp_DotNet10.pre-intake-split.2026-07-26.md"],
+  ["Pflichtenheft_IDE.md", "requirements/baseline/Pflichtenheft_IDE.pre-intake-split.2026-07-26.md"],
+  ["Pflichtenheft_PL0_Dokumentation.md", "requirements/baseline/Pflichtenheft_PL0_Dokumentation.pre-intake-split.2026-07-26.md"],
+  ["Lastenheft_Abarbeitungsreihenfolge.md", "requirements/intakes/history/pre-intake-split-20260726/Lastenheft_Abarbeitungsreihenfolge.root.md"],
+  ["Lastenheft_L10N.001-l10n-backend.md", "requirements/intakes/archive/Lastenheft_L10N.001-l10n-backend.md"],
+  ["Lastenheft_VM_INC_OpCode.002-vm-inc-compat.md", "requirements/intakes/archive/Lastenheft_VM_INC_OpCode.002-vm-inc-compat.md"],
+]);
+const sourceFile = (relativePath) => {
+  if (migratedSourcePaths.has(relativePath)) return migratedSourcePaths.get(relativePath);
+  if (fs.existsSync(path.join(root, relativePath))) return relativePath;
+  if (relativePath.startsWith("Lastenheft_")) {
+    return `requirements/intakes/history/pre-intake-split-20260726/${relativePath}`;
+  }
+  return relativePath;
+};
+const hashSource = (relativePath) => hashFile(sourceFile(relativePath));
 const json = (value) => `${JSON.stringify(value, null, 2)}\n`;
 
 const intakes = [
@@ -47,7 +64,7 @@ const requirements = intakes.map((item) => ({
   requirementId: `TP-RQ-${String(item.order).padStart(3, "0")}`,
   sourceId: item.id,
   sourcePath: item.path,
-  sourceNormalizedSha256: hashFile(item.path),
+  sourceNormalizedSha256: hashSource(item.path),
   status: item.status,
   evidencePaths: evidenceFor(item),
   proposedOwnerGroup: item.owner,
@@ -67,7 +84,7 @@ const baselines = [
 ].map((baselinePath, index) => ({
   sourceId: `TP-BASELINE-${index + 1}`,
   path: baselinePath,
-  normalizedSha256: hashFile(baselinePath),
+  normalizedSha256: hashSource(baselinePath),
   role: "HistoricalProductBaseline",
 }));
 const referenceIntakes = [
@@ -76,7 +93,7 @@ const referenceIntakes = [
   "Lastenheft_PL0_Dokumentation.md",
 ].map((referencePath) => ({
   path: referencePath,
-  normalizedSha256: hashFile(referencePath),
+  normalizedSha256: hashSource(referencePath),
   role: "HistoricalReferenceIntake",
 }));
 const completed = [
@@ -84,7 +101,7 @@ const completed = [
   "Lastenheft_VM_INC_OpCode.002-vm-inc-compat.md",
 ].map((completedPath) => ({
   path: completedPath,
-  normalizedSha256: hashFile(completedPath),
+  normalizedSha256: hashSource(completedPath),
   role: "CompletedIntake",
 }));
 
@@ -97,7 +114,7 @@ const coverage = {
     ...intakes.map((item) => ({
       sourceId: item.id,
       path: item.path,
-      normalizedSha256: hashFile(item.path),
+      normalizedSha256: hashSource(item.path),
       role: "ActiveIntakeCandidate",
     })),
     ...baselines,
@@ -106,7 +123,7 @@ const coverage = {
     {
       sourceId: "TP-ORDER",
       path: "Lastenheft_Abarbeitungsreihenfolge.md",
-      normalizedSha256: hashFile("Lastenheft_Abarbeitungsreihenfolge.md"),
+      normalizedSha256: hashSource("Lastenheft_Abarbeitungsreihenfolge.md"),
       role: "CuratedOrder",
     },
   ],

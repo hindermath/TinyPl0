@@ -362,6 +362,7 @@ rekonstruiert.
 | 2026-06-19 | Lastenheft-Dateiname `CSharp` fuer PR-Review korrigiert | Die Copilot-Review-Anmerkung in PR `#32` wurde aufgegriffen: Die falsch geschriebene PL0-CSharp-Datei wurde per Git-Rename nach `Lastenheft_PL0_CSharp_DotNet10.md` umbenannt und die sichtbare Referenz in `Lastenheft_Abarbeitungsreihenfolge.md` aktualisiert. Aenderungsumfang vor dieser Ledger-Fortschreibung: `0` Produktionscode-Zeilen, `0` Testcode-Zeilen und `+2` Dokumentationszeilen netto zuzueglich einer Dateiumbenennung, ausserdem Projektmetadatenpflege in `src/Pl0.Ide/Pl0.Ide.csproj` auf `1.2.271.14` und IDE-Worklog-Fortschreibung. Validierung: repo-weite Altname-Suche, Git-Dateiliste, `git diff --check` und erneute PR-Check-Pruefung; kein lokaler `dotnet build`/`dotnet test`, weil nur Dokumentation und Versionsmetadaten geaendert wurden. |
 | 2026-07-23 | Intake Authoring und Review | 13 aktive Alt-Intakes hashgebunden adoptiert und einen neuen IDE-L10N-Intake aus dem archivierten Feature-001-Restscope abgeleitet; 14/14 einzeln und als Serie `Ready`, ohne Produktcodeänderung. |
 | 2026-07-26 | Requirements- und Intake-Bestand abgeglichen | Ein reproduzierbarer read-only Audit klassifiziert 14 aktive Intakes, zwei abgeschlossene Intakes, drei historische Referenz-Lastenhefte und drei Pflichtenheft-Baselines. Elf Intakes bleiben offen, Constitution ist teilweise erfuellt, Optimierung und CLR bleiben durch geltende Architekturregeln blockiert. Der getrennte Folge-PR soll die Baselines einfrieren und den IDE-Arbeitsverlauf aus `Pflichtenheft_IDE.md` herausloesen; kein Spec-Kit-Feature und keine Produkt-, API-, Abhaengigkeits- oder Laufzeitaenderung wurden gestartet. |
+| 2026-07-26 | Requirements- und Intake-Struktur konsolidiert | Drei Pflichtenhefte wurden hashgebunden als read-only Baselines eingefroren. Vierzehn aktive, zwei abgeschlossene und drei historische Referenz-Intakes liegen nun getrennt; eine kanonische Serie, supersedierende Receipts und config-gesteuerte Bash-/PowerShell-/CI-Validatoren ersetzen den Root-Dateibestand. Künftige IDE-Einträge stehen in `docs/ide-worklog.md`. Constitution ist genau der eine `Eligible` Intake; Optimierung und CLR bleiben blockiert. |
 
 ## Statistikprofil-1-Archiv / Statistics Profile 1 Archive
 - Stand 2026-05-05: `88` Produktionsdateien mit `6950` Zeilen, `22` Testdateien mit `3536` Zeilen und `562` Dokumentationsdateien mit `36625` Zeilen.
@@ -487,29 +488,29 @@ Profil 2 verwendet Git-getrackte Textdateien und sichtbare Git-Aktivitaet. Die W
 
 | Kennzahl / Metric | Wert / Value |
 |---|---:|
-| Textbasis / Text base | 198386 lines |
-| Textdateien / Text files | 1624 |
+| Textbasis / Text base | 202776 lines |
+| Textdateien / Text files | 1673 |
 | Beobachtbarer Zeitraum / Observable period | 2025-08-03..2026-07-26 |
 | Aktivtage / Active days | 75 |
-| Relevante Commits / Relevant commits | 295 |
-| Zeilen je Aktivtag / Lines per active day | 2645.1 |
+| Relevante Commits / Relevant commits | 297 |
+| Zeilen je Aktivtag / Lines per active day | 2703.7 |
 | Peak-Tag im Fenster / Peak day in window | 2026-02-14 / 177480 |
 | Peak-Woche im Fenster / Peak week in window | 2026-02-08 / 186065 |
 | Laengste Serie / Longest streak | 9 days |
-| Speedup vs. 80 lines/day | 33.1x |
-| Speedup vs. 125 lines/day | 21.2x |
-| Methodik / Methodology | v2; source `b6750d202a19` |
+| Speedup vs. 80 lines/day | 33.8x |
+| Speedup vs. 125 lines/day | 21.6x |
+| Methodik / Methodology | v2; source `e142258cdf6b` |
 
 ### Artefaktmix / Artifact Mix
 
 ```text
-Produktiv / Production          [#...................]   3.6% | 7165
-Tests                           [#...................]   2.6% | 5188
-Dokumentation / Documentation   [###########.........]  53.4% | 105892
-Skripte / Scripts               [#...................]   5.1% | 10066
-Konfiguration / Configuration   [#######.............]  33.0% | 65562
+Produktiv / Production          [#...................]   3.5% | 7165
+Tests                           [#...................]   2.6% | 5265
+Dokumentation / Documentation   [###########.........]  53.1% | 107715
+Skripte / Scripts               [#...................]   5.3% | 10662
+Konfiguration / Configuration   [#######.............]  33.3% | 67456
 Daten und Medien / Data and media [....................]   0.0% | 0
-Sonstiger Text / Other text     [#...................]   2.3% | 4513
+Sonstiger Text / Other text     [#...................]   2.2% | 4513
 ```
 
 Die Balken teilen die aktuelle getrackte Textbasis in stabile Kategorien. Prozent und Zeilenwert sind die genaue, textorientierte Aussage.
@@ -531,7 +532,7 @@ Sa/Sa  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 
 ```text
 Wochen / Weeks 27..52 | 2026-02-01..2026-08-01
-So/Su  0 4 4 4 4 2 1 4 0 0 2 0 0 0 0 0 0 1 0 4 0 0 0 1 4 3
+So/Su  0 4 4 4 4 2 1 4 0 0 2 0 0 0 0 0 0 1 0 4 0 0 0 1 4 4
 Mo/Mo  0 1 2 0 0 4 1 0 2 0 1 4 0 4 0 0 0 0 0 0 0 3 1 4 4 -
 Di/Tu  0 1 1 0 0 0 0 0 2 0 0 0 0 2 0 0 3 0 0 0 0 2 0 3 4 -
 Mi/We  0 1 2 0 0 0 1 1 0 0 0 3 0 2 0 0 0 2 0 4 0 2 0 0 2 -
@@ -620,8 +621,8 @@ Die festen Slots halten den Phasenvergleich auch bei fehlenden oder spaeter erga
 
 ```text
 Scale: 0..50x
-80 lines/day       [#############.......] 33.1x
-125 lines/day      [########............] 21.2x
+80 lines/day       [##############......] 33.8x
+125 lines/day      [#########...........] 21.6x
 ```
 
 Die Faktoren vergleichen sichtbare Lieferdichte mit den dokumentierten manuellen Referenzen. Sie messen keine Arbeitszeit.
@@ -634,7 +635,7 @@ Die Faktoren vergleichen sichtbare Lieferdichte mit den dokumentierten manuellen
 Scale: 0..5000 lines/day
 Experienced manual [#...................] 80
 Thorsten solo      [#...................] 125
-Visible repository [###########.........] 2645.1
+Visible repository [###########.........] 2703.7
 ```
 
 Die gemeinsame Skala vergleicht Referenzen und sichtbare Lieferdichte. Sie schreibt die Git-Aktivitaet keiner Person oder KI pauschal zu.
@@ -660,6 +661,6 @@ DE: Das Fenster beginnt am 2025-08-03 und endet am 2026-07-26. Es enthaelt 75 ak
 | 2026-04 | 17036 |
 | 2026-05 | 12329 |
 | 2026-06 | 37668 |
-| 2026-07 | 59127 |
+| 2026-07 | 64977 |
 
 <!-- project-statistics-v2:end -->

@@ -1,25 +1,44 @@
 {
-  "schemaVersion": "1.1",
-  "receiptId": "eb892bf4-2e00-4d4f-a9f2-c3d81167ac25",
+  "schemaVersion": "2.0",
+  "documentType": "IntakeReceipt",
+  "receiptId": "12f32912-6c0a-42e5-a7a3-663d34c5b47a",
+  "intakeId": "eb892bf4-2e00-4d4f-a9f2-c3d81167ac25",
   "generator": {
     "preset": "intake-authoring-governance",
-    "version": "0.1.1"
+    "version": "0.2.1"
   },
-  "createdAt": "2026-07-23T14:34:36Z",
+  "createdAt": "2026-07-26T22:00:00Z",
+  "operation": {
+    "operationId": "67f6cb96-facd-428f-ad51-50596b2219d3",
+    "type": "Update",
+    "authorityEvidence": "User-approved TinyPl0 requirements and intake consolidation plan"
+  },
   "status": "ReadyForReview",
   "target": {
-    "path": "Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
-    "normalizedSha256": "afd304778e692319ca0023d14b4fe9ad2f91da2c9f8d0be7fbc900f9c132e94c"
+    "path": "requirements/intakes/active/Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
+    "normalizedSha256": "5cd05da8227cb40f5c9b7b4638486a0377bafc2aed35e072a91c80a0b741637e"
   },
   "sources": [
     {
+      "sourceId": "SRC001",
       "order": 1,
-      "kind": "Pasted",
-      "label": "Legacy target before Intake Creator adoption",
-      "location": "SnapshotOnly",
-      "path": "N/A",
-      "normalizedSha256": "d1cc098f8ad055779eb528ec3c1cbf8a976bcafa995f3c8aabd78a8d463ed4d0",
-      "gitBlob": "4b6f49b59323e77b8e2253140544826978c89019"
+      "kind": "File",
+      "label": "Archived predecessor intake",
+      "location": "Repository",
+      "path": "requirements/intakes/history/pre-intake-split-20260726/Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
+      "requestedUrl": "N/A",
+      "finalUrl": "N/A",
+      "retrievedAt": "N/A",
+      "httpStatus": "N/A",
+      "contentType": "N/A",
+      "contentLength": "N/A",
+      "etag": "N/A",
+      "lastModified": "N/A",
+      "redirectChain": [],
+      "rawSha256": "N/A",
+      "normalizedSha256": "afd304778e692319ca0023d14b4fe9ad2f91da2c9f8d0be7fbc900f9c132e94c",
+      "gitBlob": "N/A",
+      "proofBoundary": "Repository predecessor and normalized SHA-256"
     }
   ],
   "profile": "level2-lastenheft",
@@ -28,30 +47,16 @@
     {
       "id": "IAD001",
       "status": "Answered",
-      "question": "Welcher Zielpfad bleibt verbindlich?",
-      "answer": "Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
-      "evidence": "Die aktive Repository-Abarbeitungsreihenfolge benennt diesen Pfad."
+      "question": "Welcher Zielpfad ist nach der Konsolidierung verbindlich?",
+      "answer": "requirements/intakes/active/Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
+      "evidence": "specs/requirements-reconciliation-20260726/migration-proposal.json"
     },
     {
       "id": "IAD002",
       "status": "Answered",
-      "question": "Darf der bestehende Alt-Intake aktualisiert werden?",
-      "answer": "Ja, als diff-arme LegacyAdoption.",
-      "evidence": "Der aktuelle Nutzerauftrag autorisiert Creator-Normalisierung und Review der aktiven Level-2-Intakes."
-    },
-    {
-      "id": "IAD003",
-      "status": "Answered",
-      "question": "Welcher fachliche Umfang bleibt erhalten?",
-      "answer": "Der bestehende fachliche Scope bleibt unveraendert; ergaenzt werden nur Creator-Vertrag und nachgewiesene Konsistenzkorrekturen.",
-      "evidence": "Genehmigter scope-neutraler Flottenplan."
-    },
-    {
-      "id": "IAD004",
-      "status": "Answered",
-      "question": "Welche Delivery Authority gilt fuer spaetere autonome Laeufe?",
-      "answer": "LocalImplementation.",
-      "evidence": "Dieser Authoring-Lauf erteilt keine Remote-Autoritaet."
+      "question": "Welche Delivery Authority gilt?",
+      "answer": "LocalImplementation",
+      "evidence": "The migration grants no feature-delivery authority."
     }
   ],
   "openDecisionIds": [],
@@ -63,19 +68,28 @@
     "autonomousInvocation": "$speckit-autonomous"
   },
   "deliveryAuthority": "LocalImplementation",
-  "authorityEvidence": "Default: Dieser Authoring-Lauf erteilt keine Remote-Schreib- oder Lieferautoritaet fuer spaetere Feature-Laeufe.",
+  "authorityEvidence": "Default: this migration grants no remote feature-delivery authority.",
   "promptState": "Enabled",
-  "nextAction": "$speckit-intake-review Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
-  "provenanceMode": "LegacyAdoption",
+  "provenanceMode": "Supersession",
   "supersedes": {
-    "receiptPath": "N/A",
-    "targetNormalizedSha256": "N/A"
+    "receiptPath": "specs/intake-authoring-receipts/history/rl-se-checklist-selbstpruefung.schema-1.1.json",
+    "targetNormalizedSha256": "afd304778e692319ca0023d14b4fe9ad2f91da2c9f8d0be7fbc900f9c132e94c",
+    "archiveTargetPath": "requirements/intakes/history/pre-intake-split-20260726/Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
+    "archiveReceiptPath": "specs/intake-authoring-receipts/history/rl-se-checklist-selbstpruefung.schema-1.1.json"
   },
   "legacyAdoption": {
-    "evidenceType": "GitBlob",
-    "priorTargetNormalizedSha256": "d1cc098f8ad055779eb528ec3c1cbf8a976bcafa995f3c8aabd78a8d463ed4d0",
-    "priorGitBlob": "4b6f49b59323e77b8e2253140544826978c89019"
+    "evidenceType": "N/A",
+    "priorTargetNormalizedSha256": "N/A",
+    "priorGitBlob": "N/A"
   },
   "updateAuthorized": true,
-  "updateAuthorityEvidence": "Aktueller Nutzerauftrag: Creator-Normalisierung und Review der aktiven C#-Level-2- und cc65-Intakes."
+  "updateAuthorityEvidence": "User-approved migration preserves predecessor evidence.",
+  "series": {
+    "seriesId": "8541ffa1-6b52-4f95-a746-d870482eaf5d",
+    "manifestPath": "requirements/intakes/series/tinypl0-delivery/manifest.json",
+    "order": 13,
+    "role": "OrderedMember",
+    "supersedesIntakeIds": []
+  },
+  "nextAction": "$speckit-intake-review requirements/intakes/active/Lastenheft_RL-SE-Checklist-Selbstpruefung.md"
 }

@@ -40,4 +40,4 @@ factor     = ident | number | "(" expression ")" ;
 
 ## Referenzen
 - [PL0 Referenz](../PL0.md)
-- [Pflichtenheft C#](../Pflichtenheft_PL0_CSharp_DotNet10.md)
+- [Pflichtenheft C#](https://github.com/hindermath/TinyPl0/blob/main/requirements/baseline/Pflichtenheft_PL0_CSharp_DotNet10.pre-intake-split.2026-07-26.md)

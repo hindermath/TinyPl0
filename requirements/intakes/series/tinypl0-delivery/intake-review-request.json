@@ -1,0 +1,141 @@
+{
+  "schemaVersion": "1.1",
+  "reviewId": "311a8267-6516-46e1-a2a6-e8c793e2b6c9",
+  "mode": "Series",
+  "policy": "tinypl0-delivery-v1",
+  "targets": [
+    {
+      "path": "requirements/intakes/active/Lastenheft_Constitution_Change.md",
+      "role": "Primary"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_Secure-Development-Hardening.md",
+      "role": "OrderedMember"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
+      "role": "OrderedMember"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_Quellcode_Doku.md",
+      "role": "OrderedMember"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_Dokumentation_EN.md",
+      "role": "OrderedMember"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_IDE-L10N.md",
+      "role": "OrderedMember"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_A11Y_IDE.md",
+      "role": "OrderedMember"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_Options_Als_Parameter.md",
+      "role": "OrderedMember"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_VM_CLI.md",
+      "role": "OrderedMember"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_IDE-Erweiterung-Pl0Ide_PAsm_PCod.md",
+      "role": "OrderedMember"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_PL0_Optimierung.md",
+      "role": "OrderedMember"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_CLR_Assembly.md",
+      "role": "OrderedMember"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
+      "role": "OrderedMember"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md",
+      "role": "OrderedMember"
+    }
+  ],
+  "series": {
+    "orderedTargetPaths": [
+      "requirements/intakes/active/Lastenheft_Constitution_Change.md",
+      "requirements/intakes/active/Lastenheft_Secure-Development-Hardening.md",
+      "requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
+      "requirements/intakes/active/Lastenheft_Quellcode_Doku.md",
+      "requirements/intakes/active/Lastenheft_Dokumentation_EN.md",
+      "requirements/intakes/active/Lastenheft_IDE-L10N.md",
+      "requirements/intakes/active/Lastenheft_A11Y_IDE.md",
+      "requirements/intakes/active/Lastenheft_Options_Als_Parameter.md",
+      "requirements/intakes/active/Lastenheft_VM_CLI.md",
+      "requirements/intakes/active/Lastenheft_IDE-Erweiterung-Pl0Ide_PAsm_PCod.md",
+      "requirements/intakes/active/Lastenheft_PL0_Optimierung.md",
+      "requirements/intakes/active/Lastenheft_CLR_Assembly.md",
+      "requirements/intakes/active/Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
+      "requirements/intakes/active/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md"
+    ],
+    "roots": [
+      "requirements/intakes/active/Lastenheft_Constitution_Change.md",
+      "requirements/intakes/active/Lastenheft_PL0_Optimierung.md",
+      "requirements/intakes/active/Lastenheft_CLR_Assembly.md",
+      "requirements/intakes/active/Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
+      "requirements/intakes/active/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md"
+    ],
+    "dependencies": [
+      {
+        "from": "requirements/intakes/active/Lastenheft_Constitution_Change.md",
+        "to": "requirements/intakes/active/Lastenheft_Secure-Development-Hardening.md",
+        "kind": "HardCompletionGate"
+      },
+      {
+        "from": "requirements/intakes/active/Lastenheft_Secure-Development-Hardening.md",
+        "to": "requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
+        "kind": "HardCompletionGate"
+      },
+      {
+        "from": "requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
+        "to": "requirements/intakes/active/Lastenheft_Quellcode_Doku.md",
+        "kind": "CommentSurfaceBaseline"
+      },
+      {
+        "from": "requirements/intakes/active/Lastenheft_Quellcode_Doku.md",
+        "to": "requirements/intakes/active/Lastenheft_Dokumentation_EN.md",
+        "kind": "DocumentationSurfaceBaseline"
+      },
+      {
+        "from": "requirements/intakes/active/Lastenheft_Dokumentation_EN.md",
+        "to": "requirements/intakes/active/Lastenheft_IDE-L10N.md",
+        "kind": "DocumentationSurfaceBaseline"
+      },
+      {
+        "from": "requirements/intakes/active/Lastenheft_IDE-L10N.md",
+        "to": "requirements/intakes/active/Lastenheft_A11Y_IDE.md",
+        "kind": "HardCompletionGate"
+      },
+      {
+        "from": "requirements/intakes/active/Lastenheft_A11Y_IDE.md",
+        "to": "requirements/intakes/active/Lastenheft_Options_Als_Parameter.md",
+        "kind": "HardCompletionGate"
+      },
+      {
+        "from": "requirements/intakes/active/Lastenheft_Options_Als_Parameter.md",
+        "to": "requirements/intakes/active/Lastenheft_VM_CLI.md",
+        "kind": "HardCompletionGate"
+      },
+      {
+        "from": "requirements/intakes/active/Lastenheft_VM_CLI.md",
+        "to": "requirements/intakes/active/Lastenheft_IDE-Erweiterung-Pl0Ide_PAsm_PCod.md",
+        "kind": "HardCompletionGate"
+      }
+    ]
+  },
+  "campaign": {
+    "manifestPath": "N/A",
+    "workers": [],
+    "operatorExceptions": []
+  }
+}

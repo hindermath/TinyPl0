@@ -1,3 +1,3 @@
 # Lastenheft Dokumentation (kuratiert)
 
-[!include[](../../Lastenheft_PL0_Dokumentation.md)]
+[!include[](../../requirements/intakes/history/pre-intake-split-20260726/Lastenheft_PL0_Dokumentation.md)]

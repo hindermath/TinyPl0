@@ -42,7 +42,8 @@ compiler construction concepts and project workflows.
 Dieses Repository dient der Portierung des historischen PL/0-Beispielcompilers (Pascal) nach C# auf .NET 10.
 
 Die fachliche und technische Zieldefinition steht im Pflichtenheft:
-- [Pflichtenheft_PL0_CSharp_DotNet10.md](Pflichtenheft_PL0_CSharp_DotNet10.md)
+- [Kanonischer Anforderungsindex](Pflichtenheft.md)
+- [Historische Compiler-Baseline](requirements/baseline/Pflichtenheft_PL0_CSharp_DotNet10.pre-intake-split.2026-07-26.md)
 
 ## Lizenz
 Lizenz: MIT - siehe [LICENSE](LICENSE).
