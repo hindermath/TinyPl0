@@ -42,7 +42,7 @@ The project uses Golden Master tests for the lexer and parser. To update these a
 - New or changed non-trivial logic must be reviewed for didactic inline-comment value when it affects learner understanding or maintainability.
 - Inline comments explain why a decision, trade-off, constraint, historical deviation, or proof boundary exists; do not add comments that merely restate obvious code.
 - Keep inline-comment intensity moderate: normally 1-3 lines before a non-trivial block, with German-first/English-second CEFR-B2 text for didactic explanation blocks.
-- **Documentation:** Follow the specifications in `Pflichtenheft_PL0_CSharp_DotNet10.md`. Extensive documentation is available in the `docs/` and `docfx/` directories.
+- **Documentation:** Use `Pflichtenheft.md` as the requirements index. Historical baselines live under `requirements/baseline/`.
 - **Code Style:** Adhere to standard C# naming conventions (PascalCase for classes/methods, camelCase for local variables).
 - **Testing:**
   - Use `xUnit` for unit and integration tests.
@@ -54,7 +54,8 @@ The project uses Golden Master tests for the lexer and parser. To update these a
 
 ## Key Files
 - `TinyPl0.sln`: Main solution file.
-- `Pflichtenheft_PL0_CSharp_DotNet10.md`: Main requirements and technical specification.
+- `Pflichtenheft.md`: Canonical requirements index.
+- `requirements/baseline/Pflichtenheft_PL0_CSharp_DotNet10.pre-intake-split.2026-07-26.md`: Historical requirements and technical specification.
 - `docs/ARCHITECTURE.md`: High-level system architecture and mapping from Pascal to C#.
 - `docs/LANGUAGE_EBNF.md`: Formal grammar of the supported PL/0 dialects.
 - `docs/VM_INSTRUCTION_SET.md`: Detailed description of the P-Code instruction set.
@@ -65,6 +66,16 @@ The project uses Golden Master tests for the lexer and parser. To update these a
 - `main` is protected: do not commit or push directly to `main`.
 - Create a new branch for each change before starting work.
 - Once a dedicated feature branch has implemented a Lastenheft, rename that file to `Lastenheft_<topic>.<feature-branch>.md` so the delivered scope stays traceable.
+
+<!-- requirements-intake-governance:begin -->
+## Requirements- und Intake-Governance / Requirements and Intake Governance
+
+- `Pflichtenheft.md` ist der schlanke Einstieg; verbindliche Reihenfolge und Zustände stehen im Serienmanifest unter `requirements/intakes/series/`.
+- Aktive, abgeschlossene, ersetzte und optionale Intakes bleiben getrennt. Die Baselines unter `requirements/baseline/` sind read-only.
+- Nur `Eligible` bezeichnet den bevorzugten nächsten Intake. Der Zustand erteilt keine Ausführungs-, Remote- oder Merge-Berechtigung.
+
+*`Pflichtenheft.md` is the slim entry point; binding order and states live in the series manifest. Active, completed, superseded, and optional intakes remain separated, and baselines are read-only. `Eligible` grants no execution, remote, or merge authority.*
+<!-- requirements-intake-governance:end -->
 
 ## Agentische Skriptausfuehrung / Agentic Script Execution
 

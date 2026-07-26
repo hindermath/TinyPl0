@@ -1,0 +1,113 @@
+<!-- intake-authoring:begin -->
+# Compiler-Options als Parameter
+
+## Beschreibung
+In diesem Abschnitt werden die Compiler-Optionen beschrieben, die als weitere Parameter übergeben werden können. Diese Optionen können zur Steuerung des Compilierens und der Ausführung des Programms verwendet werden.
+
+
+## Verfügbare neue Parameter/Switches
+Für jeden Switch der Tabelle soll einen einzelnen Implementierungsabschnitt/-phase enthalten, in dem detailiert vorgeschlagen wird, wie dieser umgesetzt werden soll.
+
+| Parameter/Switch | Standard | Maximal | Beschreibung                                                                                                                 |
+|:-----------------|:--------:|:-------:|------------------------------------------------------------------------------------------------------------------------------|
+| `--symtable`     |          |         | Gibt die Symboltabelle während des Compiliervorgangs aus.                                                                    |
+| `--tracelog`     |          |         | Erzeugt ein Trace-Log der Tokenisierung (Scanner).                                                                           |
+| `--ast`          |          |         | Zeigt den generierten Abstrakten Syntaxbaum (AST) an.                                                                        |
+| `--dialect`      | Extended | Classic | Ausgewählter Sprachdialekt (Standard: Extended).                                                                             |
+| `--maxlvl`       |    3     |    8    | Maximale Schachtelungstiefe von Blöcken (Standard: 3). (Maximal: 8)                                                          |
+| `--maxadr`       |   2047   |  4096   | Maximale Adresse/Wert für Literale (Standard: 2047). (Maximal: 8192)                                                         |
+| `--maxidentlen`  |    10    |   32    | Maximale Länge von Bezeichnern (Standard: 10). (Maximal: 32)                                                                 |
+| `--maxnumdigits` |    14    |   20    | Maximale Anzahl an Ziffern in numerischen Literalen (Standard: 14). (Maximal: 20)                                            |
+| `--maxsymcnt`    |   100    |   512   | Maximale Anzahl an Symbolen in der Tabelle (Standard: 100). (Maximal: 512)                                                   |
+| `--maxcodelen`   |   200    |  8192   | Maximale Anzahl an generierten Befehlen (Standard: 200).                                                                     |
+
+### Implementierungsphasen der Standard-Switches
+
+#### Phase: Debugging & Visualisierung (`--symtable`, `--tracelog`, `--ast`)
+* **`--symtable`**: Nach dem Parsing-Vorgang wird der Inhalt der internen Symboltabelle formatiert auf der Konsole ausgegeben (Name, Typ, Level, Adresse).
+* **`--tracelog`**: Der Scanner wird so erweitert, dass jedes erkannte Token (Typ und Wert) sofort nach der Identifikation protokolliert wird.
+* **`--ast`**: Implementierung einer Tree-Traversal Logik, die den erzeugten AST in einer hierarchischen Textform oder als JSON-Struktur darstellt.
+
+#### Phase: Code-Generierung (`--clr`)
+* Integration eines neuen Backends, das statt des PL/0-Zwischencodes direkt CIL (Common Intermediate Language) erzeugt.
+* Nutzung von `System.Reflection.Emit` zur Erstellung der `.dll`.
+
+#### Phase: Sprach-Konfiguration (`--dialect`)
+* Steuerung der Schlüsselwort-Erkennung im Scanner. Im "Classic"-Modus werden Erweiterungen wie `WHILE` oder `IF-THEN-ELSE` auf den ursprünglichen Wirth-Standard eingeschränkt.
+
+#### Phase: Kapazitäts-Limits (`--max...`)
+* Die fest kodierten Konstanten im Compiler werden durch eine zentrale `Config`-Klasse ersetzt, die initial mit den Standardwerten geladen und durch die Kommandozeilenparameter überschrieben wird. Bei Überschreitung der Maximalwerte erfolgt ein Abbruch mit Fehlermeldung.
+
+### Compiler-Switches Optimierung
+Diese Switches und Ihre Ausgestaltung sind für die Optimierung des Compilers und die Steuerung der Optimierungsabläufe gedacht. Sie ermöglichen die Aktivierung oder Deaktivierung von verschiedenen Optimierungstechniken und stellen eine flexibele Möglichkeit zur Steuerung der Compiler-Optimierung bereit.
+Diese werden in einem separaten Arbeitsschritt unabhängig von den in der oberen Tabelle beschriebenen Switches umgesetzt.
+
+| Switch            | Bedeutung                       | Hinweis/Beispiel                                     | Verweis                                     |
+|:------------------|:--------------------------------|:-----------------------------------------------------|:--------------------------------------------|
+| `--opt=fold`      | Constant Folding                | z. B. konstante Ausdrücke zur Compile-Zeit auswerten | Details siehe requirements/intakes/active/Lastenheft_PL0_Optimierung.md |
+| `--opt=dce`       | Dead Code Elimination           | nicht erreichbaren/wirkungslosen Code entfernen      | Details siehe requirements/intakes/active/Lastenheft_PL0_Optimierung.md |
+| `--opt=alg`       | Algebraische Vereinfachungen    | z. B. `x + 0`, `x * 1` vereinfachen                  | Details siehe requirements/intakes/active/Lastenheft_PL0_Optimierung.md |
+| `--opt=reg`       | Register-Optimierung            | effizientere Nutzung der (virtuellen) Register       | Details siehe requirements/intakes/active/Lastenheft_PL0_Optimierung.md |
+| `--opt=all`       | alle Optimierungen aktivieren   | Sammelschalter                                       | Details siehe requirements/intakes/active/Lastenheft_PL0_Optimierung.md |
+| `--no-opt`        | alle Optimierungen deaktivieren | überschreibt ggf. gesetzte `--opt=...`               | Details siehe requirements/intakes/active/Lastenheft_PL0_Optimierung.md |
+| `--no-opt=<name>` | eine Optimierung deaktivieren   | z. B. `--no-opt=fold`                                | Details siehe requirements/intakes/active/Lastenheft_PL0_Optimierung.md |
+
+---
+
+## Spec-Kit-Intake-Reife / Spec Kit Intake Readiness
+
+Dieses Lastenheft ist als Eingabedatei fuer einen spaeteren `/speckit-specify`-Lauf vorgesehen. Vor dem Start muss der aktuelle Repository-Stand geprueft werden, damit bereits erledigte oder ueberholte Punkte nicht erneut umgesetzt werden.
+
+*This requirements document is intended as input for a later `/speckit-specify` run. Before starting, check the current repository state so already completed or superseded items are not implemented again.*
+
+Der spaetere Lauf muss mindestens klassifizieren:
+
+- `Applicable`: gilt fuer diesen Lauf und braucht Umsetzung oder Evidenz.
+- `AlreadySatisfied`: ist im aktuellen Stand bereits nachweisbar erledigt.
+- `N/A`: gilt fuer diesen Lauf nicht und braucht eine kurze Begruendung.
+- `Open`: gilt, ist aber noch nicht ausreichend geklaert oder belegt.
+- `FollowUp`: fachlich relevant, aber nicht Teil dieses Laufs.
+
+## Kopierbarer `/speckit-specify`-Prompt / Copyable `/speckit-specify` Prompt
+
+```text
+Ersetzter Alt-Prompt: speckit-specify Nutze requirements/intakes/active/Lastenheft_Options_Als_Parameter.md als verbindliche Eingabedatei. Erstelle die Feature-Spezifikation fuer einen Options- und Parameterlauf im Repository TinyPl0.
+
+Ziel: Pruefe das Lastenheft gegen den aktuellen Repository-Stand und erstelle eine belastbare Spec-Kit-Spezifikation, die fuer Auszubildende, Entwickler*innen, Reviewer und KI-Agenten nachvollziehbar ist.
+
+Pflichtpunkte:
+- Lies dieses Lastenheft vollstaendig und uebernehme vorhandene Anforderungen, Scope-Grenzen, Reihenfolgehinweise und Akzeptanzkriterien.
+- Pruefe, welche Punkte bereits umgesetzt, ueberholt oder noch offen sind.
+- Klassifiziere Anforderungen als `Applicable`, `AlreadySatisfied`, `N/A`, `Open` oder `FollowUp`.
+- Plane nur `Applicable`-Punkte fuer diesen Lauf.
+- Dokumentiere fuer `N/A` und `FollowUp` jeweils eine kurze Begruendung.
+- Beachte `constitution.md`, `.specify/memory/constitution.md`, AGENTS/CLAUDE/GEMINI/Copilot-Guidance, installierte Spec-Kit-Presets, Secure-Development-Basis, A11Y-Regeln, CEFR-B2-Verstaendlichkeit und didaktische Kommentar-Governance.
+- Starte keinen weiteren Lastenheft-Lauf und kombiniere mehrere Lastenhefte nur, wenn die Kopplung fachlich begruendet und dokumentiert ist.
+
+Erzeuge eine Spezifikation mit Scope, Nicht-Zielen, Anforderungen, Abhaengigkeiten, Akzeptanzkriterien, Risiken, Teststrategie, Evidenzpfaden und offenen Folgepunkten.
+```
+<!-- intake-authoring:prompts -->
+## Kopierbare Spec-Kit-Prompts / Copy-Ready Spec Kit Prompts
+
+Die folgenden Alternativen starten keinen Lauf automatisch. Der autonome
+Prompt ist auf `LocalImplementation` begrenzt und erteilt keine Remote-,
+PR-, Merge-, Bypass-, Secret- oder Provider-Berechtigung.
+
+*The alternatives below do not start a run automatically. The autonomous
+prompt is limited to `LocalImplementation` and grants no remote,
+pull-request, merge, bypass, secret, or provider authority.*
+
+### Specify
+
+<!-- spec-kit-command-id: speckit.specify -->
+```text
+$speckit-specify Use requirements/intakes/active/Lastenheft_Options_Als_Parameter.md as the binding intake. Preserve its scope, non-goals, ordering, governance, evidence, and acceptance criteria. Create or update only the matching feature specification. Do not implement, commit, push, create a pull request, merge, or start another feature.
+```
+
+### Autonomous
+
+<!-- spec-kit-command-id: speckit.autonomous -->
+```text
+$speckit-autonomous Execute one complete autonomous Spec Kit run using requirements/intakes/active/Lastenheft_Options_Als_Parameter.md as the binding intake. Delivery mode: LocalImplementation. Preserve all scope, ordering, security, accessibility, evidence, and acceptance boundaries. Do not push, create or merge a pull request, use bypass authority, expose secrets, or start a follow-up feature.
+```
+<!-- intake-authoring:end -->

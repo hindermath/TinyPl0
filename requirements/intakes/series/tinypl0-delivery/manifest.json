@@ -1,0 +1,162 @@
+{
+  "schemaVersion": "1.0",
+  "documentType": "IntakeSeriesManifest",
+  "seriesId": "8541ffa1-6b52-4f95-a746-d870482eaf5d",
+  "title": "TinyPl0 Delivery Intake Series",
+  "policy": "tinypl0-delivery-v1",
+  "status": "Active",
+  "orderedTargets": [
+    {
+      "path": "requirements/intakes/active/Lastenheft_Constitution_Change.md",
+      "role": "Primary",
+      "normalizedSha256": "fe796de8ced6daf9cb3f4c890b929f47420a12deac2f37da793c4ea263fc2ff5",
+      "status": "Eligible"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_Secure-Development-Hardening.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "18c957e4bcbe3e9e975f11ace8d1d2c81c49064f911f607480a09e14774669de",
+      "status": "Blocked"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "628f869c9df39329949b73457bd56d4345f467ef38d453f257887d07b8f58735",
+      "status": "Blocked"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_Quellcode_Doku.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "5a04868a629453e433da1a733239c948294f9a6462ac11968c806556eefffed2",
+      "status": "Blocked"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_Dokumentation_EN.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "0ca2e4d25690699219b9190396ddbb6b4619ef122c962f5accd430d4a5e23068",
+      "status": "Blocked"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_IDE-L10N.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "490cc5f62e81a825029567f6d218fd21fea51e03c39a3885bb56154462ca2806",
+      "status": "Blocked"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_A11Y_IDE.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "8acb4cbbb5d5c14b13816bcb65b891cbc7d65486581dc95a17c602e9a79d2d48",
+      "status": "Blocked"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_Options_Als_Parameter.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "df0e28b4e74683c3eaf1c5bb690d4d5e9a5b20836fe38a7ed06f7adc9d627d19",
+      "status": "Blocked"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_VM_CLI.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "dd4b0683ad7733a380078f9fddd6658a1d80713baa2d72a20d76aed8ba8dc1fc",
+      "status": "Blocked"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_IDE-Erweiterung-Pl0Ide_PAsm_PCod.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "d273b99f19a8996f7b584940a7b2e3ee291e79dc4e6ce52a7176e0bbb6c3c689",
+      "status": "Blocked"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_PL0_Optimierung.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "bb58d3e51ee2f4f17bc6049ab22eea9f3959705ab9d89df7056dad9af7be782a",
+      "status": "Blocked"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_CLR_Assembly.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "29ca3739ffa410375adca332a744eec5a650acead08349135483481f476e6e5b",
+      "status": "Blocked"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "5cd05da8227cb40f5c9b7b4638486a0377bafc2aed35e072a91c80a0b741637e",
+      "status": "Pending"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "bab44cd08aa1335255a4e29cf5823deb743320d2737ab8eab75b78583c451aec",
+      "status": "Pending"
+    }
+  ],
+  "roots": [
+    "requirements/intakes/active/Lastenheft_Constitution_Change.md",
+    "requirements/intakes/active/Lastenheft_PL0_Optimierung.md",
+    "requirements/intakes/active/Lastenheft_CLR_Assembly.md",
+    "requirements/intakes/active/Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
+    "requirements/intakes/active/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md"
+  ],
+  "dependencies": [
+    {
+      "from": "requirements/intakes/active/Lastenheft_Constitution_Change.md",
+      "to": "requirements/intakes/active/Lastenheft_Secure-Development-Hardening.md",
+      "kind": "HardCompletionGate",
+      "binding": true
+    },
+    {
+      "from": "requirements/intakes/active/Lastenheft_Secure-Development-Hardening.md",
+      "to": "requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
+      "kind": "HardCompletionGate",
+      "binding": true
+    },
+    {
+      "from": "requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
+      "to": "requirements/intakes/active/Lastenheft_Quellcode_Doku.md",
+      "kind": "CommentSurfaceBaseline",
+      "binding": true
+    },
+    {
+      "from": "requirements/intakes/active/Lastenheft_Quellcode_Doku.md",
+      "to": "requirements/intakes/active/Lastenheft_Dokumentation_EN.md",
+      "kind": "DocumentationSurfaceBaseline",
+      "binding": true
+    },
+    {
+      "from": "requirements/intakes/active/Lastenheft_Dokumentation_EN.md",
+      "to": "requirements/intakes/active/Lastenheft_IDE-L10N.md",
+      "kind": "DocumentationSurfaceBaseline",
+      "binding": true
+    },
+    {
+      "from": "requirements/intakes/active/Lastenheft_IDE-L10N.md",
+      "to": "requirements/intakes/active/Lastenheft_A11Y_IDE.md",
+      "kind": "HardCompletionGate",
+      "binding": true
+    },
+    {
+      "from": "requirements/intakes/active/Lastenheft_A11Y_IDE.md",
+      "to": "requirements/intakes/active/Lastenheft_Options_Als_Parameter.md",
+      "kind": "HardCompletionGate",
+      "binding": true
+    },
+    {
+      "from": "requirements/intakes/active/Lastenheft_Options_Als_Parameter.md",
+      "to": "requirements/intakes/active/Lastenheft_VM_CLI.md",
+      "kind": "HardCompletionGate",
+      "binding": true
+    },
+    {
+      "from": "requirements/intakes/active/Lastenheft_VM_CLI.md",
+      "to": "requirements/intakes/active/Lastenheft_IDE-Erweiterung-Pl0Ide_PAsm_PCod.md",
+      "kind": "HardCompletionGate",
+      "binding": true
+    }
+  ],
+  "evidencePaths": [
+    "specs/requirements-reconciliation-20260726/requirements-coverage.json",
+    "specs/requirements-reconciliation-20260726/migration-proposal.json",
+    "Lastenheft_Abarbeitungsreihenfolge.md"
+  ]
+}

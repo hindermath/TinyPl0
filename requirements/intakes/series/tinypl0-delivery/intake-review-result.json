@@ -1,0 +1,137 @@
+{
+  "schemaVersion": "1.1",
+  "reviewId": "311a8267-6516-46e1-a2a6-e8c793e2b6c9",
+  "mode": "Series",
+  "status": "Ready",
+  "policy": "tinypl0-delivery-v1",
+  "reviewedAt": "2026-07-26T22:00:00Z",
+  "repository": {
+    "root": ".",
+    "head": "REVIEW_HEAD_TO_BE_PINNED"
+  },
+  "targets": [
+    {
+      "path": "requirements/intakes/active/Lastenheft_Constitution_Change.md",
+      "role": "Primary",
+      "normalizedSha256": "fe796de8ced6daf9cb3f4c890b929f47420a12deac2f37da793c4ea263fc2ff5",
+      "gitBlob": "N/A"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_Secure-Development-Hardening.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "18c957e4bcbe3e9e975f11ace8d1d2c81c49064f911f607480a09e14774669de",
+      "gitBlob": "N/A"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "628f869c9df39329949b73457bd56d4345f467ef38d453f257887d07b8f58735",
+      "gitBlob": "N/A"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_Quellcode_Doku.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "5a04868a629453e433da1a733239c948294f9a6462ac11968c806556eefffed2",
+      "gitBlob": "N/A"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_Dokumentation_EN.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "0ca2e4d25690699219b9190396ddbb6b4619ef122c962f5accd430d4a5e23068",
+      "gitBlob": "N/A"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_IDE-L10N.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "490cc5f62e81a825029567f6d218fd21fea51e03c39a3885bb56154462ca2806",
+      "gitBlob": "N/A"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_A11Y_IDE.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "8acb4cbbb5d5c14b13816bcb65b891cbc7d65486581dc95a17c602e9a79d2d48",
+      "gitBlob": "N/A"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_Options_Als_Parameter.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "df0e28b4e74683c3eaf1c5bb690d4d5e9a5b20836fe38a7ed06f7adc9d627d19",
+      "gitBlob": "N/A"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_VM_CLI.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "dd4b0683ad7733a380078f9fddd6658a1d80713baa2d72a20d76aed8ba8dc1fc",
+      "gitBlob": "N/A"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_IDE-Erweiterung-Pl0Ide_PAsm_PCod.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "d273b99f19a8996f7b584940a7b2e3ee291e79dc4e6ce52a7176e0bbb6c3c689",
+      "gitBlob": "N/A"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_PL0_Optimierung.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "bb58d3e51ee2f4f17bc6049ab22eea9f3959705ab9d89df7056dad9af7be782a",
+      "gitBlob": "N/A"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_CLR_Assembly.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "29ca3739ffa410375adca332a744eec5a650acead08349135483481f476e6e5b",
+      "gitBlob": "N/A"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "5cd05da8227cb40f5c9b7b4638486a0377bafc2aed35e072a91c80a0b741637e",
+      "gitBlob": "N/A"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "bab44cd08aa1335255a4e29cf5823deb743320d2737ab8eab75b78583c451aec",
+      "gitBlob": "N/A"
+    }
+  ],
+  "findings": [],
+  "questions": [],
+  "acceptedRisks": [],
+  "operatorExceptions": [],
+  "coverage": {
+    "individual": [
+      "requirements/intakes/active/Lastenheft_Constitution_Change.md",
+      "requirements/intakes/active/Lastenheft_Secure-Development-Hardening.md",
+      "requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
+      "requirements/intakes/active/Lastenheft_Quellcode_Doku.md",
+      "requirements/intakes/active/Lastenheft_Dokumentation_EN.md",
+      "requirements/intakes/active/Lastenheft_IDE-L10N.md",
+      "requirements/intakes/active/Lastenheft_A11Y_IDE.md",
+      "requirements/intakes/active/Lastenheft_Options_Als_Parameter.md",
+      "requirements/intakes/active/Lastenheft_VM_CLI.md",
+      "requirements/intakes/active/Lastenheft_IDE-Erweiterung-Pl0Ide_PAsm_PCod.md",
+      "requirements/intakes/active/Lastenheft_PL0_Optimierung.md",
+      "requirements/intakes/active/Lastenheft_CLR_Assembly.md",
+      "requirements/intakes/active/Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
+      "requirements/intakes/active/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md"
+    ],
+    "series": [
+      "Fourteen active intake hashes, lifecycle states, roots, and nine binding gates",
+      "Optimization and CLR stay blocked pending explicit architecture decisions",
+      "Three immutable baselines and two completed intakes remain outside executable scope"
+    ],
+    "workers": []
+  },
+  "summary": {
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0
+  },
+  "supersedes": "1802a845-5024-4c8b-99f4-085510bda4b4",
+  "requestEvidence": {
+    "path": "requirements/intakes/series/tinypl0-delivery/intake-review-request.json",
+    "normalizedSha256": "59ba9cefaac907164b213e6611c60ab4be27c1306e174e111ee7783d1ea33d38"
+  }
+}

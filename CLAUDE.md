@@ -101,12 +101,14 @@ Pl0.Ide  --> Terminal.Gui  (only allowed external NuGet package for Pl0.Ide)
 
 Align `Version`, `AssemblyVersion`, and `FileVersion` in `Pl0.Ide.csproj` whenever a commit is created or the PR branch is updated, before pushing.
 
-**IDE Worklog** — After any IDE-related work, append a new entry to the worklog at the bottom of `Pflichtenheft_IDE.md`.
+**IDE Worklog** — After any IDE-related work, append a new entry to `docs/ide-worklog.md`. The frozen IDE Pflichtenheft baseline is read-only.
 
 ## Key Files
 
-- `Pflichtenheft_PL0_CSharp_DotNet10.md` — main requirements specification
-- `Pflichtenheft_IDE.md` — IDE requirements and worklog
+- `Pflichtenheft.md` — canonical requirements index
+- `requirements/baseline/Pflichtenheft_PL0_CSharp_DotNet10.pre-intake-split.2026-07-26.md` — historical requirements specification
+- `requirements/baseline/Pflichtenheft_IDE.pre-intake-split.2026-07-26.md` — frozen IDE requirements baseline
+- `docs/ide-worklog.md` — current IDE worklog
 - `docs/ARCHITECTURE.md` — Pascal-to-C# mapping and module overview
 - `docs/LANGUAGE_EBNF.md` — formal grammar for both dialects
 - `docs/VM_INSTRUCTION_SET.md` — P-Code instruction set reference
@@ -178,6 +180,16 @@ Use `CompilerOptions.Dialect` when modifying parser/lexer. Classic mode must sta
 - `main` is protected — no direct commits or pushes; all changes via pull request.
 - Create a new branch for each change before starting work.
 - Once a dedicated feature branch has implemented a Lastenheft, rename that file to `Lastenheft_<topic>.<feature-branch>.md` so the delivered scope stays traceable.
+
+<!-- requirements-intake-governance:begin -->
+## Requirements- und Intake-Governance / Requirements and Intake Governance
+
+- `Pflichtenheft.md` ist der schlanke Einstieg; verbindliche Reihenfolge und Zustände stehen im Serienmanifest unter `requirements/intakes/series/`.
+- Aktive, abgeschlossene, ersetzte und optionale Intakes bleiben getrennt. Die Baselines unter `requirements/baseline/` sind read-only.
+- Nur `Eligible` bezeichnet den bevorzugten nächsten Intake. Der Zustand erteilt keine Ausführungs-, Remote- oder Merge-Berechtigung.
+
+*`Pflichtenheft.md` is the slim entry point; binding order and states live in the series manifest. Active, completed, superseded, and optional intakes remain separated, and baselines are read-only. `Eligible` grants no execution, remote, or merge authority.*
+<!-- requirements-intake-governance:end -->
 
 ## Constraints
 

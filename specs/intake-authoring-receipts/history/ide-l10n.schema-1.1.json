@@ -1,0 +1,90 @@
+{
+  "schemaVersion": "1.1",
+  "receiptId": "c290656d-eca5-4ab6-8a0d-9788e90526b4",
+  "generator": {
+    "preset": "intake-authoring-governance",
+    "version": "0.1.1"
+  },
+  "createdAt": "2026-07-23T14:34:35Z",
+  "status": "ReadyForReview",
+  "target": {
+    "path": "Lastenheft_IDE-L10N.md",
+    "normalizedSha256": "9ec184ccd5c6e6637c7a0e863ab49203d1767ba1d16e4b90c1168cf4187a5896"
+  },
+  "sources": [
+    {
+      "order": 1,
+      "kind": "File",
+      "label": "Lastenheft_L10N.001-l10n-backend.md",
+      "location": "Repository",
+      "path": "Lastenheft_L10N.001-l10n-backend.md",
+      "normalizedSha256": "69df8dd22889f9d7cddda5171e818b5d4b7711aa049f00852c299609c0b78f25",
+      "gitBlob": "7900e5999f71004cef8faadbc5516fe5ab10c05a"
+    },
+    {
+      "order": 2,
+      "kind": "File",
+      "label": "Lastenheft_Abarbeitungsreihenfolge.md",
+      "location": "Repository",
+      "path": "Lastenheft_Abarbeitungsreihenfolge.md",
+      "normalizedSha256": "6a444ec359a332dc8c13aaf6864d7eeebaa1ffbd1f40ec1d1026351ce7d5da3c",
+      "gitBlob": "11b8b2cfbad591325c1409c52122ee074aa98f13"
+    }
+  ],
+  "profile": "level2-lastenheft",
+  "languagePolicy": "GermanFirstEnglishSecond",
+  "decisions": [
+    {
+      "id": "IAD001",
+      "status": "Answered",
+      "question": "Welcher Zielpfad bleibt verbindlich?",
+      "answer": "Lastenheft_IDE-L10N.md",
+      "evidence": "Die aktive Repository-Abarbeitungsreihenfolge benennt diesen Pfad."
+    },
+    {
+      "id": "IAD002",
+      "status": "Answered",
+      "question": "Darf aus den benannten Quellen ein neuer Intake entstehen?",
+      "answer": "Ja, als neuer scope-begrenzter Intake.",
+      "evidence": "Die bestehende Abarbeitungsreihenfolge benennt den offenen Teil bereits; der aktuelle Nutzerauftrag autorisiert die konsistente Intake-Erstellung."
+    },
+    {
+      "id": "IAD003",
+      "status": "Answered",
+      "question": "Welcher fachliche Umfang bleibt erhalten?",
+      "answer": "Der bestehende fachliche Scope bleibt unveraendert; ergaenzt werden nur Creator-Vertrag und nachgewiesene Konsistenzkorrekturen.",
+      "evidence": "Genehmigter scope-neutraler Flottenplan."
+    },
+    {
+      "id": "IAD004",
+      "status": "Answered",
+      "question": "Welche Delivery Authority gilt fuer spaetere autonome Laeufe?",
+      "answer": "LocalImplementation.",
+      "evidence": "Dieser Authoring-Lauf erteilt keine Remote-Autoritaet."
+    }
+  ],
+  "openDecisionIds": [],
+  "questionCount": 0,
+  "agentSurface": {
+    "specifyCanonicalId": "speckit.specify",
+    "specifyInvocation": "$speckit-specify",
+    "autonomousCanonicalId": "speckit.autonomous",
+    "autonomousInvocation": "$speckit-autonomous"
+  },
+  "deliveryAuthority": "LocalImplementation",
+  "authorityEvidence": "Default: Dieser Authoring-Lauf erteilt keine Remote-Schreib- oder Lieferautoritaet fuer spaetere Feature-Laeufe.",
+  "promptState": "Enabled",
+  "nextAction": "$speckit-intake-review Lastenheft_IDE-L10N.md",
+  "provenanceMode": "New",
+  "supersedes": {
+    "receiptPath": "N/A",
+    "targetNormalizedSha256": "N/A"
+  },
+  "legacyAdoption": {
+    "evidenceType": "N/A",
+    "priorTargetNormalizedSha256": "N/A",
+    "priorGitBlob": "N/A"
+  },
+  "updateAuthorized": false,
+  "updateAuthorityEvidence": "N/A"
+}

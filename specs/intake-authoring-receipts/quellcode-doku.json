@@ -1,25 +1,44 @@
 {
-  "schemaVersion": "1.1",
-  "receiptId": "0a3b629e-71a5-4ceb-b522-c63df2cb244f",
+  "schemaVersion": "2.0",
+  "documentType": "IntakeReceipt",
+  "receiptId": "a4f57352-c053-4382-a12d-d34df7b8fc96",
+  "intakeId": "0a3b629e-71a5-4ceb-b522-c63df2cb244f",
   "generator": {
     "preset": "intake-authoring-governance",
-    "version": "0.1.1"
+    "version": "0.2.1"
   },
-  "createdAt": "2026-07-23T14:34:35Z",
+  "createdAt": "2026-07-26T22:00:00Z",
+  "operation": {
+    "operationId": "56c9ab29-90fe-437d-a47e-8bf50f3bb457",
+    "type": "Update",
+    "authorityEvidence": "User-approved TinyPl0 requirements and intake consolidation plan"
+  },
   "status": "ReadyForReview",
   "target": {
-    "path": "Lastenheft_Quellcode_Doku.md",
-    "normalizedSha256": "048916cd145b7e11bd33ec385370a8a692aaabe515e2b7bca3f6d583f150d1e8"
+    "path": "requirements/intakes/active/Lastenheft_Quellcode_Doku.md",
+    "normalizedSha256": "5a04868a629453e433da1a733239c948294f9a6462ac11968c806556eefffed2"
   },
   "sources": [
     {
+      "sourceId": "SRC001",
       "order": 1,
-      "kind": "Pasted",
-      "label": "Legacy target before Intake Creator adoption",
-      "location": "SnapshotOnly",
-      "path": "N/A",
-      "normalizedSha256": "9d20f7f7b34a07fa75935f0cf26876066f6a26b3acb2a97f5404b3b6fa59bbdb",
-      "gitBlob": "a0d2e84de2edc24a0e4abbab24d95098b15bb906"
+      "kind": "File",
+      "label": "Archived predecessor intake",
+      "location": "Repository",
+      "path": "requirements/intakes/history/pre-intake-split-20260726/Lastenheft_Quellcode_Doku.md",
+      "requestedUrl": "N/A",
+      "finalUrl": "N/A",
+      "retrievedAt": "N/A",
+      "httpStatus": "N/A",
+      "contentType": "N/A",
+      "contentLength": "N/A",
+      "etag": "N/A",
+      "lastModified": "N/A",
+      "redirectChain": [],
+      "rawSha256": "N/A",
+      "normalizedSha256": "048916cd145b7e11bd33ec385370a8a692aaabe515e2b7bca3f6d583f150d1e8",
+      "gitBlob": "N/A",
+      "proofBoundary": "Repository predecessor and normalized SHA-256"
     }
   ],
   "profile": "level2-lastenheft",
@@ -28,30 +47,16 @@
     {
       "id": "IAD001",
       "status": "Answered",
-      "question": "Welcher Zielpfad bleibt verbindlich?",
-      "answer": "Lastenheft_Quellcode_Doku.md",
-      "evidence": "Die aktive Repository-Abarbeitungsreihenfolge benennt diesen Pfad."
+      "question": "Welcher Zielpfad ist nach der Konsolidierung verbindlich?",
+      "answer": "requirements/intakes/active/Lastenheft_Quellcode_Doku.md",
+      "evidence": "specs/requirements-reconciliation-20260726/migration-proposal.json"
     },
     {
       "id": "IAD002",
       "status": "Answered",
-      "question": "Darf der bestehende Alt-Intake aktualisiert werden?",
-      "answer": "Ja, als diff-arme LegacyAdoption.",
-      "evidence": "Der aktuelle Nutzerauftrag autorisiert Creator-Normalisierung und Review der aktiven Level-2-Intakes."
-    },
-    {
-      "id": "IAD003",
-      "status": "Answered",
-      "question": "Welcher fachliche Umfang bleibt erhalten?",
-      "answer": "Der bestehende fachliche Scope bleibt unveraendert; ergaenzt werden nur Creator-Vertrag und nachgewiesene Konsistenzkorrekturen.",
-      "evidence": "Genehmigter scope-neutraler Flottenplan."
-    },
-    {
-      "id": "IAD004",
-      "status": "Answered",
-      "question": "Welche Delivery Authority gilt fuer spaetere autonome Laeufe?",
-      "answer": "LocalImplementation.",
-      "evidence": "Dieser Authoring-Lauf erteilt keine Remote-Autoritaet."
+      "question": "Welche Delivery Authority gilt?",
+      "answer": "LocalImplementation",
+      "evidence": "The migration grants no feature-delivery authority."
     }
   ],
   "openDecisionIds": [],
@@ -63,19 +68,28 @@
     "autonomousInvocation": "$speckit-autonomous"
   },
   "deliveryAuthority": "LocalImplementation",
-  "authorityEvidence": "Default: Dieser Authoring-Lauf erteilt keine Remote-Schreib- oder Lieferautoritaet fuer spaetere Feature-Laeufe.",
+  "authorityEvidence": "Default: this migration grants no remote feature-delivery authority.",
   "promptState": "Enabled",
-  "nextAction": "$speckit-intake-review Lastenheft_Quellcode_Doku.md",
-  "provenanceMode": "LegacyAdoption",
+  "provenanceMode": "Supersession",
   "supersedes": {
-    "receiptPath": "N/A",
-    "targetNormalizedSha256": "N/A"
+    "receiptPath": "specs/intake-authoring-receipts/history/quellcode-doku.schema-1.1.json",
+    "targetNormalizedSha256": "048916cd145b7e11bd33ec385370a8a692aaabe515e2b7bca3f6d583f150d1e8",
+    "archiveTargetPath": "requirements/intakes/history/pre-intake-split-20260726/Lastenheft_Quellcode_Doku.md",
+    "archiveReceiptPath": "specs/intake-authoring-receipts/history/quellcode-doku.schema-1.1.json"
   },
   "legacyAdoption": {
-    "evidenceType": "GitBlob",
-    "priorTargetNormalizedSha256": "9d20f7f7b34a07fa75935f0cf26876066f6a26b3acb2a97f5404b3b6fa59bbdb",
-    "priorGitBlob": "a0d2e84de2edc24a0e4abbab24d95098b15bb906"
+    "evidenceType": "N/A",
+    "priorTargetNormalizedSha256": "N/A",
+    "priorGitBlob": "N/A"
   },
   "updateAuthorized": true,
-  "updateAuthorityEvidence": "Aktueller Nutzerauftrag: Creator-Normalisierung und Review der aktiven C#-Level-2- und cc65-Intakes."
+  "updateAuthorityEvidence": "User-approved migration preserves predecessor evidence.",
+  "series": {
+    "seriesId": "8541ffa1-6b52-4f95-a746-d870482eaf5d",
+    "manifestPath": "requirements/intakes/series/tinypl0-delivery/manifest.json",
+    "order": 4,
+    "role": "OrderedMember",
+    "supersedesIntakeIds": []
+  },
+  "nextAction": "$speckit-intake-review requirements/intakes/active/Lastenheft_Quellcode_Doku.md"
 }

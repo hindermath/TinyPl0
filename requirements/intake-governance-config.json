@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "1.0",
+  "repository": "hindermath/TinyPl0",
+  "canonicalIndex": "Pflichtenheft.md",
+  "baselineCount": 3,
+  "activeIntakeCount": 14,
+  "archiveIntakeCount": 2,
+  "historicalReferenceIntakeCount": 3,
+  "bindingDependencyCount": 9,
+  "preferredNext": "requirements/intakes/active/Lastenheft_Constitution_Change.md",
+  "seriesManifest": "requirements/intakes/series/tinypl0-delivery/manifest.json",
+  "featureMustRemainAbsent": true
+}

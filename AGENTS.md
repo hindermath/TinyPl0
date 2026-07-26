@@ -160,7 +160,8 @@ Enforced by `ArchitectureGuardTests` - do not violate these rules.
 ## Key Files
 
 - `TinyPl0.sln`: Main solution file.
-- `Pflichtenheft_PL0_CSharp_DotNet10.md`: Main requirements and technical specification.
+- `Pflichtenheft.md`: Canonical requirements index.
+- `requirements/baseline/Pflichtenheft_PL0_CSharp_DotNet10.pre-intake-split.2026-07-26.md`: Historical requirements and technical specification.
 - `docs/ARCHITECTURE.md`: High-level system architecture and mapping from Pascal to C#.
 - `docs/LANGUAGE_EBNF.md`: Formal grammar of the supported PL/0 dialects.
 - `docs/VM_INSTRUCTION_SET.md`: Detailed description of the P-Code instruction set.
@@ -177,7 +178,17 @@ Enforced by `ArchitectureGuardTests` - do not violate these rules.
 - Prerequisites: .NET 10 SDK.
 - For `Pl0.Ide`, `<Version>` in `src/Pl0.Ide/Pl0.Ide.csproj` follows `Major.Minor.Patch.Build` with these fixed semantics: `Minor` = current Spec-Kit feature/branch number, interpreted numerically as the canonical PR number for versioning (`002` -> `2`) and used immediately even before a GitHub PR exists; `Patch` = current commit count in that feature/PR branch (after committing the current change); `Build` = manual build counter incremented by the bot before every `dotnet build` or `dotnet test`.
 - Whenever the bot creates a commit or updates a PR branch, it must automatically align the IDE version fields (`Version`, `AssemblyVersion`, `FileVersion`) to this rule before pushing.
-- Keep `Pflichtenheft_IDE.md` worklog up to date by appending new IDE-related work steps at the end.
+- Keep `docs/ide-worklog.md` up to date; the frozen IDE Pflichtenheft baseline is read-only.
+
+<!-- requirements-intake-governance:begin -->
+## Requirements- und Intake-Governance / Requirements and Intake Governance
+
+- `Pflichtenheft.md` ist der schlanke Einstieg; verbindliche Reihenfolge und Zustände stehen im Serienmanifest unter `requirements/intakes/series/`.
+- Aktive, abgeschlossene, ersetzte und optionale Intakes bleiben getrennt. Die Baselines unter `requirements/baseline/` sind read-only.
+- Nur `Eligible` bezeichnet den bevorzugten nächsten Intake. Der Zustand erteilt keine Ausführungs-, Remote- oder Merge-Berechtigung.
+
+*`Pflichtenheft.md` is the slim entry point; binding order and states live in the series manifest. Active, completed, superseded, and optional intakes remain separated, and baselines are read-only. `Eligible` grants no execution, remote, or merge authority.*
+<!-- requirements-intake-governance:end -->
 
 ## Copilot Instructions
 

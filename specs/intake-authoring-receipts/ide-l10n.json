@@ -1,34 +1,44 @@
 {
-  "schemaVersion": "1.1",
-  "receiptId": "c290656d-eca5-4ab6-8a0d-9788e90526b4",
+  "schemaVersion": "2.0",
+  "documentType": "IntakeReceipt",
+  "receiptId": "90c463c4-c4cc-4133-a67a-6be9eea3ce29",
+  "intakeId": "c290656d-eca5-4ab6-8a0d-9788e90526b4",
   "generator": {
     "preset": "intake-authoring-governance",
-    "version": "0.1.1"
+    "version": "0.2.1"
   },
-  "createdAt": "2026-07-23T14:34:35Z",
+  "createdAt": "2026-07-26T22:00:00Z",
+  "operation": {
+    "operationId": "626802ec-39ec-41b6-a559-4e14c20aa8f1",
+    "type": "Update",
+    "authorityEvidence": "User-approved TinyPl0 requirements and intake consolidation plan"
+  },
   "status": "ReadyForReview",
   "target": {
-    "path": "Lastenheft_IDE-L10N.md",
-    "normalizedSha256": "9ec184ccd5c6e6637c7a0e863ab49203d1767ba1d16e4b90c1168cf4187a5896"
+    "path": "requirements/intakes/active/Lastenheft_IDE-L10N.md",
+    "normalizedSha256": "490cc5f62e81a825029567f6d218fd21fea51e03c39a3885bb56154462ca2806"
   },
   "sources": [
     {
+      "sourceId": "SRC001",
       "order": 1,
       "kind": "File",
-      "label": "Lastenheft_L10N.001-l10n-backend.md",
+      "label": "Archived predecessor intake",
       "location": "Repository",
-      "path": "Lastenheft_L10N.001-l10n-backend.md",
-      "normalizedSha256": "69df8dd22889f9d7cddda5171e818b5d4b7711aa049f00852c299609c0b78f25",
-      "gitBlob": "7900e5999f71004cef8faadbc5516fe5ab10c05a"
-    },
-    {
-      "order": 2,
-      "kind": "File",
-      "label": "Lastenheft_Abarbeitungsreihenfolge.md",
-      "location": "Repository",
-      "path": "Lastenheft_Abarbeitungsreihenfolge.md",
-      "normalizedSha256": "6a444ec359a332dc8c13aaf6864d7eeebaa1ffbd1f40ec1d1026351ce7d5da3c",
-      "gitBlob": "11b8b2cfbad591325c1409c52122ee074aa98f13"
+      "path": "requirements/intakes/history/pre-intake-split-20260726/Lastenheft_IDE-L10N.md",
+      "requestedUrl": "N/A",
+      "finalUrl": "N/A",
+      "retrievedAt": "N/A",
+      "httpStatus": "N/A",
+      "contentType": "N/A",
+      "contentLength": "N/A",
+      "etag": "N/A",
+      "lastModified": "N/A",
+      "redirectChain": [],
+      "rawSha256": "N/A",
+      "normalizedSha256": "9ec184ccd5c6e6637c7a0e863ab49203d1767ba1d16e4b90c1168cf4187a5896",
+      "gitBlob": "N/A",
+      "proofBoundary": "Repository predecessor and normalized SHA-256"
     }
   ],
   "profile": "level2-lastenheft",
@@ -37,30 +47,16 @@
     {
       "id": "IAD001",
       "status": "Answered",
-      "question": "Welcher Zielpfad bleibt verbindlich?",
-      "answer": "Lastenheft_IDE-L10N.md",
-      "evidence": "Die aktive Repository-Abarbeitungsreihenfolge benennt diesen Pfad."
+      "question": "Welcher Zielpfad ist nach der Konsolidierung verbindlich?",
+      "answer": "requirements/intakes/active/Lastenheft_IDE-L10N.md",
+      "evidence": "specs/requirements-reconciliation-20260726/migration-proposal.json"
     },
     {
       "id": "IAD002",
       "status": "Answered",
-      "question": "Darf aus den benannten Quellen ein neuer Intake entstehen?",
-      "answer": "Ja, als neuer scope-begrenzter Intake.",
-      "evidence": "Die bestehende Abarbeitungsreihenfolge benennt den offenen Teil bereits; der aktuelle Nutzerauftrag autorisiert die konsistente Intake-Erstellung."
-    },
-    {
-      "id": "IAD003",
-      "status": "Answered",
-      "question": "Welcher fachliche Umfang bleibt erhalten?",
-      "answer": "Der bestehende fachliche Scope bleibt unveraendert; ergaenzt werden nur Creator-Vertrag und nachgewiesene Konsistenzkorrekturen.",
-      "evidence": "Genehmigter scope-neutraler Flottenplan."
-    },
-    {
-      "id": "IAD004",
-      "status": "Answered",
-      "question": "Welche Delivery Authority gilt fuer spaetere autonome Laeufe?",
-      "answer": "LocalImplementation.",
-      "evidence": "Dieser Authoring-Lauf erteilt keine Remote-Autoritaet."
+      "question": "Welche Delivery Authority gilt?",
+      "answer": "LocalImplementation",
+      "evidence": "The migration grants no feature-delivery authority."
     }
   ],
   "openDecisionIds": [],
@@ -72,19 +68,28 @@
     "autonomousInvocation": "$speckit-autonomous"
   },
   "deliveryAuthority": "LocalImplementation",
-  "authorityEvidence": "Default: Dieser Authoring-Lauf erteilt keine Remote-Schreib- oder Lieferautoritaet fuer spaetere Feature-Laeufe.",
+  "authorityEvidence": "Default: this migration grants no remote feature-delivery authority.",
   "promptState": "Enabled",
-  "nextAction": "$speckit-intake-review Lastenheft_IDE-L10N.md",
-  "provenanceMode": "New",
+  "provenanceMode": "Supersession",
   "supersedes": {
-    "receiptPath": "N/A",
-    "targetNormalizedSha256": "N/A"
+    "receiptPath": "specs/intake-authoring-receipts/history/ide-l10n.schema-1.1.json",
+    "targetNormalizedSha256": "9ec184ccd5c6e6637c7a0e863ab49203d1767ba1d16e4b90c1168cf4187a5896",
+    "archiveTargetPath": "requirements/intakes/history/pre-intake-split-20260726/Lastenheft_IDE-L10N.md",
+    "archiveReceiptPath": "specs/intake-authoring-receipts/history/ide-l10n.schema-1.1.json"
   },
   "legacyAdoption": {
     "evidenceType": "N/A",
     "priorTargetNormalizedSha256": "N/A",
     "priorGitBlob": "N/A"
   },
-  "updateAuthorized": false,
-  "updateAuthorityEvidence": "N/A"
+  "updateAuthorized": true,
+  "updateAuthorityEvidence": "User-approved migration preserves predecessor evidence.",
+  "series": {
+    "seriesId": "8541ffa1-6b52-4f95-a746-d870482eaf5d",
+    "manifestPath": "requirements/intakes/series/tinypl0-delivery/manifest.json",
+    "order": 6,
+    "role": "OrderedMember",
+    "supersedesIntakeIds": []
+  },
+  "nextAction": "$speckit-intake-review requirements/intakes/active/Lastenheft_IDE-L10N.md"
 }

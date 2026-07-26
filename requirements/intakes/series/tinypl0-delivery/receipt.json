@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "1.0",
+  "documentType": "IntakeSeriesReceipt",
+  "receiptId": "732af1e4-1e1e-4297-abaf-670f07eb4ede",
+  "seriesId": "8541ffa1-6b52-4f95-a746-d870482eaf5d",
+  "generator": {
+    "preset": "intake-sequencing-governance",
+    "version": "0.1.1"
+  },
+  "createdAt": "2026-07-26T22:00:00Z",
+  "operation": {
+    "operationId": "c32303df-0d18-4360-a57e-a3aa16172c26",
+    "type": "Create",
+    "authorityEvidence": "User-approved TinyPl0 requirements and intake consolidation plan"
+  },
+  "status": "Ready",
+  "manifest": {
+    "path": "requirements/intakes/series/tinypl0-delivery/manifest.json",
+    "normalizedSha256": "b6176867391327616bc215f145164e223e5933dfe93280af8f0b5e717ec3e38e"
+  },
+  "supersedes": {
+    "receiptPath": "N/A",
+    "receiptNormalizedSha256": "N/A",
+    "manifestArchivePath": "N/A",
+    "manifestArchiveSha256": "N/A"
+  },
+  "tombstone": {
+    "path": "N/A",
+    "normalizedSha256": "N/A"
+  },
+  "nextAction": "$speckit-intake-series-status"
+}

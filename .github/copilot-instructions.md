@@ -221,7 +221,8 @@ When modifying parser or lexer:
 
 ## Key Documentation Files
 
-- `Pflichtenheft_PL0_CSharp_DotNet10.md`: Requirements and technical specification
+- `Pflichtenheft.md`: Canonical requirements index
+- `requirements/baseline/Pflichtenheft_PL0_CSharp_DotNet10.pre-intake-split.2026-07-26.md`: Historical requirements and technical specification
 - `docs/project-statistics.md`: Living project statistics ledger with code/doc counts and manual-effort baseline
 
 ## Agentische Skriptausfuehrung / Agentic Script Execution
@@ -272,7 +273,17 @@ Whenever a commit is created or the PR branch is updated, align `Version`, `Asse
 
 ### IDE Worklog
 
-After any IDE-related work, append a new entry to the worklog at the bottom of `Pflichtenheft_IDE.md`.
+After IDE-related work, append a new entry to `docs/ide-worklog.md`; keep the frozen IDE Pflichtenheft baseline read-only.
+
+<!-- requirements-intake-governance:begin -->
+## Requirements- und Intake-Governance / Requirements and Intake Governance
+
+- `Pflichtenheft.md` ist der schlanke Einstieg; verbindliche Reihenfolge und Zustände stehen im Serienmanifest unter `requirements/intakes/series/`.
+- Aktive, abgeschlossene, ersetzte und optionale Intakes bleiben getrennt. Die Baselines unter `requirements/baseline/` sind read-only.
+- Nur `Eligible` bezeichnet den bevorzugten nächsten Intake. Der Zustand erteilt keine Ausführungs-, Remote- oder Merge-Berechtigung.
+
+*`Pflichtenheft.md` is the slim entry point; binding order and states live in the series manifest. Active, completed, superseded, and optional intakes remain separated, and baselines are read-only. `Eligible` grants no execution, remote, or merge authority.*
+<!-- requirements-intake-governance:end -->
 
 ## Important Notes
 

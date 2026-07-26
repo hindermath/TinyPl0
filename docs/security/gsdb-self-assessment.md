@@ -28,11 +28,11 @@ not a formal approval.*
 | OK | Preset cross-platform-governance | `.specify/presets/` | per specify preset list nachweisbar | - |
 | OK | Preset agent-parity-governance | `.specify/presets/` | per specify preset list nachweisbar | - |
 | OK | Projektspezifischer Nachweisort | `docs/security/` | Nachweisordner vorhanden | - |
-| OK | RL-SE-/Checklist-Selbstpruefungs-Intake | `Lastenheft_RL-SE-Checklist-Selbstpruefung.md` | vorhanden | - |
-| OK | Secure-Development-Hardening-Intake | `Lastenheft_Secure-Development-Hardening.md` | vorhanden | - |
-| OK | GSDB-Spec-Kit-Intensivpruefungs-Intake | `Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md` | Intake vorhanden | - |
+| OK | RL-SE-/Checklist-Selbstpruefungs-Intake | `requirements/intakes/active/Lastenheft_RL-SE-Checklist-Selbstpruefung.md` | vorhanden | - |
+| OK | Secure-Development-Hardening-Intake | `requirements/intakes/active/Lastenheft_Secure-Development-Hardening.md` | vorhanden | - |
+| OK | GSDB-Spec-Kit-Intensivpruefungs-Intake | `requirements/intakes/active/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md` | Intake vorhanden | - |
 
 ## Ergebnis / Result
 
 - Offene Punkte / Open findings: 0
-- Naechster Schritt / Next step: `Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md` spaeter manuell mit `/speckit-specify` starten, wenn die intensive Pruefung erfolgen soll.
+- Naechster Schritt / Next step: `requirements/intakes/active/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md` spaeter manuell mit `/speckit-specify` starten, wenn die intensive Pruefung erfolgen soll.

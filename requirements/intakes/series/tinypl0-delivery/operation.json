@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "1.0",
+  "documentType": "IntakeSeriesOperation",
+  "operationId": "c32303df-0d18-4360-a57e-a3aa16172c26",
+  "seriesId": "8541ffa1-6b52-4f95-a746-d870482eaf5d",
+  "type": "Create",
+  "status": "Published",
+  "authorityEvidence": "User-approved TinyPl0 requirements and intake consolidation plan",
+  "proposalNormalizedSha256": "63e10cecef017d34752955ef78f4123ad8185520ba9846223d4ce65def030002",
+  "preparedPaths": [
+    "requirements/intakes/series/tinypl0-delivery/manifest.json",
+    "requirements/intakes/series/tinypl0-delivery/receipt.json",
+    "requirements/intakes/series/tinypl0-delivery/order.md"
+  ],
+  "validation": {
+    "bash": "Pass",
+    "powerShell": "Pass"
+  },
+  "publication": {
+    "status": "Published",
+    "publishedPaths": [
+      "requirements/intakes/series/tinypl0-delivery/manifest.json",
+      "requirements/intakes/series/tinypl0-delivery/receipt.json",
+      "requirements/intakes/series/tinypl0-delivery/order.md"
+    ]
+  }
+}
