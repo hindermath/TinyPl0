@@ -304,7 +304,9 @@ for (const [relativePath, content] of outputs) {
     process.exit(1);
   }
 }
-if (members.length !== config.activeIntakeCount || targets.length !== new Set(targets).size) {
+const configuredCountMismatch =
+  config.schemaVersion === "1.0" && members.length !== config.activeIntakeCount;
+if (configuredCountMismatch || targets.length !== new Set(targets).size) {
   throw new Error("configured active intake cardinality differs from generated members");
 }
 console.log(`TinyPl0 intake governance PASS (${members.length} active targets, ${dependencies.length} binding edges)`);

@@ -1,13 +1,25 @@
 {
-  "schemaVersion": "1.0",
-  "repository": "hindermath/TinyPl0",
-  "canonicalIndex": "Pflichtenheft.md",
-  "baselineCount": 3,
-  "activeIntakeCount": 14,
-  "archiveIntakeCount": 2,
-  "historicalReferenceIntakeCount": 3,
-  "bindingDependencyCount": 9,
-  "preferredNext": "requirements/intakes/active/Lastenheft_Constitution_Change.md",
-  "seriesManifest": "requirements/intakes/series/tinypl0-delivery/manifest.json",
-  "featureMustRemainAbsent": true
+  "schemaVersion": "2.0",
+  "documentationLanguage": "de-DE",
+  "artifactNaming": {
+    "profile": "de",
+    "canonicalIndex": "Pflichtenheft.md",
+    "intakePattern": "Lastenheft_<slug>.md",
+    "orderView": "Lastenheft_Abarbeitungsreihenfolge.md"
+  },
+  "roles": {
+    "requirements-index": "Pflichtenheft.md",
+    "requirements-intake": "requirements/intakes/active",
+    "intake-order": "Lastenheft_Abarbeitungsreihenfolge.md",
+    "requirements-baseline": "requirements/baseline"
+  },
+  "collections": {
+    "baseline": "requirements/baseline",
+    "active": "requirements/intakes/active",
+    "archive": "requirements/intakes/archive",
+    "backlog": "requirements/intakes/backlog",
+    "history": "requirements/intakes/history",
+    "seriesManifest": "requirements/intakes/series/tinypl0-delivery/manifest.json"
+  },
+  "legacyArtifactNames": []
 }
