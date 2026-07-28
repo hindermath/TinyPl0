@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "2.0",
+  "documentType": "IntakeGovernanceMigrationJournal",
+  "operationId": "0f400a2b-c8e5-4ecd-bb01-c384b894fcb5",
+  "state": "Completed",
+  "authorityEvidence": "Feature 014 MergeAndSync pilot authority",
+  "beforeSha256": "5aabce97fab2e379526e40fd6fd90985a8aac81309e5a65e0d7aaadd060c0b8b",
+  "afterSha256": "1050601fc4d99616805a071f39c6836d31ab5178704f2e18c9dc0d620565dd76",
+  "moves": [],
+  "updatedReferences": [
+    "Replaced manual schema-1.0 counts with computed schema-2.0 roles and collections"
+  ],
+  "validation": [
+    "Existing fourteen-target Series, two archived intakes, and all content hashes preserved",
+    "Bash and PowerShell schema-2.0 validators passed"
+  ],
+  "rollback": "Restore the schema-1.0 configuration with its recorded hash.",
+  "repairBoundary": "N/A"
+}
