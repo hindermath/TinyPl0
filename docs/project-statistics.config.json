@@ -72,6 +72,13 @@
       "labelDe": "003 Abschluss",
       "labelEn": "003 closeout",
       "netLines": 388
+    },
+    {
+      "slot": 9,
+      "id": "next-intake-index-repair",
+      "labelDe": "Next-Intake-Indexreparatur",
+      "labelEn": "Next-intake index repair",
+      "netLines": 7
     }
   ],
   "excludedPaths": [],
