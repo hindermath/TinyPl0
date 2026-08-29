@@ -1,11 +1,11 @@
 {
   "schemaVersion": "1.1",
-  "reviewId": "78435231-e579-486f-8d80-8192781c127d",
+  "reviewId": "357ed01f-f120-4634-8596-45e7baffa17d",
   "mode": "Series",
   "policy": "tinypl0-delivery-v1",
   "targets": [
     {
-      "path": "requirements/intakes/active/Lastenheft_Constitution_Change.md",
+      "path": "requirements/intakes/archive/Lastenheft_Constitution_Change.003-constitution-change.md",
       "role": "Primary"
     },
     {
@@ -67,7 +67,7 @@
   ],
   "series": {
     "orderedTargetPaths": [
-      "requirements/intakes/active/Lastenheft_Constitution_Change.md",
+      "requirements/intakes/archive/Lastenheft_Constitution_Change.003-constitution-change.md",
       "requirements/intakes/active/Lastenheft_Secure-Development-Hardening.md",
       "requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
       "requirements/intakes/active/Lastenheft_Quellcode_Doku.md",
@@ -84,7 +84,7 @@
       "requirements/intakes/active/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md"
     ],
     "roots": [
-      "requirements/intakes/active/Lastenheft_Constitution_Change.md",
+      "requirements/intakes/archive/Lastenheft_Constitution_Change.003-constitution-change.md",
       "requirements/intakes/active/Lastenheft_PL0_Optimierung.md",
       "requirements/intakes/active/Lastenheft_CLR_Assembly.md",
       "requirements/intakes/active/Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
@@ -92,7 +92,7 @@
     ],
     "dependencies": [
       {
-        "from": "requirements/intakes/active/Lastenheft_Constitution_Change.md",
+        "from": "requirements/intakes/archive/Lastenheft_Constitution_Change.003-constitution-change.md",
         "to": "requirements/intakes/active/Lastenheft_Secure-Development-Hardening.md",
         "kind": "HardCompletionGate"
       },

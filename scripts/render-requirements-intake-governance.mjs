@@ -22,11 +22,14 @@ const seriesRoot = "requirements/intakes/series/tinypl0-delivery";
 const seriesId = stableUuid("series");
 const seriesReceiptId = "224e145b-5e0f-4bab-8958-4e9b51364267";
 const seriesOperationId = "a6522a3c-1674-4db6-89e0-aeb538f79c2a";
-const reviewId = "78435231-e579-486f-8d80-8192781c127d";
+const reviewId = "357ed01f-f120-4634-8596-45e7baffa17d";
+const priorReviewId = "78435231-e579-486f-8d80-8192781c127d";
 const createdAt = "2026-07-26T22:00:00Z";
 const seriesUpdatedAt = "2026-08-29T20:57:25Z";
-const reviewHead = "272fdb9a07ec28d706ea27cbc52ad619d76d3555";
-const reviewedAt = "2026-08-29T16:07:18Z";
+const reviewHead = "5342f42eac5214d7491c80d2be3a97e1b17d63b8";
+const reviewedAt = "2026-08-29T21:54:27Z";
+const priorReviewArchivePath =
+  "requirements/intakes/series-archive/tinypl0-delivery/20260829T215427Z-review/superseded-review.json";
 
 const members = [
   ["constitution-change", "Lastenheft_Constitution_Change.md", "Completed"],
@@ -61,7 +64,7 @@ const members = [
   customReceipt: slug === "embeddable-vm-und-nuget",
 }));
 const targets = members.map((member) => member.path);
-const reviewTargets = members.map((member) => member.reviewPath);
+const reviewTargets = targets;
 const dependencies = Array.from({length: 10}, (_, index) => ({
   from: targets[index],
   to: targets[index + 1],
@@ -203,7 +206,7 @@ const request = {
   reviewId,
   mode: "Series",
   policy: "tinypl0-delivery-v1",
-  targets: members.map((member) => ({path: member.reviewPath, role: member.role})),
+  targets: members.map((member) => ({path: member.path, role: member.role})),
   series: {
     orderedTargetPaths: reviewTargets,
     roots: reviewRoots,
@@ -221,7 +224,7 @@ const result = {
   reviewedAt,
   repository: {root: ".", head: reviewHead},
   targets: members.map((member) => ({
-    path: member.reviewPath,
+    path: member.path,
     role: member.role,
     normalizedSha256: hashFile(member.path),
     gitBlob: "N/A",
@@ -233,16 +236,49 @@ const result = {
   coverage: {
     individual: reviewTargets,
     series: [
-      "Fifteen active intake hashes, lifecycle states, five roots, and ten binding gates",
+      "Fifteen current target hashes: one completed archived target and fourteen active targets",
+      "Schema 2.0 roles, collections, canonical index, portable order, lifecycle states, five roots, and ten binding gates",
       "VM/CLI to embeddable VM/NuGet to IDE handoff plus the external TinyCalc package gate",
       "Optimization and CLR stay blocked pending explicit architecture decisions",
-      "Three immutable baselines and two completed intakes remain outside executable scope",
+      "German-first and English-second CEFR-B2 learner policy, text-first accessibility, security and privacy boundaries, evidence, and delivery authority",
+      "Three immutable baselines and other completed intakes remain outside executable scope",
     ],
     workers: [],
   },
   summary: {critical: 0, high: 0, medium: 0, low: 0},
-  supersedes: "a6c1acb6-b75e-4875-a968-e5afb90bb289",
+  supersedes: priorReviewId,
   requestEvidence: {path: requestPath, normalizedSha256: digest(json(request))},
+};
+const priorReviewEvidence = {
+  schemaVersion: "1.0",
+  documentType: "SupersededIntakeReviewEvidence",
+  reviewId: priorReviewId,
+  status: "Ready",
+  reviewedAt: "2026-08-29T16:07:18Z",
+  targetCount: 15,
+  supersededBy: reviewId,
+  sourceRevision: "272fdb9a07ec28d706ea27cbc52ad619d76d3555",
+  request: {
+    path: `${seriesRoot}/intake-review-request.json`,
+    normalizedSha256: "1c6ca450b55e6d5b4de11eba7a15ccbcb817ad880e75b60141a98e5c1aecd15c",
+  },
+  result: {
+    path: `${seriesRoot}/intake-review-result.json`,
+    normalizedSha256: "3533dbc8a717ade82055dfaac644d30bd8a593858e30e8b5d6a8aab4cb1e11dc",
+  },
+  report: {
+    path: `${seriesRoot}/intake-review-report.md`,
+    normalizedSha256: "b521ca2ca9549ca5e590dd46dd6a3c653ea0798a353cfe955fb426b3f083daf6",
+  },
+  relocation: {
+    priorPath: "requirements/intakes/active/Lastenheft_Constitution_Change.md",
+    currentPath: "requirements/intakes/archive/Lastenheft_Constitution_Change.003-constitution-change.md",
+    normalizedSha256: "fe796de8ced6daf9cb3f4c890b929f47420a12deac2f37da793c4ea263fc2ff5",
+  },
+  authorityEvidence:
+    "User explicitly invoked speckit-intake-review for the current 15-target series after completed-target archival.",
+  proofBoundary:
+    "Hashes preserve the predecessor request, result, and report before the path-current complete series re-review.",
 };
 const seriesReceipt = {
   schemaVersion: "1.0",
@@ -308,51 +344,72 @@ const report = `# Intake Review: TinyPl0 Delivery Series
 - Policy: \`tinypl0-delivery-v1\`
 - Ergebnis: \`Ready\`
 - Umfang: 15 Ziele, 5 Wurzeln und 10 verbindliche Abhängigkeiten
-- Vorgängerreview: \`a6c1acb6-b75e-4875-a968-e5afb90bb289\`
+- Vorgängerreview: \`${priorReviewId}\`
+- Vorgängerevidenz: \`${priorReviewArchivePath}\`
 
 *The complete re-review covers all 15 current targets, five roots, and ten
-binding dependencies. It explicitly supersedes the remediation review.*
+binding dependencies. It explicitly supersedes the review that still named
+the completed Constitution target below the active collection.*
 
 ## Ergebnis / Result
 
-Die Schema-2.0-Governance, Zielhashes, Reihenfolge, DAG-Wurzeln, Kanten,
-Authority-Grenzen und der Handoff von VM/CLI über die einbettbare VM und die
-NuGet-Pakete zur IDE-Erweiterung sind konsistent. Der externe TinyCalc-Handoff
-und das Verbot einer lokalen ProjectReference als Fallback bleiben eindeutig.
+Die Schema-2.0-Governance löst Index, aktive Sammlung, Archiv, Baselines und
+Ordnungsansicht eindeutig auf. Alle 15 normalisierten Zielhashes stimmen. Das
+abgeschlossene Constitution-Ziel liegt unverändert im Archiv; die übrigen 14
+Ziele bleiben aktiv. Reihenfolge, fünf DAG-Wurzeln, zehn bindende Kanten und
+Lifecycle-Zustände stimmen mit dem Manifest und der Textansicht überein.
 
-Finding \`IR001\` ist behoben. Ein neuer Begriffsabschnitt erklärt Hostvertrag,
-Run/Step-Parität, SemVer, CancellationToken, SBOM, VEX, Provenance/SLSA,
-STRIDE/CAPEC und OpenSSF Scorecard deutsch zuerst und englisch danach auf
-CEFR-B2-Niveau. Scope, Anforderungen, Abnahmeschwellen, Reihenfolge, Gates und
-Delivery Authority blieben unverändert.
+*Schema 2.0 resolves the index, active collection, archive, baselines, and
+order view unambiguously. All 15 normalized target hashes match. The completed
+Constitution target is unchanged in the archive; the other 14 targets remain
+active. Order, five DAG roots, ten binding edges, and lifecycle states match
+the manifest and text view.*
 
-*Schema 2.0 governance, target hashes, order, DAG roots, edges, authority
-boundaries, and internal and external handoffs are consistent. Finding IR001
-is resolved through first-use learner explanations without changing scope,
-requirements, acceptance thresholds, order, gates, or delivery authority.*
+## Review-Abdeckung / Review Coverage
 
-## Reparaturnachweis / Repair Evidence
+| Bereich | Ergebnis | Evidenz |
+|---|---|---|
+| Identität, Ziel, Scope und Nicht-Ziele | \`Ready\` | 15 aktuelle Manifestziele und deren Intake-Abschnitte |
+| Atomare Anforderungen und messbare Abnahme | \`Ready\` | Zielhashes und bestehender Review \`${priorReviewId}\` |
+| Abhängigkeiten, Reihenfolge und Handoffs | \`Ready\` | 5 Wurzeln, 10 Kanten; VM/CLI → Pakete → IDE; TinyCalc extern |
+| Lernende, Sprache und Begriffe | \`Ready\` | Deutsch zuerst, Englisch danach, CEFR B2 und Erklärungen bei Erstnutzung |
+| Barrierefreiheit und Text-First | \`Ready\` | A11Y-Intake und Governance-Index bleiben ohne Layout- oder Farbabhängigkeit lesbar |
+| Security und Privacy | \`Ready\` | Secure Coding/Architecture, Trust Boundaries, SSDF/CWE und anwendbare Supply-Chain-Nachweise sind sichtbar; keine Secrets oder unnötigen Personendaten |
+| Plattform und Evidenz | \`Ready\` | C#/.NET-Registry, Bash/PowerShell-Parität, Hash-, Receipt- und Archivpfade |
+| Risiken und offene Fragen | \`Ready\` | Keine Findings, keine akzeptierten Risiken, keine offenen Fragen |
 
-- Geändertes Ziel:
-  \`requirements/intakes/active/Lastenheft_Embeddable-VM-und-NuGet.md\`
-- Autorisierung: ausdrücklicher Aufruf von \`speckit-intake-repair\` für das
-  aktuelle Ergebnis \`a6c1acb6-b75e-4875-a968-e5afb90bb289\`
-- Behobenes Finding: \`IR001\` / \`Medium\` / \`LearnerReadability\`
-- Verbleibende Findings: keine
+*The review covers identity, scope, atomic requirements, measurable
+acceptance, dependencies, handoffs, learner language, accessibility,
+security/privacy, platform fit, and evidence. No finding, accepted risk, or
+open question remains.*
 
-*The explicit repair invocation authorized only the learner terminology
-change. IR001 is resolved and no finding remains.*
+## Supersession und Pfadnachweis / Supersession And Path Evidence
+
+- Alter Reviewpfad: \`requirements/intakes/active/Lastenheft_Constitution_Change.md\`
+- Aktueller Zielpfad: \`requirements/intakes/archive/Lastenheft_Constitution_Change.003-constitution-change.md\`
+- Erhaltener normalisierter Hash:
+  \`fe796de8ced6daf9cb3f4c890b929f47420a12deac2f37da793c4ea263fc2ff5\`
+- Zielinhalte, Manifest, Receipt, Reihenfolge, Lifecycle und Archive wurden
+  nicht geändert.
+
+*The predecessor review used the pre-archive active path. This review binds
+the current archive path with the same normalized hash and changes no target,
+manifest, receipt, order, lifecycle, or existing archive content.*
 
 ## Risiken, Fragen und Authority / Risks, Questions And Authority
 
 - Akzeptierte Risiken: keine
 - Offene Fragen: keine
-- Delivery Authority: \`LocalImplementation\`
-- Keine Commit-, Push-, PR-, Merge-, Provider-, Secret- oder
-  NuGet-Veröffentlichungsberechtigung wurde erteilt.
+- Intake-Ausführungsrechte: nicht durch \`Eligible\` oder diesen Review erteilt
+- Review-Evidence-Lieferung: \`MergeAndSync\` mit ausdrücklich autorisiertem
+  Admin-Bypass
+- Keine Secret-, NuGet-Veröffentlichungs- oder Intake-Implementierungsrechte
+  wurden erteilt.
 
-*No risk was accepted and no question remains open. Local implementation
-authority does not grant remote or NuGet publication authority.*
+*No risk was accepted and no question remains open. The current authority
+covers delivery of this review evidence through MergeAndSync with explicit
+admin bypass; it does not authorize intake implementation, secrets, or NuGet
+publication.*
 `;
 const outputs = [
   [manifestPath, json(manifest)],
@@ -362,6 +419,7 @@ const outputs = [
   [requestPath, json(request)],
   [`${seriesRoot}/intake-review-result.json`, json(result)],
   [`${seriesRoot}/intake-review-report.md`, report],
+  [priorReviewArchivePath, json(priorReviewEvidence)],
   ...members.filter((member) => !member.customReceipt).map((member) => [
     `specs/intake-authoring-receipts/${member.slug}.json`,
     json(receiptFor(member)),
