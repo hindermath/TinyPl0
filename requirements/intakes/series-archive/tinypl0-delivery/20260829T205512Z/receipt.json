@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "1.0",
+  "documentType": "IntakeSeriesReceipt",
+  "receiptId": "aed21b52-f2cf-43e0-a05e-c3816c15770a",
+  "seriesId": "8541ffa1-6b52-4f95-a746-d870482eaf5d",
+  "generator": {
+    "preset": "intake-sequencing-governance",
+    "version": "0.2.3"
+  },
+  "createdAt": "2026-08-29T15:31:02Z",
+  "operation": {
+    "operationId": "5e0302a4-626a-4381-96ef-133e06e9da74",
+    "type": "Update",
+    "authorityEvidence": "User approved IAD001 including TinyPl0 rank 10 and approved the binding IAD002 delivery gate."
+  },
+  "status": "Ready",
+  "manifest": {
+    "path": "requirements/intakes/series/tinypl0-delivery/manifest.json",
+    "normalizedSha256": "5e4ca0a67a221854fef7abb092b7f014433f6dd1e6c0e24b71fc978f5096b3bf"
+  },
+  "supersedes": {
+    "receiptPath": "requirements/intakes/series-archive/tinypl0-delivery/20260829T153102Z/receipt.json",
+    "receiptNormalizedSha256": "50e85aa8ee345ccec925808a6ea9ad13e95d39ec1f22831d0b55fc84f11d76ff",
+    "manifestArchivePath": "requirements/intakes/series-archive/tinypl0-delivery/20260829T153102Z/manifest.json",
+    "manifestArchiveSha256": "b6176867391327616bc215f145164e223e5933dfe93280af8f0b5e717ec3e38e"
+  },
+  "tombstone": {
+    "path": "N/A",
+    "normalizedSha256": "N/A"
+  },
+  "nextAction": "$speckit-intake-series-status"
+}
