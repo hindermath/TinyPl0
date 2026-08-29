@@ -79,6 +79,13 @@
       "labelDe": "Next-Intake-Indexreparatur",
       "labelEn": "Next-intake index repair",
       "netLines": 7
+    },
+    {
+      "slot": 10,
+      "id": "current-series-review",
+      "labelDe": "Aktueller Serienreview",
+      "labelEn": "Current series review",
+      "netLines": 110
     }
   ],
   "excludedPaths": [],

@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "1.0",
+  "documentType": "SupersededIntakeReviewEvidence",
+  "reviewId": "78435231-e579-486f-8d80-8192781c127d",
+  "status": "Ready",
+  "reviewedAt": "2026-08-29T16:07:18Z",
+  "targetCount": 15,
+  "supersededBy": "357ed01f-f120-4634-8596-45e7baffa17d",
+  "sourceRevision": "272fdb9a07ec28d706ea27cbc52ad619d76d3555",
+  "request": {
+    "path": "requirements/intakes/series/tinypl0-delivery/intake-review-request.json",
+    "normalizedSha256": "1c6ca450b55e6d5b4de11eba7a15ccbcb817ad880e75b60141a98e5c1aecd15c"
+  },
+  "result": {
+    "path": "requirements/intakes/series/tinypl0-delivery/intake-review-result.json",
+    "normalizedSha256": "3533dbc8a717ade82055dfaac644d30bd8a593858e30e8b5d6a8aab4cb1e11dc"
+  },
+  "report": {
+    "path": "requirements/intakes/series/tinypl0-delivery/intake-review-report.md",
+    "normalizedSha256": "b521ca2ca9549ca5e590dd46dd6a3c653ea0798a353cfe955fb426b3f083daf6"
+  },
+  "relocation": {
+    "priorPath": "requirements/intakes/active/Lastenheft_Constitution_Change.md",
+    "currentPath": "requirements/intakes/archive/Lastenheft_Constitution_Change.003-constitution-change.md",
+    "normalizedSha256": "fe796de8ced6daf9cb3f4c890b929f47420a12deac2f37da793c4ea263fc2ff5"
+  },
+  "authorityEvidence": "User explicitly invoked speckit-intake-review for the current 15-target series after completed-target archival.",
+  "proofBoundary": "Hashes preserve the predecessor request, result, and report before the path-current complete series re-review."
+}
