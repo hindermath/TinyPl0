@@ -494,25 +494,25 @@ Profil 2 verwendet Git-getrackte Textdateien und sichtbare Git-Aktivitaet. Die W
 
 | Kennzahl / Metric | Wert / Value |
 |---|---:|
-| Textbasis / Text base | 230676 lines |
+| Textbasis / Text base | 230677 lines |
 | Textdateien / Text files | 1853 |
 | Beobachtbarer Zeitraum / Observable period | 2025-08-31..2026-08-29 |
 | Aktivtage / Active days | 86 |
-| Relevante Commits / Relevant commits | 322 |
+| Relevante Commits / Relevant commits | 323 |
 | Zeilen je Aktivtag / Lines per active day | 2682.3 |
 | Peak-Tag im Fenster / Peak day in window | 2026-02-14 / 177480 |
 | Peak-Woche im Fenster / Peak week in window | 2026-02-08 / 186065 |
 | Laengste Serie / Longest streak | 9 days |
 | Speedup vs. 80 lines/day | 33.5x |
 | Speedup vs. 125 lines/day | 21.5x |
-| Methodik / Methodology | v2; source `845b8133fd2d` |
+| Methodik / Methodology | v2; source `57aaa717973f` |
 
 ### Artefaktmix / Artifact Mix
 
 ```text
 Produktiv / Production          [#...................]   3.1% | 7222
 Tests                           [#...................]   4.1% | 9498
-Dokumentation / Documentation   [##########..........]  51.2% | 118112
+Dokumentation / Documentation   [##########..........]  51.2% | 118113
 Skripte / Scripts               [##..................]   9.6% | 22149
 Konfiguration / Configuration   [######..............]  30.0% | 69099
 Daten und Medien / Data and media [....................]   0.0% | 0
@@ -631,7 +631,7 @@ Slots 0..8
 | 5 | 002 / 002 | 1557 |
 | 6 | Synchronisierung / Synchronization | 162 |
 | 7 | Constitution 003 / Constitution 003 | 4846 |
-| 8 | 003 Abschluss / 003 closeout | 387 |
+| 8 | 003 Abschluss / 003 closeout | 388 |
 
 Die festen Slots halten den Phasenvergleich auch bei fehlenden oder spaeter ergaenzten Werten stabil.
 
@@ -681,6 +681,6 @@ DE: Das Fenster beginnt am 2025-08-31 und endet am 2026-08-29. Es enthaelt 86 ak
 | 2026-05 | 12329 |
 | 2026-06 | 37668 |
 | 2026-07 | 78990 |
-| 2026-08 | 20425 |
+| 2026-08 | 20448 |
 
 <!-- project-statistics-v2:end -->
