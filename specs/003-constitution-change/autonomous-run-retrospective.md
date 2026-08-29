@@ -47,7 +47,8 @@ Feldbeobachtungen.
   product behavior, public API, shared agent guidance, or template change.
 - Validation / Validierung: immutable PR/merge facts, schema-2.0 PreMerge and
   PostMerge validators, series manifest/receipt validators, and terminal run
-  state.
+  state; the completed-target correction also passes the eight positive and
+  negative alignment fixtures.
 - Next field gate / Naechste Feldschranke: apply the redacted dependency-output
   and temporary npm-working-directory tests in the next independent autonomous
   run; do not start that run automatically.
