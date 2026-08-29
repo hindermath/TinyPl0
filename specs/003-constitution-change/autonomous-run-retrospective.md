@@ -19,6 +19,7 @@
 | AR-003 | The statistics renderer requires a clean tree, so exact source-revision binding needed a separate statistics-only commit. | runbook / Runbook | TinyPl0 Profile 2 fields and chart layout are project-specific. | Consider a two-commit causal statistics pattern only after a second independent repository observation. | 1 | Medium / Mittel | Low; the main risk is stale source-revision evidence. | Repeat in a temporary repository whose renderer refuses dirty worktrees and verify source binding after each commit. | `ObserveAgain` |
 | AR-004 | GitHub required a human review although all executed checks, including the automated review, passed; the user explicitly authorized admin bypass. | provider-specific implementation / Provider-spezifische Umsetzung | Repository protection rules, owner identity, and PR number are not portable. | Never infer bypass authority from green checks; require explicit current user authority and record the unmet review decision. | 1 | High / Hoch | High: bypass without authority would violate repository governance. | In a disposable protected repository, verify that the workflow refuses bypass without an explicit authority fixture and records the review decision when authority exists. | `RejectProjectSpecific` |
 | AR-005 | The delivery-set validator caught trailing whitespace left by the minimal CS1591 project edit even though the earlier cached diff check did not report it. | evidence structure / Evidenzstruktur | The affected CLI project path is excluded. | Keep full-file delivery validation in addition to diff whitespace validation. | 1 | High / Hoch | Low; the existing validator already prevented delivery. | Add whitespace to an unchanged line of a changed UTF-8 file in a temporary repository and require the delivery validator to fail. | `Superseded` |
+| AR-006 | The first closeout CI run showed that generated intake-governance validation assumed every series target and review target remained in the active collection. A completed, byte-preserved archive target therefore failed identically on Windows, macOS, and Linux. | script requirement / Skriptanforderung | TinyPl0 paths, target counts, review IDs, and archive suffixes are excluded. | Generated series validation must distinguish active targets from completed archive targets, preserve historical receipts/reviews without claiming a new review, and implement the same decision in paired PowerShell and Bash entry points. | 1 | High / Hoch | High: a false current-review claim damages evidence integrity; silently omitting completed lineage loses governance evidence. | In a temporary series, complete and move the first target without changing its hash, preserve the prior review, then require generator, alignment, manifest, and receipt checks to pass on Windows, macOS, and Linux. | `Promote` |
 
 Correctness, security, permission, and evidence-integrity defects may be
 promoted after one deterministic occurrence. Efficiency preferences need at
@@ -30,15 +31,20 @@ Feldbeobachtungen.
 ## Outcome / Ergebnis
 
 - Local non-empty correction / Lokale nicht leere Korrektur: the final evidence
-  contract already uses a temporary working directory for npm and the delivery
-  candidate was cleaned before commit; no accepted feature behavior changed.
+  contract uses a temporary working directory for npm; the delivery candidate
+  was cleaned before commit; and the generated governance renderer, alignment
+  validator, and paired PowerShell/Bash entry points now support completed
+  archive targets without claiming a new intake review. No product behavior
+  changed.
 - Portable handoff / Portable Uebergabe:
   `specs/003-constitution-change/retrospective-handoff.md`.
 - Pending observations / Offene Beobachtungen: `AR-003`.
 - Rejected project details / Abgelehnte Projektdetails: `AR-004` provider and
   repository specifics; the provider-neutral explicit-authority rule remains.
-- Changed surfaces / Geaenderte Flaechen: retrospective and portable handoff
-  only; no product, API, shared agent guidance, template, or script change.
+- Changed surfaces / Geaenderte Flaechen: retrospective, portable handoff,
+  generated-governance renderer and validator, paired PowerShell/Bash alignment
+  entry points, governance config, IDE version metadata, and statistics; no
+  product behavior, public API, shared agent guidance, or template change.
 - Validation / Validierung: immutable PR/merge facts, schema-2.0 PreMerge and
   PostMerge validators, series manifest/receipt validators, and terminal run
   state.

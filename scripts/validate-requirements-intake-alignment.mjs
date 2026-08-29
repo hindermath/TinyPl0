@@ -22,24 +22,28 @@ export function validate(options = {}) {
   const errors = [];
   const manifest = parse(manifestPath);
   const coverage = parse(coveragePath);
+  const manifestTargets = manifest.orderedTargets ?? [];
+  const activeCollection = config.collections?.active ?? "requirements/intakes/active";
+  const archiveCollection = config.collections?.archive ?? "requirements/intakes/archive";
+  const expectedRequirementCount = config.schemaVersion === "1.0"
+    ? config.activeIntakeCount
+    : manifestTargets.length;
   const expectedActiveCount = config.schemaVersion === "1.0"
     ? config.activeIntakeCount
-    : (manifest.orderedTargets ?? []).length;
+    : manifestTargets.filter((target) => target.path?.startsWith(`${activeCollection}/`)).length;
   const expectedArchiveCount = config.schemaVersion === "1.0"
     ? config.archiveIntakeCount
-    : 2;
+    : 2 + manifestTargets.filter((target) => target.path?.startsWith(`${archiveCollection}/`)).length;
   const expectedHistoricalReferenceCount = config.schemaVersion === "1.0"
     ? config.historicalReferenceIntakeCount
     : 3;
   const expectedDependencyCount = config.schemaVersion === "1.0"
     ? config.bindingDependencyCount
     : 10;
-  const activeCollection = config.collections?.active ?? "requirements/intakes/active";
-  const archiveCollection = config.collections?.archive ?? "requirements/intakes/archive";
   const canonicalIndex = config.artifactNaming?.canonicalIndex ?? config.canonicalIndex;
   const preferredNext = config.schemaVersion === "1.0"
     ? config.preferredNext
-    : "requirements/intakes/active/Lastenheft_Constitution_Change.md";
+    : "requirements/intakes/active/Lastenheft_Secure-Development-Hardening.md";
   const baselines = [
     ["TP-BASELINE-1", "requirements/baseline/Pflichtenheft_PL0_CSharp_DotNet10.pre-intake-split.2026-07-26.md"],
     ["TP-BASELINE-2", "requirements/baseline/Pflichtenheft_IDE.pre-intake-split.2026-07-26.md"],
@@ -54,9 +58,9 @@ export function validate(options = {}) {
 
   const requirements = coverage.requirements ?? [];
   const requirementIds = requirements.map((item) => item.requirementId);
-  if (requirementIds.length !== expectedActiveCount ||
+  if (requirementIds.length !== expectedRequirementCount ||
       new Set(requirementIds).size !== requirementIds.length) {
-    errors.push(`coverage must contain exactly ${expectedActiveCount} unique requirement IDs`);
+    errors.push(`coverage must contain exactly ${expectedRequirementCount} unique requirement IDs`);
   }
   for (const item of requirements) {
     if (["Open", "PartiallySatisfied"].includes(item.status) &&
@@ -90,18 +94,24 @@ export function validate(options = {}) {
     errors.push("only the generated processing-order view may remain as root Lastenheft");
   }
 
-  const targets = manifest.orderedTargets ?? [];
+  const targets = manifestTargets;
   const targetPaths = targets.map((target) => target.path);
-  if (targetPaths.length !== expectedActiveCount ||
+  if (targetPaths.length !== expectedRequirementCount ||
       new Set(targetPaths).size !== targetPaths.length) {
-    errors.push(`series must contain exactly ${expectedActiveCount} unique active targets`);
+    errors.push(`series must contain exactly ${expectedRequirementCount} unique targets`);
   }
   const expectedActive = active.map((name) => `${activeCollection}/${name}`).sort();
-  if (JSON.stringify([...targetPaths].sort()) !== JSON.stringify(expectedActive)) {
+  const seriesActive = targets
+    .filter((target) => target.path?.startsWith(`${activeCollection}/`))
+    .map((target) => target.path)
+    .sort();
+  if (JSON.stringify(seriesActive) !== JSON.stringify(expectedActive)) {
     errors.push("active intake directory and series targets differ");
   }
-  if (targetPaths.some((target) => target.includes("/archive/") || target.includes("/backlog/"))) {
-    errors.push("archive or backlog target appears in executable series");
+  if (targets.some((target) =>
+    target.path?.includes("/backlog/") ||
+    (target.path?.includes("/archive/") && target.status !== "Completed"))) {
+    errors.push("only Completed series targets may use the archive collection");
   }
   for (const target of targets) {
     if (!target.path || !fs.existsSync(resolve(target.path))) {
@@ -172,13 +182,16 @@ export function validate(options = {}) {
 
   const activeReceipts = fs.readdirSync(resolve("specs/intake-authoring-receipts"))
     .filter((name) => name.endsWith(".json"));
-  if (activeReceipts.length !== expectedActiveCount) {
-    errors.push(`expected ${expectedActiveCount} active receipts, found ${activeReceipts.length}`);
+  if (activeReceipts.length !== expectedRequirementCount) {
+    errors.push(`expected ${expectedRequirementCount} lineage receipts, found ${activeReceipts.length}`);
   }
   const receiptTargets = activeReceipts.map((name) =>
-    parse(`specs/intake-authoring-receipts/${name}`).target?.path).sort();
-  if (JSON.stringify(receiptTargets) !== JSON.stringify([...targetPaths].sort())) {
-    errors.push("active receipts and series targets differ");
+    parse(`specs/intake-authoring-receipts/${name}`).target ?? {});
+  for (const target of targets) {
+    const bound = target.path?.startsWith(`${activeCollection}/`)
+      ? receiptTargets.some((receipt) => receipt.path === target.path)
+      : receiptTargets.some((receipt) => receipt.normalizedSha256 === target.normalizedSha256);
+    if (!bound) errors.push(`lineage receipt does not bind series target: ${target.path}`);
   }
 
   return errors;

@@ -713,8 +713,8 @@ resume evidence. The later explicit user request authorized complete
 | PostMerge | `/tmp/003-constitution-change.postmerge-gate-evidence.json`; schema 2.0 validation Pass; normalized SHA-256 `eb20bc4dad45e0f5f45b4c309ace595e5ee678c8807a0b8f04d6d26b8f591c7d` |
 | Intake archive | Byte-preserving move to `requirements/intakes/archive/Lastenheft_Constitution_Change.003-constitution-change.md`; content SHA-256 remains `fe796de8ced6daf9cb3f4c890b929f47420a12deac2f37da793c4ea263fc2ff5` |
 | Series successor | Previous manifest and receipt archived byte-identically under `requirements/intakes/series-archive/tinypl0-delivery/20260829T205512Z/`; successor manifest and receipt pass both PowerShell and Bash validators; rank 2 is `Eligible` but was not started |
-| Retrospective | `specs/003-constitution-change/autonomous-run-retrospective.md`; validated phase result SHA-256 `48616cdc3e0107043fb7bcde52063aa47d8a3b2786aace917c7f22217d300af7` |
-| Causal closeout candidate | Version pre-aligned to final closeout-branch count `436`; Release build at `1.3.436.27` completed with 0 warnings/0 errors and the rebuilt full test at `1.3.436.28` passed 266/266 |
+| Retrospective | `specs/003-constitution-change/autonomous-run-retrospective.md`; validated phase result SHA-256 `162e115ae0fd08cff2d27855a1185848394542cbaa6458aa375427d36a0afcdf` |
+| Causal closeout candidate | The first PR #69 run exposed a cross-platform active-only assumption in generated intake governance. After the bounded renderer/validator and PowerShell/Bash parity fix, version is pre-aligned to final closeout-branch count `438`; Release build at `1.3.438.29` completed with 0 warnings/0 errors and the rebuilt full test at `1.3.438.30` passed 266/266. |
 | Terminal state | Schema 1.1 validator Pass; `Completed`, stage `Retrospective`, tasks 73/73, all four closeout fields `Completed`, next action `N/A` |
 
 No follow-up feature or intake run was started. The next action requires a new,

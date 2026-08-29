@@ -18,6 +18,13 @@ einem anderen Repository.
    status with the baseline and fail on new package files or `node_modules`.
    / Temporaere Node-Initialisierung muss im echten Temporaerverzeichnis laufen;
    anschliessend wird der Repository-Status auf Rueckstaende geprueft.
+3. Intake-series tooling must treat completed archive targets as preserved
+   lineage, not as active work. Historical authoring receipts and reviews may
+   remain generator-bound evidence, but the tooling must not present them as a
+   new current review. Paired PowerShell and Bash entry points must make the
+   same decision. / Serienwerkzeuge behandeln abgeschlossene Archivziele als
+   erhaltene Lineage und nicht als aktive Arbeit; historische Receipts und
+   Reviews duerfen dabei keinen neuen Review vortaeuschen.
 
 ## Observe again / Erneut beobachten
 
