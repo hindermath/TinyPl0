@@ -1,13 +1,13 @@
 {
   "schemaVersion": "1.1",
-  "reviewId": "311a8267-6516-46e1-a2a6-e8c793e2b6c9",
+  "reviewId": "78435231-e579-486f-8d80-8192781c127d",
   "mode": "Series",
   "status": "Ready",
   "policy": "tinypl0-delivery-v1",
-  "reviewedAt": "2026-07-26T22:00:00Z",
+  "reviewedAt": "2026-08-29T16:07:18Z",
   "repository": {
     "root": ".",
-    "head": "07dae1c76bdbe0b3a307a366190cec7fbbe2a35f"
+    "head": "272fdb9a07ec28d706ea27cbc52ad619d76d3555"
   },
   "targets": [
     {
@@ -65,6 +65,12 @@
       "gitBlob": "N/A"
     },
     {
+      "path": "requirements/intakes/active/Lastenheft_Embeddable-VM-und-NuGet.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "1865ff87d20cdac8f4ace03df2017aeb55b7f8302ad6dcdaf9af5f796d78f835",
+      "gitBlob": "N/A"
+    },
+    {
       "path": "requirements/intakes/active/Lastenheft_IDE-Erweiterung-Pl0Ide_PAsm_PCod.md",
       "role": "OrderedMember",
       "normalizedSha256": "d273b99f19a8996f7b584940a7b2e3ee291e79dc4e6ce52a7176e0bbb6c3c689",
@@ -110,6 +116,7 @@
       "requirements/intakes/active/Lastenheft_A11Y_IDE.md",
       "requirements/intakes/active/Lastenheft_Options_Als_Parameter.md",
       "requirements/intakes/active/Lastenheft_VM_CLI.md",
+      "requirements/intakes/active/Lastenheft_Embeddable-VM-und-NuGet.md",
       "requirements/intakes/active/Lastenheft_IDE-Erweiterung-Pl0Ide_PAsm_PCod.md",
       "requirements/intakes/active/Lastenheft_PL0_Optimierung.md",
       "requirements/intakes/active/Lastenheft_CLR_Assembly.md",
@@ -117,7 +124,8 @@
       "requirements/intakes/active/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md"
     ],
     "series": [
-      "Fourteen active intake hashes, lifecycle states, roots, and nine binding gates",
+      "Fifteen active intake hashes, lifecycle states, five roots, and ten binding gates",
+      "VM/CLI to embeddable VM/NuGet to IDE handoff plus the external TinyCalc package gate",
       "Optimization and CLR stay blocked pending explicit architecture decisions",
       "Three immutable baselines and two completed intakes remain outside executable scope"
     ],
@@ -129,9 +137,9 @@
     "medium": 0,
     "low": 0
   },
-  "supersedes": "1802a845-5024-4c8b-99f4-085510bda4b4",
+  "supersedes": "a6c1acb6-b75e-4875-a968-e5afb90bb289",
   "requestEvidence": {
     "path": "requirements/intakes/series/tinypl0-delivery/intake-review-request.json",
-    "normalizedSha256": "59ba9cefaac907164b213e6611c60ab4be27c1306e174e111ee7783d1ea33d38"
+    "normalizedSha256": "1c6ca450b55e6d5b4de11eba7a15ccbcb817ad880e75b60141a98e5c1aecd15c"
   }
 }

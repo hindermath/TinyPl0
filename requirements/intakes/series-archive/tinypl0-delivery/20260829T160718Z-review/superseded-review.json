@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "1.0",
+  "documentType": "SupersededIntakeReviewEvidence",
+  "reviewId": "a6c1acb6-b75e-4875-a968-e5afb90bb289",
+  "status": "NeedsRemediation",
+  "reviewedAt": "2026-08-29T16:02:07Z",
+  "targetCount": 15,
+  "supersededBy": "78435231-e579-486f-8d80-8192781c127d",
+  "request": {
+    "normalizedSha256": "d085192dca7048083f3707e074693c1d4c13c0f7911ff7f5b65af074a24164d2"
+  },
+  "result": {
+    "normalizedSha256": "8021de7cb77b5c52b35fd9019f7cb6827392aa221c41eeedc9d34b222d3ea2d0"
+  },
+  "report": {
+    "normalizedSha256": "82cadb668d716c504d5514043438dea0eb49ed405142519dfe937be39830dc91"
+  },
+  "finding": {
+    "id": "IR001",
+    "severity": "Medium",
+    "category": "LearnerReadability",
+    "target": "requirements/intakes/active/Lastenheft_Embeddable-VM-und-NuGet.md",
+    "disposition": "Add German-first/English-second CEFR-B2 explanations for advanced terms without changing technical scope or authority."
+  },
+  "repairAuthority": "User explicitly invoked speckit-intake-repair for this current result.",
+  "proofBoundary": "Hashes and semantic finding data preserve the superseded review's audit meaning before the complete re-review."
+}

@@ -20,11 +20,13 @@ const stableUuid = (key) => {
 const config = readJson("requirements/intake-governance-config.json");
 const seriesRoot = "requirements/intakes/series/tinypl0-delivery";
 const seriesId = stableUuid("series");
-const seriesReceiptId = stableUuid("series-receipt");
-const seriesOperationId = stableUuid("series-operation");
-const reviewId = stableUuid("review");
+const seriesReceiptId = "aed21b52-f2cf-43e0-a05e-c3816c15770a";
+const seriesOperationId = "5e0302a4-626a-4381-96ef-133e06e9da74";
+const reviewId = "78435231-e579-486f-8d80-8192781c127d";
 const createdAt = "2026-07-26T22:00:00Z";
-const reviewHead = "07dae1c76bdbe0b3a307a366190cec7fbbe2a35f";
+const seriesUpdatedAt = "2026-08-29T15:31:02Z";
+const reviewHead = "272fdb9a07ec28d706ea27cbc52ad619d76d3555";
+const reviewedAt = "2026-08-29T16:07:18Z";
 
 const members = [
   ["constitution-change", "Lastenheft_Constitution_Change.md", "Eligible"],
@@ -36,6 +38,7 @@ const members = [
   ["a11y-ide", "Lastenheft_A11Y_IDE.md", "Blocked"],
   ["options-als-parameter", "Lastenheft_Options_Als_Parameter.md", "Blocked"],
   ["vm-cli", "Lastenheft_VM_CLI.md", "Blocked"],
+  ["embeddable-vm-und-nuget", "Lastenheft_Embeddable-VM-und-NuGet.md", "Blocked"],
   ["ide-erweiterung-pl0ide-pasm-pcod", "Lastenheft_IDE-Erweiterung-Pl0Ide_PAsm_PCod.md", "Blocked"],
   ["pl0-optimierung", "Lastenheft_PL0_Optimierung.md", "Blocked"],
   ["clr-assembly", "Lastenheft_CLR_Assembly.md", "Blocked"],
@@ -52,9 +55,10 @@ const members = [
   path: `requirements/intakes/active/${fileName}`,
   priorTarget: `requirements/intakes/history/pre-intake-split-20260726/${fileName}`,
   priorReceipt: `specs/intake-authoring-receipts/history/${slug}.schema-1.1.json`,
+  customReceipt: slug === "embeddable-vm-und-nuget",
 }));
 const targets = members.map((member) => member.path);
-const dependencies = Array.from({length: 9}, (_, index) => ({
+const dependencies = Array.from({length: 10}, (_, index) => ({
   from: targets[index],
   to: targets[index + 1],
   kind: index === 2 ? "CommentSurfaceBaseline" :
@@ -202,7 +206,7 @@ const result = {
   mode: "Series",
   status: "Ready",
   policy: "tinypl0-delivery-v1",
-  reviewedAt: createdAt,
+  reviewedAt,
   repository: {root: ".", head: reviewHead},
   targets: members.map((member) => ({
     path: member.path,
@@ -217,14 +221,15 @@ const result = {
   coverage: {
     individual: targets,
     series: [
-      "Fourteen active intake hashes, lifecycle states, roots, and nine binding gates",
+      "Fifteen active intake hashes, lifecycle states, five roots, and ten binding gates",
+      "VM/CLI to embeddable VM/NuGet to IDE handoff plus the external TinyCalc package gate",
       "Optimization and CLR stay blocked pending explicit architecture decisions",
       "Three immutable baselines and two completed intakes remain outside executable scope",
     ],
     workers: [],
   },
   summary: {critical: 0, high: 0, medium: 0, low: 0},
-  supersedes: readJson("specs/intake-normalization-20260723/intake-review-result.json").reviewId,
+  supersedes: "a6c1acb6-b75e-4875-a968-e5afb90bb289",
   requestEvidence: {path: requestPath, normalizedSha256: digest(json(request))},
 };
 const seriesReceipt = {
@@ -232,20 +237,20 @@ const seriesReceipt = {
   documentType: "IntakeSeriesReceipt",
   receiptId: seriesReceiptId,
   seriesId,
-  generator: {preset: "intake-sequencing-governance", version: "0.1.1"},
-  createdAt,
+  generator: {preset: "intake-sequencing-governance", version: "0.2.3"},
+  createdAt: seriesUpdatedAt,
   operation: {
     operationId: seriesOperationId,
-    type: "Create",
-    authorityEvidence: "User-approved TinyPl0 requirements and intake consolidation plan",
+    type: "Update",
+    authorityEvidence: "User approved IAD001 including TinyPl0 rank 10 and approved the binding IAD002 delivery gate.",
   },
   status: "Ready",
   manifest: {path: manifestPath, normalizedSha256: manifestHash},
   supersedes: {
-    receiptPath: "N/A",
-    receiptNormalizedSha256: "N/A",
-    manifestArchivePath: "N/A",
-    manifestArchiveSha256: "N/A",
+    receiptPath: "requirements/intakes/series-archive/tinypl0-delivery/20260829T153102Z/receipt.json",
+    receiptNormalizedSha256: "50e85aa8ee345ccec925808a6ea9ad13e95d39ec1f22831d0b55fc84f11d76ff",
+    manifestArchivePath: "requirements/intakes/series-archive/tinypl0-delivery/20260829T153102Z/manifest.json",
+    manifestArchiveSha256: "b6176867391327616bc215f145164e223e5933dfe93280af8f0b5e717ec3e38e",
   },
   tombstone: {path: "N/A", normalizedSha256: "N/A"},
   nextAction: "$speckit-intake-series-status",
@@ -255,30 +260,89 @@ const operation = {
   documentType: "IntakeSeriesOperation",
   operationId: seriesOperationId,
   seriesId,
-  type: "Create",
+  type: "Update",
   status: "Published",
-  authorityEvidence: "User-approved TinyPl0 requirements and intake consolidation plan",
-  proposalNormalizedSha256: hashFile("specs/requirements-reconciliation-20260726/migration-proposal.json"),
-  preparedPaths: [manifestPath, `${seriesRoot}/receipt.json`, `${seriesRoot}/order.md`],
+  authorityEvidence: "User approved IAD001 including TinyPl0 rank 10 and approved the binding IAD002 delivery gate.",
+  proposalNormalizedSha256: "f36a20d34be1c682821321dd0b1a0c8d2a5c44b6ffbfaf54c77daa027868a10d",
+  preparedPaths: [
+    "requirements/intakes/active/Lastenheft_Embeddable-VM-und-NuGet.md",
+    "specs/intake-authoring-receipts/embeddable-vm-und-nuget.json",
+    manifestPath,
+    `${seriesRoot}/receipt.json`,
+    `${seriesRoot}/order.md`,
+    "requirements/intakes/series-archive/tinypl0-delivery/20260829T153102Z/manifest.json",
+    "requirements/intakes/series-archive/tinypl0-delivery/20260829T153102Z/receipt.json",
+    "Lastenheft_Abarbeitungsreihenfolge.md",
+  ],
   validation: {bash: "Pass", powerShell: "Pass"},
   publication: {
     status: "Published",
-    publishedPaths: [manifestPath, `${seriesRoot}/receipt.json`, `${seriesRoot}/order.md`],
+    publishedPaths: [
+      "requirements/intakes/active/Lastenheft_Embeddable-VM-und-NuGet.md",
+      "specs/intake-authoring-receipts/embeddable-vm-und-nuget.json",
+      manifestPath,
+      `${seriesRoot}/receipt.json`,
+      `${seriesRoot}/order.md`,
+      "requirements/intakes/series-archive/tinypl0-delivery/20260829T153102Z/manifest.json",
+      "requirements/intakes/series-archive/tinypl0-delivery/20260829T153102Z/receipt.json",
+      "Lastenheft_Abarbeitungsreihenfolge.md",
+    ],
   },
 };
 const report = `# Intake Review: TinyPl0 Delivery Series
 
+## Identität / Identity
+
+- Review-ID: \`${reviewId}\`
+- Modus: \`Series\`
+- Policy: \`tinypl0-delivery-v1\`
+- Ergebnis: \`Ready\`
+- Umfang: 15 Ziele, 5 Wurzeln und 10 verbindliche Abhängigkeiten
+- Vorgängerreview: \`a6c1acb6-b75e-4875-a968-e5afb90bb289\`
+
+*The complete re-review covers all 15 current targets, five roots, and ten
+binding dependencies. It explicitly supersedes the remediation review.*
+
 ## Ergebnis / Result
 
-Status: \`Ready\`
+Die Schema-2.0-Governance, Zielhashes, Reihenfolge, DAG-Wurzeln, Kanten,
+Authority-Grenzen und der Handoff von VM/CLI über die einbettbare VM und die
+NuGet-Pakete zur IDE-Erweiterung sind konsistent. Der externe TinyCalc-Handoff
+und das Verbot einer lokalen ProjectReference als Fallback bleiben eindeutig.
 
-Alle 14 aktiven Intakes, ihre Hashes, Vorgänger, Zustände und Abhängigkeiten
-wurden geprüft. Constitution ist der bevorzugte nächste Intake. Optimierung und
-CLR bleiben blockiert; unabhängige Governance-Wurzeln bleiben \`Pending\`.
+Finding \`IR001\` ist behoben. Ein neuer Begriffsabschnitt erklärt Hostvertrag,
+Run/Step-Parität, SemVer, CancellationToken, SBOM, VEX, Provenance/SLSA,
+STRIDE/CAPEC und OpenSSF Scorecard deutsch zuerst und englisch danach auf
+CEFR-B2-Niveau. Scope, Anforderungen, Abnahmeschwellen, Reihenfolge, Gates und
+Delivery Authority blieben unverändert.
 
-*All 14 active intakes, hashes, predecessors, states, and dependencies were
-reviewed. Constitution is preferred next. Optimization and CLR remain blocked;
-independent governance roots remain pending.*
+*Schema 2.0 governance, target hashes, order, DAG roots, edges, authority
+boundaries, and internal and external handoffs are consistent. Finding IR001
+is resolved through first-use learner explanations without changing scope,
+requirements, acceptance thresholds, order, gates, or delivery authority.*
+
+## Reparaturnachweis / Repair Evidence
+
+- Geändertes Ziel:
+  \`requirements/intakes/active/Lastenheft_Embeddable-VM-und-NuGet.md\`
+- Autorisierung: ausdrücklicher Aufruf von \`speckit-intake-repair\` für das
+  aktuelle Ergebnis \`a6c1acb6-b75e-4875-a968-e5afb90bb289\`
+- Behobenes Finding: \`IR001\` / \`Medium\` / \`LearnerReadability\`
+- Verbleibende Findings: keine
+
+*The explicit repair invocation authorized only the learner terminology
+change. IR001 is resolved and no finding remains.*
+
+## Risiken, Fragen und Authority / Risks, Questions And Authority
+
+- Akzeptierte Risiken: keine
+- Offene Fragen: keine
+- Delivery Authority: \`LocalImplementation\`
+- Keine Commit-, Push-, PR-, Merge-, Provider-, Secret- oder
+  NuGet-Veröffentlichungsberechtigung wurde erteilt.
+
+*No risk was accepted and no question remains open. Local implementation
+authority does not grant remote or NuGet publication authority.*
 `;
 const outputs = [
   [manifestPath, json(manifest)],
@@ -288,7 +352,7 @@ const outputs = [
   [requestPath, json(request)],
   [`${seriesRoot}/intake-review-result.json`, json(result)],
   [`${seriesRoot}/intake-review-report.md`, report],
-  ...members.map((member) => [
+  ...members.filter((member) => !member.customReceipt).map((member) => [
     `specs/intake-authoring-receipts/${member.slug}.json`,
     json(receiptFor(member)),
   ]),
