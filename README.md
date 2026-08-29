@@ -184,6 +184,30 @@ Neben der praktischen Implementierung eines Compilers dient dieses Projekt auch 
 
 Dieses Projekt zeigt, dass Agentic-AI nicht als Ersatz für manuelles Lernen gedacht ist, sondern als **produktive Werkzeug und Lernpartner** für professionelle Softwareentwicklung in der Ausbildung.
 
+## Didaktische und sprachliche Klarheit / Pedagogical and Linguistic Clarity
+
+Neue oder geänderte Lerntexte stehen auf Deutsch zuerst und Englisch danach,
+verwenden CEFR-B2-Sprache und bleiben für Braillezeilen, Screenreader und
+Textbrowser verständlich. WCAG 2.2 Level AA ist die Prüfbasis, soweit die
+Kriterien anwendbar sind.
+
+Extern öffentliche C#-APIs erhalten vollständige, fachlich anwendbare
+XML-Dokumentation. CS1591 wird weder global noch projektweit unterdrückt.
+Geänderte API-Signaturen oder XML-Kommentare verlangen im selben
+Arbeitsgegenstand einen aktuellen DocFX-Lauf sowie Playwright/axe- und
+`lynx`-Nachweise. Neue Funktionen und Fehlerkorrekturen zeigen beobachtbar TDD
+Rot, Grün und Regression; reine Text- oder Governance-Arbeit dokumentiert ein
+begründetes `N/A` mit Wiedervorlage bei der nächsten Logikänderung.
+
+*New or changed learning content is German-first and English-second at CEFR B2
+and remains understandable with Braille displays, screen readers, and text
+browsers. WCAG 2.2 Level AA applies where relevant. Externally public C# APIs
+receive complete applicable XML documentation without global or project-wide
+CS1591 suppression. API-signature or XML-comment changes require current DocFX,
+Playwright/axe, and `lynx` evidence in the same work item. New features and fixes
+record observable TDD red, green, and regression evidence; text-only or
+governance-only work records a reasoned `N/A` and re-evaluation trigger.*
+
 ## Spec-Kit-Governance-Presets / Spec Kit Governance Presets
 
 Das registrierte Standardprofil dieser Workspace-Familie umfasst auf Level 0,
@@ -192,14 +216,14 @@ begründete, dokumentierte Projektausnahme zulässig.
 
 Standard-Preset-Set:
 
-- `security-governance` v0.6.1, Priority 10
-- `architecture-governance` v0.5.1, Priority 20
-- `isaqb-architecture-governance` v0.2.1, Priority 30
-- `a11y-governance` v0.4.1, Priority 40
-- `cross-platform-governance` v0.2.1, Priority 50
-- `agent-parity-governance` v0.4.0, Priority 60
-- `autonomous-run-governance` v0.3.0, Priority 70
-- `parallel-autonomous-run-governance` v0.2.1, Priority 80
+- `security-governance` v0.6.2, Priority 10
+- `architecture-governance` v0.5.2, Priority 20
+- `isaqb-architecture-governance` v0.2.2, Priority 30
+- `a11y-governance` v0.4.3, Priority 40
+- `cross-platform-governance` v0.2.2, Priority 50
+- `agent-parity-governance` v0.4.2, Priority 60
+- `autonomous-run-governance` v0.4.1, Priority 70
+- `parallel-autonomous-run-governance` v0.2.6, Priority 80
 
 Die ursprünglichen sechs Presets sind seit 2026-05-04 im `github/spec-kit`
 Community-Katalog enthalten; `autonomous-run-governance` v0.2.2 wurde dort am

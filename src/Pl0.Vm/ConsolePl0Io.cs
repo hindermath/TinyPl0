@@ -8,9 +8,13 @@ namespace Pl0.Vm;
 public sealed class ConsolePl0Io : IPl0Io
 {
     /// <summary>
+    /// Liest eine Ganzzahl aus der Standardeingabe.
+    ///
     /// Reads an integer value from standard input.
     /// </summary>
-    /// <returns>The parsed integer.</returns>
+    /// <returns>Die eingelesene Ganzzahl. / The parsed integer.</returns>
+    /// <exception cref="EndOfStreamException">Die Standardeingabe liefert keine weitere Zeile. / Standard input provides no further line.</exception>
+    /// <exception cref="FormatException">Die gelesene Zeile enthält keine gültige Ganzzahl. / The read line does not contain a valid integer.</exception>
     public int ReadInt()
     {
         var line = Console.ReadLine();

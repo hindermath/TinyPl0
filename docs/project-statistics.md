@@ -367,6 +367,7 @@ rekonstruiert.
 | 2026-08-29 | Aktualisierte TinyPl0-Serie mit 15 Zielen formal reviewed | Der schema-1.1-Serienreview `a6c1acb6-b75e-4875-a968-e5afb90bb289` prueft alle 15 aktuellen Zielhashes, fuenf Wurzeln, zehn verbindliche Kanten, die interne VM/CLI-zu-Paket-zu-IDE-Uebergabe, den externen TinyCalc-Handoff und die Delivery-Authority-Grenzen. Ergebnis ist `NeedsRemediation`: Finding `IR001` bewertet mit `Medium`, dass der lernendenorientierte Embeddable-VM-/NuGet-Intake fortgeschrittene Begriffe wie SemVer, CancellationToken, SBOM, VEX, SLSA, STRIDE, CAPEC und Provenance nicht bei erster Verwendung auf CEFR-B2-Niveau erklaert. Es wurden keine Risiken akzeptiert und keine offenen Fragen erzeugt. Der fruehere 14-Ziele-Review wird durch ID und Artefakthashes explizit supersediert. Aenderungsumfang dieses Review-Artefaktsatzes vor der Ledger-Fortschreibung: `0` Produktionscode-Zeilen, `0` Testcode-Zeilen und `+173 / -29` Dokumentations-, Governance- und Automationszeilen. Konservative Manualreferenz: 80 Zeilen/Tag = `2.2` Tage (ca. `16.9` Stunden); Thorsten-Solo-Referenz: 125 Zeilen/Tag = `1.4` Tage (ca. `10.8` Stunden); bei einem sichtbaren Aktivtag entspricht dies einem blended repository speedup von `2.2x` bzw. `1.4x`. Sichtbares Arbeitsfenster: dieselbe Agentensitzung am 2026-08-29. Validierung: Review-Validatoren in Bash und PowerShell, vollstaendiges Requirements-Alignment in beiden Varianten, Generator-Reproduktion, JSON-Pruefung und `git diff --check`; kein Produkt-Build, Testlauf, DocFX-Lauf oder Intake-Ausfuehrungsstart. |
 | 2026-08-29 | Review-Finding IR001 repariert und Serie vollstaendig neu geprueft | Der ausdruecklich autorisierte `speckit-intake-repair`-Lauf ergaenzte im Embeddable-VM-/NuGet-Intake einen deutsch-/englischsprachigen CEFR-B2-Begriffsblock fuer Hostvertrag, Run/Step-Paritaet, SemVer, CancellationToken, SBOM, VEX, Provenance/SLSA, STRIDE/CAPEC und OpenSSF Scorecard. Scope, Nicht-Ziele, Anforderungen, Abnahmeschwellen, Reihenfolge, Gates und Delivery Authority blieben unveraendert. Receipt, Manifest, Coverage und Review-Hashes wurden nachgezogen; der vollstaendige Nachfolgereview `78435231-e579-486f-8d80-8192781c127d` umfasst erneut 15 Ziele und schliesst mit `Ready`, null Findings, null akzeptierten Risiken und null offenen Fragen. Das `NeedsRemediation`-Ergebnis bleibt mit ID, Hashes, Finding und Reparaturautoritaet als Supersession-Evidenz erhalten. Aenderungsumfang dieses Reparatur- und Re-Review-Satzes gegen den unmittelbar vorherigen Arbeitsstand: `0` Produktionscode-Zeilen, `0` Testcode-Zeilen und `+65` Dokumentations-, Governance- und Automationszeilen netto. Konservative Manualreferenz: 80 Zeilen/Tag = `0.8` Tage (ca. `6.3` Stunden); Thorsten-Solo-Referenz: 125 Zeilen/Tag = `0.5` Tage (ca. `4.1` Stunden); bei einem sichtbaren Aktivtag entspricht dies einem blended repository speedup von `0.8x` bzw. `0.5x`. Sichtbares Arbeitsfenster: dieselbe Agentensitzung am 2026-08-29. Validierung: Authoring- und Review-Validatoren in Bash und PowerShell, vollstaendiges Requirements-Alignment, Generator-Reproduktion, JSON-, Hash-, Statistik- und `git diff --check`-Pruefung; keine Implementierung, kein Build/Test/DocFX und keine Remote- oder NuGet-Veroeffentlichung. |
 | 2026-08-29 | MergeAndSync-Lieferung fuer Embeddable-VM-/NuGet-Intake vorbereitet | Fuer den fokussierten PR wurde eine bilinguale Beschreibung mit Problem, Loesung, Risiken und Testplan angelegt. Sie dokumentiert ausdruecklich, dass dieser Liefergegenstand nur Intake- und Governance-Artefakte umfasst, weder Host-API noch Pakete implementiert oder veroeffentlicht und keine NuGet-Publikationsautoritaet erteilt. Zusaetzlicher Aenderungsumfang vor dieser Ledger-Fortschreibung: `0` Produktionscode-Zeilen, `0` Testcode-Zeilen und `+61` Dokumentationszeilen. Konservative Manualreferenz: 80 Zeilen/Tag = `0.8` Tage (ca. `5.9` Stunden); Thorsten-Solo-Referenz: 125 Zeilen/Tag = `0.5` Tage (ca. `3.8` Stunden); sichtbares Arbeitsfenster: dieselbe Agentensitzung am 2026-08-29. Der Nutzer hat Commit, Push und `MergeAndSync` mit Admin-Bypass fuer diesen PR ausdruecklich autorisiert. |
+| 2026-08-29 | Autonomer Constitution-Lauf `codex/003-constitution-change` | Der bindende Constitution-Intake wurde in einem vollständigen Spec-Kit-Lauf spezifiziert, geplant, analysiert und umgesetzt. Die Arbeitspakete umfassen das TinyPl0-Addendum für didaktische und sprachliche Klarheit, atomare Agenten-/Template-Governance, die aktive CS1591-Schranke mit Rot-Grün-Guard, ergänzte öffentliche XML-Verträge, DocFX-Regeneration, dauerhafte WCAG-2.2-AA-Remediation, Node-24-/Playwright-/axe- und Lynx-Evidence, Coverage-Remediation, NIST-SSDF-/CWE- und Dependency-Review sowie diese Statistikfortschreibung. Umfang vor diesem Ledger-Eintrag: `+24 / -15` Produktionscode-Zeilen, `+78 / -0` Testcode-Zeilen und `+4883 / -124` manuell zugeordnete Dokumentations-, Governance-, Konfigurations- und Evidence-Zeilen; zusätzlich regenerierte DocFX `+715 / -645` getrackte API-YAML-Zeilen, die nicht in die Handarbeitsbasis eingehen. Die `4985` hinzugefügten manuell zugeordneten Zeilen entsprechen bei 80 Zeilen/Arbeitstag `62.3` Tagen bzw. `486.0` Stunden und bei der Thorsten-Solo-Basis von 125 Zeilen/Arbeitstag `39.9` Tagen bzw. `311.1` Stunden, jeweils mit `7.8` Stunden pro Tag. Bei einem sichtbaren Aktivtag ist dies ein blended repository speedup von `62.3x` bzw. `39.9x`, keine Stoppuhrmessung. Sichtbares Arbeitsfenster: eine autonome Agentensitzung am 2026-08-29. Validierung: Release-Build ohne Warnung/Fehler, 266/266 Tests, Coverage `70.23 %`, DocFX ohne Fehler, drei axe-Seiten ohne Verstoß, drei nicht leere Lynx-Dumps, keine bekannte anfällige NuGet-Abhängigkeit sowie Governance-, Scope- und Secure-Diff-Prüfung. |
 
 ## Statistikprofil-1-Archiv / Statistics Profile 1 Archive
 - Stand 2026-05-05: `88` Produktionsdateien mit `6950` Zeilen, `22` Testdateien mit `3536` Zeilen und `562` Dokumentationsdateien mit `36625` Zeilen.
@@ -492,29 +493,29 @@ Profil 2 verwendet Git-getrackte Textdateien und sichtbare Git-Aktivitaet. Die W
 
 | Kennzahl / Metric | Wert / Value |
 |---|---:|
-| Textbasis / Text base | 225368 lines |
-| Textdateien / Text files | 1830 |
+| Textbasis / Text base | 230282 lines |
+| Textdateien / Text files | 1849 |
 | Beobachtbarer Zeitraum / Observable period | 2025-08-31..2026-08-29 |
-| Aktivtage / Active days | 85 |
-| Relevante Commits / Relevant commits | 318 |
-| Zeilen je Aktivtag / Lines per active day | 2651.4 |
+| Aktivtage / Active days | 86 |
+| Relevante Commits / Relevant commits | 320 |
+| Zeilen je Aktivtag / Lines per active day | 2677.7 |
 | Peak-Tag im Fenster / Peak day in window | 2026-02-14 / 177480 |
 | Peak-Woche im Fenster / Peak week in window | 2026-02-08 / 186065 |
 | Laengste Serie / Longest streak | 9 days |
-| Speedup vs. 80 lines/day | 33.1x |
-| Speedup vs. 125 lines/day | 21.2x |
-| Methodik / Methodology | v2; source `1f7a86dfbb42` |
+| Speedup vs. 80 lines/day | 33.5x |
+| Speedup vs. 125 lines/day | 21.4x |
+| Methodik / Methodology | v2; source `c7b6a973e30b` |
 
 ### Artefaktmix / Artifact Mix
 
 ```text
-Produktiv / Production          [#...................]   3.2% | 7165
-Tests                           [#...................]   3.9% | 8781
-Dokumentation / Documentation   [##########..........]  51.0% | 114896
-Skripte / Scripts               [##..................]   9.8% | 22014
-Konfiguration / Configuration   [######..............]  30.2% | 67999
+Produktiv / Production          [#...................]   3.1% | 7222
+Tests                           [#...................]   4.1% | 9498
+Dokumentation / Documentation   [##########..........]  51.2% | 117978
+Skripte / Scripts               [##..................]   9.6% | 22102
+Konfiguration / Configuration   [######..............]  29.9% | 68886
 Daten und Medien / Data and media [....................]   0.0% | 0
-Sonstiger Text / Other text     [#...................]   2.0% | 4513
+Sonstiger Text / Other text     [#...................]   2.0% | 4596
 ```
 
 Die Balken teilen die aktuelle getrackte Textbasis in stabile Kategorien. Prozent und Zeilenwert sind die genaue, textorientierte Aussage.
@@ -542,7 +543,7 @@ Di/Tu  0 0 0 0 2 0 0 0 0 2 0 0 3 0 0 0 0 2 0 3 4 4 0 0 0 0
 Mi/We  0 0 1 1 0 0 0 3 0 2 0 0 0 2 0 4 0 2 0 0 2 4 0 0 0 0
 Do/Th  4 0 0 0 0 0 0 0 4 0 0 0 1 1 4 1 0 0 0 1 4 0 0 4 0 0
 Fr/Fr  4 0 0 4 4 0 2 4 0 0 0 4 2 2 0 3 2 3 4 4 4 1 0 0 0 0
-Sa/Sa  0 2 0 2 0 0 0 0 0 0 0 0 0 0 0 4 0 4 4 0 4 2 0 2 0 0
+Sa/Sa  0 2 0 2 0 0 0 0 0 0 0 0 0 0 0 4 0 4 4 0 4 2 0 2 0 4
 ```
 
 DE: 0 = keine Aenderung; 1 = 1..79; 2 = 80..399; 3 = 400..1599; 4 = 1600+ geaenderte Textzeilen; - = noch nicht abgelaufen.
@@ -608,15 +609,15 @@ Die kumulative Kurve summiert nur das Brutto-Aenderungsvolumen im Fenster. Sie d
 ### Phasenvolumen / Phase Volume
 
 ```text
-Slots 0..6
-   cap 20000 | . . . . . . .
-       16667 | . . . . . . .
-       13333 | . . . . . . .
-       10000 | . # . . . . .
-        6667 | . # . # . . .
-        3333 | # # # # . . .
-           0 +---------------
-             00 01 02 03 04 05 06
+Slots 0..7
+   cap 20000 | . . . . . . . .
+       16667 | . . . . . . . .
+       13333 | . . . . . . . .
+       10000 | . # . . . . . .
+        6667 | . # . # . . . .
+        3333 | # # # # . . . #
+           0 +-----------------
+             00 01 02 03 04 05 06 07
 ```
 
 | Slot | Phase | Nettozeilen / Net lines |
@@ -628,6 +629,7 @@ Slots 0..6
 | 4 | CI / CI | 14 |
 | 5 | 002 / 002 | 1557 |
 | 6 | Synchronisierung / Synchronization | 162 |
+| 7 | Constitution 003 / Constitution 003 | 4846 |
 
 Die festen Slots halten den Phasenvergleich auch bei fehlenden oder spaeter ergaenzten Werten stabil.
 
@@ -637,8 +639,8 @@ Die festen Slots halten den Phasenvergleich auch bei fehlenden oder spaeter erga
 
 ```text
 Scale: 0..50x
-80 lines/day       [#############.......] 33.1x
-125 lines/day      [########............] 21.2x
+80 lines/day       [#############.......] 33.5x
+125 lines/day      [#########...........] 21.4x
 ```
 
 Die Faktoren vergleichen sichtbare Lieferdichte mit den dokumentierten manuellen Referenzen. Sie messen keine Arbeitszeit.
@@ -651,7 +653,7 @@ Die Faktoren vergleichen sichtbare Lieferdichte mit den dokumentierten manuellen
 Scale: 0..5000 lines/day
 Experienced manual [#...................] 80
 Thorsten solo      [#...................] 125
-Visible repository [###########.........] 2651.4
+Visible repository [###########.........] 2677.7
 ```
 
 Die gemeinsame Skala vergleicht Referenzen und sichtbare Lieferdichte. Sie schreibt die Git-Aktivitaet keiner Person oder KI pauschal zu.
@@ -660,9 +662,9 @@ Die gemeinsame Skala vergleicht Referenzen und sichtbare Lieferdichte. Sie schre
 
 ### Textalternative / Text Alternative
 
-DE: Das Fenster beginnt am 2025-08-31 und endet am 2026-08-29. Es enthaelt 85 aktive und 279 inaktive vergangene Tage. Peak-Tag: 2026-02-14 / 177480. Peak-Woche: 2026-02-08 / 186065. Laengste Serie: 9 Tage (2026-02-14..2026-02-22).
+DE: Das Fenster beginnt am 2025-08-31 und endet am 2026-08-29. Es enthaelt 86 aktive und 278 inaktive vergangene Tage. Peak-Tag: 2026-02-14 / 177480. Peak-Woche: 2026-02-08 / 186065. Laengste Serie: 9 Tage (2026-02-14..2026-02-22).
 
-*EN: The window starts on 2025-08-31 and ends on 2026-08-29. It contains 85 active and 279 inactive elapsed days. Peak day: 2026-02-14 / 177480. Peak week: 2026-02-08 / 186065. Longest streak: 9 days (2026-02-14..2026-02-22).*
+*EN: The window starts on 2025-08-31 and ends on 2026-08-29. It contains 86 active and 278 inactive elapsed days. Peak day: 2026-02-14 / 177480. Peak week: 2026-02-08 / 186065. Longest streak: 9 days (2026-02-14..2026-02-22).*
 
 | Monat / Month | Geaenderte Textzeilen / Changed text lines |
 |---|---:|
@@ -677,6 +679,6 @@ DE: Das Fenster beginnt am 2025-08-31 und endet am 2026-08-29. Es enthaelt 85 ak
 | 2026-05 | 12329 |
 | 2026-06 | 37668 |
 | 2026-07 | 78990 |
-| 2026-08 | 12241 |
+| 2026-08 | 19737 |
 
 <!-- project-statistics-v2:end -->

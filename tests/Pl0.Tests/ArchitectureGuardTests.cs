@@ -43,6 +43,42 @@ public sealed class ArchitectureGuardTests
         Assert.Equal(["Terminal.Gui"], packageReferences);
     }
 
+    [Fact]
+    public void Product_Projects_Enable_Public_Xml_Documentation_Warnings()
+    {
+        var repoRoot = FindRepoRoot();
+        string[] productProjectPaths =
+        [
+            "src/Pl0.Core/Pl0.Core.csproj",
+            "src/Pl0.Vm/Pl0.Vm.csproj",
+            "src/Pl0.Cli/Pl0.Cli.csproj",
+            "src/Pl0.Ide/Pl0.Ide.csproj",
+        ];
+
+        foreach (var relativePath in productProjectPaths)
+        {
+            var document = XDocument.Load(Path.Combine(repoRoot, relativePath));
+            var generateDocumentationFile = document
+                .Descendants()
+                .SingleOrDefault(node => node.Name.LocalName == "GenerateDocumentationFile")
+                ?.Value;
+            Assert.True(
+                string.Equals(generateDocumentationFile, "true", StringComparison.OrdinalIgnoreCase),
+                $"{relativePath} must set GenerateDocumentationFile=true.");
+
+            var suppressedWarnings = document
+                .Descendants()
+                .Where(node => node.Name.LocalName == "NoWarn")
+                .SelectMany(node => node.Value.Split(';', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries));
+
+            // DE: Der Dateiname macht eine erneute projektweite Unterdrückung im roten Test direkt sichtbar.
+            // EN: The file name makes renewed project-wide suppression directly visible in the red test.
+            Assert.False(
+                suppressedWarnings.Contains("1591", StringComparer.OrdinalIgnoreCase),
+                $"{relativePath} must not suppress CS1591 through NoWarn.");
+        }
+    }
+
     private static IReadOnlyDictionary<string, string> FindProjectFiles()
     {
         var repoRoot = FindRepoRoot();

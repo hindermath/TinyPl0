@@ -1,0 +1,604 @@
+{
+  "schemaVersion": "1.0",
+  "feature": "specs/003-constitution-change",
+  "runId": "064927e0-8389-4692-a53c-f1ce79e6043d",
+  "owner": "Implementing agent under the active autonomous run",
+  "reviewer": "Pull-request reviewer",
+  "evidenceContract": "specs/003-constitution-change/contracts/evidence-contract.md",
+  "gates": [
+    {
+      "gateId": "PLAN-GATE-001",
+      "applicability": "Applicable",
+      "requiredScope": "Validate the structured plan phase result against plan.md and its exact normalized SHA-256.",
+      "exactCommands": [
+        "pwsh -NoProfile -File .specify/presets/autonomous-run-governance/scripts/validate-autonomous-phase-result.ps1 -Repo . -Result .specify/runtime/autonomous-routing/064927e0-8389-4692-a53c-f1ce79e6043d/plan.result.json -PhaseId plan -ExitCode 0"
+      ],
+      "requiredCommandTokens": [
+        "validate-autonomous-phase-result.ps1",
+        "plan.result.json",
+        "-PhaseId plan",
+        "-ExitCode 0"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "macOS",
+        "PowerShell 7"
+      ],
+      "evidencePath": ".specify/runtime/autonomous-routing/064927e0-8389-4692-a53c-f1ce79e6043d/plan.result.json",
+      "rationale": "",
+      "reevaluationTrigger": ""
+    },
+    {
+      "gateId": "PLAN-REVIEW-GATE-001",
+      "applicability": "Applicable",
+      "requiredScope": "Complete the speckit.analyze plan review before tasks, resolve every Critical, High, and Medium finding, and validate plan-review.md against its exact normalized SHA-256.",
+      "exactCommands": [
+        "speckit.analyze",
+        "pwsh -NoProfile -File .specify/presets/autonomous-run-governance/scripts/validate-autonomous-phase-result.ps1 -Repo . -Result .specify/runtime/autonomous-routing/064927e0-8389-4692-a53c-f1ce79e6043d/plan-review.result.json -PhaseId plan-review -ExitCode 0"
+      ],
+      "requiredCommandTokens": [
+        "speckit.analyze",
+        "validate-autonomous-phase-result.ps1",
+        "plan-review.result.json",
+        "-PhaseId plan-review",
+        "-ExitCode 0"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "Codex",
+        "frontier-reasoning",
+        "codex-frontier-auto",
+        "gpt-5.6-sol",
+        "high",
+        "macOS",
+        "PowerShell 7"
+      ],
+      "evidencePath": "specs/003-constitution-change/plan-review.md and .specify/runtime/autonomous-routing/064927e0-8389-4692-a53c-f1ce79e6043d/plan-review.result.json",
+      "rationale": "",
+      "reevaluationTrigger": ""
+    },
+    {
+      "gateId": "TASKS-ANALYZE-GATE-001",
+      "applicability": "Applicable",
+      "requiredScope": "Generate dependency-ordered tasks, bind exact evidence paths, and complete final analyze convergence before the first implementation edit.",
+      "exactCommands": [
+        "speckit.tasks",
+        "speckit.analyze",
+        "pwsh -NoProfile -File .specify/presets/autonomous-run-governance/scripts/validate-autonomous-phase-result.ps1 -Repo . -Result .specify/runtime/autonomous-routing/064927e0-8389-4692-a53c-f1ce79e6043d/tasks.result.json -PhaseId tasks -ExitCode 0",
+        "pwsh -NoProfile -File .specify/presets/autonomous-run-governance/scripts/validate-autonomous-phase-result.ps1 -Repo . -Result .specify/runtime/autonomous-routing/064927e0-8389-4692-a53c-f1ce79e6043d/analyze.result.json -PhaseId analyze -ExitCode 0",
+        "pwsh -NoProfile -File .specify/presets/autonomous-run-governance/scripts/validate-autonomous-run-state.ps1 -State specs/003-constitution-change/autonomous-run-state.json"
+      ],
+      "requiredCommandTokens": [
+        "speckit.tasks",
+        "speckit.analyze",
+        "tasks.result.json",
+        "-PhaseId tasks",
+        "analyze.result.json",
+        "-PhaseId analyze",
+        "-ExitCode 0",
+        "validate-autonomous-run-state.ps1"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "Codex",
+        "frontier-reasoning",
+        "codex-frontier-auto",
+        "gpt-5.6-sol",
+        "high",
+        "PowerShell 7",
+        "macOS"
+      ],
+      "evidencePath": "specs/003-constitution-change/tasks.md, specs/003-constitution-change/analyze-report.md, .specify/runtime/autonomous-routing/064927e0-8389-4692-a53c-f1ce79e6043d/tasks.result.json, and .specify/runtime/autonomous-routing/064927e0-8389-4692-a53c-f1ce79e6043d/analyze.result.json",
+      "rationale": "",
+      "reevaluationTrigger": ""
+    },
+    {
+      "gateId": "GOVERNANCE-GATE-001",
+      "applicability": "Applicable",
+      "requiredScope": "Keep Security-First Principle I unchanged, add the TinyPl0 pedagogical section only in the Level-2 addendum, clarify that a manifest-bound active intake path remains stable through implementation and MergeAndSync while archival rename is a separately authorized post-merge action after implementation is fully merged, and keep both constitution files byte-identical.",
+      "exactCommands": [
+        "pwsh -NoProfile -Command '$a = Get-Content -LiteralPath constitution.md -Raw -Encoding UTF8; $b = Get-Content -LiteralPath .specify/memory/constitution.md -Raw -Encoding UTF8; if ($a -cne $b) { throw \"Constitution mirror differs\" }; if ($a -notmatch \"### I\\. Security-First \\(NON-NEGOTIABLE\\)\") { throw \"Security-First Principle I missing\" }; if ($a -notmatch \"Didaktische und sprachliche Klarheit / Pedagogical and Linguistic Clarity\") { throw \"TinyPl0 pedagogical addendum missing\" }; if ($a -notmatch \"manifest-bound active intake\" -or $a -notmatch \"fully merged\" -or $a -notmatch \"post-merge archival\") { throw \"Governed intake archival rule missing\" }'"
+      ],
+      "requiredCommandTokens": [
+        "constitution.md",
+        ".specify/memory/constitution.md",
+        "Security-First Principle I",
+        "Didaktische und sprachliche Klarheit / Pedagogical and Linguistic Clarity",
+        "manifest-bound active intake",
+        "fully merged",
+        "post-merge archival"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "macOS",
+        "PowerShell 7"
+      ],
+      "evidencePath": "autonomous ledger governance-parity section",
+      "rationale": "",
+      "reevaluationTrigger": ""
+    },
+    {
+      "gateId": "AGENT-PARITY-GATE-001",
+      "applicability": "Applicable",
+      "requiredScope": "Prove atomic semantic parity across the five maintained agent files, affected templates, README matrix, and the executable standard eight-preset configuration without mutating repository state; report separately governed optional presets and require conflict-free coexistence.",
+      "exactCommands": [
+        "pwsh -NoProfile -Command '$ErrorActionPreference = \"Stop\"; $matrix = Get-Content \"scripts/config/spec-kit-governance-presets.json\" -Raw | ConvertFrom-Json; $registry = Get-Content \".specify/presets/.registry\" -Raw | ConvertFrom-Json; $expected = @($matrix.presets); $expectedIds = @($expected.id); foreach ($preset in $expected) { $property = $registry.presets.PSObject.Properties[[string]$preset.id]; if ($null -eq $property) { throw \"Standard-Preset fehlt / missing: $($preset.id)\" }; $actual = $property.Value; if (([string]$actual.version).TrimStart(\"v\") -ne ([string]$preset.version).TrimStart(\"v\") -or [int]$actual.priority -ne [int]$preset.priority -or $actual.enabled -ne $true) { throw \"Standard-Preset weicht ab / mismatch: $($preset.id)\" }; if (-not (Test-Path \".specify/presets/$($preset.id)/preset.yml\" -PathType Leaf)) { throw \"preset.yml fehlt / missing: $($preset.id)\" } }; $optional = @($registry.presets.PSObject.Properties.Name | Where-Object { $_ -notin $expectedIds } | Sort-Object); \"PASS: $($expected.Count) Standard-Presets stimmen; optionale Presets / standard presets match; optional presets: $($optional -join \", \")\"'",
+        "pwsh -NoProfile -File scripts/check-homogeneity.ps1 -TargetDir . -Json -DryRun -NoPatch"
+      ],
+      "requiredCommandTokens": [
+        "spec-kit-governance-presets.json",
+        ".specify/presets/.registry",
+        "standard presets match; optional presets",
+        "check-homogeneity.ps1 -TargetDir . -Json -DryRun -NoPatch"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "macOS",
+        "PowerShell 7",
+        "standard eight-preset matrix"
+      ],
+      "evidencePath": "autonomous ledger parity section and command JSON output",
+      "rationale": "",
+      "reevaluationTrigger": ""
+    },
+    {
+      "gateId": "TDD-GATE-001",
+      "applicability": "Applicable",
+      "requiredScope": "Record an expected failing guard for CS1591 suppression, the same guard passing after remediation, and full regression evidence; unrelated failures do not count as red.",
+      "exactCommands": [
+        "dotnet test TinyPl0.sln --configuration Release --filter \"FullyQualifiedName~Pl0.Tests.ArchitectureGuardTests.Product_Projects_Enable_Public_Xml_Documentation_Warnings\""
+      ],
+      "requiredCommandTokens": [
+        "dotnet test TinyPl0.sln --configuration Release",
+        "Product_Projects_Enable_Public_Xml_Documentation_Warnings"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "macOS",
+        ".NET SDK 10.0.x",
+        "xUnit"
+      ],
+      "evidencePath": "specs/003-constitution-change/autonomous-run-evidence.md TDD section",
+      "rationale": "",
+      "reevaluationTrigger": ""
+    },
+    {
+      "gateId": "XML-DOC-GATE-001",
+      "applicability": "Applicable",
+      "requiredScope": "All four product projects generate XML documentation, no project or global NoWarn contains 1591, and every externally public API has complete applicable XML elements.",
+      "exactCommands": [
+        "dotnet build TinyPl0.sln --configuration Release --no-restore",
+        "pwsh -NoProfile -Command '$projects = @(Get-ChildItem -LiteralPath src -Recurse -Filter *.csproj); if ($projects.Count -ne 4) { throw \"Expected four product projects\" }; foreach ($project in $projects) { $xml = [xml](Get-Content -LiteralPath $project.FullName -Raw -Encoding UTF8); $doc = @($xml.Project.PropertyGroup.GenerateDocumentationFile) -contains \"true\"; $noWarn = (@($xml.Project.PropertyGroup.NoWarn) -join \";\"); if (-not $doc -or $noWarn -match \"(^|;)\\s*1591\\s*(;|$)\") { throw \"XML documentation gate failed: $($project.FullName)\" } }'"
+      ],
+      "requiredCommandTokens": [
+        "dotnet build TinyPl0.sln --configuration Release --no-restore",
+        "Get-ChildItem -LiteralPath src -Recurse -Filter *.csproj",
+        "GenerateDocumentationFile",
+        "NoWarn",
+        "1591"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "macOS",
+        ".NET SDK 10.0.x",
+        "MSBuild"
+      ],
+      "evidencePath": "Release build log and public API XML review ledger",
+      "rationale": "",
+      "reevaluationTrigger": ""
+    },
+    {
+      "gateId": "BUILD-TEST-GATE-001",
+      "applicability": "Applicable",
+      "requiredScope": "Restore, Release build, and the full test suite pass with an empty fatal error channel after separate required IDE build-counter increments.",
+      "exactCommands": [
+        "dotnet restore TinyPl0.sln",
+        "dotnet build TinyPl0.sln --configuration Release --no-restore",
+        "dotnet test TinyPl0.sln --configuration Release"
+      ],
+      "requiredCommandTokens": [
+        "dotnet restore TinyPl0.sln",
+        "dotnet build TinyPl0.sln --configuration Release --no-restore",
+        "dotnet test TinyPl0.sln --configuration Release"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "macOS",
+        "ubuntu-latest",
+        ".NET SDK 10.0.x"
+      ],
+      "evidencePath": "local command ledger and GitHub Actions CI build-test job",
+      "rationale": "",
+      "reevaluationTrigger": ""
+    },
+    {
+      "gateId": "COVERAGE-GATE-001",
+      "applicability": "Applicable",
+      "requiredScope": "Collect full-suite Cobertura line coverage, block below 70 percent, and record whether the 80 percent target is met or remains open.",
+      "exactCommands": [
+        "pwsh -NoProfile -Command 'if (Test-Path -LiteralPath /private/tmp/tinypl0-003-constitution-change-064927e0-coverage) { throw \"Coverage evidence path already exists\" }'",
+        "dotnet test TinyPl0.sln --configuration Release --collect:\"XPlat Code Coverage\" --results-directory /private/tmp/tinypl0-003-constitution-change-064927e0-coverage",
+        "pwsh -NoProfile -Command '$files = @(Get-ChildItem -LiteralPath /private/tmp/tinypl0-003-constitution-change-064927e0-coverage -Recurse -Filter coverage.cobertura.xml); if ($files.Count -eq 0) { throw \"No Cobertura coverage file\" }; $rates = @($files | ForEach-Object { $xml = [xml](Get-Content -LiteralPath $_.FullName -Raw -Encoding UTF8); [double]$xml.coverage.\"line-rate\" }); $rate = ($rates | Measure-Object -Minimum).Minimum; if ($rate -lt 0.70) { throw \"Coverage below 70 percent: $rate\" }; $target = if ($rate -ge 0.80) { \"TargetMet\" } else { \"TargetOpen\" }; Write-Output (\"line-rate={0:F4};minimum=0.70;target=0.80;targetState={1}\" -f $rate, $target)'"
+      ],
+      "requiredCommandTokens": [
+        "XPlat Code Coverage",
+        "coverage.cobertura.xml",
+        "0.70",
+        "0.80"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "macOS",
+        "PowerShell 7",
+        ".NET SDK 10.0.x",
+        "Coverlet"
+      ],
+      "evidencePath": "/private/tmp/tinypl0-003-constitution-change-064927e0-coverage and autonomous ledger",
+      "rationale": "",
+      "reevaluationTrigger": ""
+    },
+    {
+      "gateId": "NUGET-REVIEW-GATE-001",
+      "applicability": "Applicable",
+      "requiredScope": "Review outdated and vulnerable direct and transitive NuGet packages without changing package references; a critical finding blocks for new authority.",
+      "exactCommands": [
+        "dotnet list TinyPl0.sln package --outdated --include-transitive",
+        "dotnet list TinyPl0.sln package --vulnerable --include-transitive"
+      ],
+      "requiredCommandTokens": [
+        "dotnet list TinyPl0.sln package --outdated --include-transitive",
+        "dotnet list TinyPl0.sln package --vulnerable --include-transitive"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "macOS",
+        ".NET SDK 10.0.x",
+        "NuGet"
+      ],
+      "evidencePath": "autonomous ledger dependency-review section",
+      "rationale": "",
+      "reevaluationTrigger": ""
+    },
+    {
+      "gateId": "DOCFX-GATE-001",
+      "applicability": "Applicable",
+      "requiredScope": "Regenerate tracked API YAML and the temporary HTML site from docfx.json after the public XML documentation review.",
+      "exactCommands": [
+        "docfx docfx.json"
+      ],
+      "requiredCommandTokens": [
+        "docfx docfx.json"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "macOS",
+        "DocFX",
+        ".NET SDK 10.0.x"
+      ],
+      "evidencePath": "DocFX log, api/.manifest, api/**/*.yml, and temporary _site/",
+      "rationale": "",
+      "reevaluationTrigger": ""
+    },
+    {
+      "gateId": "A11Y-AXE-GATE-001",
+      "applicability": "Applicable",
+      "requiredScope": "Serve generated DocFX only on loopback and obtain zero axe violations on the index, Pl0Compiler, and VirtualMachine pages with the pinned temporary audit harness.",
+      "exactCommands": [
+        "python3 -m http.server 8080 --bind 127.0.0.1 --directory _site",
+        "node --version",
+        "audit_dir=\"$(mktemp -d)\"; printf 'audit_dir=%s\\n' \"$audit_dir\"; npm --prefix \"$audit_dir\" init -y; npm --prefix \"$audit_dir\" install --save-exact --ignore-scripts @playwright/test@1.62.1 @axe-core/playwright@4.13.0; npm --prefix \"$audit_dir\" exec playwright install chromium; (cd \"$audit_dir\" && node --input-type=module --eval 'import { chromium } from \"playwright\"; import AxeBuilder from \"@axe-core/playwright\"; const browser = await chromium.launch({ headless: true }); const urls = [\"http://127.0.0.1:8080/index.html\", \"http://127.0.0.1:8080/api/Pl0.Core.Pl0Compiler.html\", \"http://127.0.0.1:8080/api/Pl0.Vm.VirtualMachine.html\"]; let failed = false; for (const url of urls) { const page = await browser.newPage(); await page.goto(url, { waitUntil: \"networkidle\" }); const result = await new AxeBuilder({ page }).analyze(); console.log(JSON.stringify({ url, violations: result.violations.map(v => ({ id: v.id, impact: v.impact, nodes: v.nodes.length })) })); failed ||= result.violations.length > 0; await page.close(); } await browser.close(); if (failed) process.exit(1);')"
+      ],
+      "requiredCommandTokens": [
+        "127.0.0.1:8080",
+        "@playwright/test@1.62.1",
+        "@axe-core/playwright@4.13.0",
+        "Pl0.Core.Pl0Compiler.html",
+        "Pl0.Vm.VirtualMachine.html"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "macOS",
+        "Node 24 LTS",
+        "Playwright 1.62.1",
+        "@axe-core/playwright 4.13.0",
+        "Chromium"
+      ],
+      "evidencePath": "temporary axe JSON output referenced from the autonomous ledger",
+      "rationale": "",
+      "reevaluationTrigger": ""
+    },
+    {
+      "gateId": "A11Y-LYNX-GATE-001",
+      "applicability": "Applicable",
+      "requiredScope": "Produce non-empty text-browser output for the same three representative DocFX pages and find meaningful page/API names.",
+      "exactCommands": [
+        "lynx -dump -nolist http://127.0.0.1:8080/index.html > /tmp/tinypl0-docfx-index.txt; lynx -dump -nolist http://127.0.0.1:8080/api/Pl0.Core.Pl0Compiler.html > /tmp/tinypl0-docfx-core.txt; lynx -dump -nolist http://127.0.0.1:8080/api/Pl0.Vm.VirtualMachine.html > /tmp/tinypl0-docfx-vm.txt; rg -n \"TinyPl0|Pl0Compiler|VirtualMachine\" /tmp/tinypl0-docfx-index.txt /tmp/tinypl0-docfx-core.txt /tmp/tinypl0-docfx-vm.txt"
+      ],
+      "requiredCommandTokens": [
+        "lynx -dump -nolist",
+        "Pl0Compiler",
+        "VirtualMachine",
+        "rg -n"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "macOS",
+        "lynx text browser"
+      ],
+      "evidencePath": "/tmp/tinypl0-docfx-index.txt, /tmp/tinypl0-docfx-core.txt, /tmp/tinypl0-docfx-vm.txt",
+      "rationale": "",
+      "reevaluationTrigger": ""
+    },
+    {
+      "gateId": "SECURE-DEVELOPMENT-GATE-001",
+      "applicability": "Applicable",
+      "requiredScope": "Apply NIST SSDF and CWE Top 25 to the configuration, XML, file, error-channel, and dependency review; confirm no new input, auth, crypto, network, or secret surface.",
+      "exactCommands": [
+        "git diff --check",
+        "git diff --name-only main...HEAD",
+        "git diff --unified=0 main...HEAD -- src tests"
+      ],
+      "requiredCommandTokens": [
+        "git diff --check",
+        "git diff --name-only main...HEAD",
+        "git diff --unified=0 main...HEAD -- src tests"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "macOS",
+        "NIST SSDF",
+        "CWE Top 25",
+        "C# secure coding review"
+      ],
+      "evidencePath": "autonomous ledger secure-development review section",
+      "rationale": "",
+      "reevaluationTrigger": ""
+    },
+    {
+      "gateId": "STATISTICS-GATE-001",
+      "applicability": "Applicable",
+      "requiredScope": "Add exactly one chronological implementation entry with production/test/documentation counts and 80/125 baselines, render Profile 2, and prove it is current and last.",
+      "exactCommands": [
+        "pwsh -NoProfile -File scripts/render-project-statistics.ps1 -Repo .",
+        "pwsh -NoProfile -File scripts/render-project-statistics.ps1 -Repo . -CheckOnly -Json"
+      ],
+      "requiredCommandTokens": [
+        "render-project-statistics.ps1 -Repo .",
+        "render-project-statistics.ps1 -Repo . -CheckOnly -Json"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "macOS",
+        "PowerShell 7",
+        "Statistics Profile 2"
+      ],
+      "evidencePath": "docs/project-statistics.md and renderer JSON output",
+      "rationale": "",
+      "reevaluationTrigger": ""
+    },
+    {
+      "gateId": "IDE-VERSION-GATE-001",
+      "applicability": "Applicable",
+      "requiredScope": "Keep Version, AssemblyVersion, and FileVersion identical as 1.3.<containing commit count>.<manual build counter>, with a build-counter increment before every build/test.",
+      "exactCommands": [
+        "pwsh -NoProfile -Command '$xml = [xml](Get-Content -LiteralPath src/Pl0.Ide/Pl0.Ide.csproj -Raw -Encoding UTF8); $version = [version]([string]$xml.Project.PropertyGroup.Version); $assembly = [version]([string]$xml.Project.PropertyGroup.AssemblyVersion); $file = [version]([string]$xml.Project.PropertyGroup.FileVersion); $commits = [int](git rev-list --count HEAD); if ($version -ne $assembly -or $version -ne $file) { throw \"IDE version fields differ\" }; if ($version.Major -ne 1 -or $version.Minor -ne 3 -or $version.Build -ne $commits) { throw \"IDE version does not match 1.3.<commit-count>.<build-counter>\" }; Write-Output $version.ToString(4)'"
+      ],
+      "requiredCommandTokens": [
+        "src/Pl0.Ide/Pl0.Ide.csproj",
+        "AssemblyVersion",
+        "FileVersion",
+        "git rev-list --count HEAD",
+        "1.3.<commit-count>.<build-counter>"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "macOS",
+        "PowerShell 7",
+        ".NET version semantics"
+      ],
+      "evidencePath": "src/Pl0.Ide/Pl0.Ide.csproj and version validation output",
+      "rationale": "",
+      "reevaluationTrigger": ""
+    },
+    {
+      "gateId": "DELIVERY-SET-GATE-001",
+      "applicability": "Applicable",
+      "requiredScope": "Auto-discover changed tracked files, validate the exact intended untracked delivery files read-only, preserve unrelated work, and pass staged diff and status reconciliation.",
+      "exactCommands": [
+        "pwsh -NoProfile -Command '& ./.specify/presets/autonomous-run-governance/scripts/validate-autonomous-delivery-set.ps1 -Repo . -Intended @(\"specs/003-constitution-change/spec.md\", \"specs/003-constitution-change/clarification-report.md\", \"specs/003-constitution-change/checklists/requirements.md\", \"specs/003-constitution-change/checklists/autonomous-readiness.md\", \"specs/003-constitution-change/autonomous-run-state.json\", \"specs/003-constitution-change/plan.md\", \"specs/003-constitution-change/research.md\", \"specs/003-constitution-change/data-model.md\", \"specs/003-constitution-change/quickstart.md\", \"specs/003-constitution-change/gate-requirements.json\", \"specs/003-constitution-change/contracts/evidence-contract.md\", \"specs/003-constitution-change/plan-review.md\", \"specs/003-constitution-change/tasks.md\", \"specs/003-constitution-change/analyze-report.md\", \"specs/003-constitution-change/autonomous-run-evidence.md\")'",
+        "git diff --cached --check",
+        "git status --short"
+      ],
+      "requiredCommandTokens": [
+        "validate-autonomous-delivery-set.ps1",
+        "specs/003-constitution-change/gate-requirements.json",
+        "git diff --cached --check",
+        "git status --short"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "macOS",
+        "PowerShell 7",
+        "Git"
+      ],
+      "evidencePath": "delivery-set validator output and autonomous ledger candidate-integrity section",
+      "rationale": "",
+      "reevaluationTrigger": ""
+    },
+    {
+      "gateId": "PREMERGE-EVIDENCE-GATE-001",
+      "applicability": "Applicable",
+      "requiredScope": "Validate temporary schema-2.0 PreMerge evidence against the normalized gate-requirements hash and exact reviewed head, with exactly one Primary row per gate.",
+      "exactCommands": [
+        "pwsh -NoProfile -Command '& ./.specify/presets/autonomous-run-governance/scripts/validate-autonomous-gate-evidence.ps1 -Requirements specs/003-constitution-change/gate-requirements.json -Evidence /tmp/003-constitution-change.premerge-gate-evidence.json -Head (git rev-parse HEAD)'"
+      ],
+      "requiredCommandTokens": [
+        "validate-autonomous-gate-evidence.ps1",
+        "gate-requirements.json",
+        "003-constitution-change.premerge-gate-evidence.json",
+        "git rev-parse HEAD"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "macOS",
+        "PowerShell 7",
+        "schema 2.0 PreMerge"
+      ],
+      "evidencePath": "/tmp/003-constitution-change.premerge-gate-evidence.json",
+      "rationale": "",
+      "reevaluationTrigger": ""
+    },
+    {
+      "gateId": "REMOTE-REVIEW-GATE-001",
+      "applicability": "Applicable",
+      "requiredScope": "On the exact reviewed head, all required checks pass, review decision permits merge, and no actionable thread or unavailable review is treated as approval.",
+      "exactCommands": [
+        "gh pr checks --required",
+        "gh pr view --json number,url,headRefOid,reviewDecision,statusCheckRollup,reviews,mergeStateStatus"
+      ],
+      "requiredCommandTokens": [
+        "gh pr checks --required",
+        "gh pr view --json",
+        "headRefOid",
+        "reviewDecision",
+        "statusCheckRollup"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "GitHub",
+        "gh CLI",
+        "ubuntu-latest"
+      ],
+      "evidencePath": "GitHub PR checks and review metadata referenced from temporary PreMerge evidence",
+      "rationale": "",
+      "reevaluationTrigger": ""
+    },
+    {
+      "gateId": "MERGE-CLOSEOUT-GATE-001",
+      "applicability": "Applicable",
+      "requiredScope": "Perform only the authorized merge, synchronize main, bind PostMerge evidence, complete retrospective and post-merge actions, and validate all schema-1.1 closeout fields before Completed.",
+      "exactCommands": [
+        "gh pr merge --merge --delete-branch",
+        "gh repo sync --branch main",
+        "pwsh -NoProfile -File .specify/presets/autonomous-run-governance/scripts/validate-autonomous-run-state.ps1 -State specs/003-constitution-change/autonomous-run-state.json"
+      ],
+      "requiredCommandTokens": [
+        "gh pr merge --merge --delete-branch",
+        "gh repo sync --branch main",
+        "validate-autonomous-run-state.ps1"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "GitHub",
+        "gh CLI",
+        "macOS",
+        "PowerShell 7",
+        "schema 2.0 PostMerge"
+      ],
+      "evidencePath": "PostMerge gate evidence, retrospective, and terminal autonomous run state",
+      "rationale": "",
+      "reevaluationTrigger": ""
+    },
+    {
+      "gateId": "GENERAL-ARCHITECTURE-GATE-001",
+      "applicability": "N/A",
+      "requiredScope": "General iSAQB/arc42 architecture artefacts, ADRs, context/building-block/runtime/deployment views, quality scenarios, and architecture-risk updates.",
+      "exactCommands": [],
+      "requiredCommandTokens": [],
+      "requiredRunnerOrPlatformTokens": [],
+      "evidencePath": "specs/003-constitution-change/plan.md Constitution Check",
+      "rationale": "No structure, interface, runtime behavior, deployment, quality-attribute architecture, or technical-debt trade-off changes. / Keine Struktur-, Schnittstellen-, Runtime-, Deployment- oder Quality-Attribute-Architekturänderung.",
+      "reevaluationTrigger": "Any change to modules, public signatures, runtime flow, deployment, quality scenarios, or accepted architecture trade-offs. / Jede entsprechende Änderung."
+    },
+    {
+      "gateId": "SECURE-ARCHITECTURE-DOC-GATE-001",
+      "applicability": "N/A",
+      "requiredScope": "STRIDE/CIA, CAPEC, threat model, S-ADR, arc42 security concepts, security quality scenarios, Zero Trust, SAMM, and docs/security updates.",
+      "exactCommands": [],
+      "requiredCommandTokens": [],
+      "requiredRunnerOrPlatformTokens": [],
+      "evidencePath": "specs/003-constitution-change/plan.md and accepted spec governance matrix",
+      "rationale": "No trust boundary, data flow, privilege, external input, network/file integration, or security architecture decision changes. / Keine Trust-Boundary-, Datenfluss-, Privileg- oder Sicherheitsarchitekturänderung.",
+      "reevaluationTrigger": "External input, file/network flow, privilege, authentication/authorization, deployment, or trust-boundary change. / Entsprechender neuer Scope."
+    },
+    {
+      "gateId": "ASVS-GATE-001",
+      "applicability": "N/A",
+      "requiredScope": "OWASP ASVS level selection and verification evidence.",
+      "exactCommands": [],
+      "requiredCommandTokens": [],
+      "requiredRunnerOrPlatformTokens": [],
+      "evidencePath": "specs/003-constitution-change/plan.md",
+      "rationale": "No web, API, HTTP, authentication, or authorization feature is changed. / Kein Web-, API-, HTTP-, Authentifizierungs- oder Autorisierungsscope.",
+      "reevaluationTrigger": "Any web/API/HTTP/authentication/authorization scope. / Jeder entsprechende Scope."
+    },
+    {
+      "gateId": "SUPPLY-CHAIN-RELEASE-GATE-001",
+      "applicability": "N/A",
+      "requiredScope": "Feature-specific SBOM, VEX, SLSA provenance, and OpenSSF Scorecard release evidence.",
+      "exactCommands": [],
+      "requiredCommandTokens": [],
+      "requiredRunnerOrPlatformTokens": [],
+      "evidencePath": "specs/003-constitution-change/plan.md; NuGet review remains separately Applicable",
+      "rationale": "No dependency, release artefact, publishing pipeline, provenance, or known-CVE decision changes in this work item. / Keine Dependency-, Release-, Pipeline-, Provenienz- oder CVE-Entscheidung.",
+      "reevaluationTrigger": "Dependency addition/update, release, CVE finding, CI/CD or provenance change, or published artefact scope. / Einer dieser Trigger."
+    },
+    {
+      "gateId": "AI-SBOM-GATE-001",
+      "applicability": "N/A",
+      "requiredScope": "G7/BSI AI-SBOM evidence for models, datasets, inference infrastructure, security properties, and KPIs.",
+      "exactCommands": [],
+      "requiredCommandTokens": [],
+      "requiredRunnerOrPlatformTokens": [],
+      "evidencePath": "specs/003-constitution-change/plan.md",
+      "rationale": "AI is development tooling only and is absent from the released or operated TinyPl0 product. / KI ist nur Entwicklungswerkzeug.",
+      "reevaluationTrigger": "A model, AI service, dataset, inference infrastructure, or AI runtime becomes a product/runtime component. / KI-Produkt- oder Runtime-Bestandteil."
+    },
+    {
+      "gateId": "CLOUD-REGULATORY-GATE-001",
+      "applicability": "N/A",
+      "requiredScope": "BSI C3A/C5 and NIS2, CRA, EU AI Act, or DORA applicability evidence.",
+      "exactCommands": [],
+      "requiredCommandTokens": [],
+      "requiredRunnerOrPlatformTokens": [],
+      "evidencePath": "specs/003-constitution-change/plan.md",
+      "rationale": "No cloud/provider selection, managed service, regulated service, market-placement, AI runtime, or financial ICT scope. / Kein Cloud-, Provider- oder Regulierungsscope.",
+      "reevaluationTrigger": "Cloud/SaaS/PaaS/IaaS selection, provider dependency, regulated customer/service, market placement, AI runtime, or financial-sector scope. / Einer dieser Trigger."
+    },
+    {
+      "gateId": "SCRIPT-PARITY-GATE-001",
+      "applicability": "N/A",
+      "requiredScope": "Paired Bash and PowerShell implementation, cmdlet, man page, help, dry-run/WhatIf, and cross-platform script parity evidence.",
+      "exactCommands": [],
+      "requiredCommandTokens": [],
+      "requiredRunnerOrPlatformTokens": [],
+      "evidencePath": "specs/003-constitution-change/plan.md",
+      "rationale": "No repository automation script, paired Bash/PowerShell implementation, cmdlet, workflow helper, or man page is added, changed, or removed. The browser-side DocFX accessibility template is reviewed under the JavaScript secure-coding and A11Y gates and has no cross-platform command counterpart. / Kein Repository-Automationsskript, Bash-/PowerShell-Paar, Cmdlet, Workflow-Helper oder keine Manpage wird geändert. Das browserseitige DocFX-A11Y-Template wird unter JavaScript-Secure-Coding und A11Y geprüft und besitzt kein plattformübergreifendes Befehlsgegenstück.",
+      "reevaluationTrigger": "Any repository automation script, paired Bash/PowerShell implementation, cmdlet, workflow-helper, or man-page change. / Jede entsprechende Automations-, Cmdlet-, Workflow- oder Manpage-Änderung."
+    },
+    {
+      "gateId": "SERIALIZATION-DATA-GATE-001",
+      "applicability": "N/A",
+      "requiredScope": "Runtime data model, database, JSON schema, P-Code, listing, or serializer compatibility evidence.",
+      "exactCommands": [],
+      "requiredCommandTokens": [],
+      "requiredRunnerOrPlatformTokens": [],
+      "evidencePath": "specs/003-constitution-change/plan.md",
+      "rationale": "No data entity, persistence, JSON contract, P-Code/listing format, or serializer behavior changes. / Keine Daten- oder Serialisierungsänderung.",
+      "reevaluationTrigger": "Any persisted entity, schema, P-Code/listing, JSON, or serializer behavior change. / Jede entsprechende Änderung."
+    },
+    {
+      "gateId": "GOLDEN-MASTER-GATE-001",
+      "applicability": "N/A",
+      "requiredScope": "Golden compiler-output regeneration with scripts/update-golden-code.sh.",
+      "exactCommands": [],
+      "requiredCommandTokens": [],
+      "requiredRunnerOrPlatformTokens": [],
+      "evidencePath": "specs/003-constitution-change/plan.md",
+      "rationale": "Compiler, lexer, parser, P-Code, and VM behavior are unchanged. / Compiler-, P-Code- und VM-Verhalten bleiben unverändert.",
+      "reevaluationTrigger": "Any intentional compiler token, diagnostic, P-Code, listing, or runtime-output change. / Jede entsprechende Verhaltensänderung."
+    },
+    {
+      "gateId": "CLI-A11Y-GATE-001",
+      "applicability": "N/A",
+      "requiredScope": "CLI output, NO_COLOR, TERM=dumb, keyboard, and terminal interaction accessibility evidence.",
+      "exactCommands": [],
+      "requiredCommandTokens": [],
+      "requiredRunnerOrPlatformTokens": [],
+      "evidencePath": "specs/003-constitution-change/plan.md; DocFX A11Y is separately Applicable",
+      "rationale": "No CLI output, option, error message, UI interaction, or terminal flow changes. / Keine CLI- oder Terminal-Interaktionsänderung.",
+      "reevaluationTrigger": "Any user-facing CLI/IDE output, option, focus, keyboard, or interaction-flow change. / Jede entsprechende UI-/CLI-Änderung."
+    },
+    {
+      "gateId": "HOME-SYNC-GATE-001",
+      "applicability": "N/A",
+      "requiredScope": "Home runtime distribution and manifest-bound synchronization evidence.",
+      "exactCommands": [],
+      "requiredCommandTokens": [],
+      "requiredRunnerOrPlatformTokens": [],
+      "evidencePath": "specs/003-constitution-change/plan.md",
+      "rationale": "The changed governance is repository-local sourceOnly content and TinyPl0 has no home-runtime distribution contract. / Repository-lokaler sourceOnly-Inhalt ohne Home-Runtime-Vertrag.",
+      "reevaluationTrigger": "A homeRuntime or other external distribution/synchronization contract is introduced. / Neuer Distributions- oder Home-Runtime-Vertrag."
+    }
+  ]
+}

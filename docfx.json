@@ -34,10 +34,11 @@
       "_appFooter": "Lizenz: MIT - siehe LICENSE.",
       "_appLogoPath": "images/logo.svg",
       "_appFaviconPath": "images/favicon.ico",
+      "_lang": "de",
       "_enableSearch": true,
       "pdf": true
     },
-    "template": ["default", "modern"]
+    "template": ["default", "modern", "docfx/templates/tinypl0"]
   },
   "pdf": {
     "content": [
@@ -53,6 +54,6 @@
     "globalMetadata": {
       "_appTitle": "TinyPl0 Dokumentation"
     },
-    "template": ["default", "modern"]
+    "template": ["default", "modern", "docfx/templates/tinypl0"]
   }
 }

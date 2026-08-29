@@ -17,7 +17,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/ConsolePl0Io.cs
-      branch: codex/002-vm-inc-compat-implement
+      branch: codex/003-constitution-change
       repo: https://github.com/hindermath/TinyPl0.git
     id: ConsolePl0Io
     path: src/Pl0.Vm/ConsolePl0Io.cs
@@ -55,23 +55,34 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/ConsolePl0Io.cs
-      branch: codex/002-vm-inc-compat-implement
+      branch: codex/003-constitution-change
       repo: https://github.com/hindermath/TinyPl0.git
     id: ReadInt
     path: src/Pl0.Vm/ConsolePl0Io.cs
-    startLine: 13
+    startLine: 17
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
-  summary: Reads an integer value from standard input.
+  summary: >-
+    Liest eine Ganzzahl aus der Standardeingabe.
+
+
+    Reads an integer value from standard input.
   example: []
   syntax:
     content: public int ReadInt()
     return:
       type: System.Int32
-      description: The parsed integer.
+      description: Die eingelesene Ganzzahl. / The parsed integer.
     content.vb: Public Function ReadInt() As Integer
   overload: Pl0.Vm.ConsolePl0Io.ReadInt*
+  exceptions:
+  - type: System.IO.EndOfStreamException
+    commentId: T:System.IO.EndOfStreamException
+    description: Die Standardeingabe liefert keine weitere Zeile. / Standard input provides no further line.
+  - type: System.FormatException
+    commentId: T:System.FormatException
+    description: Die gelesene Zeile enthält keine gültige Ganzzahl. / The read line does not contain a valid integer.
   implements:
   - Pl0.Vm.IPl0Io.ReadInt
 - uid: Pl0.Vm.ConsolePl0Io.WriteInt(System.Int32)
@@ -88,11 +99,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/ConsolePl0Io.cs
-      branch: codex/002-vm-inc-compat-implement
+      branch: codex/003-constitution-change
       repo: https://github.com/hindermath/TinyPl0.git
     id: WriteInt
     path: src/Pl0.Vm/ConsolePl0Io.cs
-    startLine: 33
+    startLine: 37
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -354,6 +365,20 @@ references:
   name: System
   nameWithType: System
   fullName: System
+- uid: System.IO.EndOfStreamException
+  commentId: T:System.IO.EndOfStreamException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.endofstreamexception
+  name: EndOfStreamException
+  nameWithType: EndOfStreamException
+  fullName: System.IO.EndOfStreamException
+- uid: System.FormatException
+  commentId: T:System.FormatException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.formatexception
+  name: FormatException
+  nameWithType: FormatException
+  fullName: System.FormatException
 - uid: Pl0.Vm.ConsolePl0Io.ReadInt*
   commentId: Overload:Pl0.Vm.ConsolePl0Io.ReadInt
   href: Pl0.Vm.ConsolePl0Io.html#Pl0_Vm_ConsolePl0Io_ReadInt

@@ -55,5 +55,26 @@ bypass, cancellation, secret, or provider authority. Complete autonomous and
 parallel autonomous runs require explicit delegation. Parallel campaigns use
 separate worktrees and at most three concurrently active workers.
 
+## Didaktische und sprachliche Klarheit / Pedagogical and Linguistic Clarity
+
+- Neue oder geänderte lernendenseitige Inhalte stehen Deutsch zuerst und
+  Englisch danach auf CEFR B2 und bleiben text-first; WCAG 2.2 Level AA gilt,
+  soweit die Kriterien anwendbar sind.
+- Extern öffentliche APIs erhalten vollständige, fachlich anwendbare
+  XML-Dokumentation. CS1591 darf nicht global oder projektweit unterdrückt
+  werden; lokale, private und generierte Flächen bleiben ausgeschlossen.
+- API-Signatur- oder XML-Kommentaränderungen verlangen DocFX und eine
+  textorientierte A11Y-Prüfung im selben Arbeitsgegenstand.
+- Nicht-triviale Logik wird auf kurze zweisprachige Warum-Kommentare geprüft.
+  Neue Funktionen und Fehlerkorrekturen belegen TDD Rot, Grün und Regression;
+  reine Text-/Governance-Arbeit dokumentiert ein begründetes `N/A` mit Trigger.
+
+*Learner-facing content is German-first/English-second at CEFR B2 and remains
+text-first under WCAG 2.2 AA where applicable. Externally public APIs receive
+complete applicable XML documentation without global or project-wide CS1591
+suppression. API or XML changes require DocFX and text-oriented accessibility
+evidence. Review non-trivial logic for bilingual why-comments, and record TDD
+red, green, and regression evidence or a reasoned text/governance `N/A`.*
+
 <!-- MANUAL ADDITIONS START -->
 <!-- MANUAL ADDITIONS END -->
