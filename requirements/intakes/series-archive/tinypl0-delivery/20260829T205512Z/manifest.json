@@ -7,16 +7,16 @@
   "status": "Active",
   "orderedTargets": [
     {
-      "path": "requirements/intakes/archive/Lastenheft_Constitution_Change.003-constitution-change.md",
+      "path": "requirements/intakes/active/Lastenheft_Constitution_Change.md",
       "role": "Primary",
       "normalizedSha256": "fe796de8ced6daf9cb3f4c890b929f47420a12deac2f37da793c4ea263fc2ff5",
-      "status": "Completed"
+      "status": "Eligible"
     },
     {
       "path": "requirements/intakes/active/Lastenheft_Secure-Development-Hardening.md",
       "role": "OrderedMember",
       "normalizedSha256": "18c957e4bcbe3e9e975f11ace8d1d2c81c49064f911f607480a09e14774669de",
-      "status": "Eligible"
+      "status": "Blocked"
     },
     {
       "path": "requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
@@ -98,7 +98,7 @@
     }
   ],
   "roots": [
-    "requirements/intakes/archive/Lastenheft_Constitution_Change.003-constitution-change.md",
+    "requirements/intakes/active/Lastenheft_Constitution_Change.md",
     "requirements/intakes/active/Lastenheft_PL0_Optimierung.md",
     "requirements/intakes/active/Lastenheft_CLR_Assembly.md",
     "requirements/intakes/active/Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
@@ -106,7 +106,7 @@
   ],
   "dependencies": [
     {
-      "from": "requirements/intakes/archive/Lastenheft_Constitution_Change.003-constitution-change.md",
+      "from": "requirements/intakes/active/Lastenheft_Constitution_Change.md",
       "to": "requirements/intakes/active/Lastenheft_Secure-Development-Hardening.md",
       "kind": "HardCompletionGate",
       "binding": true

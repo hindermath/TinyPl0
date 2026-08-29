@@ -65,6 +65,13 @@
       "labelDe": "Constitution 003",
       "labelEn": "Constitution 003",
       "netLines": 4846
+    },
+    {
+      "slot": 8,
+      "id": "003-closeout",
+      "labelDe": "003 Abschluss",
+      "labelEn": "003 closeout",
+      "netLines": 388
     }
   ],
   "excludedPaths": [],

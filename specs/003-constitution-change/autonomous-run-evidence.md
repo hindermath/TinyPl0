@@ -15,7 +15,7 @@
 | Reviewer / Reviewer | Pull-Request-Reviewer; lokale Vorabpruefung durch den implementierenden Agenten. / Pull-request reviewer; local pre-review by the implementing agent. |
 | Date / Datum | 2026-08-29 |
 | Run-state path / Run-State-Pfad | `specs/003-constitution-change/autonomous-run-state.json` |
-| Run-state status / Run-State-Status | `Active`, Stage `Validate`, Stop-Status `N/A`, `authorityRevalidationRequired=false`, 61/73 Aufgaben; der State-Validator ist erfolgreich. / `Active`, stage `Validate`, 61/73 tasks; the state validator passes. |
+| Run-state status / Run-State-Status | `Completed`, Stage `Retrospective`, Stop-Status `N/A`, `authorityRevalidationRequired=false`, 73/73 Aufgaben; der terminale State-Validator ist erfolgreich. / `Completed`, stage `Retrospective`, 73/73 tasks; the terminal state validator passes. |
 
 ## Model Routing / Modell-Routing
 
@@ -42,10 +42,10 @@ a validated handoff hash.
 |---|---|---|
 | Preflight | Pass | macOS `Darwin`; PowerShell `7.6.5`; .NET SDK `10.0.400`; DocFX `2.78.5`; lokaler Node-24-Runner `v24.19.0`; Lynx `2.9.3`; Branch und Worktree bekannt. / Platform and tools are locally available. |
 | Clarify | Pass | `clarification-report.md`; keine materielle Unklarheit. / No material ambiguity. |
-| Checklists | Pass at declared boundary / Pass an erklaerter Grenze | `requirements.md` 27/27; `autonomous-readiness.md` 16/21. Die fuenf offenen Punkte gehoeren zu Commit-, Remote- und Closeout-Grenzen. / The five open items belong to commit, remote, and closeout boundaries. |
+| Checklists | Pass | `requirements.md` 27/27; `autonomous-readiness.md` 21/21. / Both checklists are complete. |
 | Plan review | Pass | `plan-review.result.json`, keine offenen Critical-, High- oder Medium-Befunde. / No unresolved Critical, High, or Medium finding. |
 | Analyze | Pass | Das verpflichtende Resume-Delta nach B-001/B-002 ist validatorgültig; keine offenen Critical-, High- oder Medium-Befunde, ein verbleibender Low-Befund mit Owner und Trigger. / The mandatory resume delta is valid with zero open Critical, High, or Medium findings. |
-| Implementation | Pass | T001-T061 sind durch konkrete Task- und Gate-Evidence belegt: Governance, TDD, XML, Build/Test, Coverage, DocFX/A11Y, Dependencies/Security und Statistik-Kandidat sind lokal abgeschlossen. / T001-T061 have concrete task and gate evidence; all local implementation and validation gates are complete. |
+| Implementation | Pass | T001-T073 sind durch lokale, Remote-, Merge-, Sync-, Serien-, PostMerge- und Retrospektiven-Evidence belegt. / T001-T073 have local, remote, merge, sync, series, PostMerge, and retrospective evidence. |
 
 ## Validation / Validierung
 
@@ -138,9 +138,9 @@ decision and the pull-request reviewer reviews it. `Open` means the gate remains
 | `STATISTICS-GATE-001` | Applicable | Candidate pass | Final real commit count is bound by the causal statistics-only commit. |
 | `IDE-VERSION-GATE-001` | Applicable | Candidate pass | Final commit-count alignment remains to be verified after both local commits. |
 | `DELIVERY-SET-GATE-001` | Applicable | Pass locally | Re-run on the exact staged and pushed delivery set. |
-| `PREMERGE-EVIDENCE-GATE-001` | Applicable | Open outside current authority | Exact final reviewed head. |
-| `REMOTE-REVIEW-GATE-001` | Applicable | Open outside current authority | Authorized PR/check/review phase. |
-| `MERGE-CLOSEOUT-GATE-001` | Applicable | Open outside current authority | Authorized merge, sync, archival, and closeout phase. |
+| `PREMERGE-EVIDENCE-GATE-001` | Applicable | Pass | Exact reviewed head `6f5ac7a2ce17b53c3004df42a31c4b95e7fb5f4f`; normalized PreMerge evidence `4d5607df84d24576a3c59c5edefd66d4af40f0a4ddda5c3ac808fa1d975201be`. |
+| `REMOTE-REVIEW-GATE-001` | Applicable | Pass with explicit user override | PR #68: 18 checks passed, two conditional Pages jobs skipped; GitHub review remained `REVIEW_REQUIRED` and was not reported as approval. The user explicitly authorized admin bypass. |
+| `MERGE-CLOSEOUT-GATE-001` | Applicable | Pass | Merge `4873a358a6a05a8dfa09c62480a0ee94077cb7f8`, synchronized `main`, validated PostMerge evidence, archived intake, successor series, and retrospective. |
 | `GENERAL-ARCHITECTURE-GATE-001` | N/A | Accepted | Module, signature, runtime, deployment, quality-scenario, or architecture-trade-off change. |
 | `SECURE-ARCHITECTURE-DOC-GATE-001` | N/A | Accepted | Trust boundary, data flow, privilege, auth, deployment, or security-architecture change. |
 | `ASVS-GATE-001` | N/A | Accepted | Web, API, HTTP, authentication, or authorization scope. |
@@ -690,3 +690,34 @@ contract corrections.
 - Ergebnisvertrag / Result contract: Payload ist dieses Ledger. Erst nach der
   letzten Evidence- und Checkbox-Pruefung wird sein normalisierter SHA-256 in
   das Schema-1.0-Phasenergebnis geschrieben.
+
+## Terminal MergeAndSync Closeout / Terminaler MergeAndSync-Abschluss
+
+Die vorstehenden begrenzten Abschnitte bleiben als historische
+Fortsetzungs-Evidence erhalten. Der spätere ausdrückliche Nutzerauftrag
+autorisierte den vollständigen `MergeAndSync`-Lauf einschließlich eines nur bei
+Bedarf eingesetzten Admin-Bypass. / The bounded sections above remain historical
+resume evidence. The later explicit user request authorized complete
+`MergeAndSync`, including admin bypass only where required.
+
+| Item | Terminal result / Terminales Ergebnis |
+|---|---|
+| Feature commits | `c7b6a973e30b` feature candidate; `6f5ac7a2ce17b53c3004df42a31c4b95e7fb5f4f` statistics-bound final head |
+| IDE version | `1.3.433.26`; `Version == AssemblyVersion == FileVersion`; Patch `433` matched the final feature-branch commit count |
+| Pull request | `https://github.com/hindermath/TinyPl0/pull/68` |
+| Checks | 18 successful checks; two conditional Docs Pages deployment jobs skipped; no reported required-check entry |
+| Review disposition | GitHub remained `REVIEW_REQUIRED`; this was not claimed as approval. The user explicitly authorized the admin bypass used for merge. |
+| PreMerge | `/tmp/003-constitution-change.premerge-gate-evidence.json`; schema 2.0 validation Pass; normalized SHA-256 `4d5607df84d24576a3c59c5edefd66d4af40f0a4ddda5c3ac808fa1d975201be` |
+| Merge | PR #68, merge commit `4873a358a6a05a8dfa09c62480a0ee94077cb7f8`, merged at `2026-08-29T20:55:12Z`; remote feature branch deleted |
+| Default branch sync | `gh repo sync --branch main`; local and remote `main` both resolved to `4873a358a6a05a8dfa09c62480a0ee94077cb7f8` at the causal sync boundary |
+| PostMerge | `/tmp/003-constitution-change.postmerge-gate-evidence.json`; schema 2.0 validation Pass; normalized SHA-256 `eb20bc4dad45e0f5f45b4c309ace595e5ee678c8807a0b8f04d6d26b8f591c7d` |
+| Intake archive | Byte-preserving move to `requirements/intakes/archive/Lastenheft_Constitution_Change.003-constitution-change.md`; content SHA-256 remains `fe796de8ced6daf9cb3f4c890b929f47420a12deac2f37da793c4ea263fc2ff5` |
+| Series successor | Previous manifest and receipt archived byte-identically under `requirements/intakes/series-archive/tinypl0-delivery/20260829T205512Z/`; successor manifest and receipt pass both PowerShell and Bash validators; rank 2 is `Eligible` but was not started |
+| Retrospective | `specs/003-constitution-change/autonomous-run-retrospective.md`; validated phase result SHA-256 `43516342969f99b69df2977908a4ccb7cf790be5356046f853481ee6d772a2cd` |
+| Causal closeout candidate | The first PR #69 run exposed a cross-platform active-only assumption in generated intake governance; the next run exposed stale negative-fixture expectations. After the bounded renderer/validator, PowerShell/Bash parity, and fixture correction, version is pre-aligned to final closeout-branch count `440`; Release build at `1.3.440.31` completed with 0 warnings/0 errors and the rebuilt full test at `1.3.440.32` passed 266/266. |
+| Terminal state | Schema 1.1 validator Pass; `Completed`, stage `Retrospective`, tasks 73/73, all four closeout fields `Completed`, next action `N/A` |
+
+No follow-up feature or intake run was started. The next action requires a new,
+separately authorized intake/run decision. / Es wurde kein Folge-Feature und
+kein weiterer Intake-Lauf gestartet. Jede nächste Aktion benötigt eine neue,
+separate Autorisierung.

@@ -30,15 +30,15 @@ if (validate({root}).length !== 0) throw new Error("positive fixture failed");
 expectFailure("duplicate target", {
   manifestPath: fixture("duplicate-target", manifestSource, (value) =>
     value.orderedTargets.push({...value.orderedTargets[0]})),
-}, /unique active targets/);
+}, /unique targets/);
 expectFailure("archive target", {
   manifestPath: fixture("archive-target", manifestSource, (value) => {
     value.orderedTargets[8].path = "requirements/intakes/archive/Missing.md";
   }),
-}, /directory and series targets differ|archive or backlog/);
+}, /directory and series targets differ|only Completed series targets/);
 expectFailure("missing eligible", {
   manifestPath: fixture("missing-eligible", manifestSource, (value) => {
-    value.orderedTargets[0].status = "Pending";
+    value.orderedTargets[1].status = "Pending";
   }),
 }, /single explicitly Eligible/);
 expectFailure("stale hash", {

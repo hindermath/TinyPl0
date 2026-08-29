@@ -6,8 +6,8 @@ Maschinendaten stehen in
 
 | Rang | Intake | Zustand | Abhängigkeit |
 |---:|---|---|---|
-| 1 | `requirements/intakes/active/Lastenheft_Constitution_Change.md` | `Eligible` | keine |
-| 2 | `requirements/intakes/active/Lastenheft_Secure-Development-Hardening.md` | `Blocked` | Constitution |
+| 1 | `requirements/intakes/archive/Lastenheft_Constitution_Change.003-constitution-change.md` | `Completed` | keine |
+| 2 | `requirements/intakes/active/Lastenheft_Secure-Development-Hardening.md` | `Eligible` | Constitution abgeschlossen |
 | 3 | `requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md` | `Blocked` | Security |
 | 4 | `requirements/intakes/active/Lastenheft_Quellcode_Doku.md` | `Blocked` | Sandbox |
 | 5 | `requirements/intakes/active/Lastenheft_Dokumentation_EN.md` | `Blocked` | Kommentarhärtung |

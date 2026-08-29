@@ -1,20 +1,19 @@
 {
   "schemaVersion": "1.0",
   "documentType": "IntakeSeriesOperation",
-  "operationId": "5e0302a4-626a-4381-96ef-133e06e9da74",
+  "operationId": "a6522a3c-1674-4db6-89e0-aeb538f79c2a",
   "seriesId": "8541ffa1-6b52-4f95-a746-d870482eaf5d",
   "type": "Update",
   "status": "Published",
-  "authorityEvidence": "User approved IAD001 including TinyPl0 rank 10 and approved the binding IAD002 delivery gate.",
-  "proposalNormalizedSha256": "f36a20d34be1c682821321dd0b1a0c8d2a5c44b6ffbfaf54c77daa027868a10d",
+  "authorityEvidence": "User explicitly authorized the complete 003 Constitution Change MergeAndSync run, admin bypass, and causal post-merge closeout on 2026-08-29.",
+  "proposalNormalizedSha256": "1ca91db4ec4970c45a7c27b8623d03c29f52c9295305f8ee7d574b23d3f6cadf",
   "preparedPaths": [
-    "requirements/intakes/active/Lastenheft_Embeddable-VM-und-NuGet.md",
-    "specs/intake-authoring-receipts/embeddable-vm-und-nuget.json",
+    "requirements/intakes/archive/Lastenheft_Constitution_Change.003-constitution-change.md",
     "requirements/intakes/series/tinypl0-delivery/manifest.json",
     "requirements/intakes/series/tinypl0-delivery/receipt.json",
     "requirements/intakes/series/tinypl0-delivery/order.md",
-    "requirements/intakes/series-archive/tinypl0-delivery/20260829T153102Z/manifest.json",
-    "requirements/intakes/series-archive/tinypl0-delivery/20260829T153102Z/receipt.json",
+    "requirements/intakes/series-archive/tinypl0-delivery/20260829T205512Z/manifest.json",
+    "requirements/intakes/series-archive/tinypl0-delivery/20260829T205512Z/receipt.json",
     "Lastenheft_Abarbeitungsreihenfolge.md"
   ],
   "validation": {
@@ -24,13 +23,12 @@
   "publication": {
     "status": "Published",
     "publishedPaths": [
-      "requirements/intakes/active/Lastenheft_Embeddable-VM-und-NuGet.md",
-      "specs/intake-authoring-receipts/embeddable-vm-und-nuget.json",
+      "requirements/intakes/archive/Lastenheft_Constitution_Change.003-constitution-change.md",
       "requirements/intakes/series/tinypl0-delivery/manifest.json",
       "requirements/intakes/series/tinypl0-delivery/receipt.json",
       "requirements/intakes/series/tinypl0-delivery/order.md",
-      "requirements/intakes/series-archive/tinypl0-delivery/20260829T153102Z/manifest.json",
-      "requirements/intakes/series-archive/tinypl0-delivery/20260829T153102Z/receipt.json",
+      "requirements/intakes/series-archive/tinypl0-delivery/20260829T205512Z/manifest.json",
+      "requirements/intakes/series-archive/tinypl0-delivery/20260829T205512Z/receipt.json",
       "Lastenheft_Abarbeitungsreihenfolge.md"
     ]
   }

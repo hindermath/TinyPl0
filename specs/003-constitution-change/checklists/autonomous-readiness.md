@@ -109,7 +109,7 @@ remains open until then; this is not a checklist-phase defect.
 
 ## Schranken vor Lieferung / Gates Before Delivery
 
-- [ ] CHK014 Sind alle Aufgaben abgeschlossen oder bedingt belegt und sind
+- [x] CHK014 Sind alle Aufgaben abgeschlossen oder bedingt belegt und sind
   FR-001 bis FR-009 sowie SC-001 bis SC-007 vollständig nachgewiesen? / Are all
   tasks complete or conditionally evidenced, with FR-001 through FR-009 and
   SC-001 through SC-007 fully proven? [Delivery gate, Spec §Messbare Ergebnisse]
@@ -136,26 +136,26 @@ remains open until then; this is not a checklist-phase defect.
   [Delivery gate, Spec §FR-006–008] Evidence: byte-identical constitution
   pair; eight standard and four optional non-conflicting presets; clean
   candidate homogeneity score 100 and statistics JSON `CURRENT`.
-- [ ] CHK018 Besteht der explizite Delivery-Set-Nachweis einschließlich aller
+- [x] CHK018 Besteht der explizite Delivery-Set-Nachweis einschließlich aller
   beabsichtigten untracked Dateien, `git diff --cached --check` oder lokaler
   nicht-mutierender Entsprechung, Statusabgleich, Versionsregel und Erhalt
   fremder Arbeit? / Does explicit delivery-set evidence cover every intended
   untracked file, `git diff --cached --check` or a non-mutating local
   equivalent, status reconciliation, version rule, and preservation of
   unrelated work? [Delivery gate, Autonomous candidate integrity]
-- [ ] CHK019 Bindet temporäre Schema-2.0-`PreMerge`-Evidenz den akzeptierten
+- [x] CHK019 Bindet temporäre Schema-2.0-`PreMerge`-Evidenz den akzeptierten
   Anforderungs-Hash und exakten geprüften Head, mit genau einer Primary-Zeile je
   Gate und erfolgreichem installiertem Validator? / Does temporary schema-2.0
   `PreMerge` evidence bind the accepted requirements hash and exact reviewed
   head, with exactly one Primary row per gate and a passing installed validator?
   [Delivery gate, Autonomous gate evidence]
-- [ ] CHK020 Sind erforderliche Checks grün, alle ausführbaren Befehle und
+- [x] CHK020 Sind erforderliche Checks grün, alle ausführbaren Befehle und
   Runner aus Workflow/Logs abgeleitet, alle Review-Threads erledigt und kein
   fehlender Review oder Bypass als Erfolg gewertet? / Are required checks green,
   executed commands and runners derived from workflow/logs, all review threads
   resolved, and no missing review or bypass counted as success? [Delivery gate,
   Autonomous remote convergence]
-- [ ] CHK021 Sind Merge, Cleanup, Default-Branch-Synchronisierung,
+- [x] CHK021 Sind Merge, Cleanup, Default-Branch-Synchronisierung,
   schema-2.0-`PostMerge`-Evidenz und alle vier schema-1.1-Closeout-Felder
   kausal und terminal belegt, bevor der Gesamtlauf `Completed` wird? / Are merge,
   cleanup, default-branch synchronization, schema-2.0 `PostMerge` evidence, and
@@ -172,9 +172,9 @@ remains open until then; this is not a checklist-phase defect.
 | `DELIVERY-GATE-001` | Vor lokaler Abnahme / before local acceptance | `Applicable`, erfüllt / satisfied | FR-001–FR-009 und SC-001–SC-007; sichere .NET-/CWE-Prüfung. / FR-001–FR-009 and SC-001–SC-007; secure .NET/CWE review. | `dotnet restore`, `dotnet build`, `dotnet test` |
 | `DELIVERY-GATE-002` | Bei API/XML-Trigger, sonst final begründetes `N/A` / on API/XML trigger, otherwise final reasoned `N/A` | `Applicable`, erfüllt / satisfied | DocFX plus textorientierter A11Y-Nachweis desselben Arbeitsgegenstands. / DocFX plus text-oriented accessibility evidence from the same work item. | `docfx docfx.json`, `Playwright`, `@axe-core/playwright`, `lynx`, Node 24 LTS |
 | `DELIVERY-GATE-003` | Vor Delivery-Kandidat / before delivery candidate | `Applicable`, erfüllt auf sauberer Kandidatenkopie / satisfied on clean candidate copy | Atomare Agenten-/Constitution-/Template-Parität, Acht-Preset-Abgleich und fortgeschriebene Statistik. / Atomic agent/constitution/template parity, eight-preset reconciliation, and updated statistics. | `pwsh -NoProfile -File scripts/check-homogeneity.ps1 -Json`, `pwsh -NoProfile -File scripts/render-project-statistics.ps1 -Repo . -CheckOnly` |
-| `DELIVERY-GATE-004` | Vor Commit/Push / before commit/push | `Applicable`, offen / open | Explizites unverändertes Delivery-Set, exakter Kandidat, Status- und Versionsabgleich. / Explicit immutable delivery set, exact candidate, status and version reconciliation. | `validate-autonomous-delivery-set.ps1`, `git diff --cached --check`, `git status --short` |
-| `DELIVERY-GATE-005` | Vor Merge / before merge | `Applicable`, offen / open | Temporäre exakter-Head-`PreMerge`-Evidenz, Gate-Mapping, Checks und Review-Konvergenz. / Temporary exact-head `PreMerge` evidence, gate mapping, checks, and review convergence. | `validate-autonomous-gate-evidence.ps1`, `gh pr checks`, `gh pr view` |
-| `DELIVERY-GATE-006` | Merge und Abschluss / merge and closeout | `Applicable`, offen / open | Richtlinienkonformer Merge, Sync, PostMerge-Bindung, Retrospektive und terminale Closeout-Felder. / Policy-compliant merge, sync, PostMerge binding, retrospective, and terminal closeout fields. | `gh pr merge`, `gh repo sync --branch main`, `validate-autonomous-run-state.ps1` |
+| `DELIVERY-GATE-004` | Vor Commit/Push / before commit/push | `Applicable`, erfüllt / satisfied | Explizites unverändertes Delivery-Set, exakter Kandidat, Status- und Versionsabgleich. / Explicit immutable delivery set, exact candidate, status and version reconciliation. | `validate-autonomous-delivery-set.ps1`, `git diff --cached --check`, `git status --short` |
+| `DELIVERY-GATE-005` | Vor Merge / before merge | `Applicable`, erfüllt mit dokumentierter Nutzer-Override-Autoritaet / satisfied with documented user override authority | Temporäre exakter-Head-`PreMerge`-Evidenz, Gate-Mapping, Checks und Review-Konvergenz. / Temporary exact-head `PreMerge` evidence, gate mapping, checks, and review convergence. | `validate-autonomous-gate-evidence.ps1`, `gh pr checks`, `gh pr view` |
+| `DELIVERY-GATE-006` | Merge und Abschluss / merge and closeout | `Applicable`, erfüllt / satisfied | Richtlinienkonformer Merge, Sync, PostMerge-Bindung, Retrospektive und terminale Closeout-Felder. / Policy-compliant merge, sync, PostMerge binding, retrospective, and terminal closeout fields. | `gh pr merge`, `gh repo sync --branch main`, `validate-autonomous-run-state.ps1` |
 
 ## Begründete N/A-Entscheidungen / Reasoned N/A Decisions
 

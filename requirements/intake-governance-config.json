@@ -21,5 +21,6 @@
     "history": "requirements/intakes/history",
     "seriesManifest": "requirements/intakes/series/tinypl0-delivery/manifest.json"
   },
-  "legacyArtifactNames": []
+  "legacyArtifactNames": [],
+  "featureMustRemainAbsent": false
 }
