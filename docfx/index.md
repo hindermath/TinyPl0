@@ -56,8 +56,10 @@ TinyPl0 ist mehr als nur ein Compiler. Es ist ein Lernwerkzeug:
 - **Modernität:** Implementiert in C# 14 und .NET 10.
 - **Transparenz:** Vollständige Traceability von Anforderungen bis zu den Tests.
 
-> [!TIP]
-> Besuchen Sie den [Anhang](appendix/index.md), um eine Vielzahl von Beispielprogrammen (wie Fibonacci oder Kreisberechnung) zu entdecken und direkt auszuprobieren.
+> **Tipp / Tip:** Besuchen Sie den [Anhang](appendix/index.md), um eine Vielzahl
+> von Beispielprogrammen (wie Fibonacci oder Kreisberechnung) zu entdecken und
+> direkt auszuprobieren. / Visit the [appendix](appendix/index.md) to discover
+> and try many example programs, including Fibonacci and circle calculations.
 
 ---
 

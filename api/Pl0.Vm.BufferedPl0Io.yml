@@ -21,7 +21,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/BufferedPl0Io.cs
-      branch: codex/002-vm-inc-compat-implement
+      branch: codex/003-constitution-change
       repo: https://github.com/hindermath/TinyPl0.git
     id: BufferedPl0Io
     path: src/Pl0.Vm/BufferedPl0Io.cs
@@ -59,7 +59,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/BufferedPl0Io.cs
-      branch: codex/002-vm-inc-compat-implement
+      branch: codex/003-constitution-change
       repo: https://github.com/hindermath/TinyPl0.git
     id: _input
     path: src/Pl0.Vm/BufferedPl0Io.cs
@@ -88,7 +88,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/BufferedPl0Io.cs
-      branch: codex/002-vm-inc-compat-implement
+      branch: codex/003-constitution-change
       repo: https://github.com/hindermath/TinyPl0.git
     id: _output
     path: src/Pl0.Vm/BufferedPl0Io.cs
@@ -117,7 +117,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/BufferedPl0Io.cs
-      branch: codex/002-vm-inc-compat-implement
+      branch: codex/003-constitution-change
       repo: https://github.com/hindermath/TinyPl0.git
     id: .ctor
     path: src/Pl0.Vm/BufferedPl0Io.cs
@@ -152,7 +152,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/BufferedPl0Io.cs
-      branch: codex/002-vm-inc-compat-implement
+      branch: codex/003-constitution-change
       repo: https://github.com/hindermath/TinyPl0.git
     id: Output
     path: src/Pl0.Vm/BufferedPl0Io.cs
@@ -183,23 +183,31 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/BufferedPl0Io.cs
-      branch: codex/002-vm-inc-compat-implement
+      branch: codex/003-constitution-change
       repo: https://github.com/hindermath/TinyPl0.git
     id: ReadInt
     path: src/Pl0.Vm/BufferedPl0Io.cs
-    startLine: 34
+    startLine: 37
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
-  summary: Reads the next input value.
+  summary: >-
+    Liest den nächsten Wert aus dem Eingabepuffer.
+
+
+    Reads the next value from the input buffer.
   example: []
   syntax:
     content: public int ReadInt()
     return:
       type: System.Int32
-      description: The next integer in the input buffer.
+      description: Die nächste Ganzzahl im Eingabepuffer. / The next integer in the input buffer.
     content.vb: Public Function ReadInt() As Integer
   overload: Pl0.Vm.BufferedPl0Io.ReadInt*
+  exceptions:
+  - type: System.IO.EndOfStreamException
+    commentId: T:System.IO.EndOfStreamException
+    description: Der Eingabepuffer enthält keinen weiteren Wert. / The input buffer contains no further value.
   implements:
   - Pl0.Vm.IPl0Io.ReadInt
 - uid: Pl0.Vm.BufferedPl0Io.WriteInt(System.Int32)
@@ -216,11 +224,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/BufferedPl0Io.cs
-      branch: codex/002-vm-inc-compat-implement
+      branch: codex/003-constitution-change
       repo: https://github.com/hindermath/TinyPl0.git
     id: WriteInt
     path: src/Pl0.Vm/BufferedPl0Io.cs
-    startLine: 48
+    startLine: 51
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -786,6 +794,13 @@ references:
   - name: " "
   - name: T
   - name: )
+- uid: System.IO.EndOfStreamException
+  commentId: T:System.IO.EndOfStreamException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.endofstreamexception
+  name: EndOfStreamException
+  nameWithType: EndOfStreamException
+  fullName: System.IO.EndOfStreamException
 - uid: Pl0.Vm.BufferedPl0Io.ReadInt*
   commentId: Overload:Pl0.Vm.BufferedPl0Io.ReadInt
   href: Pl0.Vm.BufferedPl0Io.html#Pl0_Vm_BufferedPl0Io_ReadInt

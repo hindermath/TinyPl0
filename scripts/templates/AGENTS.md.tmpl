@@ -276,4 +276,26 @@ never relies on visual-only dependency information, and uses WCAG 2.2 Level AA
 as the applicable review baseline.*
 <!-- learner-a11y-baseline:end -->
 
+<!-- didactic-xml-tdd-guidance:begin -->
+## Didaktische und sprachliche Klarheit / Pedagogical and Linguistic Clarity
+
+- Neue oder geänderte Lerninhalte stehen Deutsch zuerst und Englisch danach
+  auf CEFR B2 und bleiben text-first; WCAG 2.2 Level AA gilt, soweit anwendbar.
+- Extern öffentliche APIs erhalten vollständige, fachlich anwendbare
+  XML-Dokumentation. CS1591 wird nicht global oder projektweit unterdrückt;
+  lokale, private und generierte Flächen bleiben ausgeschlossen.
+- API-Signatur- oder XML-Kommentaränderungen verlangen DocFX sowie
+  Playwright/axe- und `lynx`-Evidence im selben Arbeitsgegenstand.
+- Nicht-triviale Logik wird auf kurze zweisprachige Warum-Kommentare geprüft.
+  Neue Funktionen und Fehlerkorrekturen belegen TDD Rot, Grün und Regression;
+  reine Text-/Governance-Arbeit erhält ein begründetes `N/A` mit Trigger.
+
+*Learner-facing content is German-first/English-second at CEFR B2 and remains
+text-first under WCAG 2.2 AA where applicable. Externally public APIs receive
+complete applicable XML documentation without global or project-wide CS1591
+suppression. API/XML changes require DocFX, Playwright/axe, and `lynx` evidence
+in the same work item. Review non-trivial logic for bilingual why-comments and
+record TDD red, green, and regression evidence or a reasoned `N/A`.*
+<!-- didactic-xml-tdd-guidance:end -->
+
 <!-- EN: AGENTS.md contains bilingual agent guidance for this level-2 project. -->

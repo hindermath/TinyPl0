@@ -58,6 +58,13 @@
       "labelDe": "Synchronisierung",
       "labelEn": "Synchronization",
       "netLines": 162
+    },
+    {
+      "slot": 7,
+      "id": "003",
+      "labelDe": "Constitution 003",
+      "labelEn": "Constitution 003",
+      "netLines": 4846
     }
   ],
   "excludedPaths": [],

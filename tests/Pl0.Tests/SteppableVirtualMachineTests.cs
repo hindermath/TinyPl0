@@ -82,4 +82,46 @@ public sealed class SteppableVirtualMachineTests
         Assert.Equal(stackBeforeError, vm.State.Stack);
         Assert.Equal(VmStepStatus.Error, stepAfterError.Status);
     }
+
+    [Fact]
+    public void Step_Executes_Compiled_Input_Procedure_Loop_And_Output_Program()
+    {
+        const string source = """
+                              var x;
+                              procedure double;
+                              begin
+                                x := x + x
+                              end;
+                              begin
+                                ? x;
+                                call double;
+                                while x > 0 do
+                                begin
+                                  ! x;
+                                  x := x - 1
+                                end
+                              end.
+                              """;
+
+        var compilation = new Pl0Compiler().Compile(source, CompilerOptions.Default);
+        Assert.True(compilation.Success);
+
+        var io = new BufferedPl0Io([2]);
+        var vm = new SteppableVirtualMachine();
+        vm.Initialize(compilation.Instructions, io);
+
+        VmStepResult result;
+        var steps = 0;
+        do
+        {
+            result = vm.Step();
+            steps++;
+        }
+        while (result.Status == VmStepStatus.Running && steps < 1_000);
+
+        Assert.Equal(VmStepStatus.Halted, result.Status);
+        Assert.Empty(result.Diagnostics);
+        Assert.Equal([4, 3, 2, 1], io.Output);
+        Assert.InRange(steps, 1, 999);
+    }
 }

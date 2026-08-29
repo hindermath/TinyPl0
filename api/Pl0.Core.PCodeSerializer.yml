@@ -22,7 +22,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/PCodeSerializer.cs
-      branch: codex/002-vm-inc-compat-implement
+      branch: codex/003-constitution-change
       repo: https://github.com/hindermath/TinyPl0.git
     id: PCodeSerializer
     path: src/Pl0.Core/PCodeSerializer.cs
@@ -59,27 +59,35 @@ items:
   source:
     remote:
       path: src/Pl0.Core/PCodeSerializer.cs
-      branch: codex/002-vm-inc-compat-implement
+      branch: codex/003-constitution-change
       repo: https://github.com/hindermath/TinyPl0.git
     id: ToAsm
     path: src/Pl0.Core/PCodeSerializer.cs
-    startLine: 14
+    startLine: 17
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
-  summary: Converts instructions to mnemonic assembly format.
+  summary: >-
+    Wandelt Befehle in das mnemonische Assemblerformat um.
+
+
+    Converts instructions to mnemonic assembly format.
   example: []
   syntax:
     content: public static string ToAsm(IReadOnlyList<Instruction> instructions)
     parameters:
     - id: instructions
       type: System.Collections.Generic.IReadOnlyList{Pl0.Core.Instruction}
-      description: Instructions to serialize.
+      description: Die zu serialisierenden Befehle. / Instructions to serialize.
     return:
       type: System.String
-      description: Assembly text with one instruction per line.
+      description: Assemblertext mit einem Befehl pro Zeile. / Assembly text with one instruction per line.
     content.vb: Public Shared Function ToAsm(instructions As IReadOnlyList(Of Instruction)) As String
   overload: Pl0.Core.PCodeSerializer.ToAsm*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: Ein Befehl enthält einen nicht unterstützten Opcode. / An instruction contains an unsupported opcode.
   nameWithType.vb: PCodeSerializer.ToAsm(IReadOnlyList(Of Instruction))
   fullName.vb: Pl0.Core.PCodeSerializer.ToAsm(System.Collections.Generic.IReadOnlyList(Of Pl0.Core.Instruction))
   name.vb: ToAsm(IReadOnlyList(Of Instruction))
@@ -97,11 +105,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/PCodeSerializer.cs
-      branch: codex/002-vm-inc-compat-implement
+      branch: codex/003-constitution-change
       repo: https://github.com/hindermath/TinyPl0.git
     id: ToCod
     path: src/Pl0.Core/PCodeSerializer.cs
-    startLine: 22
+    startLine: 25
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -135,27 +143,35 @@ items:
   source:
     remote:
       path: src/Pl0.Core/PCodeSerializer.cs
-      branch: codex/002-vm-inc-compat-implement
+      branch: codex/003-constitution-change
       repo: https://github.com/hindermath/TinyPl0.git
     id: Parse
     path: src/Pl0.Core/PCodeSerializer.cs
-    startLine: 30
+    startLine: 36
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
-  summary: Parses P-Code text into instructions.
+  summary: >-
+    Liest P-Code-Text als Befehlsfolge ein.
+
+
+    Parses P-Code text into instructions.
   example: []
   syntax:
     content: public static IReadOnlyList<Instruction> Parse(string text)
     parameters:
     - id: text
       type: System.String
-      description: Input text containing p-code.
+      description: Der Eingabetext mit P-Code. / Input text containing P-Code.
     return:
       type: System.Collections.Generic.IReadOnlyList{Pl0.Core.Instruction}
-      description: Parsed instruction list.
+      description: Die eingelesene Befehlsliste. / The parsed instruction list.
     content.vb: Public Shared Function Parse(text As String) As IReadOnlyList(Of Instruction)
   overload: Pl0.Core.PCodeSerializer.Parse*
+  exceptions:
+  - type: System.FormatException
+    commentId: T:System.FormatException
+    description: Eine nicht leere Zeile besitzt kein gültiges Opcode-, Ebenen- oder Argumentformat. / A non-empty line has no valid opcode, level, or argument format.
   nameWithType.vb: PCodeSerializer.Parse(String)
   fullName.vb: Pl0.Core.PCodeSerializer.Parse(String)
   name.vb: Parse(String)
@@ -173,11 +189,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/PCodeSerializer.cs
-      branch: codex/002-vm-inc-compat-implement
+      branch: codex/003-constitution-change
       repo: https://github.com/hindermath/TinyPl0.git
     id: StripComment
     path: src/Pl0.Core/PCodeSerializer.cs
-    startLine: 63
+    startLine: 69
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -211,11 +227,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/PCodeSerializer.cs
-      branch: codex/002-vm-inc-compat-implement
+      branch: codex/003-constitution-change
       repo: https://github.com/hindermath/TinyPl0.git
     id: ParseInt
     path: src/Pl0.Core/PCodeSerializer.cs
-    startLine: 76
+    startLine: 82
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -255,11 +271,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/PCodeSerializer.cs
-      branch: codex/002-vm-inc-compat-implement
+      branch: codex/003-constitution-change
       repo: https://github.com/hindermath/TinyPl0.git
     id: ParseOpcode
     path: src/Pl0.Core/PCodeSerializer.cs
-    startLine: 92
+    startLine: 98
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -296,11 +312,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/PCodeSerializer.cs
-      branch: codex/002-vm-inc-compat-implement
+      branch: codex/003-constitution-change
       repo: https://github.com/hindermath/TinyPl0.git
     id: ToMnemonic
     path: src/Pl0.Core/PCodeSerializer.cs
-    startLine: 127
+    startLine: 133
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -577,6 +593,13 @@ references:
   name: System
   nameWithType: System
   fullName: System
+- uid: System.ArgumentOutOfRangeException
+  commentId: T:System.ArgumentOutOfRangeException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception
+  name: ArgumentOutOfRangeException
+  nameWithType: ArgumentOutOfRangeException
+  fullName: System.ArgumentOutOfRangeException
 - uid: Pl0.Core.PCodeSerializer.ToAsm*
   commentId: Overload:Pl0.Core.PCodeSerializer.ToAsm
   href: Pl0.Core.PCodeSerializer.html#Pl0_Core_PCodeSerializer_ToAsm_System_Collections_Generic_IReadOnlyList_Pl0_Core_Instruction__
@@ -698,6 +721,13 @@ references:
   name: ToCod
   nameWithType: PCodeSerializer.ToCod
   fullName: Pl0.Core.PCodeSerializer.ToCod
+- uid: System.FormatException
+  commentId: T:System.FormatException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.formatexception
+  name: FormatException
+  nameWithType: FormatException
+  fullName: System.FormatException
 - uid: Pl0.Core.PCodeSerializer.Parse*
   commentId: Overload:Pl0.Core.PCodeSerializer.Parse
   href: Pl0.Core.PCodeSerializer.html#Pl0_Core_PCodeSerializer_Parse_System_String_

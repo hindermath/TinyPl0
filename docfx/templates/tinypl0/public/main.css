@@ -1,0 +1,11 @@
+.TIP a,
+.NOTE a,
+.IMPORTANT a {
+  color: #084298;
+}
+
+[data-bs-theme="dark"] .TIP a,
+[data-bs-theme="dark"] .NOTE a,
+[data-bs-theme="dark"] .IMPORTANT a {
+  color: #9ec5fe;
+}

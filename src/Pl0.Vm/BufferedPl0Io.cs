@@ -29,9 +29,12 @@ public sealed class BufferedPl0Io : IPl0Io
     public IReadOnlyList<int> Output => _output;
 
     /// <summary>
-    /// Reads the next input value.
+    /// Liest den nächsten Wert aus dem Eingabepuffer.
+    ///
+    /// Reads the next value from the input buffer.
     /// </summary>
-    /// <returns>The next integer in the input buffer.</returns>
+    /// <returns>Die nächste Ganzzahl im Eingabepuffer. / The next integer in the input buffer.</returns>
+    /// <exception cref="EndOfStreamException">Der Eingabepuffer enthält keinen weiteren Wert. / The input buffer contains no further value.</exception>
     public int ReadInt()
     {
         if (_input.Count == 0)

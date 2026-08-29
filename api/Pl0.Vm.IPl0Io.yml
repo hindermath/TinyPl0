@@ -17,7 +17,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/IPl0Io.cs
-      branch: codex/002-vm-inc-compat-implement
+      branch: codex/003-constitution-change
       repo: https://github.com/hindermath/TinyPl0.git
     id: IPl0Io
     path: src/Pl0.Vm/IPl0Io.cs
@@ -48,7 +48,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/IPl0Io.cs
-      branch: codex/002-vm-inc-compat-implement
+      branch: codex/003-constitution-change
       repo: https://github.com/hindermath/TinyPl0.git
     id: ReadInt
     path: src/Pl0.Vm/IPl0Io.cs
@@ -79,7 +79,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/IPl0Io.cs
-      branch: codex/002-vm-inc-compat-implement
+      branch: codex/003-constitution-change
       repo: https://github.com/hindermath/TinyPl0.git
     id: WriteInt
     path: src/Pl0.Vm/IPl0Io.cs

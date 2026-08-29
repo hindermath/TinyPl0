@@ -1,30 +1,36 @@
 <!--
 Sync Impact Report
-Version change: 1.15.0 -> 1.16.0
+Version change: 1.16.0 -> 1.17.0
 Modified principles:
-- VII. Inclusion & Accessibility By Default (bind first-year learner audiences and text-first dependency evidence)
-- VIII. DE-First / EN-Second Bilingual Delivery (explain first-use terms and require no prior Spec Kit experience)
+- TinyPl0 Level-2 addendum (adds pedagogical, XML-documentation, TDD, and text-first evidence rules)
 Added sections:
-- None
+- Didaktische und sprachliche Klarheit / Pedagogical and Linguistic Clarity
 Removed sections:
 - None
 Templates requiring updates:
 - ✅ .specify/templates/constitution-template.md
 - ✅ .specify/templates/plan-template.md
-- ✅ .specify/templates/spec-template.md
-- ✅ .specify/templates/supply-chain-evidence-template.md
 - ✅ .specify/templates/tasks-template.md
+- ✅ .specify/templates/agent-file-template.md
+- ✅ .specify/templates/commands/plan.md
+- ✅ .specify/templates/commands/tasks.md
+- ✅ scripts/templates/AGENTS.md.tmpl
+- ✅ scripts/templates/CLAUDE.md.tmpl
+- ✅ scripts/templates/GEMINI.md.tmpl
+- ✅ scripts/templates/copilot-instructions.tmpl
+- ✅ scripts/templates/speckit-workflow-section.md
 Runtime guidance requiring updates:
 - ✅ AGENTS.md
 - ✅ CLAUDE.md
 - ✅ GEMINI.md
 - ✅ .github/copilot-instructions.md
+- ✅ .github/agents/copilot-instructions.md
 - ✅ .specify/memory/constitution.md (mirror)
 Follow-up TODOs:
 - None
 -->
 
-# Constitution v1.16.0
+# Constitution v1.17.0
 
 # home-baseline Constitution
 
@@ -770,7 +776,12 @@ Coding style rules that apply to all scripts in this repository:
   - Manual verification commands run (with `--dry-run` / `-WhatIf` output)
   - Sample console output when user-visible output changes
   - Explicit security risk statement for any change touching hook or scanner logic
-- **Lastenheft rename on feature completion**: When a feature's implementation is fully merged, the corresponding `Lastenheft_*.md` MUST be renamed via `bash scripts/rename-lastenheft.sh <LH-file> <branch-name>` (macOS/Linux) or `pwsh scripts/rename-lastenheft.ps1 -File <LH-file> -BranchName <branch-name>` (Windows). This stamps the feature branch name onto the filename and marks the Lastenheft as archived. The rename commit MUST be included in the final tasks.md as the last step of the Polish phase.
+- **Governed active intake and post-merge archival**: A manifest-bound active intake
+  keeps its accepted path through implementation and `MergeAndSync`.
+  Only after the implementation is fully merged may a separately authorized
+  post-merge archival action rename the corresponding `Lastenheft_*.md` with
+  the repository's governed rename tool. The implementation feature MUST NOT
+  rename the active intake early or treat archival as an in-branch Polish task.
 
 ## Governance
 
@@ -808,14 +819,14 @@ workspace family consists of:
 
 | Preset | Version | Priority | Scope |
 |---|---:|---:|---|
-| `security-governance` | `v0.6.1` | `10` | secure development, MSL, language-specific secure coding, SSDF, ASVS, SBOM/VEX/SLSA, AI-SBOM, CRA/regulatory applicability |
-| `architecture-governance` | `v0.5.1` | `20` | secure architecture, STRIDE/CAPEC, Zero Trust, SAMM, S-ADR, BSI C3A cloud autonomy, BSI C5 cloud assurance |
-| `isaqb-architecture-governance` | `v0.2.1` | `30` | general iSAQB/arc42 architecture governance |
-| `a11y-governance` | `v0.4.1` | `40` | WCAG 2.2 AA, bilingual DE/EN, CEFR B2, inclusive artefacts, didactic inline-code-comment review |
-| `cross-platform-governance` | `v0.2.1` | `50` | Bash/PowerShell parity, macOS/Linux/Windows script governance |
-| `agent-parity-governance` | `v0.4.0` | `60` | synchronized agent guidance, fleet-completion evidence, and agent-neutral Spec-Kit model routing |
-| `autonomous-run-governance` | `v0.3.0` | `70` | permission-bounded, evidence-first governance with resumable, validated closeout |
-| `parallel-autonomous-run-governance` | `v0.2.1` | `80` | isolated bounded campaigns, mixed runner profiles, cooperative stop/resume, provider-gated resumable consolidation, and declared post-merge closeout |
+| `security-governance` | `v0.6.2` | `10` | secure development, MSL, language-specific secure coding, SSDF, ASVS, SBOM/VEX/SLSA, AI-SBOM, CRA/regulatory applicability |
+| `architecture-governance` | `v0.5.2` | `20` | secure architecture, STRIDE/CAPEC, Zero Trust, SAMM, S-ADR, BSI C3A cloud autonomy, BSI C5 cloud assurance |
+| `isaqb-architecture-governance` | `v0.2.2` | `30` | general iSAQB/arc42 architecture governance |
+| `a11y-governance` | `v0.4.3` | `40` | WCAG 2.2 AA, bilingual DE/EN, CEFR B2, inclusive artefacts, didactic inline-code-comment review |
+| `cross-platform-governance` | `v0.2.2` | `50` | Bash/PowerShell parity, macOS/Linux/Windows script governance |
+| `agent-parity-governance` | `v0.4.2` | `60` | synchronized agent guidance, fleet-completion evidence, and agent-neutral Spec-Kit model routing |
+| `autonomous-run-governance` | `v0.4.1` | `70` | permission-bounded, evidence-first governance with resumable, validated closeout |
+| `parallel-autonomous-run-governance` | `v0.2.6` | `80` | isolated bounded campaigns, mixed runner profiles, cooperative stop/resume, provider-gated resumable consolidation, and declared post-merge closeout |
 
 `autonomous-run-governance` is installed as part of the mandatory eight-preset
 governance matrix. Installation does not authorize an autonomous run.
@@ -892,7 +903,7 @@ Community/catalog coordination is tracked in `github/spec-kit#2362`.
 `.github/copilot-instructions.md` for per-agent operational guidance. This
 constitution is the authoritative policy layer above all agent-specific files.
 
-**Version**: 1.16.0 | **Ratified**: 2026-03-31 | **Last Amended**: 2026-07-25
+**Version**: 1.17.0 | **Ratified**: 2026-03-31 | **Last Amended**: 2026-08-29
 
 <!-- EN: constitution.md placeholder
 [DE-Zusammenfassung: constitution.md beschreibt die Prinzipien und Standards für alle home-baseline Workspaces.]
@@ -906,6 +917,36 @@ constitution is the authoritative policy layer above all agent-specific files.
 - Doku und A11Y / Docs and A11Y: learner-facing compiler documentation, examples, generated API docs, and IDE flows follow DE-first/EN-second and WCAG 2.2 AA-oriented review.
 - Statistik / Statistics: manual conservative baseline 80 lines/workday; C#/.NET Thorsten-Solo baseline 125 lines/workday unless all agent files document a justified deviation.
 - Agentenflaechen / Agent surfaces: AGENTS.md, CLAUDE.md, GEMINI.md, .github/copilot-instructions.md, .codex prompt/rule surfaces, and Spec-Kit surfaces stay synchronized for shared rules; .codex credentials, logs, history, and SQLite state are never tracked.
+
+### Didaktische und sprachliche Klarheit / Pedagogical and Linguistic Clarity
+
+- Neue oder geänderte lernendenseitige Inhalte stehen auf Deutsch zuerst und
+  Englisch danach, verwenden CEFR-B2-Sprache und bleiben text-first. WCAG 2.2
+  Level AA ist die Pruefbasis, soweit die Kriterien anwendbar sind.
+- Jede extern öffentliche C#-API besitzt vollständige, fachlich anwendbare
+  XML-Dokumentation. `summary`, Parameter, Rückgaben und tatsächlich
+  zugesicherte Ausnahmen werden erklärt; lokale Variablen, private Details und
+  generierter Bestand bleiben ausgeschlossen. CS1591 darf nicht global oder
+  projektweit unterdrueckt werden.
+- Geaenderte API-Signaturen oder XML-Kommentare verlangen im selben
+  Arbeitsgegenstand einen aktuellen DocFX-Lauf und eine textorientierte
+  Barrierefreiheitsprüfung mit Playwright/axe und `lynx`.
+- Neue oder geänderte nicht-triviale Logik wird auf kurze didaktische
+  Warum-Kommentare geprüft. Solche Blöcke stehen Deutsch zuerst und Englisch
+  danach; sie erklären Entscheidungen, Abwägungen oder Nachweisgrenzen.
+- Neue Funktionen und Fehlerkorrekturen zeigen beobachtbar TDD Rot, Grün und
+  Regression. Reine Governance- oder Textarbeit dokumentiert ein begründetes
+  `N/A` mit Wiedervorlage bei der nächsten Logikänderung.
+
+*New or changed learner-facing content is German-first and English-second at
+CEFR B2, remains text-first, and uses WCAG 2.2 Level AA where applicable. Every
+externally public C# API has complete applicable XML documentation; locals,
+private details, and generated surfaces stay excluded, and CS1591 is not
+suppressed globally or per project. API-signature or XML-comment changes
+require DocFX plus Playwright/axe and `lynx` review in the same work item.
+Changed non-trivial logic is reviewed for concise bilingual why-comments. New
+features and fixes record observable TDD red, green, and regression evidence;
+pure governance or text work records a reasoned `N/A` and re-evaluation trigger.*
 
 <!-- statistics-profile-2-governance:begin -->
 ## Statistikprofil 2 / Statistics Profile 2

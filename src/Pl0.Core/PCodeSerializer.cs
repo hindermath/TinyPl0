@@ -8,10 +8,13 @@ namespace Pl0.Core;
 public static class PCodeSerializer
 {
     /// <summary>
+    /// Wandelt Befehle in das mnemonische Assemblerformat um.
+    ///
     /// Converts instructions to mnemonic assembly format.
     /// </summary>
-    /// <param name="instructions">Instructions to serialize.</param>
-    /// <returns>Assembly text with one instruction per line.</returns>
+    /// <param name="instructions">Die zu serialisierenden Befehle. / Instructions to serialize.</param>
+    /// <returns>Assemblertext mit einem Befehl pro Zeile. / Assembly text with one instruction per line.</returns>
+    /// <exception cref="ArgumentOutOfRangeException">Ein Befehl enthält einen nicht unterstützten Opcode. / An instruction contains an unsupported opcode.</exception>
     public static string ToAsm(IReadOnlyList<Instruction> instructions) =>
         string.Join(Environment.NewLine, instructions.Select(i => $"{ToMnemonic(i.Op)} {i.Level} {i.Argument}"));
 
@@ -24,10 +27,13 @@ public static class PCodeSerializer
         string.Join(Environment.NewLine, instructions.Select(i => $"{(int)i.Op} {i.Level} {i.Argument}"));
 
     /// <summary>
+    /// Liest P-Code-Text als Befehlsfolge ein.
+    ///
     /// Parses P-Code text into instructions.
     /// </summary>
-    /// <param name="text">Input text containing p-code.</param>
-    /// <returns>Parsed instruction list.</returns>
+    /// <param name="text">Der Eingabetext mit P-Code. / Input text containing P-Code.</param>
+    /// <returns>Die eingelesene Befehlsliste. / The parsed instruction list.</returns>
+    /// <exception cref="FormatException">Eine nicht leere Zeile besitzt kein gültiges Opcode-, Ebenen- oder Argumentformat. / A non-empty line has no valid opcode, level, or argument format.</exception>
     public static IReadOnlyList<Instruction> Parse(string text)
     {
         var result = new List<Instruction>();

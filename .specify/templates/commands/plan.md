@@ -11,8 +11,11 @@ Use this command to produce an implementation plan from an approved specificatio
    - general architecture evidence scope (`docs/architecture/`, ADRs, quality scenarios, risks/trade-offs)
    - architecture/layer boundaries
    - bilingual CEFR B2 documentation scope
-   - XML documentation + DocFX regeneration scope
-   - Red-Green-Refactor testing scope
+   - complete applicable XML documentation for externally public APIs, no
+     global/project-wide CS1591 suppression, and explicit local/private/generated exclusions
+   - DocFX plus representative Playwright/axe and `lynx` evidence when API/XML changes trigger it
+   - observable test-first Red-Green-Regression evidence or a reasoned pure text/governance `N/A`
+   - one governed version/build-counter increment before every build/test invocation
    - coverage gate (`>=70%` minimum, `>=80%` target)
    - NuGet dependency currency and pinning exceptions
    - serialization/data conventions
@@ -24,3 +27,5 @@ Use this command to produce an implementation plan from an approved specificatio
 - No gate is left unresolved without rationale.
 - Test, coverage, dependency, and documentation impacts are planned before implementation.
 - Architecture evidence impacts are planned before implementation.
+- Exact evidence paths are declared for public XML, TDD, versioning, DocFX,
+  text-oriented accessibility, dependencies, statistics, and fail-closed delivery gates.
