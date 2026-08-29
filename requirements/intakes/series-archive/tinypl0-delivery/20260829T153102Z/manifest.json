@@ -61,12 +61,6 @@
       "status": "Blocked"
     },
     {
-      "path": "requirements/intakes/active/Lastenheft_Embeddable-VM-und-NuGet.md",
-      "role": "OrderedMember",
-      "normalizedSha256": "1865ff87d20cdac8f4ace03df2017aeb55b7f8302ad6dcdaf9af5f796d78f835",
-      "status": "Blocked"
-    },
-    {
       "path": "requirements/intakes/active/Lastenheft_IDE-Erweiterung-Pl0Ide_PAsm_PCod.md",
       "role": "OrderedMember",
       "normalizedSha256": "d273b99f19a8996f7b584940a7b2e3ee291e79dc4e6ce52a7176e0bbb6c3c689",
@@ -155,12 +149,6 @@
     },
     {
       "from": "requirements/intakes/active/Lastenheft_VM_CLI.md",
-      "to": "requirements/intakes/active/Lastenheft_Embeddable-VM-und-NuGet.md",
-      "kind": "HardCompletionGate",
-      "binding": true
-    },
-    {
-      "from": "requirements/intakes/active/Lastenheft_Embeddable-VM-und-NuGet.md",
       "to": "requirements/intakes/active/Lastenheft_IDE-Erweiterung-Pl0Ide_PAsm_PCod.md",
       "kind": "HardCompletionGate",
       "binding": true

@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.1",
-  "reviewId": "311a8267-6516-46e1-a2a6-e8c793e2b6c9",
+  "reviewId": "78435231-e579-486f-8d80-8192781c127d",
   "mode": "Series",
   "policy": "tinypl0-delivery-v1",
   "targets": [
@@ -41,6 +41,10 @@
       "role": "OrderedMember"
     },
     {
+      "path": "requirements/intakes/active/Lastenheft_Embeddable-VM-und-NuGet.md",
+      "role": "OrderedMember"
+    },
+    {
       "path": "requirements/intakes/active/Lastenheft_IDE-Erweiterung-Pl0Ide_PAsm_PCod.md",
       "role": "OrderedMember"
     },
@@ -72,6 +76,7 @@
       "requirements/intakes/active/Lastenheft_A11Y_IDE.md",
       "requirements/intakes/active/Lastenheft_Options_Als_Parameter.md",
       "requirements/intakes/active/Lastenheft_VM_CLI.md",
+      "requirements/intakes/active/Lastenheft_Embeddable-VM-und-NuGet.md",
       "requirements/intakes/active/Lastenheft_IDE-Erweiterung-Pl0Ide_PAsm_PCod.md",
       "requirements/intakes/active/Lastenheft_PL0_Optimierung.md",
       "requirements/intakes/active/Lastenheft_CLR_Assembly.md",
@@ -128,6 +133,11 @@
       },
       {
         "from": "requirements/intakes/active/Lastenheft_VM_CLI.md",
+        "to": "requirements/intakes/active/Lastenheft_Embeddable-VM-und-NuGet.md",
+        "kind": "HardCompletionGate"
+      },
+      {
+        "from": "requirements/intakes/active/Lastenheft_Embeddable-VM-und-NuGet.md",
         "to": "requirements/intakes/active/Lastenheft_IDE-Erweiterung-Pl0Ide_PAsm_PCod.md",
         "kind": "HardCompletionGate"
       }

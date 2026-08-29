@@ -1,16 +1,21 @@
 {
   "schemaVersion": "1.0",
   "documentType": "IntakeSeriesOperation",
-  "operationId": "c32303df-0d18-4360-a57e-a3aa16172c26",
+  "operationId": "5e0302a4-626a-4381-96ef-133e06e9da74",
   "seriesId": "8541ffa1-6b52-4f95-a746-d870482eaf5d",
-  "type": "Create",
+  "type": "Update",
   "status": "Published",
-  "authorityEvidence": "User-approved TinyPl0 requirements and intake consolidation plan",
-  "proposalNormalizedSha256": "63e10cecef017d34752955ef78f4123ad8185520ba9846223d4ce65def030002",
+  "authorityEvidence": "User approved IAD001 including TinyPl0 rank 10 and approved the binding IAD002 delivery gate.",
+  "proposalNormalizedSha256": "f36a20d34be1c682821321dd0b1a0c8d2a5c44b6ffbfaf54c77daa027868a10d",
   "preparedPaths": [
+    "requirements/intakes/active/Lastenheft_Embeddable-VM-und-NuGet.md",
+    "specs/intake-authoring-receipts/embeddable-vm-und-nuget.json",
     "requirements/intakes/series/tinypl0-delivery/manifest.json",
     "requirements/intakes/series/tinypl0-delivery/receipt.json",
-    "requirements/intakes/series/tinypl0-delivery/order.md"
+    "requirements/intakes/series/tinypl0-delivery/order.md",
+    "requirements/intakes/series-archive/tinypl0-delivery/20260829T153102Z/manifest.json",
+    "requirements/intakes/series-archive/tinypl0-delivery/20260829T153102Z/receipt.json",
+    "Lastenheft_Abarbeitungsreihenfolge.md"
   ],
   "validation": {
     "bash": "Pass",
@@ -19,9 +24,14 @@
   "publication": {
     "status": "Published",
     "publishedPaths": [
+      "requirements/intakes/active/Lastenheft_Embeddable-VM-und-NuGet.md",
+      "specs/intake-authoring-receipts/embeddable-vm-und-nuget.json",
       "requirements/intakes/series/tinypl0-delivery/manifest.json",
       "requirements/intakes/series/tinypl0-delivery/receipt.json",
-      "requirements/intakes/series/tinypl0-delivery/order.md"
+      "requirements/intakes/series/tinypl0-delivery/order.md",
+      "requirements/intakes/series-archive/tinypl0-delivery/20260829T153102Z/manifest.json",
+      "requirements/intakes/series-archive/tinypl0-delivery/20260829T153102Z/receipt.json",
+      "Lastenheft_Abarbeitungsreihenfolge.md"
     ]
   }
 }

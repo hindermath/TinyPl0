@@ -33,7 +33,7 @@ export function validate(options = {}) {
     : 3;
   const expectedDependencyCount = config.schemaVersion === "1.0"
     ? config.bindingDependencyCount
-    : 9;
+    : 10;
   const activeCollection = config.collections?.active ?? "requirements/intakes/active";
   const archiveCollection = config.collections?.archive ?? "requirements/intakes/archive";
   const canonicalIndex = config.artifactNaming?.canonicalIndex ?? config.canonicalIndex;

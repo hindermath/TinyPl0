@@ -1,0 +1,123 @@
+{
+  "schemaVersion": "2.0",
+  "documentType": "IntakeReceipt",
+  "receiptId": "b13d90f5-c91e-439a-8bea-8cb1e51b4021",
+  "intakeId": "2514cd47-cbcf-44f5-8a68-d676088d30cc",
+  "generator": {
+    "preset": "intake-authoring-governance",
+    "version": "0.3.1"
+  },
+  "createdAt": "2026-08-29T15:31:02Z",
+  "operation": {
+    "operationId": "61bd0bc9-da05-4b1b-ac4f-1b6b7610d88a",
+    "type": "Create",
+    "authorityEvidence": "User approved IAD001 and IAD002, then explicitly authorized the bounded IR001 learner-readability repair through speckit-intake-repair."
+  },
+  "status": "ReadyForReview",
+  "target": {
+    "path": "requirements/intakes/active/Lastenheft_Embeddable-VM-und-NuGet.md",
+    "normalizedSha256": "1865ff87d20cdac8f4ace03df2017aeb55b7f8302ad6dcdaf9af5f796d78f835"
+  },
+  "sources": [
+    {
+      "sourceId": "SRC001",
+      "order": 1,
+      "kind": "Inline",
+      "label": "Approved cross-repository PL/0 version-1 split proposal",
+      "location": "SnapshotOnly",
+      "path": "N/A",
+      "requestedUrl": "N/A",
+      "finalUrl": "N/A",
+      "retrievedAt": "N/A",
+      "httpStatus": "N/A",
+      "contentType": "N/A",
+      "contentLength": "N/A",
+      "etag": "N/A",
+      "lastModified": "N/A",
+      "redirectChain": [],
+      "rawSha256": "N/A",
+      "normalizedSha256": "f36a20d34be1c682821321dd0b1a0c8d2a5c44b6ffbfaf54c77daa027868a10d",
+      "gitBlob": "N/A",
+      "proofBoundary": "SnapshotOnly"
+    },
+    {
+      "sourceId": "SRC002",
+      "order": 2,
+      "kind": "Inline",
+      "label": "Approved two-stage fail-closed TinyPl0 delivery gate",
+      "location": "SnapshotOnly",
+      "path": "N/A",
+      "requestedUrl": "N/A",
+      "finalUrl": "N/A",
+      "retrievedAt": "N/A",
+      "httpStatus": "N/A",
+      "contentType": "N/A",
+      "contentLength": "N/A",
+      "etag": "N/A",
+      "lastModified": "N/A",
+      "redirectChain": [],
+      "rawSha256": "N/A",
+      "normalizedSha256": "076e87743a8f1ea0ba8a764b71462e30199e0e677b89c6a76412ece983775888",
+      "gitBlob": "N/A",
+      "proofBoundary": "SnapshotOnly"
+    }
+  ],
+  "profile": "level2-lastenheft",
+  "languagePolicy": "GermanFirstEnglishSecond",
+  "decisions": [
+    {
+      "id": "IAD001",
+      "status": "Answered",
+      "question": "Are the two intake targets, positions, and dependencies approved?",
+      "answer": "Approved exactly as proposal tinycalc-pl0-v1-split-v1 with SHA-256 f36a20d34be1c682821321dd0b1a0c8d2a5c44b6ffbfaf54c77daa027868a10d.",
+      "evidence": "Current user answer: both approved."
+    },
+    {
+      "id": "IAD002",
+      "status": "Answered",
+      "question": "Is the binding two-stage gate including the ban on local ProjectReference fallback approved?",
+      "answer": "Approved; the TinyPl0 release and package evidence forms a hard external gate for TinyCalc.",
+      "evidence": "Current user answer: both approved."
+    },
+    {
+      "id": "IAD003",
+      "status": "Answered",
+      "question": "May review finding IR001 be repaired in the named intake?",
+      "answer": "Approved through the explicit speckit-intake-repair invocation; only first-use learner explanations may change.",
+      "evidence": "User invoked speckit-intake-repair with review result a6c1acb6-b75e-4875-a968-e5afb90bb289."
+    }
+  ],
+  "openDecisionIds": [],
+  "questionCount": 3,
+  "agentSurface": {
+    "specifyCanonicalId": "speckit.specify",
+    "specifyInvocation": "$speckit-specify Nutze requirements/intakes/active/Lastenheft_Embeddable-VM-und-NuGet.md als verbindliches Intake. Erstelle oder aktualisiere ausschließlich die passende Feature-Spezifikation. Bewahre Scope, Nicht-Ziele, Reihenfolge, Run/Step-Parität, Ressourcen- und Abbruchgrenzen, öffentliche NuGet-Paketverträge, Security-, Supply-Chain-, A11Y-, Dokumentations- und Evidenzanforderungen. Implementiere nichts; committe und pushe nicht; veröffentliche keine Pakete; erstelle oder merge keinen Pull Request und starte kein weiteres Feature.",
+    "autonomousCanonicalId": "speckit.autonomous",
+    "autonomousInvocation": "$speckit-autonomous Führe genau einen vollständigen autonomen Spec-Kit-Lauf mit requirements/intakes/active/Lastenheft_Embeddable-VM-und-NuGet.md als verbindlichem Intake aus. Delivery Mode: LocalImplementation. Implementiere und validiere lokal die sichere Host-API, Run/Step-Parität, Pack-Artefakte und Release-Evidenz, aber stoppe vor jeder Remote- oder NuGet-Veröffentlichung, solange keine aktuelle ausdrückliche Provider- und Secret-Berechtigung vorliegt. Bewahre Scope, Reihenfolge, Security-, Supply-Chain-, A11Y-, Dokumentations- und Evidenzgrenzen. Nicht pushen, keinen Pull Request erstellen oder mergen, keine Pakete veröffentlichen, keinen Bypass nutzen, keine Secrets offenlegen und kein Folgefeature starten."
+  },
+  "deliveryAuthority": "LocalImplementation",
+  "authorityEvidence": "Default local authority only; no commit, remote, provider, package-publication, PR, merge, or bypass authority was granted.",
+  "promptState": "Enabled",
+  "provenanceMode": "New",
+  "supersedes": {
+    "receiptPath": "N/A",
+    "targetNormalizedSha256": "N/A",
+    "archiveTargetPath": "N/A",
+    "archiveReceiptPath": "N/A"
+  },
+  "legacyAdoption": {
+    "evidenceType": "N/A",
+    "priorTargetNormalizedSha256": "N/A",
+    "priorGitBlob": "N/A"
+  },
+  "updateAuthorized": false,
+  "updateAuthorityEvidence": "N/A",
+  "series": {
+    "seriesId": "8541ffa1-6b52-4f95-a746-d870482eaf5d",
+    "manifestPath": "requirements/intakes/series/tinypl0-delivery/manifest.json",
+    "order": 10,
+    "role": "OrderedMember",
+    "supersedesIntakeIds": []
+  },
+  "nextAction": "$speckit-intake-review requirements/intakes/active/Lastenheft_Embeddable-VM-und-NuGet.md"
+}

@@ -89,6 +89,12 @@
       "role": "ActiveIntakeCandidate"
     },
     {
+      "sourceId": "TP-EMBEDDABLE-VM",
+      "path": "requirements/intakes/active/Lastenheft_Embeddable-VM-und-NuGet.md",
+      "normalizedSha256": "1865ff87d20cdac8f4ace03df2017aeb55b7f8302ad6dcdaf9af5f796d78f835",
+      "role": "ActiveIntakeCandidate"
+    },
+    {
       "sourceId": "TP-BASELINE-1",
       "path": "Pflichtenheft_PL0_CSharp_DotNet10.md",
       "normalizedSha256": "3060a1707d459a2d8a5e18fe5c828a7a8802a502e0ec0884fab3861abec20939",
@@ -366,6 +372,21 @@
       "rationale": "The intake is prepared and reviewed, but no dedicated implementation or closure feature is recorded.",
       "residualRisk": "The complete intake acceptance criteria remain unverified until a dedicated closure decision exists.",
       "reevaluationTrigger": "Before executing or archiving Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md"
+    },
+    {
+      "requirementId": "TP-RQ-015",
+      "sourceId": "TP-EMBEDDABLE-VM",
+      "sourcePath": "requirements/intakes/active/Lastenheft_Embeddable-VM-und-NuGet.md",
+      "sourceNormalizedSha256": "1865ff87d20cdac8f4ace03df2017aeb55b7f8302ad6dcdaf9af5f796d78f835",
+      "status": "Open",
+      "evidencePaths": [
+        "requirements/intakes/active/Lastenheft_Embeddable-VM-und-NuGet.md",
+        "requirements/intakes/series/tinypl0-delivery/manifest.json"
+      ],
+      "proposedOwnerGroup": "Compiler and VM",
+      "rationale": "The embeddable bounded and steppable VM plus the two stable NuGet packages are approved but not implemented or published.",
+      "residualRisk": "TinyCalc cannot pass its approved package and contract gate until this intake is completed with release evidence.",
+      "reevaluationTrigger": "Before executing or archiving Lastenheft_Embeddable-VM-und-NuGet.md"
     }
   ]
 }

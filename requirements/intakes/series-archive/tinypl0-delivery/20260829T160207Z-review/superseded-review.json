@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "1.0",
+  "documentType": "SupersededIntakeReviewEvidence",
+  "reviewId": "311a8267-6516-46e1-a2a6-e8c793e2b6c9",
+  "status": "Ready",
+  "reviewedAt": "2026-07-26T22:00:00Z",
+  "targetCount": 14,
+  "supersededBy": "a6c1acb6-b75e-4875-a968-e5afb90bb289",
+  "sourceRevision": "272fdb9a07ec28d706ea27cbc52ad619d76d3555",
+  "request": {
+    "path": "requirements/intakes/series/tinypl0-delivery/intake-review-request.json",
+    "normalizedSha256": "59ba9cefaac907164b213e6611c60ab4be27c1306e174e111ee7783d1ea33d38"
+  },
+  "result": {
+    "path": "requirements/intakes/series/tinypl0-delivery/intake-review-result.json",
+    "normalizedSha256": "db7a8a73b84041fea2e85c9bd50f9bc67f418596c673bc1d1488b5f9d06818d3"
+  },
+  "report": {
+    "path": "requirements/intakes/series/tinypl0-delivery/intake-review-report.md",
+    "normalizedSha256": "c8b3a77347d5a209156bdd2cb016c268545e5f03cfa1bb73a2b0026bb2ea8fc8"
+  },
+  "proofBoundary": "The recorded hashes bind the predecessor artifacts as they existed at the source revision before the 15-target review superseded them."
+}
