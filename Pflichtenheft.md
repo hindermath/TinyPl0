@@ -24,9 +24,9 @@ intakes, archives, history, and the executable intake series.*
 
 ## Nächster Intake / Next Intake
 
-`requirements/intakes/active/Lastenheft_Constitution_Change.md` ist der
-bevorzugte nächste Intake. Diese Festlegung startet keinen Spec-Kit-Lauf und
-erteilt keine Remote- oder Merge-Berechtigung.
+`requirements/intakes/active/Lastenheft_Secure-Development-Hardening.md` ist
+der bevorzugte nächste Intake. Diese Festlegung startet keinen Spec-Kit-Lauf
+und erteilt keine Remote- oder Merge-Berechtigung.
 
-*The constitution intake is the preferred next intake. This declaration starts
-no Spec Kit run and grants no remote or merge authority.*
+*The secure-development-hardening intake is the preferred next intake. This
+declaration starts no Spec Kit run and grants no remote or merge authority.*
