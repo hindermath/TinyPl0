@@ -497,27 +497,27 @@ Profil 2 verwendet Git-getrackte Textdateien und sichtbare Git-Aktivitaet. Die W
 
 | Kennzahl / Metric | Wert / Value |
 |---|---:|
-| Textbasis / Text base | 257203 lines |
-| Textdateien / Text files | 1895 |
+| Textbasis / Text base | 257638 lines |
+| Textdateien / Text files | 1899 |
 | Beobachtbarer Zeitraum / Observable period | 2025-09-07..2026-08-30 |
 | Aktivtage / Active days | 87 |
-| Relevante Commits / Relevant commits | 335 |
-| Zeilen je Aktivtag / Lines per active day | 2956.4 |
+| Relevante Commits / Relevant commits | 337 |
+| Zeilen je Aktivtag / Lines per active day | 2961.4 |
 | Peak-Tag im Fenster / Peak day in window | 2026-02-14 / 177480 |
 | Peak-Woche im Fenster / Peak week in window | 2026-02-08 / 186065 |
 | Laengste Serie / Longest streak | 9 days |
 | Speedup vs. 80 lines/day | 37.0x |
 | Speedup vs. 125 lines/day | 23.7x |
-| Methodik / Methodology | v2; source `737e894f7033` |
+| Methodik / Methodology | v2; source `eabb95a06e5f` |
 
 ### Artefaktmix / Artifact Mix
 
 ```text
 Produktiv / Production          [#...................]   2.9% | 7437
 Tests                           [#...................]   4.3% | 10969
-Dokumentation / Documentation   [###########.........]  54.7% | 140748
-Skripte / Scripts               [##..................]   8.7% | 22378
-Konfiguration / Configuration   [######..............]  27.6% | 70985
+Dokumentation / Documentation   [###########.........]  54.7% | 140943
+Skripte / Scripts               [##..................]   8.7% | 22389
+Konfiguration / Configuration   [######..............]  27.6% | 71214
 Daten und Medien / Data and media [....................]   0.0% | 0
 Sonstiger Text / Other text     [#...................]   1.8% | 4686
 ```
@@ -597,12 +597,12 @@ Wochen / Weeks 01..26 | 2025-09-07..2026-03-07
 
 ```text
 Wochen / Weeks 27..52 | 2026-03-08..2026-09-05
-  cap 500000 | . . . . . . . . . . . . . . . . . . . . . . . . . .
-      416667 | . . . . . . . . . . . . . . . . . . . # # # # # # #
+ cap 1000000 | . . . . . . . . . . . . . . . . . . . . . . . . . .
+      833333 | . . . . . . . . . . . . . . . . . . . . . . . . . .
+      666667 | . . . . . . . . . . . . . . . . . . . . . . . . . .
+      500000 | . . . . . . . . . . . . . . . . . . . . . . . . . #
       333333 | . . . . . . . . . . # # # # # # # # # # # # # # # #
-      250000 | # # # # # # # # # # # # # # # # # # # # # # # # # #
       166667 | # # # # # # # # # # # # # # # # # # # # # # # # # #
-       83333 | # # # # # # # # # # # # # # # # # # # # # # # # # #
            0 +-----------------------------------------------------
 ```
 
@@ -613,15 +613,15 @@ Die kumulative Kurve summiert nur das Brutto-Aenderungsvolumen im Fenster. Sie d
 ### Phasenvolumen / Phase Volume
 
 ```text
-Slots 0..11
-   cap 50000 | . . . . . . . . . . . .
-       41667 | . . . . . . . . . . . .
-       33333 | . . . . . . . . . . . .
-       25000 | . . . . . . . . . . . #
-       16667 | . . . . . . . . . . . #
-        8333 | . # . # . . . . . . . #
-           0 +-------------------------
-             00 01 02 03 04 05 06 07 08 09 10 11
+Slots 0..12
+   cap 50000 | . . . . . . . . . . . . .
+       41667 | . . . . . . . . . . . . .
+       33333 | . . . . . . . . . . . . .
+       25000 | . . . . . . . . . . . # .
+       16667 | . . . . . . . . . . . # .
+        8333 | . # . # . . . . . . . # .
+           0 +---------------------------
+             00 01 02 03 04 05 06 07 08 09 10 11 12
 ```
 
 | Slot | Phase | Nettozeilen / Net lines |
@@ -638,6 +638,7 @@ Slots 0..11
 | 9 | Next-Intake-Indexreparatur / Next-intake index repair | 7 |
 | 10 | Aktueller Serienreview / Current series review | 110 |
 | 11 | Secure Development 004 / Secure Development 004 | 25631 |
+| 12 | 004 Abschluss / 004 closeout | 834 |
 
 Die festen Slots halten den Phasenvergleich auch bei fehlenden oder spaeter ergaenzten Werten stabil.
 
@@ -661,7 +662,7 @@ Die Faktoren vergleichen sichtbare Lieferdichte mit den dokumentierten manuellen
 Scale: 0..5000 lines/day
 Experienced manual [#...................] 80
 Thorsten solo      [#...................] 125
-Visible repository [############........] 2956.4
+Visible repository [############........] 2961.4
 ```
 
 Die gemeinsame Skala vergleicht Referenzen und sichtbare Lieferdichte. Sie schreibt die Git-Aktivitaet keiner Person oder KI pauschal zu.
@@ -687,6 +688,6 @@ DE: Das Fenster beginnt am 2025-09-07 und endet am 2026-08-30. Es enthaelt 87 ak
 | 2026-05 | 12323 |
 | 2026-06 | 37650 |
 | 2026-07 | 78966 |
-| 2026-08 | 48375 |
+| 2026-08 | 49216 |
 
 <!-- project-statistics-v2:end -->
