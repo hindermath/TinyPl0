@@ -1,7 +1,7 @@
 # CRA-Anwendbarkeit / CRA Applicability
 
-**Feature**: `004-secure-development-hardening`  
-**Stand / Date**: 2026-08-30  
+**Feature**: `004-secure-development-hardening`
+**Stand / Date**: 2026-08-30
 **Owner / Review**: TinyPl0-Maintainer / unabhängige Rechtsgrenzen-Review
 
 ## Entscheidung / Decision
