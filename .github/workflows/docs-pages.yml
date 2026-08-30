@@ -11,6 +11,7 @@ on:
       - "docfx/**"
       - "docs/**"
       - "src/**"
+      - "tests/a11y/**"
       - "*.md"
   workflow_dispatch:
 
@@ -27,12 +28,19 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
 
       - name: Setup .NET
-        uses: actions/setup-dotnet@v5
+        uses: actions/setup-dotnet@d4c94342e560b34958eacfc5d055d21461ed1c5d # v5.0.0
         with:
           dotnet-version: "10.0.x"
+
+      - name: Setup Node 24
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: tests/a11y/package-lock.json
 
       - name: Install DocFX
         run: dotnet tool install --global docfx
@@ -43,20 +51,64 @@ jobs:
       - name: Restore solution
         run: dotnet restore TinyPl0.sln
 
+      - name: Restore pinned local tools
+        run: dotnet tool restore
+
+      - name: Generate CycloneDX 1.7 SBOM
+        run: dotnet tool run dotnet-CycloneDX TinyPl0.sln -o sbom --output-format Json --spec-version 1.7
+
       - name: Clean generated site output
         run: rm -rf _site
 
       - name: Build HTML documentation
         run: docfx docfx.json
 
-      - name: Start local preview server
-        run: python3 -m http.server 8080 --directory _site > /tmp/tinypl0-docs-server.log 2>&1 &
+      - name: Create deterministic Pages manifest and hashes
+        shell: bash
+        run: |
+          set -euo pipefail
+          find _site -type f -print0 | LC_ALL=C sort -z | xargs -0 shasum -a 256 > _site-files.sha256
+          shasum -a 256 _site-files.sha256 sbom/*.json > artifact-manifest.sha256
 
-      - name: Smoke test generated site
-        run: ./scripts/smoke-test-pages.sh http://127.0.0.1:8080
+      - name: Install pinned A11Y dependencies
+        run: npm --prefix tests/a11y ci
+
+      - name: Install pinned Chromium runtime
+        run: cd tests/a11y && npx playwright install --with-deps chromium
+
+      - name: Smoke and axe test generated site on loopback
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m http.server 8080 --bind 127.0.0.1 --directory _site > /tmp/tinypl0-docs-server.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true; wait "$server_pid" 2>/dev/null || true' EXIT
+          ./scripts/smoke-test-pages.sh http://127.0.0.1:8080
+          DOCS_BASE_URL=http://127.0.0.1:8080 npm --prefix tests/a11y test -- --project=chromium
+
+      - name: Text-browser test generated API pages
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m http.server 8080 --bind 127.0.0.1 --directory _site > /tmp/tinypl0-lynx-server.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true; wait "$server_pid" 2>/dev/null || true' EXIT
+          lynx -dump -nolist http://127.0.0.1:8080/api/Pl0.Vm.VirtualMachineOptions.html | grep -q VirtualMachineOptions
+          lynx -dump -nolist http://127.0.0.1:8080/api/Pl0.Vm.VirtualMachine.html | grep -q VirtualMachine
+
+      - name: Upload supply-chain evidence
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: tinypl0-pages-supply-chain
+          path: |
+            artifact-manifest.sha256
+            _site-files.sha256
+            sbom/*.json
+          if-no-files-found: error
+          retention-days: 14
 
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4.0.0
         with:
           path: _site
 
@@ -76,7 +128,7 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4.0.5
 
   smoke-test-pages:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
@@ -85,7 +137,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
 
       - name: Smoke test published site
         run: ./scripts/smoke-test-pages.sh "${{ needs.deploy.outputs.page_url }}"

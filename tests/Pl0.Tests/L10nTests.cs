@@ -643,6 +643,45 @@ public sealed class L10nTests
         Assert.Equal("Användning:", actual);
     }
 
+    [Fact]
+    public void Vm_Instruction_Budget_Diagnostic_Is_Localized_In_German_And_English()
+    {
+        Instruction[] program = [new(Opcode.Opr, 0, 0)];
+
+        var german = new VirtualMachine().Run(
+            program,
+            new BufferedPl0Io(),
+            CreateVmOptions(language: "de", instructionBudget: 0));
+        var english = new VirtualMachine().Run(
+            program,
+            new BufferedPl0Io(),
+            CreateVmOptions(language: "en", instructionBudget: 0));
+
+        Assert.Contains(german.Diagnostics, diagnostic =>
+            diagnostic.Code == 207 && diagnostic.Message.Contains("Instruktionsbudget"));
+        Assert.Contains(english.Diagnostics, diagnostic =>
+            diagnostic.Code == 207 && diagnostic.Message.Contains("instruction budget", StringComparison.OrdinalIgnoreCase));
+    }
+
+    [Fact]
+    public void VirtualMachineOptions_Four_Parameter_Constructor_Remains_Source_Compatible()
+    {
+        var options = new VirtualMachineOptions(500, false, "de", VmRm);
+        var property = typeof(VirtualMachineOptions).GetProperty("InstructionBudget");
+
+        Assert.Equal(500, options.StackSize);
+        Assert.NotNull(property);
+        Assert.Equal(1_000_000, property.GetValue(options));
+    }
+
+    private static VirtualMachineOptions CreateVmOptions(string language, int instructionBudget)
+    {
+        var constructor = typeof(VirtualMachineOptions).GetConstructors()
+            .SingleOrDefault(candidate => candidate.GetParameters().Length == 5);
+        Assert.NotNull(constructor);
+        return (VirtualMachineOptions)constructor.Invoke([500, false, language, null, instructionBudget]);
+    }
+
     // ── Hilfeklasse für InputFormatError-Test ─────────────────────────────
 
     private sealed class FormatExceptionIo : IPl0Io

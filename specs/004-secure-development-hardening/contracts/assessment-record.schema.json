@@ -1,0 +1,323 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hindermath.github.io/TinyPl0/contracts/secure-development-assessment-1.0.schema.json",
+  "title": "TinyPl0 Secure Development Assessment",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "assessmentId",
+    "featurePath",
+    "runId",
+    "evaluatedCommit",
+    "baselineManifestSha256",
+    "canonicalChecklistSha256",
+    "reviewerRole",
+    "items"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "1.0" },
+    "assessmentId": { "const": "2026-08-30-tinypl0-hardening" },
+    "featurePath": { "const": "specs/004-secure-development-hardening" },
+    "runId": { "const": "abaa7b81-fd2c-47e7-8d59-87a852a3b2e7" },
+    "evaluatedCommit": { "$ref": "#/$defs/fullObjectId" },
+    "baselineManifestSha256": { "$ref": "#/$defs/sha256" },
+    "canonicalChecklistSha256": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "docs/secure-development/checklisten/CL_01_Standards-Anwendbarkeit.md",
+        "docs/secure-development/checklisten/CL_02_Sichere-Softwarearchitektur.md",
+        "docs/secure-development/checklisten/CL_03_Krypto-Mindestvorgaben.md",
+        "docs/secure-development/checklisten/CL_04_Bedrohungsmodellierung.md",
+        "docs/secure-development/checklisten/CL_05_Lieferkette-Build-Integritaet.md",
+        "docs/secure-development/checklisten/CL_06_Schwachstellenoffenlegung.md",
+        "docs/secure-development/checklisten/CL_07_CRA-Anwendbarkeit.md",
+        "docs/secure-development/checklisten/CL_08_Sicherheits-Code-Review.md",
+        "docs/secure-development/checklisten/CL_09_KI-Codeerzeugung.md",
+        "docs/secure-development/checklisten/CL_10_Sichere-Entwicklungsumgebung.md",
+        "docs/secure-development/checklisten/CL_11_Datenschutz-Folgenabschaetzung.md",
+        "docs/secure-development/checklisten/CL_12_Agentische-KI-Sandbox.md"
+      ],
+      "properties": {
+        "docs/secure-development/checklisten/CL_01_Standards-Anwendbarkeit.md": { "$ref": "#/$defs/sha256" },
+        "docs/secure-development/checklisten/CL_02_Sichere-Softwarearchitektur.md": { "$ref": "#/$defs/sha256" },
+        "docs/secure-development/checklisten/CL_03_Krypto-Mindestvorgaben.md": { "$ref": "#/$defs/sha256" },
+        "docs/secure-development/checklisten/CL_04_Bedrohungsmodellierung.md": { "$ref": "#/$defs/sha256" },
+        "docs/secure-development/checklisten/CL_05_Lieferkette-Build-Integritaet.md": { "$ref": "#/$defs/sha256" },
+        "docs/secure-development/checklisten/CL_06_Schwachstellenoffenlegung.md": { "$ref": "#/$defs/sha256" },
+        "docs/secure-development/checklisten/CL_07_CRA-Anwendbarkeit.md": { "$ref": "#/$defs/sha256" },
+        "docs/secure-development/checklisten/CL_08_Sicherheits-Code-Review.md": { "$ref": "#/$defs/sha256" },
+        "docs/secure-development/checklisten/CL_09_KI-Codeerzeugung.md": { "$ref": "#/$defs/sha256" },
+        "docs/secure-development/checklisten/CL_10_Sichere-Entwicklungsumgebung.md": { "$ref": "#/$defs/sha256" },
+        "docs/secure-development/checklisten/CL_11_Datenschutz-Folgenabschaetzung.md": { "$ref": "#/$defs/sha256" },
+        "docs/secure-development/checklisten/CL_12_Agentische-KI-Sandbox.md": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "reviewerRole": { "$ref": "#/$defs/nonEmpty" },
+    "items": {
+      "type": "array",
+      "minItems": 157,
+      "maxItems": 157,
+      "items": { "$ref": "#/$defs/assessmentRow" }
+    }
+  },
+  "$defs": {
+    "nonEmpty": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "fullObjectId": {
+      "type": "string",
+      "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$"
+    },
+    "localizedText": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["de", "en"],
+      "properties": {
+        "de": { "$ref": "#/$defs/nonEmpty" },
+        "en": { "$ref": "#/$defs/nonEmpty" }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "result": { "const": "Pass" },
+              "kind": { "enum": ["File", "Artifact"] }
+            },
+            "required": ["result", "kind"]
+          },
+          "then": { "properties": { "sha256": { "$ref": "#/$defs/sha256" } } }
+        },
+        {
+          "if": {
+            "properties": {
+              "result": { "const": "Pass" },
+              "kind": { "enum": ["File", "CommandLog", "TestResult", "WorkflowRun", "Artifact"] }
+            },
+            "required": ["result", "kind"]
+          },
+          "then": { "properties": { "commit": { "$ref": "#/$defs/fullObjectId" } } }
+        }
+      ]
+    },
+    "evidenceReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evidenceId",
+        "kind",
+        "pathOrUri",
+        "sha256",
+        "commit",
+        "command",
+        "exitCode",
+        "runnerOrPlatform",
+        "observedAt",
+        "result",
+        "proofBoundary"
+      ],
+      "properties": {
+        "evidenceId": { "$ref": "#/$defs/nonEmpty" },
+        "kind": {
+          "enum": ["File", "CommandLog", "TestResult", "WorkflowRun", "Artifact", "Decision", "ExternalReview"]
+        },
+        "pathOrUri": { "$ref": "#/$defs/nonEmpty" },
+        "sha256": {
+          "oneOf": [{ "$ref": "#/$defs/sha256" }, { "type": "null" }]
+        },
+        "commit": {
+          "oneOf": [{ "$ref": "#/$defs/fullObjectId" }, { "type": "null" }]
+        },
+        "command": {
+          "oneOf": [{ "$ref": "#/$defs/nonEmpty" }, { "type": "null" }]
+        },
+        "exitCode": {
+          "oneOf": [{ "type": "integer" }, { "type": "null" }]
+        },
+        "runnerOrPlatform": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/nonEmpty" }
+        },
+        "observedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "result": { "enum": ["Pass", "ExpectedFail", "Fail", "Open", "N/A"] },
+        "proofBoundary": { "$ref": "#/$defs/localizedText" }
+      }
+    },
+    "riskRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "asset",
+        "threat",
+        "stride",
+        "cia",
+        "capec",
+        "likelihood",
+        "impact",
+        "severity",
+        "mitigations",
+        "residualSeverity",
+        "acceptance"
+      ],
+      "properties": {
+        "asset": { "$ref": "#/$defs/localizedText" },
+        "threat": { "$ref": "#/$defs/localizedText" },
+        "stride": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "enum": ["S", "T", "R", "I", "D", "E"] }
+        },
+        "cia": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "enum": ["Confidentiality", "Integrity", "Availability"] }
+        },
+        "capec": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^CAPEC-[0-9]+$" }
+        },
+        "likelihood": { "enum": ["Low", "Medium", "High"] },
+        "impact": { "enum": ["Low", "Medium", "High", "Critical"] },
+        "severity": { "enum": ["Low", "Medium", "High", "Critical"] },
+        "mitigations": {
+          "oneOf": [
+            { "$ref": "#/$defs/localizedText" },
+            {
+              "type": "array",
+              "minItems": 1,
+              "items": { "$ref": "#/$defs/evidenceReference" }
+            }
+          ]
+        },
+        "residualSeverity": { "enum": ["Low", "Medium", "High", "Critical"] },
+        "acceptance": {
+          "oneOf": [
+            { "type": "null" },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["maintainerRole", "expiresOn", "compensatingControl"],
+              "properties": {
+                "maintainerRole": { "$ref": "#/$defs/nonEmpty" },
+                "expiresOn": { "type": "string", "format": "date" },
+                "compensatingControl": { "$ref": "#/$defs/localizedText" }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "reevaluation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["trigger", "targetDate"],
+      "properties": {
+        "trigger": { "$ref": "#/$defs/localizedText" },
+        "targetDate": {
+          "oneOf": [{ "type": "string", "format": "date" }, { "type": "null" }]
+        }
+      }
+    },
+    "assessmentRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "clId",
+        "applicability",
+        "implementation",
+        "rationale",
+        "evidence",
+        "ownerRole",
+        "reviewerRole",
+        "residualRisk",
+        "reevaluation",
+        "nextAction",
+        "priority",
+        "targetDateOrTrigger",
+        "expectedEvidence",
+        "findingId"
+      ],
+      "properties": {
+        "clId": { "type": "string", "pattern": "^CL-(?:0[1-9]|1[0-2])-[0-9]{2}$" },
+        "applicability": { "enum": ["Applicable", "N/A", "Open"] },
+        "implementation": { "enum": ["Fulfilled", "Partly Fulfilled", "Not Fulfilled", "Not Assessed"] },
+        "rationale": { "$ref": "#/$defs/localizedText" },
+        "evidence": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/evidenceReference" }
+        },
+        "ownerRole": { "$ref": "#/$defs/nonEmpty" },
+        "reviewerRole": { "$ref": "#/$defs/nonEmpty" },
+        "residualRisk": { "$ref": "#/$defs/riskRecord" },
+        "reevaluation": { "$ref": "#/$defs/reevaluation" },
+        "nextAction": { "$ref": "#/$defs/localizedText" },
+        "priority": {
+          "oneOf": [{ "enum": ["Low", "Medium", "High", "Critical"] }, { "type": "null" }]
+        },
+        "targetDateOrTrigger": {
+          "oneOf": [{ "$ref": "#/$defs/nonEmpty" }, { "type": "null" }]
+        },
+        "expectedEvidence": {
+          "oneOf": [{ "$ref": "#/$defs/localizedText" }, { "type": "null" }]
+        },
+        "findingId": {
+          "oneOf": [{ "type": "string", "pattern": "^FND-[A-Z0-9]+-[0-9]{3}$" }, { "type": "null" }]
+        }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "applicability": { "const": "N/A" } }, "required": ["applicability"] },
+          "then": { "properties": { "implementation": { "const": "Not Assessed" } } }
+        },
+        {
+          "if": {
+            "anyOf": [
+              { "properties": { "applicability": { "const": "Open" } }, "required": ["applicability"] },
+              { "properties": { "implementation": { "enum": ["Partly Fulfilled", "Not Fulfilled", "Not Assessed"] } }, "required": ["implementation"] }
+            ]
+          },
+          "then": {
+            "properties": {
+              "priority": { "enum": ["Low", "Medium", "High", "Critical"] },
+              "targetDateOrTrigger": { "$ref": "#/$defs/nonEmpty" },
+              "expectedEvidence": { "$ref": "#/$defs/localizedText" }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "implementation": { "const": "Fulfilled" } }, "required": ["implementation"] },
+          "then": { "properties": { "evidence": { "minItems": 1 } } }
+        },
+        {
+          "if": {
+            "properties": { "findingId": { "type": "string" } },
+            "required": ["findingId"]
+          },
+          "then": {
+            "properties": {
+              "applicability": { "const": "Applicable" },
+              "implementation": { "enum": ["Partly Fulfilled", "Not Fulfilled"] }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "applicability": { "const": "Open" } }, "required": ["applicability"] },
+          "then": { "properties": { "findingId": { "type": "null" } } }
+        }
+      ]
+    }
+  }
+}

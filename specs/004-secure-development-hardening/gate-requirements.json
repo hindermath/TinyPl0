@@ -1,0 +1,781 @@
+{
+  "$schema": "./contracts/gate-requirements.schema.json",
+  "schemaVersion": "1.0",
+  "feature": "specs/004-secure-development-hardening",
+  "runId": "abaa7b81-fd2c-47e7-8d59-87a852a3b2e7",
+  "owner": "Implementing agent under the active autonomous run",
+  "reviewer": "Independent security and pull-request reviewer",
+  "evidenceContract": "specs/004-secure-development-hardening/contracts/evidence-contract.md",
+  "gates": [
+    {
+      "gateId": "PLAN-GATE-001",
+      "applicability": "Applicable",
+      "requiredScope": "Validate the completed plan phase result as immutable historical input by matching its result-file SHA-256 to the accepted run-state entry; current remediated planning state is bound by the later plan-review result.",
+      "exactCommands": [
+        "pwsh -NoProfile -Command '$state = Get-Content -LiteralPath specs/004-secure-development-hardening/autonomous-run-state.json -Raw -Encoding UTF8 | ConvertFrom-Json; $phase = @($state.routing.phases | Where-Object phaseId -eq \"plan\"); if ($phase.Count -ne 1 -or $phase[0].status -ne \"Completed\") { throw \"Historical plan phase is not Completed\" }; $actual = (Get-FileHash -LiteralPath $phase[0].resultPath -Algorithm SHA256).Hash.ToLowerInvariant(); if ($actual -ne $phase[0].resultSha256) { throw \"Historical plan result hash drift\" }; \"PASS: immutable historical plan result\"'"
+      ],
+      "requiredCommandTokens": [
+        "autonomous-run-state.json",
+        "phaseId -eq \"plan\"",
+        "Get-FileHash",
+        "immutable historical plan result"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "Codex",
+        "frontier-reasoning",
+        "codex-frontier-auto",
+        "gpt-5.6-sol",
+        "high",
+        "macOS",
+        "PowerShell 7"
+      ],
+      "evidencePath": ".specify/runtime/autonomous-routing/abaa7b81-fd2c-47e7-8d59-87a852a3b2e7/plan.result.json",
+      "rationale": "Plan Review may remediate planning files, so the accepted plan result remains historical and must not be rewritten or misrepresented as binding the post-review bytes.",
+      "reevaluationTrigger": "Any plan.md change or planning artefact/gate drift."
+    },
+    {
+      "gateId": "PLAN-REVIEW-GATE-001",
+      "applicability": "Applicable",
+      "requiredScope": "Preserve the accepted plan-review phase result as immutable historical input; final Analyze binds every later minimal planning or task remediation.",
+      "exactCommands": [
+        "pwsh -NoProfile -Command '$state = Get-Content -LiteralPath specs/004-secure-development-hardening/autonomous-run-state.json -Raw -Encoding UTF8 | ConvertFrom-Json; $phase = @($state.routing.phases | Where-Object phaseId -eq \"plan-review\"); if ($phase.Count -ne 1 -or $phase[0].status -ne \"Completed\") { throw \"Historical plan-review phase is not Completed\" }; $actual = (Get-FileHash -LiteralPath $phase[0].resultPath -Algorithm SHA256).Hash.ToLowerInvariant(); if ($actual -ne $phase[0].resultSha256) { throw \"Historical plan-review result hash drift\" }; \"PASS: immutable historical plan-review result\"'"
+      ],
+      "requiredCommandTokens": [
+        "autonomous-run-state.json",
+        "phaseId -eq \"plan-review\"",
+        "Get-FileHash",
+        "immutable historical plan-review result"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "Codex",
+        "frontier-reasoning",
+        "codex-frontier-auto",
+        "gpt-5.6-sol",
+        "high",
+        "macOS",
+        "PowerShell 7"
+      ],
+      "evidencePath": "specs/004-secure-development-hardening/plan-review.md and .specify/runtime/autonomous-routing/abaa7b81-fd2c-47e7-8d59-87a852a3b2e7/plan-review.result.json",
+      "rationale": "Analyze is explicitly allowed to make minimal planning/task remediation, so the accepted review result remains immutable historical evidence and Analyze becomes the causal binding for the final pre-implementation set.",
+      "reevaluationTrigger": "Any accepted specification, plan, contract, or gate requirement change."
+    },
+    {
+      "gateId": "GATE-REQUIREMENTS-SCHEMA-GATE-001",
+      "applicability": "Applicable",
+      "requiredScope": "Validate every declared gate against the feature-local JSON Schema, reject duplicate gate IDs, and require executable command plus runner/platform evidence for Applicable gates while keeping N/A gates non-executing and reasoned.",
+      "exactCommands": [
+        "pwsh -NoProfile -Command '$json = Get-Content -LiteralPath specs/004-secure-development-hardening/gate-requirements.json -Raw -Encoding UTF8; if (-not ($json | Test-Json -SchemaFile specs/004-secure-development-hardening/contracts/gate-requirements.schema.json)) { throw \"Gate requirements schema failed\" }; $data = $json | ConvertFrom-Json; if (@($data.gates.gateId | Sort-Object -Unique).Count -ne @($data.gates).Count) { throw \"Duplicate gateId\" }; \"PASS: gate requirements schema and unique IDs\"'"
+      ],
+      "requiredCommandTokens": [
+        "Test-Json -SchemaFile",
+        "gate-requirements.schema.json",
+        "Sort-Object -Unique",
+        "gate requirements schema and unique IDs"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "macOS",
+        "PowerShell 7",
+        "JSON Schema 2020-12",
+        "exact HEAD"
+      ],
+      "evidencePath": "specs/004-secure-development-hardening/contracts/gate-requirements.schema.json, specs/004-secure-development-hardening/gate-requirements.json, and validation log",
+      "rationale": "The installed autonomous validator checks only a minimal compatibility shape; the feature schema closes field, applicability, and executable-evidence gaps before Tasks.",
+      "reevaluationTrigger": "Any gate requirement, gate schema, validator, command, token, runner, platform, or evidence-path change."
+    },
+    {
+      "gateId": "TASKS-ANALYZE-GATE-001",
+      "applicability": "Applicable",
+      "requiredScope": "Preserve the accepted Tasks result as immutable historical input, then validate the current Analyze payload that binds all minimal final pre-implementation remediation.",
+      "exactCommands": [
+        "pwsh -NoProfile -Command '$state = Get-Content -LiteralPath specs/004-secure-development-hardening/autonomous-run-state.json -Raw -Encoding UTF8 | ConvertFrom-Json; $phase = @($state.routing.phases | Where-Object phaseId -eq \"tasks\"); if ($phase.Count -ne 1 -or $phase[0].status -ne \"Completed\") { throw \"Historical tasks phase is not Completed\" }; $actual = (Get-FileHash -LiteralPath $phase[0].resultPath -Algorithm SHA256).Hash.ToLowerInvariant(); if ($actual -ne $phase[0].resultSha256) { throw \"Historical tasks result hash drift\" }; \"PASS: immutable historical tasks result\"'",
+        "pwsh -NoProfile -File .specify/presets/autonomous-run-governance/scripts/validate-autonomous-phase-result.ps1 -Repo . -Result .specify/runtime/autonomous-routing/abaa7b81-fd2c-47e7-8d59-87a852a3b2e7/analyze.result.json -PhaseId analyze -ExitCode 0",
+        "pwsh -NoProfile -File .specify/presets/autonomous-run-governance/scripts/validate-autonomous-run-state.ps1 -State specs/004-secure-development-hardening/autonomous-run-state.json"
+      ],
+      "requiredCommandTokens": [
+        "immutable historical tasks result",
+        "Get-FileHash",
+        "validate-autonomous-phase-result.ps1",
+        "phaseId -eq \"tasks\"",
+        "analyze.result.json",
+        "validate-autonomous-run-state.ps1"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "Codex",
+        "frontier-reasoning",
+        "codex-frontier-auto",
+        "gpt-5.6-sol",
+        "high",
+        "macOS",
+        "PowerShell 7"
+      ],
+      "evidencePath": "specs/004-secure-development-hardening/tasks.md, specs/004-secure-development-hardening/analyze-report.md, and routed phase results",
+      "rationale": "Tasks was valid when accepted; Analyze is the explicitly authorised phase for final planning/task correction and therefore supplies the current payload binding without rewriting historical phase evidence.",
+      "reevaluationTrigger": "Any task, finding authorization, delivery gate, or analyze finding change."
+    },
+    {
+      "gateId": "IDENTITY-INPUT-GATE-001",
+      "applicability": "Applicable",
+      "requiredScope": "Confirm branch, feature, run ID, active feature state, and the four accepted input byte hashes without editing intake, series, or run state.",
+      "exactCommands": [
+        "pwsh -NoProfile -File .specify/presets/autonomous-run-governance/scripts/validate-autonomous-run-state.ps1 -State specs/004-secure-development-hardening/autonomous-run-state.json",
+        "pwsh -NoProfile -Command '$state = Get-Content -LiteralPath specs/004-secure-development-hardening/autonomous-run-state.json -Raw -Encoding UTF8 | ConvertFrom-Json; if ($state.runId -ne \"abaa7b81-fd2c-47e7-8d59-87a852a3b2e7\" -or $state.featurePath -ne \"specs/004-secure-development-hardening\" -or $state.branch -ne \"codex/004-secure-development-hardening\") { throw \"Feature identity mismatch\" }; foreach ($item in $state.acceptedArtifacts) { $actual = (Get-FileHash -LiteralPath $item.path -Algorithm SHA256).Hash.ToLowerInvariant(); if ($actual -ne $item.sha256) { throw \"Accepted input drift: $($item.path)\" } }; \"PASS: identity and accepted byte hashes\"'"
+      ],
+      "requiredCommandTokens": [
+        "validate-autonomous-run-state.ps1",
+        "abaa7b81-fd2c-47e7-8d59-87a852a3b2e7",
+        "Get-FileHash",
+        "Accepted input drift"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "macOS",
+        "PowerShell 7",
+        "autonomous-run-state schema 1.1"
+      ],
+      "evidencePath": "specs/004-secure-development-hardening/autonomous-run-state.json and validation log",
+      "rationale": "Identity and accepted-input drift would invalidate every downstream finding, task, command, and evidence claim.",
+      "reevaluationTrigger": "Every phase boundary, interruption, resume, or accepted input drift."
+    },
+    {
+      "gateId": "ASSESSMENT-157-GATE-001",
+      "applicability": "Applicable",
+      "requiredScope": "Prove the twelve canonical checklist counts, 157 unique IDs, ordered compendium parity, valid assessment schema, all mandatory fields, and the CL-12 boundary.",
+      "exactCommands": [
+        "pwsh -NoProfile -Command '$files = @(Get-ChildItem -LiteralPath docs/secure-development/checklisten -Filter \"CL_*.md\" | Sort-Object Name); if ($files.Count -ne 12) { throw \"Expected 12 canonical checklists\" }; $sets = foreach ($file in $files) { $ids = @([regex]::Matches((Get-Content -LiteralPath $file.FullName -Raw -Encoding UTF8), \"(?m)^#### (CL-[0-9]{2}-[0-9]{2}):\") | ForEach-Object { $_.Groups[1].Value }); [pscustomobject]@{ Name = $file.Name; Count = $ids.Count; Ids = $ids } }; $counts = @($sets | ForEach-Object { $_.Count }); $all = [string[]]@($sets.Ids); $unique = @($all | Sort-Object -Unique); $book = [string[]]@([regex]::Matches((Get-Content -LiteralPath docs/secure-development/Checklistensammelband_Sichere-Entwicklung.md -Raw -Encoding UTF8), \"(?m)^#### (CL-[0-9]{2}-[0-9]{2}):\") | ForEach-Object { $_.Groups[1].Value }); if (($counts -join \"/\") -ne \"12/13/15/10/13/11/12/13/17/17/12/12\" -or $all.Count -ne 157 -or $unique.Count -ne 157 -or -not [Linq.Enumerable]::SequenceEqual($all, $book)) { throw \"Checklist inventory or ordered compendium parity failed\" }; \"PASS: counts=$($counts -join \"/\"); total=157; unique=157; ordered compendium parity\"'",
+        "pwsh -NoProfile -Command '$path = \"docs/security/secure-development/2026-08-30-tinypl0-hardening/assessment.json\"; $json = Get-Content -LiteralPath $path -Raw -Encoding UTF8; if (-not ($json | Test-Json -SchemaFile specs/004-secure-development-hardening/contracts/assessment-record.schema.json)) { throw \"Assessment schema failed\" }; $data = $json | ConvertFrom-Json; $files = @(Get-ChildItem -LiteralPath docs/secure-development/checklisten -Filter \"CL_*.md\" | Sort-Object Name); $canonical = [string[]]@($files | ForEach-Object { [regex]::Matches((Get-Content -LiteralPath $_.FullName -Raw -Encoding UTF8), \"(?m)^#### (CL-[0-9]{2}-[0-9]{2}):\") | ForEach-Object { $_.Groups[1].Value } }); $ids = [string[]]@($data.items.clId); if ($ids.Count -ne 157 -or @($ids | Sort-Object -Unique).Count -ne 157 -or -not [Linq.Enumerable]::SequenceEqual($canonical, $ids)) { throw \"Assessment canonical ID order failed\" }; if ($data.evaluatedCommit -ne (git rev-parse HEAD)) { throw \"Assessment commit is not exact HEAD\" }; $cl12 = @($data.items | Where-Object { $_.clId -like \"CL-12-*\" }); if ($cl12.Count -ne 12 -or @($cl12 | Where-Object { $_.applicability -ne \"N/A\" -or $_.implementation -ne \"Not Assessed\" }).Count -ne 0) { throw \"CL-12 boundary failed\" }; $badReview = @($data.items | Where-Object { $_.ownerRole -eq $_.reviewerRole }); if ($badReview) { throw \"Owner and reviewer role must differ\" }; $evidence = @($data.items.evidence); $evidenceIds = @($evidence.evidenceId); if (@($evidenceIds | Sort-Object -Unique).Count -ne $evidenceIds.Count) { throw \"Duplicate evidenceId\" }; $badPass = @($data.items | Where-Object { $_.implementation -eq \"Fulfilled\" -and @($_.evidence | Where-Object { $_.result -eq \"Pass\" -and $_.commit -eq $data.evaluatedCommit }).Count -eq 0 }); if ($badPass) { throw \"Fulfilled row lacks exact-HEAD Pass evidence\" }; \"PASS: assessment schema, canonical 157 order, exact HEAD evidence, reviewer separation, CL-12 boundary\"'"
+      ],
+      "requiredCommandTokens": [
+        "12/13/15/10/13/11/12/13/17/17/12/12",
+        "total=157",
+        "unique=157",
+        "assessment-record.schema.json",
+        "CL-12 boundary"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "macOS",
+        "PowerShell 7",
+        "JSON Schema 2020-12"
+      ],
+      "evidencePath": "docs/security/secure-development/2026-08-30-tinypl0-hardening/assessment.json and validation log",
+      "rationale": "Schema validity alone cannot prove canonical ID order, exact-HEAD evidence, globally unique evidence IDs, or independent reviewer roles.",
+      "reevaluationTrigger": "Any checklist, manifest, compendium, assessment, or evidence hash change."
+    },
+    {
+      "gateId": "FINDING-AUTHORIZATION-GATE-001",
+      "applicability": "Applicable",
+      "requiredScope": "Block every non-pre-authorised code, UI, CI, or workflow edit unless a named finding contains the required CL state, risk, red test, exact minimal files, green result, regression proof, owner, and independent reviewer.",
+      "exactCommands": [
+        "pwsh -NoProfile -Command '$assessment = Get-Content -LiteralPath docs/security/secure-development/2026-08-30-tinypl0-hardening/assessment.json -Raw -Encoding UTF8 | ConvertFrom-Json; $allowed = @(\"FND-BASELINE-001\", \"FND-SC-001\", \"FND-CVD-001\", \"FND-GITIGNORE-001\", \"FND-A11Y-001\", \"FND-GOV-001\"); $named = @($assessment.items | Where-Object { -not [string]::IsNullOrWhiteSpace([string]$_.findingId) }); $unexpected = @($named | Where-Object { $_.findingId -notin $allowed }); if ($unexpected.Count) { throw \"Finding outside exact six-package authorisation boundary\" }; $bad = @($named | Where-Object { $_.applicability -ne \"Applicable\" -or $_.implementation -notin @(\"Partly Fulfilled\", \"Not Fulfilled\") }); if ($bad.Count) { throw \"Finding authorisation state invalid\" }; \"PASS: exact six-package boundary and finding status precondition\"'",
+        "pwsh -NoProfile -Command '$base = git merge-base main HEAD; $changed = @(git diff --name-only $base HEAD); $findings = Get-Content -LiteralPath docs/security/secure-development/2026-08-30-tinypl0-hardening/findings.md -Raw -Encoding UTF8; $unbound = @($changed | Where-Object { $_ -match \"^(src/Pl0\\.(Core|Cli|Ide)/|\\.github/workflows/|scripts/|\\.gitignore$|AGENTS\\.md$|CLAUDE\\.md$|GEMINI\\.md$|\\.github/(copilot-instructions|agents/copilot-instructions)\\.md$)\" -and $findings -notmatch [regex]::Escape(\"`$_`\") }); if ($unbound) { throw \"Changed path lacks finding binding: $($unbound -join ', ')\" }; \"PASS: finding-bound changed paths at exact HEAD\"'",
+        "git status --short --untracked-files=all"
+      ],
+      "requiredCommandTokens": [
+        "findingId",
+        "FND-BASELINE-001",
+        "FND-SC-001",
+        "FND-CVD-001",
+        "FND-GITIGNORE-001",
+        "FND-A11Y-001",
+        "FND-GOV-001",
+        "exact six-package authorisation boundary",
+        "Applicable",
+        "Partly Fulfilled",
+        "Not Fulfilled",
+        "git merge-base main HEAD",
+        "finding-bound changed paths at exact HEAD",
+        "git status --short --untracked-files=all"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "macOS",
+        "PowerShell 7",
+        "Git",
+        "independent security review"
+      ],
+      "evidencePath": "docs/security/secure-development/2026-08-30-tinypl0-hardening/findings.md and assessment.json",
+      "rationale": "Assessment status is necessary but not sufficient; changed non-VM code, workflow, script, ignore, and guidance paths must also resolve to the exact finding file set at the reviewed HEAD.",
+      "reevaluationTrigger": "Before the first edit for every non-VM finding and whenever its file set or test changes."
+    },
+    {
+      "gateId": "ARCHITECTURE-THREAT-GATE-001",
+      "applicability": "Applicable",
+      "requiredScope": "Document VM runtime/resource decisions, all named trust boundaries, STRIDE/CIA, CAPEC for high paths, quality scenarios, general ADR, S-ADR, risks, and trade-offs before related implementation.",
+      "exactCommands": [
+        "pwsh -NoProfile -Command '$required = @(\"docs/security/threat-model.md\", \"docs/security/arc42-security.md\", \"docs/security/security-quality-scenarios.md\", \"docs/architecture/secure-development-hardening.md\", \"docs/architecture/adr/0001-vm-resource-budget.md\", \"docs/security/adr/0001-vm-resource-budget.md\"); $combined = \"\"; foreach ($path in $required) { if (-not (Test-Path -LiteralPath $path -PathType Leaf)) { throw \"Missing architecture evidence: $path\" }; $text = Get-Content -LiteralPath $path -Raw -Encoding UTF8; if ($text -match \"Stub|To be populated|Zu befuellen|TBD\") { throw \"Unresolved architecture placeholder: $path\" }; $combined += $text }; foreach ($token in @(\"STRIDE\", \"CIA\", \"CAPEC\", \"arc42\", \"iSAQB\")) { if ($combined -notmatch [regex]::Escape($token)) { throw \"Architecture evidence lacks $token\" } }; \"PASS: architecture and threat evidence; STRIDE; CIA; CAPEC; arc42; iSAQB\"'"
+      ],
+      "requiredCommandTokens": [
+        "docs/security/threat-model.md",
+        "docs/security/arc42-security.md",
+        "0001-vm-resource-budget.md",
+        "STRIDE",
+        "CAPEC"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "macOS",
+        "PowerShell 7",
+        "iSAQB",
+        "arc42",
+        "STRIDE",
+        "CIA",
+        "CAPEC"
+      ],
+      "evidencePath": "docs/security/threat-model.md, docs/security/arc42-security.md, docs/security/security-quality-scenarios.md, and docs/architecture/",
+      "rationale": "The VM budget changes runtime behaviour and a quality attribute, so architecture and threat evidence must exist before code claims can be accepted.",
+      "reevaluationTrigger": "Any trust boundary, interface, runtime, deployment, resource policy, or accepted architecture trade-off change."
+    },
+    {
+      "gateId": "VM-TDD-GATE-001",
+      "applicability": "Applicable",
+      "requiredScope": "Record a representative failing budget N/N+1 test for batch and step execution, the unchanged tests turning green after the smallest implementation, and relevant regression proof.",
+      "exactCommands": [
+        "dotnet test TinyPl0.sln --configuration Release --filter \"FullyQualifiedName~Pl0.Tests.VirtualMachineTests.Instruction_Budget_Stops_Before_N_Plus_One|FullyQualifiedName~Pl0.Tests.SteppableVirtualMachineTests.Instruction_Budget_Stops_Before_N_Plus_One\"",
+        "pwsh -NoProfile -Command '$paths = @(\"tests/Pl0.Tests/VirtualMachineTests.cs\", \"tests/Pl0.Tests/SteppableVirtualMachineTests.cs\"); foreach ($path in $paths) { $hash = (Get-FileHash -LiteralPath $path -Algorithm SHA256).Hash.ToLowerInvariant(); \"testSourceSha256 $path $hash\" }; \"PASS: N+1 red/green source binding\"'"
+      ],
+      "requiredCommandTokens": [
+        "dotnet test TinyPl0.sln --configuration Release",
+        "Instruction_Budget_Stops_Before_N_Plus_One",
+        "N+1",
+        "testSourceSha256"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "macOS",
+        ".NET SDK 10.0.x",
+        "xUnit",
+        "Red-Green-Regression"
+      ],
+      "evidencePath": "specs/004-secure-development-hardening/autonomous-run-evidence.md VM TDD section",
+      "rationale": "The two pre-authorised VM changes still require observable red, unchanged green, and regression evidence; implementation alone is not sufficient.",
+      "reevaluationTrigger": "Any instruction-counting, halt, error-state, or budget diagnostic change."
+    },
+    {
+      "gateId": "VM-CONFIGURATION-GATE-001",
+      "applicability": "Applicable",
+      "requiredScope": "Reject nonpositive budgets and stack sizes outside 3 through 1,000,000 before addition, allocation, or execution in both VM paths with stable localized diagnostics and preserved four-parameter source compatibility.",
+      "exactCommands": [
+        "dotnet test TinyPl0.sln --configuration Release --filter \"FullyQualifiedName~Pl0.Tests.VirtualMachineTests.Invalid_Options_Return_Diagnostic_Before_Allocation|FullyQualifiedName~Pl0.Tests.SteppableVirtualMachineTests.Invalid_Options_Return_Diagnostic_Before_Allocation\"",
+        "dotnet test TinyPl0.sln --configuration Release --filter \"FullyQualifiedName~Pl0.Tests.L10nTests\"",
+        "pwsh -NoProfile -Command '$text = (Get-Content -LiteralPath tests/Pl0.Tests/VirtualMachineTests.cs -Raw -Encoding UTF8) + (Get-Content -LiteralPath tests/Pl0.Tests/SteppableVirtualMachineTests.cs -Raw -Encoding UTF8); foreach ($token in @(\"InstructionBudget\", \"StackSize\", \"1_000_001\", \"int.MaxValue\")) { if ($text -notmatch [regex]::Escape($token)) { throw \"VM configuration tests lack $token\" } }; \"PASS: InstructionBudget and StackSize validation bounds\"'"
+      ],
+      "requiredCommandTokens": [
+        "Invalid_Options_Return_Diagnostic_Before_Allocation",
+        "InstructionBudget",
+        "StackSize",
+        "L10nTests"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "macOS",
+        ".NET SDK 10.0.x",
+        "xUnit",
+        "German",
+        "English"
+      ],
+      "evidencePath": "VM test results, resource review, and specs/004-secure-development-hardening/autonomous-run-evidence.md",
+      "rationale": "Current VM code allocates StackSize plus one before validation; the gate proves safe lower and upper bounds, diagnostic parity, and public-options compatibility.",
+      "reevaluationTrigger": "Any VirtualMachineOptions, stack-layout, validation-order, or diagnostic-resource change."
+    },
+    {
+      "gateId": "BUILD-TEST-GOLDEN-GATE-001",
+      "applicability": "Applicable",
+      "requiredScope": "On one final versioned exact HEAD, restore once and execute exactly one Release full-suite command that builds the solution, covers all 41 mandatory catalogue cases plus VM, localisation, golden, architecture, and traceability tests, and emits coverage without golden regeneration.",
+      "exactCommands": [
+        "pwsh -NoProfile -Command '& dotnet restore TinyPl0.sln; if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }; & dotnet test TinyPl0.sln --configuration Release --no-restore --collect:\"XPlat Code Coverage\" --results-directory /private/tmp/tinypl0-004-abaa7b81-coverage; if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }; \"PASS: one exact-HEAD Release full suite; 41 mandatory cases; VirtualMachineTests; SteppableVirtualMachineTests; L10nTests; CatalogCasesTests; LexerGoldenTests; ParserGoldenTests; TraceabilityMatrixTests; ArchitectureGuardTests; no golden regeneration\"'"
+      ],
+      "requiredCommandTokens": [
+        "dotnet restore TinyPl0.sln",
+        "dotnet test TinyPl0.sln --configuration Release --no-restore",
+        "XPlat Code Coverage",
+        "one exact-HEAD Release full suite",
+        "VirtualMachineTests",
+        "SteppableVirtualMachineTests",
+        "L10nTests",
+        "CatalogCasesTests",
+        "LexerGoldenTests",
+        "ParserGoldenTests",
+        "TraceabilityMatrixTests",
+        "ArchitectureGuardTests",
+        "no golden regeneration"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "macOS",
+        "ubuntu-latest",
+        ".NET SDK 10.0.x",
+        "xUnit",
+        "41 mandatory cases"
+      ],
+      "evidencePath": "local build/test ledger and GitHub Actions CI build-test job",
+      "rationale": "A second build/test command would require another version commit and invalidate the earlier exact-head proof; one full-suite Release invocation is the only non-circular way to satisfy both the version policy and final exact-head evidence.",
+      "reevaluationTrigger": "Any source, test, project, dependency, golden, or traceability change."
+    },
+    {
+      "gateId": "COVERAGE-GATE-001",
+      "applicability": "Applicable",
+      "requiredScope": "Collect Cobertura coverage, block below 70.23 percent overall, report the separate 80 percent goal, and require at least 85 percent branch coverage for changed VM security surfaces.",
+      "exactCommands": [
+        "pwsh -NoProfile -Command '$files = @(Get-ChildItem -LiteralPath /private/tmp/tinypl0-004-abaa7b81-coverage -Recurse -Filter coverage.cobertura.xml); if (-not $files) { throw \"No coverage file from XPlat Code Coverage\" }; $docs = @($files | ForEach-Object { [xml](Get-Content -LiteralPath $_.FullName -Raw -Encoding UTF8) }); $overall = ($docs | ForEach-Object { [double]$_.coverage.\"line-rate\" } | Measure-Object -Minimum).Minimum; if ($overall -lt 0.7023) { throw \"Coverage below 70.23% baseline: $overall\" }; $vm = @($docs.coverage.packages.package.classes.class | Where-Object { $_.filename -like \"*src/Pl0.Vm/*\" }); if (-not $vm) { throw \"No VM coverage entries\" }; $branch = ($vm | Measure-Object -Property branch-rate -Minimum).Minimum; if ([double]$branch -lt 0.85) { throw \"Changed VM branch coverage below 85%: $branch\" }; $target = if ($overall -ge 0.80) { \"TargetMet\" } else { \"TargetOpen\" }; \"PASS: XPlat Code Coverage; overall=$overall; floor=0.7023; target=$target; vmBranch=$branch\"'"
+      ],
+      "requiredCommandTokens": [
+        "XPlat Code Coverage",
+        "coverage.cobertura.xml",
+        "0.7023",
+        "0.80",
+        "0.85",
+        "TargetOpen"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "macOS",
+        ".NET SDK 10.0.x",
+        "Coverlet",
+        "Cobertura"
+      ],
+      "evidencePath": "/private/tmp/tinypl0-004-abaa7b81-coverage and autonomous evidence coverage section",
+      "rationale": "The feature may not reduce the evidenced repository baseline, while changed security-critical VM branches require the stricter local threshold and a separately reported 80 percent target.",
+      "reevaluationTrigger": "Any source/test change or coverage baseline recalculation."
+    },
+    {
+      "gateId": "XML-DOC-DOCFX-A11Y-GATE-001",
+      "applicability": "Applicable",
+      "requiredScope": "Document the changed public VM option completely, regenerate DocFX, and verify representative VirtualMachineOptions and VirtualMachine pages with axe and lynx.",
+      "exactCommands": [
+        "docfx docfx.json",
+        "npm --prefix tests/a11y ci",
+        "npm --prefix tests/a11y test -- --project=chromium",
+        "pwsh -NoProfile -Command '$lock = Get-Content -LiteralPath tests/a11y/package-lock.json -Raw -Encoding UTF8; if ($lock -notmatch \"@axe-core/playwright\" -or $lock -notmatch \"playwright\") { throw \"Pinned axe/Playwright dependencies missing\" }; \"PASS: axe dependency lock\"'",
+        "lynx -dump -nolist http://127.0.0.1:8080/api/Pl0.Vm.VirtualMachineOptions.html",
+        "lynx -dump -nolist http://127.0.0.1:8080/api/Pl0.Vm.VirtualMachine.html"
+      ],
+      "requiredCommandTokens": [
+        "docfx docfx.json",
+        "npm --prefix tests/a11y ci",
+        "npm --prefix tests/a11y test -- --project=chromium",
+        "127.0.0.1:8080",
+        "Pl0.Vm.VirtualMachineOptions.html",
+        "Pl0.Vm.VirtualMachine.html",
+        "lynx -dump -nolist",
+        "axe"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "macOS",
+        "ubuntu-latest",
+        ".NET SDK 10.0.x",
+        "DocFX",
+        "Node 24 LTS",
+        "Playwright",
+        "axe-core",
+        "Chromium",
+        "lynx text browser",
+        "WCAG 2.2 AA"
+      ],
+      "evidencePath": "tests/a11y/package-lock.json, GitHub Docs Pages exact-head log, DocFX log, generated API YAML, temporary _site, axe JSON, lynx text output, and docs/accessibility/secure-development-hardening.md",
+      "rationale": "The public API and XML change requires independently executable HTML and text-browser proof; the lockfile-bound Node 24 harness makes the axe path reproducible locally and on ubuntu-latest.",
+      "reevaluationTrigger": "Any public API/XML comment, DocFX content/navigation, diagnostic text, or generated HTML change."
+    },
+    {
+      "gateId": "SECURITY-EVIDENCE-GATE-001",
+      "applicability": "Applicable",
+      "requiredScope": "Replace required security stubs with TinyPl0-specific NIST SSDF, CWE Top 25, secure coding, dependency, quality-scenario, regulatory, cloud-provider, SAMM, and residual-risk evidence.",
+      "exactCommands": [
+        "pwsh -NoProfile -Command '$required = @(\"docs/security/threat-model.md\", \"docs/security/arc42-security.md\", \"docs/security/security-checklist.md\", \"docs/security/security-quality-scenarios.md\", \"docs/security/dependency-audit.md\", \"docs/security/asvs-verification.md\", \"docs/security/supply-chain-evidence.md\", \"docs/security/zero-trust-applicability.md\", \"docs/security/samm-assessment.md\", \"docs/security/cra-applicability.md\", \"docs/security/regulatory-applicability.md\", \"docs/security/cloud-autonomy-applicability.md\", \"docs/security/cloud-compliance-assurance.md\"); foreach ($path in $required) { if (-not (Test-Path -LiteralPath $path -PathType Leaf)) { throw \"Missing evidence: $path\" }; $text = Get-Content -LiteralPath $path -Raw -Encoding UTF8; if ($text -match \"Stub|To be populated|Zu befuellen|TBD\") { throw \"Unresolved evidence placeholder: $path\" } }; \"PASS: security evidence paths\"'",
+        "pwsh -NoProfile -Command '$text = (Get-Content -LiteralPath docs/security/security-checklist.md -Raw -Encoding UTF8) + (Get-Content -LiteralPath docs/security/dependency-audit.md -Raw -Encoding UTF8); foreach ($token in @(\"NIST SSDF\", \"CWE Top 25\")) { if ($text -notmatch [regex]::Escape($token)) { throw \"Security evidence lacks $token\" } }; \"PASS: NIST SSDF and CWE Top 25 evidence\"'",
+        "git diff --check"
+      ],
+      "requiredCommandTokens": [
+        "NIST SSDF",
+        "CWE Top 25",
+        "docs/security/security-checklist.md",
+        "docs/security/dependency-audit.md",
+        "docs/security/security-quality-scenarios.md",
+        "git diff --check"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "macOS",
+        "PowerShell 7",
+        "NIST SSDF",
+        "CWE Top 25",
+        "C# secure coding review"
+      ],
+      "evidencePath": "docs/security/ and docs/security/secure-development/2026-08-30-tinypl0-hardening/",
+      "rationale": "Existing files are explicit stubs, so completion requires project-specific content and independent secure-coding review rather than path existence alone.",
+      "reevaluationTrigger": "Any security standard, risk, dependency, provider, regulatory, or product-boundary change."
+    },
+    {
+      "gateId": "ASVS-L1-GATE-001",
+      "applicability": "Applicable",
+      "requiredScope": "Map every OWASP ASVS 5.0.0 Level 1 ID to Applicable or reasoned N/A for pl0c --api, satisfy every Applicable ID, and leave no open Critical or High HTTP finding.",
+      "exactCommands": [
+        "pwsh -NoProfile -Command '$uri = \"https://raw.githubusercontent.com/OWASP/ASVS/v5.0.0/5.0/docs_en/OWASP_Application_Security_Verification_Standard_5.0.0_en.flat.json\"; $temp = [IO.Path]::GetTempFileName(); try { Invoke-WebRequest -Uri $uri -OutFile $temp; $sourceHash = (Get-FileHash -LiteralPath $temp -Algorithm SHA256).Hash.ToLowerInvariant(); $official = Get-Content -LiteralPath $temp -Raw -Encoding UTF8 | ConvertFrom-Json; $expected = [string[]]@($official.requirements | Where-Object L -eq \"1\" | ForEach-Object { \"v5.0.0-$($_.req_id)\" }); $data = Get-Content -LiteralPath docs/security/asvs-verification.json -Raw -Encoding UTF8 | ConvertFrom-Json; $actual = [string[]]@($data.items.id); if ($data.scope -ne \"pl0c --api\" -or $data.sourceUri -ne $uri -or $data.sourceSha256 -ne $sourceHash -or $data.evaluatedCommit -ne (git rev-parse HEAD) -or $expected.Count -ne 70 -or $actual.Count -ne 70 -or @($actual | Sort-Object -Unique).Count -ne 70 -or -not [Linq.Enumerable]::SequenceEqual($expected, $actual)) { throw \"ASVS 5.0.0 Level 1 source, exact HEAD, count, or order mismatch\" }; $bad = @($data.items | Where-Object { $_.applicability -notin @(\"Applicable\", \"N/A\") -or ($_.applicability -eq \"Applicable\" -and $_.implementation -ne \"Fulfilled\") -or ($_.applicability -eq \"N/A\" -and $_.implementation -ne \"Not Assessed\") -or [string]::IsNullOrWhiteSpace([string]$_.rationale) }); if ($bad.Count -or [int]$data.openCriticalOrHigh -ne 0) { throw \"ASVS applicability, implementation, rationale, or risk gate failed\" }; \"PASS: OWASP ASVS 5.0.0 Level 1; 70 exact IDs; Applicable/N/A; Fulfilled; exact HEAD\" } finally { Remove-Item -LiteralPath $temp -Force -ErrorAction SilentlyContinue }'"
+      ],
+      "requiredCommandTokens": [
+        "OWASP ASVS 5.0.0",
+        "Level 1",
+        "70 exact IDs",
+        "docs/security/asvs-verification.json",
+        "evaluatedCommit",
+        "pl0c --api",
+        "Applicable",
+        "N/A",
+        "Fulfilled"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "macOS",
+        "ubuntu-latest",
+        "PowerShell 7",
+        "OWASP ASVS 5.0.0 Level 1",
+        "loopback HTTP",
+        "exact HEAD"
+      ],
+      "evidencePath": "docs/security/asvs-verification.json, docs/security/asvs-verification.md, official OWASP/ASVS v5.0.0 source hash, and any finding-bound HTTP test log",
+      "rationale": "A token search cannot prove a complete ASVS set; the gate binds the official pinned source, all 70 Level 1 IDs, status relations, exact HEAD, and the absence of open Critical or High HTTP findings.",
+      "reevaluationTrigger": "Any --api, HTTP binding, method, header, static-file root, path, error-response, authentication, or deployment change."
+    },
+    {
+      "gateId": "DEPENDENCY-REVIEW-GATE-001",
+      "applicability": "Applicable",
+      "requiredScope": "Review direct and transitive NuGet packages, outdated and vulnerable results, sources, licences, maintenance, and lock-file state; block unaccepted Critical or High findings.",
+      "exactCommands": [
+        "dotnet list TinyPl0.sln package --outdated --include-transitive",
+        "dotnet list TinyPl0.sln package --vulnerable --include-transitive",
+        "pwsh -NoProfile -Command '$text = Get-Content -LiteralPath docs/security/dependency-audit.md -Raw -Encoding UTF8; foreach ($token in @(\"licence\", \"lock-file\")) { if ($text -notmatch [regex]::Escape($token)) { throw \"Missing dependency-audit evidence: $token\" } }; \"PASS: licence and lock-file evidence\"'"
+      ],
+      "requiredCommandTokens": [
+        "dotnet list TinyPl0.sln package --outdated --include-transitive",
+        "dotnet list TinyPl0.sln package --vulnerable --include-transitive",
+        "licence",
+        "lock-file"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "macOS",
+        "ubuntu-latest",
+        ".NET SDK 10.0.x",
+        "NuGet"
+      ],
+      "evidencePath": "docs/security/dependency-audit.md and dependency command logs",
+      "rationale": "Release-capable output requires a current direct/transitive package, source, licence, maintenance, vulnerability, and lock-state review before any new tool or package is accepted.",
+      "reevaluationTrigger": "Any package/tool/action/version/source/lock-file change or new vulnerability."
+    },
+    {
+      "gateId": "SUPPLY-CHAIN-SBOM-VEX-SLSA-GATE-001",
+      "applicability": "Applicable",
+      "requiredScope": "After FND-SC-001 authorisation, generate and validate a pinned CycloneDX 1.7 SBOM for the actual Pages/release candidate, bind artifact and SBOM hashes, disposition known findings with VEX, and record only evidenced SLSA/provenance claims.",
+      "exactCommands": [
+        "dotnet tool restore",
+        "dotnet tool run dotnet-CycloneDX TinyPl0.sln -o /private/tmp/tinypl0-004-sbom --output-format Json --spec-version 1.7",
+        "pwsh -NoProfile -Command '$bom = @(Get-ChildItem -LiteralPath /private/tmp/tinypl0-004-sbom -Filter *.json); if ($bom.Count -ne 1) { throw \"Expected one CycloneDX JSON\" }; $data = Get-Content -LiteralPath $bom[0].FullName -Raw -Encoding UTF8 | ConvertFrom-Json; if ([string]$data.bomFormat -ne \"CycloneDX\" -or -not $data.specVersion -or -not $data.components) { throw \"Invalid SBOM content\" }; Get-FileHash -LiteralPath $bom[0].FullName -Algorithm SHA256'",
+        "pwsh -NoProfile -Command '$path = \"docs/security/supply-chain-evidence.json\"; $data = Get-Content -LiteralPath $path -Raw -Encoding UTF8 | ConvertFrom-Json -Depth 100; $head = git rev-parse HEAD; if ($LASTEXITCODE -ne 0 -or $data.evaluatedCommit -ne $head) { throw \"Supply-chain evidence is stale\" }; if ($data.generator.name -ne \"CycloneDX .NET\" -or $data.generator.version -ne \"6.2.0\") { throw \"CycloneDX .NET 6.2.0 pin missing\" }; foreach ($field in @(\"artifactSha256\", \"sbomSha256\")) { if ([string]$data.$field -notmatch \"^[0-9a-f]{64}$\") { throw \"Invalid $field\" } }; if (-not $data.vexState -or -not $data.slsaClaim) { throw \"VEX or SLSA assessment missing\" }; \"PASS: artifactSha256, VEX, SLSA, CycloneDX .NET 6.2.0\"'",
+        "pwsh -NoProfile -Command '$workflows = @(Get-Item -LiteralPath .github/workflows/docs-pages.yml, .github/workflows/release-please.yml); foreach ($workflow in $workflows) { $text = Get-Content -LiteralPath $workflow.FullName -Raw -Encoding UTF8; $refs = @([regex]::Matches($text, \"uses:\\s+[^\\s]+@([^\\s#]+)\") | ForEach-Object { $_.Groups[1].Value }); $unpinned = @($refs | Where-Object { $_ -notmatch \"^[0-9a-f]{40}$\" }); if ($unpinned) { throw \"Unpinned action in $($workflow.Name): $($unpinned -join ',')\" } }; \"PASS: planned supply-chain workflows use full action SHA pins\"'"
+      ],
+      "requiredCommandTokens": [
+        "CycloneDX .NET 6.2.0",
+        "dotnet-CycloneDX",
+        "--spec-version 1.7",
+        "artifactSha256",
+        "VEX",
+        "SLSA",
+        "planned supply-chain workflows use full action SHA pins"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "macOS",
+        "ubuntu-latest",
+        ".NET SDK 10.0.x",
+        "PowerShell 7",
+        "CycloneDX 1.7",
+        "GitHub Actions",
+        "GitHub artifact attestations"
+      ],
+      "evidencePath": "docs/security/supply-chain-evidence.md, docs/security/dependency-audit.md, pinned .config/dotnet-tools.json, SBOM artifact, and planned CI logs",
+      "rationale": "SBOM and provenance claims are meaningful only when the generator is pinned, the actual distributable artefact set is hash-bound, findings are dispositioned, and workflow evidence uses immutable action references.",
+      "reevaluationTrigger": "Any release/Pages artifact, dependency, workflow, action, runner, CVE, VEX, provenance, or SLSA claim change."
+    },
+    {
+      "gateId": "BASELINE-GENERATOR-PARITY-GATE-001",
+      "applicability": "Applicable",
+      "requiredScope": "After FND-BASELINE-001 authorisation, align manifest versions and prove PowerShell/Bash check, dry-run, generation, help, cmdlet, man-page, ID-order, and output parity without direct compendium edits.",
+      "exactCommands": [
+        "pwsh -NoProfile -File scripts/build-secure-development-docs.ps1 -Check",
+        "pwsh -NoProfile -File scripts/build-secure-development-docs.ps1 -WhatIf",
+        "pwsh -NoProfile -Command '. ./scripts/build-secure-development-docs.ps1; $cmd = Get-Command Build-SecureDevelopmentDocs -ErrorAction Stop; if (-not $cmd.Parameters.ContainsKey(\"WhatIf\")) { throw \"Cmdlet lacks WhatIf\" }; Get-Help Build-SecureDevelopmentDocs -Full'",
+        "bash scripts/build-secure-development-docs.sh --check",
+        "bash scripts/build-secure-development-docs.sh --dry-run",
+        "pwsh -NoProfile -Command '$man = \"docs/man/build-secure-development-docs.1.md\"; if (-not (Test-Path -LiteralPath $man -PathType Leaf)) { throw \"Missing $man\" }; $ps = Get-Content -LiteralPath scripts/build-secure-development-docs.ps1 -Raw -Encoding UTF8; $sh = Get-Content -LiteralPath scripts/build-secure-development-docs.sh -Raw -Encoding UTF8; if ($ps -notmatch \"Set-StrictMode -Version Latest\") { throw \"PowerShell strict mode missing\" }; if ($sh -notmatch \"set -euo pipefail\") { throw \"Bash strict mode missing\" }; \"PASS: docs/man/build-secure-development-docs.1.md; Set-StrictMode -Version Latest; set -euo pipefail\"'"
+      ],
+      "requiredCommandTokens": [
+        "Build-SecureDevelopmentDocs",
+        "-Check",
+        "-WhatIf",
+        "--check",
+        "--dry-run",
+        "docs/man/build-secure-development-docs.1.md",
+        "set -euo pipefail",
+        "Set-StrictMode -Version Latest"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "macOS",
+        "Linux",
+        "Windows",
+        "PowerShell 7",
+        "Bash",
+        "cross-platform parity"
+      ],
+      "evidencePath": "docs/secure-development/baseline-manifest.json, generator scripts, man page, .github/workflows/powershell-analysis.yml, and exact-head macOS/Linux/Windows parity logs",
+      "rationale": "The documented generators are missing and the manifest is stale; both user surfaces and the three-platform remote matrix are required to prevent a single-platform or manually drifting compendium.",
+      "reevaluationTrigger": "Any secure-development guideline, checklist, manifest, compendium, generator, help, or platform change."
+    },
+    {
+      "gateId": "CVD-SECURITY-TXT-GATE-001",
+      "applicability": "Applicable",
+      "requiredScope": "After FND-CVD-001 authorisation, provide a discoverable bilingual accessible coordinated-vulnerability-disclosure policy and matching RFC 9116 security.txt representation.",
+      "exactCommands": [
+        "pwsh -NoProfile -Command '$required = @(\".github/SECURITY.md\", \"docfx/.well-known/security.txt\"); foreach ($path in $required) { if (-not (Test-Path -LiteralPath $path -PathType Leaf)) { throw \"Missing CVD artefact: $path\" } }; $policy = Get-Content -LiteralPath .github/SECURITY.md -Raw -Encoding UTF8; $txt = Get-Content -LiteralPath docfx/.well-known/security.txt -Raw -Encoding UTF8; foreach ($token in @(\"Contact:\", \"Expires:\", \"Preferred-Languages:\", \"Canonical:\")) { if ($txt -notmatch [regex]::Escape($token)) { throw \"security.txt missing $token\" } }; if ($policy -notmatch \"DE\" -or $policy -notmatch \"EN\") { throw \"CVD policy lacks bilingual markers\" }; \"PASS: CVD and security.txt\"'"
+      ],
+      "requiredCommandTokens": [
+        ".github/SECURITY.md",
+        "docfx/.well-known/security.txt",
+        "Contact:",
+        "Expires:",
+        "Preferred-Languages:",
+        "Canonical:"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "macOS",
+        "PowerShell 7",
+        "RFC 9116",
+        "WCAG 2.2 AA",
+        "text-first"
+      ],
+      "evidencePath": ".github/SECURITY.md, docfx/.well-known/security.txt, docs/security/README.md, and published-docs smoke evidence",
+      "rationale": "A public release-capable repository needs a discoverable coordinated-disclosure path whose published RFC 9116 representation remains synchronized and accessible.",
+      "reevaluationTrigger": "Any security contact, response target, advisory process, public docs path, or security.txt expiry change."
+    },
+    {
+      "gateId": "AGENT-PRESET-PARITY-GATE-001",
+      "applicability": "Applicable",
+      "requiredScope": "Review all maintained agent surfaces, constitution mirrors, templates, and installed preset order; change them only under FND-GOV-001 as one atomic set.",
+      "exactCommands": [
+        "pwsh -NoProfile -File scripts/check-homogeneity.ps1 -TargetDir . -Json -DryRun -NoPatch",
+        "pwsh -NoProfile -Command '$a = Get-Content -LiteralPath constitution.md -Raw -Encoding UTF8; $b = Get-Content -LiteralPath .specify/memory/constitution.md -Raw -Encoding UTF8; if ($a -cne $b) { throw \"Constitution mirror differs\" }; \"PASS: constitution mirror\"'",
+        "pwsh -NoProfile -Command '$files = @(\"AGENTS.md\", \"CLAUDE.md\", \"GEMINI.md\", \".github/copilot-instructions.md\", \".github/agents/copilot-instructions.md\"); foreach ($file in $files) { $text = Get-Content -LiteralPath $file -Raw -Encoding UTF8; if ($text -match \"Minor = current Spec-Kit feature/branch number\" -or $text -notmatch \"canonical PR\") { throw \"Stale IDE version rule in $file\" } }; \"PASS: AGENTS.md; CLAUDE.md; GEMINI.md; .github/copilot-instructions.md; .github/agents/copilot-instructions.md\"'"
+      ],
+      "requiredCommandTokens": [
+        "check-homogeneity.ps1 -TargetDir . -Json -DryRun -NoPatch",
+        "constitution.md",
+        ".specify/memory/constitution.md",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "GEMINI.md",
+        ".github/copilot-instructions.md",
+        ".github/agents/copilot-instructions.md"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "macOS",
+        "PowerShell 7",
+        "standard eight-preset matrix",
+        "agent parity governance"
+      ],
+      "evidencePath": "homogeneity JSON, preset inventory, constitution comparison, and any FND-GOV-001 record",
+      "rationale": "Shared guidance is a multi-surface contract; semantic review and byte-identical constitution mirrors prevent one agent or template from applying a divergent security or versioning rule.",
+      "reevaluationTrigger": "Any shared guidance, constitution, template, preset version/order, or agent-surface change."
+    },
+    {
+      "gateId": "STATISTICS-GATE-001",
+      "applicability": "Applicable",
+      "requiredScope": "Use one serialized writer to add exactly one chronological feature entry with production/test/documentation counts, 80/125 baselines, 7.8 hours/day, and blended speedup; keep Gesamtstatistik last and current.",
+      "exactCommands": [
+        "pwsh -NoProfile -File scripts/render-project-statistics.ps1 -Repo .",
+        "pwsh -NoProfile -File scripts/render-project-statistics.ps1 -Repo . -CheckOnly -Json",
+        "pwsh -NoProfile -Command '$text = Get-Content -LiteralPath docs/project-statistics.md -Raw -Encoding UTF8; foreach ($token in @(\"80\", \"125\", \"7.8\", \"blended repository speedup\", \"current: true\")) { if ($text -notmatch [regex]::Escape($token)) { throw \"Missing statistics evidence: $token\" } }; if ($text -notmatch \"(?s)## Gesamtstatistik\\s.*\\z\") { throw \"Gesamtstatistik is not final\" }; \"PASS: 80, 125, 7.8, blended repository speedup, current: true\"'"
+      ],
+      "requiredCommandTokens": [
+        "render-project-statistics.ps1 -Repo .",
+        "render-project-statistics.ps1 -Repo . -CheckOnly -Json",
+        "80",
+        "125",
+        "7.8",
+        "blended repository speedup",
+        "current: true"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "macOS",
+        "PowerShell 7",
+        "Statistics Profile 2",
+        "serialized writer"
+      ],
+      "evidencePath": "docs/project-statistics.md and renderer JSON output",
+      "rationale": "Repository policy requires a single chronological statistics update after agent-driven work, with fixed manual baselines and reproducible rendered current state.",
+      "reevaluationTrigger": "Any final delivery-set, line-count, work-window, phase-slot, or statistics-method change."
+    },
+    {
+      "gateId": "IDE-VERSION-SERIAL-GATE-001",
+      "applicability": "Applicable",
+      "requiredScope": "Use one serialized version writer before every build/test; keep Version, AssemblyVersion, and FileVersion identical; use the read-only revalidated canonical GitHub PR number as Minor (currently next slot 72, never feature 004), the final exact-HEAD branch commit count as Patch, and a monotonically incremented manual Build counter.",
+      "exactCommands": [
+        "pwsh -NoProfile -Command '$repo = \"hindermath/TinyPl0\"; $branch = \"codex/004-secure-development-hardening\"; $head = (git rev-parse HEAD).Trim(); $current = @(gh pr list --repo $repo --head $branch --state all --limit 100 --json number,headRefOid | ConvertFrom-Json); if ($current.Count -gt 1) { throw \"Multiple PRs use the feature branch\" }; if ($current.Count -eq 1) { if ($current[0].headRefOid -ne $head) { throw \"Feature PR is not at exact HEAD\" }; $expectedMinor = [int]$current[0].number } else { $all = @(gh pr list --repo $repo --state all --limit 1000 --json number | ConvertFrom-Json); $expectedMinor = 1 + [int](($all.number | Measure-Object -Maximum).Maximum) }; $xml = [xml](Get-Content -LiteralPath src/Pl0.Ide/Pl0.Ide.csproj -Raw -Encoding UTF8); $v = [version]([string]$xml.Project.PropertyGroup.Version); $patch = [int](git rev-list --count HEAD); if ($v -ne [version]([string]$xml.Project.PropertyGroup.AssemblyVersion) -or $v -ne [version]([string]$xml.Project.PropertyGroup.FileVersion)) { throw \"IDE version fields differ\" }; if ($v.Major -ne 1 -or $v.Minor -ne $expectedMinor -or $v.Build -ne $patch) { throw \"IDE version does not match canonical PR number and exact-HEAD commit count\" }; \"PASS: canonical PR number=$expectedMinor; exact HEAD=$head; version=$($v.ToString(4)); serialized version writer\"'"
+      ],
+      "requiredCommandTokens": [
+        "src/Pl0.Ide/Pl0.Ide.csproj",
+        "Version",
+        "AssemblyVersion",
+        "FileVersion",
+        "canonical PR number",
+        "headRefOid",
+        "git rev-list --count HEAD",
+        "exact HEAD",
+        "serialized version writer"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "macOS",
+        "PowerShell 7",
+        ".NET version semantics"
+      ],
+      "evidencePath": "src/Pl0.Ide/Pl0.Ide.csproj and per-invocation version/build ledger",
+      "rationale": "The repository version contract is independent of feature number 004; dynamic read-only PR lookup, exact-head commit count, aligned fields, and the serialized invocation ledger prevent stale or untested version claims.",
+      "reevaluationTrigger": "Before every dotnet build/test and before each commit or PR branch update."
+    },
+    {
+      "gateId": "DELIVERY-EVIDENCE-GATE-001",
+      "applicability": "Applicable",
+      "requiredScope": "Validate the exact intended delivery set, preserve unrelated work, require every declared gate entry against exact HEAD, and keep premerge evidence temporary until causal closeout.",
+      "exactCommands": [
+        "pwsh -NoProfile -Command '& ./.specify/presets/autonomous-run-governance/scripts/validate-autonomous-gate-evidence.ps1 -Requirements specs/004-secure-development-hardening/gate-requirements.json -Evidence /private/tmp/tinypl0-004-premerge-gate-evidence.json -Head (git rev-parse HEAD)'",
+        "pwsh -NoProfile -Command '$base = (git merge-base origin/main HEAD).Trim(); $changed = @(git diff --name-only $base HEAD --); if (-not $changed) { throw \"Feature delivery diff is empty\" }; $forbidden = @($changed | Where-Object { $_ -match \"^requirements/intakes/(active|series)/\" }); if ($forbidden) { throw \"Forbidden intake or series delivery path: $($forbidden -join ', ')\" }; $dirty = @(git status --porcelain=v1 --untracked-files=all); if ($dirty) { throw \"Delivery HEAD is not clean: $($dirty -join '; ')\" }; \"PASS: exact feature delivery diff at HEAD; paths=$($changed.Count); base=$base\"'",
+        "git diff --check",
+        "git status --short"
+      ],
+      "requiredCommandTokens": [
+        "validate-autonomous-gate-evidence.ps1",
+        "specs/004-secure-development-hardening/gate-requirements.json",
+        "tinypl0-004-premerge-gate-evidence.json",
+        "git rev-parse HEAD",
+        "git merge-base origin/main HEAD",
+        "exact feature delivery diff at HEAD",
+        "git diff --check",
+        "git status --short"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "macOS",
+        "PowerShell 7",
+        "Git",
+        "exact HEAD",
+        "serialized evidence writer"
+      ],
+      "evidencePath": "/private/tmp/tinypl0-004-premerge-gate-evidence.json and specs/004-secure-development-hardening/autonomous-run-evidence.md",
+      "rationale": "Gate evidence must bind the normalized requirements and exact reviewed HEAD, while the clean merge-base diff prevents unrelated or forbidden intake/series files from entering the delivery candidate.",
+      "reevaluationTrigger": "Any file, finding, gate, evidence, HEAD, or delivery-scope change."
+    },
+    {
+      "gateId": "REMOTE-REVIEW-GATE-001",
+      "applicability": "Applicable",
+      "requiredScope": "At the later authorised delivery boundary, prove required GitHub checks and independent review on the exact head; no unavailable or stale provider state counts as approval.",
+      "exactCommands": [
+        "gh pr checks --required",
+        "gh pr view --json number,url,headRefOid,reviewDecision,statusCheckRollup,reviews,mergeStateStatus"
+      ],
+      "requiredCommandTokens": [
+        "gh pr checks --required",
+        "gh pr view --json",
+        "headRefOid",
+        "reviewDecision",
+        "statusCheckRollup",
+        "mergeStateStatus"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "GitHub",
+        "gh CLI",
+        "ubuntu-latest",
+        "exact reviewed head"
+      ],
+      "evidencePath": "GitHub PR checks/review metadata referenced from premerge evidence",
+      "rationale": "Local success cannot substitute for provider checks or independent review; both must refer to the exact PR head and be re-read after every push or rerun.",
+      "reevaluationTrigger": "Every pushed head, workflow rerun, review change, or provider-state change."
+    },
+    {
+      "gateId": "MERGE-CLOSEOUT-GATE-001",
+      "applicability": "Applicable",
+      "requiredScope": "At the later authorised boundary only, merge the reviewed head, synchronize main, bind post-merge evidence, finish declared post-merge actions, and validate terminal autonomous state.",
+      "exactCommands": [
+        "gh pr merge --merge --delete-branch",
+        "gh repo sync --branch main",
+        "pwsh -NoProfile -File .specify/presets/autonomous-run-governance/scripts/validate-autonomous-run-state.ps1 -State specs/004-secure-development-hardening/autonomous-run-state.json",
+        "pwsh -NoProfile -Command '$evidence = \"/private/tmp/tinypl0-004-postmerge-gate-evidence.json\"; $data = Get-Content -LiteralPath $evidence -Raw -Encoding UTF8 | ConvertFrom-Json -Depth 100; if ($data.snapshotType -ne \"PostMerge\") { throw \"Expected PostMerge evidence\" }; & ./.specify/presets/autonomous-run-governance/scripts/validate-autonomous-gate-evidence.ps1 -Requirements specs/004-secure-development-hardening/gate-requirements.json -Evidence $evidence -Head $data.reviewedHead -MergeCommit $data.mergeCommit; if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }; \"PASS: PostMerge\"'"
+      ],
+      "requiredCommandTokens": [
+        "gh pr merge --merge --delete-branch",
+        "gh repo sync --branch main",
+        "validate-autonomous-run-state.ps1",
+        "PostMerge"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "GitHub",
+        "gh CLI",
+        "macOS",
+        "PowerShell 7",
+        "MergeAndSync"
+      ],
+      "evidencePath": "post-merge gate evidence, synchronized main heads, retrospective, and terminal autonomous-run-state.json",
+      "rationale": "Merge, main synchronization, post-merge evidence, and terminal run state are causal closeout facts and may be claimed only after the later revalidated MergeAndSync authority executes them.",
+      "reevaluationTrigger": "Any merge authority, reviewed head, branch policy, post-merge action, or closeout-state change."
+    },
+    {
+      "gateId": "AI-SBOM-GATE-001",
+      "applicability": "N/A",
+      "requiredScope": "G7/BSI AI-SBOM evidence for models, datasets, inference infrastructure, security properties, and KPIs.",
+      "exactCommands": [],
+      "requiredCommandTokens": [],
+      "requiredRunnerOrPlatformTokens": [],
+      "evidencePath": "docs/security/supply-chain-evidence.md",
+      "rationale": "AI is used only as a development tool and no model, dataset, inference service, or AI runtime is shipped or operated by TinyPl0.",
+      "reevaluationTrigger": "A model, dataset, inference service, infrastructure, or AI runtime becomes a product or operated component."
+    },
+    {
+      "gateId": "ZERO-TRUST-GATE-001",
+      "applicability": "N/A",
+      "requiredScope": "NIST SP 800-207 Zero Trust architecture evidence.",
+      "exactCommands": [],
+      "requiredCommandTokens": [],
+      "requiredRunnerOrPlatformTokens": [],
+      "evidencePath": "docs/security/zero-trust-applicability.md",
+      "rationale": "TinyPl0 is a local compiler/VM and its documentation server is loopback-only without federated identity, remote administration, or distributed product runtime.",
+      "reevaluationTrigger": "Remote, cloud-runtime, multi-device, service, federated identity, or remote-management scope."
+    },
+    {
+      "gateId": "PRODUCT-CRYPTO-DPIA-GATE-001",
+      "applicability": "N/A",
+      "requiredScope": "Product cryptography and GDPR Article 35 DPIA evidence.",
+      "exactCommands": [],
+      "requiredCommandTokens": [],
+      "requiredRunnerOrPlatformTokens": [],
+      "evidencePath": "docs/security/regulatory-applicability.md and assessment rows for CL-03/CL-11",
+      "rationale": "The product has no keys, passwords, encryption/signature feature, account, telemetry, profiling, or personal-data processing in scope.",
+      "reevaluationTrigger": "Any cryptography, authentication, secret, account, telemetry, personal-data, profiling, recipient, or retention scope."
+    },
+    {
+      "gateId": "NIS2-AIACT-DORA-GATE-001",
+      "applicability": "N/A",
+      "requiredScope": "NIS2, EU AI Act, and DORA product/service obligations.",
+      "exactCommands": [],
+      "requiredCommandTokens": [],
+      "requiredRunnerOrPlatformTokens": [],
+      "evidencePath": "docs/security/regulatory-applicability.md",
+      "rationale": "No essential/important entity, AI product/runtime, financial entity, or regulated ICT service relationship is evidenced for this feature.",
+      "reevaluationTrigger": "Operator/customer/supply relationship, AI product, financial-sector service, or regulated business model change."
+    },
+    {
+      "gateId": "PARALLEL-AUTONOMOUS-GATE-001",
+      "applicability": "N/A",
+      "requiredScope": "Parallel campaign manifest, worker profiles, delegation, consolidation, and cooperative stop evidence.",
+      "exactCommands": [],
+      "requiredCommandTokens": [],
+      "requiredRunnerOrPlatformTokens": [],
+      "evidencePath": "specs/004-secure-development-hardening/plan.md",
+      "rationale": "This is one serial autonomous feature run with no campaign, worker delegation, or consolidation.",
+      "reevaluationTrigger": "Explicit user authority for a parallel autonomous campaign."
+    },
+    {
+      "gateId": "SANDBOX-HARDENING-GATE-001",
+      "applicability": "N/A",
+      "requiredScope": "Agent sandbox, mount, host, network, tool/model, and isolation implementation evidence.",
+      "exactCommands": [],
+      "requiredCommandTokens": [],
+      "requiredRunnerOrPlatformTokens": [],
+      "evidencePath": "assessment.json CL-12 rows and the separate sandbox follow-up intake reference",
+      "rationale": "All twelve CL-12 items are expressly N/A and Not Assessed in this feature and belong to the blocked follow-up intake.",
+      "reevaluationTrigger": "A separate accepted and explicitly authorised sandbox-hardening run after this feature's hard completion gate."
+    }
+  ]
+}

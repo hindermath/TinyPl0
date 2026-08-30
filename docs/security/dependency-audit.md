@@ -1,17 +1,95 @@
 # Abhängigkeits-Audit / Dependency Audit: TinyPl0
 
-**Projekt / Project**: TinyPl0 (Level-2)
-**Datum / Date**: 2026-04-24
-**Status**: Stub — mit projektspezifischen Inhalten zu befuellen / Stub — to be populated
-**Template-Quelle / Template Source**: `.specify/templates/dependency-audit-template.md`
+**Projekt / Project**: TinyPl0 (Level 2)
 
-<!--
-  Dieses Dokument ist ein Stub. Die vollstaendige Struktur findet sich im
-  Template unter .specify/templates/dependency-audit-template.md. Bei der Befuellung das Template als Vorlage
-  verwenden.
+**Feature / Feature**: `004-secure-development-hardening`
 
-  This document is a stub. The complete structure can be found in the
-  template at .specify/templates/dependency-audit-template.md. Use the template as a guide when populating.
--->
+**Lauf / Run**: `abaa7b81-fd2c-47e7-8d59-87a852a3b2e7`
 
-[Zu befuellen / To be populated — see template]
+**Datum / Date**: 2026-08-30
+
+**Owner**: TinyPl0-Maintainer
+
+**Review**: unabhängige Security-/Supply-Chain-Review
+
+**Standards**: NIST SSDF, CWE Top 25, SBOM/VEX, SLSA, Lizenz- und
+Registry-Prüfung / licence and registry review
+
+## DE — Aufnahmeentscheidung CycloneDX .NET 6.2.0
+
+Der lokale Tool-Pin verwendet den offiziellen NuGet-Paketnamen `CycloneDX`,
+Version `6.2.0`, und den Befehl `dotnet-CycloneDX`. `dotnet tool restore` und
+die Versionsausgabe `6.2.0+55877e2...` waren erfolgreich. NuGet nennt die
+CycloneDX-Organisation als Owner, Apache-2.0 als Lizenz, den 27. April 2026 als
+Veröffentlichungsdatum und das öffentliche Projekt
+`CycloneDX/cyclonedx-dotnet`. Die offizielle Release-Seite führt 6.2.0 als
+aktuelle gepflegte Version und dokumentiert Sicherheitsverbesserungen der
+6.x-Linie. Die öffentliche Repository-Sicherheitsanzeige und die zum
+Prüfzeitpunkt durchsuchte GitHub Advisory Database zeigen keinen bekannten
+Critical- oder High-Eintrag für das Tool 6.2.0.
+
+Die Aufnahme ist deshalb für die lokale SBOM-Erzeugung freigegeben. Das ist
+eine zeitgebundene Beobachtung, keine Garantie. Ein neuer Advisory-Eintrag,
+ein Versionswechsel, ein geänderter Paket-Owner oder ein Release-Kandidat löst
+eine neue Prüfung aus. Das Tool erhält keine Credentials; es verarbeitet nur
+Repository- und wiederhergestellte Paketmetadaten.
+
+## EN — CycloneDX .NET 6.2.0 admission decision
+
+The local tool pin uses the official NuGet package ID `CycloneDX`, version
+`6.2.0`, and command `dotnet-CycloneDX`. Tool restore and the version command
+completed successfully. NuGet identifies the CycloneDX organisation as owner,
+Apache-2.0 as the licence, 27 April 2026 as the publication date, and the public
+`CycloneDX/cyclonedx-dotnet` project as source. The official release page lists
+6.2.0 as the maintained current version. At review time, the public repository
+security view and GitHub Advisory Database search showed no known Critical or
+High advisory for tool version 6.2.0.
+
+Admission is approved for local SBOM generation. This is a dated observation,
+not a guarantee. A new advisory, version change, package-owner change, or
+release candidate triggers a renewed review. The tool receives no credentials.
+
+## Abhängigkeits- und Registry-Matrix / Dependency and Registry Matrix
+
+| Fläche / Surface | Quelle / Source | Pin/Lock | Lizenzprüfung / Licence review | Critical/High | Zustand / State |
+|---|---|---|---|---:|---|
+| CycloneDX .NET tool | `https://www.nuget.org/packages/CycloneDX/6.2.0` | `.config/dotnet-tools.json`, exakt `6.2.0` | Apache-2.0, kompatibel / compatible | 0 bekannt / known | Approved |
+| C#/.NET-Pakete | NuGet.org laut Projektdateien / per project files | Projektpins; kein Solution-`packages.lock.json` | T062-Inventur wird unten fortgeschrieben / recorded below by T062 | Prüfung vor Abschluss / reviewed before completion | Applicable |
+| DocFX | globale vorhandene Toolchain / existing global toolchain | beobachtet `2.78.5` | Toolchain-Evidence | Prüfung vor Abschluss / reviewed before completion | Applicable |
+| Playwright | npmjs, `@playwright/test` | `tests/a11y/package-lock.json`, `1.62.1` | Apache-2.0 | Prüfung vor Abschluss / reviewed before completion | Applicable |
+| axe | npmjs, `@axe-core/playwright` und `axe-core` | `tests/a11y/package-lock.json`, `4.13.0` | MPL-2.0, nur Testwerkzeug / test tool only | Prüfung vor Abschluss / reviewed before completion | Applicable |
+| GitHub Actions | GitHub Marketplace/Repository | vollständige 40-Hex-SHAs / full SHAs | Workflow-Quellreview / source review | 0 offen im Feature-Scope | Applicable |
+
+## Lock-file-Stand / Lock-file status
+
+| Datei / File | Vorhanden / Exists | Rolle / Role | Zustand / State |
+|---|---:|---|---|
+| `.config/dotnet-tools.json` | Ja / Yes | reproduzierbarer Tool-Pin / reproducible tool pin | `CycloneDX` 6.2.0, Roll-forward aus / off |
+| `tests/a11y/package-lock.json` | Ja / Yes | reproduzierbares Node-24-Testset / reproducible Node 24 test set | `npm ci --offline` erfolgreich / passed |
+| Solution-`packages.lock.json` | Nein / No | NuGet-Abhängigkeitslock / dependency lock | Restrisiko; Maintainer prüft bei Dependency-Änderung / residual risk; review on dependency change |
+
+## Offene Prüf- und Wiederholungsgrenzen / Open review and recurrence boundaries
+
+- Vor dem Abschluss werden direkte und transitive NuGet-Pakete mit
+  `dotnet list ... --outdated` und `--vulnerable` inventarisiert. / Direct and
+  transitive NuGet packages are inventoried before completion.
+- npm-Pins, Lizenzen und bekannte Critical/High-Funde werden gegen das echte
+  Lockfile geprüft. / npm pins, licences, and known findings are checked against
+  the genuine lock file.
+- Remote-Attestierung, OpenSSF Scorecard und publizierte Provenienz sind lokale
+  Nichtaussagen. Sie werden erst nach realer Provider-Evidence positiv. / Remote
+  attestation, Scorecard, and published provenance require provider evidence.
+- Neubewertung spätestens 2026-11-30 oder bei Dependency-, Lockfile-, Workflow-
+  oder Release-Änderung. / Re-evaluate by 2026-11-30 or on dependency, lock,
+  workflow, or release change.
+
+## Quellen / Sources
+
+- `https://www.nuget.org/packages/CycloneDX/6.2.0`
+- `https://github.com/CycloneDX/cyclonedx-dotnet/releases/tag/v6.2.0`
+- `https://github.com/CycloneDX/cyclonedx-dotnet`
+- `https://github.com/advisories`
+
+Diese interne Evidence ersetzt keine externe Zertifizierung oder
+Rechtsberatung. / This internal evidence does not replace external
+certification or legal advice.
