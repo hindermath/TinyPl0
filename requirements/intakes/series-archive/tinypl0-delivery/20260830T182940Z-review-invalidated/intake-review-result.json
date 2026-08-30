@@ -109,7 +109,7 @@
       "target": "requirements/intakes/series/tinypl0-delivery/manifest.json",
       "disposition": "ReReviewRequired",
       "owner": "TinyPl0 project owner",
-      "evidence": "Authorized NuGet publication-policy update and immediate predecessor review evidence under 20260830T182940Z-review-invalidated",
+      "evidence": "Authorized rank-4 intake update and archived review evidence under 20260830T172834Z-review-invalidated",
       "reevaluationTrigger": "A new complete series review validates the updated target hash, order, roots, and eleven dependencies"
     }
   ],
@@ -156,12 +156,12 @@
     "normalizedSha256": "03a9ec3bef9bdbb87d783ac71ca0ec124c06bb8c8a5cb859fe7803ec8d890c95"
   },
   "invalidation": {
-    "invalidatedAt": "2026-08-30T18:29:40Z",
-    "operationId": "e7ca07a9-33c4-4152-9545-235f5d5e0c1e",
-    "reason": "The explicitly authorized intake update changed the Embeddable VM/NuGet target hash by adding binding NuGet CLI, OIDC, scoped-key fallback, immutability, and duplicate-handling requirements. Order, roots, edges, lifecycle, and delivery authority remain unchanged.",
-    "archivedRequest": "requirements/intakes/series-archive/tinypl0-delivery/20260830T182940Z-review-invalidated/intake-review-request.json",
-    "archivedResult": "requirements/intakes/series-archive/tinypl0-delivery/20260830T182940Z-review-invalidated/intake-review-result.json",
-    "archivedReport": "requirements/intakes/series-archive/tinypl0-delivery/20260830T182940Z-review-invalidated/intake-review-report.md",
+    "invalidatedAt": "2026-08-30T17:28:34Z",
+    "operationId": "26392315-12ff-40c1-9cde-cd7e283fe75d",
+    "reason": "The explicitly authorized intake update changed the Embeddable VM/NuGet target hash, series rank, preferred Eligible target, and dependency graph.",
+    "archivedRequest": "requirements/intakes/series-archive/tinypl0-delivery/20260830T172834Z-review-invalidated/intake-review-request.json",
+    "archivedResult": "requirements/intakes/series-archive/tinypl0-delivery/20260830T172834Z-review-invalidated/intake-review-result.json",
+    "archivedReport": "requirements/intakes/series-archive/tinypl0-delivery/20260830T172834Z-review-invalidated/intake-review-report.md",
     "nextAction": "$speckit-intake-review requirements/intakes/series/tinypl0-delivery/manifest.json"
   }
 }

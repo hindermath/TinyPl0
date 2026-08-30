@@ -37,9 +37,7 @@ export function validate(options = {}) {
   const expectedHistoricalReferenceCount = config.schemaVersion === "1.0"
     ? config.historicalReferenceIntakeCount
     : 3;
-  const expectedDependencyCount = config.schemaVersion === "1.0"
-    ? config.bindingDependencyCount
-    : 10;
+  const expectedDependencyCount = config.bindingDependencyCount ?? 10;
   const canonicalIndex = config.artifactNaming?.canonicalIndex ?? config.canonicalIndex;
   const preferredNext = config.preferredNext ??
     "requirements/intakes/active/Lastenheft_Secure-Development-Hardening.md";

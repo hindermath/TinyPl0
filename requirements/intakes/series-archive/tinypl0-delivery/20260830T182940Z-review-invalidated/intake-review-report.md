@@ -1,16 +1,13 @@
 # Intake Review: TinyPl0 Delivery Series
 
 > **Status: `NeedsRemediation` / Review invalidiert.** Die ausdrücklich
-> autorisierte Aktualisierung vom 30.08.2026 ergänzt im Intake „Embeddable VM
-> und NuGet“ verbindliche Regeln für NuGet-CLI, OIDC, API-Key-Fallback,
-> unveränderliche Versionen und Duplicate-Behandlung. Dadurch ändert sich der
-> Zielhash; Rang, Wurzeln, Kanten, Lifecycle und Delivery Authority bleiben
-> unverändert. Der unmittelbare Vorgängerreview bleibt byte-identisch unter
-> `requirements/intakes/series-archive/tinypl0-delivery/20260830T182940Z-review-invalidated/`
+> autorisierte Aktualisierung vom 30.08.2026 zieht den Intake „Embeddable VM
+> und NuGet“ auf Rang 4 vor und ändert dessen Hash sowie den Seriengraphen.
+> Der frühere Review bleibt byte-identisch unter
+> `requirements/intakes/series-archive/tinypl0-delivery/20260830T172834Z-review-invalidated/`
 > erhalten. Nächster Schritt ist ein neuer Intake-Series-Review; kein Intake
-> wurde gestartet. / **Review invalidated.** The authorized publication-policy
-> update changed the target hash without changing order, graph, lifecycle, or
-> delivery authority. The immediate predecessor review is archived
+> wurde gestartet. / **Review invalidated.** The authorized rank-4 update
+> changed the target hash and series graph. The prior review is archived
 > byte-identically; a new series review is required before execution.
 
 ## Identität / Identity

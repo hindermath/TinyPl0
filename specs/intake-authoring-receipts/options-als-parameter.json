@@ -87,7 +87,7 @@
   "series": {
     "seriesId": "8541ffa1-6b52-4f95-a746-d870482eaf5d",
     "manifestPath": "requirements/intakes/series/tinypl0-delivery/manifest.json",
-    "order": 8,
+    "order": 9,
     "role": "OrderedMember",
     "supersedesIntakeIds": []
   },

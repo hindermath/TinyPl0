@@ -1,22 +1,22 @@
 {
   "schemaVersion": "2.0",
   "documentType": "IntakeReceipt",
-  "receiptId": "801e226d-ad05-455a-ae5b-bfaced1a0ffe",
+  "receiptId": "416dc1ed-5a48-4672-9a2e-a9ac9971f299",
   "intakeId": "2514cd47-cbcf-44f5-8a68-d676088d30cc",
   "generator": {
     "preset": "intake-authoring-governance",
     "version": "0.3.1"
   },
-  "createdAt": "2026-08-30T18:29:40Z",
+  "createdAt": "2026-08-30T17:28:34Z",
   "operation": {
-    "operationId": "fde27dbe-fef0-41a0-bc82-c3a3f9830cbd",
+    "operationId": "341133ed-c32d-48ca-bf28-a1e2ac451c8a",
     "type": "Update",
-    "authorityEvidence": "After reviewing the verified NuGet publication guidance, the user explicitly instructed that it be incorporated into this intake on 2026-08-30."
+    "authorityEvidence": "User explicitly requested that this intake become the next target in the TinyPl0 processing order on 2026-08-30."
   },
   "status": "ReadyForReview",
   "target": {
     "path": "requirements/intakes/active/Lastenheft_Embeddable-VM-und-NuGet.md",
-    "normalizedSha256": "a6e752dcc372c26626cf40cc0b1fb1da1a195a895f51129b87dc0920310b64d5"
+    "normalizedSha256": "ac0473daf0fa095babcd92343c2d312987bbb46f4cc29338c8aa4dc6692664a5"
   },
   "sources": [
     {
@@ -25,7 +25,7 @@
       "kind": "File",
       "label": "Archived predecessor intake",
       "location": "Repository",
-      "path": "requirements/intakes/history/20260830T182940Z/Lastenheft_Embeddable-VM-und-NuGet.md",
+      "path": "requirements/intakes/history/20260830T172834Z/Lastenheft_Embeddable-VM-und-NuGet.md",
       "requestedUrl": "N/A",
       "finalUrl": "N/A",
       "retrievedAt": "N/A",
@@ -36,7 +36,7 @@
       "lastModified": "N/A",
       "redirectChain": [],
       "rawSha256": "N/A",
-      "normalizedSha256": "ac0473daf0fa095babcd92343c2d312987bbb46f4cc29338c8aa4dc6692664a5",
+      "normalizedSha256": "1865ff87d20cdac8f4ace03df2017aeb55b7f8302ad6dcdaf9af5f796d78f835",
       "gitBlob": "N/A",
       "proofBoundary": "Byte-identical repository archive of the prior active intake"
     },
@@ -44,7 +44,7 @@
       "sourceId": "SRC002",
       "order": 2,
       "kind": "Inline",
-      "label": "User-provided NuGet publication guidance",
+      "label": "Explicit request to prioritize the Embeddable VM and NuGet intake",
       "location": "SnapshotOnly",
       "path": "N/A",
       "requestedUrl": "N/A",
@@ -57,30 +57,9 @@
       "lastModified": "N/A",
       "redirectChain": [],
       "rawSha256": "N/A",
-      "normalizedSha256": "502f75de38335aaa6ce0eebe113f1ebb4bd43dbf7caafb9433e0c04af33f04aa",
+      "normalizedSha256": "aa580897b631faf17e47de49741c96dbe48ce553908ec1e5947270aaaf9b52fe",
       "gitBlob": "N/A",
-      "proofBoundary": "Snapshot summary of the user-provided publication guidance; no secret value was supplied"
-    },
-    {
-      "sourceId": "SRC003",
-      "order": 3,
-      "kind": "Inline",
-      "label": "Explicit instruction to incorporate the verified guidance",
-      "location": "SnapshotOnly",
-      "path": "N/A",
-      "requestedUrl": "N/A",
-      "finalUrl": "N/A",
-      "retrievedAt": "N/A",
-      "httpStatus": "N/A",
-      "contentType": "N/A",
-      "contentLength": "N/A",
-      "etag": "N/A",
-      "lastModified": "N/A",
-      "redirectChain": [],
-      "rawSha256": "N/A",
-      "normalizedSha256": "e86df01ad935206ce109727f5337065c83501a72e9f0731f64d3d278a5b5eda5",
-      "gitBlob": "N/A",
-      "proofBoundary": "Current explicit update authority only; no provider or package-publication authority"
+      "proofBoundary": "Current user instruction; ordering authority only"
     }
   ],
   "profile": "level2-lastenheft",
@@ -113,17 +92,10 @@
       "question": "May this intake replace source-code documentation as the preferred next target and drop VM/CLI as its predecessor?",
       "answer": "Yes. Move this intake to rank 4 as the next target; preserve all scope, non-goals, gates, and acceptance criteria.",
       "evidence": "Current user request on 2026-08-30."
-    },
-    {
-      "id": "IAD005",
-      "status": "Answered",
-      "question": "May the verified NuGet CLI, OIDC, scoped-key fallback, immutability, and duplicate-handling rules become binding intake requirements?",
-      "answer": "Yes. Incorporate the verified rules without granting provider, secret, package-publication, merge, or bypass authority.",
-      "evidence": "User explicitly instructed: Bitte einarbeiten. on 2026-08-30."
     }
   ],
   "openDecisionIds": [],
-  "questionCount": 5,
+  "questionCount": 4,
   "agentSurface": {
     "specifyCanonicalId": "speckit.specify",
     "specifyInvocation": "$speckit-specify Nutze requirements/intakes/active/Lastenheft_Embeddable-VM-und-NuGet.md als verbindliches Intake. Erstelle oder aktualisiere ausschließlich die passende Feature-Spezifikation. Bewahre Scope, Nicht-Ziele, Reihenfolge, Run/Step-Parität, Ressourcen- und Abbruchgrenzen, öffentliche NuGet-Paketverträge, Security-, Supply-Chain-, A11Y-, Dokumentations- und Evidenzanforderungen. Implementiere nichts; committe und pushe nicht; veröffentliche keine Pakete; erstelle oder merge keinen Pull Request und starte kein weiteres Feature.",
@@ -135,10 +107,10 @@
   "promptState": "Enabled",
   "provenanceMode": "Supersession",
   "supersedes": {
-    "receiptPath": "specs/intake-authoring-receipts/history/embeddable-vm-und-nuget.20260830T182940Z.json",
-    "targetNormalizedSha256": "ac0473daf0fa095babcd92343c2d312987bbb46f4cc29338c8aa4dc6692664a5",
-    "archiveTargetPath": "requirements/intakes/history/20260830T182940Z/Lastenheft_Embeddable-VM-und-NuGet.md",
-    "archiveReceiptPath": "specs/intake-authoring-receipts/history/embeddable-vm-und-nuget.20260830T182940Z.json"
+    "receiptPath": "specs/intake-authoring-receipts/history/embeddable-vm-und-nuget.20260830T172834Z.json",
+    "targetNormalizedSha256": "1865ff87d20cdac8f4ace03df2017aeb55b7f8302ad6dcdaf9af5f796d78f835",
+    "archiveTargetPath": "requirements/intakes/history/20260830T172834Z/Lastenheft_Embeddable-VM-und-NuGet.md",
+    "archiveReceiptPath": "specs/intake-authoring-receipts/history/embeddable-vm-und-nuget.20260830T172834Z.json"
   },
   "legacyAdoption": {
     "evidenceType": "N/A",
@@ -146,7 +118,7 @@
     "priorGitBlob": "N/A"
   },
   "updateAuthorized": true,
-  "updateAuthorityEvidence": "User explicitly instructed incorporation of the verified NuGet publication guidance into this exact intake on 2026-08-30.",
+  "updateAuthorityEvidence": "User explicitly requested prioritization of this exact intake as the next TinyPl0 series target on 2026-08-30.",
   "series": {
     "seriesId": "8541ffa1-6b52-4f95-a746-d870482eaf5d",
     "manifestPath": "requirements/intakes/series/tinypl0-delivery/manifest.json",

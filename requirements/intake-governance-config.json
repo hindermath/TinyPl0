@@ -21,7 +21,8 @@
     "history": "requirements/intakes/history",
     "seriesManifest": "requirements/intakes/series/tinypl0-delivery/manifest.json"
   },
-  "preferredNext": "requirements/intakes/active/Lastenheft_Quellcode_Doku.md",
+  "preferredNext": "requirements/intakes/active/Lastenheft_Embeddable-VM-und-NuGet.md",
+  "bindingDependencyCount": 11,
   "inventoryMode": "SeriesManifest",
   "legacyArtifactNames": [],
   "featureMustRemainAbsent": false

@@ -121,6 +121,20 @@
       "labelDe": "005 Abschluss",
       "labelEn": "005 closeout",
       "netLines": 342
+    },
+    {
+      "slot": 16,
+      "id": "embeddable-vm-nuget-priority",
+      "labelDe": "Embeddable VM/NuGet vorgezogen",
+      "labelEn": "Embeddable VM/NuGet prioritized",
+      "netLines": 1147
+    },
+    {
+      "slot": 17,
+      "id": "embeddable-vm-nuget-publishing-policy",
+      "labelDe": "NuGet-Veröffentlichungsregeln",
+      "labelEn": "NuGet publishing policy",
+      "netLines": 1202
     }
   ],
   "excludedPaths": [

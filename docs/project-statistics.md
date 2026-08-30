@@ -374,6 +374,8 @@ rekonstruiert.
 | 2026-08-30 | Secure-Development-Hardening 004 bis zur T084-Grenze umgesetzt | Der autonome Feature-Lauf hat die 157-Punkte-Sicherheitsbewertung, Architektur-, Bedrohungs-, ASVS-, Abhaengigkeits-, SBOM-, CVD-, Baseline-, Gitignore- und WCAG-2.2-AA-Evidenz sowie die begrenzte VM-Instruktionsbudget-Option umgesetzt. Die sechs bedingten Pakete und die VM-Rot-Gruen-Nachweise sind abgeschlossen; der finale Lieferzyklus ab T085 bleibt absichtlich offen. Umfang vor diesem Ledger-Eintrag: `+235 / -20` Produktionscode-Zeilen, `+489 / -0` Testcode-Zeilen und `+25097 / -170` Dokumentations-, Governance-, Automations-, Konfigurations-, Ressourcen- und Evidence-Zeilen. Regenerierte API-YAML umfasst zusaetzlich `+466 / -134` Zeilen und ist aus der Handarbeitsbasis ausgeschlossen. Die `25821` manuell zugeordneten hinzugefuegten Zeilen entsprechen bei 80 Zeilen/Arbeitstag `322.8` Tagen beziehungsweise `2517.5` Stunden und bei der Thorsten-Solo-Basis von 125 Zeilen/Arbeitstag `206.6` Tagen beziehungsweise `1611.2` Stunden, jeweils mit `7.8` Stunden pro Tag. Bei einem sichtbaren Aktivtag am 2026-08-30 entspricht dies einem blended repository speedup von `322.8x` beziehungsweise `206.6x`, keiner Stoppuhrmessung. Validierung: VM-Rotnachweis, anschliessend `2/2` Options- und `2/2` VM-Budgettests sowie `88/88` Lokalisierungstests; DocFX zuvor ohne Fehler mit sieben vorbestehenden Linkwarnungen; akzeptierter Hostlauf mit `3/3` Chromium-Seiten, null axe-Verstoessen und zwei tokengeprueften Lynx-Dumps; keine gemeldete npm-Schwachstelle; Assessment-, Dokumentationsauswirkungs- und Statistikvalidatoren. Der vollstaendige finale Build-/Test-/Coverage-Zyklus ist erst ab T090 vorgesehen. English: The same evidence set reaches the intentional T084 boundary without claiming the later delivery, full-suite, remote, or merge gates. |
 | 2026-08-30 | Sandbox-gestützte Secure-Development-Bewertung 005 umgesetzt | Der strikt serielle autonome Lauf bewertet `absdd-image-sandbox` am unveränderlichen Referenzcommit für TinyPl0, ohne Produktcode, Tests, Sandbox-Image/-Konfiguration oder bestehende `docs/security/`-Evidence zu ändern. Zwölf CL-12-Punkte, symbolische Mount-/Schreibgrenzen, die Sandbox/Lokal/CI-/HumanOnly-Arbeitsortmatrix, getrennte Produkt-/Image-Lieferkettenevidenz und acht vollständige FUP-SBX-Folgeaufgaben sind dokumentiert. Ergebnis: reguläre/autonome Sandbox-Schreibarbeit `Not Ready`; ein späterer Read/Build/Test-Pilot bleibt `Conditional/Open` und braucht menschliche Freigabe, exakten Image-Digest, minimalen TinyPl0-Mount, Secret-Trennung, aktuelle Egress-Entscheidung und reale Baseline-Evidence. Umfang dieses Implementierungsschnitts: `0` Produktionscode-Zeilen, `0` Testcode-Zeilen und `+2446 / -0` Dokumentations-, Governance-, Konfigurations- und Evidence-Zeilen netto einschließlich Statistikphase; Versionsmetadaten folgen ohne Nettozeilenwirkung. Die `2446` Zeilen entsprechen bei 80 Zeilen/Arbeitstag `30.6` Tagen beziehungsweise `238.5` Stunden und bei der Thorsten-Solo-Basis von 125 Zeilen/Arbeitstag `19.6` Tagen beziehungsweise `152.6` Stunden, jeweils mit `7.8` Stunden pro Tag. Das sind bei 21.5 Arbeitstagen pro Monat etwa `1.4` beziehungsweise `0.9` Arbeitsmonate; unter der für 2026 geltenden TVoeD-Annahme bleiben 30 Urlaubstage pro Jahr berücksichtigt. Bei einem sichtbaren Aktivtag am 2026-08-30 entspricht dies einem blended repository speedup von `30.6x` beziehungsweise `19.6x`, keiner Stoppuhrmessung. Validierung: 4/4 akzeptierte Input-Hashes, 7/7 vorhandene Phasenresultate, Manifest/Receipt/Ready-Review, erwartetes Dokumentvertrag-Rot und unverändertes Grün, 12/12 CL-Abschnitte, 13/13 Maschinen-Gates, 8/8 Follow-ups, Scope-, Secret-/Privatpfad-, DE/EN-B2- und text-first-Prüfung. Kein `dotnet build`, `dotnet test`, Coverage-, DocFX-, axe- oder `lynx`-Lauf wurde gestartet, weil keine ausführbare Produkt-/API-/HTML-Fläche geändert wurde. English: The documentation-only slice records the same conservative Not Ready/Conditional Pilot boundary and does not claim runtime or approval evidence. |
 | 2026-08-30 | Autonomen Sandbox-Lauf 005 kausal abgeschlossen | Nach dem Produktmerge von PR 75 wurde der bindende Sandbox-Intake byte-identisch archiviert, die 15-Ziel-Serie mit 5 Wurzeln und 10 Abhängigkeiten fortgeschrieben und Run 005 mit 69/69 Aufgaben, Retrospektive und portablem Handoff terminalisiert. Der nächste Intake `Lastenheft_Quellcode_Doku.md` ist nur als `Eligible` ausgewiesen und wurde nicht gestartet. Umfang des Closeouts: `0` Produktionscode-Zeilen, `0` Testcode-Zeilen und `+449 / -107` Dokumentations-, Governance-, Konfigurations- und Evidence-Zeilen, netto `342` Zeilen einschließlich Statistikphase; reine IDE-Versionsmetadaten haben keine Nettozeilenwirkung. Die `342` Nettozeilen entsprechen bei 80 Zeilen/Arbeitstag `4.3` Tagen beziehungsweise `33.3` Stunden und bei der Thorsten-Solo-Basis von 125 Zeilen/Arbeitstag `2.7` Tagen beziehungsweise `21.3` Stunden, jeweils mit `7.8` Stunden pro Tag. Das sind bei 21.5 Arbeitstagen pro Monat etwa `0.2` beziehungsweise `0.1` Arbeitsmonate; für 2026 gelten 30 Urlaubstage pro Jahr. Bei einem sichtbaren Aktivtag am 2026-08-30 entspricht dies einem blended repository speedup von `4.3x` beziehungsweise `2.7x`, keiner Stoppuhrmessung. Validierung: identischer Intake-Hash, PowerShell-/Bash-Manifest- und Receipt-Prüfung, Schema-2.0-Governance, Renderer, Alignment, terminaler Run-State sowie Head-, Check-, Thread-, Merge- und Sync-Evidence. Kein Produkt-Build/Test oder Folgefeature wurde gestartet. English: The causal closeout archives the unchanged intake, advances only the series lifecycle, completes run 005, and deliberately starts no next run. |
+| 2026-08-30 | Embeddable-VM-/NuGet-Intake auf Rang 4 vorgezogen | Auf ausdrücklichen Nutzerwunsch ist `Lastenheft_Embeddable-VM-und-NuGet.md` nun direkt nach dem abgeschlossenen Sandbox-Intake das einzige `Eligible`-Ziel. Quellcode-Dokumentation und die bisherigen Ränge 4 bis 9 rücken um je einen Platz nach hinten; VM-CLI bleibt eine bindende Voraussetzung der späteren IDE-Erweiterung, blockiert den vorgezogenen Intake aber nicht mehr. Der frühere Intake, sein Receipt, Manifest und Serien-Receipt sowie der bisherige Review-Artefaktsatz wurden byte-identisch archiviert; das alte Review ist wegen Zielhash-, Reihenfolge- und Graphänderung ausdrücklich `NeedsRemediation`. Umfang: `0` Produktionscode-Zeilen, `0` Testcode-Zeilen und `+1282 / -135` Dokumentations-, Governance-, Konfigurations-, Automations- und Evidence-Zeilen, netto `1147` Zeilen einschließlich Statistikphase; reine IDE-Versionsmetadaten haben keine Nettozeilenwirkung. Die `1147` Nettozeilen entsprechen bei 80 Zeilen/Arbeitstag `14.3` Tagen beziehungsweise `111.8` Stunden und bei der Thorsten-Solo-Basis von 125 Zeilen/Arbeitstag `9.2` Tagen beziehungsweise `71.6` Stunden, jeweils mit `7.8` Stunden pro Tag. Das sind bei 21.5 Arbeitstagen pro Monat etwa `0.7` beziehungsweise `0.4` Arbeitsmonate; für 2026 gelten 30 Urlaubstage pro Jahr. Bei einem sichtbaren Aktivtag am 2026-08-30 entspricht dies einem blended repository speedup von `14.3x` beziehungsweise `9.2x`, keiner Stoppuhrmessung. Validierung: Intake-Authoring-, Serienmanifest-, Serien-Receipt-, Schema-2.0-, Renderer- und Gesamt-Alignment-Prüfungen jeweils portabel in PowerShell und Bash, JSON-, Hash- und byteidentische Archivprüfung. Kein Intake, Produkt-Build, Testlauf, DocFX-Lauf oder Folgefeature wurde gestartet. English: The authorized order update makes Embeddable VM/NuGet the sole eligible target, preserves the later VM-CLI-to-IDE gate, invalidates the stale review, and deliberately executes no intake. |
+| 2026-08-30 | NuGet-Veröffentlichungsregeln im Rang-4-Intake verbindlich ergänzt | Der Nutzer hat die zuvor gegen offizielle NuGet- und PowerShell-Hinweise geprüften Veröffentlichungsinformationen ausdrücklich zur Einarbeitung freigegeben. Das Intake bindet nun `dotnet pack`/`dotnet nuget push` gegen die HTTPS-V3-Quelle, OIDC Trusted Publishing als CI-Vorzugsweg, eine eng begrenzte und kurzlebige API-Key-Ausnahme, maskierte manuelle Eingabe mit sicherer Prozessbereinigung, unveränderliche Paket-ID-/Versionskombinationen sowie einen fail-closed Abgleich statt pauschalem Erfolg durch `--skip-duplicate`. Rang 4, 15 Ziele, fünf Wurzeln, elf Kanten, Lifecycle und `LocalImplementation` bleiben unverändert; es wurde weder ein Secret verarbeitet noch ein Paket veröffentlicht oder Intake gestartet. Der unmittelbare Intake-, Receipt-, Manifest-, Serien-Receipt- und Review-Vorgänger bleibt byte-identisch archiviert, der Review weiterhin ausdrücklich `NeedsRemediation`. Umfang: `0` Produktionscode-Zeilen, `0` Testcode-Zeilen und `+1288 / -86` Dokumentations-, Governance-, Konfigurations-, Automations- und Evidence-Zeilen, netto `1202` Zeilen einschließlich Statistikphase; reine IDE-Versionsmetadaten haben keine Nettozeilenwirkung. Die `1202` Nettozeilen entsprechen bei 80 Zeilen/Arbeitstag `15.0` Tagen beziehungsweise `117.2` Stunden und bei der Thorsten-Solo-Basis von 125 Zeilen/Arbeitstag `9.6` Tagen beziehungsweise `75.0` Stunden, jeweils mit `7.8` Stunden pro Tag. Das sind bei 21.5 Arbeitstagen pro Monat etwa `0.7` beziehungsweise `0.4` Arbeitsmonate; für 2026 gelten 30 Urlaubstage pro Jahr. Bei einem sichtbaren Aktivtag am 2026-08-30 entspricht dies einem blended repository speedup von `15.0x` beziehungsweise `9.6x`, keiner Stoppuhrmessung. Validierung: Intake-Authoring-, Manifest-, Receipt-, Renderer- und Alignment-Prüfungen in PowerShell, Bash und Node, acht Negativ-Fixtures, JSON-, Hash-, Archiv- und Secret-Prüfung. Kein Produkt-Build, Testlauf, DocFX-Lauf, Intake-Review oder Veröffentlichungsschritt wurde gestartet. English: The intake now binds OIDC-first NuGet publishing, a constrained fallback, immutable versions, and fail-closed duplicate handling without granting publication authority. |
 
 ## Statistikprofil-1-Archiv / Statistics Profile 1 Archive
 - Stand 2026-05-05: `88` Produktionsdateien mit `6950` Zeilen, `22` Testdateien mit `3536` Zeilen und `562` Dokumentationsdateien mit `36625` Zeilen.
@@ -499,27 +501,27 @@ Profil 2 verwendet Git-getrackte Textdateien und sichtbare Git-Aktivitaet. Die W
 
 | Kennzahl / Metric | Wert / Value |
 |---|---:|
-| Textbasis / Text base | 260462 lines |
-| Textdateien / Text files | 1922 |
+| Textbasis / Text base | 262811 lines |
+| Textdateien / Text files | 1936 |
 | Beobachtbarer Zeitraum / Observable period | 2025-09-07..2026-08-30 |
 | Aktivtage / Active days | 87 |
-| Relevante Commits / Relevant commits | 342 |
-| Zeilen je Aktivtag / Lines per active day | 2993.8 |
+| Relevante Commits / Relevant commits | 344 |
+| Zeilen je Aktivtag / Lines per active day | 3020.8 |
 | Peak-Tag im Fenster / Peak day in window | 2026-02-14 / 177480 |
 | Peak-Woche im Fenster / Peak week in window | 2026-02-08 / 186065 |
 | Laengste Serie / Longest streak | 9 days |
-| Speedup vs. 80 lines/day | 37.4x |
-| Speedup vs. 125 lines/day | 24.0x |
-| Methodik / Methodology | v2; source `774c7950167a` |
+| Speedup vs. 80 lines/day | 37.8x |
+| Speedup vs. 125 lines/day | 24.2x |
+| Methodik / Methodology | v2; source `284a80c21717` |
 
 ### Artefaktmix / Artifact Mix
 
 ```text
-Produktiv / Production          [#...................]   2.9% | 7437
+Produktiv / Production          [#...................]   2.8% | 7437
 Tests                           [#...................]   4.3% | 11174
-Dokumentation / Documentation   [###########.........]  54.9% | 142894
-Skripte / Scripts               [##..................]   8.6% | 22392
-Konfiguration / Configuration   [######..............]  27.6% | 71879
+Dokumentation / Documentation   [###########.........]  54.7% | 143838
+Skripte / Scripts               [##..................]   8.5% | 22412
+Konfiguration / Configuration   [######..............]  27.9% | 73264
 Daten und Medien / Data and media [....................]   0.0% | 0
 Sonstiger Text / Other text     [#...................]   1.8% | 4686
 ```
@@ -573,7 +575,7 @@ Wochen / Weeks 01..26 | 2025-09-07..2026-03-07
 Wochen / Weeks 27..52 | 2026-03-08..2026-09-05
    cap 50000 | . . . . . . . . . . . . . . . . . . . . . . . . . .
        41667 | . . . . . . . . . . . . . . . . . . . . . . . . . .
-       33333 | . . . . . . . . . . . . . . . . . . . # . . . . . .
+       33333 | . . . . . . . . . . . . . . . . . . . # . . . . . #
        25000 | . . . . . . . . . . . . . . # . . . . # . . . . . #
        16667 | . . . . . . . . . . . . . . # . . . . # # . . . . #
         8333 | . . . . . . # . . . . . . . # . . # . # # . # . . #
@@ -626,6 +628,18 @@ Slots 0..15
              00 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15
 ```
 
+```text
+Slots 16..17
+    cap 2000 | . .
+        1667 | . .
+        1333 | . .
+        1000 | # #
+         667 | # #
+         333 | # #
+           0 +-----
+             16 17
+```
+
 | Slot | Phase | Nettozeilen / Net lines |
 |---:|---|---:|
 | 0 | Compiler / Compiler | 5308 |
@@ -644,6 +658,8 @@ Slots 0..15
 | 13 | Serienreview nach 004 / Series review after 004 | 141 |
 | 14 | Sandbox-Bewertung 005 / Sandbox assessment 005 | 2446 |
 | 15 | 005 Abschluss / 005 closeout | 342 |
+| 16 | Embeddable VM/NuGet vorgezogen / Embeddable VM/NuGet prioritized | 1147 |
+| 17 | NuGet-Veröffentlichungsregeln / NuGet publishing policy | 1202 |
 
 Die festen Slots halten den Phasenvergleich auch bei fehlenden oder spaeter ergaenzten Werten stabil.
 
@@ -653,8 +669,8 @@ Die festen Slots halten den Phasenvergleich auch bei fehlenden oder spaeter erga
 
 ```text
 Scale: 0..50x
-80 lines/day       [###############.....] 37.4x
-125 lines/day      [##########..........] 24.0x
+80 lines/day       [###############.....] 37.8x
+125 lines/day      [##########..........] 24.2x
 ```
 
 Die Faktoren vergleichen sichtbare Lieferdichte mit den dokumentierten manuellen Referenzen. Sie messen keine Arbeitszeit.
@@ -667,7 +683,7 @@ Die Faktoren vergleichen sichtbare Lieferdichte mit den dokumentierten manuellen
 Scale: 0..5000 lines/day
 Experienced manual [#...................] 80
 Thorsten solo      [#...................] 125
-Visible repository [############........] 2993.8
+Visible repository [############........] 3020.8
 ```
 
 Die gemeinsame Skala vergleicht Referenzen und sichtbare Lieferdichte. Sie schreibt die Git-Aktivitaet keiner Person oder KI pauschal zu.
@@ -693,6 +709,6 @@ DE: Das Fenster beginnt am 2025-09-07 und endet am 2026-08-30. Es enthaelt 87 ak
 | 2026-05 | 12323 |
 | 2026-06 | 37650 |
 | 2026-07 | 78966 |
-| 2026-08 | 52370 |
+| 2026-08 | 55167 |
 
 <!-- project-statistics-v2:end -->

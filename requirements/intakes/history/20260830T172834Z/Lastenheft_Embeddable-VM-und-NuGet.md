@@ -5,13 +5,12 @@
 **Zielgruppe:** Auszubildende ab dem ersten Ausbildungsjahr, Lehrende und .NET-Hostanwendende  
 **Vorausgesetztes Wissen:** Grundbegriffe von Compiler, virtueller Maschine und NuGet; Spec-Kit-Erfahrung wird nicht vorausgesetzt  
 **Profil:** `level2-lastenheft`  
-**Reihenfolge:** Rang 4 nach der abgeschlossenen Sandbox-Bewertung und vor `Lastenheft_Quellcode_Doku.md`
+**Reihenfolge:** Rang 10 nach `Lastenheft_VM_CLI.md` und vor `Lastenheft_IDE-Erweiterung-Pl0Ide_PAsm_PCod.md`
 
 *Status: Ready for review. Audience: apprentices from the first training year,
 teachers, and .NET host users. Basic compiler, virtual-machine, and NuGet terms
-are assumed; no Spec Kit experience is required. The intake is ordered at
-rank 4 after the completed Sandbox assessment and before source-code
-documentation.*
+are assumed; no Spec Kit experience is required. The intake is ordered after
+the VM/CLI baseline and before the IDE extension.*
 
 ## Zweck / Purpose
 
@@ -51,16 +50,6 @@ code.*
   CAPEC beschreibt bekannte Angriffsmuster für die genauere Risikoanalyse.
 - **OpenSSF Scorecard:** automatisierte Prüfungen bewerten öffentlich sichtbare
   Sicherheitspraktiken eines Open-Source-Repositories.
-- **Trusted Publishing und OIDC:** GitHub Actions weist sich mit einem
-  kurzlebigen, signierten Token gegenüber NuGet.org aus. NuGet.org tauscht ihn
-  nach Prüfung einer engen Vertrauensrichtlinie gegen einen zeitlich begrenzten
-  API-Key mit höchstens einer Stunde Gültigkeit; ein langlebiges
-  Veröffentlichungs-Secret ist dafür nicht nötig.
-- **Eingeschränkter API-Key:** ein Ersatzschlüssel mit genau festgelegter
-  Operation, Paket-ID oder Namensmuster und kurzer Gültigkeitsdauer.
-- **`--skip-duplicate`:** eine Push-Option, die einen HTTP-409-Konflikt nur als
-  Warnung behandelt. Die Warnung beweist nicht, dass das vorhandene Paket zum
-  aktuellen Release gehört.
 
 ### English
 
@@ -84,15 +73,6 @@ code.*
   describes known attack patterns for more detailed risk analysis.
 - **OpenSSF Scorecard:** automated checks assess publicly visible security
   practices of an open-source repository.
-- **Trusted publishing and OIDC:** GitHub Actions authenticates to NuGet.org
-  with a short-lived signed token. NuGet.org checks a narrow trust policy and
-  exchanges the token for a temporary API key valid for at most one hour, so
-  no long-lived publishing secret is required.
-- **Scoped API key:** a fallback key restricted to a defined operation,
-  package ID or name pattern, and short validity period.
-- **`--skip-duplicate`:** a push option that treats an HTTP 409 conflict as a
-  warning. The warning alone does not prove that the existing package belongs
-  to the current release.
 
 ## Aktueller Zustand / Current State
 
@@ -209,44 +189,11 @@ remote publication.*
 - **FR-015:** Veröffentlichung benötigt aktuelle, ausdrücklich gewährte
   Provider-/Secret-Berechtigung. Ein lokaler autonomer Lauf darf nur packen,
   prüfen und Release-Evidenz vorbereiten.
-- **FR-016:** Der plattformübergreifende Standardpfad muss die installierte
-  .NET-SDK-Toolchain mit `dotnet pack` und `dotnet nuget push` gegen die
-  HTTPS-V3-Quelle `https://api.nuget.org/v3/index.json` verwenden. Ein Einsatz
-  von `nuget.exe` oder einer separaten Veröffentlichungs-App ist nicht nötig.
-- **FR-017:** Für GitHub Actions muss NuGet Trusted Publishing über OIDC der
-  bevorzugte Credential-Pfad sein, sobald die Funktion für das zuständige
-  NuGet.org-Konto verfügbar ist. Die Policy muss GitHub-Owner, Repository,
-  Workflow-Datei und bei Nutzung das Release-Environment binden. Der Job darf
-  nur die nötigen Rechte `contents: read` und `id-token: write` erhalten; die
-  `NuGet/login`-Action muss nach Repository-Supply-Chain-Regeln auf eine
-  geprüfte, unveränderliche Revision gebunden sein. Als `user` gilt der NuGet.org-
-  Profilname, nicht die E-Mail-Adresse.
-- **FR-018:** Ist Trusted Publishing nachweislich nicht verfügbar oder für den
-  autorisierten Veröffentlichungsschritt ungeeignet, darf ein aktueller
-  NuGet.org-API-Key als dokumentierter Fallback dienen. Er muss auf Push und
-  `TinyPl0.Core`/`TinyPl0.Vm` oder ein gleich enges Namensmuster beschränkt,
-  kurz gültig und von CI-Schlüsseln getrennt sein. Bei NuGet 7.6 oder neuer
-  darf `NUGET_API_KEY` ohne Schlüsselargument verwendet werden; die konkrete
-  Toolversion muss diese Fähigkeit vorab nachweisen. Eine interaktive
-  PowerShell-Eingabe muss maskiert erfolgen, und die Prozessvariable muss nach
-  dem Push auch im Fehlerfall entfernt werden. Benutzername/Kennwort,
-  Repositorydateien, Logs und Kommandozeilenargumente sind keine zulässigen
-  Secret-Speicher.
-- **FR-019:** Eine veröffentlichte Kombination aus Paket-ID und Version ist
-  unveränderlich und darf nicht überschrieben oder wiederverwendet werden.
-  Eine Korrektur muss die fehlerhafte Version gegebenenfalls auslisten, eine
-  neue SemVer vergeben und ein neues vollständiges Release durchlaufen.
-- **FR-020:** `--skip-duplicate` darf einen Releasefehler nicht pauschal in
-  Erfolg umdeuten. Jeder 409-Konflikt muss in einen fail-closed
-  Abgleichspfad führen, der die vorhandene ID/Version einer bereits belegten,
-  beabsichtigten Veröffentlichung zuordnet; fehlt diese Evidenz, scheitert der
-  Release. Beide TinyPl0-Pakete müssen weiterhin gemeinsam nachgewiesen werden.
 
 *Requirements bind shared bounded run/step behavior, cancellation, structured
 results, isolated I/O, compatible public APIs, matching `TinyPl0.Core` and
-`TinyPl0.Vm` SemVer packages, independent consumer tests, OIDC-first
-publishing with a narrowly scoped fallback, immutable versions, fail-closed
-duplicate handling, and an explicitly authorized direct NuGet.org release.*
+`TinyPl0.Vm` SemVer packages, independent consumer tests, and an explicitly
+authorized direct NuGet.org release.*
 
 ## Qualität und Governance / Quality And Governance
 
@@ -264,9 +211,6 @@ duplicate handling, and an explicitly authorized direct NuGet.org release.*
 - SBOM ist für beide Pakete verpflichtend. VEX bewertet bekannte
   Schwachstellen; SLSA-Provenance ist mindestens auf dem praktisch erreichbaren
   Niveau nachzuweisen. OpenSSF Scorecard ergänzt die Releaseprüfung.
-- OIDC-Policy, Workflow-Identität und jede externe Action-Revision gehören zur
-  Supply-Chain-Prüfung. Ein kurzlebiger Credential ersetzt weder aktuelle
-  Providerberechtigung noch Paket-, Hash- und Consumer-Evidenz.
 - AI-SBOM ist `N/A`, weil keine KI-Runtime, Modelle oder Datensätze ausgeliefert
   werden. OWASP SAMM wird für das langlebige Projekt als Reifegradfolge geprüft.
 - NIS2, CRA, EU AI Act und DORA werden mit `Applicable`, `N/A` oder `Open` und
@@ -283,26 +227,20 @@ Trust, and AI-SBOM are not applicable for the stated product scope.*
 
 ## Abhängigkeiten und Risiken / Dependencies And Risks
 
-- Interner harter Vorgänger: die abgeschlossene Sandbox-Bewertung. Der
-  bisherige VM-/CLI-Vorgänger ist durch die ausdrücklich geänderte
-  Serienreihenfolge aufgehoben.
+- Interner harter Vorgänger: `Lastenheft_VM_CLI.md`.
 - Nachfolger in TinyPl0: `Lastenheft_IDE-Erweiterung-Pl0Ide_PAsm_PCod.md`.
 - Externer blockierter Verbraucher: TinyCalc
   `Lastenheft_PL0-Zellfunktionen_V1.md`.
 - Risiken sind API-Brüche, Run/Step-Abweichung, Ressourcenerschöpfung,
   Cancellation-Rennen, Paketnamensverlust, teilweise Veröffentlichung,
-  eine falsch gebundene OIDC-Policy, langlebige oder offengelegte API-Keys,
-  durch `--skip-duplicate` verdeckte Konflikte, kompromittierte Lieferkette und
-  fehlende Providerberechtigung.
+  kompromittierte Lieferkette und fehlende Providerberechtigung.
 - Ein NuGet-Release ist erst abgeschlossen, wenn beide Pakete derselben Version
   abrufbar und durch Consumer-, Hash- und Supply-Chain-Evidenz belegt sind.
 
-*The completed Sandbox assessment is the internal predecessor; the former
-VM/CLI predecessor is superseded by the explicitly changed series order.
-TinyCalc remains a blocked external consumer. Risks include API drift,
-run/step divergence, resource exhaustion, cancellation races, package-name
-loss, partial publication, supply-chain compromise, and missing provider
-authority.*
+*The VM/CLI baseline is the internal predecessor. TinyCalc is a blocked
+external consumer. Risks include API drift, run/step divergence, resource
+exhaustion, cancellation races, package-name loss, partial publication,
+supply-chain compromise, and missing provider authority.*
 
 ## Erwartete Artefakte und Evidenz / Expected Artifacts And Evidence
 
@@ -312,12 +250,6 @@ authority.*
 - Paket- und Consumer-Tests einschließlich Budget, Cancellation, Fehler und
   Cross-Platform-Wiederherstellung.
 - NuGet.org-Release-URLs, Version, Tag, Commit, Paket-Hashes und Lockfile-Beleg.
-- Dokumentierte Credential-Entscheidung: bevorzugte OIDC-Policy mit gebundenem
-  Owner, Repository, Workflow und optionalem Environment oder begründeter,
-  eng eingeschränkter API-Key-Fallback samt Toolversions- und Secret-
-  Löschungsnachweis.
-- Pro Paket ein nachvollziehbarer Push-Ausgang; bei 409 zusätzlich die
-  fail-closed Zuordnung zur bereits belegten beabsichtigten Veröffentlichung.
 - SBOM, VEX, Provenance/SLSA und aktualisierte Dependency-Audit-Evidenz unter
   `docs/security/`.
 - Aktualisierte Architektur-, VM-, API-, DocFX- und Lernendokumentation mit
@@ -351,22 +283,11 @@ accessible documentation, traceability, and updated statistics.*
   und führt keinen direkten Betriebssystemzugriff ein.
 - **AC-010:** TinyCalc erhält einen eindeutigen Handoff mit Paketversion,
   API-Vertrag und sämtlicher Gate-Evidenz.
-- **AC-011:** Der CI-Release verwendet bei Verfügbarkeit eine eng gebundene
-  NuGet.org-Trusted-Publishing-Policy und keine langlebigen
-  Veröffentlichungs-Secrets. Ein API-Key-Fallback erfüllt die Abnahme nur mit
-  dokumentierter Nichtverfügbarkeit, minimalem Scope, kurzer Gültigkeit und
-  nachgewiesener Entfernung aus dem Prozess.
-- **AC-012:** Ein Wiederholungsversuch derselben Paket-ID und Version kann
-  weder vorhandenen Inhalt überschreiben noch allein durch
-  `--skip-duplicate` als erfolgreicher Release gelten.
-- **AC-013:** Der Release-Nachweis ordnet beide Paket-Pushes, Credential-Modus,
-  Toolversion, GitHub-Workflow/Revision, Quellcommit, SemVer und öffentlichen
-  Consumer-Restore eindeutig demselben Release zu.
 
 *Acceptance proves bounded and cancellable run/step parity, regression safety,
-clean consumer restore, matching immutable NuGet.org packages, OIDC-first
-credential evidence, fail-closed duplicate handling, complete supply-chain
-evidence, accessible documentation, isolation, and an exact TinyCalc handoff.*
+clean consumer restore, matching stable NuGet.org packages, complete
+supply-chain evidence, accessible documentation, isolation, and an exact
+TinyCalc handoff.*
 
 ## Annahmen und Entscheidungen / Assumptions And Decisions
 
@@ -376,27 +297,14 @@ evidence, accessible documentation, isolation, and an exact TinyCalc handoff.*
   ausdrücklich genehmigt.
 - **IAD002 – beantwortet:** Das zweistufige TinyCalc-Gate und das Verbot einer
   lokalen `ProjectReference` als Fallback wurden ausdrücklich genehmigt.
-- **IAD004 – beantwortet:** Der aktuelle Nutzerauftrag zieht dieses Intake auf
-  Rang 4 als bevorzugten nächsten Serienkandidaten vor und ersetzt damit nur
-  die frühere Rang-/Vorgängerentscheidung aus IAD001. Scope, Paketgates,
-  Nicht-Ziele und Abnahmekriterien bleiben unverändert.
-- **IAD005 – beantwortet:** Die vom Nutzer bereitgestellten und gegen die
-  offiziellen NuGet-/PowerShell-Hinweise geprüften Veröffentlichungsregeln
-  werden als OIDC-Vorzugsweg, eng begrenzter API-Key-Fallback,
-  Versions-Unveränderlichkeit und fail-closed Duplicate-Gate verbindlich
-  aufgenommen. Dadurch entsteht keine aktuelle Provider- oder
-  Veröffentlichungsberechtigung.
 - Die Paket-IDs `TinyPl0.Core` und `TinyPl0.Vm` sind die vorgesehenen stabilen
   IDs; ihre Live-Verfügbarkeit wird vor dem Provider-Schritt erneut geprüft.
 - Delivery Authority bleibt `LocalImplementation`. Dieses Intake erteilt keine
   aktuelle NuGet-, Commit-, Push-, PR-, Merge-, Secret- oder Bypass-Berechtigung.
 - Es bestehen keine offenen fachlichen Intake-Fragen.
 
-*The approved decisions bind the split, updated rank-4 order, gate, package
-identities, OIDC-first publishing policy, constrained fallback, and local-only
-delivery authority. IAD004 supersedes only the earlier rank/predecessor part
-of IAD001; IAD005 grants no provider or publishing authority. No material
-intake question remains open.*
+*The approved decisions bind the split, order, gate, package identities, and
+local-only delivery authority. No material intake question remains open.*
 
 <!-- intake-authoring:prompts -->
 ## Ausführbare Spec-Kit-Prompts / Copy-Ready Spec Kit Prompts
