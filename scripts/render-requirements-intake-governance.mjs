@@ -20,12 +20,12 @@ const stableUuid = (key) => {
 const config = readJson("requirements/intake-governance-config.json");
 const seriesRoot = "requirements/intakes/series/tinypl0-delivery";
 const seriesId = stableUuid("series");
-const seriesReceiptId = "3c4fbe02-6522-43d5-801c-cf5581c6694d";
-const seriesOperationId = "d33c8397-2af9-4746-98cf-7b7597aa79ac";
+const seriesReceiptId = "9d9d165b-e6b6-4c13-8b6a-f88871a65147";
+const seriesOperationId = "46212ccd-12f5-4225-8a03-e4f7566fd2b1";
 const reviewId = "8804ad13-41b4-4feb-a10d-26d2f55333e6";
 const priorReviewId = "357ed01f-f120-4634-8596-45e7baffa17d";
 const createdAt = "2026-07-26T22:00:00Z";
-const seriesUpdatedAt = "2026-08-30T17:04:43Z";
+const seriesUpdatedAt = "2026-08-30T17:28:34Z";
 const reviewHead = "26a81e655b4e15f412a954f536681a842dea6e2f";
 const reviewedAt = "2026-08-30T14:55:45Z";
 const priorReviewArchivePath =
@@ -35,13 +35,13 @@ const members = [
   ["constitution-change", "Lastenheft_Constitution_Change.md", "Completed"],
   ["secure-development-hardening", "Lastenheft_Secure-Development-Hardening.md", "Completed"],
   ["sandbox-gestuetzte-secure-development-haertung", "Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md", "Completed"],
-  ["quellcode-doku", "Lastenheft_Quellcode_Doku.md", "Eligible"],
+  ["embeddable-vm-und-nuget", "Lastenheft_Embeddable-VM-und-NuGet.md", "Eligible"],
+  ["quellcode-doku", "Lastenheft_Quellcode_Doku.md", "Blocked"],
   ["dokumentation-en", "Lastenheft_Dokumentation_EN.md", "Blocked"],
   ["ide-l10n", "Lastenheft_IDE-L10N.md", "Blocked"],
   ["a11y-ide", "Lastenheft_A11Y_IDE.md", "Blocked"],
   ["options-als-parameter", "Lastenheft_Options_Als_Parameter.md", "Blocked"],
   ["vm-cli", "Lastenheft_VM_CLI.md", "Blocked"],
-  ["embeddable-vm-und-nuget", "Lastenheft_Embeddable-VM-und-NuGet.md", "Blocked"],
   ["ide-erweiterung-pl0ide-pasm-pcod", "Lastenheft_IDE-Erweiterung-Pl0Ide_PAsm_PCod.md", "Blocked"],
   ["pl0-optimierung", "Lastenheft_PL0_Optimierung.md", "Blocked"],
   ["clr-assembly", "Lastenheft_CLR_Assembly.md", "Blocked"],
@@ -72,17 +72,29 @@ const members = [
 }));
 const targets = members.map((member) => member.path);
 const reviewTargets = members.map((member) => member.reviewPath);
-const dependencies = Array.from({length: 10}, (_, index) => ({
-  from: targets[index],
-  to: targets[index + 1],
-  kind: index === 2 ? "CommentSurfaceBaseline" :
-    index === 3 || index === 4 ? "DocumentationSurfaceBaseline" : "HardCompletionGate",
+const dependencies = [
+  [0, 1, "HardCompletionGate"],
+  [1, 2, "HardCompletionGate"],
+  [2, 3, "HardCompletionGate"],
+  [3, 4, "CommentSurfaceBaseline"],
+  [4, 5, "DocumentationSurfaceBaseline"],
+  [5, 6, "DocumentationSurfaceBaseline"],
+  [6, 7, "HardCompletionGate"],
+  [7, 8, "HardCompletionGate"],
+  [8, 9, "HardCompletionGate"],
+  [9, 10, "HardCompletionGate"],
+  [3, 10, "HardCompletionGate"],
+].map(([from, to, kind]) => ({
+  from: targets[from],
+  to: targets[to],
+  kind,
   binding: true,
 }));
 const roots = targets.filter((target) => !dependencies.some((edge) => edge.to === target));
-const reviewDependencies = dependencies.map(({kind}, index) => ({
-  from: reviewTargets[index],
-  to: reviewTargets[index + 1],
+const reviewPathByTarget = new Map(members.map((member) => [member.path, member.reviewPath]));
+const reviewDependencies = dependencies.map(({from, to, kind}) => ({
+  from: reviewPathByTarget.get(from),
+  to: reviewPathByTarget.get(to),
   kind,
 }));
 const reviewRoots = reviewTargets.filter(
@@ -243,9 +255,9 @@ const result = {
   coverage: {
     individual: reviewTargets,
     series: [
-      "Fifteen current target hashes: two completed archived targets and thirteen active targets",
-      "Schema 2.0 roles, collections, canonical index, portable order, lifecycle states, five roots, and ten binding gates",
-      "VM/CLI to embeddable VM/NuGet to IDE handoff plus the external TinyCalc package gate",
+      "Fifteen current target hashes: three completed archived targets and twelve active targets",
+      "Schema 2.0 roles, collections, canonical index, portable order, lifecycle states, five roots, and eleven binding gates",
+      "Embeddable VM/NuGet and VM/CLI as dual IDE prerequisites plus the external TinyCalc package gate",
       "Optimization and CLR stay blocked pending explicit architecture decisions",
       "German-first and English-second CEFR-B2 learner policy, text-first accessibility, security and privacy boundaries, evidence, and delivery authority",
       "Three immutable baselines and other completed intakes remain outside executable scope",
@@ -297,19 +309,47 @@ const seriesReceipt = {
   operation: {
     operationId: seriesOperationId,
     type: "Update",
-    authorityEvidence: "The project owner explicitly approved PR 75 and authorized the narrowly scoped admin bypass for the learner-focused run, then directed completion of run 005 without starting another run on 2026-08-30.",
+    authorityEvidence: "User explicitly requested that requirements/intakes/active/Lastenheft_Embeddable-VM-und-NuGet.md become the next TinyPl0 intake in the processing order on 2026-08-30.",
   },
   status: "Ready",
   manifest: {path: manifestPath, normalizedSha256: manifestHash},
   supersedes: {
-    receiptPath: "requirements/intakes/series-archive/tinypl0-delivery/20260830T170405Z/receipt.json",
-    receiptNormalizedSha256: "5e568bbec266db2a5f37cdec1597a5d959a6b9eb3d84137aa5aa1e1e79b2dc69",
-    manifestArchivePath: "requirements/intakes/series-archive/tinypl0-delivery/20260830T170405Z/manifest.json",
-    manifestArchiveSha256: "7ea4e9c892756eb70223a8c16c60f5eb160dd12cf6564d5597662bb8aa72dc95",
+    receiptPath: "requirements/intakes/series-archive/tinypl0-delivery/20260830T172834Z/receipt.json",
+    receiptNormalizedSha256: "9a68f3eb1ecffdff0d8eef8be8873c18d20ba43318a1508ce21bc8fcd85df182",
+    manifestArchivePath: "requirements/intakes/series-archive/tinypl0-delivery/20260830T172834Z/manifest.json",
+    manifestArchiveSha256: "690ff45be29de237bb75db00ef8b31cafa9caf5d0a2e1aeacdffcceead2d07ff",
   },
   tombstone: {path: "N/A", normalizedSha256: "N/A"},
   nextAction: "$speckit-intake-series-status",
 };
+const seriesUpdatePaths = [
+  "requirements/intakes/active/Lastenheft_Embeddable-VM-und-NuGet.md",
+  "specs/intake-authoring-receipts/embeddable-vm-und-nuget.json",
+  "requirements/intakes/history/20260830T172834Z/Lastenheft_Embeddable-VM-und-NuGet.md",
+  "specs/intake-authoring-receipts/history/embeddable-vm-und-nuget.20260830T172834Z.json",
+  manifestPath,
+  `${seriesRoot}/receipt.json`,
+  `${seriesRoot}/operation.json`,
+  `${seriesRoot}/order.md`,
+  `${seriesRoot}/intake-review-result.json`,
+  `${seriesRoot}/intake-review-report.md`,
+  "requirements/intakes/series-archive/tinypl0-delivery/20260830T172834Z/manifest.json",
+  "requirements/intakes/series-archive/tinypl0-delivery/20260830T172834Z/receipt.json",
+  "requirements/intakes/series-archive/tinypl0-delivery/20260830T172834Z-review-invalidated/intake-review-request.json",
+  "requirements/intakes/series-archive/tinypl0-delivery/20260830T172834Z-review-invalidated/intake-review-result.json",
+  "requirements/intakes/series-archive/tinypl0-delivery/20260830T172834Z-review-invalidated/intake-review-report.md",
+  "specs/intake-authoring-receipts/quellcode-doku.json",
+  "specs/intake-authoring-receipts/dokumentation-en.json",
+  "specs/intake-authoring-receipts/ide-l10n.json",
+  "specs/intake-authoring-receipts/a11y-ide.json",
+  "specs/intake-authoring-receipts/options-als-parameter.json",
+  "specs/intake-authoring-receipts/vm-cli.json",
+  "requirements/intake-governance-config.json",
+  "Pflichtenheft.md",
+  "Lastenheft_Abarbeitungsreihenfolge.md",
+  "scripts/render-requirements-intake-governance.mjs",
+  "scripts/validate-requirements-intake-alignment.mjs",
+];
 const operation = {
   schemaVersion: "1.0",
   documentType: "IntakeSeriesOperation",
@@ -317,31 +357,13 @@ const operation = {
   seriesId,
   type: "Update",
   status: "Published",
-  authorityEvidence: "The project owner explicitly approved PR 75 and authorized the narrowly scoped admin bypass for the learner-focused run, then directed completion of run 005 without starting another run on 2026-08-30.",
+  authorityEvidence: "User explicitly requested that requirements/intakes/active/Lastenheft_Embeddable-VM-und-NuGet.md become the next TinyPl0 intake in the processing order on 2026-08-30.",
   proposalNormalizedSha256: manifestHash,
-  preparedPaths: [
-    "requirements/intakes/archive/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.005-sandbox-secure-development.md",
-    manifestPath,
-    `${seriesRoot}/receipt.json`,
-    `${seriesRoot}/order.md`,
-    "requirements/intakes/series-archive/tinypl0-delivery/20260830T170405Z/manifest.json",
-    "requirements/intakes/series-archive/tinypl0-delivery/20260830T170405Z/receipt.json",
-    "Pflichtenheft.md",
-    "Lastenheft_Abarbeitungsreihenfolge.md",
-  ],
+  preparedPaths: seriesUpdatePaths,
   validation: {bash: "Pass", powerShell: "Pass"},
   publication: {
     status: "Published",
-    publishedPaths: [
-      "requirements/intakes/archive/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.005-sandbox-secure-development.md",
-      manifestPath,
-      `${seriesRoot}/receipt.json`,
-      `${seriesRoot}/order.md`,
-      "requirements/intakes/series-archive/tinypl0-delivery/20260830T170405Z/manifest.json",
-      "requirements/intakes/series-archive/tinypl0-delivery/20260830T170405Z/receipt.json",
-      "Pflichtenheft.md",
-      "Lastenheft_Abarbeitungsreihenfolge.md",
-    ],
+    publishedPaths: seriesUpdatePaths,
   },
 };
 const report = `# Intake Review: TinyPl0 Delivery Series
@@ -352,7 +374,7 @@ const report = `# Intake Review: TinyPl0 Delivery Series
 - Modus: \`Series\`
 - Policy: \`tinypl0-delivery-v1\`
 - Ergebnis: \`Ready\`
-- Umfang: 15 Ziele, 5 Wurzeln und 10 verbindliche Abhängigkeiten
+- Umfang: 15 Ziele, 5 Wurzeln und 11 verbindliche Abhängigkeiten
 - Vorgängerreview: \`${priorReviewId}\`
 - Vorgängerevidenz: \`${priorReviewArchivePath}\`
 
@@ -371,8 +393,8 @@ Textansicht überein.
 
 *Schema 2.0 resolves the index, active collection, archive, baselines, and
 order view unambiguously. All 15 normalized target hashes match. The completed
-Constitution and Secure-Development targets are unchanged in the archive; the
-other 13 targets remain active. Order, five DAG roots, ten binding edges, and
+Constitution, Secure-Development, and Sandbox targets are unchanged in the
+archive; the other 12 targets remain active. Order, five DAG roots, eleven binding edges, and
 lifecycle states match the manifest and text view.*
 
 ## Review-Abdeckung / Review Coverage

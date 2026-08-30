@@ -24,9 +24,9 @@ intakes, archives, history, and the executable intake series.*
 
 ## Nächster Intake / Next Intake
 
-`requirements/intakes/active/Lastenheft_Quellcode_Doku.md` ist
+`requirements/intakes/active/Lastenheft_Embeddable-VM-und-NuGet.md` ist
 der bevorzugte nächste Intake. Diese Festlegung startet keinen Spec-Kit-Lauf
 und erteilt keine Remote- oder Merge-Berechtigung.
 
-*The source-code documentation intake is the preferred next intake. This
+*The embeddable VM and NuGet intake is the preferred next intake. This
 declaration starts no Spec Kit run and grants no remote or merge authority.*

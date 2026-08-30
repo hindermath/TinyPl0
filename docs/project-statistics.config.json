@@ -121,6 +121,13 @@
       "labelDe": "005 Abschluss",
       "labelEn": "005 closeout",
       "netLines": 342
+    },
+    {
+      "slot": 16,
+      "id": "embeddable-vm-nuget-priority",
+      "labelDe": "Embeddable VM/NuGet vorgezogen",
+      "labelEn": "Embeddable VM/NuGet prioritized",
+      "netLines": 1147
     }
   ],
   "excludedPaths": [

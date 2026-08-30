@@ -25,16 +25,10 @@
       "status": "Completed"
     },
     {
-      "path": "requirements/intakes/active/Lastenheft_Embeddable-VM-und-NuGet.md",
-      "role": "OrderedMember",
-      "normalizedSha256": "ac0473daf0fa095babcd92343c2d312987bbb46f4cc29338c8aa4dc6692664a5",
-      "status": "Eligible"
-    },
-    {
       "path": "requirements/intakes/active/Lastenheft_Quellcode_Doku.md",
       "role": "OrderedMember",
       "normalizedSha256": "5a04868a629453e433da1a733239c948294f9a6462ac11968c806556eefffed2",
-      "status": "Blocked"
+      "status": "Eligible"
     },
     {
       "path": "requirements/intakes/active/Lastenheft_Dokumentation_EN.md",
@@ -64,6 +58,12 @@
       "path": "requirements/intakes/active/Lastenheft_VM_CLI.md",
       "role": "OrderedMember",
       "normalizedSha256": "dd4b0683ad7733a380078f9fddd6658a1d80713baa2d72a20d76aed8ba8dc1fc",
+      "status": "Blocked"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_Embeddable-VM-und-NuGet.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "1865ff87d20cdac8f4ace03df2017aeb55b7f8302ad6dcdaf9af5f796d78f835",
       "status": "Blocked"
     },
     {
@@ -119,12 +119,6 @@
     },
     {
       "from": "requirements/intakes/archive/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.005-sandbox-secure-development.md",
-      "to": "requirements/intakes/active/Lastenheft_Embeddable-VM-und-NuGet.md",
-      "kind": "HardCompletionGate",
-      "binding": true
-    },
-    {
-      "from": "requirements/intakes/active/Lastenheft_Embeddable-VM-und-NuGet.md",
       "to": "requirements/intakes/active/Lastenheft_Quellcode_Doku.md",
       "kind": "CommentSurfaceBaseline",
       "binding": true
@@ -161,7 +155,7 @@
     },
     {
       "from": "requirements/intakes/active/Lastenheft_VM_CLI.md",
-      "to": "requirements/intakes/active/Lastenheft_IDE-Erweiterung-Pl0Ide_PAsm_PCod.md",
+      "to": "requirements/intakes/active/Lastenheft_Embeddable-VM-und-NuGet.md",
       "kind": "HardCompletionGate",
       "binding": true
     },

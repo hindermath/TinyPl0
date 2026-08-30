@@ -5,13 +5,12 @@
 **Zielgruppe:** Auszubildende ab dem ersten Ausbildungsjahr, Lehrende und .NET-Hostanwendende  
 **Vorausgesetztes Wissen:** Grundbegriffe von Compiler, virtueller Maschine und NuGet; Spec-Kit-Erfahrung wird nicht vorausgesetzt  
 **Profil:** `level2-lastenheft`  
-**Reihenfolge:** Rang 4 nach der abgeschlossenen Sandbox-Bewertung und vor `Lastenheft_Quellcode_Doku.md`
+**Reihenfolge:** Rang 10 nach `Lastenheft_VM_CLI.md` und vor `Lastenheft_IDE-Erweiterung-Pl0Ide_PAsm_PCod.md`
 
 *Status: Ready for review. Audience: apprentices from the first training year,
 teachers, and .NET host users. Basic compiler, virtual-machine, and NuGet terms
-are assumed; no Spec Kit experience is required. The intake is ordered at
-rank 4 after the completed Sandbox assessment and before source-code
-documentation.*
+are assumed; no Spec Kit experience is required. The intake is ordered after
+the VM/CLI baseline and before the IDE extension.*
 
 ## Zweck / Purpose
 
@@ -228,9 +227,7 @@ Trust, and AI-SBOM are not applicable for the stated product scope.*
 
 ## Abhängigkeiten und Risiken / Dependencies And Risks
 
-- Interner harter Vorgänger: die abgeschlossene Sandbox-Bewertung. Der
-  bisherige VM-/CLI-Vorgänger ist durch die ausdrücklich geänderte
-  Serienreihenfolge aufgehoben.
+- Interner harter Vorgänger: `Lastenheft_VM_CLI.md`.
 - Nachfolger in TinyPl0: `Lastenheft_IDE-Erweiterung-Pl0Ide_PAsm_PCod.md`.
 - Externer blockierter Verbraucher: TinyCalc
   `Lastenheft_PL0-Zellfunktionen_V1.md`.
@@ -240,12 +237,10 @@ Trust, and AI-SBOM are not applicable for the stated product scope.*
 - Ein NuGet-Release ist erst abgeschlossen, wenn beide Pakete derselben Version
   abrufbar und durch Consumer-, Hash- und Supply-Chain-Evidenz belegt sind.
 
-*The completed Sandbox assessment is the internal predecessor; the former
-VM/CLI predecessor is superseded by the explicitly changed series order.
-TinyCalc remains a blocked external consumer. Risks include API drift,
-run/step divergence, resource exhaustion, cancellation races, package-name
-loss, partial publication, supply-chain compromise, and missing provider
-authority.*
+*The VM/CLI baseline is the internal predecessor. TinyCalc is a blocked
+external consumer. Risks include API drift, run/step divergence, resource
+exhaustion, cancellation races, package-name loss, partial publication,
+supply-chain compromise, and missing provider authority.*
 
 ## Erwartete Artefakte und Evidenz / Expected Artifacts And Evidence
 
@@ -302,20 +297,14 @@ TinyCalc handoff.*
   ausdrücklich genehmigt.
 - **IAD002 – beantwortet:** Das zweistufige TinyCalc-Gate und das Verbot einer
   lokalen `ProjectReference` als Fallback wurden ausdrücklich genehmigt.
-- **IAD004 – beantwortet:** Der aktuelle Nutzerauftrag zieht dieses Intake auf
-  Rang 4 als bevorzugten nächsten Serienkandidaten vor und ersetzt damit nur
-  die frühere Rang-/Vorgängerentscheidung aus IAD001. Scope, Paketgates,
-  Nicht-Ziele und Abnahmekriterien bleiben unverändert.
 - Die Paket-IDs `TinyPl0.Core` und `TinyPl0.Vm` sind die vorgesehenen stabilen
   IDs; ihre Live-Verfügbarkeit wird vor dem Provider-Schritt erneut geprüft.
 - Delivery Authority bleibt `LocalImplementation`. Dieses Intake erteilt keine
   aktuelle NuGet-, Commit-, Push-, PR-, Merge-, Secret- oder Bypass-Berechtigung.
 - Es bestehen keine offenen fachlichen Intake-Fragen.
 
-*The approved decisions bind the split, updated rank-4 order, gate, package
-identities, and local-only delivery authority. IAD004 supersedes only the
-earlier rank/predecessor part of IAD001. No material intake question remains
-open.*
+*The approved decisions bind the split, order, gate, package identities, and
+local-only delivery authority. No material intake question remains open.*
 
 <!-- intake-authoring:prompts -->
 ## Ausführbare Spec-Kit-Prompts / Copy-Ready Spec Kit Prompts

@@ -1,15 +1,5 @@
 # Intake Review: TinyPl0 Delivery Series
 
-> **Status: `NeedsRemediation` / Review invalidiert.** Die ausdrücklich
-> autorisierte Aktualisierung vom 30.08.2026 zieht den Intake „Embeddable VM
-> und NuGet“ auf Rang 4 vor und ändert dessen Hash sowie den Seriengraphen.
-> Der frühere Review bleibt byte-identisch unter
-> `requirements/intakes/series-archive/tinypl0-delivery/20260830T172834Z-review-invalidated/`
-> erhalten. Nächster Schritt ist ein neuer Intake-Series-Review; kein Intake
-> wurde gestartet. / **Review invalidated.** The authorized rank-4 update
-> changed the target hash and series graph. The prior review is archived
-> byte-identically; a new series review is required before execution.
-
 ## Identität / Identity
 
 - Review-ID: `8804ad13-41b4-4feb-a10d-26d2f55333e6`

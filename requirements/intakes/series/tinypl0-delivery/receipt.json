@@ -1,28 +1,28 @@
 {
   "schemaVersion": "1.0",
   "documentType": "IntakeSeriesReceipt",
-  "receiptId": "3c4fbe02-6522-43d5-801c-cf5581c6694d",
+  "receiptId": "9d9d165b-e6b6-4c13-8b6a-f88871a65147",
   "seriesId": "8541ffa1-6b52-4f95-a746-d870482eaf5d",
   "generator": {
     "preset": "intake-sequencing-governance",
     "version": "0.2.3"
   },
-  "createdAt": "2026-08-30T17:04:43Z",
+  "createdAt": "2026-08-30T17:28:34Z",
   "operation": {
-    "operationId": "d33c8397-2af9-4746-98cf-7b7597aa79ac",
+    "operationId": "46212ccd-12f5-4225-8a03-e4f7566fd2b1",
     "type": "Update",
-    "authorityEvidence": "The project owner explicitly approved PR 75 and authorized the narrowly scoped admin bypass for the learner-focused run, then directed completion of run 005 without starting another run on 2026-08-30."
+    "authorityEvidence": "User explicitly requested that requirements/intakes/active/Lastenheft_Embeddable-VM-und-NuGet.md become the next TinyPl0 intake in the processing order on 2026-08-30."
   },
   "status": "Ready",
   "manifest": {
     "path": "requirements/intakes/series/tinypl0-delivery/manifest.json",
-    "normalizedSha256": "690ff45be29de237bb75db00ef8b31cafa9caf5d0a2e1aeacdffcceead2d07ff"
+    "normalizedSha256": "573558ebd31b02d84d5399ee36479f37470cff90a4f1df2a478f378e77652c93"
   },
   "supersedes": {
-    "receiptPath": "requirements/intakes/series-archive/tinypl0-delivery/20260830T170405Z/receipt.json",
-    "receiptNormalizedSha256": "5e568bbec266db2a5f37cdec1597a5d959a6b9eb3d84137aa5aa1e1e79b2dc69",
-    "manifestArchivePath": "requirements/intakes/series-archive/tinypl0-delivery/20260830T170405Z/manifest.json",
-    "manifestArchiveSha256": "7ea4e9c892756eb70223a8c16c60f5eb160dd12cf6564d5597662bb8aa72dc95"
+    "receiptPath": "requirements/intakes/series-archive/tinypl0-delivery/20260830T172834Z/receipt.json",
+    "receiptNormalizedSha256": "9a68f3eb1ecffdff0d8eef8be8873c18d20ba43318a1508ce21bc8fcd85df182",
+    "manifestArchivePath": "requirements/intakes/series-archive/tinypl0-delivery/20260830T172834Z/manifest.json",
+    "manifestArchiveSha256": "690ff45be29de237bb75db00ef8b31cafa9caf5d0a2e1aeacdffcceead2d07ff"
   },
   "tombstone": {
     "path": "N/A",
