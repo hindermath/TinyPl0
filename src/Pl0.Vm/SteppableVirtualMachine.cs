@@ -1,9 +1,13 @@
+using System.Globalization;
+using System.Resources;
 using Pl0.Core;
 
 namespace Pl0.Vm;
 
 /// <summary>
-/// Stateful PL/0 virtual machine with explicit single-step execution.
+/// Zustandsbehaftete PL/0-VM mit ausdrücklicher Einzelschrittausführung.
+///
+/// Stateful PL/0 VM with explicit single-step execution.
 /// </summary>
 public sealed class SteppableVirtualMachine
 {
@@ -15,11 +19,14 @@ public sealed class SteppableVirtualMachine
     private IReadOnlyList<Instruction> program = [];
     private IPl0Io io = new ConsolePl0Io();
     private VirtualMachineOptions options = VirtualMachineOptions.Default;
+    private ResourceManager messages = Pl0VmMessages.ResourceManager;
+    private CultureInfo culture = CultureInfo.InvariantCulture;
     private readonly List<VmDiagnostic> diagnostics = [];
     private int[] stack = [];
     private int p;
     private int b;
     private int t;
+    private int executedInstructions;
     private bool initialized;
 
     /// <summary>
@@ -33,11 +40,20 @@ public sealed class SteppableVirtualMachine
     public bool IsRunning { get; private set; }
 
     /// <summary>
-    /// Initializes the VM and resets state for debugging.
+    /// Initialisiert die VM für das Debugging und validiert Optionen vor der Stackallokation.
+    ///
+    /// Initializes the VM for debugging and validates options before stack allocation.
     /// </summary>
-    /// <param name="program">P-Code instructions to execute.</param>
-    /// <param name="io">Optional I/O abstraction.</param>
-    /// <param name="options">Optional VM options.</param>
+    /// <param name="program">
+    /// Auszuführende P-Code-Instruktionen. / P-Code instructions to execute.
+    /// </param>
+    /// <param name="io">
+    /// Optionale Ein-/Ausgabeabstraktion. / Optional input/output abstraction.
+    /// </param>
+    /// <param name="options">
+    /// Optionale VM-Optionen; ungültige Grenzen erzeugen einen terminalen Fehlerzustand.
+    /// / Optional VM options; invalid limits create a terminal error state.
+    /// </param>
     public void Initialize(
         IReadOnlyList<Instruction> program,
         IPl0Io? io = null,
@@ -46,8 +62,24 @@ public sealed class SteppableVirtualMachine
         this.program = program;
         this.io = io ?? new ConsolePl0Io();
         this.options = options ?? VirtualMachineOptions.Default;
+        messages = this.options.Messages ?? Pl0VmMessages.ResourceManager;
+        culture = CultureInfo.GetCultureInfo(this.options.Language);
 
         diagnostics.Clear();
+        stack = [];
+        executedInstructions = 0;
+        initialized = true;
+        IsRunning = false;
+        State = new VmState(0, 0, 0, [], null);
+
+        var configurationDiagnostics =
+            VirtualMachineOptionsValidator.Validate(this.options, messages, culture);
+        if (configurationDiagnostics.Count > 0)
+        {
+            diagnostics.AddRange(configurationDiagnostics);
+            return;
+        }
+
         stack = new int[this.options.StackSize + 1];
         p = 0;
         b = 1;
@@ -56,15 +88,19 @@ public sealed class SteppableVirtualMachine
         stack[2] = 0;
         stack[3] = 0;
 
-        initialized = true;
         IsRunning = true;
         State = CaptureState();
     }
 
     /// <summary>
-    /// Executes exactly one instruction.
+    /// Führt genau eine Instruktion innerhalb des konfigurierten Budgets aus.
+    ///
+    /// Executes exactly one instruction within the configured budget.
     /// </summary>
-    /// <returns>Step result with updated state and status.</returns>
+    /// <returns>
+    /// Das Schrittergebnis mit aktualisiertem Zustand, Status und Diagnosen.
+    /// / The step result with updated state, status, and diagnostics.
+    /// </returns>
     public VmStepResult Step()
     {
         if (!initialized)
@@ -94,8 +130,21 @@ public sealed class SteppableVirtualMachine
             return new VmStepResult(State, VmStepStatus.Error, diagnostics.ToArray());
         }
 
+        if (executedInstructions >= options.InstructionBudget)
+        {
+            diagnostics.Add(
+                VirtualMachineOptionsValidator.CreateInstructionBudgetExceededDiagnostic(messages, culture));
+            IsRunning = false;
+            State = stateBeforeStep;
+            return new VmStepResult(State, VmStepStatus.Error, diagnostics.ToArray());
+        }
+
         var instruction = program[p];
         p++;
+
+        // Derselbe Zählpunkt wie im Batch-Weg schützt die N/N+1-Grenze.
+        // The same counting point as the batch path protects the N/N+1 boundary.
+        executedInstructions++;
 
         var continueExecution = ExecuteInstruction(instruction);
         if (!continueExecution)
