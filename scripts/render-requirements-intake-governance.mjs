@@ -20,12 +20,12 @@ const stableUuid = (key) => {
 const config = readJson("requirements/intake-governance-config.json");
 const seriesRoot = "requirements/intakes/series/tinypl0-delivery";
 const seriesId = stableUuid("series");
-const seriesReceiptId = "9d9d165b-e6b6-4c13-8b6a-f88871a65147";
-const seriesOperationId = "46212ccd-12f5-4225-8a03-e4f7566fd2b1";
+const seriesReceiptId = "01ec955e-b458-469e-9dc8-4a76ba4154de";
+const seriesOperationId = "017dae9c-4f29-41ad-b234-bf4da48f4238";
 const reviewId = "8804ad13-41b4-4feb-a10d-26d2f55333e6";
 const priorReviewId = "357ed01f-f120-4634-8596-45e7baffa17d";
 const createdAt = "2026-07-26T22:00:00Z";
-const seriesUpdatedAt = "2026-08-30T17:28:34Z";
+const seriesUpdatedAt = "2026-08-30T18:29:40Z";
 const reviewHead = "26a81e655b4e15f412a954f536681a842dea6e2f";
 const reviewedAt = "2026-08-30T14:55:45Z";
 const priorReviewArchivePath =
@@ -309,15 +309,15 @@ const seriesReceipt = {
   operation: {
     operationId: seriesOperationId,
     type: "Update",
-    authorityEvidence: "User explicitly requested that requirements/intakes/active/Lastenheft_Embeddable-VM-und-NuGet.md become the next TinyPl0 intake in the processing order on 2026-08-30.",
+    authorityEvidence: "User explicitly instructed incorporation of the verified NuGet publication rules into the rank-4 intake on 2026-08-30.",
   },
   status: "Ready",
   manifest: {path: manifestPath, normalizedSha256: manifestHash},
   supersedes: {
-    receiptPath: "requirements/intakes/series-archive/tinypl0-delivery/20260830T172834Z/receipt.json",
-    receiptNormalizedSha256: "9a68f3eb1ecffdff0d8eef8be8873c18d20ba43318a1508ce21bc8fcd85df182",
-    manifestArchivePath: "requirements/intakes/series-archive/tinypl0-delivery/20260830T172834Z/manifest.json",
-    manifestArchiveSha256: "690ff45be29de237bb75db00ef8b31cafa9caf5d0a2e1aeacdffcceead2d07ff",
+    receiptPath: "requirements/intakes/series-archive/tinypl0-delivery/20260830T182940Z/receipt.json",
+    receiptNormalizedSha256: "40b065f557be1fc66f30ff31df83f3eeaf35d1089980777ba60cff4cf1be5b9e",
+    manifestArchivePath: "requirements/intakes/series-archive/tinypl0-delivery/20260830T182940Z/manifest.json",
+    manifestArchiveSha256: "573558ebd31b02d84d5399ee36479f37470cff90a4f1df2a478f378e77652c93",
   },
   tombstone: {path: "N/A", normalizedSha256: "N/A"},
   nextAction: "$speckit-intake-series-status",
@@ -325,19 +325,19 @@ const seriesReceipt = {
 const seriesUpdatePaths = [
   "requirements/intakes/active/Lastenheft_Embeddable-VM-und-NuGet.md",
   "specs/intake-authoring-receipts/embeddable-vm-und-nuget.json",
-  "requirements/intakes/history/20260830T172834Z/Lastenheft_Embeddable-VM-und-NuGet.md",
-  "specs/intake-authoring-receipts/history/embeddable-vm-und-nuget.20260830T172834Z.json",
+  "requirements/intakes/history/20260830T182940Z/Lastenheft_Embeddable-VM-und-NuGet.md",
+  "specs/intake-authoring-receipts/history/embeddable-vm-und-nuget.20260830T182940Z.json",
   manifestPath,
   `${seriesRoot}/receipt.json`,
   `${seriesRoot}/operation.json`,
   `${seriesRoot}/order.md`,
   `${seriesRoot}/intake-review-result.json`,
   `${seriesRoot}/intake-review-report.md`,
-  "requirements/intakes/series-archive/tinypl0-delivery/20260830T172834Z/manifest.json",
-  "requirements/intakes/series-archive/tinypl0-delivery/20260830T172834Z/receipt.json",
-  "requirements/intakes/series-archive/tinypl0-delivery/20260830T172834Z-review-invalidated/intake-review-request.json",
-  "requirements/intakes/series-archive/tinypl0-delivery/20260830T172834Z-review-invalidated/intake-review-result.json",
-  "requirements/intakes/series-archive/tinypl0-delivery/20260830T172834Z-review-invalidated/intake-review-report.md",
+  "requirements/intakes/series-archive/tinypl0-delivery/20260830T182940Z/manifest.json",
+  "requirements/intakes/series-archive/tinypl0-delivery/20260830T182940Z/receipt.json",
+  "requirements/intakes/series-archive/tinypl0-delivery/20260830T182940Z-review-invalidated/intake-review-request.json",
+  "requirements/intakes/series-archive/tinypl0-delivery/20260830T182940Z-review-invalidated/intake-review-result.json",
+  "requirements/intakes/series-archive/tinypl0-delivery/20260830T182940Z-review-invalidated/intake-review-report.md",
   "specs/intake-authoring-receipts/quellcode-doku.json",
   "specs/intake-authoring-receipts/dokumentation-en.json",
   "specs/intake-authoring-receipts/ide-l10n.json",
@@ -357,7 +357,7 @@ const operation = {
   seriesId,
   type: "Update",
   status: "Published",
-  authorityEvidence: "User explicitly requested that requirements/intakes/active/Lastenheft_Embeddable-VM-und-NuGet.md become the next TinyPl0 intake in the processing order on 2026-08-30.",
+  authorityEvidence: "User explicitly instructed incorporation of the verified NuGet publication rules into the rank-4 intake on 2026-08-30.",
   proposalNormalizedSha256: manifestHash,
   preparedPaths: seriesUpdatePaths,
   validation: {bash: "Pass", powerShell: "Pass"},
@@ -378,7 +378,7 @@ const report = `# Intake Review: TinyPl0 Delivery Series
 - Vorgängerreview: \`${priorReviewId}\`
 - Vorgängerevidenz: \`${priorReviewArchivePath}\`
 
-*The complete re-review covers all 15 current targets, five roots, and ten
+*The complete re-review covers all 15 current targets, five roots, and eleven
 binding dependencies. It explicitly supersedes the review that still named
 the completed Secure-Development target below the active collection.*
 
@@ -386,9 +386,9 @@ the completed Secure-Development target below the active collection.*
 
 Die Schema-2.0-Governance löst Index, aktive Sammlung, Archiv, Baselines und
 Ordnungsansicht eindeutig auf. Alle 15 normalisierten Zielhashes stimmen. Die
-abgeschlossenen Constitution- und Secure-Development-Ziele liegen unverändert
-im Archiv; die übrigen 13 Ziele bleiben aktiv. Reihenfolge, fünf DAG-Wurzeln,
-zehn bindende Kanten und Lifecycle-Zustände stimmen mit dem Manifest und der
+abgeschlossenen Constitution-, Secure-Development- und Sandbox-Ziele liegen
+unverändert im Archiv; die übrigen 12 Ziele bleiben aktiv. Reihenfolge, fünf
+DAG-Wurzeln, elf bindende Kanten und Lifecycle-Zustände stimmen mit dem Manifest und der
 Textansicht überein.
 
 *Schema 2.0 resolves the index, active collection, archive, baselines, and
@@ -403,7 +403,7 @@ lifecycle states match the manifest and text view.*
 |---|---|---|
 | Identität, Ziel, Scope und Nicht-Ziele | \`Ready\` | 15 aktuelle Manifestziele und deren Intake-Abschnitte |
 | Atomare Anforderungen und messbare Abnahme | \`Ready\` | Zielhashes und bestehender Review \`${priorReviewId}\` |
-| Abhängigkeiten, Reihenfolge und Handoffs | \`Ready\` | 5 Wurzeln, 10 Kanten; VM/CLI → Pakete → IDE; TinyCalc extern |
+| Abhängigkeiten, Reihenfolge und Handoffs | \`Ready\` | 5 Wurzeln, 11 Kanten; Pakete und VM/CLI → IDE; TinyCalc extern |
 | Lernende, Sprache und Begriffe | \`Ready\` | Deutsch zuerst, Englisch danach, CEFR B2 und Erklärungen bei Erstnutzung |
 | Barrierefreiheit und Text-First | \`Ready\` | A11Y-Intake und Governance-Index bleiben ohne Layout- oder Farbabhängigkeit lesbar |
 | Security und Privacy | \`Ready\` | Secure Coding/Architecture, Trust Boundaries, SSDF/CWE und anwendbare Supply-Chain-Nachweise sind sichtbar; keine Secrets oder unnötigen Personendaten |

@@ -128,6 +128,13 @@
       "labelDe": "Embeddable VM/NuGet vorgezogen",
       "labelEn": "Embeddable VM/NuGet prioritized",
       "netLines": 1147
+    },
+    {
+      "slot": 17,
+      "id": "embeddable-vm-nuget-publishing-policy",
+      "labelDe": "NuGet-Veröffentlichungsregeln",
+      "labelEn": "NuGet publishing policy",
+      "netLines": 1202
     }
   ],
   "excludedPaths": [
