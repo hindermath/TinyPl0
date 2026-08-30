@@ -93,6 +93,13 @@
       "labelDe": "Secure Development 004",
       "labelEn": "Secure Development 004",
       "netLines": 25631
+    },
+    {
+      "slot": 12,
+      "id": "004-closeout",
+      "labelDe": "004 Abschluss",
+      "labelEn": "004 closeout",
+      "netLines": 834
     }
   ],
   "excludedPaths": [
