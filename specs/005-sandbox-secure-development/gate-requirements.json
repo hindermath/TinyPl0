@@ -1,0 +1,182 @@
+{
+  "schemaVersion": "2.0",
+  "featurePath": "specs/005-sandbox-secure-development",
+  "declaredAt": "2026-08-30T15:18:00Z",
+  "gates": [
+    {
+      "gateId": "SBX-IDENTITY-GATE-001",
+      "applicability": "Applicable",
+      "requiredScope": "Validate run identity and all four accepted input byte hashes before every mutable phase and after interruption.",
+      "exactCommands": [
+        "pwsh -NoLogo -NoProfile -File .specify/presets/autonomous-run-governance/scripts/validate-autonomous-run-state.ps1 -State specs/005-sandbox-secure-development/autonomous-run-state.json",
+        "pwsh -NoLogo -NoProfile -Command '$state = Get-Content -LiteralPath \"specs/005-sandbox-secure-development/autonomous-run-state.json\" -Raw -Encoding UTF8 | ConvertFrom-Json; foreach ($item in $state.acceptedArtifacts) { $actual = (Get-FileHash -LiteralPath $item.path -Algorithm SHA256).Hash.ToLowerInvariant(); if ($actual -ne $item.sha256) { throw \"Accepted input drift: $($item.path)\" } }; \"PASS: accepted inputs\"'"
+      ],
+      "requiredCommandTokens": ["validate-autonomous-run-state.ps1", "Get-FileHash", "Accepted input drift"],
+      "requiredRunnerOrPlatformTokens": ["macOS", "PowerShell 7", "Git"],
+      "evidencePath": "specs/005-sandbox-secure-development/autonomous-run-evidence.md",
+      "rationale": "Input drift invalidates every downstream assessment and delivery claim.",
+      "reevaluationTrigger": "Every phase boundary, resume, commit, push, and remote delivery step."
+    },
+    {
+      "gateId": "SBX-REFERENCE-GATE-002",
+      "applicability": "Applicable",
+      "requiredScope": "Confirm the separate Sandbox reference is read-only observed at the exact accepted commit without persisting its private host root.",
+      "exactCommands": [
+        "pwsh -NoLogo -NoProfile -Command 'if ([string]::IsNullOrWhiteSpace($env:SANDBOX_REFERENCE_ROOT)) { throw \"SANDBOX_REFERENCE_ROOT not set\" }; $head = git -C $env:SANDBOX_REFERENCE_ROOT rev-parse HEAD; if ($LASTEXITCODE -ne 0 -or $head -ne \"05d1202b3364cba3d0e48e6c32e10b34a62ba1f0\") { throw \"Sandbox reference drift\" }; \"PASS: immutable Sandbox reference\"'"
+      ],
+      "requiredCommandTokens": ["SANDBOX_REFERENCE_ROOT", "05d1202b3364cba3d0e48e6c32e10b34a62ba1f0", "Sandbox reference drift"],
+      "requiredRunnerOrPlatformTokens": ["macOS", "PowerShell 7", "Git", "read-only"],
+      "evidencePath": "specs/005-sandbox-secure-development/research.md",
+      "rationale": "Only committed Sandbox facts are reproducible and public-ready evidence.",
+      "reevaluationTrigger": "Sandbox commit, image identity, or reference-document change."
+    },
+    {
+      "gateId": "SBX-DOCUMENT-REDGREEN-GATE-003",
+      "applicability": "Applicable",
+      "requiredScope": "Record the result files missing before implementation and the unchanged contract passing after the smallest documentation slice.",
+      "exactCommands": [
+        "pwsh -NoLogo -NoProfile -Command '$required = @(\"specs/005-sandbox-secure-development/sandbox-assessment.md\", \"specs/005-sandbox-secure-development/evidence-matrix.md\"); $missing = @($required | Where-Object { -not (Test-Path -LiteralPath $_ -PathType Leaf) }); if ($missing.Count) { throw \"Missing assessment outputs: $($missing -join ', ')\" }; \"PASS: assessment output files\"'"
+      ],
+      "requiredCommandTokens": ["sandbox-assessment.md", "evidence-matrix.md", "Missing assessment outputs"],
+      "requiredRunnerOrPlatformTokens": ["macOS", "PowerShell 7", "documentation contract"],
+      "evidencePath": "specs/005-sandbox-secure-development/autonomous-run-evidence.md",
+      "rationale": "Pure governance work uses an observable document-contract red/green slice instead of product TDD.",
+      "reevaluationTrigger": "Any required assessment output or contract change."
+    },
+    {
+      "gateId": "SBX-CL12-GATE-004",
+      "applicability": "Applicable",
+      "requiredScope": "Require all twelve canonical CL-12 IDs once and all status, ownership, rationale, evidence, risk, trigger, and follow-up fields.",
+      "exactCommands": [
+        "pwsh -NoLogo -NoProfile -Command '$path = \"specs/005-sandbox-secure-development/sandbox-assessment.md\"; $text = Get-Content -LiteralPath $path -Raw -Encoding UTF8; $sections = @([regex]::Matches($text, \"(?ms)^### (CL-12-(?:0[1-9]|1[0-2])).*?(?=^### CL-12-|\\z)\")); $ids = @($sections | ForEach-Object { $_.Groups[1].Value }); if ($ids.Count -ne 12 -or @($ids | Sort-Object -Unique).Count -ne 12) { throw \"Expected 12 unique CL-12 sections\" }; foreach ($section in $sections) { foreach ($token in @(\"Applicability\", \"Implementation status\", \"Learning stage\", \"Responsible role\", \"Evidence\", \"Residual risk\", \"Re-evaluation trigger\", \"Next action\")) { if ($section.Value -notmatch [regex]::Escape($token)) { throw \"$($section.Groups[1].Value) lacks $token\" } } }; \"PASS: CL-12 completeness\"'"
+      ],
+      "requiredCommandTokens": ["### (CL-12-", "Expected 12 unique CL-12 sections", "CL-12 completeness"],
+      "requiredRunnerOrPlatformTokens": ["macOS", "PowerShell 7", "CL-12 v2.2.0"],
+      "evidencePath": "specs/005-sandbox-secure-development/sandbox-assessment.md",
+      "rationale": "A complete assessment may retain Open findings but may not omit a checklist item or required field.",
+      "reevaluationTrigger": "CL-12 version, assessment row, status, or evidence change."
+    },
+    {
+      "gateId": "SBX-BOUNDARY-GATE-005",
+      "applicability": "Applicable",
+      "requiredScope": "Require symbolic mount and work-location matrices that deny unrelated host, profile, key, and project surfaces.",
+      "exactCommands": [
+        "pwsh -NoLogo -NoProfile -Command '$text = Get-Content -LiteralPath \"specs/005-sandbox-secure-development/sandbox-assessment.md\" -Raw -Encoding UTF8; foreach ($token in @(\"<TinyPl0-repository>\", \"ReadOnly\", \"ReadWrite\", \"NotMounted\", \"Build\", \"Test\", \"CI\", \"HumanOnly\")) { if ($text -notmatch [regex]::Escape($token)) { throw \"Boundary matrix lacks $token\" } }; \"PASS: mount and work-location boundaries\"'"
+      ],
+      "requiredCommandTokens": ["<TinyPl0-repository>", "NotMounted", "HumanOnly", "mount and work-location boundaries"],
+      "requiredRunnerOrPlatformTokens": ["macOS", "PowerShell 7", "text-first evidence"],
+      "evidencePath": "specs/005-sandbox-secure-development/sandbox-assessment.md",
+      "rationale": "A broad host or adjacent-project mount defeats the TinyPl0-only agent boundary.",
+      "reevaluationTrigger": "Mount, writable-root, agent-mode, work-location, or host-platform change."
+    },
+    {
+      "gateId": "SBX-STANDARDS-GATE-006",
+      "applicability": "Applicable",
+      "requiredScope": "Map security, architecture, accessibility, supply-chain, regulatory, and all eight preset decisions with rationale and triggers.",
+      "exactCommands": [
+        "pwsh -NoLogo -NoProfile -Command '$text = Get-Content -LiteralPath \"specs/005-sandbox-secure-development/evidence-matrix.md\" -Raw -Encoding UTF8; foreach ($token in @(\"NIST SSDF\", \"CWE Top 25\", \"SBOM\", \"VEX\", \"AI-SBOM\", \"SLSA\", \"OpenSSF\", \"SAMM\", \"Zero Trust\", \"WCAG 2.2\", \"security-governance\", \"parallel-autonomous-run-governance\")) { if ($text -notmatch [regex]::Escape($token)) { throw \"Evidence matrix lacks $token\" } }; \"PASS: standards and presets\"'"
+      ],
+      "requiredCommandTokens": ["NIST SSDF", "CWE Top 25", "parallel-autonomous-run-governance", "standards and presets"],
+      "requiredRunnerOrPlatformTokens": ["macOS", "PowerShell 7", "eight presets"],
+      "evidencePath": "specs/005-sandbox-secure-development/evidence-matrix.md",
+      "rationale": "Silent standards or preset omission would invalidate the Level-2 assessment.",
+      "reevaluationTrigger": "Constitution, preset, standard, or applicability change."
+    },
+    {
+      "gateId": "SBX-SCOPE-GATE-007",
+      "applicability": "Applicable",
+      "requiredScope": "Reject product, test, workflow, existing docs/security, and any Sandbox repository change from the TinyPl0 feature delivery set.",
+      "exactCommands": [
+        "pwsh -NoLogo -NoProfile -Command '$base = git merge-base main HEAD; $allowed = \"^(\\.specify/feature\\.json|specs/005-sandbox-secure-development/|docs/project-statistics\\.(md|config\\.json)$|src/Pl0\\.Ide/Pl0\\.Ide\\.csproj$)\"; $paths = @((git diff --name-only $base HEAD); (git diff --name-only); (git diff --cached --name-only); (git ls-files --others --exclude-standard)) | Where-Object { $_ } | Sort-Object -Unique; $bad = @($paths | Where-Object { $_ -notmatch $allowed }); if ($bad.Count) { throw \"Out-of-scope path: $($bad -join ', ')\" }; \"PASS: bounded delivery paths\"'"
+      ],
+      "requiredCommandTokens": ["git merge-base main HEAD", "git ls-files --others --exclude-standard", "Out-of-scope path", "bounded delivery paths"],
+      "requiredRunnerOrPlatformTokens": ["macOS", "PowerShell 7", "Git"],
+      "evidencePath": "specs/005-sandbox-secure-development/autonomous-run-evidence.md",
+      "rationale": "The intake forbids technical hardening and automatic population of existing security evidence.",
+      "reevaluationTrigger": "Every edit, commit, delivery-set freeze, and exact-head validation."
+    },
+    {
+      "gateId": "SBX-SECRET-PATH-GATE-008",
+      "applicability": "Applicable",
+      "requiredScope": "Scan only intended public delivery files for secret patterns and concrete private host paths without reading forbidden local state.",
+      "exactCommands": [
+        "gitleaks git --redact --log-opts=main..HEAD",
+        "pwsh -NoLogo -NoProfile -Command '$diffLines = @((git diff --no-ext-diff --unified=0 main...HEAD --); (git diff --no-ext-diff --unified=0 --); (git diff --cached --no-ext-diff --unified=0 --)); $candidateText = @($diffLines | Where-Object { $_ -match \"^\\+(?!\\+\\+)\" } | ForEach-Object { $_.Substring(1) }); $untracked = @(git ls-files --others --exclude-standard); foreach ($file in $untracked) { if (Test-Path -LiteralPath $file -PathType Leaf) { $candidateText += Get-Content -LiteralPath $file -Raw -Encoding UTF8 } }; $unixPrefix = ([char]47) + \"Users\" + ([char]47); $winPrefix = ([char]92) + \"Users\" + ([char]92); $pattern = [regex]::Escape($unixPrefix) + \"[^/<\\s]+|[A-Za-z]:\" + [regex]::Escape($winPrefix) + \"[^\\\\<\\s]+\"; if (($candidateText -join \"`n\") -match $pattern) { throw \"Private host path in added delivery content\" }; \"PASS: no concrete private host paths in added delivery content\"'"
+      ],
+      "requiredCommandTokens": ["gitleaks git --redact", "Private host path in delivery", "no concrete private host paths"],
+      "requiredRunnerOrPlatformTokens": ["macOS", "PowerShell 7", "Gitleaks", "Git"],
+      "evidencePath": "specs/005-sandbox-secure-development/autonomous-run-evidence.md",
+      "rationale": "Public evidence must not leak credentials or identify a private host layout.",
+      "reevaluationTrigger": "Every intended delivery-file content change."
+    },
+    {
+      "gateId": "SBX-A11Y-GATE-009",
+      "applicability": "Applicable",
+      "requiredScope": "Require DE-first/EN-second, CEFR-B2, semantic headings, text status, tagged code blocks, and no visual-only decision.",
+      "exactCommands": [
+        "pwsh -NoLogo -NoProfile -Command '$files = @(Get-ChildItem -LiteralPath \"specs/005-sandbox-secure-development\" -Filter \"*.md\" -Recurse); foreach ($file in $files) { $text = Get-Content -LiteralPath $file.FullName -Raw -Encoding UTF8; if ($text -match \"(?m)^```$\") { throw \"Untagged code block: $($file.FullName)\" } }; \"PASS: tagged code blocks and text-first review\"'"
+      ],
+      "requiredCommandTokens": ["Get-ChildItem", "Untagged code block", "text-first review"],
+      "requiredRunnerOrPlatformTokens": ["macOS", "PowerShell 7", "WCAG 2.2 AA", "CEFR B2"],
+      "evidencePath": "specs/005-sandbox-secure-development/checklists/sandbox-governance.md",
+      "rationale": "The assessment is learner-facing and must remain usable without visual layout or color.",
+      "reevaluationTrigger": "Every learner-facing text, table, code block, or navigation change."
+    },
+    {
+      "gateId": "SBX-PRODUCT-BUILD-GATE-010",
+      "applicability": "N/A",
+      "requiredScope": "Do not claim a new local product build, test, coverage, DocFX, or Sandbox execution for documentation-only scope.",
+      "exactCommands": [],
+      "requiredCommandTokens": [],
+      "requiredRunnerOrPlatformTokens": [],
+      "evidencePath": "specs/005-sandbox-secure-development/plan.md",
+      "rationale": "No product code, public API, test, XML documentation, or generated site is changed; remote CI remains delivery regression evidence.",
+      "reevaluationTrigger": "Any product, test, API, XML, DocFX, workflow, or dependency change."
+    },
+    {
+      "gateId": "SBX-VERSION-DELIVERY-GATE-011",
+      "applicability": "Applicable",
+      "requiredScope": "Align all IDE version fields to the actual allocated PR number, exact feature-head commit count, and current build counter before final review.",
+      "exactCommands": [
+        "pwsh -NoLogo -NoProfile -Command '$pr = gh pr view --json number | ConvertFrom-Json; $expectedMinor = [int]$pr.number; $expectedPatch = [int](git rev-list --count HEAD); [xml]$xml = Get-Content -LiteralPath \"src/Pl0.Ide/Pl0.Ide.csproj\" -Raw -Encoding UTF8; $values = @($xml.Project.PropertyGroup.Version, $xml.Project.PropertyGroup.AssemblyVersion, $xml.Project.PropertyGroup.FileVersion); foreach ($value in $values) { $version = [version]$value; if ($version.Minor -ne $expectedMinor -or $version.Build -ne $expectedPatch) { throw \"IDE version drift\" } }; if (@($values | Sort-Object -Unique).Count -ne 1) { throw \"IDE version fields diverge\" }; \"PASS: governed IDE version\"'",
+        "git diff --check",
+        "git status --short --untracked-files=all"
+      ],
+      "requiredCommandTokens": ["gh pr view --json number", "git rev-list --count HEAD", "IDE version drift", "IDE version fields diverge", "git diff --check"],
+      "requiredRunnerOrPlatformTokens": ["macOS", "PowerShell 7", "Git", "GitHub CLI", "allocated PR number"],
+      "evidencePath": "specs/005-sandbox-secure-development/autonomous-run-evidence.md",
+      "rationale": "Repository policy binds every agent-created commit and PR branch to traceable IDE version metadata.",
+      "reevaluationTrigger": "Commit count, PR allocation, build/test invocation, or branch update."
+    },
+    {
+      "gateId": "SBX-REMOTE-REVIEW-GATE-012",
+      "applicability": "Applicable",
+      "requiredScope": "Require successful exact-head CI, zero actionable threads, and independent human Approval before merge; COMMENTED, unavailable, or bypass is insufficient.",
+      "exactCommands": [
+        "gh pr checks --watch --fail-fast",
+        "gh pr view --json url,headRefOid,reviewDecision,reviews,statusCheckRollup",
+        "gh api graphql -f query='query($owner:String!,$name:String!,$number:Int!){repository(owner:$owner,name:$name){pullRequest(number:$number){reviewThreads(first:100){nodes{isResolved}}}}}'"
+      ],
+      "requiredCommandTokens": ["headRefOid", "reviewDecision", "reviewThreads", "isResolved"],
+      "requiredRunnerOrPlatformTokens": ["GitHub", "GitHub CLI", "exact HEAD", "independent Approval"],
+      "evidencePath": "temporary PreMerge gate evidence and specs/005-sandbox-secure-development/autonomous-run-evidence.md",
+      "rationale": "Admin Bypass may address platform policy only after technical and independent-review evidence; it cannot create Approval.",
+      "reevaluationTrigger": "Every PR-head, check, review, thread, or authority change."
+    },
+    {
+      "gateId": "SBX-CLOSEOUT-GATE-013",
+      "applicability": "Applicable",
+      "requiredScope": "After actual merge, synchronize main, archive the binding intake byte-identically, update series lineage, and validate the next serial state.",
+      "exactCommands": [
+        "gh repo sync --branch main",
+        "pwsh -NoLogo -NoProfile -File .specify/presets/intake-sequencing-governance/scripts/validate-intake-series.ps1 -Manifest requirements/intakes/series/tinypl0-delivery/manifest.json -RepositoryRoot .",
+        "pwsh -NoLogo -NoProfile -File .specify/presets/autonomous-run-governance/scripts/validate-autonomous-run-state.ps1 -State specs/005-sandbox-secure-development/autonomous-run-state.json"
+      ],
+      "requiredCommandTokens": ["gh repo sync --branch main", "validate-intake-series.ps1", "validate-autonomous-run-state.ps1"],
+      "requiredRunnerOrPlatformTokens": ["GitHub", "GitHub CLI", "PowerShell 7", "PostMerge"],
+      "evidencePath": "requirements/intakes/series/tinypl0-delivery/ and specs/005-sandbox-secure-development/autonomous-run-evidence.md",
+      "rationale": "Only post-merge facts can causally complete the intake lifecycle and successor eligibility.",
+      "reevaluationTrigger": "Merge result, main revision, manifest, receipt, archive, or successor status change."
+    }
+  ]
+}
