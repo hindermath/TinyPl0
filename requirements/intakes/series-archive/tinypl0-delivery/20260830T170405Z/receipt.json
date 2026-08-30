@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "1.0",
+  "documentType": "IntakeSeriesReceipt",
+  "receiptId": "fb40ca24-f5ed-4dba-99b2-c4e3ead4ef43",
+  "seriesId": "8541ffa1-6b52-4f95-a746-d870482eaf5d",
+  "generator": {
+    "preset": "intake-sequencing-governance",
+    "version": "0.2.3"
+  },
+  "createdAt": "2026-08-30T14:26:58Z",
+  "operation": {
+    "operationId": "dc25fcf9-1760-4aa2-b6d2-fd75fcadd051",
+    "type": "Update",
+    "authorityEvidence": "User explicitly authorized resuming the serial TinyPl0 autonomous Spec Kit series through 2026-08-31, DeliveryMode MergeAndSync, admin bypass, and causal post-merge closeout on 2026-08-30."
+  },
+  "status": "Ready",
+  "manifest": {
+    "path": "requirements/intakes/series/tinypl0-delivery/manifest.json",
+    "normalizedSha256": "7ea4e9c892756eb70223a8c16c60f5eb160dd12cf6564d5597662bb8aa72dc95"
+  },
+  "supersedes": {
+    "receiptPath": "requirements/intakes/series-archive/tinypl0-delivery/20260830T142658Z/receipt.json",
+    "receiptNormalizedSha256": "4f3bb40cbcc80882ae992fe8f2da5da96e4c8338e6cbd6e16d07b931ac97b67a",
+    "manifestArchivePath": "requirements/intakes/series-archive/tinypl0-delivery/20260830T142658Z/manifest.json",
+    "manifestArchiveSha256": "1ca91db4ec4970c45a7c27b8623d03c29f52c9295305f8ee7d574b23d3f6cadf"
+  },
+  "tombstone": {
+    "path": "N/A",
+    "normalizedSha256": "N/A"
+  },
+  "nextAction": "$speckit-intake-series-status"
+}

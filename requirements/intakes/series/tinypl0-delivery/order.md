@@ -8,8 +8,8 @@ Maschinendaten stehen in
 |---:|---|---|---|
 | 1 | `requirements/intakes/archive/Lastenheft_Constitution_Change.003-constitution-change.md` | `Completed` | keine |
 | 2 | `requirements/intakes/archive/Lastenheft_Secure-Development-Hardening.004-secure-development-hardening.md` | `Completed` | Constitution abgeschlossen |
-| 3 | `requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md` | `Eligible` | Security abgeschlossen |
-| 4 | `requirements/intakes/active/Lastenheft_Quellcode_Doku.md` | `Blocked` | Sandbox |
+| 3 | `requirements/intakes/archive/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.005-sandbox-secure-development.md` | `Completed` | Security abgeschlossen |
+| 4 | `requirements/intakes/active/Lastenheft_Quellcode_Doku.md` | `Eligible` | Sandbox abgeschlossen |
 | 5 | `requirements/intakes/active/Lastenheft_Dokumentation_EN.md` | `Blocked` | Kommentarhärtung |
 | 6 | `requirements/intakes/active/Lastenheft_IDE-L10N.md` | `Blocked` | Dokumentationsbasis |
 | 7 | `requirements/intakes/active/Lastenheft_A11Y_IDE.md` | `Blocked` | IDE-L10N |

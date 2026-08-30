@@ -1,19 +1,19 @@
 {
   "schemaVersion": "1.0",
   "documentType": "IntakeSeriesOperation",
-  "operationId": "dc25fcf9-1760-4aa2-b6d2-fd75fcadd051",
+  "operationId": "d33c8397-2af9-4746-98cf-7b7597aa79ac",
   "seriesId": "8541ffa1-6b52-4f95-a746-d870482eaf5d",
   "type": "Update",
   "status": "Published",
-  "authorityEvidence": "User explicitly authorized resuming the serial TinyPl0 autonomous Spec Kit series through 2026-08-31, DeliveryMode MergeAndSync, admin bypass, and causal post-merge closeout on 2026-08-30.",
-  "proposalNormalizedSha256": "7ea4e9c892756eb70223a8c16c60f5eb160dd12cf6564d5597662bb8aa72dc95",
+  "authorityEvidence": "The project owner explicitly approved PR 75 and authorized the narrowly scoped admin bypass for the learner-focused run, then directed completion of run 005 without starting another run on 2026-08-30.",
+  "proposalNormalizedSha256": "690ff45be29de237bb75db00ef8b31cafa9caf5d0a2e1aeacdffcceead2d07ff",
   "preparedPaths": [
-    "requirements/intakes/archive/Lastenheft_Secure-Development-Hardening.004-secure-development-hardening.md",
+    "requirements/intakes/archive/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.005-sandbox-secure-development.md",
     "requirements/intakes/series/tinypl0-delivery/manifest.json",
     "requirements/intakes/series/tinypl0-delivery/receipt.json",
     "requirements/intakes/series/tinypl0-delivery/order.md",
-    "requirements/intakes/series-archive/tinypl0-delivery/20260830T142658Z/manifest.json",
-    "requirements/intakes/series-archive/tinypl0-delivery/20260830T142658Z/receipt.json",
+    "requirements/intakes/series-archive/tinypl0-delivery/20260830T170405Z/manifest.json",
+    "requirements/intakes/series-archive/tinypl0-delivery/20260830T170405Z/receipt.json",
     "Pflichtenheft.md",
     "Lastenheft_Abarbeitungsreihenfolge.md"
   ],
@@ -24,12 +24,12 @@
   "publication": {
     "status": "Published",
     "publishedPaths": [
-      "requirements/intakes/archive/Lastenheft_Secure-Development-Hardening.004-secure-development-hardening.md",
+      "requirements/intakes/archive/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.005-sandbox-secure-development.md",
       "requirements/intakes/series/tinypl0-delivery/manifest.json",
       "requirements/intakes/series/tinypl0-delivery/receipt.json",
       "requirements/intakes/series/tinypl0-delivery/order.md",
-      "requirements/intakes/series-archive/tinypl0-delivery/20260830T142658Z/manifest.json",
-      "requirements/intakes/series-archive/tinypl0-delivery/20260830T142658Z/receipt.json",
+      "requirements/intakes/series-archive/tinypl0-delivery/20260830T170405Z/manifest.json",
+      "requirements/intakes/series-archive/tinypl0-delivery/20260830T170405Z/receipt.json",
       "Pflichtenheft.md",
       "Lastenheft_Abarbeitungsreihenfolge.md"
     ]

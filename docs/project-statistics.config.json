@@ -114,6 +114,13 @@
       "labelDe": "Sandbox-Bewertung 005",
       "labelEn": "Sandbox assessment 005",
       "netLines": 2446
+    },
+    {
+      "slot": 15,
+      "id": "005-closeout",
+      "labelDe": "005 Abschluss",
+      "labelEn": "005 closeout",
+      "netLines": 342
     }
   ],
   "excludedPaths": [
