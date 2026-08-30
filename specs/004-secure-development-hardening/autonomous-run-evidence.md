@@ -5,7 +5,7 @@
 | Field | Value |
 |---|---|
 | Feature | `004-secure-development-hardening` |
-| Binding intake | `requirements/intakes/active/Lastenheft_Secure-Development-Hardening.md` |
+| Binding intake | Accepted at `requirements/intakes/active/Lastenheft_Secure-Development-Hardening.md`; byte-preserved terminal archive at `requirements/intakes/archive/Lastenheft_Secure-Development-Hardening.004-secure-development-hardening.md` |
 | Accepted intake SHA-256 | `18c957e4bcbe3e9e975f11ace8d1d2c81c49064f911f607480a09e14774669de` |
 | Accepted review | `357ed01f-f120-4634-8596-45e7baffa17d`, `Ready` |
 | Delivery mode | `MergeAndSync` |
@@ -13,7 +13,7 @@
 | Secret authority | None; secrets must not be read, changed, or exposed |
 | Evidence owner | TinyPl0 repository owner and autonomous coordinator |
 | Run-state path | `specs/004-secure-development-hardening/autonomous-run-state.json` |
-| Run-state status | `Active` |
+| Run-state status | `Completed` after causal closeout |
 
 ## Resolved Project Policy
 
@@ -42,9 +42,9 @@ Concrete model identifiers remain in the local runner configuration and will be 
 | Clarify | Pass | Zero questions and no material ambiguity; `clarification-report.md`, phase `29eaf4e3…52e9217` |
 | Requirements checklist | Pass | `52/52`, zero material open items; phase `8be14b90…fb6cf8` |
 | Plan and plan review | Pass | Resumed review result `e6d8731d…d024cc`; 1 Critical, 3 High, and 6 Medium findings resolved; 0 open at these severities. |
-| Tasks | Pass | `tasks.md` contains T001–T110; T001–T084 are accepted and T085–T110 remain unchecked. |
+| Tasks | Pass | `tasks.md` contains and completes T001–T110 with conditional non-trigger evidence where declared. |
 | Analyze | Pass | Result `43b49122…aa9ac`, payload `0132d038…4f93b`; 1 Critical, 2 High, and 5 Medium findings resolved, 0 open. |
-| Implementation | Pass through T085 | The complete T085 documentation freeze, version `1.72.454.38`, and atomic evidence-freeze commit are present; T086–T110 stay pending. |
+| Implementation | Pass | Exact candidate `1526e64e34371e89aac6d4e6a6e41b5286270a36`; 275/275 tests; complete local, remote, merge, PostMerge, lifecycle, and retrospective evidence through T110. |
 
 ## Validation and Delivery Integrity
 
@@ -54,24 +54,29 @@ Every invoked validator will record its explicit repository root, exit status, e
 
 | Item | Result | Evidence |
 |---|---|---|
-| Push | Open | Feature branch after validated delivery set |
-| Pull request | Open | Provider URL after publication |
-| Required checks | Open | Exact reviewed head |
-| Actionable threads | Open | Provider review evidence |
-| Admin bypass | Authorized, not yet used | Only for the concrete policy gate after technical evidence passes |
-| Merge and main synchronization | Open | Merge commit and equal local/remote default-branch heads |
-| Post-merge actions | Open | Manifest-declared lifecycle and final validation |
+| Push | Completed | Remote feature head `1526e64e34371e89aac6d4e6a6e41b5286270a36` |
+| Pull request | Completed | `https://github.com/hindermath/TinyPl0/pull/72` |
+| Required checks | Completed | No provider-required status checks; all acceptance-mapped CI, security, docs, A11Y, baseline, and platform jobs passed on the exact head. |
+| Actionable threads | Completed | Gitleaks false-positive thread resolved; final open-thread count `0`; human Owner approval `issuecomment-5469201251`. |
+| Admin bypass | Authorized and used | Consumed only for the formal one-approval Self-Review policy after complete technical evidence and explicit human approval. |
+| Merge and main synchronization | Completed | Merge `e37acee1792911c0b0c2c2115edefe4bcd22f613`; local `main == origin/main == merge`; local and remote feature branches deleted. |
+| Post-merge actions | Completed | Schema-2.0 PostMerge evidence, terminal state, retrospective, byte-preserved intake archive, successor series and next-intake index. |
 
 ## Resume and Follow-up
 
-- Checkpoint commit: `8cce89e09ef624e9875d1ca86ea2c878ce8cdd54`
-- Last passing gate: current 15-target Series review is `Ready`.
-- Next exact action: execute the read-only T086 identity, slot, and accepted-
-  input revalidation at the committed T085 boundary. T086 is the first later
-  task and remains unchecked.
+- Product checkpoint: reviewed feature head
+  `1526e64e34371e89aac6d4e6a6e41b5286270a36`; merge checkpoint
+  `e37acee1792911c0b0c2c2115edefe4bcd22f613`.
+- Last passing gate: schema-2.0 PostMerge hash
+  `f64e2c4be74d13594a711af49e3e3058ce64ddf88b6fa2f145de8abc5c5645af`
+  plus validated successor series.
+- Next exact action: `$speckit-intake-series-status`; downstream execution
+  remains separate and uses the user's current serial-run authority.
 - Stop boundary: no new autonomous run starts at or after 04:30 Europe/Berlin on 2026-08-31; stop safely no later than 05:30.
-- Residual risk: open until classification and validation complete.
-- Out-of-scope follow-up: record only in this feature; do not start it implicitly.
+- Residual risk: the 80-% overall coverage target remains `TargetOpen` with
+  maintainer ownership; all mandatory thresholds passed.
+- Out-of-scope follow-up: `FND-HTTP-001` remains separate; no scope expansion
+  occurred in this run.
 
 ## Implementation Ledger — Local Tasks T001–T093
 
@@ -795,3 +800,91 @@ run.
   `dotnet build`, or `dotnet test` command was run during this continuation.
   No IDE version edit, commit, push, pull request, intake/series/lifecycle edit,
   or next-feature action occurred.
+
+## Final Exact-Head, Remote and Closeout Evidence — T086–T110
+
+### Final candidate and local proof
+
+- The canonical feature PR slot remained `72`. The exact reviewed candidate is
+  `1526e64e34371e89aac6d4e6a6e41b5286270a36` with IDE version
+  `1.72.464.42`; all three version fields are identical and Patch `464` equals
+  the exact-head commit count.
+- One final Release suite passed `275/275`, with zero failures and zero skips.
+  It included the 41 mandatory catalogue cases, VM, localisation, Golden,
+  traceability, and architecture guards without Golden regeneration.
+- Cobertura evidence reports 70.88 % overall line coverage against the
+  mandatory 70.23 % floor. Changed VM lines are 61/61 (100 %); changed VM
+  branches are 21/22 (95.45 %). The separate 80-% overall goal remains
+  `TargetOpen` with maintainer ownership and reevaluation on the next coverage
+  or source change.
+- The final security diff scan ID
+  `c82bebcb-42d1-42a7-9564-66ffca86210a` covered 18/18 surfaces and produced
+  zero reportable findings. `git diff --check`, delivery paths, and the clean
+  exact-head worktree passed.
+
+### Provider and human review proof
+
+- CI, Agent Secret Scan, Gitleaks, Homogeneity, Maintenance TUI, PowerShell
+  Static Analysis, all PowerShell/Bash baseline platforms, and Docs Pages
+  completed successfully on the exact head. PR-only Pages deployment and smoke
+  jobs were correctly skipped; they do not claim publication.
+- The optional Claude reviewer failed twice in the external model step without
+  comments, findings, or an approval. It was not retried again and was never
+  counted as success.
+- The Gitleaks `generic-api-key` report at the harmless
+  `PRODUCT-CRYPTO-DPIA-GATE-001` prose rationale was independently classified
+  as a false positive. The exact full-line allowlist from commit `29516b1` and
+  a full redacted 17-commit scan proved `no leaks found`; no duplicate
+  `.gitleaksignore` suppression was added. The PR thread was answered and
+  resolved.
+- Repository Owner `hindermath` explicitly approved the unchanged head in
+  `https://github.com/hindermath/TinyPl0/pull/72#issuecomment-5469201251` at
+  `2026-08-30T14:15:50Z`. This is the independent human decision required by
+  T100. GitHub could not store author self-approval as formal `APPROVED`.
+
+### Schema-2.0 evidence and merge decision
+
+- PreMerge snapshot `e3eba5cc-4859-435f-84ff-29198f7f91a0` contains exactly
+  31 Primary rows: 25 `Applicable` Pass and six reasoned non-executing `N/A`.
+  Its normalized hash is
+  `b7302d0112e787a8ded3d6389c33353c2fd09a821294274af755537ece21f90e`;
+  it remained temporary and made no merge claim.
+- Ruleset `13093926` required one approving review and exposed RepositoryRole
+  `5` with `always` bypass. The recorded decision was `AuthorizedRequired`:
+  all technical, risk, thread, Head, and human-review evidence was complete;
+  only the provider's formal Self-Review policy remained.
+- `gh pr merge 72 --merge --delete-branch --admin` merged only reviewed head
+  `1526e64e34371e89aac6d4e6a6e41b5286270a36` at
+  `2026-08-30T14:23:07Z`. Merge commit is
+  `e37acee1792911c0b0c2c2115edefe4bcd22f613`; admin bypass was consumed only
+  for that policy bit.
+- `gh repo sync` was attempted and correctly reported that the repository is
+  not a fork. The lossless local fallback fetched `origin/main` and
+  fast-forwarded local `main`; local main, `origin/main`, and the PR merge
+  commit then matched exactly. Local and remote feature branches were deleted.
+- PostMerge snapshot `a3f3a026-91bd-4f18-99a2-de4726cd31f9` binds the accepted
+  PreMerge hash, reviewed head, merge commit, sync, cleanup, and no product
+  delta. It validates with normalized hash
+  `f64e2c4be74d13594a711af49e3e3058ce64ddf88b6fa2f145de8abc5c5645af`
+  and `mergeAuthorized: true`.
+
+### Causal lifecycle and retrospective
+
+- The fulfilled intake moved byte-for-byte to
+  `requirements/intakes/archive/Lastenheft_Secure-Development-Hardening.004-secure-development-hardening.md`;
+  its normalized SHA-256 remains
+  `18c957e4bcbe3e9e975f11ace8d1d2c81c49064f911f607480a09e14774669de`.
+- Prior manifest and receipt were archived byte-identically under
+  `requirements/intakes/series-archive/tinypl0-delivery/20260830T142658Z/`.
+  The successor manifest keeps 15 targets, five roots, ten binding edges and
+  all ordering/evidence paths. Target 004 is `Completed`; only the next serial
+  Sandbox target is declared `Eligible`.
+- PowerShell and Bash manifest/receipt validators passed on the successor.
+  `Pflichtenheft.md` and both order views name the Sandbox intake consistently.
+- The delivery-set validator now preserves exactly two semantic Markdown
+  hard-break spaces while continuing to reject stray or excessive trailing
+  whitespace; positive and negative PowerShell/Bash fixtures pass.
+- `autonomous-run-retrospective.md` and `retrospective-handoff.md` classify seven
+  observations, promote only portable deterministic rules, and grant no
+  downstream authority. No product logic, public API, secret, Sandbox content,
+  or follow-up feature was changed in this closeout.

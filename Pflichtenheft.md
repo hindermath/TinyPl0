@@ -24,7 +24,7 @@ intakes, archives, history, and the executable intake series.*
 
 ## Nächster Intake / Next Intake
 
-`requirements/intakes/active/Lastenheft_Secure-Development-Hardening.md` ist
+`requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md` ist
 der bevorzugte nächste Intake. Diese Festlegung startet keinen Spec-Kit-Lauf
 und erteilt keine Remote- oder Merge-Berechtigung.
 

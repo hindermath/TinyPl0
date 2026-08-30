@@ -1,9 +1,8 @@
 # Autonome Bereitschaftscheckliste / Autonomous Run Readiness Checklist
 
 **Zweck / Purpose**: Die installierte autonome Readiness-Vorlage auf den
-aktuellen T085-Dokumentationsstand der Implement-Phase anwenden. / Apply the
-installed autonomous readiness template to the current T085 documentation
-boundary of the Implement phase.
+terminalen MergeAndSync-Closeout anwenden. / Apply the installed autonomous
+readiness template to the terminal MergeAndSync closeout.
 
 **Erstellt / Created**: 2026-08-30
 **Feature / Feature**: [spec.md](../spec.md)
@@ -14,11 +13,8 @@ boundary of the Implement phase.
 **Vorlage / Template**:
 `.specify/presets/autonomous-run-governance/templates/autonomous-run-readiness-checklist-template.md`
 
-`[x]` bedeutet, dass die konkrete Evidence an dieser Phasengrenze bereits
-vorliegt. `[ ]` bezeichnet eine erklärte spätere Schranke oder einen fehlenden
-Beleg; ein solcher Punkt darf nicht als Erfolg ausgelegt werden. / `[x]` means
-the concrete evidence already exists at this phase boundary. `[ ]` is a declared
-later gate or missing proof and must not be treated as success.
+`[x]` bedeutet, dass die konkrete Evidence am terminalen Closeout vorliegt. /
+`[x]` means that concrete evidence exists at terminal closeout.
 
 ## Autorität und Scope / Authority and Scope
 
@@ -41,12 +37,11 @@ later gate or missing proof and must not be treated as success.
   Run-ID und Level-2-Registry als Planungsgrundlage überein? / Do constitution,
   guidance, feature identity, branch, run ID, and registry agree? Evidence:
   bestandener Plan Review ohne offene Critical/High/Medium-Befunde.
-- [x] CHK005 Ist der feature-lokale Run-State Schema 1.1, `Active`, Stage
-  `Implement`, mit laufender Implement-Phase, `84/110` und unverändertem
-  Checkpoint `8cce89e09ef624e9875d1ca86ea2c878ce8cdd54` vorhanden? / Is the
-  feature-local schema-1.1 run state active at Implement with the running
-  implementation phase, `84/110`, and the recorded checkpoint? Evidence:
-  `autonomous-run-state.json`, T085 evidence freeze.
+- [x] CHK005 Ist der feature-lokale Run-State Schema 1.1, `Completed`, Stage
+  `Retrospective`, mit `110/110` und Merge-Checkpoint
+  `e37acee1792911c0b0c2c2115edefe4bcd22f613` vorhanden? / Is the
+  feature-local schema-1.1 run state terminal at Retrospective with `110/110`
+  and the merge checkpoint? Evidence: `autonomous-run-state.json`, T108–T110.
 - [x] CHK006 Ist kein `PausedByUser`-Stop aktiv und ist die frühere unsichere
   Plan-Review-Operation durch ein neues validiertes Plan-Review-Resultat
   kausal aufgelöst? / Is no user pause active and was the prior uncertain plan
@@ -75,26 +70,23 @@ later gate or missing proof and must not be treated as success.
   Evidence: `plan-review.md`, `gate-requirements.json`, `tasks.md`.
 - [x] CHK011 Hat die Analyze-Phase null offene Critical-/High-/Medium-Findings?
   / Did Analyze converge with zero open Critical, High, or Medium findings?
-  Evidence: `specs/004-secure-development-hardening/analyze-report.md`,
-  Payload-SHA-256
-  `0132d0389942d8c718509013141529753abf1dd39cd9d509ae0de7e91564f93b`.
-- [ ] CHK012 Sind alle T001–T110 abgeschlossen oder mit der im jeweiligen Task
+  Evidence: historische Analyze-Result-Datei plus read-only Resume-Deltaaudit;
+  28/28 FR, 14/14 SC, 110 Tasks, null neue Befunde.
+- [x] CHK012 Sind alle T001–T110 abgeschlossen oder mit der im jeweiligen Task
   ausdrücklich zulässigen Nicht-Trigger-Evidence disponiert? / Are all tasks
-  complete or conditionally evidenced? Pending implementation.
+  complete or conditionally evidenced? Evidence: `tasks.md`, 110/110.
 
 ## Beweis und Validierung / Proof and Validation
 
-- [ ] CHK013 Enthält das explizite finale Delivery-Set jede beabsichtigte
+- [x] CHK013 Enthält das explizite finale Delivery-Set jede beabsichtigte
   unversionierte Datei und keine fremde oder ignorierte Runtime-Evidence? /
-  Does the final delivery set contain all and only intended files? Pending T006
-  and T093.
-- [x] CHK014 Besitzt jede abgeschlossene Routing-Phase ein gültiges
-  strukturiertes semantisches Resultat; wird Exit 0 nie allein als Abschluss
-  gewertet? / Does every completed routed phase have a valid semantic result?
-  Evidence: unveränderte historische Result-Dateihashes für Specify, Plan,
-  Plan Review und Tasks; aktuelle semantische Clarify-/Checklist-Validierung;
-  gültiges `analyze.result.json` mit normalisiertem SHA-256
-  `6e82907ab9c775f4dafd07cd7dea05847eafa93ac378a28e145578778b21f5c9`.
+  Does the final delivery set contain all and only intended files? Evidence:
+  exact-head delivery diff with 77 paths and clean runtime boundary.
+- [x] CHK014 Sind historische Routing-Resultate unverändert und wurde aktueller
+  Payload-Drift separat revalidiert, ohne Exit 0 allein als Abschluss zu
+  werten? / Are historical routing results immutable and was current payload
+  drift revalidated separately? Evidence: Run-State-Validator, read-only
+  Analyze-Deltaaudit und nach Refresh `Aligned`es Codex-Routing.
 - [x] CHK015 Verlangen neue Merge-Entscheidungen temporäre Schema-2.0-
   `PreMerge`-Evidence und behandeln Schema 1.0 nur als historischen
   Phasennachweis? / Do new merge decisions require schema-2.0 PreMerge
@@ -133,15 +125,15 @@ later gate or missing proof and must not be treated as success.
   artefacts searched for executable consumers before skipping gates? Evidence:
   assessment schema, Documentation Impact validator, generated API metadata,
   A11Y harness and Statistics Profile 2 renderer were reconciled through T084.
-- [ ] CHK024 Bestand der exakte beabsichtigte Kandidat `git diff --check` und
+- [x] CHK024 Bestand der exakte beabsichtigte Kandidat `git diff --check` und
   Delivery-Set-Validierung? / Did the exact candidate pass diff and delivery
-  checks? Pending T092–T093.
-- [ ] CHK025 Wurden Staging, untracked/unstaged Zustand und fremde Arbeit ohne
+  checks? Evidence: exact head `1526e64e…`, clean diff and delivery set.
+- [x] CHK025 Wurden Staging, untracked/unstaged Zustand und fremde Arbeit ohne
   Verlust abgeglichen? / Were staged, untracked, unstaged, and unrelated work
-  reconciled? Pending T093/T103.
-- [ ] CHK026 Sind alle ausgelösten Gates grün und alle übersprungenen Gates mit
+  reconciled? Evidence: clean feature head before push and merge.
+- [x] CHK026 Sind alle ausgelösten Gates grün und alle übersprungenen Gates mit
   Begründung und Wiedervorlage versehen? / Are triggered and skipped gates
-  properly evidenced? Pending implementation.
+  properly evidenced? Evidence: 25 Applicable Pass, sechs begründete N/A.
 - [x] CHK027 Ist jedes Acceptance-Gate vor Implementierung mit stabiler ID,
   Scope, exakten Befehlen und Runner-/Plattformtokens in
   `gate-requirements.json` erklärt? / Was every gate declared before
@@ -154,55 +146,57 @@ later gate or missing proof and must not be treated as success.
   `MergeAndSync`-Modus und erst nach unveränderlichem lokalem Kandidaten? / Do
   remote tasks exist only for the authorised delivery mode? Evidence:
   `tasks.md` Phase 9.
-- [ ] CHK029 Bestehen Required Checks und unabhängige Review am exakten PR-Head?
-  / Do required checks and review pass on exact head? Pending T097–T100.
-- [ ] CHK030 Ist jedes acceptance-spezifische Gate dem tatsächlich
+- [x] CHK029 Bestehen Required Checks und unabhängige Review am exakten PR-Head?
+  / Do required checks and review pass on exact head? Evidence: grüne
+  acceptance-spezifische Jobs und Owner-Approval `issuecomment-5469201251`.
+- [x] CHK030 Ist jedes acceptance-spezifische Gate dem tatsächlich
   ausgeführten Workflow, Job, Runner und Befehl zugeordnet? / Is every gate
-  mapped to actual provider execution? Pending T097–T103.
-- [ ] CHK031 Bindet temporäre PreMerge-Evidence den aktuellen Requirements-
+  mapped to actual provider execution? Evidence: PreMerge entries 31/31.
+- [x] CHK031 Bindet temporäre PreMerge-Evidence den aktuellen Requirements-
   Hash und exakten reviewed Head und besteht der Validator? / Does temporary
-  PreMerge evidence validate? Pending T102–T103.
-- [ ] CHK032 Besitzt jede Gate-ID genau eine Primary-Zeile, verweisen
+  PreMerge evidence validate? Evidence: normalized hash `b7302d…`.
+- [x] CHK032 Besitzt jede Gate-ID genau eine Primary-Zeile, verweisen
   Supplemental-Zeilen darauf und bleiben N/A-Einträge begründet/non-executing?
-  / Does each gate have exactly one primary row? Pending T102–T103.
-- [ ] CHK033 Wurden Commands und Runner aus Workflows/Logs gelesen statt aus
+  / Does each gate have exactly one primary row? Evidence: 31/31 Primary.
+- [x] CHK033 Wurden Commands und Runner aus Workflows/Logs gelesen statt aus
   grünen Namen abgeleitet? / Were commands and runners read from definitions
-  and logs? Pending T097–T103.
-- [ ] CHK034 Bleibt exact-head PreMerge-Evidence temporär und dadurch
+  and logs? Evidence: mapped workflow definitions and provider logs.
+- [x] CHK034 Bleibt exact-head PreMerge-Evidence temporär und dadurch
   selbstnichtinvalidierend? / Does exact-head PreMerge evidence remain
-  temporary? Pending T102–T103.
-- [ ] CHK035 Wird kein grüner Aggregat- oder Plattformname für nicht
+  temporary? Evidence: `/private/tmp`, never committed.
+- [x] CHK035 Wird kein grüner Aggregat- oder Plattformname für nicht
   ausgeführten fachlichen Scope angerechnet? / Is no aggregate name credited
-  for unexecuted scope? Pending T097–T103.
-- [ ] CHK036 Sind alle Review-Threads erledigt und fehlende Reviews als fehlend
+  for unexecuted scope? Evidence: every row carries executed command and runner.
+- [x] CHK036 Sind alle Review-Threads erledigt und fehlende Reviews als fehlend
   erfasst? / Are all review threads resolved and missing review recorded as
-  missing? Pending T100.
-- [ ] CHK037 Sind doppelte Event-Runs ohne unautorisierte Cancellation
+  missing? Evidence: final open-thread count zero; unavailable automation was
+  recorded as missing until human approval arrived.
+- [x] CHK037 Sind doppelte Event-Runs ohne unautorisierte Cancellation
   klassifiziert? / Are duplicate provider runs classified without
-  unauthorised cancellation? Pending provider execution.
-- [ ] CHK038 Ist ein möglicher Admin-Bypass separat aktuell autorisiert,
+  unauthorised cancellation? Evidence: duplicate runs retained and classified.
+- [x] CHK038 Ist ein möglicher Admin-Bypass separat aktuell autorisiert,
   policy-belegt, kein Reviewersatz und als benutzt oder `AuthorizedNotUsed`
   dokumentiert? / Is any bypass separately evidenced and narrowly used?
-  Pending T104–T105.
+  Evidence: `AuthorizedRequired`, Ruleset 13093926, Owner approval, Admin merge.
 - [x] CHK039 Ist ein kausaler PostMerge-Abschluss vorbenannt, ohne leere
   Closeout-/Retrospektiven-PR? / Is causal closeout pre-named without empty
   PRs? Evidence: T107–T110.
-- [ ] CHK040 Sind Merge, Branch-Cleanup und Default-Branch-Sync bewiesen? / Are
-  merge, cleanup, and default-branch sync proven? Pending T105–T106.
-- [ ] CHK041 Belegt Schema-1.1-Closeout Merge/Publication, Main-Sync,
+- [x] CHK040 Sind Merge, Branch-Cleanup und Default-Branch-Sync bewiesen? / Are
+  merge, cleanup, and default-branch sync proven? Evidence: merge `e37acee1…`,
+  equal local/remote main and deleted feature branches.
+- [x] CHK041 Belegt Schema-1.1-Closeout Merge/Publication, Main-Sync,
   PostMerge-Aktionen und Final Validation unabhängig? / Does schema-1.1
-  closeout prove all four fields independently? Pending T107–T108.
-- [ ] CHK042 Wird Gesamtstatus `Completed` erst nach allen vier terminalen
+  closeout prove all four fields independently? Evidence: four `Completed`
+  closeout fields and PostMerge hash `f64e2c…`.
+- [x] CHK042 Wird Gesamtstatus `Completed` erst nach allen vier terminalen
   Closeout-Feldern gesetzt? / Is Completed deferred until terminal closeout?
-  Pending T108.
+  Evidence: terminal state written only after T105–T107.
 
 ## Lernen und Abschluss / Learning and Finish
 
 - [x] CHK043 Sind aktueller Resume-Stand und nächste exakte Aktion erklärt? /
-  Are the current resume state and exact next action recorded? Evidence: T001–
-  T084 are complete; the T085 documentation freeze is present. The exact next
-  action is the orchestrator-owned alignment to `1.72.454.38`, evidence-freeze
-  commit, and atomic T085 checkbox. T085 and later remain unchecked.
+  Are the current resume state and exact next action recorded? Evidence:
+  terminal Run-State; next action `$speckit-intake-series-status`.
 - [x] CHK044 Verlangt ein künftiger bewusster Stopp eine sichere Grenze und
   inferiert keinen Commit, Push, Rollback, Merge oder Process-Kill? / Does a
   future stop preserve the safe-boundary contract? Evidence:
@@ -210,30 +204,22 @@ later gate or missing proof and must not be treated as success.
 - [x] CHK045 Verlangen alle out-of-scope Findings Owner, Evidence-Ziel und
   Wiedervorlage, ohne sie als siebtes Paket zu implementieren? / Do out-of-scope
   findings remain owned follow-ups? Evidence: T013, T043–T046, T065.
-- [ ] CHK046 Trennt die abgeschlossene Retrospektive portable Regeln von
+- [x] CHK046 Trennt die abgeschlossene Retrospektive portable Regeln von
   TinyPl0-Spezifika? / Does the retrospective separate portable learning?
-  Pending T109.
+  Evidence: `autonomous-run-retrospective.md`, `retrospective-handoff.md`.
 - [x] CHK047 Verbietet die Task-Liste einen leeren Retrospektiven-Branch oder
   PR? / Does the task list forbid an empty retrospective PR? Evidence: T109.
 - [x] CHK048 Bleibt der nächste Intake ausdrücklich ungestartet und benötigt
   neue Nutzerautorität? / Does the next intake remain unstarted? Evidence:
-  FR-027/FR-028, T008, T110.
+  FR-027/FR-028, T008, T110; the user's later serial-run authority is evaluated
+  only after the series-status boundary.
 
-## Ergebnis an der T085-Dokumentationsgrenze / Result at the T085 Documentation Boundary
+## Ergebnis am terminalen Closeout / Result at Terminal Closeout
 
-- **Bereits belegt / Proven now**: `29/48`
-- **Spätere oder offene Schranken / Later or open gates**: `19/48`
-- **Tasks-Artefakt / Tasks artefact**: T001–T110 vorhanden und
-  abhängigkeitsgeordnet; das historische `tasks.result.json` bleibt
-  hashgebunden, und das gültige Analyze-Resultat bindet die minimale finale
-  Task-Remediation. / T001–T110 exist and are dependency ordered; the
-  historical Tasks result remains hash-bound, and the valid Analyze result
-  binds the minimal final task remediation.
-- **Nächste erlaubte Aktion / Next permitted action**: Die read-only T086-
-  Identitäts-, Slot- und Accepted-Input-Revalidierung läuft am committeten
-  T085-Evidence-Freeze. Exact-head-Regression, Coverage, Delivery-Set,
-  Provider, Merge, Closeout und Retrospektive bleiben für T086–T110 offen. /
-  The read-only T086 identity, slot, and accepted-input revalidation runs at
-  the committed T085 evidence freeze. Exact-head regression, coverage,
-  delivery-set, provider, merge, closeout, and retrospective checks remain
-  open for T086–T110.
+- **Belegt / Proven**: `48/48`
+- **Offene Schranken / Open gates**: `0/48`
+- **Tasks-Artefakt / Tasks artefact**: T001–T110 vollständig und
+  abhängigkeitsgeordnet abgeschlossen; historische Phasenergebnisse bleiben
+  unverändert, aktuelle Resume-/Closeout-Evidence ist separat kausal gebunden.
+- **Nächste erlaubte Aktion / Next permitted action**:
+  `$speckit-intake-series-status`; kein Folgefeature wurde im 004-Lauf gestartet.

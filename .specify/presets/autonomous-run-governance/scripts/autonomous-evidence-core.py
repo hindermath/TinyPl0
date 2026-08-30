@@ -97,6 +97,9 @@ def validate_text_whitespace(path: Path, label: str) -> None:
     except UnicodeDecodeError as exc:
         fail("AEI006", f"{label} is neither UTF-8 text nor detected binary: {exc}")
     for number, line in enumerate(text.replace("\r\n", "\n").replace("\r", "\n").split("\n"), 1):
+        if path.suffix.lower() in {".md", ".markdown"} and line.endswith("  ") and not line.endswith("   "):
+            # Two terminal spaces are a semantic Markdown hard break, not stray whitespace.
+            continue
         if line.endswith((" ", "\t")):
             fail("AEI007", f"trailing whitespace: {label}:{number}")
 

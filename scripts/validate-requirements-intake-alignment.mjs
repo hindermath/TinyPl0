@@ -41,9 +41,8 @@ export function validate(options = {}) {
     ? config.bindingDependencyCount
     : 10;
   const canonicalIndex = config.artifactNaming?.canonicalIndex ?? config.canonicalIndex;
-  const preferredNext = config.schemaVersion === "1.0"
-    ? config.preferredNext
-    : "requirements/intakes/active/Lastenheft_Secure-Development-Hardening.md";
+  const preferredNext = config.preferredNext ??
+    "requirements/intakes/active/Lastenheft_Secure-Development-Hardening.md";
   const baselines = [
     ["TP-BASELINE-1", "requirements/baseline/Pflichtenheft_PL0_CSharp_DotNet10.pre-intake-split.2026-07-26.md"],
     ["TP-BASELINE-2", "requirements/baseline/Pflichtenheft_IDE.pre-intake-split.2026-07-26.md"],
