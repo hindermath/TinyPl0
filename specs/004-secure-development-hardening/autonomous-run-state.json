@@ -28,8 +28,8 @@
   ],
   "tasks": {
     "path": "specs/004-secure-development-hardening/tasks.md",
-    "sha256": "f725360f7bf65d3352260783a564e9b44dc4dbf1ec6ad498cbcaaf4e0119ec0b",
-    "completed": 48,
+    "sha256": "dbbe091432e42fec9af1a285b22f212ce83e3a3aff0c09de3c917c5c5bfd6593",
+    "completed": 49,
     "total": 110
   },
   "routing": {
@@ -178,8 +178,8 @@
       }
     ]
   },
-  "lastPassingGate": "Implementation tasks T001-T048 completed: all six conditional packages are verified, PR slot 72 is revalidated, and the three VM red-test sources are hash-bound before product implementation.",
-  "nextExactAction": "As orchestrator, validate and commit the exact intended delivery set with IDE version 1.72.448.33, then run the T049 budget red filter.",
+  "lastPassingGate": "T049 budget red gate passed on version 1.72.449.34: exactly two filtered VM tests failed only because the five-parameter instruction-budget option is absent.",
+  "nextExactAction": "Validate and commit version 1.72.450.35 with the T049 evidence, then run only the T050 invalid-options red filter.",
   "lastOperation": {
     "kind": "ModelRoutingPhase:implement",
     "state": "NeedsRevalidation",
