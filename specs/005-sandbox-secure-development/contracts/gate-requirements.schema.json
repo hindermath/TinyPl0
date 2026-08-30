@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hindermath.example/TinyPl0/specs/005/gate-requirements.schema.json",
+  "title": "TinyPl0 Sandbox Assessment Gate Requirements",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "featurePath", "declaredAt", "gates"],
+  "properties": {
+    "schemaVersion": { "const": "2.0" },
+    "featurePath": { "const": "specs/005-sandbox-secure-development" },
+    "declaredAt": { "type": "string", "format": "date-time" },
+    "gates": {
+      "type": "array",
+      "minItems": 12,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "gateId",
+          "applicability",
+          "requiredScope",
+          "exactCommands",
+          "requiredCommandTokens",
+          "requiredRunnerOrPlatformTokens",
+          "evidencePath",
+          "rationale",
+          "reevaluationTrigger"
+        ],
+        "properties": {
+          "gateId": { "type": "string", "pattern": "^SBX-[A-Z0-9-]+-GATE-[0-9]{3}$" },
+          "applicability": { "enum": ["Applicable", "N/A", "Open"] },
+          "requiredScope": { "type": "string", "minLength": 20 },
+          "exactCommands": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+          "requiredCommandTokens": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+          "requiredRunnerOrPlatformTokens": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+          "evidencePath": { "type": "string", "minLength": 1 },
+          "rationale": { "type": "string", "minLength": 10 },
+          "reevaluationTrigger": { "type": "string", "minLength": 10 }
+        }
+      }
+    }
+  }
+}

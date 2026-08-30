@@ -107,6 +107,13 @@
       "labelDe": "Serienreview nach 004",
       "labelEn": "Series review after 004",
       "netLines": 141
+    },
+    {
+      "slot": 14,
+      "id": "005-sandbox-assessment",
+      "labelDe": "Sandbox-Bewertung 005",
+      "labelEn": "Sandbox assessment 005",
+      "netLines": 2446
     }
   ],
   "excludedPaths": [
