@@ -39,6 +39,16 @@ useDefault = true
 
 [allowlist]
 description = "False positives in secure-development teaching documentation (illustrative example patterns, not real secrets)"
+# DE: Die exakte N/A-Begründung im Gate-Vertrag nennt verbotene Produktmerkmale
+#     und ähnelt dadurch einem generischen API-Schlüssel. Nur diese harmlose
+#     vollständige Textzeile wird zusätzlich freigegeben.
+# EN: The exact N/A rationale in the gate contract names prohibited product
+#     features and therefore resembles a generic API key. Only this harmless
+#     complete prose line is additionally allowlisted.
+regexTarget = "line"
+regexes = [
+  '''The product has no keys, passwords, encryption/signature feature, account, telemetry, profiling, or personal-data processing in scope\.''',
+]
 # DE: Nur Markdown-Lehrmaterial unter docs/secure-development/ ausnehmen — echter
 #     Code/echte Konfiguration außerhalb dieses Pfads wird weiterhin voll gescannt.
 # EN: Only exempt Markdown teaching material under docs/secure-development/ — real

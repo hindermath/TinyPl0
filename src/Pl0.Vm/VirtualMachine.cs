@@ -5,7 +5,9 @@ using Pl0.Core;
 namespace Pl0.Vm;
 
 /// <summary>
-/// Executes PL/0 P-Code instructions on a stack-based virtual machine.
+/// Führt PL/0-P-Code auf einer stackbasierten virtuellen Maschine aus.
+///
+/// Executes PL/0 P-Code on a stack-based virtual machine.
 /// </summary>
 public sealed class VirtualMachine
 {
@@ -36,12 +38,27 @@ public sealed class VirtualMachine
     private CultureInfo _culture = CultureInfo.InvariantCulture;
 
     /// <summary>
-    /// Runs a program and returns the execution result.
+    /// Führt ein Programm innerhalb der validierten Stack- und Budgetgrenzen aus.
+    ///
+    /// Runs a program within the validated stack and instruction-budget limits.
     /// </summary>
-    /// <param name="program">P-Code instructions to execute.</param>
-    /// <param name="io">Optional I/O implementation.</param>
-    /// <param name="options">Optional VM options.</param>
-    /// <returns>The execution result.</returns>
+    /// <param name="program">
+    /// Auszuführende P-Code-Instruktionen. / P-Code instructions to execute.
+    /// </param>
+    /// <param name="io">
+    /// Optionale Ein-/Ausgabeimplementierung. / Optional input/output implementation.
+    /// </param>
+    /// <param name="options">
+    /// Optionale VM-Optionen; ungültige Grenzen werden als Diagnosen zurückgegeben.
+    /// / Optional VM options; invalid limits are returned as diagnostics.
+    /// </param>
+    /// <returns>
+    /// Das Ausführungsergebnis einschließlich sicherer Diagnosen.
+    /// / The execution result, including safe diagnostics.
+    /// </returns>
+    /// <exception cref="CultureNotFoundException">
+    /// Der konfigurierte Sprachcode ist ungültig. / The configured language code is invalid.
+    /// </exception>
     public VmExecutionResult Run(
         IReadOnlyList<Instruction> program,
         IPl0Io? io = null,
@@ -52,12 +69,19 @@ public sealed class VirtualMachine
         _rm = options.Messages ?? Pl0VmMessages.ResourceManager;
         _culture = CultureInfo.GetCultureInfo(options.Language);
 
+        var configurationDiagnostics = VirtualMachineOptionsValidator.Validate(options, _rm, _culture);
+        if (configurationDiagnostics.Count > 0)
+        {
+            return new VmExecutionResult([], 0, configurationDiagnostics);
+        }
+
         var diagnostics = new List<VmDiagnostic>();
         var stack = new int[options.StackSize + 1];
 
         var p = 0;
         var b = 1;
         var t = 0;
+        var executedInstructions = 0;
         stack[1] = 0;
         stack[2] = 0;
         stack[3] = 0;
@@ -75,8 +99,19 @@ public sealed class VirtualMachine
                 break;
             }
 
+            if (executedInstructions >= options.InstructionBudget)
+            {
+                diagnostics.Add(
+                    VirtualMachineOptionsValidator.CreateInstructionBudgetExceededDiagnostic(_rm, _culture));
+                break;
+            }
+
             var instruction = program[p];
             p++;
+
+            // Der gemeinsame Zählpunkt liegt vor möglichen Seiteneffekten der Instruktion.
+            // The shared counting point precedes any possible instruction side effect.
+            executedInstructions++;
 
             switch (instruction.Op)
             {

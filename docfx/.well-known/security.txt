@@ -1,0 +1,4 @@
+Contact: https://github.com/Hindermann/TinyPl0/security/advisories/new
+Expires: 2027-08-29T23:59:59Z
+Preferred-Languages: de, en
+Canonical: https://hindermann.github.io/TinyPl0/.well-known/security.txt

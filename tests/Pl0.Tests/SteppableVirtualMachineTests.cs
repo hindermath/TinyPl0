@@ -5,6 +5,9 @@ namespace Pl0.Tests;
 
 public sealed class SteppableVirtualMachineTests
 {
+    private const int InstructionBudgetDiagnosticCode = 207;
+    private const int StackConfigurationDiagnosticCode = 208;
+
     [Fact]
     public void Initialize_Sets_Start_Registers_And_Running_State()
     {
@@ -123,5 +126,97 @@ public sealed class SteppableVirtualMachineTests
         Assert.Empty(result.Diagnostics);
         Assert.Equal([4, 3, 2, 1], io.Output);
         Assert.InRange(steps, 1, 999);
+    }
+
+    [Fact]
+    public void Instruction_Budget_Stops_Before_N_Plus_One()
+    {
+        var io = new BufferedPl0Io();
+        var vm = new SteppableVirtualMachine();
+        vm.Initialize(
+        [
+            new Instruction(Opcode.Lit, 0, 7),
+            new Instruction(Opcode.Opr, 0, 15),
+            new Instruction(Opcode.Jmp, 0, 0)
+        ], io, CreateOptions(stackSize: 500, instructionBudget: 2));
+
+        var first = vm.Step();
+        var second = vm.Step();
+        var blockedThird = vm.Step();
+        var repeated = vm.Step();
+
+        Assert.Equal(VmStepStatus.Running, first.Status);
+        Assert.Equal(VmStepStatus.Running, second.Status);
+        Assert.Equal([7], io.Output);
+        Assert.Equal(VmStepStatus.Error, blockedThird.Status);
+        Assert.Equal(InstructionBudgetDiagnosticCode, Assert.Single(blockedThird.Diagnostics).Code);
+        Assert.Equal(VmStepStatus.Error, repeated.Status);
+        Assert.Single(repeated.Diagnostics);
+        Assert.Equal(blockedThird.State, repeated.State);
+    }
+
+    [Fact]
+    public void Instruction_Budget_Allows_Halt_At_Exact_N()
+    {
+        var vm = new SteppableVirtualMachine();
+        vm.Initialize(
+        [
+            new Instruction(Opcode.Lit, 0, 7),
+            new Instruction(Opcode.Opr, 0, 0)
+        ], options: CreateOptions(stackSize: 500, instructionBudget: 2));
+
+        Assert.Equal(VmStepStatus.Running, vm.Step().Status);
+        Assert.Equal(VmStepStatus.Halted, vm.Step().Status);
+    }
+
+    [Fact]
+    public void Invalid_Options_Return_Diagnostic_Before_Allocation()
+    {
+        int[] invalidStackSizes = [-1, 0, 1, 2, 1_000_001, int.MaxValue];
+        foreach (var stackSize in invalidStackSizes)
+        {
+            var vm = new SteppableVirtualMachine();
+            var exception = Record.Exception(() => vm.Initialize(
+                [new Instruction(Opcode.Opr, 0, 0)],
+                options: CreateOptions(stackSize, instructionBudget: 1)));
+
+            Assert.Null(exception);
+            Assert.False(vm.IsRunning);
+            Assert.Empty(vm.State.Stack);
+            var first = vm.Step();
+            var repeated = vm.Step();
+            Assert.Equal(VmStepStatus.Error, first.Status);
+            Assert.Equal(StackConfigurationDiagnosticCode, Assert.Single(first.Diagnostics).Code);
+            Assert.Single(repeated.Diagnostics);
+        }
+
+        foreach (var budget in new[] { 0, -1 })
+        {
+            var vm = new SteppableVirtualMachine();
+            vm.Initialize(
+                [new Instruction(Opcode.Opr, 0, 0)],
+                options: CreateOptions(stackSize: 500, instructionBudget: budget));
+
+            Assert.Empty(vm.State.Stack);
+            var result = vm.Step();
+            Assert.Equal(VmStepStatus.Error, result.Status);
+            Assert.Equal(InstructionBudgetDiagnosticCode, Assert.Single(result.Diagnostics).Code);
+        }
+
+        var bothInvalidVm = new SteppableVirtualMachine();
+        bothInvalidVm.Initialize(
+            [new Instruction(Opcode.Opr, 0, 0)],
+            options: CreateOptions(stackSize: 2, instructionBudget: 0));
+        Assert.Equal(
+            [StackConfigurationDiagnosticCode, InstructionBudgetDiagnosticCode],
+            bothInvalidVm.Step().Diagnostics.Select(diagnostic => diagnostic.Code));
+    }
+
+    private static VirtualMachineOptions CreateOptions(int stackSize, int instructionBudget, string language = "de")
+    {
+        var constructor = typeof(VirtualMachineOptions).GetConstructors()
+            .SingleOrDefault(candidate => candidate.GetParameters().Length == 5);
+        Assert.NotNull(constructor);
+        return (VirtualMachineOptions)constructor.Invoke([stackSize, false, language, null, instructionBudget]);
     }
 }

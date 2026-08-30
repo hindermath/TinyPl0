@@ -51,4 +51,16 @@
   <data name="Vm_E206_DivisionByZero" xml:space="preserve">
     <value>Division durch null.</value>
   </data>
+  <data name="Vm_E207_InvalidInstructionBudget" xml:space="preserve">
+    <value>Das VM-Instruktionsbudget muss größer als 0 sein.</value>
+    <comment>Code 207 ist der erste freie VM-Code nach 206 und bleibt für Budgetdiagnosen reserviert.</comment>
+  </data>
+  <data name="Vm_E207_InstructionBudgetExceeded" xml:space="preserve">
+    <value>Das VM-Instruktionsbudget ist erreicht. Die nächste Instruktion wurde nicht ausgeführt.</value>
+    <comment>Code 207 bezeichnet dieselbe Budgetursache in Batch- und Step-VM.</comment>
+  </data>
+  <data name="Vm_E208_InvalidStackSize" xml:space="preserve">
+    <value>Die VM-Stackgröße muss zwischen 3 und 1.000.000 liegen.</value>
+    <comment>Code 208 folgt kollisionsfrei auf 207 und bleibt für ungültige Stackoptionen reserviert.</comment>
+  </data>
 </root>

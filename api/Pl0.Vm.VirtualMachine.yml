@@ -29,15 +29,19 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VirtualMachine.cs
-      branch: codex/003-constitution-change
+      branch: codex/004-secure-development-hardening
       repo: https://github.com/hindermath/TinyPl0.git
     id: VirtualMachine
     path: src/Pl0.Vm/VirtualMachine.cs
-    startLine: 9
+    startLine: 11
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
-  summary: Executes PL/0 P-Code instructions on a stack-based virtual machine.
+  summary: >-
+    Führt PL/0-P-Code auf einer stackbasierten virtuellen Maschine aus.
+
+
+    Executes PL/0 P-Code on a stack-based virtual machine.
   example: []
   syntax:
     content: public sealed class VirtualMachine
@@ -65,11 +69,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VirtualMachine.cs
-      branch: codex/003-constitution-change
+      branch: codex/004-secure-development-hardening
       repo: https://github.com/hindermath/TinyPl0.git
     id: RuntimeErrorExitCode
     path: src/Pl0.Vm/VirtualMachine.cs
-    startLine: 14
+    startLine: 16
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -94,11 +98,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VirtualMachine.cs
-      branch: codex/003-constitution-change
+      branch: codex/004-secure-development-hardening
       repo: https://github.com/hindermath/TinyPl0.git
     id: InputEofExitCode
     path: src/Pl0.Vm/VirtualMachine.cs
-    startLine: 18
+    startLine: 20
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -123,11 +127,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VirtualMachine.cs
-      branch: codex/003-constitution-change
+      branch: codex/004-secure-development-hardening
       repo: https://github.com/hindermath/TinyPl0.git
     id: InputFormatExitCode
     path: src/Pl0.Vm/VirtualMachine.cs
-    startLine: 22
+    startLine: 24
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -152,11 +156,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VirtualMachine.cs
-      branch: codex/003-constitution-change
+      branch: codex/004-secure-development-hardening
       repo: https://github.com/hindermath/TinyPl0.git
     id: DivisionByZeroExitCode
     path: src/Pl0.Vm/VirtualMachine.cs
-    startLine: 26
+    startLine: 28
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -181,11 +185,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VirtualMachine.cs
-      branch: codex/003-constitution-change
+      branch: codex/004-secure-development-hardening
       repo: https://github.com/hindermath/TinyPl0.git
     id: _rm
     path: src/Pl0.Vm/VirtualMachine.cs
-    startLine: 31
+    startLine: 33
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -210,11 +214,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VirtualMachine.cs
-      branch: codex/003-constitution-change
+      branch: codex/004-secure-development-hardening
       repo: https://github.com/hindermath/TinyPl0.git
     id: _culture
     path: src/Pl0.Vm/VirtualMachine.cs
-    startLine: 35
+    startLine: 37
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -239,33 +243,47 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VirtualMachine.cs
-      branch: codex/003-constitution-change
+      branch: codex/004-secure-development-hardening
       repo: https://github.com/hindermath/TinyPl0.git
     id: Run
     path: src/Pl0.Vm/VirtualMachine.cs
-    startLine: 44
+    startLine: 61
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
-  summary: Runs a program and returns the execution result.
+  summary: >-
+    Führt ein Programm innerhalb der validierten Stack- und Budgetgrenzen aus.
+
+
+    Runs a program within the validated stack and instruction-budget limits.
   example: []
   syntax:
     content: public VmExecutionResult Run(IReadOnlyList<Instruction> program, IPl0Io? io = null, VirtualMachineOptions? options = null)
     parameters:
     - id: program
       type: System.Collections.Generic.IReadOnlyList{Pl0.Core.Instruction}
-      description: P-Code instructions to execute.
+      description: Auszuführende P-Code-Instruktionen. / P-Code instructions to execute.
     - id: io
       type: Pl0.Vm.IPl0Io
-      description: Optional I/O implementation.
+      description: Optionale Ein-/Ausgabeimplementierung. / Optional input/output implementation.
     - id: options
       type: Pl0.Vm.VirtualMachineOptions
-      description: Optional VM options.
+      description: >-
+        Optionale VM-Optionen; ungültige Grenzen werden als Diagnosen zurückgegeben.
+
+        / Optional VM options; invalid limits are returned as diagnostics.
     return:
       type: Pl0.Vm.VmExecutionResult
-      description: The execution result.
+      description: >-
+        Das Ausführungsergebnis einschließlich sicherer Diagnosen.
+
+        / The execution result, including safe diagnostics.
     content.vb: Public Function Run(program As IReadOnlyList(Of Instruction), io As IPl0Io = Nothing, options As VirtualMachineOptions = Nothing) As VmExecutionResult
   overload: Pl0.Vm.VirtualMachine.Run*
+  exceptions:
+  - type: System.Globalization.CultureNotFoundException
+    commentId: T:System.Globalization.CultureNotFoundException
+    description: Der konfigurierte Sprachcode ist ungültig. / The configured language code is invalid.
   nameWithType.vb: VirtualMachine.Run(IReadOnlyList(Of Instruction), IPl0Io, VirtualMachineOptions)
   fullName.vb: Pl0.Vm.VirtualMachine.Run(System.Collections.Generic.IReadOnlyList(Of Pl0.Core.Instruction), Pl0.Vm.IPl0Io, Pl0.Vm.VirtualMachineOptions)
   name.vb: Run(IReadOnlyList(Of Instruction), IPl0Io, VirtualMachineOptions)
@@ -283,11 +301,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VirtualMachine.cs
-      branch: codex/003-constitution-change
+      branch: codex/004-secure-development-hardening
       repo: https://github.com/hindermath/TinyPl0.git
     id: ExecuteOpr
     path: src/Pl0.Vm/VirtualMachine.cs
-    startLine: 243
+    startLine: 278
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -342,11 +360,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VirtualMachine.cs
-      branch: codex/003-constitution-change
+      branch: codex/004-secure-development-hardening
       repo: https://github.com/hindermath/TinyPl0.git
     id: BinaryOp
     path: src/Pl0.Vm/VirtualMachine.cs
-    startLine: 382
+    startLine: 417
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -389,11 +407,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VirtualMachine.cs
-      branch: codex/003-constitution-change
+      branch: codex/004-secure-development-hardening
       repo: https://github.com/hindermath/TinyPl0.git
     id: ResolveBase
     path: src/Pl0.Vm/VirtualMachine.cs
-    startLine: 406
+    startLine: 441
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -436,11 +454,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VirtualMachine.cs
-      branch: codex/003-constitution-change
+      branch: codex/004-secure-development-hardening
       repo: https://github.com/hindermath/TinyPl0.git
     id: TryPush
     path: src/Pl0.Vm/VirtualMachine.cs
-    startLine: 436
+    startLine: 471
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -480,11 +498,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VirtualMachine.cs
-      branch: codex/003-constitution-change
+      branch: codex/004-secure-development-hardening
       repo: https://github.com/hindermath/TinyPl0.git
     id: TryPeek
     path: src/Pl0.Vm/VirtualMachine.cs
-    startLine: 456
+    startLine: 491
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -521,11 +539,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VirtualMachine.cs
-      branch: codex/003-constitution-change
+      branch: codex/004-secure-development-hardening
       repo: https://github.com/hindermath/TinyPl0.git
     id: IsValidStackIndex
     path: src/Pl0.Vm/VirtualMachine.cs
-    startLine: 475
+    startLine: 510
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -562,11 +580,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VirtualMachine.cs
-      branch: codex/003-constitution-change
+      branch: codex/004-secure-development-hardening
       repo: https://github.com/hindermath/TinyPl0.git
     id: BuildResult
     path: src/Pl0.Vm/VirtualMachine.cs
-    startLine: 484
+    startLine: 519
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -909,6 +927,13 @@ references:
     name: Globalization
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.globalization
+- uid: System.Globalization.CultureNotFoundException
+  commentId: T:System.Globalization.CultureNotFoundException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.globalization.culturenotfoundexception
+  name: CultureNotFoundException
+  nameWithType: CultureNotFoundException
+  fullName: System.Globalization.CultureNotFoundException
 - uid: Pl0.Vm.VirtualMachine.Run*
   commentId: Overload:Pl0.Vm.VirtualMachine.Run
   href: Pl0.Vm.VirtualMachine.html#Pl0_Vm_VirtualMachine_Run_System_Collections_Generic_IReadOnlyList_Pl0_Core_Instruction__Pl0_Vm_IPl0Io_Pl0_Vm_VirtualMachineOptions_

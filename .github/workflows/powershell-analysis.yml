@@ -31,3 +31,36 @@ jobs:
       - name: Analyze tracked PowerShell files
         shell: pwsh
         run: ./scripts/invoke-psscriptanalyzer.ps1
+
+  baseline-parity:
+    name: Baseline parity (${{ matrix.os }}, ${{ matrix.surface }})
+    runs-on: ${{ matrix.os }}
+    permissions:
+      contents: read
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: macos-14
+            surface: powershell
+          - os: ubuntu-22.04
+            surface: powershell
+          - os: windows-2022
+            surface: powershell
+          - os: macos-14
+            surface: bash
+          - os: ubuntu-22.04
+            surface: bash
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+
+      - name: Validate PowerShell baseline
+        if: matrix.surface == 'powershell'
+        shell: pwsh
+        run: ./scripts/build-secure-development-docs.ps1 -Check
+
+      - name: Validate Bash baseline
+        if: matrix.surface == 'bash'
+        shell: bash
+        run: bash ./scripts/build-secure-development-docs.sh --check

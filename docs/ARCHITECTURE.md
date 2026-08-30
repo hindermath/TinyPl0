@@ -40,3 +40,17 @@ flowchart LR
 ## Dialekte
 - `Classic`: ohne `?`/`!`, nahe am Pascal-Vorbild.
 - `Extended`: mit `? ident` und `! expression`.
+
+## VM-Ressourcenpolicy / VM Resource Policy
+
+Deutsch: Die VM validiert ein positives Instruktionsbudget und eine Stackgröße
+von `3` bis `1_000_000`, bevor sie `StackSize + 1` berechnet oder Speicher
+allokiert. Batch und Step führen höchstens `N` Instruktionen aus und melden vor
+`N+1` denselben terminalen Fehler. Diese Defense-in-Depth-Policy ergänzt
+Pointer-/Stackprüfungen; sie ist keine Zeit- oder Betriebssystemgarantie.
+
+English: The VM validates a positive instruction budget and a stack size from
+`3` to `1,000,000` before calculating `StackSize + 1` or allocating memory.
+Batch and step execution run at most `N` instructions and report the same
+terminal error before `N+1`. This policy complements pointer/stack checks and
+does not claim time or operating-system isolation.

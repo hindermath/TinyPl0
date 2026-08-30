@@ -86,8 +86,17 @@
       "labelDe": "Aktueller Serienreview",
       "labelEn": "Current series review",
       "netLines": 110
+    },
+    {
+      "slot": 11,
+      "id": "004",
+      "labelDe": "Secure Development 004",
+      "labelEn": "Secure Development 004",
+      "netLines": 25631
     }
   ],
-  "excludedPaths": [],
+  "excludedPaths": [
+    "src/Pl0.Ide/Pl0.Ide.csproj"
+  ],
   "categoryOverrides": []
 }

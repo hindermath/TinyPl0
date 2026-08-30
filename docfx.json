@@ -24,6 +24,7 @@
     ],
     "resource": [
       { "src": "docfx", "files": ["images/**"], "dest": "." },
+      { "src": "docfx", "files": [".well-known/security.txt"], "dest": ".well-known" },
       { "files": ["*.png", "docs/**.pdf"] },
       { "files": ["examples/**"] },
       { "files": ["LICENSE"], "dest": "." }
