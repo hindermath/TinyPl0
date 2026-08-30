@@ -83,6 +83,43 @@ release candidate triggers a renewed review. The tool receives no credentials.
   oder Release-Änderung. / Re-evaluate by 2026-11-30 or on dependency, lock,
   workflow, or release change.
 
+## T062-Inventur / T062 Inventory
+
+Die vorbereiteten, secret-geprüften Inventare wurden offline ausgewertet; es
+wurde keine Paketquelle kontaktiert und keine Quellenadresse in diese Evidence
+übernommen. / The prepared, secret-scanned inventories were evaluated offline;
+no package source was contacted and no source address is copied into this
+evidence.
+
+| Inventar / Inventory | SHA-256 | Ergebnis / Result |
+|---|---|---|
+| `dotnet-outdated.log` | `6a74e4d3bcc347e1941afa6cfe7c54e4803a44645f7ffbf06a2a4dbbe07412e6` | Direkte Updates sichtbar; keine stille Paketänderung / direct updates visible; no silent update |
+| `dotnet-vulnerable.log` | `18053740bd61ffd6e6ce709b03898f29b25f795e864f63d1565b002660978e73` | Alle fünf Projekte: keine bekannten verwundbaren Pakete / all five projects: no known vulnerable packages |
+
+| Direktes Paket / Direct package | Aufgelöst / Resolved | Neueste beobachtet / Latest observed | Lizenz-/Wartungsgrenze / Licence and maintenance boundary |
+|---|---:|---:|---|
+| `coverlet.collector` | 8.0.0 | 10.0.1 | MIT; Test-/Coverage-Werkzeug, Update getrennt prüfen |
+| `Microsoft.NET.Test.Sdk` | 18.0.1 | 18.9.0 | MIT; gepflegte Testplattform |
+| `xunit` | 2.9.3 | ohne direkte Updatezeile / no direct update row | Apache-2.0; gepflegtes Testframework |
+| `xunit.runner.visualstudio` | 3.1.5 | 4.0.0 | Apache-2.0; Major-Update separat prüfen |
+| `Terminal.Gui` | 2.0.0 | 2.4.17 | MIT; produktive IDE-Abhängigkeit, Update separat testen |
+
+Transitive Pakete zeigen verfügbare neuere Versionen, aber keinen gemeldeten
+CVE-Fund. Besonders `Newtonsoft.Json 13.0.3`, `System.Text.Json 8.0.5`,
+Roslyn-/SourceLink-8.0-Komponenten und `Terminal.Gui`-Transitives bleiben beim
+nächsten Dependency-PR erneut zu prüfen. Veraltet bedeutet nicht automatisch
+verwundbar; deshalb wurde in dieser Phase kein Paket geändert. / Transitive
+packages have newer versions available but no reported CVE. Outdated does not
+mean vulnerable, so this phase changes no package.
+
+Der npm-Lock bindet Playwright `1.62.1` und axe `4.13.0`; CycloneDX ist als
+lokales Tool auf `6.2.0` gepinnt. Full-SHA-Actions, Lockfile und SBOM werden in
+der Supply-Chain-Evidence getrennt gebunden. Critical/High: `0`. Lizenzkonflikt:
+`0` bekannt. Nächstes Audit: 2026-11-30 oder früher bei Paket-, Lock-, Workflow-
+oder Release-Änderung. / The npm lock pins Playwright `1.62.1` and axe `4.13.0`;
+CycloneDX is pinned to `6.2.0`. Known Critical/High findings and licence
+conflicts are both zero.
+
 ## Quellen / Sources
 
 - `https://www.nuget.org/packages/CycloneDX/6.2.0`

@@ -7,7 +7,7 @@
     "node": ">=24.0.0 <25"
   },
   "scripts": {
-    "test": "playwright test docfx-a11y.spec.mjs",
+    "test": "playwright test --browser=chromium docfx-a11y.spec.mjs",
     "test:list": "playwright test docfx-a11y.spec.mjs --list"
   },
   "devDependencies": {

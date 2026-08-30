@@ -43,8 +43,8 @@ component gains new network, secret, or administrative privilege.
 | ID | Boundary | STRIDE | Missbrauch / Abuse | Risiko | Mitigation / Status |
 |---|---|---|---|---|---|
 | TM-01 | TB1/TB3 | T,D | beschädigte oder große Eingabe stört Parser/VM | Medium | vorhandene Limits, Diagnosen, Negativtests |
-| TM-02 | TB2 | D | Endlosschleife verbraucht unbegrenzt CPU | High | positive Budgetgrenze plus Pointer-/Stackprüfung; implement in T051–T057 |
-| TM-03 | TB2 | T,D | Stack `int.MaxValue` überläuft vor Allokation | High | Vorvalidierung `3..1_000_000`; CAPEC-100 |
+| TM-02 | TB2 | D | Endlosschleife verbraucht unbegrenzt CPU | High | Budgetgrenze plus Pointer-/Stackprüfung implementiert und durch unverändertes Rot→Grün belegt |
+| TM-03 | TB2 | T,D | Stack `int.MaxValue` überläuft vor Allokation | High | Vorvalidierung `3..1_000_000` vor Addition/Allokation implementiert; CAPEC-100 |
 | TM-04 | TB4/TB5 | I | Exception legt interne Pfade/Stack offen | Medium | kontrollierte Diagnostics, keine Stack-Traces |
 | TM-05 | TB6 | T,I | Traversal, externe Bindung oder Headermissbrauch | High | ASVS-L1 read-only Gate; Produktedit nur neuer Intake |
 | TM-06 | TB7 | T,R | ungepinnte oder unbelegte Artefakte | High | volle Pins, Dependency Review, Hash/SBOM, CAPEC-438 |
@@ -69,3 +69,15 @@ Garantie. HTTP-Härtung bleibt ohne roten separaten Befund no-edit. Provider-
 und Rechtsaussagen bleiben Owner-Entscheidungen. Jeder neue Critical/High-Fund
 blockiert. Re-evaluation: neue Runtime, Trust Boundary, Dependency, Remote-
 Bindung, Authentifizierung oder Releaseform.
+
+Der read-only HTTP-Abgleich bestätigt eine feste `_site`-Wurzel, ASP.NET-
+Static-File-Pfadnormalisierung, nur Loopback über `localhost:5000` und keine
+Upload-, Auth-, Session- oder Zustandsänderungsfläche. `FND-HTTP-001` bleibt
+als mittlere Follow-up-Prüfung für explizite Response-Header und reale
+Deployment-Pakete offen; es wurde keine siebte Produktänderung autorisiert.
+
+The read-only HTTP review confirms a fixed `_site` root, ASP.NET static-file
+path normalization, loopback-only `localhost:5000`, and no upload, auth,
+session, or state-changing surface. `FND-HTTP-001` remains a medium follow-up
+for explicit response headers and real deployment packages. No seventh product
+change was authorised.

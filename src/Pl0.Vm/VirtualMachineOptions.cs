@@ -57,6 +57,9 @@ public sealed record VirtualMachineOptions(
 ///
 /// Validates VM options and creates shared localized diagnostics.
 /// </summary>
+// Der gemeinsame interne Validator ist kein Teil des öffentlichen Lern-API-Vertrags.
+// The shared internal validator is not part of the public learner-facing API contract.
+[System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
 internal static class VirtualMachineOptionsValidator
 {
     /// <summary>

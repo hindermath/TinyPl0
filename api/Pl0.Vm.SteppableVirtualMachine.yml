@@ -22,9 +22,12 @@ items:
   - Pl0.Vm.SteppableVirtualMachine.TryPeek(System.Int32)
   - Pl0.Vm.SteppableVirtualMachine.TryPush
   - Pl0.Vm.SteppableVirtualMachine.b
+  - Pl0.Vm.SteppableVirtualMachine.culture
   - Pl0.Vm.SteppableVirtualMachine.diagnostics
+  - Pl0.Vm.SteppableVirtualMachine.executedInstructions
   - Pl0.Vm.SteppableVirtualMachine.initialized
   - Pl0.Vm.SteppableVirtualMachine.io
+  - Pl0.Vm.SteppableVirtualMachine.messages
   - Pl0.Vm.SteppableVirtualMachine.options
   - Pl0.Vm.SteppableVirtualMachine.p
   - Pl0.Vm.SteppableVirtualMachine.program
@@ -40,15 +43,19 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: codex/003-constitution-change
+      branch: codex/004-secure-development-hardening
       repo: https://github.com/hindermath/TinyPl0.git
     id: SteppableVirtualMachine
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
-    startLine: 7
+    startLine: 11
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
-  summary: Stateful PL/0 virtual machine with explicit single-step execution.
+  summary: >-
+    Zustandsbehaftete PL/0-VM mit ausdrücklicher Einzelschrittausführung.
+
+
+    Stateful PL/0 VM with explicit single-step execution.
   example: []
   syntax:
     content: public sealed class SteppableVirtualMachine
@@ -76,11 +83,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: codex/003-constitution-change
+      branch: codex/004-secure-development-hardening
       repo: https://github.com/hindermath/TinyPl0.git
     id: RuntimeErrorExitCode
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
-    startLine: 9
+    startLine: 13
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -103,11 +110,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: codex/003-constitution-change
+      branch: codex/004-secure-development-hardening
       repo: https://github.com/hindermath/TinyPl0.git
     id: InputEofExitCode
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
-    startLine: 10
+    startLine: 14
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -130,11 +137,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: codex/003-constitution-change
+      branch: codex/004-secure-development-hardening
       repo: https://github.com/hindermath/TinyPl0.git
     id: InputFormatExitCode
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
-    startLine: 11
+    startLine: 15
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -157,11 +164,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: codex/003-constitution-change
+      branch: codex/004-secure-development-hardening
       repo: https://github.com/hindermath/TinyPl0.git
     id: DivisionByZeroExitCode
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
-    startLine: 12
+    startLine: 16
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -184,11 +191,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: codex/003-constitution-change
+      branch: codex/004-secure-development-hardening
       repo: https://github.com/hindermath/TinyPl0.git
     id: program
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
-    startLine: 14
+    startLine: 18
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -211,11 +218,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: codex/003-constitution-change
+      branch: codex/004-secure-development-hardening
       repo: https://github.com/hindermath/TinyPl0.git
     id: io
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
-    startLine: 15
+    startLine: 19
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -238,11 +245,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: codex/003-constitution-change
+      branch: codex/004-secure-development-hardening
       repo: https://github.com/hindermath/TinyPl0.git
     id: options
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
-    startLine: 16
+    startLine: 20
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -251,6 +258,60 @@ items:
     return:
       type: Pl0.Vm.VirtualMachineOptions
     content.vb: Private options As VirtualMachineOptions
+- uid: Pl0.Vm.SteppableVirtualMachine.messages
+  commentId: F:Pl0.Vm.SteppableVirtualMachine.messages
+  id: messages
+  parent: Pl0.Vm.SteppableVirtualMachine
+  langs:
+  - csharp
+  - vb
+  name: messages
+  nameWithType: SteppableVirtualMachine.messages
+  fullName: Pl0.Vm.SteppableVirtualMachine.messages
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/SteppableVirtualMachine.cs
+      branch: codex/004-secure-development-hardening
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: messages
+    path: src/Pl0.Vm/SteppableVirtualMachine.cs
+    startLine: 21
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private ResourceManager messages
+    return:
+      type: System.Resources.ResourceManager
+    content.vb: Private messages As ResourceManager
+- uid: Pl0.Vm.SteppableVirtualMachine.culture
+  commentId: F:Pl0.Vm.SteppableVirtualMachine.culture
+  id: culture
+  parent: Pl0.Vm.SteppableVirtualMachine
+  langs:
+  - csharp
+  - vb
+  name: culture
+  nameWithType: SteppableVirtualMachine.culture
+  fullName: Pl0.Vm.SteppableVirtualMachine.culture
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/SteppableVirtualMachine.cs
+      branch: codex/004-secure-development-hardening
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: culture
+    path: src/Pl0.Vm/SteppableVirtualMachine.cs
+    startLine: 22
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private CultureInfo culture
+    return:
+      type: System.Globalization.CultureInfo
+    content.vb: Private culture As CultureInfo
 - uid: Pl0.Vm.SteppableVirtualMachine.diagnostics
   commentId: F:Pl0.Vm.SteppableVirtualMachine.diagnostics
   id: diagnostics
@@ -265,11 +326,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: codex/003-constitution-change
+      branch: codex/004-secure-development-hardening
       repo: https://github.com/hindermath/TinyPl0.git
     id: diagnostics
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
-    startLine: 17
+    startLine: 23
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -292,11 +353,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: codex/003-constitution-change
+      branch: codex/004-secure-development-hardening
       repo: https://github.com/hindermath/TinyPl0.git
     id: stack
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
-    startLine: 18
+    startLine: 24
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -319,11 +380,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: codex/003-constitution-change
+      branch: codex/004-secure-development-hardening
       repo: https://github.com/hindermath/TinyPl0.git
     id: p
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
-    startLine: 19
+    startLine: 25
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -346,11 +407,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: codex/003-constitution-change
+      branch: codex/004-secure-development-hardening
       repo: https://github.com/hindermath/TinyPl0.git
     id: b
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
-    startLine: 20
+    startLine: 26
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -373,11 +434,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: codex/003-constitution-change
+      branch: codex/004-secure-development-hardening
       repo: https://github.com/hindermath/TinyPl0.git
     id: t
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
-    startLine: 21
+    startLine: 27
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -386,6 +447,33 @@ items:
     return:
       type: System.Int32
     content.vb: Private t As Integer
+- uid: Pl0.Vm.SteppableVirtualMachine.executedInstructions
+  commentId: F:Pl0.Vm.SteppableVirtualMachine.executedInstructions
+  id: executedInstructions
+  parent: Pl0.Vm.SteppableVirtualMachine
+  langs:
+  - csharp
+  - vb
+  name: executedInstructions
+  nameWithType: SteppableVirtualMachine.executedInstructions
+  fullName: Pl0.Vm.SteppableVirtualMachine.executedInstructions
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/SteppableVirtualMachine.cs
+      branch: codex/004-secure-development-hardening
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: executedInstructions
+    path: src/Pl0.Vm/SteppableVirtualMachine.cs
+    startLine: 28
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private int executedInstructions
+    return:
+      type: System.Int32
+    content.vb: Private executedInstructions As Integer
 - uid: Pl0.Vm.SteppableVirtualMachine.initialized
   commentId: F:Pl0.Vm.SteppableVirtualMachine.initialized
   id: initialized
@@ -400,11 +488,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: codex/003-constitution-change
+      branch: codex/004-secure-development-hardening
       repo: https://github.com/hindermath/TinyPl0.git
     id: initialized
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
-    startLine: 22
+    startLine: 29
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -427,11 +515,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: codex/003-constitution-change
+      branch: codex/004-secure-development-hardening
       repo: https://github.com/hindermath/TinyPl0.git
     id: State
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
-    startLine: 27
+    startLine: 34
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -458,11 +546,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: codex/003-constitution-change
+      branch: codex/004-secure-development-hardening
       repo: https://github.com/hindermath/TinyPl0.git
     id: IsRunning
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
-    startLine: 32
+    startLine: 39
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -489,30 +577,41 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: codex/003-constitution-change
+      branch: codex/004-secure-development-hardening
       repo: https://github.com/hindermath/TinyPl0.git
     id: Initialize
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
-    startLine: 40
+    startLine: 59
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
-  summary: Initializes the VM and resets state for debugging.
+  summary: >-
+    Initialisiert die VM für das Debugging und validiert Optionen vor der Stackallokation.
+
+
+    Initializes the VM for debugging and validates options before stack allocation.
   example: []
   syntax:
     content: public void Initialize(IReadOnlyList<Instruction> program, IPl0Io? io = null, VirtualMachineOptions? options = null)
     parameters:
     - id: program
       type: System.Collections.Generic.IReadOnlyList{Pl0.Core.Instruction}
-      description: P-Code instructions to execute.
+      description: Auszuführende P-Code-Instruktionen. / P-Code instructions to execute.
     - id: io
       type: Pl0.Vm.IPl0Io
-      description: Optional I/O abstraction.
+      description: Optionale Ein-/Ausgabeabstraktion. / Optional input/output abstraction.
     - id: options
       type: Pl0.Vm.VirtualMachineOptions
-      description: Optional VM options.
+      description: >-
+        Optionale VM-Optionen; ungültige Grenzen erzeugen einen terminalen Fehlerzustand.
+
+        / Optional VM options; invalid limits create a terminal error state.
     content.vb: Public Sub Initialize(program As IReadOnlyList(Of Instruction), io As IPl0Io = Nothing, options As VirtualMachineOptions = Nothing)
   overload: Pl0.Vm.SteppableVirtualMachine.Initialize*
+  exceptions:
+  - type: System.Globalization.CultureNotFoundException
+    commentId: T:System.Globalization.CultureNotFoundException
+    description: Der konfigurierte Sprachcode ist ungültig. / The configured language code is invalid.
   nameWithType.vb: SteppableVirtualMachine.Initialize(IReadOnlyList(Of Instruction), IPl0Io, VirtualMachineOptions)
   fullName.vb: Pl0.Vm.SteppableVirtualMachine.Initialize(System.Collections.Generic.IReadOnlyList(Of Pl0.Core.Instruction), Pl0.Vm.IPl0Io, Pl0.Vm.VirtualMachineOptions)
   name.vb: Initialize(IReadOnlyList(Of Instruction), IPl0Io, VirtualMachineOptions)
@@ -530,23 +629,34 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: codex/003-constitution-change
+      branch: codex/004-secure-development-hardening
       repo: https://github.com/hindermath/TinyPl0.git
     id: Step
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
-    startLine: 67
+    startLine: 109
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
-  summary: Executes exactly one instruction.
+  summary: >-
+    Führt genau eine Instruktion innerhalb des konfigurierten Budgets aus.
+
+
+    Executes exactly one instruction within the configured budget.
   example: []
   syntax:
     content: public VmStepResult Step()
     return:
       type: Pl0.Vm.VmStepResult
-      description: Step result with updated state and status.
+      description: >-
+        Das Schrittergebnis mit aktualisiertem Zustand, Status und Diagnosen.
+
+        / The step result with updated state, status, and diagnostics.
     content.vb: Public Function [Step]() As VmStepResult
   overload: Pl0.Vm.SteppableVirtualMachine.Step*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: Die VM wurde noch nicht initialisiert. / The VM has not been initialized.
 - uid: Pl0.Vm.SteppableVirtualMachine.ExecuteInstruction(Pl0.Core.Instruction)
   commentId: M:Pl0.Vm.SteppableVirtualMachine.ExecuteInstruction(Pl0.Core.Instruction)
   id: ExecuteInstruction(Pl0.Core.Instruction)
@@ -561,11 +671,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: codex/003-constitution-change
+      branch: codex/004-secure-development-hardening
       repo: https://github.com/hindermath/TinyPl0.git
     id: ExecuteInstruction
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
-    startLine: 127
+    startLine: 182
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -592,11 +702,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: codex/003-constitution-change
+      branch: codex/004-secure-development-hardening
       repo: https://github.com/hindermath/TinyPl0.git
     id: ExecuteOpr
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
-    startLine: 258
+    startLine: 313
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -626,11 +736,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: codex/003-constitution-change
+      branch: codex/004-secure-development-hardening
       repo: https://github.com/hindermath/TinyPl0.git
     id: BinaryOp
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
-    startLine: 369
+    startLine: 424
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -660,11 +770,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: codex/003-constitution-change
+      branch: codex/004-secure-development-hardening
       repo: https://github.com/hindermath/TinyPl0.git
     id: ResolveBase
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
-    startLine: 381
+    startLine: 436
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -694,11 +804,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: codex/003-constitution-change
+      branch: codex/004-secure-development-hardening
       repo: https://github.com/hindermath/TinyPl0.git
     id: TryPush
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
-    startLine: 401
+    startLine: 456
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -722,11 +832,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: codex/003-constitution-change
+      branch: codex/004-secure-development-hardening
       repo: https://github.com/hindermath/TinyPl0.git
     id: TryPeek
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
-    startLine: 413
+    startLine: 468
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -756,11 +866,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: codex/003-constitution-change
+      branch: codex/004-secure-development-hardening
       repo: https://github.com/hindermath/TinyPl0.git
     id: IsValidStackIndex
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
-    startLine: 424
+    startLine: 479
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -790,11 +900,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: codex/003-constitution-change
+      branch: codex/004-secure-development-hardening
       repo: https://github.com/hindermath/TinyPl0.git
     id: CaptureState
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
-    startLine: 426
+    startLine: 481
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -1163,6 +1273,76 @@ references:
   name: VirtualMachineOptions
   nameWithType: VirtualMachineOptions
   fullName: Pl0.Vm.VirtualMachineOptions
+- uid: System.Resources.ResourceManager
+  commentId: T:System.Resources.ResourceManager
+  parent: System.Resources
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.resources.resourcemanager
+  name: ResourceManager
+  nameWithType: ResourceManager
+  fullName: System.Resources.ResourceManager
+- uid: System.Resources
+  commentId: N:System.Resources
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Resources
+  nameWithType: System.Resources
+  fullName: System.Resources
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Resources
+    name: Resources
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.resources
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Resources
+    name: Resources
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.resources
+- uid: System.Globalization.CultureInfo
+  commentId: T:System.Globalization.CultureInfo
+  parent: System.Globalization
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.globalization.cultureinfo
+  name: CultureInfo
+  nameWithType: CultureInfo
+  fullName: System.Globalization.CultureInfo
+- uid: System.Globalization
+  commentId: N:System.Globalization
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Globalization
+  nameWithType: System.Globalization
+  fullName: System.Globalization
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Globalization
+    name: Globalization
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.globalization
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Globalization
+    name: Globalization
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.globalization
 - uid: System.Collections.Generic.List{Pl0.Vm.VmDiagnostic}
   commentId: T:System.Collections.Generic.List{Pl0.Vm.VmDiagnostic}
   parent: System.Collections.Generic
@@ -1277,12 +1457,26 @@ references:
   name: IsRunning
   nameWithType: SteppableVirtualMachine.IsRunning
   fullName: Pl0.Vm.SteppableVirtualMachine.IsRunning
+- uid: System.Globalization.CultureNotFoundException
+  commentId: T:System.Globalization.CultureNotFoundException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.globalization.culturenotfoundexception
+  name: CultureNotFoundException
+  nameWithType: CultureNotFoundException
+  fullName: System.Globalization.CultureNotFoundException
 - uid: Pl0.Vm.SteppableVirtualMachine.Initialize*
   commentId: Overload:Pl0.Vm.SteppableVirtualMachine.Initialize
   href: Pl0.Vm.SteppableVirtualMachine.html#Pl0_Vm_SteppableVirtualMachine_Initialize_System_Collections_Generic_IReadOnlyList_Pl0_Core_Instruction__Pl0_Vm_IPl0Io_Pl0_Vm_VirtualMachineOptions_
   name: Initialize
   nameWithType: SteppableVirtualMachine.Initialize
   fullName: Pl0.Vm.SteppableVirtualMachine.Initialize
+- uid: System.InvalidOperationException
+  commentId: T:System.InvalidOperationException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.invalidoperationexception
+  name: InvalidOperationException
+  nameWithType: InvalidOperationException
+  fullName: System.InvalidOperationException
 - uid: Pl0.Vm.SteppableVirtualMachine.Step*
   commentId: Overload:Pl0.Vm.SteppableVirtualMachine.Step
   href: Pl0.Vm.SteppableVirtualMachine.html#Pl0_Vm_SteppableVirtualMachine_Step

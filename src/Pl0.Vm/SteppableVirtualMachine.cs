@@ -54,6 +54,9 @@ public sealed class SteppableVirtualMachine
     /// Optionale VM-Optionen; ungültige Grenzen erzeugen einen terminalen Fehlerzustand.
     /// / Optional VM options; invalid limits create a terminal error state.
     /// </param>
+    /// <exception cref="CultureNotFoundException">
+    /// Der konfigurierte Sprachcode ist ungültig. / The configured language code is invalid.
+    /// </exception>
     public void Initialize(
         IReadOnlyList<Instruction> program,
         IPl0Io? io = null,
@@ -101,6 +104,9 @@ public sealed class SteppableVirtualMachine
     /// Das Schrittergebnis mit aktualisiertem Zustand, Status und Diagnosen.
     /// / The step result with updated state, status, and diagnostics.
     /// </returns>
+    /// <exception cref="InvalidOperationException">
+    /// Die VM wurde noch nicht initialisiert. / The VM has not been initialized.
+    /// </exception>
     public VmStepResult Step()
     {
         if (!initialized)

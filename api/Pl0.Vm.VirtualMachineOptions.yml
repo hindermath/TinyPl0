@@ -5,9 +5,10 @@ items:
   id: VirtualMachineOptions
   parent: Pl0.Vm
   children:
-  - Pl0.Vm.VirtualMachineOptions.#ctor(System.Int32,System.Boolean,System.String,System.Resources.ResourceManager)
+  - Pl0.Vm.VirtualMachineOptions.#ctor(System.Int32,System.Boolean,System.String,System.Resources.ResourceManager,System.Int32)
   - Pl0.Vm.VirtualMachineOptions.Default
   - Pl0.Vm.VirtualMachineOptions.EnableStoreTrace
+  - Pl0.Vm.VirtualMachineOptions.InstructionBudget
   - Pl0.Vm.VirtualMachineOptions.Language
   - Pl0.Vm.VirtualMachineOptions.Messages
   - Pl0.Vm.VirtualMachineOptions.StackSize
@@ -21,15 +22,19 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VirtualMachineOptions.cs
-      branch: codex/003-constitution-change
+      branch: codex/004-secure-development-hardening
       repo: https://github.com/hindermath/TinyPl0.git
     id: VirtualMachineOptions
     path: src/Pl0.Vm/VirtualMachineOptions.cs
-    startLine: 11
+    startLine: 39
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
-  summary: Configuration options for the PL/0 virtual machine.
+  summary: >-
+    Konfigurationsoptionen für die PL/0-virtuelle Maschine.
+
+
+    Configuration options for the PL/0 virtual machine.
   example: []
   syntax:
     content: 'public sealed record VirtualMachineOptions : IEquatable<VirtualMachineOptions>'
@@ -45,50 +50,85 @@ items:
   - System.Object.GetType
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-- uid: Pl0.Vm.VirtualMachineOptions.#ctor(System.Int32,System.Boolean,System.String,System.Resources.ResourceManager)
-  commentId: M:Pl0.Vm.VirtualMachineOptions.#ctor(System.Int32,System.Boolean,System.String,System.Resources.ResourceManager)
-  id: '#ctor(System.Int32,System.Boolean,System.String,System.Resources.ResourceManager)'
+- uid: Pl0.Vm.VirtualMachineOptions.#ctor(System.Int32,System.Boolean,System.String,System.Resources.ResourceManager,System.Int32)
+  commentId: M:Pl0.Vm.VirtualMachineOptions.#ctor(System.Int32,System.Boolean,System.String,System.Resources.ResourceManager,System.Int32)
+  id: '#ctor(System.Int32,System.Boolean,System.String,System.Resources.ResourceManager,System.Int32)'
   parent: Pl0.Vm.VirtualMachineOptions
   langs:
   - csharp
   - vb
-  name: VirtualMachineOptions(int, bool, string, ResourceManager?)
-  nameWithType: VirtualMachineOptions.VirtualMachineOptions(int, bool, string, ResourceManager?)
-  fullName: Pl0.Vm.VirtualMachineOptions.VirtualMachineOptions(int, bool, string, System.Resources.ResourceManager?)
+  name: VirtualMachineOptions(int, bool, string, ResourceManager?, int)
+  nameWithType: VirtualMachineOptions.VirtualMachineOptions(int, bool, string, ResourceManager?, int)
+  fullName: Pl0.Vm.VirtualMachineOptions.VirtualMachineOptions(int, bool, string, System.Resources.ResourceManager?, int)
   type: Constructor
   source:
     remote:
       path: src/Pl0.Vm/VirtualMachineOptions.cs
-      branch: codex/003-constitution-change
+      branch: codex/004-secure-development-hardening
       repo: https://github.com/hindermath/TinyPl0.git
     id: .ctor
     path: src/Pl0.Vm/VirtualMachineOptions.cs
-    startLine: 11
+    startLine: 39
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
-  summary: Configuration options for the PL/0 virtual machine.
+  summary: >-
+    Konfigurationsoptionen für die PL/0-virtuelle Maschine.
+
+
+    Configuration options for the PL/0 virtual machine.
   example: []
   syntax:
-    content: public VirtualMachineOptions(int StackSize = 500, bool EnableStoreTrace = false, string Language = "de", ResourceManager? Messages = null)
+    content: public VirtualMachineOptions(int StackSize = 500, bool EnableStoreTrace = false, string Language = "de", ResourceManager? Messages = null, int InstructionBudget = 1000000)
     parameters:
     - id: StackSize
       type: System.Int32
-      description: Maximum stack size.
+      description: >-
+        Maximale Stackgröße von 3 bis 1.000.000 Einträgen.
+
+
+        Maximum stack size from 3 through 1,000,000 entries.
     - id: EnableStoreTrace
       type: System.Boolean
-      description: Whether STO writes are echoed to output.
+      description: >-
+        Gibt an, ob <code>STO</code>-Schreibvorgänge an die Ausgabe weitergegeben werden.
+
+
+        Indicates whether <code>STO</code> writes are forwarded to the output.
     - id: Language
       type: System.String
-      description: 'BCP-47-Sprachcode für VM-Fehlertexte (Standard: "de").'
+      description: >-
+        BCP-47-Sprachcode für VM-Diagnosen; der Standard ist <code>de</code>.
+
+
+        BCP-47 language code for VM diagnostics; the default is <code>de</code>.
     - id: Messages
       type: System.Resources.ResourceManager
-      description: 'Optionaler ResourceManager für Dependency Injection (z. B. in Tests); Standard: Pl0VmMessages.ResourceManager.'
-    content.vb: Public Sub New(StackSize As Integer = 500, EnableStoreTrace As Boolean = False, Language As String = "de", Messages As ResourceManager = Nothing)
+      description: >-
+        Optionaler Ressourcenmanager für Dependency Injection, zum Beispiel in Tests;
+
+        standardmäßig wird <code>Pl0VmMessages.ResourceManager</code> verwendet.
+
+
+        Optional resource manager for dependency injection, for example in tests;
+
+        <code>Pl0VmMessages.ResourceManager</code> is used by default.
+    - id: InstructionBudget
+      type: System.Int32
+      description: >-
+        Positive Höchstzahl ausgeführter Instruktionen pro Lauf oder Initialisierung;
+
+        der Standard ist 1.000.000. Das Budget misst Instruktionen, keine Zeit.
+
+
+        Positive maximum number of instructions executed per run or initialization;
+
+        the default is 1,000,000. The budget counts instructions, not time.
+    content.vb: Public Sub New(StackSize As Integer = 500, EnableStoreTrace As Boolean = False, Language As String = "de", Messages As ResourceManager = Nothing, InstructionBudget As Integer = 1000000)
   overload: Pl0.Vm.VirtualMachineOptions.#ctor*
-  nameWithType.vb: VirtualMachineOptions.New(Integer, Boolean, String, ResourceManager)
-  fullName.vb: Pl0.Vm.VirtualMachineOptions.New(Integer, Boolean, String, System.Resources.ResourceManager)
-  name.vb: New(Integer, Boolean, String, ResourceManager)
+  nameWithType.vb: VirtualMachineOptions.New(Integer, Boolean, String, ResourceManager, Integer)
+  fullName.vb: Pl0.Vm.VirtualMachineOptions.New(Integer, Boolean, String, System.Resources.ResourceManager, Integer)
+  name.vb: New(Integer, Boolean, String, ResourceManager, Integer)
 - uid: Pl0.Vm.VirtualMachineOptions.StackSize
   commentId: P:Pl0.Vm.VirtualMachineOptions.StackSize
   id: StackSize
@@ -103,15 +143,19 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VirtualMachineOptions.cs
-      branch: codex/003-constitution-change
+      branch: codex/004-secure-development-hardening
       repo: https://github.com/hindermath/TinyPl0.git
     id: StackSize
     path: src/Pl0.Vm/VirtualMachineOptions.cs
-    startLine: 12
+    startLine: 40
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
-  summary: Maximum stack size.
+  summary: >-
+    Maximale Stackgröße von 3 bis 1.000.000 Einträgen.
+
+
+    Maximum stack size from 3 through 1,000,000 entries.
   example: []
   syntax:
     content: public int StackSize { get; init; }
@@ -134,15 +178,19 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VirtualMachineOptions.cs
-      branch: codex/003-constitution-change
+      branch: codex/004-secure-development-hardening
       repo: https://github.com/hindermath/TinyPl0.git
     id: EnableStoreTrace
     path: src/Pl0.Vm/VirtualMachineOptions.cs
-    startLine: 13
+    startLine: 41
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
-  summary: Whether STO writes are echoed to output.
+  summary: >-
+    Gibt an, ob <code>STO</code>-Schreibvorgänge an die Ausgabe weitergegeben werden.
+
+
+    Indicates whether <code>STO</code> writes are forwarded to the output.
   example: []
   syntax:
     content: public bool EnableStoreTrace { get; init; }
@@ -165,15 +213,19 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VirtualMachineOptions.cs
-      branch: codex/003-constitution-change
+      branch: codex/004-secure-development-hardening
       repo: https://github.com/hindermath/TinyPl0.git
     id: Language
     path: src/Pl0.Vm/VirtualMachineOptions.cs
-    startLine: 14
+    startLine: 42
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
-  summary: 'BCP-47-Sprachcode für VM-Fehlertexte (Standard: "de").'
+  summary: >-
+    BCP-47-Sprachcode für VM-Diagnosen; der Standard ist <code>de</code>.
+
+
+    BCP-47 language code for VM diagnostics; the default is <code>de</code>.
   example: []
   syntax:
     content: public string Language { get; init; }
@@ -196,15 +248,23 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VirtualMachineOptions.cs
-      branch: codex/003-constitution-change
+      branch: codex/004-secure-development-hardening
       repo: https://github.com/hindermath/TinyPl0.git
     id: Messages
     path: src/Pl0.Vm/VirtualMachineOptions.cs
-    startLine: 15
+    startLine: 43
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
-  summary: 'Optionaler ResourceManager für Dependency Injection (z. B. in Tests); Standard: Pl0VmMessages.ResourceManager.'
+  summary: >-
+    Optionaler Ressourcenmanager für Dependency Injection, zum Beispiel in Tests;
+
+    standardmäßig wird <code>Pl0VmMessages.ResourceManager</code> verwendet.
+
+
+    Optional resource manager for dependency injection, for example in tests;
+
+    <code>Pl0VmMessages.ResourceManager</code> is used by default.
   example: []
   syntax:
     content: public ResourceManager? Messages { get; init; }
@@ -213,6 +273,45 @@ items:
       type: System.Resources.ResourceManager
     content.vb: Public Property Messages As ResourceManager
   overload: Pl0.Vm.VirtualMachineOptions.Messages*
+- uid: Pl0.Vm.VirtualMachineOptions.InstructionBudget
+  commentId: P:Pl0.Vm.VirtualMachineOptions.InstructionBudget
+  id: InstructionBudget
+  parent: Pl0.Vm.VirtualMachineOptions
+  langs:
+  - csharp
+  - vb
+  name: InstructionBudget
+  nameWithType: VirtualMachineOptions.InstructionBudget
+  fullName: Pl0.Vm.VirtualMachineOptions.InstructionBudget
+  type: Property
+  source:
+    remote:
+      path: src/Pl0.Vm/VirtualMachineOptions.cs
+      branch: codex/004-secure-development-hardening
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: InstructionBudget
+    path: src/Pl0.Vm/VirtualMachineOptions.cs
+    startLine: 44
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  summary: >-
+    Positive Höchstzahl ausgeführter Instruktionen pro Lauf oder Initialisierung;
+
+    der Standard ist 1.000.000. Das Budget misst Instruktionen, keine Zeit.
+
+
+    Positive maximum number of instructions executed per run or initialization;
+
+    the default is 1,000,000. The budget counts instructions, not time.
+  example: []
+  syntax:
+    content: public int InstructionBudget { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property InstructionBudget As Integer
+  overload: Pl0.Vm.VirtualMachineOptions.InstructionBudget*
 - uid: Pl0.Vm.VirtualMachineOptions.Default
   commentId: P:Pl0.Vm.VirtualMachineOptions.Default
   id: Default
@@ -227,15 +326,19 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VirtualMachineOptions.cs
-      branch: codex/003-constitution-change
+      branch: codex/004-secure-development-hardening
       repo: https://github.com/hindermath/TinyPl0.git
     id: Default
     path: src/Pl0.Vm/VirtualMachineOptions.cs
-    startLine: 20
+    startLine: 51
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
-  summary: Default VM options.
+  summary: >-
+    Ruft die Standardoptionen der VM ab.
+
+
+    Gets the default VM options.
   example: []
   syntax:
     content: public static VirtualMachineOptions Default { get; }
@@ -543,7 +646,7 @@ references:
   - name: )
 - uid: Pl0.Vm.VirtualMachineOptions.#ctor*
   commentId: Overload:Pl0.Vm.VirtualMachineOptions.#ctor
-  href: Pl0.Vm.VirtualMachineOptions.html#Pl0_Vm_VirtualMachineOptions__ctor_System_Int32_System_Boolean_System_String_System_Resources_ResourceManager_
+  href: Pl0.Vm.VirtualMachineOptions.html#Pl0_Vm_VirtualMachineOptions__ctor_System_Int32_System_Boolean_System_String_System_Resources_ResourceManager_System_Int32_
   name: VirtualMachineOptions
   nameWithType: VirtualMachineOptions.VirtualMachineOptions
   fullName: Pl0.Vm.VirtualMachineOptions.VirtualMachineOptions
@@ -642,6 +745,12 @@ references:
   name: Messages
   nameWithType: VirtualMachineOptions.Messages
   fullName: Pl0.Vm.VirtualMachineOptions.Messages
+- uid: Pl0.Vm.VirtualMachineOptions.InstructionBudget*
+  commentId: Overload:Pl0.Vm.VirtualMachineOptions.InstructionBudget
+  href: Pl0.Vm.VirtualMachineOptions.html#Pl0_Vm_VirtualMachineOptions_InstructionBudget
+  name: InstructionBudget
+  nameWithType: VirtualMachineOptions.InstructionBudget
+  fullName: Pl0.Vm.VirtualMachineOptions.InstructionBudget
 - uid: Pl0.Vm.VirtualMachineOptions.Default*
   commentId: Overload:Pl0.Vm.VirtualMachineOptions.Default
   href: Pl0.Vm.VirtualMachineOptions.html#Pl0_Vm_VirtualMachineOptions_Default

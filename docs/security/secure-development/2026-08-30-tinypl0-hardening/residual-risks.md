@@ -4,22 +4,23 @@
 
 | Priorität | Risiko | Owner | Termin oder Trigger | Erwartete Evidence |
 |---|---|---|---|---|
-| High | Sechs bestätigte Kontrolllücken sind bis zu unverändertem Rot, kleinstem Fix und Grün offen. | TinyPl0-Maintainer | Vor dem ersten bedingten Edit und vor T046 | Validator-Exit, Hash, exakter Dateisatz und Regression |
-| High | VM-Schleifen und ungültige Stack-/Budgetwerte sind bis zur TDD-Scheibe unbegrenzt oder exception-anfällig. | VM-Maintainer | T048–T061 | Identische Testhashes, Rot→Grün, Batch-/Step-Parität |
-| High | ASVS-, Dependency-, SBOM-, CVD- und A11Y-Evidence ist noch nicht vollständig. | Security-Maintainer | T062–T082 | Commitgebundene JSON-/Markdown-, Scan-, DocFX-, axe- und lynx-Evidence |
 | Medium | Rechtliche Hersteller-/Steward- und Providerrollen sind nicht belegt. | Repository-Maintainer | Geschäfts- oder Vertragsmodell ändert sich | Schriftliche Rollen- und Vertragsentscheidung |
-| Medium | Der lokale HTTP-Pfad ist außerhalb der sechs Änderungspakete. | CLI-Maintainer | Neuer ASVS-Befund oder externer Serverbetrieb | Separater akzeptierter Intake mit rotem Test |
-| Low | Sandbox, AI-SBOM, Zero Trust, Produktkrypto und DPIA sind nicht anwendbar. | Repository-Maintainer | Einer der dokumentierten Scope-Trigger tritt ein | Neue Anwendbarkeitsentscheidung mit ausdrücklicher Autorität |
+| Medium | Der read-only geprüfte lokale HTTP-Pfad hat keine Härtungs-Änderungsautorität; ein neuer externer oder zustandsändernder Betrieb braucht einen eigenen Intake. | CLI-Maintainer | Neuer ASVS-Befund, externe Bindung oder schreibender Endpunkt | Separater akzeptierter Intake mit rotem Test und aktualisierter ASVS-Evidence |
+| Medium | CRA-Hersteller-/Steward-Rolle, Provider-Attestierung, publizierte Provenienz und OpenSSF Scorecard sind lokal nicht belegbar. | Repository-Maintainer | Geschäftsmodell oder spätere Remote-Delivery-Grenze | Schriftliche Rollenentscheidung beziehungsweise verlinkte Provider-Evidence |
+| Low | Der lokale DocFX-A11Y-Zyklus ist bestanden; Änderungen an API, HTML-Theme, Navigation, Browser-Harness oder Workflow können die Aussage veralten lassen. | Accessibility-Maintainer | Eine der genannten Flächen ändert sich oder T098 prüft den exakten PR-Head | Erneute axe-/Lynx-Evidence auf dem geänderten Kandidaten |
+| Low | AI-SBOM, Zero Trust, Produktkrypto, DPIA, NIS2, EU AI Act, DORA und Sandbox-Hardening sind im engen Produktscope begründet nicht anwendbar. | Repository-Maintainer | Einer der dokumentierten Scope-Trigger tritt ein | Neue Anwendbarkeitsentscheidung mit ausdrücklicher Autorität |
 
-Kein Critical-/High-Risiko ist vom Agenten akzeptiert. High-Befunde bleiben
-blockierend, bis technische Evidence sie schließt oder ein Maintainer eine
-ausdrückliche, befristete Entscheidung mit kompensierender Kontrolle trifft.
+Kein Critical-/High-Risiko ist offen oder vom Agenten akzeptiert. Ein neuer
+Critical-/High-Befund bleibt blockierend, bis technische Evidence ihn schließt
+oder ein Maintainer eine ausdrückliche, befristete Entscheidung mit
+kompensierender Kontrolle trifft.
 
 ## English
 
-The six confirmed control gaps, VM resource boundaries, and incomplete ASVS,
-dependency, supply-chain, disclosure, and accessibility evidence remain open
-until their exact gates pass. Legal/provider facts remain maintainer decisions.
-The local HTTP surface has no edit authority in this run. Sandbox, AI-SBOM,
-Zero Trust, product cryptography, and DPIA are re-evaluated only when their
-documented scope trigger occurs. The agent accepts no Critical or High risk.
+The VM, baseline, supply-chain, CVD, gitignore, dependency, ASVS, and local
+rendered accessibility evidence is reconciled. The accepted host cycle passed
+all three axe pages and both semantic text-browser paths, so the former High
+accessibility risk is closed rather than accepted. Legal and provider facts
+remain maintainer decisions. The local HTTP surface has no edit authority in
+this run. Reasoned N/A topics are re-evaluated only when their documented
+trigger occurs. No Critical or High risk is open or accepted by the agent.

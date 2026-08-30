@@ -42,3 +42,20 @@ Das Budget ist keine Zeit-/Sandboxgarantie. Batch/Step behalten getrennte
 Loops, wodurch Parität dauerhaft getestet werden muss. HTTP- und UI-Härtung
 bleiben getrennte Findings. Re-evaluation: neue VM-Option, Runtime, Modul-
 Abhängigkeit oder Deploymentform. Methodik: arc42 und iSAQB CPSA-F.
+
+## Abgleich mit der Implementierung / Implementation Reconciliation
+
+Deutsch: Der umgesetzte Schnitt bleibt kleiner als die Architekturgrenze:
+`VirtualMachineOptionsValidator` teilt ausschließlich Vorvalidierung und
+Diagnoseerzeugung. `VirtualMachine.Run()` und `SteppableVirtualMachine.Step()`
+bleiben getrennte Loops. Beide prüfen das Budget vor Instruktion `N+1` und
+zählen unmittelbar vor der Ausführung. Die Step-VM hält nach dem ersten
+Budgetfehler Zustand und Diagnoseliste stabil. Es wurden weder Modulgraph noch
+Deployment, Port, CLI-Option oder IDE-Oberfläche erweitert.
+
+English: The implementation remains narrower than the architecture boundary.
+`VirtualMachineOptionsValidator` shares only pre-validation and diagnostic
+creation; batch and step loops remain separate. Both check the budget before
+instruction `N+1` and count immediately before execution. The step VM keeps
+state and diagnostics stable after the first budget error. Module graph,
+deployment, ports, CLI options, and IDE surface remain unchanged.

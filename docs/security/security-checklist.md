@@ -38,13 +38,31 @@
 
 ## Supply Chain, CVD, A11Y und Recovery
 
-- [ ] Dependency-/Vulnerability-Scan und SBOM-Evidence folgen in T062–T073.
-- [ ] CVD und RFC-9116 werden in T034/T035 grün validiert.
-- [ ] DocFX, axe und lynx werden gemeinsam mit der öffentlichen API geprüft.
+- [x] Vorbereitete Dependency-/Vulnerability-Inventare melden keine bekannten
+  Critical-/High-Pakete; SBOM 1.7 und Tool-Pin sind lokal validiert.
+- [x] CVD und RFC-9116 sind durch `.github/SECURITY.md`, veröffentlichten
+  `.well-known/security.txt`-Pfad, Ablaufdatum und lokalen Grün-Validator belegt.
+- [x] DocFX, axe und lynx wurden gemeinsam mit der öffentlichen API geprüft.
 - [x] Golden-Dateien werden nicht regeneriert.
 - [x] Nach Fehlern bleiben VM und lokaler Server in einem kontrollierten Zustand.
 
 English: The same checklist requires boundary validation, controlled errors,
 integer and resource limits, dependency/source review, pinned workflows,
-coordinated disclosure, accessible documentation, and safe recovery. Items that
-depend on later executable evidence stay unchecked until those gates pass.
+coordinated disclosure, accessible documentation, and safe recovery. The local
+DocFX, axe, and text-browser gate is complete; remote delivery evidence remains
+separate.
+
+## CVD-Abgleich / CVD Reconciliation
+
+Deutsch: `FND-CVD-001` war autorisiert und wurde im kleinsten Dateisatz
+umgesetzt. Die Policy nennt Kontakt, Scope, erwartete Reaktion und sicheren
+Meldeweg; RFC 9116 wird durch `docfx/.well-known/security.txt` und `docfx.json`
+in den öffentlichen DocFX-Pfad aufgenommen. Der gemeinsame T075–T082-Zyklus
+hat die lokale HTML-/Textbrowser-Sicht bestanden. Ohne reale Veröffentlichung
+wird keine Provider-Verfügbarkeit behauptet.
+
+English: `FND-CVD-001` was authorised and implemented in its smallest file set.
+The policy records contact, scope, response expectations, and a safe reporting
+path; `docfx/.well-known/security.txt` is included in public DocFX output. The
+shared T075–T082 cycle passed the local HTML and text-browser evidence. No
+provider availability is claimed without publication.

@@ -56,6 +56,9 @@ public sealed class VirtualMachine
     /// Das Ausführungsergebnis einschließlich sicherer Diagnosen.
     /// / The execution result, including safe diagnostics.
     /// </returns>
+    /// <exception cref="CultureNotFoundException">
+    /// Der konfigurierte Sprachcode ist ungültig. / The configured language code is invalid.
+    /// </exception>
     public VmExecutionResult Run(
         IReadOnlyList<Instruction> program,
         IPl0Io? io = null,

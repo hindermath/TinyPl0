@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "1.1",
+  "feature": "004-secure-development-hardening",
+  "entries": [
+    {
+      "changeId": "CHG004",
+      "scope": "Secure-development evidence, VM public API documentation, CVD guidance, accessibility evidence, and project statistics",
+      "decision": "UpdateRequired",
+      "rationale": "The VM resource policy and public option changed, and the security, CVD, generated API, accessibility, and learner-facing documentation must describe the validated behavior and evidence.",
+      "documents": [
+        "docs/VM_INSTRUCTION_SET.md",
+        "docs/TRACEABILITY_MATRIX.md",
+        "docs/security/README.md",
+        "docs/accessibility/secure-development-hardening.md",
+        "docs/project-statistics.md",
+        "api/Pl0.Vm.VirtualMachineOptions.yml",
+        "api/Pl0.Vm.VirtualMachine.yml",
+        "api/Pl0.Vm.SteppableVirtualMachine.yml"
+      ],
+      "owner": "TinyPl0 repository maintainer",
+      "audiences": [
+        "Learners and teachers",
+        "CLI and IDE users",
+        "Developers and maintainers",
+        "Security, accessibility, and release reviewers"
+      ],
+      "readerPaths": [
+        "Repository entry to security index to architecture and executable evidence",
+        "Generated API entry to VM options and execution behavior",
+        "Security policy to CVD contact and safe reporting path",
+        "Statistics ledger to text-first Profile 2 trends"
+      ],
+      "canonicalSource": "specs/004-secure-development-hardening/spec.md",
+      "navigationImpact": "The security index links the new accessibility evidence; generated API navigation retains the existing VM types and adds the documented instruction budget.",
+      "documentClass": "ActiveSemanticAndGeneratedApi",
+      "languageStrategy": "Short learner-facing content keeps German first and English second at CEFR B2; machine values and generated identifiers remain language-neutral.",
+      "languagePartners": [],
+      "platformAndExampleProof": "macOS host evidence uses managed Node 24, pinned Playwright and axe, a loopback-only DocFX server, and independent Lynx dumps; later delivery gates cover the exact PR head.",
+      "distributionClass": "sourceOnly",
+      "homeSyncRequired": false,
+      "evidence": "docs/documentation-impact/feature-004-secure-development-hardening.json",
+      "risk": "Low after the passed local DocFX, axe, and Lynx cycle; API, theme, navigation, CLI/IDE, or workflow changes trigger re-evaluation.",
+      "criticality": "Security",
+      "reevaluationTrigger": "The VM API, diagnostics, learner documentation, CVD path, DocFX theme or navigation, CLI/IDE interaction, browser harness, workflow, or release surface changes."
+    }
+  ]
+}

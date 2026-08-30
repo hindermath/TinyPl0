@@ -1,8 +1,9 @@
 # Autonome Bereitschaftscheckliste / Autonomous Run Readiness Checklist
 
 **Zweck / Purpose**: Die installierte autonome Readiness-Vorlage auf den
-aktuellen Analyze-Phasenstand anwenden. / Apply the installed autonomous readiness
-template to the current Analyze phase.
+aktuellen T085-Dokumentationsstand der Implement-Phase anwenden. / Apply the
+installed autonomous readiness template to the current T085 documentation
+boundary of the Implement phase.
 
 **Erstellt / Created**: 2026-08-30
 **Feature / Feature**: [spec.md](../spec.md)
@@ -41,10 +42,11 @@ later gate or missing proof and must not be treated as success.
   guidance, feature identity, branch, run ID, and registry agree? Evidence:
   bestandener Plan Review ohne offene Critical/High/Medium-Befunde.
 - [x] CHK005 Ist der feature-lokale Run-State Schema 1.1, `Active`, Stage
-  `Analyze`, mit laufender Analyze-Phase und unverändertem Checkpoint
-  `8cce89e09ef624e9875d1ca86ea2c878ce8cdd54` vorhanden? / Is the feature-local
-  schema-1.1 run state active at Analyze with the recorded checkpoint? Evidence:
-  `autonomous-run-state.json`.
+  `Implement`, mit laufender Implement-Phase, `84/110` und unverändertem
+  Checkpoint `8cce89e09ef624e9875d1ca86ea2c878ce8cdd54` vorhanden? / Is the
+  feature-local schema-1.1 run state active at Implement with the running
+  implementation phase, `84/110`, and the recorded checkpoint? Evidence:
+  `autonomous-run-state.json`, T085 evidence freeze.
 - [x] CHK006 Ist kein `PausedByUser`-Stop aktiv und ist die frühere unsichere
   Plan-Review-Operation durch ein neues validiertes Plan-Review-Resultat
   kausal aufgelöst? / Is no user pause active and was the prior uncertain plan
@@ -97,15 +99,17 @@ later gate or missing proof and must not be treated as success.
   `PreMerge`-Evidence und behandeln Schema 1.0 nur als historischen
   Phasennachweis? / Do new merge decisions require schema-2.0 PreMerge
   evidence? Evidence: `gate-requirements.json`, `tasks.md` T102–T103.
-- [ ] CHK016 Existieren 157/157 Assessment, Findings und rote Evidence vor dem
+- [x] CHK016 Existieren 157/157 Assessment, Findings und rote Evidence vor dem
   ersten bedingten Implementierungsedit? / Do assessment and red evidence
-  exist before conditioned implementation? Pending T009–T020.
-- [ ] CHK017 Besitzt die repräsentative VM-Scheibe beobachtbares Rot, Grün und
+  exist before conditioned implementation? Evidence: T009–T020 and the
+  schema-valid ordered assessment.
+- [x] CHK017 Besitzt die repräsentative VM-Scheibe beobachtbares Rot, Grün und
   Regression mit unveränderten Testquellhashes? / Does the VM slice have
-  red-green-regression proof? Pending T048–T061.
-- [ ] CHK018 Bewahren Negativmatrizen jeden erwarteten Fehler und jede
+  red-green-regression proof? Evidence: T048–T061 with unchanged source hashes.
+- [x] CHK018 Bewahren Negativmatrizen jeden erwarteten Fehler und jede
   Ownership-Grenze? / Do negative matrices preserve failure and ownership
-  boundaries? Pending Assessment, VM, ASVS, Dependency, and A11Y execution.
+  boundaries? Evidence: reconciled Assessment, VM, ASVS, Dependency, HTTP,
+  DocFX/axe and Lynx boundaries through T082.
 - [x] CHK019 Sind Assessment/Evidence, IDE-Version, Statistik, Workflows und
   Generator als serialisierte Writer geplant? / Are shared writers serialized?
   Evidence: `tasks.md` Arbeitsregeln und T010/T043/T047–T057/T083–T085.
@@ -120,13 +124,15 @@ later gate or missing proof and must not be treated as success.
   Repository-Root oder exakte Repository-relative Pfade? / Do validators and
   helpers receive explicit roots/paths? Evidence: `tasks.md`, `quickstart.md`,
   `gate-requirements.json`.
-- [ ] CHK022 Sind Exitstatus, Pflichtausgabe und strukturierte/Fehlerkanäle
+- [x] CHK022 Sind Exitstatus, Pflichtausgabe und strukturierte/Fehlerkanäle
   jeder ausgeführten Prüfung konkret inspiziert? / Were exit and output/error
-  channels inspected? Pending execution.
-- [ ] CHK023 Wurden geänderte Dokumente, Schemas, Evidence und Statusmarker vor
+  channels inspected? Evidence: every command executed through T084 has its
+  exit status and required output recorded in `autonomous-run-evidence.md`.
+- [x] CHK023 Wurden geänderte Dokumente, Schemas, Evidence und Statusmarker vor
   einem übersprungenen Gate auf ausführbare Consumer geprüft? / Were changed
-  artefacts searched for executable consumers before skipping gates? Pending
-  implementation.
+  artefacts searched for executable consumers before skipping gates? Evidence:
+  assessment schema, Documentation Impact validator, generated API metadata,
+  A11Y harness and Statistics Profile 2 renderer were reconciled through T084.
 - [ ] CHK024 Bestand der exakte beabsichtigte Kandidat `git diff --check` und
   Delivery-Set-Validierung? / Did the exact candidate pass diff and delivery
   checks? Pending T092–T093.
@@ -192,11 +198,11 @@ later gate or missing proof and must not be treated as success.
 
 ## Lernen und Abschluss / Learning and Finish
 
-- [x] CHK043 Sind aktueller Resume-Stand und nächste exakte Aktion
-  Implementierung T001 nach validiertem Analyze-Resultat erklärt? / Are the
-  resume state and exact next action, implementation T001 after validated
-  Analyze, recorded? Evidence: `autonomous-run-state.json`, `analyze-report.md`,
-  `analyze.result.json`, T004.
+- [x] CHK043 Sind aktueller Resume-Stand und nächste exakte Aktion erklärt? /
+  Are the current resume state and exact next action recorded? Evidence: T001–
+  T084 are complete; the T085 documentation freeze is present. The exact next
+  action is the orchestrator-owned alignment to `1.72.454.38`, evidence-freeze
+  commit, and atomic T085 checkbox. T085 and later remain unchecked.
 - [x] CHK044 Verlangt ein künftiger bewusster Stopp eine sichere Grenze und
   inferiert keinen Commit, Push, Rollback, Merge oder Process-Kill? / Does a
   future stop preserve the safe-boundary contract? Evidence:
@@ -213,18 +219,21 @@ later gate or missing proof and must not be treated as success.
   neue Nutzerautorität? / Does the next intake remain unstarted? Evidence:
   FR-027/FR-028, T008, T110.
 
-## Ergebnis an der Analyze-Phasengrenze / Result at the Analyze Phase Boundary
+## Ergebnis an der T085-Dokumentationsgrenze / Result at the T085 Documentation Boundary
 
-- **Bereits belegt / Proven now**: `24/48`
-- **Spätere oder offene Schranken / Later or open gates**: `24/48`
+- **Bereits belegt / Proven now**: `29/48`
+- **Spätere oder offene Schranken / Later or open gates**: `19/48`
 - **Tasks-Artefakt / Tasks artefact**: T001–T110 vorhanden und
   abhängigkeitsgeordnet; das historische `tasks.result.json` bleibt
   hashgebunden, und das gültige Analyze-Resultat bindet die minimale finale
   Task-Remediation. / T001–T110 exist and are dependency ordered; the
   historical Tasks result remains hash-bound, and the valid Analyze result
   binds the minimal final task remediation.
-- **Nächste erlaubte Phase / Next permitted phase**: bestehende autonome
-  Implementierungsphase ab T001; Remote-Aktion und Folge-Intake-Arbeit bleiben
-  bis zu ihren späteren Schranken gesperrt. / The existing autonomous
-  implementation phase may start at T001; remote and next-intake work remain
-  blocked until their later gates.
+- **Nächste erlaubte Aktion / Next permitted action**: Die read-only T086-
+  Identitäts-, Slot- und Accepted-Input-Revalidierung läuft am committeten
+  T085-Evidence-Freeze. Exact-head-Regression, Coverage, Delivery-Set,
+  Provider, Merge, Closeout und Retrospektive bleiben für T086–T110 offen. /
+  The read-only T086 identity, slot, and accepted-input revalidation runs at
+  the committed T085 evidence freeze. Exact-head regression, coverage,
+  delivery-set, provider, merge, closeout, and retrospective checks remain
+  open for T086–T110.

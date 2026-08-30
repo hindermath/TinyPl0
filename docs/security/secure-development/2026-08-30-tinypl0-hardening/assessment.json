@@ -3,7 +3,7 @@
   "assessmentId": "2026-08-30-tinypl0-hardening",
   "featurePath": "specs/004-secure-development-hardening",
   "runId": "abaa7b81-fd2c-47e7-8d59-87a852a3b2e7",
-  "evaluatedCommit": "8cce89e09ef624e9875d1ca86ea2c878ce8cdd54",
+  "evaluatedCommit": "ce14b69e9cdf529c6af44b446a2d243b7b22d501",
   "baselineManifestSha256": "82449d57f2e072cb93e0066e7e1eee112219c9836cd51acd75027ec8436ec916",
   "canonicalChecklistSha256": {
     "docs/secure-development/checklisten/CL_01_Standards-Anwendbarkeit.md": "b0b3b15c1ad7d46a8f83f563583d9538d72332787f4468d63e691ec37fc4decf",
@@ -2924,12 +2924,33 @@
     {
       "clId": "CL-05-01",
       "applicability": "Applicable",
-      "implementation": "Not Fulfilled",
+      "implementation": "Fulfilled",
       "rationale": {
-        "de": "Der Prüfpunkt 'SBOM-Format und -Erzeugung / SBOM Format and Generation' ist anwendbar; die fehlende Kontrolle ist im benannten Finding belegt.",
-        "en": "The checkpoint 'SBOM-Format und -Erzeugung / SBOM Format and Generation' applies; the missing control is evidenced by the named finding."
+        "de": "Das commitgebundene CycloneDX-1.7-SBOM und Artefaktmanifest sind vorhanden.",
+        "en": "The commit-bound CycloneDX 1.7 SBOM and artifact manifest are present."
       },
-      "evidence": [],
+      "evidence": [
+        {
+          "evidenceId": "T072-SC-CL-05-01",
+          "kind": "File",
+          "pathOrUri": "docs/security/supply-chain-evidence.json",
+          "sha256": "d60c4ef48211d97b615f69e8a6439031ac6440bf574110e7e41e04921f44ea57",
+          "commit": "ce14b69e9cdf529c6af44b446a2d243b7b22d501",
+          "command": "Get-FileHash -Algorithm SHA256",
+          "exitCode": 0,
+          "runnerOrPlatform": [
+            "macOS",
+            "PowerShell 7",
+            "exact HEAD"
+          ],
+          "observedAt": "2026-08-30T11:33:09.983826Z",
+          "result": "Pass",
+          "proofBoundary": {
+            "de": "Lokale datei- und commitgebundene Evidence; Provider-Nachweise bleiben getrennte spätere Gates.",
+            "en": "Local file- and commit-bound evidence; provider evidence remains a separate later gate."
+          }
+        }
+      ],
       "ownerRole": "TinyPl0 maintainer",
       "reviewerRole": "Independent security reviewer",
       "residualRisk": {
@@ -2957,7 +2978,7 @@
           "de": "Evidence-first-Prüfung, unabhängiger Review und fail-closed Gates.",
           "en": "Evidence-first assessment, independent review, and fail-closed gates."
         },
-        "residualSeverity": "High",
+        "residualSeverity": "Low",
         "acceptance": null
       },
       "reevaluation": {
@@ -2968,26 +2989,47 @@
         "targetDate": null
       },
       "nextAction": {
-        "de": "Finding mit unverändertem Rot, kleinstem Dateisatz und Regression prüfen.",
-        "en": "Validate the finding with immutable red evidence, the smallest file set, and regression."
+        "de": "Bei Dependency-, Workflow-, Policy- oder Scope-Änderung erneut prüfen.",
+        "en": "Reassess after a dependency, workflow, policy, or scope change."
       },
-      "priority": "High",
-      "targetDateOrTrigger": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
+      "priority": "Low",
+      "targetDateOrTrigger": "2026-11-30 or earlier on relevant change.",
       "expectedEvidence": {
-        "de": "Existierende, hash- und commitgebundene Gate-Evidence.",
-        "en": "Existing gate evidence bound to hashes and the assessed commit."
+        "de": "Erneute hash- und commitgebundene Gate-Evidence.",
+        "en": "Renewed gate evidence bound to hashes and the assessed commit."
       },
-      "findingId": "FND-SC-001"
+      "findingId": null
     },
     {
       "clId": "CL-05-02",
       "applicability": "Applicable",
-      "implementation": "Not Fulfilled",
+      "implementation": "Fulfilled",
       "rationale": {
-        "de": "Der Prüfpunkt 'SBOM-Inhalt / SBOM Content' ist anwendbar; die fehlende Kontrolle ist im benannten Finding belegt.",
-        "en": "The checkpoint 'SBOM-Inhalt / SBOM Content' applies; the missing control is evidenced by the named finding."
+        "de": "Generatorpin, SBOM-Hash und normalisierter Artefakthash sind belegt.",
+        "en": "The generator pin, SBOM hash, and normalized artifact hash are evidenced."
       },
-      "evidence": [],
+      "evidence": [
+        {
+          "evidenceId": "T072-SC-CL-05-02",
+          "kind": "File",
+          "pathOrUri": "docs/security/supply-chain-evidence.json",
+          "sha256": "d60c4ef48211d97b615f69e8a6439031ac6440bf574110e7e41e04921f44ea57",
+          "commit": "ce14b69e9cdf529c6af44b446a2d243b7b22d501",
+          "command": "Get-FileHash -Algorithm SHA256",
+          "exitCode": 0,
+          "runnerOrPlatform": [
+            "macOS",
+            "PowerShell 7",
+            "exact HEAD"
+          ],
+          "observedAt": "2026-08-30T11:33:09.983826Z",
+          "result": "Pass",
+          "proofBoundary": {
+            "de": "Lokale datei- und commitgebundene Evidence; Provider-Nachweise bleiben getrennte spätere Gates.",
+            "en": "Local file- and commit-bound evidence; provider evidence remains a separate later gate."
+          }
+        }
+      ],
       "ownerRole": "TinyPl0 maintainer",
       "reviewerRole": "Independent security reviewer",
       "residualRisk": {
@@ -3015,7 +3057,7 @@
           "de": "Evidence-first-Prüfung, unabhängiger Review und fail-closed Gates.",
           "en": "Evidence-first assessment, independent review, and fail-closed gates."
         },
-        "residualSeverity": "High",
+        "residualSeverity": "Low",
         "acceptance": null
       },
       "reevaluation": {
@@ -3026,16 +3068,16 @@
         "targetDate": null
       },
       "nextAction": {
-        "de": "Finding mit unverändertem Rot, kleinstem Dateisatz und Regression prüfen.",
-        "en": "Validate the finding with immutable red evidence, the smallest file set, and regression."
+        "de": "Bei Dependency-, Workflow-, Policy- oder Scope-Änderung erneut prüfen.",
+        "en": "Reassess after a dependency, workflow, policy, or scope change."
       },
-      "priority": "High",
-      "targetDateOrTrigger": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
+      "priority": "Low",
+      "targetDateOrTrigger": "2026-11-30 or earlier on relevant change.",
       "expectedEvidence": {
-        "de": "Existierende, hash- und commitgebundene Gate-Evidence.",
-        "en": "Existing gate evidence bound to hashes and the assessed commit."
+        "de": "Erneute hash- und commitgebundene Gate-Evidence.",
+        "en": "Renewed gate evidence bound to hashes and the assessed commit."
       },
-      "findingId": "FND-SC-001"
+      "findingId": null
     },
     {
       "clId": "CL-05-03",
@@ -3098,12 +3140,33 @@
     {
       "clId": "CL-05-04",
       "applicability": "Applicable",
-      "implementation": "Not Fulfilled",
+      "implementation": "Fulfilled",
       "rationale": {
-        "de": "Der Prüfpunkt 'SLSA-Provenance / SLSA Provenance' ist anwendbar; die fehlende Kontrolle ist im benannten Finding belegt.",
-        "en": "The checkpoint 'SLSA-Provenance / SLSA Provenance' applies; the missing control is evidenced by the named finding."
+        "de": "Das bereinigte Offline-Inventar meldet keine bekannte Critical-/High-Schwachstelle.",
+        "en": "The sanitized offline inventory reports no known Critical or High vulnerability."
       },
-      "evidence": [],
+      "evidence": [
+        {
+          "evidenceId": "T072-SC-CL-05-04",
+          "kind": "File",
+          "pathOrUri": "docs/security/dependency-audit.md",
+          "sha256": "7f21082d425bed15a3952d1c8fdfc45b088f2f913bfb6a5155048e92d0d9f402",
+          "commit": "ce14b69e9cdf529c6af44b446a2d243b7b22d501",
+          "command": "Get-FileHash -Algorithm SHA256",
+          "exitCode": 0,
+          "runnerOrPlatform": [
+            "macOS",
+            "PowerShell 7",
+            "exact HEAD"
+          ],
+          "observedAt": "2026-08-30T11:33:09.983826Z",
+          "result": "Pass",
+          "proofBoundary": {
+            "de": "Lokale datei- und commitgebundene Evidence; Provider-Nachweise bleiben getrennte spätere Gates.",
+            "en": "Local file- and commit-bound evidence; provider evidence remains a separate later gate."
+          }
+        }
+      ],
       "ownerRole": "TinyPl0 maintainer",
       "reviewerRole": "Independent security reviewer",
       "residualRisk": {
@@ -3131,7 +3194,7 @@
           "de": "Evidence-first-Prüfung, unabhängiger Review und fail-closed Gates.",
           "en": "Evidence-first assessment, independent review, and fail-closed gates."
         },
-        "residualSeverity": "High",
+        "residualSeverity": "Low",
         "acceptance": null
       },
       "reevaluation": {
@@ -3142,16 +3205,16 @@
         "targetDate": null
       },
       "nextAction": {
-        "de": "Finding mit unverändertem Rot, kleinstem Dateisatz und Regression prüfen.",
-        "en": "Validate the finding with immutable red evidence, the smallest file set, and regression."
+        "de": "Bei Dependency-, Workflow-, Policy- oder Scope-Änderung erneut prüfen.",
+        "en": "Reassess after a dependency, workflow, policy, or scope change."
       },
-      "priority": "High",
-      "targetDateOrTrigger": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
+      "priority": "Low",
+      "targetDateOrTrigger": "2026-11-30 or earlier on relevant change.",
       "expectedEvidence": {
-        "de": "Existierende, hash- und commitgebundene Gate-Evidence.",
-        "en": "Existing gate evidence bound to hashes and the assessed commit."
+        "de": "Erneute hash- und commitgebundene Gate-Evidence.",
+        "en": "Renewed gate evidence bound to hashes and the assessed commit."
       },
-      "findingId": "FND-SC-001"
+      "findingId": null
     },
     {
       "clId": "CL-05-05",
@@ -3504,12 +3567,33 @@
     {
       "clId": "CL-05-11",
       "applicability": "Applicable",
-      "implementation": "Not Fulfilled",
+      "implementation": "Fulfilled",
       "rationale": {
-        "de": "Der Prüfpunkt 'Lizenz-Compliance / Licence Compliance' ist anwendbar; die fehlende Kontrolle ist im benannten Finding belegt.",
-        "en": "The checkpoint 'Lizenz-Compliance / Licence Compliance' applies; the missing control is evidenced by the named finding."
+        "de": "VEX-, SLSA- und Provider-Grenzen sind ohne Überbehauptung dokumentiert.",
+        "en": "VEX, SLSA, and provider boundaries are documented without overclaiming."
       },
-      "evidence": [],
+      "evidence": [
+        {
+          "evidenceId": "T072-SC-CL-05-11",
+          "kind": "File",
+          "pathOrUri": "docs/security/supply-chain-evidence.md",
+          "sha256": "05b6ad872d6c1e2d88ba1e0726bd227a03325f8d0e9dbcd55afc358e34610137",
+          "commit": "ce14b69e9cdf529c6af44b446a2d243b7b22d501",
+          "command": "Get-FileHash -Algorithm SHA256",
+          "exitCode": 0,
+          "runnerOrPlatform": [
+            "macOS",
+            "PowerShell 7",
+            "exact HEAD"
+          ],
+          "observedAt": "2026-08-30T11:33:09.983826Z",
+          "result": "Pass",
+          "proofBoundary": {
+            "de": "Lokale datei- und commitgebundene Evidence; Provider-Nachweise bleiben getrennte spätere Gates.",
+            "en": "Local file- and commit-bound evidence; provider evidence remains a separate later gate."
+          }
+        }
+      ],
       "ownerRole": "TinyPl0 maintainer",
       "reviewerRole": "Independent security reviewer",
       "residualRisk": {
@@ -3537,7 +3621,7 @@
           "de": "Evidence-first-Prüfung, unabhängiger Review und fail-closed Gates.",
           "en": "Evidence-first assessment, independent review, and fail-closed gates."
         },
-        "residualSeverity": "High",
+        "residualSeverity": "Low",
         "acceptance": null
       },
       "reevaluation": {
@@ -3548,16 +3632,16 @@
         "targetDate": null
       },
       "nextAction": {
-        "de": "Finding mit unverändertem Rot, kleinstem Dateisatz und Regression prüfen.",
-        "en": "Validate the finding with immutable red evidence, the smallest file set, and regression."
+        "de": "Bei Dependency-, Workflow-, Policy- oder Scope-Änderung erneut prüfen.",
+        "en": "Reassess after a dependency, workflow, policy, or scope change."
       },
-      "priority": "High",
-      "targetDateOrTrigger": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
+      "priority": "Low",
+      "targetDateOrTrigger": "2026-11-30 or earlier on relevant change.",
       "expectedEvidence": {
-        "de": "Existierende, hash- und commitgebundene Gate-Evidence.",
-        "en": "Existing gate evidence bound to hashes and the assessed commit."
+        "de": "Erneute hash- und commitgebundene Gate-Evidence.",
+        "en": "Renewed gate evidence bound to hashes and the assessed commit."
       },
-      "findingId": "FND-SC-001"
+      "findingId": null
     },
     {
       "clId": "CL-05-12",
@@ -3678,12 +3762,33 @@
     {
       "clId": "CL-06-01",
       "applicability": "Applicable",
-      "implementation": "Not Fulfilled",
+      "implementation": "Fulfilled",
       "rationale": {
-        "de": "Der Prüfpunkt 'Veröffentlichte CVD-Richtlinie / Published CVD Policy' ist anwendbar; die fehlende Kontrolle ist im benannten Finding belegt.",
-        "en": "The checkpoint 'Veröffentlichte CVD-Richtlinie / Published CVD Policy' applies; the missing control is evidenced by the named finding."
+        "de": "Die veröffentlichbare CVD-Richtlinie ist vorhanden und lokal validiert.",
+        "en": "The publishable CVD policy exists and passed local validation."
       },
-      "evidence": [],
+      "evidence": [
+        {
+          "evidenceId": "T072-CVD-CL-06-01",
+          "kind": "File",
+          "pathOrUri": ".github/SECURITY.md",
+          "sha256": "067fe2e0a14f6c27c67e98c711f4559c6a6bb8c3f28708d34e174b58f47df48a",
+          "commit": "ce14b69e9cdf529c6af44b446a2d243b7b22d501",
+          "command": "Get-FileHash -Algorithm SHA256",
+          "exitCode": 0,
+          "runnerOrPlatform": [
+            "macOS",
+            "PowerShell 7",
+            "exact HEAD"
+          ],
+          "observedAt": "2026-08-30T11:33:09.983826Z",
+          "result": "Pass",
+          "proofBoundary": {
+            "de": "Lokale datei- und commitgebundene Evidence; Provider-Nachweise bleiben getrennte spätere Gates.",
+            "en": "Local file- and commit-bound evidence; provider evidence remains a separate later gate."
+          }
+        }
+      ],
       "ownerRole": "TinyPl0 maintainer",
       "reviewerRole": "Independent security reviewer",
       "residualRisk": {
@@ -3711,7 +3816,7 @@
           "de": "Evidence-first-Prüfung, unabhängiger Review und fail-closed Gates.",
           "en": "Evidence-first assessment, independent review, and fail-closed gates."
         },
-        "residualSeverity": "High",
+        "residualSeverity": "Low",
         "acceptance": null
       },
       "reevaluation": {
@@ -3722,26 +3827,47 @@
         "targetDate": null
       },
       "nextAction": {
-        "de": "Finding mit unverändertem Rot, kleinstem Dateisatz und Regression prüfen.",
-        "en": "Validate the finding with immutable red evidence, the smallest file set, and regression."
+        "de": "Bei Dependency-, Workflow-, Policy- oder Scope-Änderung erneut prüfen.",
+        "en": "Reassess after a dependency, workflow, policy, or scope change."
       },
-      "priority": "High",
-      "targetDateOrTrigger": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
+      "priority": "Low",
+      "targetDateOrTrigger": "2026-11-30 or earlier on relevant change.",
       "expectedEvidence": {
-        "de": "Existierende, hash- und commitgebundene Gate-Evidence.",
-        "en": "Existing gate evidence bound to hashes and the assessed commit."
+        "de": "Erneute hash- und commitgebundene Gate-Evidence.",
+        "en": "Renewed gate evidence bound to hashes and the assessed commit."
       },
-      "findingId": "FND-CVD-001"
+      "findingId": null
     },
     {
       "clId": "CL-06-02",
       "applicability": "Applicable",
-      "implementation": "Not Fulfilled",
+      "implementation": "Fulfilled",
       "rationale": {
-        "de": "Der Prüfpunkt 'security.txt nach RFC 9116 / security.txt per RFC 9116' ist anwendbar; die fehlende Kontrolle ist im benannten Finding belegt.",
-        "en": "The checkpoint 'security.txt nach RFC 9116 / security.txt per RFC 9116' applies; the missing control is evidenced by the named finding."
+        "de": "Der RFC-9116-Kontaktpfad ist vorhanden und lokal validiert.",
+        "en": "The RFC 9116 contact path exists and passed local validation."
       },
-      "evidence": [],
+      "evidence": [
+        {
+          "evidenceId": "T072-CVD-CL-06-02",
+          "kind": "File",
+          "pathOrUri": "docfx/.well-known/security.txt",
+          "sha256": "c173c620bab35639cbc3d2325518c03f3a27bdea38d4c4d428ef641004a36065",
+          "commit": "ce14b69e9cdf529c6af44b446a2d243b7b22d501",
+          "command": "Get-FileHash -Algorithm SHA256",
+          "exitCode": 0,
+          "runnerOrPlatform": [
+            "macOS",
+            "PowerShell 7",
+            "exact HEAD"
+          ],
+          "observedAt": "2026-08-30T11:33:09.983826Z",
+          "result": "Pass",
+          "proofBoundary": {
+            "de": "Lokale datei- und commitgebundene Evidence; Provider-Nachweise bleiben getrennte spätere Gates.",
+            "en": "Local file- and commit-bound evidence; provider evidence remains a separate later gate."
+          }
+        }
+      ],
       "ownerRole": "TinyPl0 maintainer",
       "reviewerRole": "Independent security reviewer",
       "residualRisk": {
@@ -3769,7 +3895,7 @@
           "de": "Evidence-first-Prüfung, unabhängiger Review und fail-closed Gates.",
           "en": "Evidence-first assessment, independent review, and fail-closed gates."
         },
-        "residualSeverity": "High",
+        "residualSeverity": "Low",
         "acceptance": null
       },
       "reevaluation": {
@@ -3780,16 +3906,16 @@
         "targetDate": null
       },
       "nextAction": {
-        "de": "Finding mit unverändertem Rot, kleinstem Dateisatz und Regression prüfen.",
-        "en": "Validate the finding with immutable red evidence, the smallest file set, and regression."
+        "de": "Bei Dependency-, Workflow-, Policy- oder Scope-Änderung erneut prüfen.",
+        "en": "Reassess after a dependency, workflow, policy, or scope change."
       },
-      "priority": "High",
-      "targetDateOrTrigger": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
+      "priority": "Low",
+      "targetDateOrTrigger": "2026-11-30 or earlier on relevant change.",
       "expectedEvidence": {
-        "de": "Existierende, hash- und commitgebundene Gate-Evidence.",
-        "en": "Existing gate evidence bound to hashes and the assessed commit."
+        "de": "Erneute hash- und commitgebundene Gate-Evidence.",
+        "en": "Renewed gate evidence bound to hashes and the assessed commit."
       },
-      "findingId": "FND-CVD-001"
+      "findingId": null
     },
     {
       "clId": "CL-06-03",
@@ -5650,12 +5776,55 @@
     {
       "clId": "CL-08-12",
       "applicability": "Applicable",
-      "implementation": "Not Fulfilled",
+      "implementation": "Fulfilled",
       "rationale": {
-        "de": "Der Prüfpunkt 'Tests / Tests' ist anwendbar; die fehlende Kontrolle ist im benannten Finding belegt.",
-        "en": "The checkpoint 'Tests / Tests' applies; the missing control is evidenced by the named finding."
+        "de": "Der autorisierte Host-Zyklus bestand mit Node 24, drei verletzungsfreien axe-Seiten und zwei nicht leeren semantischen Lynx-Dumps.",
+        "en": "The authorised host cycle passed with Node 24, three axe pages without violations, and two non-empty semantic Lynx dumps."
       },
-      "evidence": [],
+      "evidence": [
+        {
+          "evidenceId": "T072-A11Y-CL-08-12-INVENTORY",
+          "kind": "File",
+          "pathOrUri": "tests/a11y/package-lock.json",
+          "sha256": "446531add651dcf74d6091a055f176bcef11be130d2d5cb3033eeb6416f8a13a",
+          "commit": "ce14b69e9cdf529c6af44b446a2d243b7b22d501",
+          "command": "npm --prefix tests/a11y ci --offline",
+          "exitCode": 0,
+          "runnerOrPlatform": [
+            "macOS",
+            "Node 24.20.0",
+            "npm 11.19.0"
+          ],
+          "observedAt": "2026-08-30T11:33:09.983826Z",
+          "result": "Pass",
+          "proofBoundary": {
+            "de": "Belegt nur den gepinnten Offline-Bestand, nicht den gerenderten Chromium-/axe-Lauf.",
+            "en": "Proves only the pinned offline inventory, not the rendered Chromium and axe run."
+          }
+        },
+        {
+          "evidenceId": "T078-A11Y-CL-08-12-HOST",
+          "kind": "ExternalReview",
+          "pathOrUri": "/private/tmp/tinypl0-004-axe.json",
+          "sha256": "b01856d34bacb4215a958b0382add5ea44a87e2d1e6e77a2e2457adb45a8f23b",
+          "commit": null,
+          "command": "npm --prefix tests/a11y test -- --project=chromium",
+          "exitCode": 0,
+          "runnerOrPlatform": [
+            "authorised macOS host",
+            "Node 24.20.0",
+            "npm 11.19.0",
+            "Playwright 1.62.1",
+            "Chromium"
+          ],
+          "observedAt": "2026-08-30T12:00:41Z",
+          "result": "Pass",
+          "proofBoundary": {
+            "de": "Belegt drei lokale Seiten mit null axe-Verletzungen; Remote- und Veröffentlichungsnachweise folgen an ihren eigenen Gates.",
+            "en": "Proves three local pages with zero axe violations; remote and publication evidence remains in its own gates."
+          }
+        }
+      ],
       "ownerRole": "TinyPl0 maintainer",
       "reviewerRole": "Independent security reviewer",
       "residualRisk": {
@@ -5676,14 +5845,14 @@
           "Availability"
         ],
         "capec": [],
-        "likelihood": "Medium",
+        "likelihood": "Low",
         "impact": "High",
         "severity": "High",
         "mitigations": {
           "de": "Evidence-first-Prüfung, unabhängiger Review und fail-closed Gates.",
           "en": "Evidence-first assessment, independent review, and fail-closed gates."
         },
-        "residualSeverity": "High",
+        "residualSeverity": "Low",
         "acceptance": null
       },
       "reevaluation": {
@@ -5694,16 +5863,13 @@
         "targetDate": null
       },
       "nextAction": {
-        "de": "Finding mit unverändertem Rot, kleinstem Dateisatz und Regression prüfen.",
-        "en": "Validate the finding with immutable red evidence, the smallest file set, and regression."
+        "de": "Keine lokale Maßnahme; bei API-, Theme-, Navigations- oder Harness-Änderung erneut prüfen.",
+        "en": "No local action; re-evaluate after an API, theme, navigation, or harness change."
       },
-      "priority": "High",
-      "targetDateOrTrigger": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
-      "expectedEvidence": {
-        "de": "Existierende, hash- und commitgebundene Gate-Evidence.",
-        "en": "Existing gate evidence bound to hashes and the assessed commit."
-      },
-      "findingId": "FND-A11Y-001"
+      "priority": null,
+      "targetDateOrTrigger": null,
+      "expectedEvidence": null,
+      "findingId": null
     },
     {
       "clId": "CL-08-13",
@@ -6473,10 +6639,13 @@
           "kind": "File",
           "pathOrUri": "AGENTS.md",
           "sha256": "d3ee5b2f63d9eabf666a3075b2ebba416684d1ee23a4d2f0435313e629700d00",
-          "commit": "8cce89e09ef624e9875d1ca86ea2c878ce8cdd54",
+          "commit": "ce14b69e9cdf529c6af44b446a2d243b7b22d501",
           "command": null,
           "exitCode": 0,
-          "runnerOrPlatform": ["macOS", "PowerShell 7"],
+          "runnerOrPlatform": [
+            "macOS",
+            "PowerShell 7"
+          ],
           "observedAt": "2026-08-30T10:00:00Z",
           "result": "Pass",
           "proofBoundary": {
@@ -6489,52 +6658,76 @@
           "kind": "File",
           "pathOrUri": "CLAUDE.md",
           "sha256": "cf6c6dcba1820cf07a2806bebfaaf7ab32d19b9fab49cc9ffb5ea87b8ce0fbc5",
-          "commit": "8cce89e09ef624e9875d1ca86ea2c878ce8cdd54",
+          "commit": "ce14b69e9cdf529c6af44b446a2d243b7b22d501",
           "command": null,
           "exitCode": 0,
-          "runnerOrPlatform": ["macOS", "PowerShell 7"],
+          "runnerOrPlatform": [
+            "macOS",
+            "PowerShell 7"
+          ],
           "observedAt": "2026-08-30T10:00:00Z",
           "result": "Pass",
-          "proofBoundary": {"de": "Semantische Parität der Versionsregel.", "en": "Semantic parity of the version rule."}
+          "proofBoundary": {
+            "de": "Semantische Parität der Versionsregel.",
+            "en": "Semantic parity of the version rule."
+          }
         },
         {
           "evidenceId": "EV-CL-09-13-GEMINI",
           "kind": "File",
           "pathOrUri": "GEMINI.md",
           "sha256": "133e64d0bde86aef17be7c4933f32d3fa28e42d096b7f59e20f7fb7a2c90960f",
-          "commit": "8cce89e09ef624e9875d1ca86ea2c878ce8cdd54",
+          "commit": "ce14b69e9cdf529c6af44b446a2d243b7b22d501",
           "command": null,
           "exitCode": 0,
-          "runnerOrPlatform": ["macOS", "PowerShell 7"],
+          "runnerOrPlatform": [
+            "macOS",
+            "PowerShell 7"
+          ],
           "observedAt": "2026-08-30T10:00:00Z",
           "result": "Pass",
-          "proofBoundary": {"de": "Semantische Parität der Versionsregel.", "en": "Semantic parity of the version rule."}
+          "proofBoundary": {
+            "de": "Semantische Parität der Versionsregel.",
+            "en": "Semantic parity of the version rule."
+          }
         },
         {
           "evidenceId": "EV-CL-09-13-COPILOT",
           "kind": "File",
           "pathOrUri": ".github/copilot-instructions.md",
           "sha256": "df951425953c84fd799bac4987006ffcc1ce7f8bac24ae3f0788952e9f8c0460",
-          "commit": "8cce89e09ef624e9875d1ca86ea2c878ce8cdd54",
+          "commit": "ce14b69e9cdf529c6af44b446a2d243b7b22d501",
           "command": null,
           "exitCode": 0,
-          "runnerOrPlatform": ["macOS", "PowerShell 7"],
+          "runnerOrPlatform": [
+            "macOS",
+            "PowerShell 7"
+          ],
           "observedAt": "2026-08-30T10:00:00Z",
           "result": "Pass",
-          "proofBoundary": {"de": "Semantische Parität der Versionsregel.", "en": "Semantic parity of the version rule."}
+          "proofBoundary": {
+            "de": "Semantische Parität der Versionsregel.",
+            "en": "Semantic parity of the version rule."
+          }
         },
         {
           "evidenceId": "EV-CL-09-13-COPILOT-AGENT",
           "kind": "File",
           "pathOrUri": ".github/agents/copilot-instructions.md",
           "sha256": "df951425953c84fd799bac4987006ffcc1ce7f8bac24ae3f0788952e9f8c0460",
-          "commit": "8cce89e09ef624e9875d1ca86ea2c878ce8cdd54",
+          "commit": "ce14b69e9cdf529c6af44b446a2d243b7b22d501",
           "command": null,
           "exitCode": 0,
-          "runnerOrPlatform": ["macOS", "PowerShell 7"],
+          "runnerOrPlatform": [
+            "macOS",
+            "PowerShell 7"
+          ],
           "observedAt": "2026-08-30T10:00:00Z",
           "result": "Pass",
-          "proofBoundary": {"de": "Semantische Parität der Versionsregel.", "en": "Semantic parity of the version rule."}
+          "proofBoundary": {
+            "de": "Semantische Parität der Versionsregel.",
+            "en": "Semantic parity of the version rule."
+          }
         }
       ],
       "ownerRole": "TinyPl0 maintainer",
@@ -7166,12 +7359,33 @@
     {
       "clId": "CL-10-07",
       "applicability": "Applicable",
-      "implementation": "Not Fulfilled",
+      "implementation": "Fulfilled",
       "rationale": {
-        "de": "Der Prüfpunkt 'Geheimnis-Speicher / Secret Store' ist anwendbar; die fehlende Kontrolle ist im benannten Finding belegt.",
-        "en": "The checkpoint 'Geheimnis-Speicher / Secret Store' applies; the missing control is evidenced by the named finding."
+        "de": "Root-Deny-Regeln schützen synthetische Secret- und Agent-State-Pfade; getrackte Dateien bleiben sichtbar.",
+        "en": "Root-deny rules protect synthetic secret and agent-state paths while tracked files remain visible."
       },
-      "evidence": [],
+      "evidence": [
+        {
+          "evidenceId": "T072-GITIGNORE-CL-10-07",
+          "kind": "File",
+          "pathOrUri": ".gitignore",
+          "sha256": "24d526aa3b763d91991b8592d968b2dbcce5782ed72024569cda60ded46cbd42",
+          "commit": "ce14b69e9cdf529c6af44b446a2d243b7b22d501",
+          "command": "Get-FileHash -Algorithm SHA256",
+          "exitCode": 0,
+          "runnerOrPlatform": [
+            "macOS",
+            "PowerShell 7",
+            "exact HEAD"
+          ],
+          "observedAt": "2026-08-30T11:33:09.983826Z",
+          "result": "Pass",
+          "proofBoundary": {
+            "de": "Lokale datei- und commitgebundene Evidence; Provider-Nachweise bleiben getrennte spätere Gates.",
+            "en": "Local file- and commit-bound evidence; provider evidence remains a separate later gate."
+          }
+        }
+      ],
       "ownerRole": "TinyPl0 maintainer",
       "reviewerRole": "Independent security reviewer",
       "residualRisk": {
@@ -7199,7 +7413,7 @@
           "de": "Evidence-first-Prüfung, unabhängiger Review und fail-closed Gates.",
           "en": "Evidence-first assessment, independent review, and fail-closed gates."
         },
-        "residualSeverity": "High",
+        "residualSeverity": "Low",
         "acceptance": null
       },
       "reevaluation": {
@@ -7210,16 +7424,16 @@
         "targetDate": null
       },
       "nextAction": {
-        "de": "Finding mit unverändertem Rot, kleinstem Dateisatz und Regression prüfen.",
-        "en": "Validate the finding with immutable red evidence, the smallest file set, and regression."
+        "de": "Bei Dependency-, Workflow-, Policy- oder Scope-Änderung erneut prüfen.",
+        "en": "Reassess after a dependency, workflow, policy, or scope change."
       },
-      "priority": "High",
-      "targetDateOrTrigger": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
+      "priority": "Low",
+      "targetDateOrTrigger": "2026-11-30 or earlier on relevant change.",
       "expectedEvidence": {
-        "de": "Existierende, hash- und commitgebundene Gate-Evidence.",
-        "en": "Existing gate evidence bound to hashes and the assessed commit."
+        "de": "Erneute hash- und commitgebundene Gate-Evidence.",
+        "en": "Renewed gate evidence bound to hashes and the assessed commit."
       },
-      "findingId": "FND-GITIGNORE-001"
+      "findingId": null
     },
     {
       "clId": "CL-10-08",
@@ -7282,12 +7496,55 @@
     {
       "clId": "CL-10-09",
       "applicability": "Applicable",
-      "implementation": "Not Fulfilled",
+      "implementation": "Fulfilled",
       "rationale": {
-        "de": "Der Prüfpunkt 'Reproducible-CI / Reproducible CI' ist anwendbar; die fehlende Kontrolle ist im benannten Finding belegt.",
-        "en": "The checkpoint 'Reproducible-CI / Reproducible CI' applies; the missing control is evidenced by the named finding."
+        "de": "Der kontrollierte Host-Harness band nur an Loopback, bestand 3/3 axe-Seiten und hinterließ nach den Lynx-Dumps keinen Listener oder eigenen Server.",
+        "en": "The controlled host harness bound only to loopback, passed 3/3 axe pages, and left no listener or owned server after the Lynx dumps."
       },
-      "evidence": [],
+      "evidence": [
+        {
+          "evidenceId": "T072-A11Y-CL-10-09-INVENTORY",
+          "kind": "File",
+          "pathOrUri": "tests/a11y/package-lock.json",
+          "sha256": "446531add651dcf74d6091a055f176bcef11be130d2d5cb3033eeb6416f8a13a",
+          "commit": "ce14b69e9cdf529c6af44b446a2d243b7b22d501",
+          "command": "npm --prefix tests/a11y ci --offline",
+          "exitCode": 0,
+          "runnerOrPlatform": [
+            "macOS",
+            "Node 24.20.0",
+            "npm 11.19.0"
+          ],
+          "observedAt": "2026-08-30T11:33:09.983826Z",
+          "result": "Pass",
+          "proofBoundary": {
+            "de": "Belegt nur den gepinnten Offline-Bestand, nicht den gerenderten Chromium-/axe-Lauf.",
+            "en": "Proves only the pinned offline inventory, not the rendered Chromium and axe run."
+          }
+        },
+        {
+          "evidenceId": "T080-A11Y-CL-10-09-HOST",
+          "kind": "ExternalReview",
+          "pathOrUri": "/private/tmp/tinypl0-004-a11y.log",
+          "sha256": "c7e1438448b0217f8da02beed0a35a5056e37efe2b06be4b611913dbd00eee66",
+          "commit": null,
+          "command": "MANAGE_DOCS_SERVER=1 npm --prefix tests/a11y test -- --project=chromium",
+          "exitCode": 0,
+          "runnerOrPlatform": [
+            "authorised macOS host",
+            "127.0.0.1:8080",
+            "Node 24.20.0",
+            "Playwright 1.62.1",
+            "Chromium"
+          ],
+          "observedAt": "2026-08-30T12:00:41Z",
+          "result": "Pass",
+          "proofBoundary": {
+            "de": "Belegt den kontrollierten lokalen 3/3-Lauf und sicheren Serverabschluss; es wird keine externe Bindung oder Veröffentlichung behauptet.",
+            "en": "Proves the controlled local 3/3 run and safe server cleanup; it claims no external bind or publication."
+          }
+        }
+      ],
       "ownerRole": "TinyPl0 maintainer",
       "reviewerRole": "Independent security reviewer",
       "residualRisk": {
@@ -7308,14 +7565,14 @@
           "Availability"
         ],
         "capec": [],
-        "likelihood": "Medium",
+        "likelihood": "Low",
         "impact": "High",
         "severity": "High",
         "mitigations": {
           "de": "Evidence-first-Prüfung, unabhängiger Review und fail-closed Gates.",
           "en": "Evidence-first assessment, independent review, and fail-closed gates."
         },
-        "residualSeverity": "High",
+        "residualSeverity": "Low",
         "acceptance": null
       },
       "reevaluation": {
@@ -7326,16 +7583,13 @@
         "targetDate": null
       },
       "nextAction": {
-        "de": "Finding mit unverändertem Rot, kleinstem Dateisatz und Regression prüfen.",
-        "en": "Validate the finding with immutable red evidence, the smallest file set, and regression."
+        "de": "Keine lokale Maßnahme; bei Server-, Workflow- oder Browser-Harness-Änderung erneut prüfen.",
+        "en": "No local action; re-evaluate after a server, workflow, or browser-harness change."
       },
-      "priority": "High",
-      "targetDateOrTrigger": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
-      "expectedEvidence": {
-        "de": "Existierende, hash- und commitgebundene Gate-Evidence.",
-        "en": "Existing gate evidence bound to hashes and the assessed commit."
-      },
-      "findingId": "FND-A11Y-001"
+      "priority": null,
+      "targetDateOrTrigger": null,
+      "expectedEvidence": null,
+      "findingId": null
     },
     {
       "clId": "CL-10-10",
@@ -7746,12 +8000,33 @@
     {
       "clId": "CL-10-17",
       "applicability": "Applicable",
-      "implementation": "Not Fulfilled",
+      "implementation": "Fulfilled",
       "rationale": {
-        "de": "Der Prüfpunkt 'Cross-Platform-Skriptparität / Cross-Platform Script Parity' ist anwendbar; die fehlende Kontrolle ist im benannten Finding belegt.",
-        "en": "The checkpoint 'Cross-Platform-Skriptparität / Cross-Platform Script Parity' applies; the missing control is evidenced by the named finding."
+        "de": "Manifest, Generatoren und Cross-Platform-Parität sind lokal validiert.",
+        "en": "The manifest, generators, and cross-platform parity passed local validation."
       },
-      "evidence": [],
+      "evidence": [
+        {
+          "evidenceId": "T072-BASELINE-CL-10-17",
+          "kind": "File",
+          "pathOrUri": "docs/secure-development/baseline-manifest.json",
+          "sha256": "b290baf2e5a01307f246a2a9abd3113d86a89f303c4e636270b1a9e0aef874cf",
+          "commit": "ce14b69e9cdf529c6af44b446a2d243b7b22d501",
+          "command": "Get-FileHash -Algorithm SHA256",
+          "exitCode": 0,
+          "runnerOrPlatform": [
+            "macOS",
+            "PowerShell 7",
+            "exact HEAD"
+          ],
+          "observedAt": "2026-08-30T11:33:09.983826Z",
+          "result": "Pass",
+          "proofBoundary": {
+            "de": "Lokale datei- und commitgebundene Evidence; Provider-Nachweise bleiben getrennte spätere Gates.",
+            "en": "Local file- and commit-bound evidence; provider evidence remains a separate later gate."
+          }
+        }
+      ],
       "ownerRole": "TinyPl0 maintainer",
       "reviewerRole": "Independent security reviewer",
       "residualRisk": {
@@ -7779,7 +8054,7 @@
           "de": "Evidence-first-Prüfung, unabhängiger Review und fail-closed Gates.",
           "en": "Evidence-first assessment, independent review, and fail-closed gates."
         },
-        "residualSeverity": "High",
+        "residualSeverity": "Low",
         "acceptance": null
       },
       "reevaluation": {
@@ -7790,16 +8065,16 @@
         "targetDate": null
       },
       "nextAction": {
-        "de": "Finding mit unverändertem Rot, kleinstem Dateisatz und Regression prüfen.",
-        "en": "Validate the finding with immutable red evidence, the smallest file set, and regression."
+        "de": "Bei Dependency-, Workflow-, Policy- oder Scope-Änderung erneut prüfen.",
+        "en": "Reassess after a dependency, workflow, policy, or scope change."
       },
-      "priority": "High",
-      "targetDateOrTrigger": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
+      "priority": "Low",
+      "targetDateOrTrigger": "2026-11-30 or earlier on relevant change.",
       "expectedEvidence": {
-        "de": "Existierende, hash- und commitgebundene Gate-Evidence.",
-        "en": "Existing gate evidence bound to hashes and the assessed commit."
+        "de": "Erneute hash- und commitgebundene Gate-Evidence.",
+        "en": "Renewed gate evidence bound to hashes and the assessed commit."
       },
-      "findingId": "FND-BASELINE-001"
+      "findingId": null
     },
     {
       "clId": "CL-11-01",

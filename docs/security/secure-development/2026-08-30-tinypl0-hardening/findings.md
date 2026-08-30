@@ -19,7 +19,7 @@ Die unveränderbare Validatorbasis ist `plan.md` mit SHA-256
 und `gate-requirements.json` mit SHA-256
 `ab1524b4d3b546fc44cf94513b7ce7600b7de20f7c4508faba4d8c505fb5c96a`.
 
-## FND-BASELINE-001 — Implemented, local verification passed
+## FND-BASELINE-001 — Closed locally / Lokal geschlossen
 
 - Checkpoints: `CL-10-17`, BASE-004; `Applicable` / `Not Fulfilled`.
 - Risk: stale versions and missing generators can make a drifting control set
@@ -39,8 +39,10 @@ und `gate-requirements.json` mit SHA-256
 - Current state: local PowerShell/Bash parity, 157-ID order, help, strict-mode,
   dry-run, and candidate hash checks passed. The provider OS matrix remains
   future remote evidence under T099 and is not claimed here.
+- Closure: `CL-10-17` is `Fulfilled` with exact-HEAD file evidence. Provider
+  OS parity is a later delivery gate, not a hidden acceptance of residual risk.
 
-## FND-SC-001 — Implemented, local SBOM verification passed
+## FND-SC-001 — Closed locally / Lokal geschlossen
 
 - Checkpoints: `CL-05-01`, `CL-05-02`, `CL-05-04`, `CL-05-11`;
   `Applicable` / `Not Fulfilled`.
@@ -56,11 +58,15 @@ und `gate-requirements.json` mit SHA-256
 - Green/regression: same validator, local CycloneDX JSON, dependency/licence
   review, artefact hash, and truthful VEX/SLSA claims.
 - Owner/reviewer: TinyPl0 maintainer / independent supply-chain reviewer.
-- Current state: official `CycloneDX` 6.2.0 restored and produced a valid
-  CycloneDX 1.7 JSON with 47 components. Full action-SHA validation passed.
-  Final site-artifact binding follows T063; remote attestation is not claimed.
+- Current state: official `CycloneDX` 6.2.0 produced a valid CycloneDX 1.7 JSON
+  with 47 components. The final 1,387-file DocFX candidate, normalized artifact
+  hash, SBOM hash, VEX state, and truthful SLSA boundary are bound in
+  `docs/security/supply-chain-evidence.json`. Remote attestation is not claimed.
+- Closure: `CL-05-01`, `CL-05-02`, `CL-05-04`, and `CL-05-11` are `Fulfilled`
+  for the local feature scope. Provider provenance and Scorecard remain named
+  later delivery evidence and do not reopen this local finding.
 
-## FND-CVD-001 — Implemented, local verification passed
+## FND-CVD-001 — Closed locally / Lokal geschlossen
 
 - Checkpoints: `CL-06-01`, `CL-06-02`; `Applicable` / `Not Fulfilled`.
 - Risk: reporters lack a discoverable safe disclosure path; severity `High`.
@@ -72,10 +78,11 @@ und `gate-requirements.json` mit SHA-256
 - Green/regression: same validator, expiry/link smoke, DocFX, axe and lynx.
 - Owner/reviewer: TinyPl0 maintainer / independent security reviewer.
 - Current state: the unchanged CVD gate, RFC-9116 expiry check, and DocFX
-  publication-path/link smoke passed. Final rendered-page checks follow the
-  single T075–T082 documentation cycle.
+  publication-path/link smoke passed. `CL-06-01` and `CL-06-02` are `Fulfilled`
+  with exact-HEAD file evidence. Final HTML accessibility is tracked by
+  `FND-A11Y-001`, not silently folded into the CVD conclusion.
 
-## FND-GITIGNORE-001 — Verified
+## FND-GITIGNORE-001 — Closed / Geschlossen
 
 - Checkpoint: `CL-10-07`; `Applicable` / `Not Fulfilled`.
 - Risk: new root files can be trackable by default; disclosure severity `High`.
@@ -90,12 +97,14 @@ und `gate-requirements.json` mit SHA-256
 - Current state: all 1,858 tracked paths remain visible, no tracked path is
   ignored, and all synthetic sentinels are denied. No secret content or private
   agent state was read.
+- Closure: `CL-10-07` is `Fulfilled`; reassessment is triggered by root-ignore
+  or sensitive-path changes.
 
-## FND-A11Y-001 — Implemented, inventory verification passed
+## FND-A11Y-001 — Verified / Verifiziert
 
 - Checkpoints: `CL-08-12`, `CL-10-09`; `Applicable` / `Not Fulfilled`.
-- Risk: changed public API pages lack executable axe/text-browser proof;
-  accessibility severity `High`.
+- Risk before mitigation: changed public API pages lacked executable
+  axe/text-browser proof; accessibility severity `High`.
 - Red expectation: the read-only inventory fails only because Node 24,
   lockfile-bound Playwright/axe, three named pages, and a separate lynx path are
   absent. Global Node 26 is not accepted as red or green evidence.
@@ -105,10 +114,16 @@ und `gate-requirements.json` mit SHA-256
   `tests/a11y/docfx-a11y.spec.mjs`, and `.github/workflows/docs-pages.yml`.
 - Green/regression: managed Node 24, `npm ci`, axe, separate lynx, safe cleanup.
 - Owner/reviewer: TinyPl0 maintainer / independent accessibility reviewer.
-- Current state: genuine Node 24.20.0, npm 11.19.0, offline `npm ci`, exact
-  Playwright/axe pins and licences, three listed tests, Chromium availability,
-  workflow inventory, and an offline audit with zero findings passed. The
-  single rendered-page run follows T078.
+- Current state: the authorised host cycle used Node `24.20.0`, npm `11.19.0`
+  and Playwright `1.62.1`. `npm ci` exited `0`, installed six packages, audited
+  seven packages and reported zero vulnerabilities. The required Chromium
+  command passed exactly `3/3` pages in `3.9` seconds. The axe JSON contains
+  zero violations for every page. Separate non-empty lynx dumps preserve the
+  required VM option, budget, stack, run and exception tokens.
+- Closure: `CL-08-12` and `CL-10-09` are `Fulfilled`; residual severity is
+  `Low`. The controlled server bound only to `127.0.0.1:8080`, and no listener
+  or owned server remained after cleanup. Remote exact-head workflow evidence
+  remains a later delivery gate and does not reopen this local finding.
 
 ## FND-GOV-001 — N/A / Non-trigger
 

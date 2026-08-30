@@ -28,8 +28,8 @@
   ],
   "tasks": {
     "path": "specs/004-secure-development-hardening/tasks.md",
-    "sha256": "dbfb4e656a211812e2645c7f746ee997b1c28fbe89391568bd3c0b78df583aff",
-    "completed": 56,
+    "sha256": "617e50ad4f31c552ba65b5c7970d40ad36784d675b2eb8c829624933d1e6e299",
+    "completed": 85,
     "total": 110
   },
   "routing": {
@@ -174,16 +174,16 @@
         "reasoningEffort": "high",
         "preflight": "Completed",
         "exitCode": 0,
-        "updatedAt": "2026-08-30T10:51:35.0795760Z"
+        "updatedAt": "2026-08-30T12:26:18.0961100Z"
       }
     ]
   },
-  "lastPassingGate": "T056 invalid-options green gate passed on clean version 1.72.452.37: exactly 2/2 unchanged filtered batch/step tests passed in 15 ms.",
-  "nextExactAction": "Validate and commit version 1.72.453.38, then run only T057 Pl0.Tests.L10nTests including four-parameter compatibility.",
+  "lastPassingGate": "T085 evidence freeze completed with 28/28 FR rows, 14/14 SC rows, 31/31 gate rows, version 1.72.454.38, clean delivery-set checks, and the atomic checkpoint commit.",
+  "nextExactAction": "Execute read-only T086 identity, slot, accepted-input, and exact checkpoint revalidation before final local inventory and regression preparation.",
   "lastOperation": {
     "kind": "ModelRoutingPhase:implement",
     "state": "NeedsRevalidation",
-    "summary": "The bounded source-edit resume completed T051-T054 and stopped as requested before the orchestrator-only T055 commit/test boundary."
+    "summary": "T085 evidence freeze and checkpoint commit are complete; resume at the read-only T086 revalidation boundary."
   },
   "stop": {
     "reason": "N/A",
@@ -196,5 +196,5 @@
     "postMergeActions": "Pending",
     "finalValidation": "Pending"
   },
-  "updatedAt": "2026-08-30T10:51:35.0795760Z"
+  "updatedAt": "2026-08-30T12:26:18.0961100Z"
 }

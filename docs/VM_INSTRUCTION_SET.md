@@ -71,6 +71,37 @@ Statische Kette (`base(l)`) wird ueber `ResolveBase` aufgeloest.
 | Code | Bedeutung |
 |---:|---|
 | 206 | Division durch 0 |
+| 207 | Ungültiges oder ausgeschöpftes Instruktionsbudget |
+| 208 | Ungültige Stackgröße außerhalb `3..1_000_000` |
 | 98 | EOF bei Integer-Eingabe |
 | 97 | Ungueltiges Integer-Format bei Eingabe |
 | 99 | Sonstiger VM-Laufzeitfehler (z. B. Stack-/Pointerfehler) |
+
+## Ressourcenbudget und Optionsgrenzen / Resource Budget and Option Limits
+
+Deutsch: `VirtualMachineOptions` besitzt als letzten, optionalen Parameter
+`InstructionBudget` mit dem Standardwert `1_000_000`. Gültig sind ein Budget
+größer als null und eine Stackgröße von `3` bis `1_000_000`. Beide VM-Wege
+prüfen diese Werte vor Addition, Speicherallokation und Ausführung. Ungültige
+Werte erzeugen kontrollierte Diagnosen statt Konfigurations-Exceptions.
+
+Eine erfolgreich ausgewählte Instruktion verbraucht genau eine Budgeteinheit.
+Nach genau `N` Instruktionen stoppt die VM vor der Auswahl und vor möglichen
+Nebenwirkungen von Instruktion `N+1`. Batch- und Step-Ausführung verwenden
+denselben Zählpunkt und dieselben Diagnosecodes. Ein Step-Fehler ist terminal;
+wiederholtes `Step()` fügt keine zweite Budgetdiagnose hinzu. Das Budget zählt
+Instruktionen. Es verspricht keine maximale Laufzeit und ersetzt keine
+Betriebssystem- oder Agentensandbox.
+
+English: `VirtualMachineOptions` adds the optional final parameter
+`InstructionBudget`, defaulting to `1_000_000`. A valid budget is greater than
+zero, and a valid stack size is from `3` through `1_000_000`. Both VM paths
+validate these values before arithmetic, allocation, and execution. Invalid
+values produce controlled diagnostics rather than configuration exceptions.
+
+One successfully selected instruction consumes one budget unit. After exactly
+`N` instructions, the VM stops before selecting or causing side effects from
+instruction `N+1`. Batch and step execution use the same counting point and
+diagnostic codes. A step failure is terminal and repeated `Step()` calls do not
+duplicate the budget diagnostic. The budget counts instructions; it is not a
+wall-clock or operating-system isolation guarantee.

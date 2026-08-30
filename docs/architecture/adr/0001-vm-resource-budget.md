@@ -31,3 +31,17 @@ Batch-/Step-Parität. Kosten: neue öffentliche Option, Diagnostics, Tests,
 DocFX/A11Y und dauerhafte Paritätstests. Residual risk: keine OS-, CPU-Zeit-
 oder Speichersandbox. Related: `docs/security/threat-model.md`,
 `docs/security/adr/0001-vm-resource-budget.md`, Feature spec and plan.
+
+## Implementierungsabgleich / Implementation Check
+
+Deutsch: Die Entscheidung wurde ohne große VM-Zusammenlegung umgesetzt.
+Diagnose 207 deckt ungültiges und ausgeschöpftes Budget ab; Diagnose 208 deckt
+die Stackgrenze ab. Der alte Vier-Parameter-Aufruf bleibt quellkompatibel. Die
+versionierten Rot-/Grün-Läufe T049, T050 und T055–T057 verwenden unveränderte
+Testquellen; die finale Gesamtsuite folgt erst am Kandidaten-HEAD.
+
+English: The decision is implemented without a broad VM merge. Diagnostic 207
+covers invalid and exhausted budgets, while 208 covers stack limits. The old
+four-parameter call remains source compatible. Versioned red/green runs T049,
+T050, and T055–T057 use unchanged test sources; the final full suite runs only
+on the later candidate HEAD.
