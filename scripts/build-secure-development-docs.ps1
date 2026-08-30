@@ -45,7 +45,9 @@ function Build-SecureDevelopmentDocs {
     $sets = foreach ($path in $files) {
         if (-not (Test-Path -LiteralPath $path -PathType Leaf)) { throw "Missing checklist: $path" }
         $text = Get-Content -LiteralPath $path -Raw -Encoding UTF8
-        $version = [regex]::Match($text, '(?m)^\*\*Version / Version:\*\*\s+([^\r\n]+)$').Groups[1].Value.Trim()
+        # DE: Das optionale Wagenrücklaufzeichen hält LF- und CRLF-Checkouts identisch.
+        # EN: The optional carriage return keeps LF and CRLF checkouts identical.
+        $version = [regex]::Match($text, '(?m)^\*\*Version / Version:\*\*\s+([^\r\n]+)\r?$').Groups[1].Value.Trim()
         $entry = @($manifest.checklists | Where-Object { (Join-Path $docsRoot $_.path) -eq $path })[0]
         if ($version -ne $entry.version) { throw "Version drift: $path expected $($entry.version), found $version" }
         $ids = @([regex]::Matches($text, '(?m)^#### (CL-[0-9]{2}-[0-9]{2}):') | ForEach-Object { $_.Groups[1].Value })

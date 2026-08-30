@@ -95,6 +95,8 @@
       "netLines": 25631
     }
   ],
-  "excludedPaths": [],
+  "excludedPaths": [
+    "src/Pl0.Ide/Pl0.Ide.csproj"
+  ],
   "categoryOverrides": []
 }

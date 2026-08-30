@@ -76,6 +76,11 @@ jobs:
       - name: Install pinned Chromium runtime
         run: cd tests/a11y && npx playwright install --with-deps chromium
 
+      - name: Install Lynx text browser
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes --no-install-recommends lynx
+
       - name: Smoke and axe test generated site on loopback
         shell: bash
         run: |
