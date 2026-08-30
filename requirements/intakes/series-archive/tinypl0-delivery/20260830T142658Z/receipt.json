@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "1.0",
+  "documentType": "IntakeSeriesReceipt",
+  "receiptId": "224e145b-5e0f-4bab-8958-4e9b51364267",
+  "seriesId": "8541ffa1-6b52-4f95-a746-d870482eaf5d",
+  "generator": {
+    "preset": "intake-sequencing-governance",
+    "version": "0.2.3"
+  },
+  "createdAt": "2026-08-29T20:57:25Z",
+  "operation": {
+    "operationId": "a6522a3c-1674-4db6-89e0-aeb538f79c2a",
+    "type": "Update",
+    "authorityEvidence": "User explicitly authorized the complete 003 Constitution Change MergeAndSync run, admin bypass, and causal post-merge closeout on 2026-08-29."
+  },
+  "status": "Ready",
+  "manifest": {
+    "path": "requirements/intakes/series/tinypl0-delivery/manifest.json",
+    "normalizedSha256": "1ca91db4ec4970c45a7c27b8623d03c29f52c9295305f8ee7d574b23d3f6cadf"
+  },
+  "supersedes": {
+    "receiptPath": "requirements/intakes/series-archive/tinypl0-delivery/20260829T205512Z/receipt.json",
+    "receiptNormalizedSha256": "9bff2600188ec02dd878f5f607a1cbde8bad7ae09a1187ce95447cad4a6e894b",
+    "manifestArchivePath": "requirements/intakes/series-archive/tinypl0-delivery/20260829T205512Z/manifest.json",
+    "manifestArchiveSha256": "5e4ca0a67a221854fef7abb092b7f014433f6dd1e6c0e24b71fc978f5096b3bf"
+  },
+  "tombstone": {
+    "path": "N/A",
+    "normalizedSha256": "N/A"
+  },
+  "nextAction": "$speckit-intake-series-status"
+}

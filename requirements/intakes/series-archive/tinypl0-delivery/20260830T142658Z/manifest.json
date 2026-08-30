@@ -13,16 +13,16 @@
       "status": "Completed"
     },
     {
-      "path": "requirements/intakes/archive/Lastenheft_Secure-Development-Hardening.004-secure-development-hardening.md",
+      "path": "requirements/intakes/active/Lastenheft_Secure-Development-Hardening.md",
       "role": "OrderedMember",
       "normalizedSha256": "18c957e4bcbe3e9e975f11ace8d1d2c81c49064f911f607480a09e14774669de",
-      "status": "Completed"
+      "status": "Eligible"
     },
     {
       "path": "requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
       "role": "OrderedMember",
       "normalizedSha256": "628f869c9df39329949b73457bd56d4345f467ef38d453f257887d07b8f58735",
-      "status": "Eligible"
+      "status": "Blocked"
     },
     {
       "path": "requirements/intakes/active/Lastenheft_Quellcode_Doku.md",
@@ -107,12 +107,12 @@
   "dependencies": [
     {
       "from": "requirements/intakes/archive/Lastenheft_Constitution_Change.003-constitution-change.md",
-      "to": "requirements/intakes/archive/Lastenheft_Secure-Development-Hardening.004-secure-development-hardening.md",
+      "to": "requirements/intakes/active/Lastenheft_Secure-Development-Hardening.md",
       "kind": "HardCompletionGate",
       "binding": true
     },
     {
-      "from": "requirements/intakes/archive/Lastenheft_Secure-Development-Hardening.004-secure-development-hardening.md",
+      "from": "requirements/intakes/active/Lastenheft_Secure-Development-Hardening.md",
       "to": "requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
       "kind": "HardCompletionGate",
       "binding": true

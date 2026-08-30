@@ -20,12 +20,12 @@ const stableUuid = (key) => {
 const config = readJson("requirements/intake-governance-config.json");
 const seriesRoot = "requirements/intakes/series/tinypl0-delivery";
 const seriesId = stableUuid("series");
-const seriesReceiptId = "224e145b-5e0f-4bab-8958-4e9b51364267";
-const seriesOperationId = "a6522a3c-1674-4db6-89e0-aeb538f79c2a";
+const seriesReceiptId = "fb40ca24-f5ed-4dba-99b2-c4e3ead4ef43";
+const seriesOperationId = "dc25fcf9-1760-4aa2-b6d2-fd75fcadd051";
 const reviewId = "357ed01f-f120-4634-8596-45e7baffa17d";
 const priorReviewId = "78435231-e579-486f-8d80-8192781c127d";
 const createdAt = "2026-07-26T22:00:00Z";
-const seriesUpdatedAt = "2026-08-29T20:57:25Z";
+const seriesUpdatedAt = "2026-08-30T14:26:58Z";
 const reviewHead = "5342f42eac5214d7491c80d2be3a97e1b17d63b8";
 const reviewedAt = "2026-08-29T21:54:27Z";
 const priorReviewArchivePath =
@@ -33,8 +33,8 @@ const priorReviewArchivePath =
 
 const members = [
   ["constitution-change", "Lastenheft_Constitution_Change.md", "Completed"],
-  ["secure-development-hardening", "Lastenheft_Secure-Development-Hardening.md", "Eligible"],
-  ["sandbox-gestuetzte-secure-development-haertung", "Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md", "Blocked"],
+  ["secure-development-hardening", "Lastenheft_Secure-Development-Hardening.md", "Completed"],
+  ["sandbox-gestuetzte-secure-development-haertung", "Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md", "Eligible"],
   ["quellcode-doku", "Lastenheft_Quellcode_Doku.md", "Blocked"],
   ["dokumentation-en", "Lastenheft_Dokumentation_EN.md", "Blocked"],
   ["ide-l10n", "Lastenheft_IDE-L10N.md", "Blocked"],
@@ -57,14 +57,19 @@ const members = [
   operationId: stableUuid(`operation:${slug}`),
   path: slug === "constitution-change"
     ? "requirements/intakes/archive/Lastenheft_Constitution_Change.003-constitution-change.md"
+    : slug === "secure-development-hardening"
+      ? "requirements/intakes/archive/Lastenheft_Secure-Development-Hardening.004-secure-development-hardening.md"
+      : `requirements/intakes/active/${fileName}`,
+  reviewPath: slug === "constitution-change"
+    ? "requirements/intakes/archive/Lastenheft_Constitution_Change.003-constitution-change.md"
     : `requirements/intakes/active/${fileName}`,
-  reviewPath: `requirements/intakes/active/${fileName}`,
+  receiptPath: `requirements/intakes/active/${fileName}`,
   priorTarget: `requirements/intakes/history/pre-intake-split-20260726/${fileName}`,
   priorReceipt: `specs/intake-authoring-receipts/history/${slug}.schema-1.1.json`,
   customReceipt: slug === "embeddable-vm-und-nuget",
 }));
 const targets = members.map((member) => member.path);
-const reviewTargets = targets;
+const reviewTargets = members.map((member) => member.reviewPath);
 const dependencies = Array.from({length: 10}, (_, index) => ({
   from: targets[index],
   to: targets[index + 1],
@@ -145,7 +150,7 @@ function receiptFor(member) {
       authorityEvidence: "User-approved TinyPl0 requirements and intake consolidation plan",
     },
     status: "ReadyForReview",
-    target: {path: member.reviewPath, normalizedSha256: hashFile(member.path)},
+    target: {path: member.receiptPath, normalizedSha256: hashFile(member.path)},
     sources: [sourceRecord(member.priorTarget)],
     profile: "level2-lastenheft",
     languagePolicy: "GermanFirstEnglishSecond",
@@ -154,7 +159,7 @@ function receiptFor(member) {
         id: "IAD001",
         status: "Answered",
         question: "Welcher Zielpfad ist nach der Konsolidierung verbindlich?",
-        answer: member.reviewPath,
+        answer: member.receiptPath,
         evidence: "specs/requirements-reconciliation-20260726/migration-proposal.json",
       },
       {
@@ -197,7 +202,7 @@ function receiptFor(member) {
       role: member.role,
       supersedesIntakeIds: [],
     },
-    nextAction: `$speckit-intake-review ${member.reviewPath}`,
+    nextAction: `$speckit-intake-review ${member.receiptPath}`,
   };
 }
 
@@ -290,15 +295,15 @@ const seriesReceipt = {
   operation: {
     operationId: seriesOperationId,
     type: "Update",
-    authorityEvidence: "User explicitly authorized the complete 003 Constitution Change MergeAndSync run, admin bypass, and causal post-merge closeout on 2026-08-29.",
+    authorityEvidence: "User explicitly authorized resuming the serial TinyPl0 autonomous Spec Kit series through 2026-08-31, DeliveryMode MergeAndSync, admin bypass, and causal post-merge closeout on 2026-08-30.",
   },
   status: "Ready",
   manifest: {path: manifestPath, normalizedSha256: manifestHash},
   supersedes: {
-    receiptPath: "requirements/intakes/series-archive/tinypl0-delivery/20260829T205512Z/receipt.json",
-    receiptNormalizedSha256: "9bff2600188ec02dd878f5f607a1cbde8bad7ae09a1187ce95447cad4a6e894b",
-    manifestArchivePath: "requirements/intakes/series-archive/tinypl0-delivery/20260829T205512Z/manifest.json",
-    manifestArchiveSha256: "5e4ca0a67a221854fef7abb092b7f014433f6dd1e6c0e24b71fc978f5096b3bf",
+    receiptPath: "requirements/intakes/series-archive/tinypl0-delivery/20260830T142658Z/receipt.json",
+    receiptNormalizedSha256: "4f3bb40cbcc80882ae992fe8f2da5da96e4c8338e6cbd6e16d07b931ac97b67a",
+    manifestArchivePath: "requirements/intakes/series-archive/tinypl0-delivery/20260830T142658Z/manifest.json",
+    manifestArchiveSha256: "1ca91db4ec4970c45a7c27b8623d03c29f52c9295305f8ee7d574b23d3f6cadf",
   },
   tombstone: {path: "N/A", normalizedSha256: "N/A"},
   nextAction: "$speckit-intake-series-status",
@@ -310,27 +315,29 @@ const operation = {
   seriesId,
   type: "Update",
   status: "Published",
-  authorityEvidence: "User explicitly authorized the complete 003 Constitution Change MergeAndSync run, admin bypass, and causal post-merge closeout on 2026-08-29.",
+  authorityEvidence: "User explicitly authorized resuming the serial TinyPl0 autonomous Spec Kit series through 2026-08-31, DeliveryMode MergeAndSync, admin bypass, and causal post-merge closeout on 2026-08-30.",
   proposalNormalizedSha256: manifestHash,
   preparedPaths: [
-    "requirements/intakes/archive/Lastenheft_Constitution_Change.003-constitution-change.md",
+    "requirements/intakes/archive/Lastenheft_Secure-Development-Hardening.004-secure-development-hardening.md",
     manifestPath,
     `${seriesRoot}/receipt.json`,
     `${seriesRoot}/order.md`,
-    "requirements/intakes/series-archive/tinypl0-delivery/20260829T205512Z/manifest.json",
-    "requirements/intakes/series-archive/tinypl0-delivery/20260829T205512Z/receipt.json",
+    "requirements/intakes/series-archive/tinypl0-delivery/20260830T142658Z/manifest.json",
+    "requirements/intakes/series-archive/tinypl0-delivery/20260830T142658Z/receipt.json",
+    "Pflichtenheft.md",
     "Lastenheft_Abarbeitungsreihenfolge.md",
   ],
   validation: {bash: "Pass", powerShell: "Pass"},
   publication: {
     status: "Published",
     publishedPaths: [
-      "requirements/intakes/archive/Lastenheft_Constitution_Change.003-constitution-change.md",
+      "requirements/intakes/archive/Lastenheft_Secure-Development-Hardening.004-secure-development-hardening.md",
       manifestPath,
       `${seriesRoot}/receipt.json`,
       `${seriesRoot}/order.md`,
-      "requirements/intakes/series-archive/tinypl0-delivery/20260829T205512Z/manifest.json",
-      "requirements/intakes/series-archive/tinypl0-delivery/20260829T205512Z/receipt.json",
+      "requirements/intakes/series-archive/tinypl0-delivery/20260830T142658Z/manifest.json",
+      "requirements/intakes/series-archive/tinypl0-delivery/20260830T142658Z/receipt.json",
+      "Pflichtenheft.md",
       "Lastenheft_Abarbeitungsreihenfolge.md",
     ],
   },
@@ -411,14 +418,19 @@ covers delivery of this review evidence through MergeAndSync with explicit
 admin bypass; it does not authorize intake implementation, secrets, or NuGet
 publication.*
 `;
+const reviewTargetsExist = reviewTargets.every((target) =>
+  fs.existsSync(path.join(root, target)),
+);
 const outputs = [
   [manifestPath, json(manifest)],
   [`${seriesRoot}/receipt.json`, json(seriesReceipt)],
   [`${seriesRoot}/operation.json`, json(operation)],
   [`${seriesRoot}/order.md`, normalize(read("Lastenheft_Abarbeitungsreihenfolge.md"))],
-  [requestPath, json(request)],
-  [`${seriesRoot}/intake-review-result.json`, json(result)],
-  [`${seriesRoot}/intake-review-report.md`, report],
+  ...(reviewTargetsExist ? [
+    [requestPath, json(request)],
+    [`${seriesRoot}/intake-review-result.json`, json(result)],
+    [`${seriesRoot}/intake-review-report.md`, report],
+  ] : []),
   [priorReviewArchivePath, json(priorReviewEvidence)],
   ...members.filter((member) => !member.customReceipt).map((member) => [
     `specs/intake-authoring-receipts/${member.slug}.json`,

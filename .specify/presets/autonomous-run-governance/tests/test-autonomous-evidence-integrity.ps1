@@ -70,6 +70,12 @@ try {
     [IO.File]::WriteAllText((Join-Path $Repo 'delivery.txt'), "bad `n", [Text.UTF8Encoding]::new($false))
     [void](Invoke-Expected { & pwsh -NoProfile -File $DeliveryPs -Repo $Repo -Intended delivery.txt } 2 'PowerShell whitespace rejection')
     if ($HasBash) { [void](Invoke-Expected { & bash $DeliverySh --repo $Repo --intended delivery.txt } 2 'Bash whitespace rejection') }
+    [IO.File]::WriteAllText((Join-Path $Repo 'delivery.md'), "semantic break  `n", [Text.UTF8Encoding]::new($false))
+    [void](Invoke-Expected { & pwsh -NoProfile -File $DeliveryPs -Repo $Repo -Intended delivery.md } 0 'PowerShell Markdown hard-break acceptance')
+    if ($HasBash) { [void](Invoke-Expected { & bash $DeliverySh --repo $Repo --intended delivery.md } 0 'Bash Markdown hard-break acceptance') }
+    [IO.File]::WriteAllText((Join-Path $Repo 'delivery.md'), "bad   `n", [Text.UTF8Encoding]::new($false))
+    [void](Invoke-Expected { & pwsh -NoProfile -File $DeliveryPs -Repo $Repo -Intended delivery.md } 2 'PowerShell excessive Markdown whitespace rejection')
+    if ($HasBash) { [void](Invoke-Expected { & bash $DeliverySh --repo $Repo --intended delivery.md } 2 'Bash excessive Markdown whitespace rejection') }
     [IO.File]::WriteAllText((Join-Path $Repo 'delivery.txt'), "delivery`n", [Text.UTF8Encoding]::new($false))
     [void](Invoke-Expected { & pwsh -NoProfile -File $DeliveryPs -Repo $Repo -Intended ../escape.txt } 2 'Traversal rejection')
     [void](Invoke-Expected { & pwsh -NoProfile -File $DeliveryPs -Repo $Repo -Intended (Join-Path $Repo 'delivery.txt') } 2 'Absolute path rejection')

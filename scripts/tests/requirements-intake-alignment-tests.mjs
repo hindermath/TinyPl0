@@ -38,7 +38,7 @@ expectFailure("archive target", {
 }, /directory and series targets differ|only Completed series targets/);
 expectFailure("missing eligible", {
   manifestPath: fixture("missing-eligible", manifestSource, (value) => {
-    value.orderedTargets[1].status = "Pending";
+    value.orderedTargets.find((target) => target.status === "Eligible").status = "Pending";
   }),
 }, /single explicitly Eligible/);
 expectFailure("stale hash", {

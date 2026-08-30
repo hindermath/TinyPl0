@@ -1,19 +1,20 @@
 {
   "schemaVersion": "1.0",
   "documentType": "IntakeSeriesOperation",
-  "operationId": "a6522a3c-1674-4db6-89e0-aeb538f79c2a",
+  "operationId": "dc25fcf9-1760-4aa2-b6d2-fd75fcadd051",
   "seriesId": "8541ffa1-6b52-4f95-a746-d870482eaf5d",
   "type": "Update",
   "status": "Published",
-  "authorityEvidence": "User explicitly authorized the complete 003 Constitution Change MergeAndSync run, admin bypass, and causal post-merge closeout on 2026-08-29.",
-  "proposalNormalizedSha256": "1ca91db4ec4970c45a7c27b8623d03c29f52c9295305f8ee7d574b23d3f6cadf",
+  "authorityEvidence": "User explicitly authorized resuming the serial TinyPl0 autonomous Spec Kit series through 2026-08-31, DeliveryMode MergeAndSync, admin bypass, and causal post-merge closeout on 2026-08-30.",
+  "proposalNormalizedSha256": "7ea4e9c892756eb70223a8c16c60f5eb160dd12cf6564d5597662bb8aa72dc95",
   "preparedPaths": [
-    "requirements/intakes/archive/Lastenheft_Constitution_Change.003-constitution-change.md",
+    "requirements/intakes/archive/Lastenheft_Secure-Development-Hardening.004-secure-development-hardening.md",
     "requirements/intakes/series/tinypl0-delivery/manifest.json",
     "requirements/intakes/series/tinypl0-delivery/receipt.json",
     "requirements/intakes/series/tinypl0-delivery/order.md",
-    "requirements/intakes/series-archive/tinypl0-delivery/20260829T205512Z/manifest.json",
-    "requirements/intakes/series-archive/tinypl0-delivery/20260829T205512Z/receipt.json",
+    "requirements/intakes/series-archive/tinypl0-delivery/20260830T142658Z/manifest.json",
+    "requirements/intakes/series-archive/tinypl0-delivery/20260830T142658Z/receipt.json",
+    "Pflichtenheft.md",
     "Lastenheft_Abarbeitungsreihenfolge.md"
   ],
   "validation": {
@@ -23,12 +24,13 @@
   "publication": {
     "status": "Published",
     "publishedPaths": [
-      "requirements/intakes/archive/Lastenheft_Constitution_Change.003-constitution-change.md",
+      "requirements/intakes/archive/Lastenheft_Secure-Development-Hardening.004-secure-development-hardening.md",
       "requirements/intakes/series/tinypl0-delivery/manifest.json",
       "requirements/intakes/series/tinypl0-delivery/receipt.json",
       "requirements/intakes/series/tinypl0-delivery/order.md",
-      "requirements/intakes/series-archive/tinypl0-delivery/20260829T205512Z/manifest.json",
-      "requirements/intakes/series-archive/tinypl0-delivery/20260829T205512Z/receipt.json",
+      "requirements/intakes/series-archive/tinypl0-delivery/20260830T142658Z/manifest.json",
+      "requirements/intakes/series-archive/tinypl0-delivery/20260830T142658Z/receipt.json",
+      "Pflichtenheft.md",
       "Lastenheft_Abarbeitungsreihenfolge.md"
     ]
   }

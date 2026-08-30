@@ -21,6 +21,7 @@
     "history": "requirements/intakes/history",
     "seriesManifest": "requirements/intakes/series/tinypl0-delivery/manifest.json"
   },
+  "preferredNext": "requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
   "legacyArtifactNames": [],
   "featureMustRemainAbsent": false
 }
