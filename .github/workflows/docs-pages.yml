@@ -98,6 +98,16 @@ jobs:
           python3 -m http.server 8080 --bind 127.0.0.1 --directory _site > /tmp/tinypl0-lynx-server.log 2>&1 &
           server_pid=$!
           trap 'kill "$server_pid" 2>/dev/null || true; wait "$server_pid" 2>/dev/null || true' EXIT
+          for attempt in {1..20}; do
+            if curl --fail --silent http://127.0.0.1:8080/ > /dev/null; then
+              break
+            fi
+            if [ "$attempt" -eq 20 ]; then
+              cat /tmp/tinypl0-lynx-server.log >&2
+              exit 1
+            fi
+            sleep 0.25
+          done
           lynx -dump -nolist http://127.0.0.1:8080/api/Pl0.Vm.VirtualMachineOptions.html | grep -q VirtualMachineOptions
           lynx -dump -nolist http://127.0.0.1:8080/api/Pl0.Vm.VirtualMachine.html | grep -q VirtualMachine
 
