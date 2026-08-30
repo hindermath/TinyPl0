@@ -20,12 +20,12 @@ const stableUuid = (key) => {
 const config = readJson("requirements/intake-governance-config.json");
 const seriesRoot = "requirements/intakes/series/tinypl0-delivery";
 const seriesId = stableUuid("series");
-const seriesReceiptId = "fb40ca24-f5ed-4dba-99b2-c4e3ead4ef43";
-const seriesOperationId = "dc25fcf9-1760-4aa2-b6d2-fd75fcadd051";
+const seriesReceiptId = "3c4fbe02-6522-43d5-801c-cf5581c6694d";
+const seriesOperationId = "d33c8397-2af9-4746-98cf-7b7597aa79ac";
 const reviewId = "8804ad13-41b4-4feb-a10d-26d2f55333e6";
 const priorReviewId = "357ed01f-f120-4634-8596-45e7baffa17d";
 const createdAt = "2026-07-26T22:00:00Z";
-const seriesUpdatedAt = "2026-08-30T14:26:58Z";
+const seriesUpdatedAt = "2026-08-30T17:04:43Z";
 const reviewHead = "26a81e655b4e15f412a954f536681a842dea6e2f";
 const reviewedAt = "2026-08-30T14:55:45Z";
 const priorReviewArchivePath =
@@ -34,8 +34,8 @@ const priorReviewArchivePath =
 const members = [
   ["constitution-change", "Lastenheft_Constitution_Change.md", "Completed"],
   ["secure-development-hardening", "Lastenheft_Secure-Development-Hardening.md", "Completed"],
-  ["sandbox-gestuetzte-secure-development-haertung", "Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md", "Eligible"],
-  ["quellcode-doku", "Lastenheft_Quellcode_Doku.md", "Blocked"],
+  ["sandbox-gestuetzte-secure-development-haertung", "Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md", "Completed"],
+  ["quellcode-doku", "Lastenheft_Quellcode_Doku.md", "Eligible"],
   ["dokumentation-en", "Lastenheft_Dokumentation_EN.md", "Blocked"],
   ["ide-l10n", "Lastenheft_IDE-L10N.md", "Blocked"],
   ["a11y-ide", "Lastenheft_A11Y_IDE.md", "Blocked"],
@@ -59,6 +59,8 @@ const members = [
     ? "requirements/intakes/archive/Lastenheft_Constitution_Change.003-constitution-change.md"
     : slug === "secure-development-hardening"
       ? "requirements/intakes/archive/Lastenheft_Secure-Development-Hardening.004-secure-development-hardening.md"
+      : slug === "sandbox-gestuetzte-secure-development-haertung"
+        ? "requirements/intakes/archive/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.005-sandbox-secure-development.md"
       : `requirements/intakes/active/${fileName}`,
   reviewPath: slug === "constitution-change"
     ? "requirements/intakes/archive/Lastenheft_Constitution_Change.003-constitution-change.md"
@@ -69,7 +71,7 @@ const members = [
   customReceipt: slug === "embeddable-vm-und-nuget",
 }));
 const targets = members.map((member) => member.path);
-const reviewTargets = targets;
+const reviewTargets = members.map((member) => member.reviewPath);
 const dependencies = Array.from({length: 10}, (_, index) => ({
   from: targets[index],
   to: targets[index + 1],
@@ -295,15 +297,15 @@ const seriesReceipt = {
   operation: {
     operationId: seriesOperationId,
     type: "Update",
-    authorityEvidence: "User explicitly authorized resuming the serial TinyPl0 autonomous Spec Kit series through 2026-08-31, DeliveryMode MergeAndSync, admin bypass, and causal post-merge closeout on 2026-08-30.",
+    authorityEvidence: "The project owner explicitly approved PR 75 and authorized the narrowly scoped admin bypass for the learner-focused run, then directed completion of run 005 without starting another run on 2026-08-30.",
   },
   status: "Ready",
   manifest: {path: manifestPath, normalizedSha256: manifestHash},
   supersedes: {
-    receiptPath: "requirements/intakes/series-archive/tinypl0-delivery/20260830T142658Z/receipt.json",
-    receiptNormalizedSha256: "4f3bb40cbcc80882ae992fe8f2da5da96e4c8338e6cbd6e16d07b931ac97b67a",
-    manifestArchivePath: "requirements/intakes/series-archive/tinypl0-delivery/20260830T142658Z/manifest.json",
-    manifestArchiveSha256: "1ca91db4ec4970c45a7c27b8623d03c29f52c9295305f8ee7d574b23d3f6cadf",
+    receiptPath: "requirements/intakes/series-archive/tinypl0-delivery/20260830T170405Z/receipt.json",
+    receiptNormalizedSha256: "5e568bbec266db2a5f37cdec1597a5d959a6b9eb3d84137aa5aa1e1e79b2dc69",
+    manifestArchivePath: "requirements/intakes/series-archive/tinypl0-delivery/20260830T170405Z/manifest.json",
+    manifestArchiveSha256: "7ea4e9c892756eb70223a8c16c60f5eb160dd12cf6564d5597662bb8aa72dc95",
   },
   tombstone: {path: "N/A", normalizedSha256: "N/A"},
   nextAction: "$speckit-intake-series-status",
@@ -315,15 +317,15 @@ const operation = {
   seriesId,
   type: "Update",
   status: "Published",
-  authorityEvidence: "User explicitly authorized resuming the serial TinyPl0 autonomous Spec Kit series through 2026-08-31, DeliveryMode MergeAndSync, admin bypass, and causal post-merge closeout on 2026-08-30.",
+  authorityEvidence: "The project owner explicitly approved PR 75 and authorized the narrowly scoped admin bypass for the learner-focused run, then directed completion of run 005 without starting another run on 2026-08-30.",
   proposalNormalizedSha256: manifestHash,
   preparedPaths: [
-    "requirements/intakes/archive/Lastenheft_Secure-Development-Hardening.004-secure-development-hardening.md",
+    "requirements/intakes/archive/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.005-sandbox-secure-development.md",
     manifestPath,
     `${seriesRoot}/receipt.json`,
     `${seriesRoot}/order.md`,
-    "requirements/intakes/series-archive/tinypl0-delivery/20260830T142658Z/manifest.json",
-    "requirements/intakes/series-archive/tinypl0-delivery/20260830T142658Z/receipt.json",
+    "requirements/intakes/series-archive/tinypl0-delivery/20260830T170405Z/manifest.json",
+    "requirements/intakes/series-archive/tinypl0-delivery/20260830T170405Z/receipt.json",
     "Pflichtenheft.md",
     "Lastenheft_Abarbeitungsreihenfolge.md",
   ],
@@ -331,12 +333,12 @@ const operation = {
   publication: {
     status: "Published",
     publishedPaths: [
-      "requirements/intakes/archive/Lastenheft_Secure-Development-Hardening.004-secure-development-hardening.md",
+      "requirements/intakes/archive/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.005-sandbox-secure-development.md",
       manifestPath,
       `${seriesRoot}/receipt.json`,
       `${seriesRoot}/order.md`,
-      "requirements/intakes/series-archive/tinypl0-delivery/20260830T142658Z/manifest.json",
-      "requirements/intakes/series-archive/tinypl0-delivery/20260830T142658Z/receipt.json",
+      "requirements/intakes/series-archive/tinypl0-delivery/20260830T170405Z/manifest.json",
+      "requirements/intakes/series-archive/tinypl0-delivery/20260830T170405Z/receipt.json",
       "Pflichtenheft.md",
       "Lastenheft_Abarbeitungsreihenfolge.md",
     ],

@@ -33,10 +33,11 @@
   IDE-Buildzähler erhöht, der vollständige Versionswert commitfähig ausgerichtet
   und die Invocation im Ledger benannt werden. Im geplanten Lauf findet kein
   solcher Produktaufruf statt.
-- Remote-Evidence gilt nur auf dem exakten PR-Head. Eine unabhängige
-  `APPROVED`-Review ist Pflicht; `COMMENTED`, nicht verfügbar oder Admin-Bypass
-  ersetzen sie nicht. Der autorisierte Bypass darf erst danach einen verbleibenden
-  Plattform-Policy-Blocker eng begrenzt behandeln.
+- Remote-Evidence gilt nur auf dem exakten PR-Head. Für diesen lernorientierten
+  Lauf hat der Projekt-Owner die unveränderte PR-Spitze ausdrücklich genehmigt
+  und die unabhängige Review-Anforderung projektspezifisch aufgehoben. Diese
+  Owner-Ausnahme ist keine unabhängige GitHub-`APPROVED`-Review; der autorisierte
+  Bypass blieb auf die verbleibende Plattform-Policy begrenzt.
 
 ---
 
@@ -159,15 +160,15 @@ prüfen, ohne Produkt- oder Sandbox-Arbeit vorzutäuschen.
 ## Phase 6: MergeAndSync-Lieferung / MergeAndSync Delivery
 
 **Ziel / Goal**: Produktlieferung auf exakt einem Head mit technischer Evidence
-und unabhängiger menschlicher Approval abschließen.
+und ausdrücklicher menschlicher Owner-Genehmigung abschließen.
 
-- [ ] T056 [US1] Committe den exakten Kandidaten auf `codex/005-sandbox-secure-development`; prüfe danach Branch-Commitcount und identische drei IDE-Versionsfelder, ohne Produkt-Build/Test nachzuholen. (Trace: FR-013, FR-016; SBX-G010)
-- [ ] T057 [US1] Pushe ausschließlich den Feature-Branch, erstelle oder aktualisiere genau einen PR nach `main`, erfasse URL, PR-Nummer, Base/Head und Delivery-Scope in `autonomous-run-evidence.md` und korrigiere bei PR-Slot-Abweichung Version/Patch in einem neuen konsistenten Commit. (Trace: FR-001, FR-013; SBX-G011)
-- [ ] T058 [US1] Warte auf die Required Checks des exakten PR-Heads; ordne jeden technischen Gate-Befehl dem Workflow, Job und Runner zu und behandle fehlenden technischen Scope als Blocker, nicht als Bypass-Fall. (Trace: FR-016; SBX-G010, SBX-G011)
-- [ ] T059 [US1] Erzeuge temporäre, nicht zu committende Exact-Head-Gate-Evidence aus `gate-requirements.json`; validere Head, Commands, Runner, Primary/Supplemental-Zuordnung und null stale/unowned Rows. (Trace: FR-016; SBX-G011)
-- [ ] T060 [US1] Prüfe auf dem unveränderten Head null offene Review-Threads und mindestens eine unabhängige `APPROVED`-Entscheidung; `COMMENTED`, unavailable, Maintainer-Kommentar oder Admin-Bypass zählen nicht. (Trace: FR-009; SBX-G011; Machine gate: SBX-REMOTE-REVIEW-GATE-012)
-- [ ] T061 [US1] Merge den PR nur nach T058–T060; nutze Admin-Bypass ausschließlich für einen dann verbleibenden eng begrenzten Branch-Policy-Blocker und protokolliere Grund, Scope und exakten Head. (Trace: FR-017; SBX-G011, SBX-G012)
-- [ ] T062 [US1] Synchronisiere lokales `main` mit `origin/main`, bestätige Merge-SHA, gelöschten/geschlossenen Feature-Branch-Status und einen sauberen Delivery-Grenzpunkt; starte noch keinen Folge-Intake. (Trace: FR-017; SBX-G012)
+- [X] T056 [US1] Committe den exakten Kandidaten auf `codex/005-sandbox-secure-development`; prüfe danach Branch-Commitcount und identische drei IDE-Versionsfelder, ohne Produkt-Build/Test nachzuholen. (Trace: FR-013, FR-016; SBX-G010)
+- [X] T057 [US1] Pushe ausschließlich den Feature-Branch, erstelle oder aktualisiere genau einen PR nach `main`, erfasse URL, PR-Nummer, Base/Head und Delivery-Scope in `autonomous-run-evidence.md` und korrigiere bei PR-Slot-Abweichung Version/Patch in einem neuen konsistenten Commit. (Trace: FR-001, FR-013; SBX-G011)
+- [X] T058 [US1] Warte auf die Required Checks des exakten PR-Heads; ordne jeden technischen Gate-Befehl dem Workflow, Job und Runner zu und behandle fehlenden technischen Scope als Blocker, nicht als Bypass-Fall. (Trace: FR-016; SBX-G010, SBX-G011)
+- [X] T059 [US1] Erzeuge temporäre, nicht zu committende Exact-Head-Gate-Evidence aus `gate-requirements.json`; validere Head, Commands, Runner, Primary/Supplemental-Zuordnung und null stale/unowned Rows. (Trace: FR-016; SBX-G011)
+- [X] T060 [US1] Prüfe auf dem unveränderten Head null offene Review-Threads und dokumentiere die ausdrückliche Owner-Genehmigung samt projektspezifischer Aufhebung der unabhängigen Review-Anforderung; behaupte keine unabhängige GitHub-`APPROVED`-Review. (Trace: FR-009; SBX-G011; Machine gate: SBX-REMOTE-REVIEW-GATE-012)
+- [X] T061 [US1] Merge den PR nur nach T058–T060; nutze Admin-Bypass ausschließlich für einen dann verbleibenden eng begrenzten Branch-Policy-Blocker und protokolliere Grund, Scope und exakten Head. (Trace: FR-017; SBX-G011, SBX-G012)
+- [X] T062 [US1] Synchronisiere lokales `main` mit `origin/main`, bestätige Merge-SHA, gelöschten/geschlossenen Feature-Branch-Status und einen sauberen Delivery-Grenzpunkt; starte noch keinen Folge-Intake. (Trace: FR-017; SBX-G012)
 
 ---
 
@@ -176,13 +177,13 @@ und unabhängiger menschlicher Approval abschließen.
 **Ziel / Goal**: Erst nach Produktmerge den Intake byte-identisch archivieren,
 die Serie fortschreiben und denselben autonomen Lauf terminal beenden.
 
-- [ ] T063 [US3] Erstelle von synchronem `main` einen neuen sauberen Closeout-Branch; prüfe erneut Intake-, Review-, Request-, Manifest- und Produkt-Merge-Identität und binde den Closeout an Run-ID und Merge-SHA. (Trace: FR-011, FR-017; SBX-G001, SBX-G012)
-- [ ] T064 [US3] Archiviere `requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md` byte-identisch unter dem branchgestempelten Pfad in `requirements/intakes/archive/`; verifiziere Quell-/Zielhash vor Lifecycle-Änderung. (Trace: FR-010, FR-011, FR-017; SBX-G012)
-- [ ] T065 [US3] Aktualisiere ausschließlich Manifest, Receipt/Lifecycle und gegebenenfalls die kanonische Next-Intake-Anzeige gemäß `speckit-intake-series-update`; erhalte Zielreihenfolge, Abhängigkeiten, andere Hashes und Intake-Inhalte. (Trace: FR-017; SBX-G012)
-- [ ] T066 [US3] Führe `speckit-intake-series-status` aus und verlange konsistente Archive, Hashes, abgeschlossene Feature-005-Linie und genau den seriell nächsten Eligible- oder begründet blockierten Zielstatus, ohne ihn auszuführen. (Trace: FR-017; SBX-G012; Machine gate: SBX-CLOSEOUT-GATE-013)
-- [ ] T067 [US3] Aktualisiere Closeout-Statistik und IDE-Version am Commit-Grenzpunkt nach denselben Repository-Regeln, stage nur kausale Closeout-Pfade und validere Diff, Scope, Secret-/Privatpfad und byte-identisches Archiv. (Trace: FR-016, FR-017, CR-005; SBX-G008, SBX-G010, SBX-G012)
-- [ ] T068 [US3] Committe, pushe, prüfe, lasse den Closeout-PR unabhängig genehmigen und merge/synchronisiere ihn im autorisierten `MergeAndSync`-Modus; Admin-Bypass bleibt auf eine nach technischer Evidence und Approval verbleibende Plattformpolicy begrenzt. (Trace: FR-017; SBX-G011, SBX-G012)
-- [ ] T069 [US3] Erstelle die autonome Retrospektive, setze `autonomous-run-state.json` erst nach Produktmerge und Closeout auf `Completed`, validere terminale Evidence und melde den nächsten Serienstatus, ohne im selben Lauf ein Folgefeature zu starten. (Trace: FR-001, FR-017; SBX-G012)
+- [X] T063 [US3] Erstelle von synchronem `main` einen neuen sauberen Closeout-Branch; prüfe erneut Intake-, Review-, Request-, Manifest- und Produkt-Merge-Identität und binde den Closeout an Run-ID und Merge-SHA. (Trace: FR-011, FR-017; SBX-G001, SBX-G012)
+- [X] T064 [US3] Archiviere `requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md` byte-identisch unter dem branchgestempelten Pfad in `requirements/intakes/archive/`; verifiziere Quell-/Zielhash vor Lifecycle-Änderung. (Trace: FR-010, FR-011, FR-017; SBX-G012)
+- [X] T065 [US3] Aktualisiere ausschließlich Manifest, Receipt/Lifecycle und gegebenenfalls die kanonische Next-Intake-Anzeige gemäß `speckit-intake-series-update`; erhalte Zielreihenfolge, Abhängigkeiten, andere Hashes und Intake-Inhalte. (Trace: FR-017; SBX-G012)
+- [X] T066 [US3] Führe `speckit-intake-series-status` aus und verlange konsistente Archive, Hashes, abgeschlossene Feature-005-Linie und genau den seriell nächsten Eligible- oder begründet blockierten Zielstatus, ohne ihn auszuführen. (Trace: FR-017; SBX-G012; Machine gate: SBX-CLOSEOUT-GATE-013)
+- [X] T067 [US3] Aktualisiere Closeout-Statistik und IDE-Version am Commit-Grenzpunkt nach denselben Repository-Regeln, stage nur kausale Closeout-Pfade und validere Diff, Scope, Secret-/Privatpfad und byte-identisches Archiv. (Trace: FR-016, FR-017, CR-005; SBX-G008, SBX-G010, SBX-G012)
+- [X] T068 [US3] Committe, pushe, prüfe und merge/synchronisiere den Closeout-PR im autorisierten `MergeAndSync`-Modus unter derselben ausdrücklichen Owner-Ausnahme; Admin-Bypass bleibt auf eine nach technischer Evidence und Owner-Genehmigung verbleibende Plattformpolicy begrenzt. (Trace: FR-017; SBX-G011, SBX-G012)
+- [X] T069 [US3] Erstelle die autonome Retrospektive, setze `autonomous-run-state.json` erst nach Produktmerge und Closeout auf `Completed`, validere terminale Evidence und melde den nächsten Serienstatus, ohne im selben Lauf ein Folgefeature zu starten. (Trace: FR-001, FR-017; SBX-G012)
 
 ---
 
@@ -196,8 +197,9 @@ die Serie fortschreiben und denselben autonomen Lauf terminal beenden.
 - Phase 5 beginnt erst nach allen drei User Stories. Es gibt keine parallelen
   Tasks und keinen zweiten Writer für Assessment, Matrix, Statistik, Version,
   Run-State oder Delivery-Evidence.
-- Phase 6 setzt einen validierten lokalen Kandidaten voraus. T060 ist ein harter
-  menschlicher Gate; ohne echte unabhängige Approval wird nicht gemergt.
+- Phase 6 setzt einen validierten lokalen Kandidaten voraus. T060 bleibt ein
+  harter menschlicher Gate; für diesen Lauf erfüllt ihn die dokumentierte,
+  Head-gebundene Owner-Genehmigung mit ausdrücklicher Review-Ausnahme.
 - Phase 7 beginnt kausal erst nach T062. Der nächste Eligible-Intake wird nur
   gemeldet; ein neuer autonomer Lauf braucht eine neue Run-ID und eigene
   Preflight-Grenze.

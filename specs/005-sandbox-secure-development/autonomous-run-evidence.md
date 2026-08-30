@@ -9,11 +9,11 @@
 | Accepted intake SHA-256 | `628f869c9df39329949b73457bd56d4345f467ef38d453f257887d07b8f58735` |
 | Accepted review | `8804ad13-41b4-4feb-a10d-26d2f55333e6`, `Ready` |
 | Delivery mode | `MergeAndSync` |
-| Bypass authority | Explicitly authorized, narrowly limited, and never a substitute for review or Approval |
+| Bypass authority | Explicitly authorized and narrowly limited; the Owner separately approved the exact head and explicitly waived independent review for this learner-focused run |
 | Secret authority | None; secrets, private profiles, caches, and host paths must not be read into or exposed by evidence |
 | Evidence owner | TinyPl0 project owner and autonomous coordinator |
 | Run-state path | `specs/005-sandbox-secure-development/autonomous-run-state.json` |
-| Run-state status | `Active` |
+| Run-state status | `Completed` |
 
 ## Accepted Boundaries
 
@@ -53,7 +53,7 @@ Model identifiers are stored only as runtime evidence in the run-state. They are
 | Plan review | Pass | 3 High, 1 Medium, 1 Low resolved; 0 open Critical/High/Medium; result `46c2aedc…21c62d69` |
 | Tasks | Pass | 69 strictly serial tasks, no parallel marker, complete user-story/gate/delivery/closeout coverage; result `616a3e39…1d395dc0` |
 | Analyze | Pass | 2 High candidate/scope and 2 Medium traceability findings resolved; 0 open Critical/High/Medium; result `a5a3079e…ffecfa74` |
-| Implementation | Open | Documentation-only assessment package pending |
+| Implementation | Pass | Documentation-only assessment delivered on PR #75; product, tests, Sandbox configuration, and existing security evidence remained unchanged |
 
 ## Sandbox Observation Boundary
 
@@ -129,29 +129,49 @@ The stable Sandbox reference provides a .NET 10 base image, a non-root service u
 
 ## Delivery Candidate Integrity
 
-- Intended paths currently consist of `.specify/feature.json` and `specs/005-sandbox-secure-development/`.
-- Existing product, security evidence, archived predecessor, active intake, and series artifacts are read-only until their explicitly ordered lifecycle boundary.
+- The product candidate consisted of `.specify/feature.json`, the feature directory, statistics configuration/ledger, and IDE version metadata on exact head `8d1a69f44d3ae0a36f3d59c3499e129dbcab7ff6`.
+- Existing product, tests, Sandbox configuration, and security evidence remained unchanged. The binding intake and series stayed read-only until product merge `25614e87ce74512491e9d7406a7a07a1e331cf20` opened the causal closeout boundary.
 - Ignored routing results remain local process evidence and are not part of the delivery candidate.
-- Exact delivery validation, secret scan, private-path scan, staged-candidate review, and index preservation remain Open until implementation closeout.
+- Exact delivery validation, scoped secret/private-path scan, staged-candidate review, and index preservation passed before push and remained bound to the merged head.
 
 ## Remote Delivery
 
 | Item | Result | Evidence |
 |---|---|---|
-| Push | Open | No remote mutation during Specify |
-| Pull request | Open | Created only after local gates and governed version alignment |
-| Required checks | Open | Exact-head evidence required |
-| Independent review | Open | A genuine Approval on unchanged head is required |
-| Admin bypass | Open | May address only a concrete remaining platform-policy blocker after all evidence; never a review substitute |
-| Merge | Open | Requires revalidated authority and exact-head gates |
-| Default-branch sync | Open | Required after merge |
-| Causal closeout | Required | Archive intake byte-identically and update series only after product merge |
+| Push | Pass | Feature head `8d1a69f44d3ae0a36f3d59c3499e129dbcab7ff6` pushed without unrelated paths |
+| Pull request | Pass | PR [#75](https://github.com/hindermath/TinyPl0/pull/75), base `main`, feature scope only |
+| Required checks | Pass with external-provider disposition | 30 check runs: 27 successful, 2 expected skipped; only `Claude Code Review / claude-review` failed with provider `is_error:true`, not a product or repository finding |
+| Review threads | Pass | Zero open review threads on the exact head |
+| Owner approval exception | Pass | Owner comment [issuecomment-5470013037](https://github.com/hindermath/TinyPl0/pull/75#issuecomment-5470013037) states `Is approved.`; Thorsten then explicitly approved the unchanged head and waived independent review for this learner-focused run. GitHub formal review state truthfully remained `REVIEW_REQUIRED` with no independent `APPROVED` review. |
+| Admin bypass | Pass | Used only to cross the remaining review-policy/ruleset barrier after technical evidence and explicit Owner approval; it did not replace a technical, risk, secret, or evidence gate |
+| Merge | Pass | PR #75 merged at `2026-08-30T17:00:53Z`; merge commit `25614e87ce74512491e9d7406a7a07a1e331cf20` |
+| Default-branch sync | Pass | Local `main` and `origin/main` matched the merge commit with a clean worktree before closeout |
+| Causal closeout | Pass | Intake archived byte-identically at hash `628f869c…f58735`; manifest/receipt/order/config updated only after product merge |
+
+## Causal Series Closeout
+
+- Closeout branch: `codex/005-sandbox-secure-development-closeout`, created
+  from synchronized product merge `25614e87ce74512491e9d7406a7a07a1e331cf20`.
+- Archived intake:
+  `requirements/intakes/archive/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.005-sandbox-secure-development.md`;
+  normalized SHA-256 remains
+  `628f869c9df39329949b73457bd56d4345f467ef38d453f257887d07b8f58735`.
+- Successor manifest: 15 targets, 5 roots, 10 dependencies; Sandbox is
+  `Completed` and `requirements/intakes/active/Lastenheft_Quellcode_Doku.md`
+  is the single declared `Eligible` target. It is not executed by this run.
+- Series lineage: receipt `3c4fbe02-6522-43d5-801c-cf5581c6694d`, operation
+  `d33c8397-2af9-4746-98cf-7b7597aa79ac`, previous manifest and receipt stored
+  byte-identically under `20260830T170405Z`.
+- PowerShell and Bash manifest/receipt validation, schema-2.0 governance,
+  generated-governance comparison, and requirements alignment all pass.
+- No `dotnet build`, `dotnet test`, DocFX, axe, or `lynx` invocation was added
+  during closeout because no executable product, API, or HTML surface changed.
 
 ## Resume and Follow-up
 
-- Checkpoint commit: `24612a34dd04cfc42cb02df9d675fe6a93dfe716`.
-- Last passing gate: Analyze resolved two High candidate/scope and two Medium traceability findings with zero open Critical/High/Medium findings.
-- Next exact action: execute T001–T008, including the expected document-contract red, before authoring assessment outputs.
+- Checkpoint commit: product merge `25614e87ce74512491e9d7406a7a07a1e331cf20`.
+- Last passing gate: product merge/sync, byte-identical intake archive, successor-series validation, terminal 69/69 task evidence, and autonomous retrospective.
+- Next exact action: `N/A`; this run is terminal and the user explicitly prohibited starting another run.
 - Stop boundary: do not start a new autonomous run at or after 04:30 Europe/Berlin on 2026-08-31; stop safely no later than 05:30.
 - Residual risk: formal Sandbox approval, exact image identity, Egress acceptance, and actual TinyPl0 Sandbox execution are currently Open.
-- Follow-up boundary: technical Sandbox or TinyPl0 hardening is a separate, explicitly authorized feature.
+- Follow-up boundary: technical Sandbox or TinyPl0 hardening and every later intake require a separate, explicitly authorized run; none was started here.
