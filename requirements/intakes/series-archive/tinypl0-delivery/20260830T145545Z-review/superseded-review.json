@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "1.0",
+  "documentType": "SupersededIntakeReviewEvidence",
+  "reviewId": "357ed01f-f120-4634-8596-45e7baffa17d",
+  "status": "Ready",
+  "reviewedAt": "2026-08-29T21:54:27Z",
+  "targetCount": 15,
+  "supersededBy": "8804ad13-41b4-4feb-a10d-26d2f55333e6",
+  "sourceRevision": "5342f42eac5214d7491c80d2be3a97e1b17d63b8",
+  "request": {
+    "path": "requirements/intakes/series/tinypl0-delivery/intake-review-request.json",
+    "normalizedSha256": "49cddf9ce3391048a12fc4314f1ef2cdf4c500de73956623875a916cde1f3c50"
+  },
+  "result": {
+    "path": "requirements/intakes/series/tinypl0-delivery/intake-review-result.json",
+    "normalizedSha256": "acdcf2dcb7411be6fa3389cf642748fcb1225e9bcbcf32e6bad8a76da54314fe"
+  },
+  "report": {
+    "path": "requirements/intakes/series/tinypl0-delivery/intake-review-report.md",
+    "normalizedSha256": "a00cf175268a8e949a6ff9e835e6626865f34e651173ca8f3582e89efa7dd857"
+  },
+  "relocation": {
+    "priorPath": "requirements/intakes/active/Lastenheft_Secure-Development-Hardening.md",
+    "currentPath": "requirements/intakes/archive/Lastenheft_Secure-Development-Hardening.004-secure-development-hardening.md",
+    "normalizedSha256": "18c957e4bcbe3e9e975f11ace8d1d2c81c49064f911f607480a09e14774669de"
+  },
+  "authorityEvidence": "User explicitly authorized serial autonomous Spec Kit delivery through 2026-08-31; this current series review is the mandatory preflight after completed-target archival.",
+  "proofBoundary": "Hashes preserve the predecessor request, result, and report before the path-current complete series re-review."
+}

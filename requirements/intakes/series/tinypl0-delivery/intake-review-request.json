@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.1",
-  "reviewId": "357ed01f-f120-4634-8596-45e7baffa17d",
+  "reviewId": "8804ad13-41b4-4feb-a10d-26d2f55333e6",
   "mode": "Series",
   "policy": "tinypl0-delivery-v1",
   "targets": [
@@ -9,7 +9,7 @@
       "role": "Primary"
     },
     {
-      "path": "requirements/intakes/active/Lastenheft_Secure-Development-Hardening.md",
+      "path": "requirements/intakes/archive/Lastenheft_Secure-Development-Hardening.004-secure-development-hardening.md",
       "role": "OrderedMember"
     },
     {
@@ -68,7 +68,7 @@
   "series": {
     "orderedTargetPaths": [
       "requirements/intakes/archive/Lastenheft_Constitution_Change.003-constitution-change.md",
-      "requirements/intakes/active/Lastenheft_Secure-Development-Hardening.md",
+      "requirements/intakes/archive/Lastenheft_Secure-Development-Hardening.004-secure-development-hardening.md",
       "requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
       "requirements/intakes/active/Lastenheft_Quellcode_Doku.md",
       "requirements/intakes/active/Lastenheft_Dokumentation_EN.md",
@@ -93,11 +93,11 @@
     "dependencies": [
       {
         "from": "requirements/intakes/archive/Lastenheft_Constitution_Change.003-constitution-change.md",
-        "to": "requirements/intakes/active/Lastenheft_Secure-Development-Hardening.md",
+        "to": "requirements/intakes/archive/Lastenheft_Secure-Development-Hardening.004-secure-development-hardening.md",
         "kind": "HardCompletionGate"
       },
       {
-        "from": "requirements/intakes/active/Lastenheft_Secure-Development-Hardening.md",
+        "from": "requirements/intakes/archive/Lastenheft_Secure-Development-Hardening.004-secure-development-hardening.md",
         "to": "requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
         "kind": "HardCompletionGate"
       },

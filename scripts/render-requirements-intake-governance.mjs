@@ -22,14 +22,14 @@ const seriesRoot = "requirements/intakes/series/tinypl0-delivery";
 const seriesId = stableUuid("series");
 const seriesReceiptId = "fb40ca24-f5ed-4dba-99b2-c4e3ead4ef43";
 const seriesOperationId = "dc25fcf9-1760-4aa2-b6d2-fd75fcadd051";
-const reviewId = "357ed01f-f120-4634-8596-45e7baffa17d";
-const priorReviewId = "78435231-e579-486f-8d80-8192781c127d";
+const reviewId = "8804ad13-41b4-4feb-a10d-26d2f55333e6";
+const priorReviewId = "357ed01f-f120-4634-8596-45e7baffa17d";
 const createdAt = "2026-07-26T22:00:00Z";
 const seriesUpdatedAt = "2026-08-30T14:26:58Z";
-const reviewHead = "5342f42eac5214d7491c80d2be3a97e1b17d63b8";
-const reviewedAt = "2026-08-29T21:54:27Z";
+const reviewHead = "26a81e655b4e15f412a954f536681a842dea6e2f";
+const reviewedAt = "2026-08-30T14:55:45Z";
 const priorReviewArchivePath =
-  "requirements/intakes/series-archive/tinypl0-delivery/20260829T215427Z-review/superseded-review.json";
+  "requirements/intakes/series-archive/tinypl0-delivery/20260830T145545Z-review/superseded-review.json";
 
 const members = [
   ["constitution-change", "Lastenheft_Constitution_Change.md", "Completed"],
@@ -69,7 +69,7 @@ const members = [
   customReceipt: slug === "embeddable-vm-und-nuget",
 }));
 const targets = members.map((member) => member.path);
-const reviewTargets = members.map((member) => member.reviewPath);
+const reviewTargets = targets;
 const dependencies = Array.from({length: 10}, (_, index) => ({
   from: targets[index],
   to: targets[index + 1],
@@ -241,7 +241,7 @@ const result = {
   coverage: {
     individual: reviewTargets,
     series: [
-      "Fifteen current target hashes: one completed archived target and fourteen active targets",
+      "Fifteen current target hashes: two completed archived targets and thirteen active targets",
       "Schema 2.0 roles, collections, canonical index, portable order, lifecycle states, five roots, and ten binding gates",
       "VM/CLI to embeddable VM/NuGet to IDE handoff plus the external TinyCalc package gate",
       "Optimization and CLR stay blocked pending explicit architecture decisions",
@@ -259,29 +259,29 @@ const priorReviewEvidence = {
   documentType: "SupersededIntakeReviewEvidence",
   reviewId: priorReviewId,
   status: "Ready",
-  reviewedAt: "2026-08-29T16:07:18Z",
+  reviewedAt: "2026-08-29T21:54:27Z",
   targetCount: 15,
   supersededBy: reviewId,
-  sourceRevision: "272fdb9a07ec28d706ea27cbc52ad619d76d3555",
+  sourceRevision: "5342f42eac5214d7491c80d2be3a97e1b17d63b8",
   request: {
     path: `${seriesRoot}/intake-review-request.json`,
-    normalizedSha256: "1c6ca450b55e6d5b4de11eba7a15ccbcb817ad880e75b60141a98e5c1aecd15c",
+    normalizedSha256: "49cddf9ce3391048a12fc4314f1ef2cdf4c500de73956623875a916cde1f3c50",
   },
   result: {
     path: `${seriesRoot}/intake-review-result.json`,
-    normalizedSha256: "3533dbc8a717ade82055dfaac644d30bd8a593858e30e8b5d6a8aab4cb1e11dc",
+    normalizedSha256: "acdcf2dcb7411be6fa3389cf642748fcb1225e9bcbcf32e6bad8a76da54314fe",
   },
   report: {
     path: `${seriesRoot}/intake-review-report.md`,
-    normalizedSha256: "b521ca2ca9549ca5e590dd46dd6a3c653ea0798a353cfe955fb426b3f083daf6",
+    normalizedSha256: "a00cf175268a8e949a6ff9e835e6626865f34e651173ca8f3582e89efa7dd857",
   },
   relocation: {
-    priorPath: "requirements/intakes/active/Lastenheft_Constitution_Change.md",
-    currentPath: "requirements/intakes/archive/Lastenheft_Constitution_Change.003-constitution-change.md",
-    normalizedSha256: "fe796de8ced6daf9cb3f4c890b929f47420a12deac2f37da793c4ea263fc2ff5",
+    priorPath: "requirements/intakes/active/Lastenheft_Secure-Development-Hardening.md",
+    currentPath: "requirements/intakes/archive/Lastenheft_Secure-Development-Hardening.004-secure-development-hardening.md",
+    normalizedSha256: "18c957e4bcbe3e9e975f11ace8d1d2c81c49064f911f607480a09e14774669de",
   },
   authorityEvidence:
-    "User explicitly invoked speckit-intake-review for the current 15-target series after completed-target archival.",
+    "User explicitly authorized serial autonomous Spec Kit delivery through 2026-08-31; this current series review is the mandatory preflight after completed-target archival.",
   proofBoundary:
     "Hashes preserve the predecessor request, result, and report before the path-current complete series re-review.",
 };
@@ -356,21 +356,22 @@ const report = `# Intake Review: TinyPl0 Delivery Series
 
 *The complete re-review covers all 15 current targets, five roots, and ten
 binding dependencies. It explicitly supersedes the review that still named
-the completed Constitution target below the active collection.*
+the completed Secure-Development target below the active collection.*
 
 ## Ergebnis / Result
 
 Die Schema-2.0-Governance löst Index, aktive Sammlung, Archiv, Baselines und
-Ordnungsansicht eindeutig auf. Alle 15 normalisierten Zielhashes stimmen. Das
-abgeschlossene Constitution-Ziel liegt unverändert im Archiv; die übrigen 14
-Ziele bleiben aktiv. Reihenfolge, fünf DAG-Wurzeln, zehn bindende Kanten und
-Lifecycle-Zustände stimmen mit dem Manifest und der Textansicht überein.
+Ordnungsansicht eindeutig auf. Alle 15 normalisierten Zielhashes stimmen. Die
+abgeschlossenen Constitution- und Secure-Development-Ziele liegen unverändert
+im Archiv; die übrigen 13 Ziele bleiben aktiv. Reihenfolge, fünf DAG-Wurzeln,
+zehn bindende Kanten und Lifecycle-Zustände stimmen mit dem Manifest und der
+Textansicht überein.
 
 *Schema 2.0 resolves the index, active collection, archive, baselines, and
 order view unambiguously. All 15 normalized target hashes match. The completed
-Constitution target is unchanged in the archive; the other 14 targets remain
-active. Order, five DAG roots, ten binding edges, and lifecycle states match
-the manifest and text view.*
+Constitution and Secure-Development targets are unchanged in the archive; the
+other 13 targets remain active. Order, five DAG roots, ten binding edges, and
+lifecycle states match the manifest and text view.*
 
 ## Review-Abdeckung / Review Coverage
 
@@ -392,10 +393,10 @@ open question remains.*
 
 ## Supersession und Pfadnachweis / Supersession And Path Evidence
 
-- Alter Reviewpfad: \`requirements/intakes/active/Lastenheft_Constitution_Change.md\`
-- Aktueller Zielpfad: \`requirements/intakes/archive/Lastenheft_Constitution_Change.003-constitution-change.md\`
+- Alter Reviewpfad: \`requirements/intakes/active/Lastenheft_Secure-Development-Hardening.md\`
+- Aktueller Zielpfad: \`requirements/intakes/archive/Lastenheft_Secure-Development-Hardening.004-secure-development-hardening.md\`
 - Erhaltener normalisierter Hash:
-  \`fe796de8ced6daf9cb3f4c890b929f47420a12deac2f37da793c4ea263fc2ff5\`
+  \`18c957e4bcbe3e9e975f11ace8d1d2c81c49064f911f607480a09e14774669de\`
 - Zielinhalte, Manifest, Receipt, Reihenfolge, Lifecycle und Archive wurden
   nicht geändert.
 

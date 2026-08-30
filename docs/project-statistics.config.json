@@ -100,6 +100,13 @@
       "labelDe": "004 Abschluss",
       "labelEn": "004 closeout",
       "netLines": 836
+    },
+    {
+      "slot": 13,
+      "id": "current-series-review-after-004",
+      "labelDe": "Serienreview nach 004",
+      "labelEn": "Series review after 004",
+      "netLines": 141
     }
   ],
   "excludedPaths": [
