@@ -501,14 +501,14 @@ Profil 2 verwendet Git-getrackte Textdateien und sichtbare Git-Aktivitaet. Die W
 | Textdateien / Text files | 1899 |
 | Beobachtbarer Zeitraum / Observable period | 2025-09-07..2026-08-30 |
 | Aktivtage / Active days | 87 |
-| Relevante Commits / Relevant commits | 337 |
+| Relevante Commits / Relevant commits | 338 |
 | Zeilen je Aktivtag / Lines per active day | 2961.4 |
 | Peak-Tag im Fenster / Peak day in window | 2026-02-14 / 177480 |
 | Peak-Woche im Fenster / Peak week in window | 2026-02-08 / 186065 |
 | Laengste Serie / Longest streak | 9 days |
 | Speedup vs. 80 lines/day | 37.0x |
 | Speedup vs. 125 lines/day | 23.7x |
-| Methodik / Methodology | v2; source `eabb95a06e5f` |
+| Methodik / Methodology | v2; source `e03efc6fca25` |
 
 ### Artefaktmix / Artifact Mix
 
@@ -638,7 +638,7 @@ Slots 0..12
 | 9 | Next-Intake-Indexreparatur / Next-intake index repair | 7 |
 | 10 | Aktueller Serienreview / Current series review | 110 |
 | 11 | Secure Development 004 / Secure Development 004 | 25631 |
-| 12 | 004 Abschluss / 004 closeout | 834 |
+| 12 | 004 Abschluss / 004 closeout | 836 |
 
 Die festen Slots halten den Phasenvergleich auch bei fehlenden oder spaeter ergaenzten Werten stabil.
 
@@ -688,6 +688,6 @@ DE: Das Fenster beginnt am 2025-09-07 und endet am 2026-08-30. Es enthaelt 87 ak
 | 2026-05 | 12323 |
 | 2026-06 | 37650 |
 | 2026-07 | 78966 |
-| 2026-08 | 49216 |
+| 2026-08 | 49220 |
 
 <!-- project-statistics-v2:end -->
