@@ -209,3 +209,5 @@ and `gate-requirements.json`
 - The orchestrator holds current explicit commit authority. With HEAD commitcount `447`, the next versioned commit is bound to `1.72.448.33`: canonical provisional PR Minor `72`, resulting Patch `448`, and Build increment `32 -> 33`.
 - Next exact action: validate the complete intended delivery set, commit only those paths locally, prove Patch `448`, then run the exact T049 budget red filter.
 - Intended delivery validation passed for 16 changed tracked paths and 34 explicitly named untracked paths, with zero unrelated untracked files; the only remediation was removal of prohibited line-end whitespace from owned Markdown artifacts.
+- Invocation `VM-RED-BUDGET-01` on `1.72.448.33` is invalid evidence: the command was interrupted while NuGet restore was still running and never reached the VM test. It is retained as a failed infrastructure attempt, not counted as T049 red proof.
+- `dotnet restore TinyPl0.sln --ignore-failed-sources --disable-parallel` then completed successfully for all five projects. Before retrying any `dotnet test`, the governed version advances to `1.72.449.34` in the next commit.
