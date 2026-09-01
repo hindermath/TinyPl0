@@ -28,12 +28,12 @@ IDE-Versionsfelder ohne Build- oder Testlauf auf `1.2.275.14` ausgerichtet.
 
 153. Agent (2026-09-01): Der aktuelle Review der 15-Ziele-Intake-Serie wurde
 als `Ready` dokumentiert und der ungültige Vorgänger nachvollziehbar
-supersediert. Für Review-PR 78 und den finalen Delivery-Commit 489 wurden die
-IDE-Versionsfelder ohne Produkt-Build oder Testlauf auf `1.78.489.42`
+supersediert. Für Review-PR 78 und den finalen Delivery-Commit 491 wurden die
+IDE-Versionsfelder ohne Produkt-Build oder Testlauf auf `1.78.491.42`
 ausgerichtet; Laufzeit und IDE-Verhalten bleiben unverändert.
 
 *The current 15-target intake-series review was documented as `Ready`, and the
 invalid predecessor was superseded with traceable evidence. For review PR 78
-and final delivery commit 489, the IDE version fields were aligned to
-`1.78.489.42` without a product build or test run; runtime and IDE behavior
+and final delivery commit 491, the IDE version fields were aligned to
+`1.78.491.42` without a product build or test run; runtime and IDE behavior
 remain unchanged.*
