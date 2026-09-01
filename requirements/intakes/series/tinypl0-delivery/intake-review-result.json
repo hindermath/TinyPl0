@@ -1,118 +1,111 @@
 {
   "schemaVersion": "1.1",
-  "reviewId": "8804ad13-41b4-4feb-a10d-26d2f55333e6",
+  "reviewId": "a182589d-3149-4de7-a1d8-c24cefc28cbf",
   "mode": "Series",
-  "status": "NeedsRemediation",
+  "status": "Ready",
   "policy": "tinypl0-delivery-v1",
-  "reviewedAt": "2026-08-30T14:55:45Z",
+  "reviewedAt": "2026-09-01T21:03:04Z",
   "repository": {
     "root": ".",
-    "head": "26a81e655b4e15f412a954f536681a842dea6e2f"
+    "head": "3366400b989532d7f270de532acb03ae6a8ce21f"
+  },
+  "requestEvidence": {
+    "path": "requirements/intakes/series/tinypl0-delivery/intake-review-request.json",
+    "normalizedSha256": "b23706568d8c66a62ca6df0dfd506378166a5d8108bf3012d30ec2802a3b7e04"
   },
   "targets": [
     {
       "path": "requirements/intakes/archive/Lastenheft_Constitution_Change.003-constitution-change.md",
       "role": "Primary",
       "normalizedSha256": "fe796de8ced6daf9cb3f4c890b929f47420a12deac2f37da793c4ea263fc2ff5",
-      "gitBlob": "N/A"
+      "gitBlob": "1c8e001bc7f5f01d9f78ff4728cba35c48654696"
     },
     {
       "path": "requirements/intakes/archive/Lastenheft_Secure-Development-Hardening.004-secure-development-hardening.md",
       "role": "OrderedMember",
       "normalizedSha256": "18c957e4bcbe3e9e975f11ace8d1d2c81c49064f911f607480a09e14774669de",
-      "gitBlob": "N/A"
+      "gitBlob": "bf3cbaae056f66959ae91d27cdb9a4d5b4562d9d"
     },
     {
-      "path": "requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
+      "path": "requirements/intakes/archive/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.005-sandbox-secure-development.md",
       "role": "OrderedMember",
       "normalizedSha256": "628f869c9df39329949b73457bd56d4345f467ef38d453f257887d07b8f58735",
-      "gitBlob": "N/A"
+      "gitBlob": "56efbabd5c5a50ffec265726e1d1f3557fc15e64"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_Embeddable-VM-und-NuGet.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "a6e752dcc372c26626cf40cc0b1fb1da1a195a895f51129b87dc0920310b64d5",
+      "gitBlob": "16cd933bb824b68962d4412c0eeaa19a8758cb72"
     },
     {
       "path": "requirements/intakes/active/Lastenheft_Quellcode_Doku.md",
       "role": "OrderedMember",
       "normalizedSha256": "5a04868a629453e433da1a733239c948294f9a6462ac11968c806556eefffed2",
-      "gitBlob": "N/A"
+      "gitBlob": "83fb62d46a8a4e90d6edd588949edb8a1ccb35ba"
     },
     {
       "path": "requirements/intakes/active/Lastenheft_Dokumentation_EN.md",
       "role": "OrderedMember",
       "normalizedSha256": "0ca2e4d25690699219b9190396ddbb6b4619ef122c962f5accd430d4a5e23068",
-      "gitBlob": "N/A"
+      "gitBlob": "13359daaa7859d56a50edd9a97ba09fa97fd636a"
     },
     {
       "path": "requirements/intakes/active/Lastenheft_IDE-L10N.md",
       "role": "OrderedMember",
       "normalizedSha256": "490cc5f62e81a825029567f6d218fd21fea51e03c39a3885bb56154462ca2806",
-      "gitBlob": "N/A"
+      "gitBlob": "488a331ec300aabf698904e9a1eff48a21ef87dc"
     },
     {
       "path": "requirements/intakes/active/Lastenheft_A11Y_IDE.md",
       "role": "OrderedMember",
       "normalizedSha256": "8acb4cbbb5d5c14b13816bcb65b891cbc7d65486581dc95a17c602e9a79d2d48",
-      "gitBlob": "N/A"
+      "gitBlob": "7713be01c814c1b25ff6c985b2e670de7c7682d2"
     },
     {
       "path": "requirements/intakes/active/Lastenheft_Options_Als_Parameter.md",
       "role": "OrderedMember",
       "normalizedSha256": "df0e28b4e74683c3eaf1c5bb690d4d5e9a5b20836fe38a7ed06f7adc9d627d19",
-      "gitBlob": "N/A"
+      "gitBlob": "9b20eeea98a22af31cc9c45418c10eed805e3e30"
     },
     {
       "path": "requirements/intakes/active/Lastenheft_VM_CLI.md",
       "role": "OrderedMember",
       "normalizedSha256": "dd4b0683ad7733a380078f9fddd6658a1d80713baa2d72a20d76aed8ba8dc1fc",
-      "gitBlob": "N/A"
-    },
-    {
-      "path": "requirements/intakes/active/Lastenheft_Embeddable-VM-und-NuGet.md",
-      "role": "OrderedMember",
-      "normalizedSha256": "1865ff87d20cdac8f4ace03df2017aeb55b7f8302ad6dcdaf9af5f796d78f835",
-      "gitBlob": "N/A"
+      "gitBlob": "a73414e786e98329f80691f66a537056c4056476"
     },
     {
       "path": "requirements/intakes/active/Lastenheft_IDE-Erweiterung-Pl0Ide_PAsm_PCod.md",
       "role": "OrderedMember",
       "normalizedSha256": "d273b99f19a8996f7b584940a7b2e3ee291e79dc4e6ce52a7176e0bbb6c3c689",
-      "gitBlob": "N/A"
+      "gitBlob": "d2f2c1962cc7ceb8283bbe4f2ced22747ccf127c"
     },
     {
       "path": "requirements/intakes/active/Lastenheft_PL0_Optimierung.md",
       "role": "OrderedMember",
       "normalizedSha256": "bb58d3e51ee2f4f17bc6049ab22eea9f3959705ab9d89df7056dad9af7be782a",
-      "gitBlob": "N/A"
+      "gitBlob": "938d6e00d0a99c430c6f6908b1acb21c66d0217f"
     },
     {
       "path": "requirements/intakes/active/Lastenheft_CLR_Assembly.md",
       "role": "OrderedMember",
       "normalizedSha256": "29ca3739ffa410375adca332a744eec5a650acead08349135483481f476e6e5b",
-      "gitBlob": "N/A"
+      "gitBlob": "f0153aead5c71a0a96defcfb5fe21a48d50ab232"
     },
     {
       "path": "requirements/intakes/active/Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
       "role": "OrderedMember",
       "normalizedSha256": "5cd05da8227cb40f5c9b7b4638486a0377bafc2aed35e072a91c80a0b741637e",
-      "gitBlob": "N/A"
+      "gitBlob": "b1cbabb800286f3d5bd59aee985c33279dbdbac4"
     },
     {
       "path": "requirements/intakes/active/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md",
       "role": "OrderedMember",
       "normalizedSha256": "bab44cd08aa1335255a4e29cf5823deb743320d2737ab8eab75b78583c451aec",
-      "gitBlob": "N/A"
+      "gitBlob": "0b1e898054af9fd8a255165568e01b52673bb375"
     }
   ],
-  "findings": [
-    {
-      "id": "IR900",
-      "severity": "High",
-      "category": "ReviewFreshness",
-      "target": "requirements/intakes/series/tinypl0-delivery/manifest.json",
-      "disposition": "ReReviewRequired",
-      "owner": "TinyPl0 project owner",
-      "evidence": "Authorized NuGet publication-policy update and immediate predecessor review evidence under 20260830T182940Z-review-invalidated",
-      "reevaluationTrigger": "A new complete series review validates the updated target hash, order, roots, and eleven dependencies"
-    }
-  ],
+  "findings": [],
   "questions": [],
   "acceptedRisks": [],
   "operatorExceptions": [],
@@ -120,14 +113,14 @@
     "individual": [
       "requirements/intakes/archive/Lastenheft_Constitution_Change.003-constitution-change.md",
       "requirements/intakes/archive/Lastenheft_Secure-Development-Hardening.004-secure-development-hardening.md",
-      "requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
+      "requirements/intakes/archive/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.005-sandbox-secure-development.md",
+      "requirements/intakes/active/Lastenheft_Embeddable-VM-und-NuGet.md",
       "requirements/intakes/active/Lastenheft_Quellcode_Doku.md",
       "requirements/intakes/active/Lastenheft_Dokumentation_EN.md",
       "requirements/intakes/active/Lastenheft_IDE-L10N.md",
       "requirements/intakes/active/Lastenheft_A11Y_IDE.md",
       "requirements/intakes/active/Lastenheft_Options_Als_Parameter.md",
       "requirements/intakes/active/Lastenheft_VM_CLI.md",
-      "requirements/intakes/active/Lastenheft_Embeddable-VM-und-NuGet.md",
       "requirements/intakes/active/Lastenheft_IDE-Erweiterung-Pl0Ide_PAsm_PCod.md",
       "requirements/intakes/active/Lastenheft_PL0_Optimierung.md",
       "requirements/intakes/active/Lastenheft_CLR_Assembly.md",
@@ -135,33 +128,24 @@
       "requirements/intakes/active/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md"
     ],
     "series": [
-      "Fifteen current target hashes: two completed archived targets and thirteen active targets",
-      "Schema 2.0 roles, collections, canonical index, portable order, lifecycle states, five roots, and ten binding gates",
-      "VM/CLI to embeddable VM/NuGet to IDE handoff plus the external TinyCalc package gate",
-      "Optimization and CLR stay blocked pending explicit architecture decisions",
-      "German-first and English-second CEFR-B2 learner policy, text-first accessibility, security and privacy boundaries, evidence, and delivery authority",
-      "Three immutable baselines and other completed intakes remain outside executable scope"
+      "Fifteen current target hashes: three completed archived targets and twelve active targets",
+      "Schema 2.0 documentation language, naming profile, four portable roles, six collections, canonical index, and computed inventory",
+      "Schema 1.1 request binding, exact target order, five roots, and eleven unique acyclic dependencies",
+      "Rank-4 Embeddable VM/NuGet handoff to source documentation and the later dual VM/CLI plus package gate for the IDE extension",
+      "Optimization and CLR remain blocked pending explicit architecture decisions; RL-SE and GSDB remain independent pending roots",
+      "German-first and English-second CEFR-B2 learner policy, first-use terminology, text-first accessibility, security and privacy boundaries",
+      "NIST SSDF and CWE Top 25 always apply; SBOM, VEX, SLSA and OpenSSF evidence apply to the release-capable NuGet scope; ASVS and AI-SBOM are N/A for the stated non-web, non-AI runtime scope",
+      "LocalImplementation and Eligible grant no commit, push, merge, bypass, provider, secret, package-publication, or follow-up-feature authority",
+      "Manifest, series receipt, authoring receipt lineage, historical reconciliation evidence, and immutable baselines remain distinct"
     ],
     "workers": []
   },
   "summary": {
     "critical": 0,
-    "high": 1,
+    "high": 0,
     "medium": 0,
     "low": 0
   },
-  "supersedes": "357ed01f-f120-4634-8596-45e7baffa17d",
-  "requestEvidence": {
-    "path": "requirements/intakes/series/tinypl0-delivery/intake-review-request.json",
-    "normalizedSha256": "03a9ec3bef9bdbb87d783ac71ca0ec124c06bb8c8a5cb859fe7803ec8d890c95"
-  },
-  "invalidation": {
-    "invalidatedAt": "2026-08-30T18:29:40Z",
-    "operationId": "e7ca07a9-33c4-4152-9545-235f5d5e0c1e",
-    "reason": "The explicitly authorized intake update changed the Embeddable VM/NuGet target hash by adding binding NuGet CLI, OIDC, scoped-key fallback, immutability, and duplicate-handling requirements. Order, roots, edges, lifecycle, and delivery authority remain unchanged.",
-    "archivedRequest": "requirements/intakes/series-archive/tinypl0-delivery/20260830T182940Z-review-invalidated/intake-review-request.json",
-    "archivedResult": "requirements/intakes/series-archive/tinypl0-delivery/20260830T182940Z-review-invalidated/intake-review-result.json",
-    "archivedReport": "requirements/intakes/series-archive/tinypl0-delivery/20260830T182940Z-review-invalidated/intake-review-report.md",
-    "nextAction": "$speckit-intake-review requirements/intakes/series/tinypl0-delivery/manifest.json"
-  }
+  "supersedes": "8804ad13-41b4-4feb-a10d-26d2f55333e6",
+  "supersessionEvidence": "requirements/intakes/series-archive/tinypl0-delivery/20260901T210304Z-review/superseded-review.json"
 }

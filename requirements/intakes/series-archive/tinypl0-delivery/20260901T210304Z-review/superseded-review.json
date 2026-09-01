@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "1.0",
+  "documentType": "SupersededIntakeReviewEvidence",
+  "reviewId": "8804ad13-41b4-4feb-a10d-26d2f55333e6",
+  "status": "NeedsRemediation",
+  "reviewedAt": "2026-08-30T14:55:45Z",
+  "targetCount": 15,
+  "supersededBy": "a182589d-3149-4de7-a1d8-c24cefc28cbf",
+  "sourceRevision": "3366400b989532d7f270de532acb03ae6a8ce21f",
+  "request": {
+    "path": "requirements/intakes/series/tinypl0-delivery/intake-review-request.json",
+    "normalizedSha256": "03a9ec3bef9bdbb87d783ac71ca0ec124c06bb8c8a5cb859fe7803ec8d890c95"
+  },
+  "result": {
+    "path": "requirements/intakes/series/tinypl0-delivery/intake-review-result.json",
+    "normalizedSha256": "84e90509657191914705a5e2cf06765634ebf905342659a4acd3b9f7f2b37d12"
+  },
+  "report": {
+    "path": "requirements/intakes/series/tinypl0-delivery/intake-review-report.md",
+    "normalizedSha256": "163e397af3ab498f5e086c57a4fd531a1d5ffddd0c83c9603f44271206be0ef2"
+  },
+  "finding": {
+    "id": "IR900",
+    "severity": "High",
+    "category": "ReviewFreshness",
+    "disposition": "ReReviewRequired",
+    "reevaluationTrigger": "A new complete series review validates the updated target hash, order, roots, and eleven dependencies"
+  },
+  "invalidation": {
+    "invalidatedAt": "2026-08-30T18:29:40Z",
+    "operationId": "e7ca07a9-33c4-4152-9545-235f5d5e0c1e",
+    "reason": "The authorized NuGet publication-policy update changed the Embeddable VM/NuGet target hash without changing order, roots, edges, lifecycle, or delivery authority."
+  },
+  "authorityEvidence": "The user selected the repository's declared next action, speckit-intake-review, on 2026-09-01.",
+  "proofBoundary": "Hashes and the recorded finding preserve the invalidated predecessor review's audit meaning before the current complete series re-review."
+}
