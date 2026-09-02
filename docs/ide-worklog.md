@@ -68,10 +68,10 @@ test run.*
 156. Agent (2026-09-02): Nach der erfolgreichen OIDC-Veröffentlichung wurde
 der öffentliche NuGet-Prüfpfad für repository-signierte Pakete und eine eng
 begrenzte, veröffentlichungsfreie Wiederaufnahme korrigiert. Für den
-zugehörigen Abschluss- und Review-Korrektur-Commit wurde die IDE-Version ohne
-Produkt-Build oder Testlauf auf `1.6.516.72` ausgerichtet.
+zugehörigen Abschluss- und Review-Korrektur-Commits wurde die IDE-Version ohne
+Produkt-Build oder Testlauf auf `1.6.518.72` ausgerichtet.
 
 *After successful OIDC publication, the public NuGet verification path was
 corrected for repository-signed packages and a narrowly scoped recovery that
-cannot republish. The IDE version was aligned to `1.6.516.72` for the related
-closeout and review-fix commit without a product build or test run.*
+cannot republish. The IDE version was aligned to `1.6.518.72` for the related
+closeout and review-fix commits without a product build or test run.*

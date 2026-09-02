@@ -180,7 +180,8 @@ jobs:
         run: |
           Set-StrictMode -Version Latest
           $ErrorActionPreference = 'Stop'
-          $version = '${{ inputs.verify_version || needs.release-please.outputs.version }}'.ToLowerInvariant()
+          $sourceVersion = '${{ inputs.verify_version || needs.release-please.outputs.version }}'
+          $publicVersion = $sourceVersion.ToLowerInvariant()
           function Get-PackageContentHashes([string]$Path) {
             $archive = [System.IO.Compression.ZipFile]::OpenRead($Path)
             try {
@@ -207,8 +208,8 @@ jobs:
           $publicPackages = @()
           foreach ($name in @('Core', 'Vm')) {
             $id = "tinypl0.$($name.ToLowerInvariant())"
-            $uri = "https://api.nuget.org/v3-flatcontainer/$id/$version/$id.$version.nupkg"
-            $target = Join-Path $env:RUNNER_TEMP "$id.$version.nupkg"
+            $uri = "https://api.nuget.org/v3-flatcontainer/$id/$publicVersion/$id.$publicVersion.nupkg"
+            $target = Join-Path $env:RUNNER_TEMP "$id.$publicVersion.nupkg"
             $partialTarget = "$target.partial"
             $success = $false
             foreach ($attempt in 1..12) {
@@ -227,8 +228,8 @@ jobs:
               }
               if ($attempt -lt 12) { Start-Sleep -Seconds ([Math]::Min(60, 5 * $attempt)) }
             }
-            if (-not $success) { throw "Public package did not converge: $id $version" }
-            $expectedPath = "artifacts/packages/TinyPl0.$name.$version.nupkg"
+            if (-not $success) { throw "Public package did not converge: $id $sourceVersion" }
+            $expectedPath = "artifacts/packages/TinyPl0.$name.$sourceVersion.nupkg"
             $expectedHash = (Get-FileHash $expectedPath -Algorithm SHA256).Hash.ToLowerInvariant()
             $publicHash = (Get-FileHash $target -Algorithm SHA256).Hash.ToLowerInvariant()
             $expectedContent = Get-PackageContentHashes $expectedPath | ConvertTo-Json -Compress
@@ -238,7 +239,7 @@ jobs:
             if ($LASTEXITCODE -ne 0) { throw "Public package signature verification failed: $id" }
             $publicPackages += [ordered]@{
               id = $id
-              version = $version
+              version = $sourceVersion
               url = $uri
               sourceSha256 = $expectedHash
               publicSha256 = $publicHash
