@@ -25,16 +25,16 @@
       "status": "Completed"
     },
     {
-      "path": "requirements/intakes/archive/Lastenheft_Embeddable-VM-und-NuGet.006-embeddable-vm-nuget.md",
+      "path": "requirements/intakes/active/Lastenheft_Embeddable-VM-und-NuGet.md",
       "role": "OrderedMember",
       "normalizedSha256": "a6e752dcc372c26626cf40cc0b1fb1da1a195a895f51129b87dc0920310b64d5",
-      "status": "Completed"
+      "status": "Eligible"
     },
     {
       "path": "requirements/intakes/active/Lastenheft_Quellcode_Doku.md",
       "role": "OrderedMember",
       "normalizedSha256": "5a04868a629453e433da1a733239c948294f9a6462ac11968c806556eefffed2",
-      "status": "Eligible"
+      "status": "Blocked"
     },
     {
       "path": "requirements/intakes/active/Lastenheft_Dokumentation_EN.md",
@@ -119,12 +119,12 @@
     },
     {
       "from": "requirements/intakes/archive/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.005-sandbox-secure-development.md",
-      "to": "requirements/intakes/archive/Lastenheft_Embeddable-VM-und-NuGet.006-embeddable-vm-nuget.md",
+      "to": "requirements/intakes/active/Lastenheft_Embeddable-VM-und-NuGet.md",
       "kind": "HardCompletionGate",
       "binding": true
     },
     {
-      "from": "requirements/intakes/archive/Lastenheft_Embeddable-VM-und-NuGet.006-embeddable-vm-nuget.md",
+      "from": "requirements/intakes/active/Lastenheft_Embeddable-VM-und-NuGet.md",
       "to": "requirements/intakes/active/Lastenheft_Quellcode_Doku.md",
       "kind": "CommentSurfaceBaseline",
       "binding": true
@@ -166,7 +166,7 @@
       "binding": true
     },
     {
-      "from": "requirements/intakes/archive/Lastenheft_Embeddable-VM-und-NuGet.006-embeddable-vm-nuget.md",
+      "from": "requirements/intakes/active/Lastenheft_Embeddable-VM-und-NuGet.md",
       "to": "requirements/intakes/active/Lastenheft_IDE-Erweiterung-Pl0Ide_PAsm_PCod.md",
       "kind": "HardCompletionGate",
       "binding": true

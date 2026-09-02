@@ -142,6 +142,13 @@
       "labelDe": "Embeddable VM/NuGet 006",
       "labelEn": "Embeddable VM/NuGet 006",
       "netLines": 3770
+    },
+    {
+      "slot": 19,
+      "id": "006-closeout",
+      "labelDe": "006 Abschluss",
+      "labelEn": "006 closeout",
+      "netLines": 681
     }
   ],
   "excludedPaths": [

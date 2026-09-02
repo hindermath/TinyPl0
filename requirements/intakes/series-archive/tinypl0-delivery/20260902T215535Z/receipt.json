@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "1.0",
+  "documentType": "IntakeSeriesReceipt",
+  "receiptId": "01ec955e-b458-469e-9dc8-4a76ba4154de",
+  "seriesId": "8541ffa1-6b52-4f95-a746-d870482eaf5d",
+  "generator": {
+    "preset": "intake-sequencing-governance",
+    "version": "0.2.3"
+  },
+  "createdAt": "2026-08-30T18:29:40Z",
+  "operation": {
+    "operationId": "017dae9c-4f29-41ad-b234-bf4da48f4238",
+    "type": "Update",
+    "authorityEvidence": "User explicitly instructed incorporation of the verified NuGet publication rules into the rank-4 intake on 2026-08-30."
+  },
+  "status": "Ready",
+  "manifest": {
+    "path": "requirements/intakes/series/tinypl0-delivery/manifest.json",
+    "normalizedSha256": "c73a65227e91123ccf017b03720695ad1c21b5910eb966a79a824069c8ff0a17"
+  },
+  "supersedes": {
+    "receiptPath": "requirements/intakes/series-archive/tinypl0-delivery/20260830T182940Z/receipt.json",
+    "receiptNormalizedSha256": "40b065f557be1fc66f30ff31df83f3eeaf35d1089980777ba60cff4cf1be5b9e",
+    "manifestArchivePath": "requirements/intakes/series-archive/tinypl0-delivery/20260830T182940Z/manifest.json",
+    "manifestArchiveSha256": "573558ebd31b02d84d5399ee36479f37470cff90a4f1df2a478f378e77652c93"
+  },
+  "tombstone": {
+    "path": "N/A",
+    "normalizedSha256": "N/A"
+  },
+  "nextAction": "$speckit-intake-series-status"
+}
