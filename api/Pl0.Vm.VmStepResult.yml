@@ -25,7 +25,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmStepResult.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: VmStepResult
     path: src/Pl0.Vm/VmStepResult.cs
@@ -63,7 +63,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmStepResult.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: diagnostics
     path: src/Pl0.Vm/VmStepResult.cs
@@ -90,7 +90,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmStepResult.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: .ctor
     path: src/Pl0.Vm/VmStepResult.cs
@@ -131,7 +131,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmStepResult.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: .ctor
     path: src/Pl0.Vm/VmStepResult.cs
@@ -178,7 +178,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmStepResult.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: State
     path: src/Pl0.Vm/VmStepResult.cs
@@ -209,7 +209,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmStepResult.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: Status
     path: src/Pl0.Vm/VmStepResult.cs
@@ -240,7 +240,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmStepResult.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: Diagnostics
     path: src/Pl0.Vm/VmStepResult.cs
@@ -271,7 +271,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmStepResult.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: Reason
     path: src/Pl0.Vm/VmStepResult.cs
@@ -302,7 +302,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmStepResult.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: CompletionReason
     path: src/Pl0.Vm/VmStepResult.cs
@@ -333,7 +333,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmStepResult.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: ExecutedInstructions
     path: src/Pl0.Vm/VmStepResult.cs
@@ -364,7 +364,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmStepResult.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: Deconstruct
     path: src/Pl0.Vm/VmStepResult.cs

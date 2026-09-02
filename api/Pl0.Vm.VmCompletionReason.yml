@@ -27,7 +27,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmCompletionReason.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: VmCompletionReason
     path: src/Pl0.Vm/VmCompletionReason.cs
@@ -58,7 +58,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmCompletionReason.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: Running
     path: src/Pl0.Vm/VmCompletionReason.cs
@@ -86,7 +86,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmCompletionReason.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: Halted
     path: src/Pl0.Vm/VmCompletionReason.cs
@@ -114,7 +114,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmCompletionReason.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: Cancelled
     path: src/Pl0.Vm/VmCompletionReason.cs
@@ -142,7 +142,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmCompletionReason.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: InstructionBudgetExceeded
     path: src/Pl0.Vm/VmCompletionReason.cs
@@ -170,7 +170,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmCompletionReason.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: InvalidConfiguration
     path: src/Pl0.Vm/VmCompletionReason.cs
@@ -198,7 +198,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmCompletionReason.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: InvalidProgram
     path: src/Pl0.Vm/VmCompletionReason.cs
@@ -226,7 +226,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmCompletionReason.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: StackFault
     path: src/Pl0.Vm/VmCompletionReason.cs
@@ -254,7 +254,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmCompletionReason.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: ArithmeticFault
     path: src/Pl0.Vm/VmCompletionReason.cs
@@ -282,7 +282,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmCompletionReason.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: InputEndOfStream
     path: src/Pl0.Vm/VmCompletionReason.cs
@@ -310,7 +310,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmCompletionReason.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: InputFormatError
     path: src/Pl0.Vm/VmCompletionReason.cs
@@ -338,7 +338,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmCompletionReason.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: IoFault
     path: src/Pl0.Vm/VmCompletionReason.cs
@@ -366,7 +366,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmCompletionReason.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: RuntimeFault
     path: src/Pl0.Vm/VmCompletionReason.cs

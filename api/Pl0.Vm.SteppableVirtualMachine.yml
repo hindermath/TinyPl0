@@ -23,7 +23,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: SteppableVirtualMachine
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
@@ -59,7 +59,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: session
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
@@ -86,7 +86,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: State
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
@@ -117,7 +117,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: IsRunning
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
@@ -148,7 +148,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: Initialize
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
@@ -193,7 +193,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: Initialize
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
@@ -241,7 +241,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: Step
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
@@ -272,7 +272,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: Step
     path: src/Pl0.Vm/SteppableVirtualMachine.cs
@@ -307,7 +307,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/SteppableVirtualMachine.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: ToExecutionResult
     path: src/Pl0.Vm/SteppableVirtualMachine.cs

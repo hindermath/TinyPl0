@@ -2,6 +2,14 @@
 
 ## Feature 006: NuGet-Pakete / NuGet Packages
 
+**Feature**: `006-embeddable-vm-nuget`
+**Lauf / Run**: `a01cd5bd-fa86-49f1-b074-cb59a9c24862`
+**Stand / Date**: 2026-09-02
+**Evidence-Status / Evidence status**: `Pre-publication`; exakter PR-Head und
+Provider-Nachweise folgen in der temporären PreMerge- und öffentlichen
+Release-Evidence. / The exact PR head and provider proof follow in temporary
+PreMerge and public release evidence.
+
 Deutsch: scripts/Test-NuGetPackages.ps1 erzeugt und prüft beide Paket- und
 Symbolpakete, die exakte VM-zu-Core-Abhängigkeit und einen unabhängigen
 .NET-10-Consumer. scripts/New-NuGetReleaseEvidence.ps1 bindet vier Dateien,
@@ -19,6 +27,7 @@ provenance. Local provenance is explicitly below provider attestation.
 AI-SBOM, ASVS, and Zero Trust are N/A; CRA remains Open. Public evidence is
 recorded only after the authorised remote release.*
 
+## Bestehende Feature-004-Pages-Basis / Existing Feature 004 Pages Baseline
 
 **Projekt / Project**: TinyPl0 (Level 2)
 **Feature**: `004-secure-development-hardening`

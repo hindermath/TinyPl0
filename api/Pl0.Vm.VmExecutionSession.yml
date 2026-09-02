@@ -55,7 +55,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: VmExecutionSession
     path: src/Pl0.Vm/VmExecutionSession.cs
@@ -89,7 +89,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: RuntimeCode
     path: src/Pl0.Vm/VmExecutionSession.cs
@@ -116,7 +116,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: InputEofCode
     path: src/Pl0.Vm/VmExecutionSession.cs
@@ -143,7 +143,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: InputFormatCode
     path: src/Pl0.Vm/VmExecutionSession.cs
@@ -170,7 +170,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: DivisionCode
     path: src/Pl0.Vm/VmExecutionSession.cs
@@ -197,7 +197,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: AllowedOprCodes
     path: src/Pl0.Vm/VmExecutionSession.cs
@@ -224,7 +224,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: program
     path: src/Pl0.Vm/VmExecutionSession.cs
@@ -251,7 +251,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: io
     path: src/Pl0.Vm/VmExecutionSession.cs
@@ -278,7 +278,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: options
     path: src/Pl0.Vm/VmExecutionSession.cs
@@ -305,7 +305,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: messages
     path: src/Pl0.Vm/VmExecutionSession.cs
@@ -332,7 +332,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: culture
     path: src/Pl0.Vm/VmExecutionSession.cs
@@ -359,7 +359,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: initializationToken
     path: src/Pl0.Vm/VmExecutionSession.cs
@@ -386,7 +386,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: diagnostics
     path: src/Pl0.Vm/VmExecutionSession.cs
@@ -413,7 +413,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: stack
     path: src/Pl0.Vm/VmExecutionSession.cs
@@ -440,7 +440,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: p
     path: src/Pl0.Vm/VmExecutionSession.cs
@@ -467,7 +467,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: b
     path: src/Pl0.Vm/VmExecutionSession.cs
@@ -494,7 +494,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: t
     path: src/Pl0.Vm/VmExecutionSession.cs
@@ -521,7 +521,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: executedInstructions
     path: src/Pl0.Vm/VmExecutionSession.cs
@@ -548,7 +548,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: terminalResult
     path: src/Pl0.Vm/VmExecutionSession.cs
@@ -575,7 +575,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: .ctor
     path: src/Pl0.Vm/VmExecutionSession.cs
@@ -617,7 +617,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: State
     path: src/Pl0.Vm/VmExecutionSession.cs
@@ -646,7 +646,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: IsRunning
     path: src/Pl0.Vm/VmExecutionSession.cs
@@ -675,7 +675,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: Create
     path: src/Pl0.Vm/VmExecutionSession.cs
@@ -715,7 +715,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: ExecuteNext
     path: src/Pl0.Vm/VmExecutionSession.cs
@@ -746,7 +746,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: ToExecutionResult
     path: src/Pl0.Vm/VmExecutionSession.cs
@@ -774,7 +774,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: ValidateProgram
     path: src/Pl0.Vm/VmExecutionSession.cs
@@ -814,7 +814,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: Dispatch
     path: src/Pl0.Vm/VmExecutionSession.cs
@@ -845,7 +845,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: ExecuteOpr
     path: src/Pl0.Vm/VmExecutionSession.cs
@@ -879,7 +879,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: Binary
     path: src/Pl0.Vm/VmExecutionSession.cs
@@ -913,7 +913,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: ResolveBase
     path: src/Pl0.Vm/VmExecutionSession.cs
@@ -947,7 +947,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: TryPush
     path: src/Pl0.Vm/VmExecutionSession.cs
@@ -975,7 +975,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: TryPeek
     path: src/Pl0.Vm/VmExecutionSession.cs
@@ -1009,7 +1009,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: TryWrite
     path: src/Pl0.Vm/VmExecutionSession.cs
@@ -1043,7 +1043,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: IsRecoverableHostException
     path: src/Pl0.Vm/VmExecutionSession.cs
@@ -1074,7 +1074,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: IsValidStackIndex
     path: src/Pl0.Vm/VmExecutionSession.cs
@@ -1108,7 +1108,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: StackFault
     path: src/Pl0.Vm/VmExecutionSession.cs
@@ -1148,7 +1148,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: LocalizedDiagnostic
     path: src/Pl0.Vm/VmExecutionSession.cs
@@ -1190,7 +1190,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: RuntimeFaultReason
     path: src/Pl0.Vm/VmExecutionSession.cs
@@ -1224,7 +1224,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: RuntimeFault
     path: src/Pl0.Vm/VmExecutionSession.cs
@@ -1260,7 +1260,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: Complete
     path: src/Pl0.Vm/VmExecutionSession.cs
@@ -1298,7 +1298,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: codex/006-embeddable-vm-nuget
+      branch: main
       repo: https://github.com/hindermath/TinyPl0.git
     id: CaptureState
     path: src/Pl0.Vm/VmExecutionSession.cs
