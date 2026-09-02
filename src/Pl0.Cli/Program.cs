@@ -40,7 +40,7 @@ if (result.Options.ShowApi)
     });
     builder.WebHost.UseUrls("http://localhost:5000");
     var app = builder.Build();
-    
+
     var provider = new FileExtensionContentTypeProvider();
     provider.Mappings[".pl0"] = "text/plain";
 
@@ -193,7 +193,11 @@ var shouldRun = result.Options.Command switch
 if (shouldRun)
 {
     var vm = new VirtualMachine();
-    var vmResult = vm.Run(instructions, new ConsolePl0Io(), new VirtualMachineOptions(Language: result.Options.Language));
+    var vmResult = vm.Run(
+        instructions,
+        new ConsolePl0Io(),
+        new VirtualMachineOptions(Language: result.Options.Language),
+        CancellationToken.None);
     if (!vmResult.Success)
     {
         foreach (var diagnostic in vmResult.Diagnostics)

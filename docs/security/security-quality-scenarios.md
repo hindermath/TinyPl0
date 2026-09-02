@@ -1,5 +1,18 @@
 # Sicherheits-Qualitätsszenarien / Security Quality Scenarios
 
+## Feature 006 / Feature 006
+
+| ID | Stimulus | Reaktion / Response | Maß / Measure |
+|---|---|---|---|
+| SQS-006-1 | P-Code mit fremdem Opcode oder Ziel | vor Allokation terminal | null Dispatches, InvalidProgram |
+| SQS-006-2 | Cancellation an Grenze | kein weiterer Seiteneffekt | Zähler und I/O bleiben stabil |
+| SQS-006-3 | Host-I/O wirft mit internem Text | sichere Diagnose | kein fremder Text oder Stacktrace |
+| SQS-006-4 | nur eine Paket-ID öffentlich | Veröffentlichung blockiert | kein Push und sichtbarer Fehler |
+| SQS-006-5 | saubere Consumer-Maschine | Restore, Run und Step | drei OS, gleiche SemVer |
+
+*English: These scenarios cover malformed P-Code, boundary cancellation, host
+I/O disclosure, partial publication, and clean three-platform consumption.*
+
 **Feature**: `004-secure-development-hardening`
 **Methode / Method**: iSAQB CPSA-F quality scenarios, arc42
 **Stand / Date**: 2026-08-30

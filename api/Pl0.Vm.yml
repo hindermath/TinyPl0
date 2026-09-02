@@ -11,8 +11,10 @@ items:
   - Pl0.Vm.SteppableVirtualMachine
   - Pl0.Vm.VirtualMachine
   - Pl0.Vm.VirtualMachineOptions
+  - Pl0.Vm.VmCompletionReason
   - Pl0.Vm.VmDiagnostic
   - Pl0.Vm.VmExecutionResult
+  - Pl0.Vm.VmExecutionSession
   - Pl0.Vm.VmState
   - Pl0.Vm.VmStepResult
   - Pl0.Vm.VmStepStatus
@@ -72,8 +74,16 @@ references:
   name: VirtualMachineOptions
   nameWithType: VirtualMachineOptions
   fullName: Pl0.Vm.VirtualMachineOptions
+- uid: Pl0.Vm.VmCompletionReason
+  commentId: T:Pl0.Vm.VmCompletionReason
+  parent: Pl0.Vm
+  href: Pl0.Vm.VmCompletionReason.html
+  name: VmCompletionReason
+  nameWithType: VmCompletionReason
+  fullName: Pl0.Vm.VmCompletionReason
 - uid: Pl0.Vm.VmDiagnostic
   commentId: T:Pl0.Vm.VmDiagnostic
+  parent: Pl0.Vm
   href: Pl0.Vm.VmDiagnostic.html
   name: VmDiagnostic
   nameWithType: VmDiagnostic
@@ -85,6 +95,13 @@ references:
   name: VmExecutionResult
   nameWithType: VmExecutionResult
   fullName: Pl0.Vm.VmExecutionResult
+- uid: Pl0.Vm.VmExecutionSession
+  commentId: T:Pl0.Vm.VmExecutionSession
+  parent: Pl0.Vm
+  href: Pl0.Vm.VmExecutionSession.html
+  name: VmExecutionSession
+  nameWithType: VmExecutionSession
+  fullName: Pl0.Vm.VmExecutionSession
 - uid: Pl0.Vm.VmState
   commentId: T:Pl0.Vm.VmState
   parent: Pl0.Vm

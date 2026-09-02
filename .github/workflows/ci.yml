@@ -2,41 +2,45 @@ name: CI
 
 on:
   push:
-    branches:
-      - main
-      - codex/**
-      - claude/**
-      - gemini/**
-      - copilot/**
+    branches: [main, "codex/**", "claude/**", "gemini/**", "copilot/**"]
   pull_request:
 
-jobs:
-  build-test:
-    runs-on: ubuntu-latest
+permissions:
+  contents: read
 
+jobs:
+  build-test-package:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-2025, macos-15]
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
-
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
       - name: Setup .NET
-        uses: actions/setup-dotnet@v5
+        uses: actions/setup-dotnet@d4c94342e560b34958eacfc5d055d21461ed1c5d
         with:
           dotnet-version: "10.0.x"
-
       - name: Restore
-        run: dotnet restore TinyPl0.sln
-
+        run: dotnet restore TinyPl0.sln --locked-mode
       - name: Build
         run: dotnet build TinyPl0.sln --configuration Release --no-restore
-
       - name: Test
         run: dotnet test TinyPl0.sln --configuration Release --no-build
-
-      - name: Test (Coverage)
+      - name: Coverage
         run: dotnet test TinyPl0.sln --configuration Release --no-build --collect:"XPlat Code Coverage" --results-directory ./TestResults
-
-      - name: Upload Coverage Artifacts
-        uses: actions/upload-artifact@v4
+      - name: Pack and validate independent consumer
+        shell: pwsh
+        run: |
+          [xml]$versions = Get-Content eng/TinyPl0.PackageVersion.props -Raw
+          $version = [string]$versions.Project.PropertyGroup.TinyPl0PackageVersion
+          ./scripts/Test-NuGetPackages.ps1 -Configuration Release -Version $version -OutputDirectory artifacts/packages
+      - name: Upload platform evidence
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: test-results
-          path: TestResults
+          name: validation-${{ matrix.os }}
+          path: |
+            TestResults
+            artifacts/packages/package-validation.json
+          if-no-files-found: error

@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "dependencies": {
+    "net10.0": {
+      "TinyPl0.Core": {
+        "type": "Project"
+      }
+    }
+  }
+}

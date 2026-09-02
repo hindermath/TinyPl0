@@ -1,0 +1,2392 @@
+### YamlMime:ManagedReference
+items:
+- uid: Pl0.Vm.VmExecutionSession
+  commentId: T:Pl0.Vm.VmExecutionSession
+  id: VmExecutionSession
+  parent: Pl0.Vm
+  children:
+  - Pl0.Vm.VmExecutionSession.#ctor(Pl0.Core.Instruction[],Pl0.Vm.IPl0Io,Pl0.Vm.VirtualMachineOptions,System.Resources.ResourceManager,System.Globalization.CultureInfo,System.Threading.CancellationToken)
+  - Pl0.Vm.VmExecutionSession.AllowedOprCodes
+  - Pl0.Vm.VmExecutionSession.Binary(System.Func{System.Int32,System.Int32,System.Int32})
+  - Pl0.Vm.VmExecutionSession.CaptureState
+  - Pl0.Vm.VmExecutionSession.Complete(Pl0.Vm.VmCompletionReason,System.Collections.Generic.IEnumerable{Pl0.Vm.VmDiagnostic},Pl0.Vm.VmState)
+  - Pl0.Vm.VmExecutionSession.Create(System.Collections.Generic.IReadOnlyList{Pl0.Core.Instruction},Pl0.Vm.IPl0Io,Pl0.Vm.VirtualMachineOptions,System.Threading.CancellationToken)
+  - Pl0.Vm.VmExecutionSession.Dispatch(Pl0.Core.Instruction)
+  - Pl0.Vm.VmExecutionSession.DivisionCode
+  - Pl0.Vm.VmExecutionSession.ExecuteNext(System.Threading.CancellationToken)
+  - Pl0.Vm.VmExecutionSession.ExecuteOpr(System.Int32)
+  - Pl0.Vm.VmExecutionSession.InputEofCode
+  - Pl0.Vm.VmExecutionSession.InputFormatCode
+  - Pl0.Vm.VmExecutionSession.IsRecoverableHostException(System.Exception)
+  - Pl0.Vm.VmExecutionSession.IsRunning
+  - Pl0.Vm.VmExecutionSession.IsValidStackIndex(System.Int64)
+  - Pl0.Vm.VmExecutionSession.LocalizedDiagnostic(System.Int32,System.String,System.String,System.String,System.Object[])
+  - Pl0.Vm.VmExecutionSession.ResolveBase(System.Int32)
+  - Pl0.Vm.VmExecutionSession.RuntimeCode
+  - Pl0.Vm.VmExecutionSession.RuntimeFault(System.String,Pl0.Vm.VmState)
+  - Pl0.Vm.VmExecutionSession.RuntimeFaultReason(System.String)
+  - Pl0.Vm.VmExecutionSession.StackFault(System.String,System.String,System.String,System.Object[])
+  - Pl0.Vm.VmExecutionSession.State
+  - Pl0.Vm.VmExecutionSession.ToExecutionResult
+  - Pl0.Vm.VmExecutionSession.TryPeek(System.Int32)
+  - Pl0.Vm.VmExecutionSession.TryPush
+  - Pl0.Vm.VmExecutionSession.TryWrite(System.Int32)
+  - Pl0.Vm.VmExecutionSession.ValidateProgram(System.Collections.Generic.IReadOnlyList{Pl0.Core.Instruction},Pl0.Vm.VirtualMachineOptions,System.Resources.ResourceManager,System.Globalization.CultureInfo)
+  - Pl0.Vm.VmExecutionSession.b
+  - Pl0.Vm.VmExecutionSession.culture
+  - Pl0.Vm.VmExecutionSession.diagnostics
+  - Pl0.Vm.VmExecutionSession.executedInstructions
+  - Pl0.Vm.VmExecutionSession.initializationToken
+  - Pl0.Vm.VmExecutionSession.io
+  - Pl0.Vm.VmExecutionSession.messages
+  - Pl0.Vm.VmExecutionSession.options
+  - Pl0.Vm.VmExecutionSession.p
+  - Pl0.Vm.VmExecutionSession.program
+  - Pl0.Vm.VmExecutionSession.stack
+  - Pl0.Vm.VmExecutionSession.t
+  - Pl0.Vm.VmExecutionSession.terminalResult
+  langs:
+  - csharp
+  - vb
+  name: VmExecutionSession
+  nameWithType: VmExecutionSession
+  fullName: Pl0.Vm.VmExecutionSession
+  type: Class
+  source:
+    remote:
+      path: src/Pl0.Vm/VmExecutionSession.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: VmExecutionSession
+    path: src/Pl0.Vm/VmExecutionSession.cs
+    startLine: 8
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: internal sealed class VmExecutionSession
+    content.vb: Friend NotInheritable Class VmExecutionSession
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Pl0.Vm.VmExecutionSession.RuntimeCode
+  commentId: F:Pl0.Vm.VmExecutionSession.RuntimeCode
+  id: RuntimeCode
+  parent: Pl0.Vm.VmExecutionSession
+  langs:
+  - csharp
+  - vb
+  name: RuntimeCode
+  nameWithType: VmExecutionSession.RuntimeCode
+  fullName: Pl0.Vm.VmExecutionSession.RuntimeCode
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/VmExecutionSession.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: RuntimeCode
+    path: src/Pl0.Vm/VmExecutionSession.cs
+    startLine: 10
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private const int RuntimeCode = 99
+    return:
+      type: System.Int32
+    content.vb: Private Const RuntimeCode As Integer = 99
+- uid: Pl0.Vm.VmExecutionSession.InputEofCode
+  commentId: F:Pl0.Vm.VmExecutionSession.InputEofCode
+  id: InputEofCode
+  parent: Pl0.Vm.VmExecutionSession
+  langs:
+  - csharp
+  - vb
+  name: InputEofCode
+  nameWithType: VmExecutionSession.InputEofCode
+  fullName: Pl0.Vm.VmExecutionSession.InputEofCode
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/VmExecutionSession.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: InputEofCode
+    path: src/Pl0.Vm/VmExecutionSession.cs
+    startLine: 11
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private const int InputEofCode = 98
+    return:
+      type: System.Int32
+    content.vb: Private Const InputEofCode As Integer = 98
+- uid: Pl0.Vm.VmExecutionSession.InputFormatCode
+  commentId: F:Pl0.Vm.VmExecutionSession.InputFormatCode
+  id: InputFormatCode
+  parent: Pl0.Vm.VmExecutionSession
+  langs:
+  - csharp
+  - vb
+  name: InputFormatCode
+  nameWithType: VmExecutionSession.InputFormatCode
+  fullName: Pl0.Vm.VmExecutionSession.InputFormatCode
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/VmExecutionSession.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: InputFormatCode
+    path: src/Pl0.Vm/VmExecutionSession.cs
+    startLine: 12
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private const int InputFormatCode = 97
+    return:
+      type: System.Int32
+    content.vb: Private Const InputFormatCode As Integer = 97
+- uid: Pl0.Vm.VmExecutionSession.DivisionCode
+  commentId: F:Pl0.Vm.VmExecutionSession.DivisionCode
+  id: DivisionCode
+  parent: Pl0.Vm.VmExecutionSession
+  langs:
+  - csharp
+  - vb
+  name: DivisionCode
+  nameWithType: VmExecutionSession.DivisionCode
+  fullName: Pl0.Vm.VmExecutionSession.DivisionCode
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/VmExecutionSession.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: DivisionCode
+    path: src/Pl0.Vm/VmExecutionSession.cs
+    startLine: 13
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private const int DivisionCode = 206
+    return:
+      type: System.Int32
+    content.vb: Private Const DivisionCode As Integer = 206
+- uid: Pl0.Vm.VmExecutionSession.AllowedOprCodes
+  commentId: F:Pl0.Vm.VmExecutionSession.AllowedOprCodes
+  id: AllowedOprCodes
+  parent: Pl0.Vm.VmExecutionSession
+  langs:
+  - csharp
+  - vb
+  name: AllowedOprCodes
+  nameWithType: VmExecutionSession.AllowedOprCodes
+  fullName: Pl0.Vm.VmExecutionSession.AllowedOprCodes
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/VmExecutionSession.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: AllowedOprCodes
+    path: src/Pl0.Vm/VmExecutionSession.cs
+    startLine: 14
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private static readonly int[] AllowedOprCodes
+    return:
+      type: System.Int32[]
+    content.vb: Private Shared ReadOnly AllowedOprCodes As Integer()
+- uid: Pl0.Vm.VmExecutionSession.program
+  commentId: F:Pl0.Vm.VmExecutionSession.program
+  id: program
+  parent: Pl0.Vm.VmExecutionSession
+  langs:
+  - csharp
+  - vb
+  name: program
+  nameWithType: VmExecutionSession.program
+  fullName: Pl0.Vm.VmExecutionSession.program
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/VmExecutionSession.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: program
+    path: src/Pl0.Vm/VmExecutionSession.cs
+    startLine: 16
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private Instruction[] program
+    return:
+      type: Pl0.Core.Instruction[]
+    content.vb: Private program As Instruction()
+- uid: Pl0.Vm.VmExecutionSession.io
+  commentId: F:Pl0.Vm.VmExecutionSession.io
+  id: io
+  parent: Pl0.Vm.VmExecutionSession
+  langs:
+  - csharp
+  - vb
+  name: io
+  nameWithType: VmExecutionSession.io
+  fullName: Pl0.Vm.VmExecutionSession.io
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/VmExecutionSession.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: io
+    path: src/Pl0.Vm/VmExecutionSession.cs
+    startLine: 17
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private readonly IPl0Io io
+    return:
+      type: Pl0.Vm.IPl0Io
+    content.vb: Private ReadOnly io As IPl0Io
+- uid: Pl0.Vm.VmExecutionSession.options
+  commentId: F:Pl0.Vm.VmExecutionSession.options
+  id: options
+  parent: Pl0.Vm.VmExecutionSession
+  langs:
+  - csharp
+  - vb
+  name: options
+  nameWithType: VmExecutionSession.options
+  fullName: Pl0.Vm.VmExecutionSession.options
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/VmExecutionSession.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: options
+    path: src/Pl0.Vm/VmExecutionSession.cs
+    startLine: 18
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private readonly VirtualMachineOptions options
+    return:
+      type: Pl0.Vm.VirtualMachineOptions
+    content.vb: Private ReadOnly options As VirtualMachineOptions
+- uid: Pl0.Vm.VmExecutionSession.messages
+  commentId: F:Pl0.Vm.VmExecutionSession.messages
+  id: messages
+  parent: Pl0.Vm.VmExecutionSession
+  langs:
+  - csharp
+  - vb
+  name: messages
+  nameWithType: VmExecutionSession.messages
+  fullName: Pl0.Vm.VmExecutionSession.messages
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/VmExecutionSession.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: messages
+    path: src/Pl0.Vm/VmExecutionSession.cs
+    startLine: 19
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private readonly ResourceManager messages
+    return:
+      type: System.Resources.ResourceManager
+    content.vb: Private ReadOnly messages As ResourceManager
+- uid: Pl0.Vm.VmExecutionSession.culture
+  commentId: F:Pl0.Vm.VmExecutionSession.culture
+  id: culture
+  parent: Pl0.Vm.VmExecutionSession
+  langs:
+  - csharp
+  - vb
+  name: culture
+  nameWithType: VmExecutionSession.culture
+  fullName: Pl0.Vm.VmExecutionSession.culture
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/VmExecutionSession.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: culture
+    path: src/Pl0.Vm/VmExecutionSession.cs
+    startLine: 20
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private readonly CultureInfo culture
+    return:
+      type: System.Globalization.CultureInfo
+    content.vb: Private ReadOnly culture As CultureInfo
+- uid: Pl0.Vm.VmExecutionSession.initializationToken
+  commentId: F:Pl0.Vm.VmExecutionSession.initializationToken
+  id: initializationToken
+  parent: Pl0.Vm.VmExecutionSession
+  langs:
+  - csharp
+  - vb
+  name: initializationToken
+  nameWithType: VmExecutionSession.initializationToken
+  fullName: Pl0.Vm.VmExecutionSession.initializationToken
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/VmExecutionSession.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: initializationToken
+    path: src/Pl0.Vm/VmExecutionSession.cs
+    startLine: 21
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private readonly CancellationToken initializationToken
+    return:
+      type: System.Threading.CancellationToken
+    content.vb: Private ReadOnly initializationToken As CancellationToken
+- uid: Pl0.Vm.VmExecutionSession.diagnostics
+  commentId: F:Pl0.Vm.VmExecutionSession.diagnostics
+  id: diagnostics
+  parent: Pl0.Vm.VmExecutionSession
+  langs:
+  - csharp
+  - vb
+  name: diagnostics
+  nameWithType: VmExecutionSession.diagnostics
+  fullName: Pl0.Vm.VmExecutionSession.diagnostics
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/VmExecutionSession.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: diagnostics
+    path: src/Pl0.Vm/VmExecutionSession.cs
+    startLine: 22
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private readonly List<VmDiagnostic> diagnostics
+    return:
+      type: System.Collections.Generic.List{Pl0.Vm.VmDiagnostic}
+    content.vb: Private ReadOnly diagnostics As List(Of VmDiagnostic)
+- uid: Pl0.Vm.VmExecutionSession.stack
+  commentId: F:Pl0.Vm.VmExecutionSession.stack
+  id: stack
+  parent: Pl0.Vm.VmExecutionSession
+  langs:
+  - csharp
+  - vb
+  name: stack
+  nameWithType: VmExecutionSession.stack
+  fullName: Pl0.Vm.VmExecutionSession.stack
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/VmExecutionSession.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: stack
+    path: src/Pl0.Vm/VmExecutionSession.cs
+    startLine: 23
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private int[] stack
+    return:
+      type: System.Int32[]
+    content.vb: Private stack As Integer()
+- uid: Pl0.Vm.VmExecutionSession.p
+  commentId: F:Pl0.Vm.VmExecutionSession.p
+  id: p
+  parent: Pl0.Vm.VmExecutionSession
+  langs:
+  - csharp
+  - vb
+  name: p
+  nameWithType: VmExecutionSession.p
+  fullName: Pl0.Vm.VmExecutionSession.p
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/VmExecutionSession.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: p
+    path: src/Pl0.Vm/VmExecutionSession.cs
+    startLine: 24
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private int p
+    return:
+      type: System.Int32
+    content.vb: Private p As Integer
+- uid: Pl0.Vm.VmExecutionSession.b
+  commentId: F:Pl0.Vm.VmExecutionSession.b
+  id: b
+  parent: Pl0.Vm.VmExecutionSession
+  langs:
+  - csharp
+  - vb
+  name: b
+  nameWithType: VmExecutionSession.b
+  fullName: Pl0.Vm.VmExecutionSession.b
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/VmExecutionSession.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: b
+    path: src/Pl0.Vm/VmExecutionSession.cs
+    startLine: 25
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private int b
+    return:
+      type: System.Int32
+    content.vb: Private b As Integer
+- uid: Pl0.Vm.VmExecutionSession.t
+  commentId: F:Pl0.Vm.VmExecutionSession.t
+  id: t
+  parent: Pl0.Vm.VmExecutionSession
+  langs:
+  - csharp
+  - vb
+  name: t
+  nameWithType: VmExecutionSession.t
+  fullName: Pl0.Vm.VmExecutionSession.t
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/VmExecutionSession.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: t
+    path: src/Pl0.Vm/VmExecutionSession.cs
+    startLine: 26
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private int t
+    return:
+      type: System.Int32
+    content.vb: Private t As Integer
+- uid: Pl0.Vm.VmExecutionSession.executedInstructions
+  commentId: F:Pl0.Vm.VmExecutionSession.executedInstructions
+  id: executedInstructions
+  parent: Pl0.Vm.VmExecutionSession
+  langs:
+  - csharp
+  - vb
+  name: executedInstructions
+  nameWithType: VmExecutionSession.executedInstructions
+  fullName: Pl0.Vm.VmExecutionSession.executedInstructions
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/VmExecutionSession.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: executedInstructions
+    path: src/Pl0.Vm/VmExecutionSession.cs
+    startLine: 27
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private int executedInstructions
+    return:
+      type: System.Int32
+    content.vb: Private executedInstructions As Integer
+- uid: Pl0.Vm.VmExecutionSession.terminalResult
+  commentId: F:Pl0.Vm.VmExecutionSession.terminalResult
+  id: terminalResult
+  parent: Pl0.Vm.VmExecutionSession
+  langs:
+  - csharp
+  - vb
+  name: terminalResult
+  nameWithType: VmExecutionSession.terminalResult
+  fullName: Pl0.Vm.VmExecutionSession.terminalResult
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/VmExecutionSession.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: terminalResult
+    path: src/Pl0.Vm/VmExecutionSession.cs
+    startLine: 28
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private VmStepResult? terminalResult
+    return:
+      type: Pl0.Vm.VmStepResult
+    content.vb: Private terminalResult As VmStepResult
+- uid: Pl0.Vm.VmExecutionSession.#ctor(Pl0.Core.Instruction[],Pl0.Vm.IPl0Io,Pl0.Vm.VirtualMachineOptions,System.Resources.ResourceManager,System.Globalization.CultureInfo,System.Threading.CancellationToken)
+  commentId: M:Pl0.Vm.VmExecutionSession.#ctor(Pl0.Core.Instruction[],Pl0.Vm.IPl0Io,Pl0.Vm.VirtualMachineOptions,System.Resources.ResourceManager,System.Globalization.CultureInfo,System.Threading.CancellationToken)
+  id: '#ctor(Pl0.Core.Instruction[],Pl0.Vm.IPl0Io,Pl0.Vm.VirtualMachineOptions,System.Resources.ResourceManager,System.Globalization.CultureInfo,System.Threading.CancellationToken)'
+  parent: Pl0.Vm.VmExecutionSession
+  langs:
+  - csharp
+  - vb
+  name: VmExecutionSession(Instruction[], IPl0Io, VirtualMachineOptions, ResourceManager, CultureInfo, CancellationToken)
+  nameWithType: VmExecutionSession.VmExecutionSession(Instruction[], IPl0Io, VirtualMachineOptions, ResourceManager, CultureInfo, CancellationToken)
+  fullName: Pl0.Vm.VmExecutionSession.VmExecutionSession(Pl0.Core.Instruction[], Pl0.Vm.IPl0Io, Pl0.Vm.VirtualMachineOptions, System.Resources.ResourceManager, System.Globalization.CultureInfo, System.Threading.CancellationToken)
+  type: Constructor
+  source:
+    remote:
+      path: src/Pl0.Vm/VmExecutionSession.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: .ctor
+    path: src/Pl0.Vm/VmExecutionSession.cs
+    startLine: 30
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private VmExecutionSession(Instruction[] program, IPl0Io io, VirtualMachineOptions options, ResourceManager messages, CultureInfo culture, CancellationToken initializationToken)
+    parameters:
+    - id: program
+      type: Pl0.Core.Instruction[]
+    - id: io
+      type: Pl0.Vm.IPl0Io
+    - id: options
+      type: Pl0.Vm.VirtualMachineOptions
+    - id: messages
+      type: System.Resources.ResourceManager
+    - id: culture
+      type: System.Globalization.CultureInfo
+    - id: initializationToken
+      type: System.Threading.CancellationToken
+    content.vb: Private Sub New(program As Instruction(), io As IPl0Io, options As VirtualMachineOptions, messages As ResourceManager, culture As CultureInfo, initializationToken As CancellationToken)
+  overload: Pl0.Vm.VmExecutionSession.#ctor*
+  nameWithType.vb: VmExecutionSession.New(Instruction(), IPl0Io, VirtualMachineOptions, ResourceManager, CultureInfo, CancellationToken)
+  fullName.vb: Pl0.Vm.VmExecutionSession.New(Pl0.Core.Instruction(), Pl0.Vm.IPl0Io, Pl0.Vm.VirtualMachineOptions, System.Resources.ResourceManager, System.Globalization.CultureInfo, System.Threading.CancellationToken)
+  name.vb: New(Instruction(), IPl0Io, VirtualMachineOptions, ResourceManager, CultureInfo, CancellationToken)
+- uid: Pl0.Vm.VmExecutionSession.State
+  commentId: P:Pl0.Vm.VmExecutionSession.State
+  id: State
+  parent: Pl0.Vm.VmExecutionSession
+  langs:
+  - csharp
+  - vb
+  name: State
+  nameWithType: VmExecutionSession.State
+  fullName: Pl0.Vm.VmExecutionSession.State
+  type: Property
+  source:
+    remote:
+      path: src/Pl0.Vm/VmExecutionSession.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: State
+    path: src/Pl0.Vm/VmExecutionSession.cs
+    startLine: 41
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: internal VmState State { get; private set; }
+    parameters: []
+    return:
+      type: Pl0.Vm.VmState
+    content.vb: Friend Property State As VmState
+  overload: Pl0.Vm.VmExecutionSession.State*
+- uid: Pl0.Vm.VmExecutionSession.IsRunning
+  commentId: P:Pl0.Vm.VmExecutionSession.IsRunning
+  id: IsRunning
+  parent: Pl0.Vm.VmExecutionSession
+  langs:
+  - csharp
+  - vb
+  name: IsRunning
+  nameWithType: VmExecutionSession.IsRunning
+  fullName: Pl0.Vm.VmExecutionSession.IsRunning
+  type: Property
+  source:
+    remote:
+      path: src/Pl0.Vm/VmExecutionSession.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: IsRunning
+    path: src/Pl0.Vm/VmExecutionSession.cs
+    startLine: 42
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: internal bool IsRunning { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Friend ReadOnly Property IsRunning As Boolean
+  overload: Pl0.Vm.VmExecutionSession.IsRunning*
+- uid: Pl0.Vm.VmExecutionSession.Create(System.Collections.Generic.IReadOnlyList{Pl0.Core.Instruction},Pl0.Vm.IPl0Io,Pl0.Vm.VirtualMachineOptions,System.Threading.CancellationToken)
+  commentId: M:Pl0.Vm.VmExecutionSession.Create(System.Collections.Generic.IReadOnlyList{Pl0.Core.Instruction},Pl0.Vm.IPl0Io,Pl0.Vm.VirtualMachineOptions,System.Threading.CancellationToken)
+  id: Create(System.Collections.Generic.IReadOnlyList{Pl0.Core.Instruction},Pl0.Vm.IPl0Io,Pl0.Vm.VirtualMachineOptions,System.Threading.CancellationToken)
+  parent: Pl0.Vm.VmExecutionSession
+  langs:
+  - csharp
+  - vb
+  name: Create(IReadOnlyList<Instruction>?, IPl0Io, VirtualMachineOptions, CancellationToken)
+  nameWithType: VmExecutionSession.Create(IReadOnlyList<Instruction>?, IPl0Io, VirtualMachineOptions, CancellationToken)
+  fullName: Pl0.Vm.VmExecutionSession.Create(System.Collections.Generic.IReadOnlyList<Pl0.Core.Instruction>?, Pl0.Vm.IPl0Io, Pl0.Vm.VirtualMachineOptions, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Vm/VmExecutionSession.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: Create
+    path: src/Pl0.Vm/VmExecutionSession.cs
+    startLine: 44
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: internal static VmExecutionSession Create(IReadOnlyList<Instruction>? source, IPl0Io io, VirtualMachineOptions options, CancellationToken cancellationToken)
+    parameters:
+    - id: source
+      type: System.Collections.Generic.IReadOnlyList{Pl0.Core.Instruction}
+    - id: io
+      type: Pl0.Vm.IPl0Io
+    - id: options
+      type: Pl0.Vm.VirtualMachineOptions
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+    return:
+      type: Pl0.Vm.VmExecutionSession
+    content.vb: Friend Shared Function Create(source As IReadOnlyList(Of Instruction), io As IPl0Io, options As VirtualMachineOptions, cancellationToken As CancellationToken) As VmExecutionSession
+  overload: Pl0.Vm.VmExecutionSession.Create*
+  nameWithType.vb: VmExecutionSession.Create(IReadOnlyList(Of Instruction), IPl0Io, VirtualMachineOptions, CancellationToken)
+  fullName.vb: Pl0.Vm.VmExecutionSession.Create(System.Collections.Generic.IReadOnlyList(Of Pl0.Core.Instruction), Pl0.Vm.IPl0Io, Pl0.Vm.VirtualMachineOptions, System.Threading.CancellationToken)
+  name.vb: Create(IReadOnlyList(Of Instruction), IPl0Io, VirtualMachineOptions, CancellationToken)
+- uid: Pl0.Vm.VmExecutionSession.ExecuteNext(System.Threading.CancellationToken)
+  commentId: M:Pl0.Vm.VmExecutionSession.ExecuteNext(System.Threading.CancellationToken)
+  id: ExecuteNext(System.Threading.CancellationToken)
+  parent: Pl0.Vm.VmExecutionSession
+  langs:
+  - csharp
+  - vb
+  name: ExecuteNext(CancellationToken)
+  nameWithType: VmExecutionSession.ExecuteNext(CancellationToken)
+  fullName: Pl0.Vm.VmExecutionSession.ExecuteNext(System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Vm/VmExecutionSession.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: ExecuteNext
+    path: src/Pl0.Vm/VmExecutionSession.cs
+    startLine: 78
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: internal VmStepResult ExecuteNext(CancellationToken stepToken = default)
+    parameters:
+    - id: stepToken
+      type: System.Threading.CancellationToken
+    return:
+      type: Pl0.Vm.VmStepResult
+    content.vb: Friend Function ExecuteNext(stepToken As CancellationToken = Nothing) As VmStepResult
+  overload: Pl0.Vm.VmExecutionSession.ExecuteNext*
+- uid: Pl0.Vm.VmExecutionSession.ToExecutionResult
+  commentId: M:Pl0.Vm.VmExecutionSession.ToExecutionResult
+  id: ToExecutionResult
+  parent: Pl0.Vm.VmExecutionSession
+  langs:
+  - csharp
+  - vb
+  name: ToExecutionResult()
+  nameWithType: VmExecutionSession.ToExecutionResult()
+  fullName: Pl0.Vm.VmExecutionSession.ToExecutionResult()
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Vm/VmExecutionSession.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: ToExecutionResult
+    path: src/Pl0.Vm/VmExecutionSession.cs
+    startLine: 113
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: internal VmExecutionResult ToExecutionResult()
+    return:
+      type: Pl0.Vm.VmExecutionResult
+    content.vb: Friend Function ToExecutionResult() As VmExecutionResult
+  overload: Pl0.Vm.VmExecutionSession.ToExecutionResult*
+- uid: Pl0.Vm.VmExecutionSession.ValidateProgram(System.Collections.Generic.IReadOnlyList{Pl0.Core.Instruction},Pl0.Vm.VirtualMachineOptions,System.Resources.ResourceManager,System.Globalization.CultureInfo)
+  commentId: M:Pl0.Vm.VmExecutionSession.ValidateProgram(System.Collections.Generic.IReadOnlyList{Pl0.Core.Instruction},Pl0.Vm.VirtualMachineOptions,System.Resources.ResourceManager,System.Globalization.CultureInfo)
+  id: ValidateProgram(System.Collections.Generic.IReadOnlyList{Pl0.Core.Instruction},Pl0.Vm.VirtualMachineOptions,System.Resources.ResourceManager,System.Globalization.CultureInfo)
+  parent: Pl0.Vm.VmExecutionSession
+  langs:
+  - csharp
+  - vb
+  name: ValidateProgram(IReadOnlyList<Instruction>?, VirtualMachineOptions, ResourceManager, CultureInfo)
+  nameWithType: VmExecutionSession.ValidateProgram(IReadOnlyList<Instruction>?, VirtualMachineOptions, ResourceManager, CultureInfo)
+  fullName: Pl0.Vm.VmExecutionSession.ValidateProgram(System.Collections.Generic.IReadOnlyList<Pl0.Core.Instruction>?, Pl0.Vm.VirtualMachineOptions, System.Resources.ResourceManager, System.Globalization.CultureInfo)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Vm/VmExecutionSession.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: ValidateProgram
+    path: src/Pl0.Vm/VmExecutionSession.cs
+    startLine: 123
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private static IReadOnlyList<VmDiagnostic> ValidateProgram(IReadOnlyList<Instruction>? program, VirtualMachineOptions options, ResourceManager messages, CultureInfo culture)
+    parameters:
+    - id: program
+      type: System.Collections.Generic.IReadOnlyList{Pl0.Core.Instruction}
+    - id: options
+      type: Pl0.Vm.VirtualMachineOptions
+    - id: messages
+      type: System.Resources.ResourceManager
+    - id: culture
+      type: System.Globalization.CultureInfo
+    return:
+      type: System.Collections.Generic.IReadOnlyList{Pl0.Vm.VmDiagnostic}
+    content.vb: Private Shared Function ValidateProgram(program As IReadOnlyList(Of Instruction), options As VirtualMachineOptions, messages As ResourceManager, culture As CultureInfo) As IReadOnlyList(Of VmDiagnostic)
+  overload: Pl0.Vm.VmExecutionSession.ValidateProgram*
+  nameWithType.vb: VmExecutionSession.ValidateProgram(IReadOnlyList(Of Instruction), VirtualMachineOptions, ResourceManager, CultureInfo)
+  fullName.vb: Pl0.Vm.VmExecutionSession.ValidateProgram(System.Collections.Generic.IReadOnlyList(Of Pl0.Core.Instruction), Pl0.Vm.VirtualMachineOptions, System.Resources.ResourceManager, System.Globalization.CultureInfo)
+  name.vb: ValidateProgram(IReadOnlyList(Of Instruction), VirtualMachineOptions, ResourceManager, CultureInfo)
+- uid: Pl0.Vm.VmExecutionSession.Dispatch(Pl0.Core.Instruction)
+  commentId: M:Pl0.Vm.VmExecutionSession.Dispatch(Pl0.Core.Instruction)
+  id: Dispatch(Pl0.Core.Instruction)
+  parent: Pl0.Vm.VmExecutionSession
+  langs:
+  - csharp
+  - vb
+  name: Dispatch(Instruction)
+  nameWithType: VmExecutionSession.Dispatch(Instruction)
+  fullName: Pl0.Vm.VmExecutionSession.Dispatch(Pl0.Core.Instruction)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Vm/VmExecutionSession.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: Dispatch
+    path: src/Pl0.Vm/VmExecutionSession.cs
+    startLine: 183
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private VmCompletionReason? Dispatch(Instruction instruction)
+    parameters:
+    - id: instruction
+      type: Pl0.Core.Instruction
+    return:
+      type: System.Nullable{Pl0.Vm.VmCompletionReason}
+    content.vb: Private Function Dispatch(instruction As Instruction) As VmCompletionReason?
+  overload: Pl0.Vm.VmExecutionSession.Dispatch*
+- uid: Pl0.Vm.VmExecutionSession.ExecuteOpr(System.Int32)
+  commentId: M:Pl0.Vm.VmExecutionSession.ExecuteOpr(System.Int32)
+  id: ExecuteOpr(System.Int32)
+  parent: Pl0.Vm.VmExecutionSession
+  langs:
+  - csharp
+  - vb
+  name: ExecuteOpr(int)
+  nameWithType: VmExecutionSession.ExecuteOpr(int)
+  fullName: Pl0.Vm.VmExecutionSession.ExecuteOpr(int)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Vm/VmExecutionSession.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: ExecuteOpr
+    path: src/Pl0.Vm/VmExecutionSession.cs
+    startLine: 250
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private VmCompletionReason? ExecuteOpr(int code)
+    parameters:
+    - id: code
+      type: System.Int32
+    return:
+      type: System.Nullable{Pl0.Vm.VmCompletionReason}
+    content.vb: Private Function ExecuteOpr(code As Integer) As VmCompletionReason?
+  overload: Pl0.Vm.VmExecutionSession.ExecuteOpr*
+  nameWithType.vb: VmExecutionSession.ExecuteOpr(Integer)
+  fullName.vb: Pl0.Vm.VmExecutionSession.ExecuteOpr(Integer)
+  name.vb: ExecuteOpr(Integer)
+- uid: Pl0.Vm.VmExecutionSession.Binary(System.Func{System.Int32,System.Int32,System.Int32})
+  commentId: M:Pl0.Vm.VmExecutionSession.Binary(System.Func{System.Int32,System.Int32,System.Int32})
+  id: Binary(System.Func{System.Int32,System.Int32,System.Int32})
+  parent: Pl0.Vm.VmExecutionSession
+  langs:
+  - csharp
+  - vb
+  name: Binary(Func<int, int, int>)
+  nameWithType: VmExecutionSession.Binary(Func<int, int, int>)
+  fullName: Pl0.Vm.VmExecutionSession.Binary(System.Func<int, int, int>)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Vm/VmExecutionSession.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: Binary
+    path: src/Pl0.Vm/VmExecutionSession.cs
+    startLine: 298
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private VmCompletionReason? Binary(Func<int, int, int> operation)
+    parameters:
+    - id: operation
+      type: System.Func{System.Int32,System.Int32,System.Int32}
+    return:
+      type: System.Nullable{Pl0.Vm.VmCompletionReason}
+    content.vb: Private Function Binary(operation As Func(Of Integer, Integer, Integer)) As VmCompletionReason?
+  overload: Pl0.Vm.VmExecutionSession.Binary*
+  nameWithType.vb: VmExecutionSession.Binary(Func(Of Integer, Integer, Integer))
+  fullName.vb: Pl0.Vm.VmExecutionSession.Binary(System.Func(Of Integer, Integer, Integer))
+  name.vb: Binary(Func(Of Integer, Integer, Integer))
+- uid: Pl0.Vm.VmExecutionSession.ResolveBase(System.Int32)
+  commentId: M:Pl0.Vm.VmExecutionSession.ResolveBase(System.Int32)
+  id: ResolveBase(System.Int32)
+  parent: Pl0.Vm.VmExecutionSession
+  langs:
+  - csharp
+  - vb
+  name: ResolveBase(int)
+  nameWithType: VmExecutionSession.ResolveBase(int)
+  fullName: Pl0.Vm.VmExecutionSession.ResolveBase(int)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Vm/VmExecutionSession.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: ResolveBase
+    path: src/Pl0.Vm/VmExecutionSession.cs
+    startLine: 304
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private int ResolveBase(int level)
+    parameters:
+    - id: level
+      type: System.Int32
+    return:
+      type: System.Int32
+    content.vb: Private Function ResolveBase(level As Integer) As Integer
+  overload: Pl0.Vm.VmExecutionSession.ResolveBase*
+  nameWithType.vb: VmExecutionSession.ResolveBase(Integer)
+  fullName.vb: Pl0.Vm.VmExecutionSession.ResolveBase(Integer)
+  name.vb: ResolveBase(Integer)
+- uid: Pl0.Vm.VmExecutionSession.TryPush
+  commentId: M:Pl0.Vm.VmExecutionSession.TryPush
+  id: TryPush
+  parent: Pl0.Vm.VmExecutionSession
+  langs:
+  - csharp
+  - vb
+  name: TryPush()
+  nameWithType: VmExecutionSession.TryPush()
+  fullName: Pl0.Vm.VmExecutionSession.TryPush()
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Vm/VmExecutionSession.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: TryPush
+    path: src/Pl0.Vm/VmExecutionSession.cs
+    startLine: 321
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private bool TryPush()
+    return:
+      type: System.Boolean
+    content.vb: Private Function TryPush() As Boolean
+  overload: Pl0.Vm.VmExecutionSession.TryPush*
+- uid: Pl0.Vm.VmExecutionSession.TryPeek(System.Int32)
+  commentId: M:Pl0.Vm.VmExecutionSession.TryPeek(System.Int32)
+  id: TryPeek(System.Int32)
+  parent: Pl0.Vm.VmExecutionSession
+  langs:
+  - csharp
+  - vb
+  name: TryPeek(int)
+  nameWithType: VmExecutionSession.TryPeek(int)
+  fullName: Pl0.Vm.VmExecutionSession.TryPeek(int)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Vm/VmExecutionSession.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: TryPeek
+    path: src/Pl0.Vm/VmExecutionSession.cs
+    startLine: 331
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private bool TryPeek(int index)
+    parameters:
+    - id: index
+      type: System.Int32
+    return:
+      type: System.Boolean
+    content.vb: Private Function TryPeek(index As Integer) As Boolean
+  overload: Pl0.Vm.VmExecutionSession.TryPeek*
+  nameWithType.vb: VmExecutionSession.TryPeek(Integer)
+  fullName.vb: Pl0.Vm.VmExecutionSession.TryPeek(Integer)
+  name.vb: TryPeek(Integer)
+- uid: Pl0.Vm.VmExecutionSession.TryWrite(System.Int32)
+  commentId: M:Pl0.Vm.VmExecutionSession.TryWrite(System.Int32)
+  id: TryWrite(System.Int32)
+  parent: Pl0.Vm.VmExecutionSession
+  langs:
+  - csharp
+  - vb
+  name: TryWrite(int)
+  nameWithType: VmExecutionSession.TryWrite(int)
+  fullName: Pl0.Vm.VmExecutionSession.TryWrite(int)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Vm/VmExecutionSession.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: TryWrite
+    path: src/Pl0.Vm/VmExecutionSession.cs
+    startLine: 338
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private bool TryWrite(int value)
+    parameters:
+    - id: value
+      type: System.Int32
+    return:
+      type: System.Boolean
+    content.vb: Private Function TryWrite(value As Integer) As Boolean
+  overload: Pl0.Vm.VmExecutionSession.TryWrite*
+  nameWithType.vb: VmExecutionSession.TryWrite(Integer)
+  fullName.vb: Pl0.Vm.VmExecutionSession.TryWrite(Integer)
+  name.vb: TryWrite(Integer)
+- uid: Pl0.Vm.VmExecutionSession.IsRecoverableHostException(System.Exception)
+  commentId: M:Pl0.Vm.VmExecutionSession.IsRecoverableHostException(System.Exception)
+  id: IsRecoverableHostException(System.Exception)
+  parent: Pl0.Vm.VmExecutionSession
+  langs:
+  - csharp
+  - vb
+  name: IsRecoverableHostException(Exception)
+  nameWithType: VmExecutionSession.IsRecoverableHostException(Exception)
+  fullName: Pl0.Vm.VmExecutionSession.IsRecoverableHostException(System.Exception)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Vm/VmExecutionSession.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: IsRecoverableHostException
+    path: src/Pl0.Vm/VmExecutionSession.cs
+    startLine: 345
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private static bool IsRecoverableHostException(Exception exception)
+    parameters:
+    - id: exception
+      type: System.Exception
+    return:
+      type: System.Boolean
+    content.vb: Private Shared Function IsRecoverableHostException(exception As Exception) As Boolean
+  overload: Pl0.Vm.VmExecutionSession.IsRecoverableHostException*
+- uid: Pl0.Vm.VmExecutionSession.IsValidStackIndex(System.Int64)
+  commentId: M:Pl0.Vm.VmExecutionSession.IsValidStackIndex(System.Int64)
+  id: IsValidStackIndex(System.Int64)
+  parent: Pl0.Vm.VmExecutionSession
+  langs:
+  - csharp
+  - vb
+  name: IsValidStackIndex(long)
+  nameWithType: VmExecutionSession.IsValidStackIndex(long)
+  fullName: Pl0.Vm.VmExecutionSession.IsValidStackIndex(long)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Vm/VmExecutionSession.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: IsValidStackIndex
+    path: src/Pl0.Vm/VmExecutionSession.cs
+    startLine: 347
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private bool IsValidStackIndex(long index)
+    parameters:
+    - id: index
+      type: System.Int64
+    return:
+      type: System.Boolean
+    content.vb: Private Function IsValidStackIndex(index As Long) As Boolean
+  overload: Pl0.Vm.VmExecutionSession.IsValidStackIndex*
+  nameWithType.vb: VmExecutionSession.IsValidStackIndex(Long)
+  fullName.vb: Pl0.Vm.VmExecutionSession.IsValidStackIndex(Long)
+  name.vb: IsValidStackIndex(Long)
+- uid: Pl0.Vm.VmExecutionSession.StackFault(System.String,System.String,System.String,System.Object[])
+  commentId: M:Pl0.Vm.VmExecutionSession.StackFault(System.String,System.String,System.String,System.Object[])
+  id: StackFault(System.String,System.String,System.String,System.Object[])
+  parent: Pl0.Vm.VmExecutionSession
+  langs:
+  - csharp
+  - vb
+  name: StackFault(string, string, string, params object[])
+  nameWithType: VmExecutionSession.StackFault(string, string, string, params object[])
+  fullName: Pl0.Vm.VmExecutionSession.StackFault(string, string, string, params object[])
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Vm/VmExecutionSession.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: StackFault
+    path: src/Pl0.Vm/VmExecutionSession.cs
+    startLine: 349
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private VmCompletionReason StackFault(string resourceKey, string germanFallback, string englishFallback, params object[] arguments)
+    parameters:
+    - id: resourceKey
+      type: System.String
+    - id: germanFallback
+      type: System.String
+    - id: englishFallback
+      type: System.String
+    - id: arguments
+      type: System.Object[]
+    return:
+      type: Pl0.Vm.VmCompletionReason
+    content.vb: Private Function StackFault(resourceKey As String, germanFallback As String, englishFallback As String, ParamArray arguments As Object()) As VmCompletionReason
+  overload: Pl0.Vm.VmExecutionSession.StackFault*
+  nameWithType.vb: VmExecutionSession.StackFault(String, String, String, ParamArray Object())
+  fullName.vb: Pl0.Vm.VmExecutionSession.StackFault(String, String, String, ParamArray Object())
+  name.vb: StackFault(String, String, String, ParamArray Object())
+- uid: Pl0.Vm.VmExecutionSession.LocalizedDiagnostic(System.Int32,System.String,System.String,System.String,System.Object[])
+  commentId: M:Pl0.Vm.VmExecutionSession.LocalizedDiagnostic(System.Int32,System.String,System.String,System.String,System.Object[])
+  id: LocalizedDiagnostic(System.Int32,System.String,System.String,System.String,System.Object[])
+  parent: Pl0.Vm.VmExecutionSession
+  langs:
+  - csharp
+  - vb
+  name: LocalizedDiagnostic(int, string, string, string, params object[])
+  nameWithType: VmExecutionSession.LocalizedDiagnostic(int, string, string, string, params object[])
+  fullName: Pl0.Vm.VmExecutionSession.LocalizedDiagnostic(int, string, string, string, params object[])
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Vm/VmExecutionSession.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: LocalizedDiagnostic
+    path: src/Pl0.Vm/VmExecutionSession.cs
+    startLine: 361
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private VmDiagnostic LocalizedDiagnostic(int code, string resourceKey, string germanFallback, string englishFallback, params object[] arguments)
+    parameters:
+    - id: code
+      type: System.Int32
+    - id: resourceKey
+      type: System.String
+    - id: germanFallback
+      type: System.String
+    - id: englishFallback
+      type: System.String
+    - id: arguments
+      type: System.Object[]
+    return:
+      type: Pl0.Vm.VmDiagnostic
+    content.vb: Private Function LocalizedDiagnostic(code As Integer, resourceKey As String, germanFallback As String, englishFallback As String, ParamArray arguments As Object()) As VmDiagnostic
+  overload: Pl0.Vm.VmExecutionSession.LocalizedDiagnostic*
+  nameWithType.vb: VmExecutionSession.LocalizedDiagnostic(Integer, String, String, String, ParamArray Object())
+  fullName.vb: Pl0.Vm.VmExecutionSession.LocalizedDiagnostic(Integer, String, String, String, ParamArray Object())
+  name.vb: LocalizedDiagnostic(Integer, String, String, String, ParamArray Object())
+- uid: Pl0.Vm.VmExecutionSession.RuntimeFaultReason(System.String)
+  commentId: M:Pl0.Vm.VmExecutionSession.RuntimeFaultReason(System.String)
+  id: RuntimeFaultReason(System.String)
+  parent: Pl0.Vm.VmExecutionSession
+  langs:
+  - csharp
+  - vb
+  name: RuntimeFaultReason(string)
+  nameWithType: VmExecutionSession.RuntimeFaultReason(string)
+  fullName: Pl0.Vm.VmExecutionSession.RuntimeFaultReason(string)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Vm/VmExecutionSession.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: RuntimeFaultReason
+    path: src/Pl0.Vm/VmExecutionSession.cs
+    startLine: 373
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private VmCompletionReason RuntimeFaultReason(string detail)
+    parameters:
+    - id: detail
+      type: System.String
+    return:
+      type: Pl0.Vm.VmCompletionReason
+    content.vb: Private Function RuntimeFaultReason(detail As String) As VmCompletionReason
+  overload: Pl0.Vm.VmExecutionSession.RuntimeFaultReason*
+  nameWithType.vb: VmExecutionSession.RuntimeFaultReason(String)
+  fullName.vb: Pl0.Vm.VmExecutionSession.RuntimeFaultReason(String)
+  name.vb: RuntimeFaultReason(String)
+- uid: Pl0.Vm.VmExecutionSession.RuntimeFault(System.String,Pl0.Vm.VmState)
+  commentId: M:Pl0.Vm.VmExecutionSession.RuntimeFault(System.String,Pl0.Vm.VmState)
+  id: RuntimeFault(System.String,Pl0.Vm.VmState)
+  parent: Pl0.Vm.VmExecutionSession
+  langs:
+  - csharp
+  - vb
+  name: RuntimeFault(string, VmState)
+  nameWithType: VmExecutionSession.RuntimeFault(string, VmState)
+  fullName: Pl0.Vm.VmExecutionSession.RuntimeFault(string, Pl0.Vm.VmState)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Vm/VmExecutionSession.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: RuntimeFault
+    path: src/Pl0.Vm/VmExecutionSession.cs
+    startLine: 380
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private VmStepResult RuntimeFault(string detail, VmState state)
+    parameters:
+    - id: detail
+      type: System.String
+    - id: state
+      type: Pl0.Vm.VmState
+    return:
+      type: Pl0.Vm.VmStepResult
+    content.vb: Private Function RuntimeFault(detail As String, state As VmState) As VmStepResult
+  overload: Pl0.Vm.VmExecutionSession.RuntimeFault*
+  nameWithType.vb: VmExecutionSession.RuntimeFault(String, VmState)
+  fullName.vb: Pl0.Vm.VmExecutionSession.RuntimeFault(String, Pl0.Vm.VmState)
+  name.vb: RuntimeFault(String, VmState)
+- uid: Pl0.Vm.VmExecutionSession.Complete(Pl0.Vm.VmCompletionReason,System.Collections.Generic.IEnumerable{Pl0.Vm.VmDiagnostic},Pl0.Vm.VmState)
+  commentId: M:Pl0.Vm.VmExecutionSession.Complete(Pl0.Vm.VmCompletionReason,System.Collections.Generic.IEnumerable{Pl0.Vm.VmDiagnostic},Pl0.Vm.VmState)
+  id: Complete(Pl0.Vm.VmCompletionReason,System.Collections.Generic.IEnumerable{Pl0.Vm.VmDiagnostic},Pl0.Vm.VmState)
+  parent: Pl0.Vm.VmExecutionSession
+  langs:
+  - csharp
+  - vb
+  name: Complete(VmCompletionReason, IEnumerable<VmDiagnostic>, VmState)
+  nameWithType: VmExecutionSession.Complete(VmCompletionReason, IEnumerable<VmDiagnostic>, VmState)
+  fullName: Pl0.Vm.VmExecutionSession.Complete(Pl0.Vm.VmCompletionReason, System.Collections.Generic.IEnumerable<Pl0.Vm.VmDiagnostic>, Pl0.Vm.VmState)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Vm/VmExecutionSession.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: Complete
+    path: src/Pl0.Vm/VmExecutionSession.cs
+    startLine: 383
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private VmStepResult Complete(VmCompletionReason reason, IEnumerable<VmDiagnostic> source, VmState state)
+    parameters:
+    - id: reason
+      type: Pl0.Vm.VmCompletionReason
+    - id: source
+      type: System.Collections.Generic.IEnumerable{Pl0.Vm.VmDiagnostic}
+    - id: state
+      type: Pl0.Vm.VmState
+    return:
+      type: Pl0.Vm.VmStepResult
+    content.vb: Private Function Complete(reason As VmCompletionReason, source As IEnumerable(Of VmDiagnostic), state As VmState) As VmStepResult
+  overload: Pl0.Vm.VmExecutionSession.Complete*
+  nameWithType.vb: VmExecutionSession.Complete(VmCompletionReason, IEnumerable(Of VmDiagnostic), VmState)
+  fullName.vb: Pl0.Vm.VmExecutionSession.Complete(Pl0.Vm.VmCompletionReason, System.Collections.Generic.IEnumerable(Of Pl0.Vm.VmDiagnostic), Pl0.Vm.VmState)
+  name.vb: Complete(VmCompletionReason, IEnumerable(Of VmDiagnostic), VmState)
+- uid: Pl0.Vm.VmExecutionSession.CaptureState
+  commentId: M:Pl0.Vm.VmExecutionSession.CaptureState
+  id: CaptureState
+  parent: Pl0.Vm.VmExecutionSession
+  langs:
+  - csharp
+  - vb
+  name: CaptureState()
+  nameWithType: VmExecutionSession.CaptureState()
+  fullName: Pl0.Vm.VmExecutionSession.CaptureState()
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Vm/VmExecutionSession.cs
+      branch: main
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: CaptureState
+    path: src/Pl0.Vm/VmExecutionSession.cs
+    startLine: 393
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private VmState CaptureState()
+    return:
+      type: Pl0.Vm.VmState
+    content.vb: Private Function CaptureState() As VmState
+  overload: Pl0.Vm.VmExecutionSession.CaptureState*
+references:
+- uid: Pl0.Vm
+  commentId: N:Pl0.Vm
+  href: Pl0.html
+  name: Pl0.Vm
+  nameWithType: Pl0.Vm
+  fullName: Pl0.Vm
+  spec.csharp:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Vm
+    name: Vm
+    href: Pl0.Vm.html
+  spec.vb:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Vm
+    name: Vm
+    href: Pl0.Vm.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Int32[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int[]
+  nameWithType: int[]
+  fullName: int[]
+  nameWithType.vb: Integer()
+  fullName.vb: Integer()
+  name.vb: Integer()
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: (
+  - name: )
+- uid: Pl0.Core.Instruction[]
+  isExternal: true
+  href: Pl0.Core.Instruction.html
+  name: Instruction[]
+  nameWithType: Instruction[]
+  fullName: Pl0.Core.Instruction[]
+  nameWithType.vb: Instruction()
+  fullName.vb: Pl0.Core.Instruction()
+  name.vb: Instruction()
+  spec.csharp:
+  - uid: Pl0.Core.Instruction
+    name: Instruction
+    href: Pl0.Core.Instruction.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Pl0.Core.Instruction
+    name: Instruction
+    href: Pl0.Core.Instruction.html
+  - name: (
+  - name: )
+- uid: Pl0.Vm.IPl0Io
+  commentId: T:Pl0.Vm.IPl0Io
+  parent: Pl0.Vm
+  href: Pl0.Vm.IPl0Io.html
+  name: IPl0Io
+  nameWithType: IPl0Io
+  fullName: Pl0.Vm.IPl0Io
+- uid: Pl0.Vm.VirtualMachineOptions
+  commentId: T:Pl0.Vm.VirtualMachineOptions
+  parent: Pl0.Vm
+  href: Pl0.Vm.VirtualMachineOptions.html
+  name: VirtualMachineOptions
+  nameWithType: VirtualMachineOptions
+  fullName: Pl0.Vm.VirtualMachineOptions
+- uid: System.Resources.ResourceManager
+  commentId: T:System.Resources.ResourceManager
+  parent: System.Resources
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.resources.resourcemanager
+  name: ResourceManager
+  nameWithType: ResourceManager
+  fullName: System.Resources.ResourceManager
+- uid: System.Resources
+  commentId: N:System.Resources
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Resources
+  nameWithType: System.Resources
+  fullName: System.Resources
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Resources
+    name: Resources
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.resources
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Resources
+    name: Resources
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.resources
+- uid: System.Globalization.CultureInfo
+  commentId: T:System.Globalization.CultureInfo
+  parent: System.Globalization
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.globalization.cultureinfo
+  name: CultureInfo
+  nameWithType: CultureInfo
+  fullName: System.Globalization.CultureInfo
+- uid: System.Globalization
+  commentId: N:System.Globalization
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Globalization
+  nameWithType: System.Globalization
+  fullName: System.Globalization
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Globalization
+    name: Globalization
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.globalization
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Globalization
+    name: Globalization
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.globalization
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Collections.Generic.List{Pl0.Vm.VmDiagnostic}
+  commentId: T:System.Collections.Generic.List{Pl0.Vm.VmDiagnostic}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<VmDiagnostic>
+  nameWithType: List<VmDiagnostic>
+  fullName: System.Collections.Generic.List<Pl0.Vm.VmDiagnostic>
+  nameWithType.vb: List(Of VmDiagnostic)
+  fullName.vb: System.Collections.Generic.List(Of Pl0.Vm.VmDiagnostic)
+  name.vb: List(Of VmDiagnostic)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: Pl0.Vm.VmDiagnostic
+    name: VmDiagnostic
+    href: Pl0.Vm.VmDiagnostic.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Pl0.Vm.VmDiagnostic
+    name: VmDiagnostic
+    href: Pl0.Vm.VmDiagnostic.html
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Pl0.Vm.VmStepResult
+  commentId: T:Pl0.Vm.VmStepResult
+  parent: Pl0.Vm
+  href: Pl0.Vm.VmStepResult.html
+  name: VmStepResult
+  nameWithType: VmStepResult
+  fullName: Pl0.Vm.VmStepResult
+- uid: Pl0.Vm.VmExecutionSession.#ctor*
+  commentId: Overload:Pl0.Vm.VmExecutionSession.#ctor
+  href: Pl0.Vm.VmExecutionSession.html#Pl0_Vm_VmExecutionSession__ctor_Pl0_Core_Instruction___Pl0_Vm_IPl0Io_Pl0_Vm_VirtualMachineOptions_System_Resources_ResourceManager_System_Globalization_CultureInfo_System_Threading_CancellationToken_
+  name: VmExecutionSession
+  nameWithType: VmExecutionSession.VmExecutionSession
+  fullName: Pl0.Vm.VmExecutionSession.VmExecutionSession
+  nameWithType.vb: VmExecutionSession.New
+  fullName.vb: Pl0.Vm.VmExecutionSession.New
+  name.vb: New
+- uid: Pl0.Vm.VmExecutionSession.State*
+  commentId: Overload:Pl0.Vm.VmExecutionSession.State
+  href: Pl0.Vm.VmExecutionSession.html#Pl0_Vm_VmExecutionSession_State
+  name: State
+  nameWithType: VmExecutionSession.State
+  fullName: Pl0.Vm.VmExecutionSession.State
+- uid: Pl0.Vm.VmState
+  commentId: T:Pl0.Vm.VmState
+  parent: Pl0.Vm
+  href: Pl0.Vm.VmState.html
+  name: VmState
+  nameWithType: VmState
+  fullName: Pl0.Vm.VmState
+- uid: Pl0.Vm.VmExecutionSession.IsRunning*
+  commentId: Overload:Pl0.Vm.VmExecutionSession.IsRunning
+  href: Pl0.Vm.VmExecutionSession.html#Pl0_Vm_VmExecutionSession_IsRunning
+  name: IsRunning
+  nameWithType: VmExecutionSession.IsRunning
+  fullName: Pl0.Vm.VmExecutionSession.IsRunning
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Pl0.Vm.VmExecutionSession.Create*
+  commentId: Overload:Pl0.Vm.VmExecutionSession.Create
+  href: Pl0.Vm.VmExecutionSession.html#Pl0_Vm_VmExecutionSession_Create_System_Collections_Generic_IReadOnlyList_Pl0_Core_Instruction__Pl0_Vm_IPl0Io_Pl0_Vm_VirtualMachineOptions_System_Threading_CancellationToken_
+  name: Create
+  nameWithType: VmExecutionSession.Create
+  fullName: Pl0.Vm.VmExecutionSession.Create
+- uid: System.Collections.Generic.IReadOnlyList{Pl0.Core.Instruction}
+  commentId: T:System.Collections.Generic.IReadOnlyList{Pl0.Core.Instruction}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<Instruction>
+  nameWithType: IReadOnlyList<Instruction>
+  fullName: System.Collections.Generic.IReadOnlyList<Pl0.Core.Instruction>
+  nameWithType.vb: IReadOnlyList(Of Instruction)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of Pl0.Core.Instruction)
+  name.vb: IReadOnlyList(Of Instruction)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: Pl0.Core.Instruction
+    name: Instruction
+    href: Pl0.Core.Instruction.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Pl0.Core.Instruction
+    name: Instruction
+    href: Pl0.Core.Instruction.html
+  - name: )
+- uid: Pl0.Vm.VmExecutionSession
+  commentId: T:Pl0.Vm.VmExecutionSession
+  parent: Pl0.Vm
+  href: Pl0.Vm.VmExecutionSession.html
+  name: VmExecutionSession
+  nameWithType: VmExecutionSession
+  fullName: Pl0.Vm.VmExecutionSession
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Pl0.Vm.VmExecutionSession.ExecuteNext*
+  commentId: Overload:Pl0.Vm.VmExecutionSession.ExecuteNext
+  href: Pl0.Vm.VmExecutionSession.html#Pl0_Vm_VmExecutionSession_ExecuteNext_System_Threading_CancellationToken_
+  name: ExecuteNext
+  nameWithType: VmExecutionSession.ExecuteNext
+  fullName: Pl0.Vm.VmExecutionSession.ExecuteNext
+- uid: Pl0.Vm.VmExecutionSession.ToExecutionResult*
+  commentId: Overload:Pl0.Vm.VmExecutionSession.ToExecutionResult
+  href: Pl0.Vm.VmExecutionSession.html#Pl0_Vm_VmExecutionSession_ToExecutionResult
+  name: ToExecutionResult
+  nameWithType: VmExecutionSession.ToExecutionResult
+  fullName: Pl0.Vm.VmExecutionSession.ToExecutionResult
+- uid: Pl0.Vm.VmExecutionResult
+  commentId: T:Pl0.Vm.VmExecutionResult
+  parent: Pl0.Vm
+  href: Pl0.Vm.VmExecutionResult.html
+  name: VmExecutionResult
+  nameWithType: VmExecutionResult
+  fullName: Pl0.Vm.VmExecutionResult
+- uid: Pl0.Vm.VmExecutionSession.ValidateProgram*
+  commentId: Overload:Pl0.Vm.VmExecutionSession.ValidateProgram
+  href: Pl0.Vm.VmExecutionSession.html#Pl0_Vm_VmExecutionSession_ValidateProgram_System_Collections_Generic_IReadOnlyList_Pl0_Core_Instruction__Pl0_Vm_VirtualMachineOptions_System_Resources_ResourceManager_System_Globalization_CultureInfo_
+  name: ValidateProgram
+  nameWithType: VmExecutionSession.ValidateProgram
+  fullName: Pl0.Vm.VmExecutionSession.ValidateProgram
+- uid: System.Collections.Generic.IReadOnlyList{Pl0.Vm.VmDiagnostic}
+  commentId: T:System.Collections.Generic.IReadOnlyList{Pl0.Vm.VmDiagnostic}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<VmDiagnostic>
+  nameWithType: IReadOnlyList<VmDiagnostic>
+  fullName: System.Collections.Generic.IReadOnlyList<Pl0.Vm.VmDiagnostic>
+  nameWithType.vb: IReadOnlyList(Of VmDiagnostic)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of Pl0.Vm.VmDiagnostic)
+  name.vb: IReadOnlyList(Of VmDiagnostic)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: Pl0.Vm.VmDiagnostic
+    name: VmDiagnostic
+    href: Pl0.Vm.VmDiagnostic.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Pl0.Vm.VmDiagnostic
+    name: VmDiagnostic
+    href: Pl0.Vm.VmDiagnostic.html
+  - name: )
+- uid: Pl0.Vm.VmExecutionSession.Dispatch*
+  commentId: Overload:Pl0.Vm.VmExecutionSession.Dispatch
+  href: Pl0.Vm.VmExecutionSession.html#Pl0_Vm_VmExecutionSession_Dispatch_Pl0_Core_Instruction_
+  name: Dispatch
+  nameWithType: VmExecutionSession.Dispatch
+  fullName: Pl0.Vm.VmExecutionSession.Dispatch
+- uid: Pl0.Core.Instruction
+  commentId: T:Pl0.Core.Instruction
+  parent: Pl0.Core
+  href: Pl0.Core.Instruction.html
+  name: Instruction
+  nameWithType: Instruction
+  fullName: Pl0.Core.Instruction
+- uid: System.Nullable{Pl0.Vm.VmCompletionReason}
+  commentId: T:System.Nullable{Pl0.Vm.VmCompletionReason}
+  parent: System
+  definition: System.Nullable`1
+  href: Pl0.Vm.VmCompletionReason.html
+  name: VmCompletionReason?
+  nameWithType: VmCompletionReason?
+  fullName: Pl0.Vm.VmCompletionReason?
+  spec.csharp:
+  - uid: Pl0.Vm.VmCompletionReason
+    name: VmCompletionReason
+    href: Pl0.Vm.VmCompletionReason.html
+  - name: '?'
+  spec.vb:
+  - uid: Pl0.Vm.VmCompletionReason
+    name: VmCompletionReason
+    href: Pl0.Vm.VmCompletionReason.html
+  - name: '?'
+- uid: Pl0.Core
+  commentId: N:Pl0.Core
+  href: Pl0.html
+  name: Pl0.Core
+  nameWithType: Pl0.Core
+  fullName: Pl0.Core
+  spec.csharp:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Core
+    name: Core
+    href: Pl0.Core.html
+  spec.vb:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Core
+    name: Core
+    href: Pl0.Core.html
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Pl0.Vm.VmExecutionSession.ExecuteOpr*
+  commentId: Overload:Pl0.Vm.VmExecutionSession.ExecuteOpr
+  href: Pl0.Vm.VmExecutionSession.html#Pl0_Vm_VmExecutionSession_ExecuteOpr_System_Int32_
+  name: ExecuteOpr
+  nameWithType: VmExecutionSession.ExecuteOpr
+  fullName: Pl0.Vm.VmExecutionSession.ExecuteOpr
+- uid: Pl0.Vm.VmExecutionSession.Binary*
+  commentId: Overload:Pl0.Vm.VmExecutionSession.Binary
+  href: Pl0.Vm.VmExecutionSession.html#Pl0_Vm_VmExecutionSession_Binary_System_Func_System_Int32_System_Int32_System_Int32__
+  name: Binary
+  nameWithType: VmExecutionSession.Binary
+  fullName: Pl0.Vm.VmExecutionSession.Binary
+- uid: System.Func{System.Int32,System.Int32,System.Int32}
+  commentId: T:System.Func{System.Int32,System.Int32,System.Int32}
+  parent: System
+  definition: System.Func`3
+  href: https://learn.microsoft.com/dotnet/api/system.func-3
+  name: Func<int, int, int>
+  nameWithType: Func<int, int, int>
+  fullName: System.Func<int, int, int>
+  nameWithType.vb: Func(Of Integer, Integer, Integer)
+  fullName.vb: System.Func(Of Integer, Integer, Integer)
+  name.vb: Func(Of Integer, Integer, Integer)
+  spec.csharp:
+  - uid: System.Func`3
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-3
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`3
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-3
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: System.Func`3
+  commentId: T:System.Func`3
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.func-3
+  name: Func<T1, T2, TResult>
+  nameWithType: Func<T1, T2, TResult>
+  fullName: System.Func<T1, T2, TResult>
+  nameWithType.vb: Func(Of T1, T2, TResult)
+  fullName.vb: System.Func(Of T1, T2, TResult)
+  name.vb: Func(Of T1, T2, TResult)
+  spec.csharp:
+  - uid: System.Func`3
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-3
+  - name: <
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`3
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-3
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: Pl0.Vm.VmExecutionSession.ResolveBase*
+  commentId: Overload:Pl0.Vm.VmExecutionSession.ResolveBase
+  href: Pl0.Vm.VmExecutionSession.html#Pl0_Vm_VmExecutionSession_ResolveBase_System_Int32_
+  name: ResolveBase
+  nameWithType: VmExecutionSession.ResolveBase
+  fullName: Pl0.Vm.VmExecutionSession.ResolveBase
+- uid: Pl0.Vm.VmExecutionSession.TryPush*
+  commentId: Overload:Pl0.Vm.VmExecutionSession.TryPush
+  href: Pl0.Vm.VmExecutionSession.html#Pl0_Vm_VmExecutionSession_TryPush
+  name: TryPush
+  nameWithType: VmExecutionSession.TryPush
+  fullName: Pl0.Vm.VmExecutionSession.TryPush
+- uid: Pl0.Vm.VmExecutionSession.TryPeek*
+  commentId: Overload:Pl0.Vm.VmExecutionSession.TryPeek
+  href: Pl0.Vm.VmExecutionSession.html#Pl0_Vm_VmExecutionSession_TryPeek_System_Int32_
+  name: TryPeek
+  nameWithType: VmExecutionSession.TryPeek
+  fullName: Pl0.Vm.VmExecutionSession.TryPeek
+- uid: Pl0.Vm.VmExecutionSession.TryWrite*
+  commentId: Overload:Pl0.Vm.VmExecutionSession.TryWrite
+  href: Pl0.Vm.VmExecutionSession.html#Pl0_Vm_VmExecutionSession_TryWrite_System_Int32_
+  name: TryWrite
+  nameWithType: VmExecutionSession.TryWrite
+  fullName: Pl0.Vm.VmExecutionSession.TryWrite
+- uid: Pl0.Vm.VmExecutionSession.IsRecoverableHostException*
+  commentId: Overload:Pl0.Vm.VmExecutionSession.IsRecoverableHostException
+  href: Pl0.Vm.VmExecutionSession.html#Pl0_Vm_VmExecutionSession_IsRecoverableHostException_System_Exception_
+  name: IsRecoverableHostException
+  nameWithType: VmExecutionSession.IsRecoverableHostException
+  fullName: Pl0.Vm.VmExecutionSession.IsRecoverableHostException
+- uid: System.Exception
+  commentId: T:System.Exception
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception
+  name: Exception
+  nameWithType: Exception
+  fullName: System.Exception
+- uid: Pl0.Vm.VmExecutionSession.IsValidStackIndex*
+  commentId: Overload:Pl0.Vm.VmExecutionSession.IsValidStackIndex
+  href: Pl0.Vm.VmExecutionSession.html#Pl0_Vm_VmExecutionSession_IsValidStackIndex_System_Int64_
+  name: IsValidStackIndex
+  nameWithType: VmExecutionSession.IsValidStackIndex
+  fullName: Pl0.Vm.VmExecutionSession.IsValidStackIndex
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: Pl0.Vm.VmExecutionSession.StackFault*
+  commentId: Overload:Pl0.Vm.VmExecutionSession.StackFault
+  href: Pl0.Vm.VmExecutionSession.html#Pl0_Vm_VmExecutionSession_StackFault_System_String_System_String_System_String_System_Object___
+  name: StackFault
+  nameWithType: VmExecutionSession.StackFault
+  fullName: Pl0.Vm.VmExecutionSession.StackFault
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Object[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object[]
+  nameWithType: object[]
+  fullName: object[]
+  nameWithType.vb: Object()
+  fullName.vb: Object()
+  name.vb: Object()
+  spec.csharp:
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: (
+  - name: )
+- uid: Pl0.Vm.VmCompletionReason
+  commentId: T:Pl0.Vm.VmCompletionReason
+  parent: Pl0.Vm
+  href: Pl0.Vm.VmCompletionReason.html
+  name: VmCompletionReason
+  nameWithType: VmCompletionReason
+  fullName: Pl0.Vm.VmCompletionReason
+- uid: Pl0.Vm.VmExecutionSession.LocalizedDiagnostic*
+  commentId: Overload:Pl0.Vm.VmExecutionSession.LocalizedDiagnostic
+  href: Pl0.Vm.VmExecutionSession.html#Pl0_Vm_VmExecutionSession_LocalizedDiagnostic_System_Int32_System_String_System_String_System_String_System_Object___
+  name: LocalizedDiagnostic
+  nameWithType: VmExecutionSession.LocalizedDiagnostic
+  fullName: Pl0.Vm.VmExecutionSession.LocalizedDiagnostic
+- uid: Pl0.Vm.VmDiagnostic
+  commentId: T:Pl0.Vm.VmDiagnostic
+  parent: Pl0.Vm
+  href: Pl0.Vm.VmDiagnostic.html
+  name: VmDiagnostic
+  nameWithType: VmDiagnostic
+  fullName: Pl0.Vm.VmDiagnostic
+- uid: Pl0.Vm.VmExecutionSession.RuntimeFaultReason*
+  commentId: Overload:Pl0.Vm.VmExecutionSession.RuntimeFaultReason
+  href: Pl0.Vm.VmExecutionSession.html#Pl0_Vm_VmExecutionSession_RuntimeFaultReason_System_String_
+  name: RuntimeFaultReason
+  nameWithType: VmExecutionSession.RuntimeFaultReason
+  fullName: Pl0.Vm.VmExecutionSession.RuntimeFaultReason
+- uid: Pl0.Vm.VmExecutionSession.RuntimeFault*
+  commentId: Overload:Pl0.Vm.VmExecutionSession.RuntimeFault
+  href: Pl0.Vm.VmExecutionSession.html#Pl0_Vm_VmExecutionSession_RuntimeFault_System_String_Pl0_Vm_VmState_
+  name: RuntimeFault
+  nameWithType: VmExecutionSession.RuntimeFault
+  fullName: Pl0.Vm.VmExecutionSession.RuntimeFault
+- uid: Pl0.Vm.VmExecutionSession.Complete*
+  commentId: Overload:Pl0.Vm.VmExecutionSession.Complete
+  href: Pl0.Vm.VmExecutionSession.html#Pl0_Vm_VmExecutionSession_Complete_Pl0_Vm_VmCompletionReason_System_Collections_Generic_IEnumerable_Pl0_Vm_VmDiagnostic__Pl0_Vm_VmState_
+  name: Complete
+  nameWithType: VmExecutionSession.Complete
+  fullName: Pl0.Vm.VmExecutionSession.Complete
+- uid: System.Collections.Generic.IEnumerable{Pl0.Vm.VmDiagnostic}
+  commentId: T:System.Collections.Generic.IEnumerable{Pl0.Vm.VmDiagnostic}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<VmDiagnostic>
+  nameWithType: IEnumerable<VmDiagnostic>
+  fullName: System.Collections.Generic.IEnumerable<Pl0.Vm.VmDiagnostic>
+  nameWithType.vb: IEnumerable(Of VmDiagnostic)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of Pl0.Vm.VmDiagnostic)
+  name.vb: IEnumerable(Of VmDiagnostic)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Pl0.Vm.VmDiagnostic
+    name: VmDiagnostic
+    href: Pl0.Vm.VmDiagnostic.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Pl0.Vm.VmDiagnostic
+    name: VmDiagnostic
+    href: Pl0.Vm.VmDiagnostic.html
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Pl0.Vm.VmExecutionSession.CaptureState*
+  commentId: Overload:Pl0.Vm.VmExecutionSession.CaptureState
+  href: Pl0.Vm.VmExecutionSession.html#Pl0_Vm_VmExecutionSession_CaptureState
+  name: CaptureState
+  nameWithType: VmExecutionSession.CaptureState
+  fullName: Pl0.Vm.VmExecutionSession.CaptureState

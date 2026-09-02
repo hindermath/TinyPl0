@@ -559,7 +559,11 @@ internal sealed class IdeMainView : Toplevel
             var io = new IdeRuntimeIo(
                 () => runtimeDialogService.ReadInt("Bitte Ganzzahl fuer die Laufzeiteingabe eingeben:"),
                 AppendRuntimeOutputValue);
-            steppableVirtualMachine.Initialize(lastCompilationResult.Instructions, io);
+            steppableVirtualMachine.Initialize(
+                lastCompilationResult.Instructions,
+                io,
+                options: null,
+                cancellationToken: CancellationToken.None);
             isDebugSessionActive = true;
         }
 
@@ -578,6 +582,10 @@ internal sealed class IdeMainView : Toplevel
                 messagesOutput.Text = "Debug-Ausfuehrung beendet.";
                 break;
             case VmStepStatus.Error:
+                isDebugSessionActive = false;
+                messagesOutput.Text = FormatVmDiagnostics(stepResult.Diagnostics);
+                break;
+            default:
                 isDebugSessionActive = false;
                 messagesOutput.Text = FormatVmDiagnostics(stepResult.Diagnostics);
                 break;

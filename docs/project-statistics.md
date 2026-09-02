@@ -1,6 +1,6 @@
 # Projektstatistik TinyPl0
 
-Stand: 2026-05-05 (didaktische Inline-Code-Kommentar-Haertung fuer TinyPl0)
+Stand: 2026-09-02 (autonomer Lauf 006: Embeddable VM und NuGet)
 
 ## Zweck und Pflege
 
@@ -377,6 +377,7 @@ rekonstruiert.
 | 2026-08-30 | Embeddable-VM-/NuGet-Intake auf Rang 4 vorgezogen | Auf ausdrücklichen Nutzerwunsch ist `Lastenheft_Embeddable-VM-und-NuGet.md` nun direkt nach dem abgeschlossenen Sandbox-Intake das einzige `Eligible`-Ziel. Quellcode-Dokumentation und die bisherigen Ränge 4 bis 9 rücken um je einen Platz nach hinten; VM-CLI bleibt eine bindende Voraussetzung der späteren IDE-Erweiterung, blockiert den vorgezogenen Intake aber nicht mehr. Der frühere Intake, sein Receipt, Manifest und Serien-Receipt sowie der bisherige Review-Artefaktsatz wurden byte-identisch archiviert; das alte Review ist wegen Zielhash-, Reihenfolge- und Graphänderung ausdrücklich `NeedsRemediation`. Umfang: `0` Produktionscode-Zeilen, `0` Testcode-Zeilen und `+1282 / -135` Dokumentations-, Governance-, Konfigurations-, Automations- und Evidence-Zeilen, netto `1147` Zeilen einschließlich Statistikphase; reine IDE-Versionsmetadaten haben keine Nettozeilenwirkung. Die `1147` Nettozeilen entsprechen bei 80 Zeilen/Arbeitstag `14.3` Tagen beziehungsweise `111.8` Stunden und bei der Thorsten-Solo-Basis von 125 Zeilen/Arbeitstag `9.2` Tagen beziehungsweise `71.6` Stunden, jeweils mit `7.8` Stunden pro Tag. Das sind bei 21.5 Arbeitstagen pro Monat etwa `0.7` beziehungsweise `0.4` Arbeitsmonate; für 2026 gelten 30 Urlaubstage pro Jahr. Bei einem sichtbaren Aktivtag am 2026-08-30 entspricht dies einem blended repository speedup von `14.3x` beziehungsweise `9.2x`, keiner Stoppuhrmessung. Validierung: Intake-Authoring-, Serienmanifest-, Serien-Receipt-, Schema-2.0-, Renderer- und Gesamt-Alignment-Prüfungen jeweils portabel in PowerShell und Bash, JSON-, Hash- und byteidentische Archivprüfung. Kein Intake, Produkt-Build, Testlauf, DocFX-Lauf oder Folgefeature wurde gestartet. English: The authorized order update makes Embeddable VM/NuGet the sole eligible target, preserves the later VM-CLI-to-IDE gate, invalidates the stale review, and deliberately executes no intake. |
 | 2026-08-30 | NuGet-Veröffentlichungsregeln im Rang-4-Intake verbindlich ergänzt | Der Nutzer hat die zuvor gegen offizielle NuGet- und PowerShell-Hinweise geprüften Veröffentlichungsinformationen ausdrücklich zur Einarbeitung freigegeben. Das Intake bindet nun `dotnet pack`/`dotnet nuget push` gegen die HTTPS-V3-Quelle, OIDC Trusted Publishing als CI-Vorzugsweg, eine eng begrenzte und kurzlebige API-Key-Ausnahme, maskierte manuelle Eingabe mit sicherer Prozessbereinigung, unveränderliche Paket-ID-/Versionskombinationen sowie einen fail-closed Abgleich statt pauschalem Erfolg durch `--skip-duplicate`. Rang 4, 15 Ziele, fünf Wurzeln, elf Kanten, Lifecycle und `LocalImplementation` bleiben unverändert; es wurde weder ein Secret verarbeitet noch ein Paket veröffentlicht oder Intake gestartet. Der unmittelbare Intake-, Receipt-, Manifest-, Serien-Receipt- und Review-Vorgänger bleibt byte-identisch archiviert, der Review weiterhin ausdrücklich `NeedsRemediation`. Umfang: `0` Produktionscode-Zeilen, `0` Testcode-Zeilen und `+1288 / -86` Dokumentations-, Governance-, Konfigurations-, Automations- und Evidence-Zeilen, netto `1202` Zeilen einschließlich Statistikphase; reine IDE-Versionsmetadaten haben keine Nettozeilenwirkung. Die `1202` Nettozeilen entsprechen bei 80 Zeilen/Arbeitstag `15.0` Tagen beziehungsweise `117.2` Stunden und bei der Thorsten-Solo-Basis von 125 Zeilen/Arbeitstag `9.6` Tagen beziehungsweise `75.0` Stunden, jeweils mit `7.8` Stunden pro Tag. Das sind bei 21.5 Arbeitstagen pro Monat etwa `0.7` beziehungsweise `0.4` Arbeitsmonate; für 2026 gelten 30 Urlaubstage pro Jahr. Bei einem sichtbaren Aktivtag am 2026-08-30 entspricht dies einem blended repository speedup von `15.0x` beziehungsweise `9.6x`, keiner Stoppuhrmessung. Validierung: Intake-Authoring-, Manifest-, Receipt-, Renderer- und Alignment-Prüfungen in PowerShell, Bash und Node, acht Negativ-Fixtures, JSON-, Hash-, Archiv- und Secret-Prüfung. Kein Produkt-Build, Testlauf, DocFX-Lauf, Intake-Review oder Veröffentlichungsschritt wurde gestartet. English: The intake now binds OIDC-first NuGet publishing, a constrained fallback, immutable versions, and fail-closed duplicate handling without granting publication authority. |
 | 2026-09-01 | Aktuelle 15-Ziele-Serie nach NuGet-Policy-Update neu reviewed | Der vollständige schema-1.1-Serienreview `a182589d-3149-4de7-a1d8-c24cefc28cbf` bindet alle 15 aktuellen Zielhashes und Git-Blobs, fünf Wurzeln sowie elf eindeutige azyklische Abhängigkeiten. Der auf Rang 4 vorgezogene Embeddable-VM-/NuGet-Intake erfüllt nach der ergänzten OIDC-, API-Key-, Versions- und Duplicate-Policy auch die Lernenden-, CEFR-B2-, A11Y-, NIST-SSDF-, CWE- und Supply-Chain-Grenzen. Ergebnis: `Ready`, null Findings, null akzeptierte Risiken, null offene Fragen und null Worker; `Eligible` und `LocalImplementation` erteilen weiterhin keine Remote-, Merge-, Bypass-, Secret-, Provider- oder NuGet-Publikationsrechte. Der invalidierte Vorgängerreview bleibt mit seinen normalisierten Artefakthashes und Finding `IR900` als Supersession-Evidenz erhalten. Umfang vor diesem Ledger-Eintrag: `0` Produktionscode-Zeilen, `0` Testcode-Zeilen und `+190 / -147` Review-, Governance- und Evidence-Zeilen, netto `43` Zeilen. Die `43` Nettozeilen entsprechen bei 80 Zeilen/Arbeitstag `0.5` Tagen beziehungsweise `4.2` Stunden und bei der Thorsten-Solo-Basis von 125 Zeilen/Arbeitstag `0.3` Tagen beziehungsweise `2.7` Stunden, jeweils mit `7.8` Stunden pro Tag; sichtbares Arbeitsfenster: eine Agentensitzung am 2026-09-01. Validierung: Schema-2.0-Konfiguration, Manifest, Serien-Receipt, 12 aktuelle Authoring-Receipts, drei archivierte Lifecycle-Ziele, Review-Resultat und Requirements-Alignment portabel in PowerShell und Bash sowie JSON-, Hash-, Supersession- und `git diff --check`-Prüfung. Kein Intake, Produkt-Build, Testlauf, DocFX-Lauf oder Remote-Schritt wurde gestartet. English: The current series review is ready, preserves the invalidated predecessor's audit meaning, and grants no execution or publication authority. |
+| 2026-09-02 | Autonomer Lauf 006 für Embeddable VM und NuGet lokal umgesetzt | Branch `codex/006-embeddable-vm-nuget`, sichtbares Arbeitsfenster ein Git-Aktivtag am 2026-09-02. Ein gemeinsamer VM-Ausführungskern stellt Run/Step-Parität, Abbruch-, Budget-, Fehler- und Snapshot-Verträge bereit; Core und VM werden als exakt gekoppelte `0.4.0`-Pakete mit Symbolen, XML-Dokumentation, OIDC-Release-Pipeline, Lockfiles, SBOM/VEX/Provenance, TinyCalc-Handoff sowie DE-first/EN-second-B2- und WCAG-2.2-AA-Nachweisen vorbereitet. Umfang vor diesem Ledger-Eintrag: Produktionscode `+723 / -1175 = -452`, Tests `+468 / -0 = +468`, Dokumentation und Spec-Kit-Evidenz `+3621 / -1 = +3620`; generierte `api/*.yml`, Skripte und Konfiguration bleiben außerhalb der Handarbeitsbasis. Die Netto-Gesamtbasis von `3636` Zeilen entspricht bei 80 Zeilen/Arbeitstag `45.5` Tagen beziehungsweise `354.5` Stunden und bei der Thorsten-Solo-Basis von 125 Zeilen/Arbeitstag `29.1` Tagen beziehungsweise `226.9` Stunden, jeweils mit `7.8` Stunden pro Tag. Das sind bei 21.5 Arbeitstagen pro Monat etwa `2.1` beziehungsweise `1.4` Arbeitsmonate; für 2026 gelten 30 Urlaubstage. Gegen einen sichtbaren Aktivtag ergibt sich ein blended repository speedup von `45.5x` beziehungsweise `29.1x`, keine Stoppuhrmessung. Lokale Evidenz: warnungsfreier Release-Build, `307/307` Tests, `71.73%` Gesamtlinien-, `96.50%` Kernel-Linien- und `85.05%` Kernel-Branch-Abdeckung, vier Paketdateien, exakte VM-Core-Version, frischer Consumer, DocFX ohne Fehler, vier axe-Seiten ohne Verstöße, Lynx-Tokenpfad, PowerShell-Parser und keine bekannten anfälligen NuGet-Abhängigkeiten. Die Remote-, Review-, Merge- und Veröffentlichungsgates folgen erst am exakten PR-Head. English: Run 006 implements the shared VM engine, paired packages, release supply chain, learner documentation, and local evidence while leaving exact-head remote delivery gates for the PR stage. |
 
 ## Statistikprofil-1-Archiv / Statistics Profile 1 Archive
 - Stand 2026-05-05: `88` Produktionsdateien mit `6950` Zeilen, `22` Testdateien mit `3536` Zeilen und `562` Dokumentationsdateien mit `36625` Zeilen.
@@ -502,29 +503,29 @@ Profil 2 verwendet Git-getrackte Textdateien und sichtbare Git-Aktivitaet. Die W
 
 | Kennzahl / Metric | Wert / Value |
 |---|---:|
-| Textbasis / Text base | 262866 lines |
-| Textdateien / Text files | 1937 |
-| Beobachtbarer Zeitraum / Observable period | 2025-09-07..2026-09-01 |
-| Aktivtage / Active days | 88 |
-| Relevante Commits / Relevant commits | 347 |
-| Zeilen je Aktivtag / Lines per active day | 2987.1 |
+| Textbasis / Text base | 269780 lines |
+| Textdateien / Text files | 1976 |
+| Beobachtbarer Zeitraum / Observable period | 2025-09-07..2026-09-02 |
+| Aktivtage / Active days | 89 |
+| Relevante Commits / Relevant commits | 355 |
+| Zeilen je Aktivtag / Lines per active day | 3031.2 |
 | Peak-Tag im Fenster / Peak day in window | 2026-02-14 / 177480 |
 | Peak-Woche im Fenster / Peak week in window | 2026-02-08 / 186065 |
 | Laengste Serie / Longest streak | 9 days |
-| Speedup vs. 80 lines/day | 37.3x |
-| Speedup vs. 125 lines/day | 23.9x |
-| Methodik / Methodology | v2; source `efe7ec9cc6d5` |
+| Speedup vs. 80 lines/day | 37.9x |
+| Speedup vs. 125 lines/day | 24.2x |
+| Methodik / Methodology | v2; source `98f09152eb66` |
 
 ### Artefaktmix / Artifact Mix
 
 ```text
-Produktiv / Production          [#...................]   2.8% | 7437
-Tests                           [#...................]   4.3% | 11174
-Dokumentation / Documentation   [###########.........]  54.7% | 143868
-Skripte / Scripts               [##..................]   8.5% | 22412
-Konfiguration / Configuration   [######..............]  27.9% | 73289
+Produktiv / Production          [#...................]   2.6% | 7060
+Tests                           [#...................]   4.8% | 13074
+Dokumentation / Documentation   [###########.........]  54.1% | 145956
+Skripte / Scripts               [##..................]   8.4% | 22620
+Konfiguration / Configuration   [######..............]  28.3% | 76338
 Daten und Medien / Data and media [....................]   0.0% | 0
-Sonstiger Text / Other text     [#...................]   1.8% | 4686
+Sonstiger Text / Other text     [#...................]   1.8% | 4732
 ```
 
 Die Balken teilen die aktuelle getrackte Textbasis in stabile Kategorien. Prozent und Zeilenwert sind die genaue, textorientierte Aussage.
@@ -549,7 +550,7 @@ Wochen / Weeks 27..52 | 2026-03-08..2026-09-05
 So/Su  2 1 4 0 0 2 0 0 0 0 0 0 1 0 4 0 0 0 1 4 4 1 4 4 0 4
 Mo/Mo  4 1 0 2 0 1 4 0 4 0 0 0 0 0 0 0 3 1 4 4 0 0 0 2 0 0
 Di/Tu  0 0 0 2 0 0 0 0 2 0 0 3 0 0 0 0 2 0 3 4 4 0 0 0 0 2
-Mi/We  0 1 1 0 0 0 3 0 2 0 0 0 2 0 4 0 2 0 0 2 4 0 0 0 0 -
+Mi/We  0 1 1 0 0 0 3 0 2 0 0 0 2 0 4 0 2 0 0 2 4 0 0 0 0 4
 Do/Th  0 0 0 0 0 0 0 4 0 0 0 1 1 4 1 0 0 0 1 4 0 0 4 0 0 -
 Fr/Fr  0 0 4 4 0 2 4 0 0 0 4 2 2 0 3 2 3 4 4 4 1 0 0 0 0 -
 Sa/Sa  2 0 2 0 0 0 0 0 0 0 0 0 0 0 4 0 4 4 0 4 2 0 2 0 4 -
@@ -574,12 +575,12 @@ Wochen / Weeks 01..26 | 2025-09-07..2026-03-07
 
 ```text
 Wochen / Weeks 27..52 | 2026-03-08..2026-09-05
-   cap 50000 | . . . . . . . . . . . . . . . . . . . . . . . . . .
-       41667 | . . . . . . . . . . . . . . . . . . . . . . . . . .
+  cap 100000 | . . . . . . . . . . . . . . . . . . . . . . . . . .
+       83333 | . . . . . . . . . . . . . . . . . . . . . . . . . .
+       66667 | . . . . . . . . . . . . . . . . . . . . . . . . . .
+       50000 | . . . . . . . . . . . . . . . . . . . . . . . . . #
        33333 | . . . . . . . . . . . . . . . . . . . # . . . . . #
-       25000 | . . . . . . . . . . . . . . # . . . . # . . . . . #
        16667 | . . . . . . . . . . . . . . # . . . . # # . . . . #
-        8333 | . . . . . . # . . . . . . . # . . # . # # . # . . #
            0 +-----------------------------------------------------
 ```
 
@@ -630,15 +631,15 @@ Slots 0..15
 ```
 
 ```text
-Slots 16..17
-    cap 2000 | . .
-        1667 | . .
-        1333 | . .
-        1000 | # #
-         667 | # #
-         333 | # #
-           0 +-----
-             16 17
+Slots 16..18
+    cap 5000 | . . .
+        4167 | . . .
+        3333 | . . #
+        2500 | . . #
+        1667 | . . #
+         833 | # # #
+           0 +-------
+             16 17 18
 ```
 
 | Slot | Phase | Nettozeilen / Net lines |
@@ -661,6 +662,7 @@ Slots 16..17
 | 15 | 005 Abschluss / 005 closeout | 342 |
 | 16 | Embeddable VM/NuGet vorgezogen / Embeddable VM/NuGet prioritized | 1147 |
 | 17 | NuGet-Veröffentlichungsregeln / NuGet publishing policy | 1202 |
+| 18 | Embeddable VM/NuGet 006 / Embeddable VM/NuGet 006 | 3636 |
 
 Die festen Slots halten den Phasenvergleich auch bei fehlenden oder spaeter ergaenzten Werten stabil.
 
@@ -670,8 +672,8 @@ Die festen Slots halten den Phasenvergleich auch bei fehlenden oder spaeter erga
 
 ```text
 Scale: 0..50x
-80 lines/day       [###############.....] 37.3x
-125 lines/day      [##########..........] 23.9x
+80 lines/day       [###############.....] 37.9x
+125 lines/day      [##########..........] 24.2x
 ```
 
 Die Faktoren vergleichen sichtbare Lieferdichte mit den dokumentierten manuellen Referenzen. Sie messen keine Arbeitszeit.
@@ -684,7 +686,7 @@ Die Faktoren vergleichen sichtbare Lieferdichte mit den dokumentierten manuellen
 Scale: 0..5000 lines/day
 Experienced manual [#...................] 80
 Thorsten solo      [#...................] 125
-Visible repository [############........] 2987.1
+Visible repository [############........] 3031.2
 ```
 
 Die gemeinsame Skala vergleicht Referenzen und sichtbare Lieferdichte. Sie schreibt die Git-Aktivitaet keiner Person oder KI pauschal zu.
@@ -693,9 +695,9 @@ Die gemeinsame Skala vergleicht Referenzen und sichtbare Lieferdichte. Sie schre
 
 ### Textalternative / Text Alternative
 
-DE: Das Fenster beginnt am 2025-09-07 und endet am 2026-09-01. Es enthaelt 88 aktive und 272 inaktive vergangene Tage. Peak-Tag: 2026-02-14 / 177480. Peak-Woche: 2026-02-08 / 186065. Laengste Serie: 9 Tage (2026-02-14..2026-02-22).
+DE: Das Fenster beginnt am 2025-09-07 und endet am 2026-09-02. Es enthaelt 89 aktive und 272 inaktive vergangene Tage. Peak-Tag: 2026-02-14 / 177480. Peak-Woche: 2026-02-08 / 186065. Laengste Serie: 9 Tage (2026-02-14..2026-02-22).
 
-*EN: The window starts on 2025-09-07 and ends on 2026-09-01. It contains 88 active and 272 inactive elapsed days. Peak day: 2026-02-14 / 177480. Peak week: 2026-02-08 / 186065. Longest streak: 9 days (2026-02-14..2026-02-22).*
+*EN: The window starts on 2025-09-07 and ends on 2026-09-02. It contains 89 active and 272 inactive elapsed days. Peak day: 2026-02-14 / 177480. Peak week: 2026-02-08 / 186065. Longest streak: 9 days (2026-02-14..2026-02-22).*
 
 | Monat / Month | Geaenderte Textzeilen / Changed text lines |
 |---|---:|
@@ -710,6 +712,6 @@ DE: Das Fenster beginnt am 2025-09-07 und endet am 2026-09-01. Es enthaelt 88 ak
 | 2026-06 | 37650 |
 | 2026-07 | 78966 |
 | 2026-08 | 55167 |
-| 2026-09 | 379 |
+| 2026-09 | 16763 |
 
 <!-- project-statistics-v2:end -->

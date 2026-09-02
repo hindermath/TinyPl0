@@ -1,5 +1,30 @@
 # Bedrohungsmodell / Threat Model: TinyPl0
 
+## Ergänzung Feature 006 / Feature 006 Addendum
+
+**Feature**: `006-embeddable-vm-nuget`
+**Lauf / Run**: `a01cd5bd-fa86-49f1-b074-cb59a9c24862`
+**Stand / Date**: 2026-09-02
+**Entscheidung / Decision**: `Applicable`
+
+Deutsch: Neue Trust Boundaries sind P-Code/Optionen/Cancellation zur
+gemeinsamen Session, IPl0Io zum Host sowie GitHub-OIDC über NuGet.org zum
+öffentlichen Consumer. STRIDE-Risiken sind manipulierte Opcodes und Ziele
+(Tampering), Ressourcenerschöpfung (Denial of Service), rohe Hostfehler
+(Information Disclosure), Paketersetzung (CAPEC-438) und falsch gebundene
+Publisher-Identität (Spoofing/Elevation). Defense in Depth besteht aus
+Vorvalidierung plus Laufzeit-Bounds sowie aus Paarzustand, Hashvergleich,
+OIDC-Environment und Provider-Attestierung.
+
+*English: New trust boundaries cover P-Code, options, and cancellation into
+the shared session, IPl0Io into the host, and GitHub OIDC through NuGet.org to
+the public consumer. Risks include tampered instructions, resource exhaustion,
+raw host-error disclosure, package substitution (CAPEC-438), and publisher
+identity misbinding. Pre-validation plus runtime bounds and paired state plus
+hashes, OIDC environment, and attestation provide defence in depth.*
+
+## Bestehendes Feature-004-Basismodell / Existing Feature 004 Base Model
+
 **Feature**: `004-secure-development-hardening`
 **Stand / Date**: 2026-08-30
 **Entscheidung / Decision**: `Applicable`

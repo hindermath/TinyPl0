@@ -1,5 +1,20 @@
 # Abhängigkeits-Audit / Dependency Audit: TinyPl0
 
+## Feature 006: Paketgrenze / Package Boundary
+
+Deutsch: TinyPl0.Core besitzt keine Produkt-Laufzeitabhängigkeit. TinyPl0.Vm
+besitzt genau eine Abhängigkeit: TinyPl0.Core in derselben exakten SemVer. Die
+bestehenden Test- und IDE-Pakete bleiben außerhalb beider NuGet-Pakete.
+dotnet-list-vulnerable ist vor Delivery erneut auszuführen; jeder bekannte
+Critical-Fund blockiert. VEX bleibt bei null bekannten Funden leer und wird
+bei einem Fund neu bewertet.
+
+*English: TinyPl0.Core has no product runtime dependency. TinyPl0.Vm has one
+dependency only: the exact matching TinyPl0.Core SemVer. Test and IDE packages
+remain outside both packages. The vulnerability inventory must be refreshed
+before delivery; any known critical finding blocks. VEX is reassessed when a
+finding appears.*
+
 **Projekt / Project**: TinyPl0 (Level 2)
 
 **Feature / Feature**: `004-secure-development-hardening`

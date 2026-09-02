@@ -1,0 +1,212 @@
+{
+  "schemaVersion": "1.1",
+  "runId": "a01cd5bd-fa86-49f1-b074-cb59a9c24862",
+  "featurePath": "specs/006-embeddable-vm-nuget",
+  "branch": "codex/006-embeddable-vm-nuget",
+  "deliveryMode": "MergeAndSync",
+  "authorityRevalidationRequired": true,
+  "stage": "Validate",
+  "status": "Active",
+  "checkpointCommit": "9f39b2afb90aca406c2a59591f137f64e05b8d82",
+  "acceptedArtifacts": [
+    {
+      "path": "requirements/intakes/active/Lastenheft_Embeddable-VM-und-NuGet.md",
+      "sha256": "a6e752dcc372c26626cf40cc0b1fb1da1a195a895f51129b87dc0920310b64d5"
+    },
+    {
+      "path": "requirements/intakes/series/tinypl0-delivery/intake-review-result.json",
+      "sha256": "09d26eb8f267b92ce21ad9acaa0d316d29e7b51d893c8e3eed7910e7199cfea2"
+    },
+    {
+      "path": "requirements/intakes/series/tinypl0-delivery/intake-review-request.json",
+      "sha256": "b23706568d8c66a62ca6df0dfd506378166a5d8108bf3012d30ec2802a3b7e04"
+    },
+    {
+      "path": "requirements/intakes/series/tinypl0-delivery/manifest.json",
+      "sha256": "c73a65227e91123ccf017b03720695ad1c21b5910eb966a79a824069c8ff0a17"
+    }
+  ],
+  "tasks": {
+    "path": "specs/006-embeddable-vm-nuget/tasks.md",
+    "sha256": "f0b41517534076c19c11149028354136cf172969867d4b533ad5e967d622a2aa",
+    "completed": 42,
+    "total": 50
+  },
+  "routing": {
+    "policy": "balanced-v1",
+    "fallbackPolicy": "fail-closed",
+    "phases": [
+      {
+        "phaseId": "specify",
+        "command": "speckit.specify",
+        "routingRole": "frontier-reasoning",
+        "runnerProfile": "codex-frontier-auto",
+        "status": "Completed",
+        "dependsOn": [],
+        "agentFamily": "Codex",
+        "model": "gpt-5.6-sol",
+        "reasoningEffort": "high",
+        "preflight": "Completed",
+        "exitCode": 0,
+        "updatedAt": "2026-09-02T17:31:40Z",
+        "resultPath": ".specify/runtime/autonomous-routing/a01cd5bd-fa86-49f1-b074-cb59a9c24862/specify.result.json",
+        "resultSha256": "6038814b10820ffe3045140c2c317ae0d0ef19cc9cb1d59a11427df9e17d50b1"
+      },
+      {
+        "phaseId": "clarify",
+        "command": "speckit.clarify",
+        "routingRole": "frontier-reasoning",
+        "runnerProfile": "codex-frontier-auto",
+        "status": "Completed",
+        "dependsOn": [
+          "specify"
+        ],
+        "agentFamily": "Codex",
+        "model": "gpt-5.6-sol",
+        "reasoningEffort": "high",
+        "preflight": "Completed",
+        "exitCode": 0,
+        "updatedAt": "2026-09-02T17:35:25Z",
+        "resultPath": ".specify/runtime/autonomous-routing/a01cd5bd-fa86-49f1-b074-cb59a9c24862/clarify.result.json",
+        "resultSha256": "9e54f1ad3dcdcd95b1d0067f92d7a61617d0ad44b874ca1a7c6ba2498ec8c28f"
+      },
+      {
+        "phaseId": "checklist",
+        "command": "speckit.checklist",
+        "routingRole": "frontier-reasoning",
+        "runnerProfile": "codex-frontier-auto",
+        "status": "Completed",
+        "dependsOn": [
+          "clarify"
+        ],
+        "agentFamily": "Codex",
+        "model": "gpt-5.6-sol",
+        "reasoningEffort": "high",
+        "preflight": "Completed",
+        "exitCode": 0,
+        "updatedAt": "2026-09-02T17:40:15Z",
+        "resultPath": ".specify/runtime/autonomous-routing/a01cd5bd-fa86-49f1-b074-cb59a9c24862/checklist.result.json",
+        "resultSha256": "b58ea561bd8761357f8aab7e7e5b2d3b5cb9a9a8fa8b527495e96005ab69a022"
+      },
+      {
+        "phaseId": "plan",
+        "command": "speckit.plan",
+        "routingRole": "frontier-reasoning",
+        "runnerProfile": "codex-frontier-auto",
+        "status": "Completed",
+        "dependsOn": [
+          "checklist"
+        ],
+        "agentFamily": "Codex",
+        "model": "gpt-5.6-sol",
+        "reasoningEffort": "high",
+        "preflight": "Completed",
+        "exitCode": 0,
+        "updatedAt": "2026-09-02T18:14:00Z",
+        "resultPath": ".specify/runtime/autonomous-routing/a01cd5bd-fa86-49f1-b074-cb59a9c24862/plan.result.json",
+        "resultSha256": "7eb3129513ec9088697020b8611a129f4048b066122005ec10e0b14e59eae46f"
+      },
+      {
+        "phaseId": "plan-review",
+        "command": "speckit.analyze",
+        "routingRole": "frontier-reasoning",
+        "runnerProfile": "codex-frontier-auto",
+        "status": "Completed",
+        "dependsOn": [
+          "plan"
+        ],
+        "agentFamily": "Codex",
+        "model": "gpt-5.6-sol",
+        "reasoningEffort": "high",
+        "preflight": "Completed",
+        "exitCode": 0,
+        "updatedAt": "2026-09-02T18:18:00Z",
+        "resultPath": ".specify/runtime/autonomous-routing/a01cd5bd-fa86-49f1-b074-cb59a9c24862/plan-review.result.json",
+        "resultSha256": "f0bce5ff2a10ba271f871f1504c1aee6da2c009aa62b16894d597f30677d8fdf"
+      },
+      {
+        "phaseId": "tasks",
+        "command": "speckit.tasks",
+        "routingRole": "frontier-reasoning",
+        "runnerProfile": "codex-frontier-auto",
+        "status": "Completed",
+        "dependsOn": [
+          "plan-review"
+        ],
+        "agentFamily": "Codex",
+        "model": "gpt-5.6-sol",
+        "reasoningEffort": "high",
+        "preflight": "Completed",
+        "exitCode": 0,
+        "updatedAt": "2026-09-02T18:22:00Z",
+        "resultPath": ".specify/runtime/autonomous-routing/a01cd5bd-fa86-49f1-b074-cb59a9c24862/tasks.result.json",
+        "resultSha256": "87c088be25e5a30d90d58c7f40abac5e4a35232ac3f03282b24640713c395f3a"
+      },
+      {
+        "phaseId": "analyze",
+        "command": "speckit.analyze",
+        "routingRole": "frontier-reasoning",
+        "runnerProfile": "codex-frontier-auto",
+        "status": "Completed",
+        "dependsOn": [
+          "tasks"
+        ],
+        "agentFamily": "Codex",
+        "model": "gpt-5.6-sol",
+        "reasoningEffort": "high",
+        "preflight": "Completed",
+        "exitCode": 0,
+        "updatedAt": "2026-09-02T18:25:00Z",
+        "resultPath": ".specify/runtime/autonomous-routing/a01cd5bd-fa86-49f1-b074-cb59a9c24862/analyze.result.json",
+        "resultSha256": "433c4c7646209e48e0a42347e034658b5b13d8bb8e7bb0157dce23fb27eb45e0"
+      },
+      {
+        "phaseId": "implement",
+        "command": "speckit.implement",
+        "routingRole": "long-running-implementation",
+        "runnerProfile": "codex-implementation-auto",
+        "status": "Completed",
+        "dependsOn": [
+          "analyze"
+        ],
+        "agentFamily": "Codex",
+        "model": "gpt-5.6-sol",
+        "reasoningEffort": "high",
+        "preflight": "Completed",
+        "exitCode": 0,
+        "updatedAt": "2026-09-02T19:03:28Z",
+        "resultPath": ".specify/runtime/autonomous-routing/a01cd5bd-fa86-49f1-b074-cb59a9c24862/implement.result.json",
+        "resultSha256": "b0edbcd603a06ac363974be435983f40f4af560bea79b9c486a2792b207d3af2"
+      },
+      {
+        "phaseId": "retrospective",
+        "command": "speckit.autonomous-retrospective",
+        "routingRole": "coding-review",
+        "runnerProfile": "codex-review-auto",
+        "status": "Pending",
+        "dependsOn": [
+          "implement"
+        ]
+      }
+    ]
+  },
+  "lastPassingGate": "T042: one feature commit pushed and exactly one feature PR opened as PR #79",
+  "nextExactAction": "Freeze the final PR head and converge CI, independent approval and review threads.",
+  "lastOperation": {
+    "kind": "LocalImplementation",
+    "state": "Completed",
+    "summary": "T001-T040 completed with all declared local technical, package, security, documentation and evidence thresholds passing."
+  },
+  "stop": {
+    "reason": "N/A",
+    "requestedAt": "N/A",
+    "safeBoundary": "N/A"
+  },
+  "closeout": {
+    "mergeOrPublication": "Pending",
+    "defaultBranchSync": "Pending",
+    "postMergeActions": "Pending",
+    "finalValidation": "Pending"
+  },
+  "updatedAt": "2026-09-02T19:11:46Z"
+}
