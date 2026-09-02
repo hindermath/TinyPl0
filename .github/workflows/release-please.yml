@@ -209,15 +209,23 @@ jobs:
             $id = "tinypl0.$($name.ToLowerInvariant())"
             $uri = "https://api.nuget.org/v3-flatcontainer/$id/$version/$id.$version.nupkg"
             $target = Join-Path $env:RUNNER_TEMP "$id.$version.nupkg"
+            $partialTarget = "$target.partial"
             $success = $false
             foreach ($attempt in 1..12) {
-              $response = Invoke-WebRequest -Uri $uri -Method Head -SkipHttpErrorCheck
-              if ($response.StatusCode -eq 200) {
-                Invoke-WebRequest -Uri $uri -OutFile $target
-                $success = $true
-                break
+              try {
+                Remove-Item -LiteralPath $partialTarget -Force -ErrorAction SilentlyContinue
+                $response = Invoke-WebRequest -Uri $uri -Method Head -SkipHttpErrorCheck
+                if ($response.StatusCode -eq 200) {
+                  Invoke-WebRequest -Uri $uri -OutFile $partialTarget
+                  Move-Item -LiteralPath $partialTarget -Destination $target -Force
+                  $success = $true
+                  break
+                }
               }
-              Start-Sleep -Seconds ([Math]::Min(60, 5 * $attempt))
+              catch {
+                Remove-Item -LiteralPath $partialTarget -Force -ErrorAction SilentlyContinue
+              }
+              if ($attempt -lt 12) { Start-Sleep -Seconds ([Math]::Min(60, 5 * $attempt)) }
             }
             if (-not $success) { throw "Public package did not converge: $id $version" }
             $expectedPath = "artifacts/packages/TinyPl0.$name.$version.nupkg"
