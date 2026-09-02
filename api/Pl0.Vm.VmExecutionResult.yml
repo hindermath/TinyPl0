@@ -6,10 +6,17 @@ items:
   parent: Pl0.Vm
   children:
   - Pl0.Vm.VmExecutionResult.#ctor(System.Int32[],System.Int32,System.Collections.Generic.IReadOnlyList{Pl0.Vm.VmDiagnostic})
+  - Pl0.Vm.VmExecutionResult.#ctor(System.Int32[],System.Int32,System.Collections.Generic.IReadOnlyList{Pl0.Vm.VmDiagnostic},Pl0.Vm.VmCompletionReason,System.Int32,Pl0.Vm.VmState)
+  - Pl0.Vm.VmExecutionResult.CompletionReason
   - Pl0.Vm.VmExecutionResult.Diagnostics
+  - Pl0.Vm.VmExecutionResult.ExecutedInstructions
+  - Pl0.Vm.VmExecutionResult.Reason
   - Pl0.Vm.VmExecutionResult.StackSnapshot
+  - Pl0.Vm.VmExecutionResult.State
   - Pl0.Vm.VmExecutionResult.Success
   - Pl0.Vm.VmExecutionResult.Top
+  - Pl0.Vm.VmExecutionResult.diagnostics
+  - Pl0.Vm.VmExecutionResult.stackSnapshot
   langs:
   - csharp
   - vb
@@ -20,15 +27,15 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionResult.cs
-      branch: codex/003-constitution-change
+      branch: codex/006-embeddable-vm-nuget
       repo: https://github.com/hindermath/TinyPl0.git
     id: VmExecutionResult
     path: src/Pl0.Vm/VmExecutionResult.cs
-    startLine: 5
+    startLine: 3
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
-  summary: Result of executing a P-Code program on the VM.
+  summary: Ergebnis einer vollständigen VM-Ausführung. / Result of a complete VM execution.
   example: []
   syntax:
     content: public sealed class VmExecutionResult
@@ -42,6 +49,60 @@ items:
   - System.Object.GetType
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
+- uid: Pl0.Vm.VmExecutionResult.stackSnapshot
+  commentId: F:Pl0.Vm.VmExecutionResult.stackSnapshot
+  id: stackSnapshot
+  parent: Pl0.Vm.VmExecutionResult
+  langs:
+  - csharp
+  - vb
+  name: stackSnapshot
+  nameWithType: VmExecutionResult.stackSnapshot
+  fullName: Pl0.Vm.VmExecutionResult.stackSnapshot
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/VmExecutionResult.cs
+      branch: codex/006-embeddable-vm-nuget
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: stackSnapshot
+    path: src/Pl0.Vm/VmExecutionResult.cs
+    startLine: 5
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private readonly int[] stackSnapshot
+    return:
+      type: System.Int32[]
+    content.vb: Private ReadOnly stackSnapshot As Integer()
+- uid: Pl0.Vm.VmExecutionResult.diagnostics
+  commentId: F:Pl0.Vm.VmExecutionResult.diagnostics
+  id: diagnostics
+  parent: Pl0.Vm.VmExecutionResult
+  langs:
+  - csharp
+  - vb
+  name: diagnostics
+  nameWithType: VmExecutionResult.diagnostics
+  fullName: Pl0.Vm.VmExecutionResult.diagnostics
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/VmExecutionResult.cs
+      branch: codex/006-embeddable-vm-nuget
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: diagnostics
+    path: src/Pl0.Vm/VmExecutionResult.cs
+    startLine: 6
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private readonly VmDiagnostic[] diagnostics
+    return:
+      type: Pl0.Vm.VmDiagnostic[]
+    content.vb: Private ReadOnly diagnostics As VmDiagnostic()
 - uid: Pl0.Vm.VmExecutionResult.#ctor(System.Int32[],System.Int32,System.Collections.Generic.IReadOnlyList{Pl0.Vm.VmDiagnostic})
   commentId: M:Pl0.Vm.VmExecutionResult.#ctor(System.Int32[],System.Int32,System.Collections.Generic.IReadOnlyList{Pl0.Vm.VmDiagnostic})
   id: '#ctor(System.Int32[],System.Int32,System.Collections.Generic.IReadOnlyList{Pl0.Vm.VmDiagnostic})'
@@ -56,33 +117,83 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionResult.cs
-      branch: codex/003-constitution-change
+      branch: codex/006-embeddable-vm-nuget
       repo: https://github.com/hindermath/TinyPl0.git
     id: .ctor
     path: src/Pl0.Vm/VmExecutionResult.cs
-    startLine: 13
+    startLine: 11
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
-  summary: Creates a new execution result.
+  summary: Erstellt das bisherige Ergebnisformat. / Creates the previous result shape.
   example: []
   syntax:
     content: public VmExecutionResult(int[] stackSnapshot, int top, IReadOnlyList<VmDiagnostic> diagnostics)
     parameters:
     - id: stackSnapshot
       type: System.Int32[]
-      description: Captured stack snapshot.
+      description: Zu kopierender Stack. / Stack to copy.
     - id: top
       type: System.Int32
-      description: Top-of-stack index.
+      description: Stackzeiger. / Stack pointer.
     - id: diagnostics
       type: System.Collections.Generic.IReadOnlyList{Pl0.Vm.VmDiagnostic}
-      description: Diagnostics produced during execution.
+      description: Zu kopierende Diagnosen. / Diagnostics to copy.
     content.vb: Public Sub New(stackSnapshot As Integer(), top As Integer, diagnostics As IReadOnlyList(Of VmDiagnostic))
   overload: Pl0.Vm.VmExecutionResult.#ctor*
   nameWithType.vb: VmExecutionResult.New(Integer(), Integer, IReadOnlyList(Of VmDiagnostic))
   fullName.vb: Pl0.Vm.VmExecutionResult.New(Integer(), Integer, System.Collections.Generic.IReadOnlyList(Of Pl0.Vm.VmDiagnostic))
   name.vb: New(Integer(), Integer, IReadOnlyList(Of VmDiagnostic))
+- uid: Pl0.Vm.VmExecutionResult.#ctor(System.Int32[],System.Int32,System.Collections.Generic.IReadOnlyList{Pl0.Vm.VmDiagnostic},Pl0.Vm.VmCompletionReason,System.Int32,Pl0.Vm.VmState)
+  commentId: M:Pl0.Vm.VmExecutionResult.#ctor(System.Int32[],System.Int32,System.Collections.Generic.IReadOnlyList{Pl0.Vm.VmDiagnostic},Pl0.Vm.VmCompletionReason,System.Int32,Pl0.Vm.VmState)
+  id: '#ctor(System.Int32[],System.Int32,System.Collections.Generic.IReadOnlyList{Pl0.Vm.VmDiagnostic},Pl0.Vm.VmCompletionReason,System.Int32,Pl0.Vm.VmState)'
+  parent: Pl0.Vm.VmExecutionResult
+  langs:
+  - csharp
+  - vb
+  name: VmExecutionResult(int[], int, IReadOnlyList<VmDiagnostic>, VmCompletionReason, int, VmState)
+  nameWithType: VmExecutionResult.VmExecutionResult(int[], int, IReadOnlyList<VmDiagnostic>, VmCompletionReason, int, VmState)
+  fullName: Pl0.Vm.VmExecutionResult.VmExecutionResult(int[], int, System.Collections.Generic.IReadOnlyList<Pl0.Vm.VmDiagnostic>, Pl0.Vm.VmCompletionReason, int, Pl0.Vm.VmState)
+  type: Constructor
+  source:
+    remote:
+      path: src/Pl0.Vm/VmExecutionResult.cs
+      branch: codex/006-embeddable-vm-nuget
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: .ctor
+    path: src/Pl0.Vm/VmExecutionResult.cs
+    startLine: 21
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  summary: Erstellt ein vollständiges Ausführungsergebnis. / Creates a complete execution result.
+  example: []
+  syntax:
+    content: public VmExecutionResult(int[] stackSnapshot, int top, IReadOnlyList<VmDiagnostic> diagnostics, VmCompletionReason reason, int executedInstructions, VmState state)
+    parameters:
+    - id: stackSnapshot
+      type: System.Int32[]
+      description: Zu kopierender Stack. / Stack to copy.
+    - id: top
+      type: System.Int32
+      description: Stackzeiger. / Stack pointer.
+    - id: diagnostics
+      type: System.Collections.Generic.IReadOnlyList{Pl0.Vm.VmDiagnostic}
+      description: Zu kopierende Diagnosen. / Diagnostics to copy.
+    - id: reason
+      type: Pl0.Vm.VmCompletionReason
+      description: Abschlussgrund. / Completion reason.
+    - id: executedInstructions
+      type: System.Int32
+      description: Begonnene Instruktionen. / Started instructions.
+    - id: state
+      type: Pl0.Vm.VmState
+      description: Terminaler Zustand. / Terminal state.
+    content.vb: Public Sub New(stackSnapshot As Integer(), top As Integer, diagnostics As IReadOnlyList(Of VmDiagnostic), reason As VmCompletionReason, executedInstructions As Integer, state As VmState)
+  overload: Pl0.Vm.VmExecutionResult.#ctor*
+  nameWithType.vb: VmExecutionResult.New(Integer(), Integer, IReadOnlyList(Of VmDiagnostic), VmCompletionReason, Integer, VmState)
+  fullName.vb: Pl0.Vm.VmExecutionResult.New(Integer(), Integer, System.Collections.Generic.IReadOnlyList(Of Pl0.Vm.VmDiagnostic), Pl0.Vm.VmCompletionReason, Integer, Pl0.Vm.VmState)
+  name.vb: New(Integer(), Integer, IReadOnlyList(Of VmDiagnostic), VmCompletionReason, Integer, VmState)
 - uid: Pl0.Vm.VmExecutionResult.StackSnapshot
   commentId: P:Pl0.Vm.VmExecutionResult.StackSnapshot
   id: StackSnapshot
@@ -97,7 +208,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionResult.cs
-      branch: codex/003-constitution-change
+      branch: codex/006-embeddable-vm-nuget
       repo: https://github.com/hindermath/TinyPl0.git
     id: StackSnapshot
     path: src/Pl0.Vm/VmExecutionResult.cs
@@ -105,7 +216,7 @@ items:
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
-  summary: Gets the stack snapshot.
+  summary: Ruft eine defensive Stackkopie ab. / Gets a defensive stack copy.
   example: []
   syntax:
     content: public int[] StackSnapshot { get; }
@@ -128,15 +239,15 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionResult.cs
-      branch: codex/003-constitution-change
+      branch: codex/006-embeddable-vm-nuget
       repo: https://github.com/hindermath/TinyPl0.git
     id: Top
     path: src/Pl0.Vm/VmExecutionResult.cs
-    startLine: 31
+    startLine: 28
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
-  summary: Gets the top-of-stack index.
+  summary: Ruft den Stackzeiger ab. / Gets the stack pointer.
   example: []
   syntax:
     content: public int Top { get; }
@@ -159,15 +270,15 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionResult.cs
-      branch: codex/003-constitution-change
+      branch: codex/006-embeddable-vm-nuget
       repo: https://github.com/hindermath/TinyPl0.git
     id: Diagnostics
     path: src/Pl0.Vm/VmExecutionResult.cs
-    startLine: 36
+    startLine: 30
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
-  summary: Gets the execution diagnostics.
+  summary: Ruft sichere Diagnosen ab. / Gets safe diagnostics.
   example: []
   syntax:
     content: public IReadOnlyList<VmDiagnostic> Diagnostics { get; }
@@ -176,6 +287,130 @@ items:
       type: System.Collections.Generic.IReadOnlyList{Pl0.Vm.VmDiagnostic}
     content.vb: Public ReadOnly Property Diagnostics As IReadOnlyList(Of VmDiagnostic)
   overload: Pl0.Vm.VmExecutionResult.Diagnostics*
+- uid: Pl0.Vm.VmExecutionResult.Reason
+  commentId: P:Pl0.Vm.VmExecutionResult.Reason
+  id: Reason
+  parent: Pl0.Vm.VmExecutionResult
+  langs:
+  - csharp
+  - vb
+  name: Reason
+  nameWithType: VmExecutionResult.Reason
+  fullName: Pl0.Vm.VmExecutionResult.Reason
+  type: Property
+  source:
+    remote:
+      path: src/Pl0.Vm/VmExecutionResult.cs
+      branch: codex/006-embeddable-vm-nuget
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: Reason
+    path: src/Pl0.Vm/VmExecutionResult.cs
+    startLine: 32
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  summary: Ruft den Abschlussgrund ab. / Gets the completion reason.
+  example: []
+  syntax:
+    content: public VmCompletionReason Reason { get; }
+    parameters: []
+    return:
+      type: Pl0.Vm.VmCompletionReason
+    content.vb: Public ReadOnly Property Reason As VmCompletionReason
+  overload: Pl0.Vm.VmExecutionResult.Reason*
+- uid: Pl0.Vm.VmExecutionResult.CompletionReason
+  commentId: P:Pl0.Vm.VmExecutionResult.CompletionReason
+  id: CompletionReason
+  parent: Pl0.Vm.VmExecutionResult
+  langs:
+  - csharp
+  - vb
+  name: CompletionReason
+  nameWithType: VmExecutionResult.CompletionReason
+  fullName: Pl0.Vm.VmExecutionResult.CompletionReason
+  type: Property
+  source:
+    remote:
+      path: src/Pl0.Vm/VmExecutionResult.cs
+      branch: codex/006-embeddable-vm-nuget
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: CompletionReason
+    path: src/Pl0.Vm/VmExecutionResult.cs
+    startLine: 34
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  summary: Ruft den Abschlussgrund unter dem Vertragsnamen ab. / Gets the completion reason by its contract name.
+  example: []
+  syntax:
+    content: public VmCompletionReason CompletionReason { get; }
+    parameters: []
+    return:
+      type: Pl0.Vm.VmCompletionReason
+    content.vb: Public ReadOnly Property CompletionReason As VmCompletionReason
+  overload: Pl0.Vm.VmExecutionResult.CompletionReason*
+- uid: Pl0.Vm.VmExecutionResult.ExecutedInstructions
+  commentId: P:Pl0.Vm.VmExecutionResult.ExecutedInstructions
+  id: ExecutedInstructions
+  parent: Pl0.Vm.VmExecutionResult
+  langs:
+  - csharp
+  - vb
+  name: ExecutedInstructions
+  nameWithType: VmExecutionResult.ExecutedInstructions
+  fullName: Pl0.Vm.VmExecutionResult.ExecutedInstructions
+  type: Property
+  source:
+    remote:
+      path: src/Pl0.Vm/VmExecutionResult.cs
+      branch: codex/006-embeddable-vm-nuget
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: ExecutedInstructions
+    path: src/Pl0.Vm/VmExecutionResult.cs
+    startLine: 36
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  summary: Ruft den Instruktionszähler ab. / Gets the instruction counter.
+  example: []
+  syntax:
+    content: public int ExecutedInstructions { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property ExecutedInstructions As Integer
+  overload: Pl0.Vm.VmExecutionResult.ExecutedInstructions*
+- uid: Pl0.Vm.VmExecutionResult.State
+  commentId: P:Pl0.Vm.VmExecutionResult.State
+  id: State
+  parent: Pl0.Vm.VmExecutionResult
+  langs:
+  - csharp
+  - vb
+  name: State
+  nameWithType: VmExecutionResult.State
+  fullName: Pl0.Vm.VmExecutionResult.State
+  type: Property
+  source:
+    remote:
+      path: src/Pl0.Vm/VmExecutionResult.cs
+      branch: codex/006-embeddable-vm-nuget
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: State
+    path: src/Pl0.Vm/VmExecutionResult.cs
+    startLine: 38
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  summary: Ruft den terminalen Zustand ab. / Gets the terminal state.
+  example: []
+  syntax:
+    content: public VmState State { get; }
+    parameters: []
+    return:
+      type: Pl0.Vm.VmState
+    content.vb: Public ReadOnly Property State As VmState
+  overload: Pl0.Vm.VmExecutionResult.State*
 - uid: Pl0.Vm.VmExecutionResult.Success
   commentId: P:Pl0.Vm.VmExecutionResult.Success
   id: Success
@@ -190,15 +425,15 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionResult.cs
-      branch: codex/003-constitution-change
+      branch: codex/006-embeddable-vm-nuget
       repo: https://github.com/hindermath/TinyPl0.git
     id: Success
     path: src/Pl0.Vm/VmExecutionResult.cs
-    startLine: 41
+    startLine: 40
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
-  summary: Gets a value indicating whether execution completed without diagnostics.
+  summary: Gibt an, ob regulär gehalten wurde. / Indicates whether execution halted normally.
   example: []
   syntax:
     content: public bool Success { get; }
@@ -443,15 +678,6 @@ references:
   name: System
   nameWithType: System
   fullName: System
-- uid: Pl0.Vm.VmExecutionResult.#ctor*
-  commentId: Overload:Pl0.Vm.VmExecutionResult.#ctor
-  href: Pl0.Vm.VmExecutionResult.html#Pl0_Vm_VmExecutionResult__ctor_System_Int32___System_Int32_System_Collections_Generic_IReadOnlyList_Pl0_Vm_VmDiagnostic__
-  name: VmExecutionResult
-  nameWithType: VmExecutionResult.VmExecutionResult
-  fullName: Pl0.Vm.VmExecutionResult.VmExecutionResult
-  nameWithType.vb: VmExecutionResult.New
-  fullName.vb: Pl0.Vm.VmExecutionResult.New
-  name.vb: New
 - uid: System.Int32[]
   isExternal: true
   href: https://learn.microsoft.com/dotnet/api/system.int32
@@ -475,6 +701,36 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.int32
   - name: (
   - name: )
+- uid: Pl0.Vm.VmDiagnostic[]
+  isExternal: true
+  href: Pl0.Vm.VmDiagnostic.html
+  name: VmDiagnostic[]
+  nameWithType: VmDiagnostic[]
+  fullName: Pl0.Vm.VmDiagnostic[]
+  nameWithType.vb: VmDiagnostic()
+  fullName.vb: Pl0.Vm.VmDiagnostic()
+  name.vb: VmDiagnostic()
+  spec.csharp:
+  - uid: Pl0.Vm.VmDiagnostic
+    name: VmDiagnostic
+    href: Pl0.Vm.VmDiagnostic.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Pl0.Vm.VmDiagnostic
+    name: VmDiagnostic
+    href: Pl0.Vm.VmDiagnostic.html
+  - name: (
+  - name: )
+- uid: Pl0.Vm.VmExecutionResult.#ctor*
+  commentId: Overload:Pl0.Vm.VmExecutionResult.#ctor
+  href: Pl0.Vm.VmExecutionResult.html#Pl0_Vm_VmExecutionResult__ctor_System_Int32___System_Int32_System_Collections_Generic_IReadOnlyList_Pl0_Vm_VmDiagnostic__
+  name: VmExecutionResult
+  nameWithType: VmExecutionResult.VmExecutionResult
+  fullName: Pl0.Vm.VmExecutionResult.VmExecutionResult
+  nameWithType.vb: VmExecutionResult.New
+  fullName.vb: Pl0.Vm.VmExecutionResult.New
+  name.vb: New
 - uid: System.Int32
   commentId: T:System.Int32
   parent: System
@@ -584,6 +840,20 @@ references:
     name: Generic
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Pl0.Vm.VmCompletionReason
+  commentId: T:Pl0.Vm.VmCompletionReason
+  parent: Pl0.Vm
+  href: Pl0.Vm.VmCompletionReason.html
+  name: VmCompletionReason
+  nameWithType: VmCompletionReason
+  fullName: Pl0.Vm.VmCompletionReason
+- uid: Pl0.Vm.VmState
+  commentId: T:Pl0.Vm.VmState
+  parent: Pl0.Vm
+  href: Pl0.Vm.VmState.html
+  name: VmState
+  nameWithType: VmState
+  fullName: Pl0.Vm.VmState
 - uid: Pl0.Vm.VmExecutionResult.StackSnapshot*
   commentId: Overload:Pl0.Vm.VmExecutionResult.StackSnapshot
   href: Pl0.Vm.VmExecutionResult.html#Pl0_Vm_VmExecutionResult_StackSnapshot
@@ -602,6 +872,30 @@ references:
   name: Diagnostics
   nameWithType: VmExecutionResult.Diagnostics
   fullName: Pl0.Vm.VmExecutionResult.Diagnostics
+- uid: Pl0.Vm.VmExecutionResult.Reason*
+  commentId: Overload:Pl0.Vm.VmExecutionResult.Reason
+  href: Pl0.Vm.VmExecutionResult.html#Pl0_Vm_VmExecutionResult_Reason
+  name: Reason
+  nameWithType: VmExecutionResult.Reason
+  fullName: Pl0.Vm.VmExecutionResult.Reason
+- uid: Pl0.Vm.VmExecutionResult.CompletionReason*
+  commentId: Overload:Pl0.Vm.VmExecutionResult.CompletionReason
+  href: Pl0.Vm.VmExecutionResult.html#Pl0_Vm_VmExecutionResult_CompletionReason
+  name: CompletionReason
+  nameWithType: VmExecutionResult.CompletionReason
+  fullName: Pl0.Vm.VmExecutionResult.CompletionReason
+- uid: Pl0.Vm.VmExecutionResult.ExecutedInstructions*
+  commentId: Overload:Pl0.Vm.VmExecutionResult.ExecutedInstructions
+  href: Pl0.Vm.VmExecutionResult.html#Pl0_Vm_VmExecutionResult_ExecutedInstructions
+  name: ExecutedInstructions
+  nameWithType: VmExecutionResult.ExecutedInstructions
+  fullName: Pl0.Vm.VmExecutionResult.ExecutedInstructions
+- uid: Pl0.Vm.VmExecutionResult.State*
+  commentId: Overload:Pl0.Vm.VmExecutionResult.State
+  href: Pl0.Vm.VmExecutionResult.html#Pl0_Vm_VmExecutionResult_State
+  name: State
+  nameWithType: VmExecutionResult.State
+  fullName: Pl0.Vm.VmExecutionResult.State
 - uid: Pl0.Vm.VmExecutionResult.Success*
   commentId: Overload:Pl0.Vm.VmExecutionResult.Success
   href: Pl0.Vm.VmExecutionResult.html#Pl0_Vm_VmExecutionResult_Success

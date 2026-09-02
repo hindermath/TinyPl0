@@ -37,3 +37,17 @@ invalid predecessor was superseded with traceable evidence. For review PR 78
 and final delivery commit 491, the IDE version fields were aligned to
 `1.78.491.42` without a product build or test run; runtime and IDE behavior
 remain unchanged.*
+
+154. Agent (2026-09-02): Der autonome Lauf 006 hat den gemeinsamen
+VM-Ausführungskern, Run/Step-Parität und die lokalen NuGet- sowie
+Dokumentationsnachweise vorbereitet. Vor jedem lokalen Build- oder Testlauf
+wurde der Buildzähler fortgeschrieben; nach dem abschließenden DocFX-Build
+steht die commitbereite Arbeitsversion bei `1.6.493.69`. Die IDE nutzt
+weiterhin die öffentliche Step-Schnittstelle und behält ihr sichtbares
+Laufzeitverhalten.
+
+*Autonomous run 006 prepared the shared VM execution engine, Run/Step parity,
+and the local NuGet and documentation evidence. The build counter was advanced
+before every local build or test run; after the final DocFX build, the
+commit-ready version is `1.6.493.69`. The IDE still uses the public step
+interface and keeps its visible runtime behavior.*

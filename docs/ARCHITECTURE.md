@@ -54,3 +54,17 @@ English: The VM validates a positive instruction budget and a stack size from
 Batch and step execution run at most `N` instructions and report the same
 terminal error before `N+1`. This policy complements pointer/stack checks and
 does not claim time or operating-system isolation.
+# Einbettbare VM und Paketgrenze / Embeddable VM and Package Boundary
+
+Deutsch: Pl0.Core bleibt abhängigkeitsfrei. Pl0.Vm hängt ausschließlich von
+exakt derselben TinyPl0.Core-Paketversion ab. Innerhalb von Pl0.Vm besitzt
+VmExecutionSession Programm, Stack, Register, Grenzen, Cancellation,
+Diagnosen und den terminalen Cache. Nur diese Session dekodiert Instruktionen.
+Batch-Run und Step-Debugging sind Adapter auf denselben Kernel. Die
+Vertrauensgrenze liegt vor Options-/P-Code-Validierung und Stackallokation.
+
+*English: Pl0.Core remains dependency-free. Pl0.Vm depends only on the exact
+matching TinyPl0.Core package version. VmExecutionSession owns the program,
+stack, registers, limits, cancellation, diagnostics, and terminal cache. It is
+the only instruction decoder; batch and debug execution adapt the same kernel.
+The trust boundary precedes validation and stack allocation.*

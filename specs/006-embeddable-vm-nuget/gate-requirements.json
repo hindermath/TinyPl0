@@ -1,0 +1,301 @@
+{
+  "schemaVersion": "2.0",
+  "featurePath": "specs/006-embeddable-vm-nuget",
+  "declaredAt": "2026-09-02T18:30:00Z",
+  "gates": [
+    {
+      "gateId": "SPECIFY-GATE-001",
+      "applicability": "Applicable",
+      "requiredScope": "Bind branch, run ID, accepted intake/review/manifest hashes, scope, authority, ten stable gates, no-secret boundary and no-follow-up boundary before any implementation edit.",
+      "exactCommands": [
+        "pwsh -NoLogo -NoProfile -File .specify/presets/autonomous-run-governance/scripts/validate-autonomous-run-state.ps1 -State specs/006-embeddable-vm-nuget/autonomous-run-state.json",
+        "pwsh -NoLogo -NoProfile -Command '$state = Get-Content specs/006-embeddable-vm-nuget/autonomous-run-state.json -Raw | ConvertFrom-Json; foreach ($item in $state.acceptedArtifacts) { $actual = (Get-FileHash -LiteralPath $item.path -Algorithm SHA256).Hash.ToLowerInvariant(); if ($actual -ne $item.sha256) { throw \"Accepted artifact drift: $($item.path)\" } }; Write-Output \"PASS accepted-artifact hashes\"'",
+        "pwsh -NoLogo -NoProfile -File .specify/presets/intake-sequencing-governance/scripts/validate-intake-series-manifest.ps1 -File requirements/intakes/series/tinypl0-delivery/manifest.json -Repo . -Json"
+      ],
+      "requiredCommandTokens": [
+        "validate-autonomous-run-state.ps1",
+        "Get-FileHash",
+        "acceptedArtifacts",
+        "validate-intake-series-manifest.ps1",
+        "a01cd5bd-fa86-49f1-b074-cb59a9c24862"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "macOS",
+        "PowerShell 7",
+        "Git",
+        "Spec Kit autonomous runner"
+      ],
+      "evidencePath": "specs/006-embeddable-vm-nuget/evidence/specify-gate.json",
+      "rationale": "Drift in accepted inputs, authority or scope invalidates every later implementation and delivery claim.",
+      "reevaluationTrigger": "Start or resume of every phase; any accepted-artifact, intake-series, authority, branch, run-state or stable-gate change."
+    },
+    {
+      "gateId": "RUN-STEP-GATE-001",
+      "applicability": "Applicable",
+      "requiredScope": "Prove that Run and Step use one execution kernel and return equal reason, count, state, diagnostics and I/O for normal, error, cancellation and terminal-idempotence cases while preserving existing callers.",
+      "exactCommands": [
+        "dotnet test tests/Pl0.Tests/Pl0.Tests.csproj --configuration Release --no-build --filter \"FullyQualifiedName~VirtualMachineParityTests\" --logger \"trx;LogFileName=run-step.trx\" --results-directory artifacts/test-results/run-step",
+        "dotnet test TinyPl0.sln --configuration Release --no-build --collect:\"XPlat Code Coverage\" --logger \"trx;LogFileName=regression.trx\" --results-directory artifacts/test-results/regression"
+      ],
+      "requiredCommandTokens": [
+        "VirtualMachineParityTests",
+        "XPlat Code Coverage",
+        "VmExecutionSession.ExecuteNext",
+        "terminal idempotence"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        ".NET SDK 10.0.x",
+        "xUnit 2.9.3",
+        "macos-15",
+        "ubuntu-24.04",
+        "windows-2025"
+      ],
+      "evidencePath": "artifacts/test-results/run-step/run-step-evidence.json",
+      "rationale": "One dispatcher prevents semantic drift, while observable parity and compatibility tests prove the public contract.",
+      "reevaluationTrigger": "Any VM dispatch, option, result, state, diagnostic, cancellation, I/O, opcode, OPR or public-signature change."
+    },
+    {
+      "gateId": "RESOURCE-GATE-001",
+      "applicability": "Applicable",
+      "requiredScope": "Prove fixed validation precedence, all positive and negative stack/budget/program/P-Code boundaries, exact dispatch counting, cancellation precedence and no N+1 side effect or prevalidation allocation.",
+      "exactCommands": [
+        "dotnet test tests/Pl0.Tests/Pl0.Tests.csproj --configuration Release --no-build --filter \"FullyQualifiedName~VmExecutionBoundaryTests\" --logger \"trx;LogFileName=resource-boundaries.trx\" --results-directory artifacts/test-results/resource",
+        "dotnet test tests/Pl0.Tests/Pl0.Tests.csproj --configuration Release --no-build --filter \"FullyQualifiedName~VmExecutionKernelCoverageTests\" --collect:\"XPlat Code Coverage\" --results-directory artifacts/test-results/resource-coverage"
+      ],
+      "requiredCommandTokens": [
+        "VmExecutionBoundaryTests",
+        "VmExecutionKernelCoverageTests",
+        "StackSize",
+        "InstructionBudget",
+        "MaximumProgramLength",
+        "ExecutedInstructions"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        ".NET SDK 10.0.x",
+        "xUnit",
+        "Coverlet",
+        "85% line and branch kernel coverage"
+      ],
+      "evidencePath": "artifacts/test-results/resource/resource-evidence.json",
+      "rationale": "Host-provided options and P-Code cross a trust boundary and must fail deterministically before unsafe resource use or side effects.",
+      "reevaluationTrigger": "Any bound, default, validation order, allocation, counting point, terminal-state, P-Code rule or I/O-boundary change."
+    },
+    {
+      "gateId": "PACKAGE-GATE-001",
+      "applicability": "Applicable",
+      "requiredScope": "Restore with locks, pack Core and VM at one Release Please SemVer, inspect package and symbol inventories, verify metadata/README/XML/SourceLink and enforce the exact VM-to-Core dependency with no extra runtime dependency.",
+      "exactCommands": [
+        "dotnet restore TinyPl0.sln --locked-mode",
+        "pwsh -NoLogo -NoProfile -File scripts/Test-NuGetPackages.ps1 -Configuration Release -Version 0.4.0 -OutputDirectory artifacts/packages",
+        "dotnet test tests/Pl0.Tests/Pl0.Tests.csproj --configuration Release --no-build --filter \"FullyQualifiedName~PackageWorkflowContractTests\" --logger \"trx;LogFileName=package-contract.trx\" --results-directory artifacts/test-results/package"
+      ],
+      "requiredCommandTokens": [
+        "--locked-mode",
+        "Test-NuGetPackages.ps1",
+        "TinyPl0.Core",
+        "TinyPl0.Vm",
+        "PackageWorkflowContractTests",
+        "[$(TinyPl0PackageVersion)]"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        ".NET SDK 10.0.x",
+        "NuGet V3",
+        "macos-15",
+        "ubuntu-24.04",
+        "windows-2025"
+      ],
+      "evidencePath": "artifacts/packages/package-validation.json",
+      "rationale": "A solution build does not prove the immutable public package pair, exact dependency graph or consumable package contents.",
+      "reevaluationTrigger": "Any props, csproj, PackageReference, ProjectReference, package metadata, README, XML documentation, symbol, SourceLink, lockfile, version or pack change."
+    },
+    {
+      "gateId": "CONSUMER-GATE-001",
+      "applicability": "Applicable",
+      "requiredScope": "Before merge, restore equal Core and VM package versions from the newly packed local feed into a clean net10.0 consumer without ProjectReference; after release, repeat from NuGet.org and prove compile, Run and Step behavior on all three supported operating systems.",
+      "exactCommands": [
+        "pwsh -NoLogo -NoProfile -File scripts/Test-NuGetPackages.ps1 -Configuration Release -Version 0.4.0 -OutputDirectory artifacts/packages",
+        "gh run view $env:RELEASE_RUN_ID --json databaseId,headSha,status,conclusion,jobs,url"
+      ],
+      "requiredCommandTokens": [
+        "Test-NuGetPackages.ps1",
+        "clean local feed",
+        "api.nuget.org/v3/index.json",
+        "RELEASE_RUN_ID",
+        "ProjectReference absent"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "macos-15",
+        "ubuntu-24.04",
+        "windows-2025",
+        ".NET SDK 10.0.x",
+        "NuGet.org"
+      ],
+      "evidencePath": "artifacts/packages/package-validation.json",
+      "rationale": "Only an independent empty-cache public restore demonstrates real package delivery and cross-platform host usability.",
+      "reevaluationTrigger": "Any package version/content/dependency, consumer source, framework, feed, SDK, runner, restore, Run or Step behavior change."
+    },
+    {
+      "gateId": "SECURITY-GATE-001",
+      "applicability": "Applicable",
+      "requiredScope": "Complete secure-code and architecture review, STRIDE/CIA/CAPEC evidence, dependency/license/secret checks, SBOM, VEX, SLSA provenance, applicability dispositions and residual-risk ownership for the exact package set.",
+      "exactCommands": [
+        "pwsh -NoLogo -NoProfile -File scripts/scan-agent-secrets.ps1 -WorkspaceRoot . -FailOnHigh",
+        "dotnet list TinyPl0.sln package --vulnerable --include-transitive --source https://api.nuget.org/v3/index.json --format json --output-version 1 > artifacts/security/vulnerabilities.json",
+        "dotnet tool restore",
+        "dotnet tool run dotnet-CycloneDX src/Pl0.Core/Pl0.Core.csproj -o artifacts/release/sbom/core --output-format Json --spec-version 1.7",
+        "dotnet tool run dotnet-CycloneDX src/Pl0.Vm/Pl0.Vm.csproj -o artifacts/release/sbom/vm --output-format Json --spec-version 1.7",
+        "pwsh -NoLogo -NoProfile -File scripts/New-NuGetReleaseEvidence.ps1 -PackageDirectory artifacts/packages -OutputDirectory artifacts/release-evidence"
+      ],
+      "requiredCommandTokens": [
+        "scan-agent-secrets.ps1",
+        "--vulnerable",
+        "dotnet-CycloneDX",
+        "CycloneDX 1.7",
+        "VEX",
+        "New-NuGetReleaseEvidence.ps1",
+        "SLSA Build Level 2"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        ".NET SDK 10.0.x",
+        "PowerShell 7",
+        "CycloneDX 6.2.0",
+        "GitHub CLI",
+        "GitHub-hosted runner",
+        "NIST SSDF and CWE Top 25"
+      ],
+      "evidencePath": "artifacts/release-evidence/release-evidence-validation.json",
+      "rationale": "Public packages and OIDC publication create runtime, CI identity and supply-chain trust boundaries that require fail-closed evidence rather than unsupported compliance claims.",
+      "reevaluationTrigger": "Any source, dependency, lockfile, package, workflow, permission, action pin, credential path, provider policy, commit, tag, SBOM/VEX finding, attestation or applicability change."
+    },
+    {
+      "gateId": "DOC-A11Y-GATE-001",
+      "applicability": "Applicable",
+      "requiredScope": "Publish complete German-first/English-second B2 XML and learner guidance, regenerate DocFX, and jointly prove WCAG 2.2 AA, keyboard/text-first use, axe and lynx results with no unresolved serious or critical finding.",
+      "exactCommands": [
+        "dotnet tool run docfx docfx.json",
+        "npm --prefix tests/a11y ci",
+        "pwsh -NoLogo -NoProfile -Command '$env:MANAGE_DOCS_SERVER = \"1\"; npm --prefix tests/a11y test -- --project=chromium'",
+        "pwsh -NoLogo -NoProfile -Command '$server = Start-Process python3 -ArgumentList \"-m\",\"http.server\",\"8080\",\"--bind\",\"127.0.0.1\",\"--directory\",\"_site\" -PassThru; try { Start-Sleep -Seconds 2; lynx -dump -nolist http://127.0.0.1:8080/api/Pl0.Vm.VirtualMachine.html | Select-String -SimpleMatch \"VirtualMachine\" } finally { Stop-Process -Id $server.Id -ErrorAction SilentlyContinue }'",
+        "pwsh -NoLogo -NoProfile -File scripts/check-homogeneity.ps1 -TargetDir . -FailFast"
+      ],
+      "requiredCommandTokens": [
+        "dotnet tool run docfx docfx.json",
+        "MANAGE_DOCS_SERVER",
+        "Playwright",
+        "axe",
+        "lynx -dump -nolist",
+        "WCAG 2.2 AA",
+        "manual text review"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "ubuntu-24.04",
+        "Node 24",
+        "Playwright 1.62.1",
+        "axe-core 4.13.0",
+        "lynx",
+        "DocFX"
+      ],
+      "evidencePath": "docs/accessibility/embeddable-vm-nuget.md",
+      "rationale": "Changed public APIs and release guidance are incomplete until generated HTML and a linear text path are usable without visual-only meaning.",
+      "reevaluationTrigger": "Any public API/XML, package README, host guide, DocFX content/theme/navigation, language order, A11Y test, tool or representative-page change."
+    },
+    {
+      "gateId": "REMOTE-REVIEW-GATE-001",
+      "applicability": "Applicable",
+      "requiredScope": "For one exact head commit, prove clean delivery set, successful required checks, independent approval, zero unresolved actionable review threads, current authority and valid PreMerge gate evidence; admin bypass cannot replace review.",
+      "exactCommands": [
+        "pwsh -NoLogo -NoProfile -File .specify/presets/autonomous-run-governance/scripts/validate-autonomous-delivery-set.ps1 -Repo .",
+        "gh pr checks --watch --fail-fast",
+        "gh pr view --json number,url,headRefOid,reviewDecision,reviews,statusCheckRollup",
+        "pwsh -NoLogo -NoProfile -Command 'if ([string]::IsNullOrWhiteSpace($env:PR_NUMBER)) { throw \"PR_NUMBER is required\" }; gh api graphql -f query=\"query(`$owner:String!,`$name:String!,`$number:Int!){repository(owner:`$owner,name:`$name){pullRequest(number:`$number){headRefOid reviewDecision reviewThreads(first:100){nodes{isResolved isOutdated}}}}}\" -F owner=hindermath -F name=TinyPl0 -F number=$env:PR_NUMBER'",
+        "pwsh -NoLogo -NoProfile -Command 'if ([string]::IsNullOrWhiteSpace($env:PREMERGE_EVIDENCE_JSON) -or [string]::IsNullOrWhiteSpace($env:EXACT_HEAD_SHA)) { throw \"PREMERGE_EVIDENCE_JSON and EXACT_HEAD_SHA are required\" }; & .specify/presets/autonomous-run-governance/scripts/validate-autonomous-gate-evidence.ps1 -Requirements specs/006-embeddable-vm-nuget/gate-requirements.json -Evidence $env:PREMERGE_EVIDENCE_JSON -Head $env:EXACT_HEAD_SHA'"
+      ],
+      "requiredCommandTokens": [
+        "validate-autonomous-delivery-set.ps1",
+        "gh pr checks --watch --fail-fast",
+        "headRefOid",
+        "reviewDecision",
+        "reviewThreads",
+        "isResolved",
+        "PreMerge",
+        "EXACT_HEAD_SHA"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "GitHub",
+        "GitHub CLI",
+        "PowerShell 7",
+        "exact HEAD",
+        "independent approval"
+      ],
+      "evidencePath": "specs/006-embeddable-vm-nuget/evidence/pre-merge-gates.json",
+      "rationale": "Remote checks, human review, authority and evidence must refer to the same immutable commit before any merge or provider action.",
+      "reevaluationTrigger": "Any head commit, force-push, check, review, thread, delivery-set, authority, provider-policy or gate-evidence change."
+    },
+    {
+      "gateId": "NUGET-PUBLISH-GATE-001",
+      "applicability": "Applicable",
+      "requiredScope": "Verify the narrow OIDC policy and immutable action pins, classify both public IDs before and after each push, publish one attested artifact set without skip-duplicate, fail closed on partial/conflict/unknown/409, and prove both public hashes and clean restores.",
+      "exactCommands": [
+        "dotnet test tests/Pl0.Tests/Pl0.Tests.csproj --configuration Release --no-build --filter \"FullyQualifiedName~PackageWorkflowContractTests\" --logger \"trx;LogFileName=release-workflow.trx\" --results-directory artifacts/test-results/release",
+        "gh pr view $env:RELEASE_PR_NUMBER --json number,url,headRefOid,reviewDecision,statusCheckRollup",
+        "pwsh -NoLogo -NoProfile -Command 'if ([string]::IsNullOrWhiteSpace($env:RELEASE_RUN_ID)) { throw \"RELEASE_RUN_ID is required\" }; gh run view $env:RELEASE_RUN_ID --json databaseId,headSha,headBranch,event,status,conclusion,jobs,url'",
+        "gh run watch $env:RELEASE_RUN_ID --exit-status",
+        "gh attestation verify artifacts/packages/TinyPl0.Core.*.nupkg --repo hindermath/TinyPl0",
+        "gh attestation verify artifacts/packages/TinyPl0.Vm.*.nupkg --repo hindermath/TinyPl0"
+      ],
+      "requiredCommandTokens": [
+        "PackageWorkflowContractTests",
+        "NuGet/login@8d196754b4036150537f80ac539e15c2f1028841",
+        "id-token: write",
+        "NUGET_API_KEY",
+        "preflight",
+        "reconcile",
+        "public-package-hashes.json",
+        "no --skip-duplicate",
+        "api.nuget.org/v3/index.json"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "GitHub Actions",
+        "NuGet.org Trusted Publishing",
+        "nuget-release environment",
+        "GitHub OIDC",
+        ".NET SDK 10.0.x"
+      ],
+      "evidencePath": "artifacts/release-evidence/public-package-hashes.json",
+      "rationale": "NuGet has immutable versions but no atomic two-package publish, so success requires narrow identity, the same attested bytes and explicit public-state reconciliation.",
+      "reevaluationTrigger": "Any owner/repository/workflow/environment/package policy, action SHA, permission, version, tag, commit, artifact hash, provider response, push result, 409, public package or restore change."
+    },
+    {
+      "gateId": "MERGE-CLOSEOUT-GATE-001",
+      "applicability": "Applicable",
+      "requiredScope": "After complete feature review and PreMerge evidence, merge and synchronize main; then complete the causal release PR, public package proof, byte-identical intake archive, lineage, PostMerge evidence and stop without starting a follow-up feature.",
+      "exactCommands": [
+        "gh pr view --json state,mergedAt,mergeCommit,url,headRefOid",
+        "gh repo sync --branch main",
+        "pwsh -NoLogo -NoProfile -File scripts/render-project-statistics.ps1 -Repo . -CheckOnly",
+        "pwsh -NoLogo -NoProfile -File .specify/presets/intake-sequencing-governance/scripts/validate-intake-series-manifest.ps1 -File requirements/intakes/series/tinypl0-delivery/manifest.json -Repo . -Json",
+        "pwsh -NoLogo -NoProfile -Command 'if ([string]::IsNullOrWhiteSpace($env:POSTMERGE_EVIDENCE_JSON) -or [string]::IsNullOrWhiteSpace($env:EXACT_HEAD_SHA) -or [string]::IsNullOrWhiteSpace($env:MERGE_COMMIT_SHA)) { throw \"POSTMERGE_EVIDENCE_JSON, EXACT_HEAD_SHA and MERGE_COMMIT_SHA are required\" }; & .specify/presets/autonomous-run-governance/scripts/validate-autonomous-gate-evidence.ps1 -Requirements specs/006-embeddable-vm-nuget/gate-requirements.json -Evidence $env:POSTMERGE_EVIDENCE_JSON -Head $env:EXACT_HEAD_SHA -MergeCommit $env:MERGE_COMMIT_SHA'",
+        "pwsh -NoLogo -NoProfile -File .specify/presets/autonomous-run-governance/scripts/validate-autonomous-run-state.ps1 -State specs/006-embeddable-vm-nuget/autonomous-run-state.json"
+      ],
+      "requiredCommandTokens": [
+        "mergedAt",
+        "mergeCommit",
+        "gh repo sync --branch main",
+        "render-project-statistics.ps1",
+        "validate-intake-series-manifest.ps1",
+        "PostMerge",
+        "no follow-up feature"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "GitHub",
+        "GitHub CLI",
+        "PowerShell 7",
+        "default branch main",
+        "PostMerge lifecycle"
+      ],
+      "evidencePath": "specs/006-embeddable-vm-nuget/evidence/post-merge-gates.json",
+      "rationale": "Merge, public delivery, synchronization, intake lifecycle and handoff are distinct causal states; closeout may not infer or pre-record any of them.",
+      "reevaluationTrigger": "Any merge, publication, public restore, main revision, handoff, statistics, traceability, archive, manifest, receipt, gate-evidence or run-state change."
+    }
+  ]
+}

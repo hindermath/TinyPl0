@@ -1,5 +1,22 @@
 # arc42 Abschnitt 8: Sicherheits-Querschnittskonzepte / Security Concepts
 
+## Feature 006: Host und Veröffentlichung / Host and Publication
+
+Deutsch: Die Session erlaubt höchstens Stack 1.000.000, Budget 10.000.000 und
+Programmlimit 100.000; ungültige Werte werden vor Allokation verworfen. Die VM
+greift weder auf Dateien, Netzwerk, Prozesse noch Umgebung zu und kommuniziert
+nur über IPl0Io. Wiederholte terminale Steps sind read-only. Der Releasepfad
+trennt Release-PR, Build und Attestierung, OIDC-Publish und öffentliche
+Verifikation in Jobs mit kleinsten Rechten.
+
+*English: The session caps stack, budget, and program length at 1,000,000,
+10,000,000, and 100,000; invalid values fail before allocation. The VM has no
+file, network, process, or environment access and communicates only through
+IPl0Io. Repeated terminal steps are read-only. Release PR, build and
+attestation, OIDC publish, and public verification are separate
+least-privilege jobs.*
+
+
 **Feature**: `004-secure-development-hardening`
 **Stand / Date**: 2026-08-30
 **Methodik / Method**: arc42, iSAQB CPSA-F, NIST SSDF, CWE Top 25

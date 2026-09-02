@@ -67,6 +67,8 @@
 !/docs/**
 !/examples/
 !/examples/**
+!/eng/
+!/eng/**
 !/pl0c.pas
 !/release-please-config.json
 !/requirements/

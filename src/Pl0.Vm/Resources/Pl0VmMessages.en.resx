@@ -52,7 +52,7 @@
     <value>Division by zero.</value>
   </data>
   <data name="Vm_E207_InvalidInstructionBudget" xml:space="preserve">
-    <value>The VM instruction budget must be greater than 0.</value>
+    <value>The VM instruction budget must be between 1 and 10,000,000.</value>
     <comment>Code 207 is the first free VM code after 206 and remains reserved for budget diagnostics.</comment>
   </data>
   <data name="Vm_E207_InstructionBudgetExceeded" xml:space="preserve">
@@ -62,5 +62,17 @@
   <data name="Vm_E208_InvalidStackSize" xml:space="preserve">
     <value>The VM stack size must be between 3 and 1,000,000.</value>
     <comment>Code 208 follows 207 without a collision and remains reserved for invalid stack options.</comment>
+  </data>
+  <data name="Vm_E209_InvalidMaximumProgramLength" xml:space="preserve">
+    <value>The maximum program length must be between 1 and 100,000.</value>
+  </data>
+  <data name="Vm_E209_InvalidProgram" xml:space="preserve">
+    <value>Invalid P-Code program: {0}.</value>
+  </data>
+  <data name="Vm_E210_Cancelled" xml:space="preserve">
+    <value>VM execution was cancelled.</value>
+  </data>
+  <data name="Vm_E211_IoFailure" xml:space="preserve">
+    <value>Host input/output failed.</value>
   </data>
 </root>

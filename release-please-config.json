@@ -3,6 +3,13 @@
   "release-type": "simple",
   "packages": {
     ".": {
+      "extra-files": [
+        {
+          "type": "xml",
+          "path": "eng/TinyPl0.PackageVersion.props",
+          "xpath": "/Project/PropertyGroup/TinyPl0PackageVersion"
+        }
+      ],
       "changelog-sections": [
         {"type": "feat",     "section": "Features / Neue Funktionen"},
         {"type": "fix",      "section": "Bug Fixes / Fehlerbehebungen"},

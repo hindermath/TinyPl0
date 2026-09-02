@@ -4,6 +4,8 @@
   href: projects/
 - name: Bedienung
   href: usage/
+- name: Host-API / Host API
+  href: ../docs/HOSTING_VM.md
 - name: PL0-Handbuch
   href: handbook/pl0/
 - name: P-Code-Handbuch

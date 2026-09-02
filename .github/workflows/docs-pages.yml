@@ -42,14 +42,11 @@ jobs:
           cache: npm
           cache-dependency-path: tests/a11y/package-lock.json
 
-      - name: Install DocFX
-        run: dotnet tool install --global docfx
-
-      - name: Add .NET tools to PATH
-        run: echo "$HOME/.dotnet/tools" >> "$GITHUB_PATH"
-
       - name: Restore solution
-        run: dotnet restore TinyPl0.sln
+        run: dotnet restore TinyPl0.sln --locked-mode
+
+      - name: Build XML documentation inputs
+        run: dotnet build TinyPl0.sln --configuration Release --no-restore
 
       - name: Restore pinned local tools
         run: dotnet tool restore
@@ -61,7 +58,7 @@ jobs:
         run: rm -rf _site
 
       - name: Build HTML documentation
-        run: docfx docfx.json
+        run: dotnet tool run docfx docfx.json
 
       - name: Create deterministic Pages manifest and hashes
         shell: bash
@@ -110,6 +107,7 @@ jobs:
           done
           lynx -dump -nolist http://127.0.0.1:8080/api/Pl0.Vm.VirtualMachineOptions.html | grep -q VirtualMachineOptions
           lynx -dump -nolist http://127.0.0.1:8080/api/Pl0.Vm.VirtualMachine.html | grep -q VirtualMachine
+          lynx -dump -nolist http://127.0.0.1:8080/api/Pl0.Vm.VmExecutionSession.html | grep -q VmExecutionSession
 
       - name: Upload supply-chain evidence
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2

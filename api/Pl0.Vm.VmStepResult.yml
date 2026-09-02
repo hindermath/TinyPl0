@@ -6,9 +6,15 @@ items:
   parent: Pl0.Vm
   children:
   - Pl0.Vm.VmStepResult.#ctor(Pl0.Vm.VmState,Pl0.Vm.VmStepStatus,System.Collections.Generic.IReadOnlyList{Pl0.Vm.VmDiagnostic})
+  - Pl0.Vm.VmStepResult.#ctor(Pl0.Vm.VmState,Pl0.Vm.VmStepStatus,System.Collections.Generic.IReadOnlyList{Pl0.Vm.VmDiagnostic},Pl0.Vm.VmCompletionReason,System.Int32)
+  - Pl0.Vm.VmStepResult.CompletionReason
+  - Pl0.Vm.VmStepResult.Deconstruct(Pl0.Vm.VmState@,Pl0.Vm.VmStepStatus@,System.Collections.Generic.IReadOnlyList{Pl0.Vm.VmDiagnostic}@)
   - Pl0.Vm.VmStepResult.Diagnostics
+  - Pl0.Vm.VmStepResult.ExecutedInstructions
+  - Pl0.Vm.VmStepResult.Reason
   - Pl0.Vm.VmStepResult.State
   - Pl0.Vm.VmStepResult.Status
+  - Pl0.Vm.VmStepResult.diagnostics
   langs:
   - csharp
   - vb
@@ -19,15 +25,15 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmStepResult.cs
-      branch: codex/003-constitution-change
+      branch: codex/006-embeddable-vm-nuget
       repo: https://github.com/hindermath/TinyPl0.git
     id: VmStepResult
     path: src/Pl0.Vm/VmStepResult.cs
-    startLine: 8
+    startLine: 3
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
-  summary: Result of executing exactly one VM instruction.
+  summary: Ergebnis eines VM-Schritts. / Result of one VM step.
   example: []
   syntax:
     content: 'public sealed record VmStepResult : IEquatable<VmStepResult>'
@@ -43,6 +49,33 @@ items:
   - System.Object.GetType
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
+- uid: Pl0.Vm.VmStepResult.diagnostics
+  commentId: F:Pl0.Vm.VmStepResult.diagnostics
+  id: diagnostics
+  parent: Pl0.Vm.VmStepResult
+  langs:
+  - csharp
+  - vb
+  name: diagnostics
+  nameWithType: VmStepResult.diagnostics
+  fullName: Pl0.Vm.VmStepResult.diagnostics
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/VmStepResult.cs
+      branch: codex/006-embeddable-vm-nuget
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: diagnostics
+    path: src/Pl0.Vm/VmStepResult.cs
+    startLine: 5
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private readonly VmDiagnostic[] diagnostics
+    return:
+      type: Pl0.Vm.VmDiagnostic[]
+    content.vb: Private ReadOnly diagnostics As VmDiagnostic()
 - uid: Pl0.Vm.VmStepResult.#ctor(Pl0.Vm.VmState,Pl0.Vm.VmStepStatus,System.Collections.Generic.IReadOnlyList{Pl0.Vm.VmDiagnostic})
   commentId: M:Pl0.Vm.VmStepResult.#ctor(Pl0.Vm.VmState,Pl0.Vm.VmStepStatus,System.Collections.Generic.IReadOnlyList{Pl0.Vm.VmDiagnostic})
   id: '#ctor(Pl0.Vm.VmState,Pl0.Vm.VmStepStatus,System.Collections.Generic.IReadOnlyList{Pl0.Vm.VmDiagnostic})'
@@ -57,33 +90,80 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmStepResult.cs
-      branch: codex/003-constitution-change
+      branch: codex/006-embeddable-vm-nuget
       repo: https://github.com/hindermath/TinyPl0.git
     id: .ctor
     path: src/Pl0.Vm/VmStepResult.cs
-    startLine: 8
+    startLine: 10
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
-  summary: Result of executing exactly one VM instruction.
+  summary: Erstellt das bisherige Ergebnisformat. / Creates the previous result shape.
   example: []
   syntax:
     content: public VmStepResult(VmState State, VmStepStatus Status, IReadOnlyList<VmDiagnostic> Diagnostics)
     parameters:
     - id: State
       type: Pl0.Vm.VmState
-      description: State snapshot after the step.
+      description: Zustand. / State.
     - id: Status
       type: Pl0.Vm.VmStepStatus
-      description: Step execution status.
+      description: Kompatibler Status. / Compatible status.
     - id: Diagnostics
       type: System.Collections.Generic.IReadOnlyList{Pl0.Vm.VmDiagnostic}
-      description: Diagnostics reported by the VM.
+      description: Zu kopierende Diagnosen. / Diagnostics to copy.
     content.vb: Public Sub New(State As VmState, Status As VmStepStatus, Diagnostics As IReadOnlyList(Of VmDiagnostic))
   overload: Pl0.Vm.VmStepResult.#ctor*
   nameWithType.vb: VmStepResult.New(VmState, VmStepStatus, IReadOnlyList(Of VmDiagnostic))
   fullName.vb: Pl0.Vm.VmStepResult.New(Pl0.Vm.VmState, Pl0.Vm.VmStepStatus, System.Collections.Generic.IReadOnlyList(Of Pl0.Vm.VmDiagnostic))
   name.vb: New(VmState, VmStepStatus, IReadOnlyList(Of VmDiagnostic))
+- uid: Pl0.Vm.VmStepResult.#ctor(Pl0.Vm.VmState,Pl0.Vm.VmStepStatus,System.Collections.Generic.IReadOnlyList{Pl0.Vm.VmDiagnostic},Pl0.Vm.VmCompletionReason,System.Int32)
+  commentId: M:Pl0.Vm.VmStepResult.#ctor(Pl0.Vm.VmState,Pl0.Vm.VmStepStatus,System.Collections.Generic.IReadOnlyList{Pl0.Vm.VmDiagnostic},Pl0.Vm.VmCompletionReason,System.Int32)
+  id: '#ctor(Pl0.Vm.VmState,Pl0.Vm.VmStepStatus,System.Collections.Generic.IReadOnlyList{Pl0.Vm.VmDiagnostic},Pl0.Vm.VmCompletionReason,System.Int32)'
+  parent: Pl0.Vm.VmStepResult
+  langs:
+  - csharp
+  - vb
+  name: VmStepResult(VmState, VmStepStatus, IReadOnlyList<VmDiagnostic>, VmCompletionReason, int)
+  nameWithType: VmStepResult.VmStepResult(VmState, VmStepStatus, IReadOnlyList<VmDiagnostic>, VmCompletionReason, int)
+  fullName: Pl0.Vm.VmStepResult.VmStepResult(Pl0.Vm.VmState, Pl0.Vm.VmStepStatus, System.Collections.Generic.IReadOnlyList<Pl0.Vm.VmDiagnostic>, Pl0.Vm.VmCompletionReason, int)
+  type: Constructor
+  source:
+    remote:
+      path: src/Pl0.Vm/VmStepResult.cs
+      branch: codex/006-embeddable-vm-nuget
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: .ctor
+    path: src/Pl0.Vm/VmStepResult.cs
+    startLine: 20
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  summary: Erstellt ein vollständiges Schrittergebnis. / Creates a complete step result.
+  example: []
+  syntax:
+    content: public VmStepResult(VmState State, VmStepStatus Status, IReadOnlyList<VmDiagnostic> Diagnostics, VmCompletionReason Reason, int ExecutedInstructions)
+    parameters:
+    - id: State
+      type: Pl0.Vm.VmState
+      description: Zustand. / State.
+    - id: Status
+      type: Pl0.Vm.VmStepStatus
+      description: Kompatibler Status. / Compatible status.
+    - id: Diagnostics
+      type: System.Collections.Generic.IReadOnlyList{Pl0.Vm.VmDiagnostic}
+      description: Zu kopierende Diagnosen. / Diagnostics to copy.
+    - id: Reason
+      type: Pl0.Vm.VmCompletionReason
+      description: Abschlussgrund. / Completion reason.
+    - id: ExecutedInstructions
+      type: System.Int32
+      description: Begonnene Instruktionen. / Started instructions.
+    content.vb: Public Sub New(State As VmState, Status As VmStepStatus, Diagnostics As IReadOnlyList(Of VmDiagnostic), Reason As VmCompletionReason, ExecutedInstructions As Integer)
+  overload: Pl0.Vm.VmStepResult.#ctor*
+  nameWithType.vb: VmStepResult.New(VmState, VmStepStatus, IReadOnlyList(Of VmDiagnostic), VmCompletionReason, Integer)
+  fullName.vb: Pl0.Vm.VmStepResult.New(Pl0.Vm.VmState, Pl0.Vm.VmStepStatus, System.Collections.Generic.IReadOnlyList(Of Pl0.Vm.VmDiagnostic), Pl0.Vm.VmCompletionReason, Integer)
+  name.vb: New(VmState, VmStepStatus, IReadOnlyList(Of VmDiagnostic), VmCompletionReason, Integer)
 - uid: Pl0.Vm.VmStepResult.State
   commentId: P:Pl0.Vm.VmStepResult.State
   id: State
@@ -98,22 +178,22 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmStepResult.cs
-      branch: codex/003-constitution-change
+      branch: codex/006-embeddable-vm-nuget
       repo: https://github.com/hindermath/TinyPl0.git
     id: State
     path: src/Pl0.Vm/VmStepResult.cs
-    startLine: 9
+    startLine: 25
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
-  summary: State snapshot after the step.
+  summary: Ruft den Zustand ab. / Gets the state.
   example: []
   syntax:
-    content: public VmState State { get; init; }
+    content: public VmState State { get; }
     parameters: []
     return:
       type: Pl0.Vm.VmState
-    content.vb: Public Property State As VmState
+    content.vb: Public ReadOnly Property State As VmState
   overload: Pl0.Vm.VmStepResult.State*
 - uid: Pl0.Vm.VmStepResult.Status
   commentId: P:Pl0.Vm.VmStepResult.Status
@@ -129,22 +209,22 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmStepResult.cs
-      branch: codex/003-constitution-change
+      branch: codex/006-embeddable-vm-nuget
       repo: https://github.com/hindermath/TinyPl0.git
     id: Status
     path: src/Pl0.Vm/VmStepResult.cs
-    startLine: 10
+    startLine: 27
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
-  summary: Step execution status.
+  summary: Ruft den kompatiblen Status ab. / Gets the compatible status.
   example: []
   syntax:
-    content: public VmStepStatus Status { get; init; }
+    content: public VmStepStatus Status { get; }
     parameters: []
     return:
       type: Pl0.Vm.VmStepStatus
-    content.vb: Public Property Status As VmStepStatus
+    content.vb: Public ReadOnly Property Status As VmStepStatus
   overload: Pl0.Vm.VmStepResult.Status*
 - uid: Pl0.Vm.VmStepResult.Diagnostics
   commentId: P:Pl0.Vm.VmStepResult.Diagnostics
@@ -160,23 +240,157 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmStepResult.cs
-      branch: codex/003-constitution-change
+      branch: codex/006-embeddable-vm-nuget
       repo: https://github.com/hindermath/TinyPl0.git
     id: Diagnostics
     path: src/Pl0.Vm/VmStepResult.cs
-    startLine: 11
+    startLine: 29
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
-  summary: Diagnostics reported by the VM.
+  summary: Ruft sichere Diagnosen ab. / Gets safe diagnostics.
   example: []
   syntax:
-    content: public IReadOnlyList<VmDiagnostic> Diagnostics { get; init; }
+    content: public IReadOnlyList<VmDiagnostic> Diagnostics { get; }
     parameters: []
     return:
       type: System.Collections.Generic.IReadOnlyList{Pl0.Vm.VmDiagnostic}
-    content.vb: Public Property Diagnostics As IReadOnlyList(Of VmDiagnostic)
+    content.vb: Public ReadOnly Property Diagnostics As IReadOnlyList(Of VmDiagnostic)
   overload: Pl0.Vm.VmStepResult.Diagnostics*
+- uid: Pl0.Vm.VmStepResult.Reason
+  commentId: P:Pl0.Vm.VmStepResult.Reason
+  id: Reason
+  parent: Pl0.Vm.VmStepResult
+  langs:
+  - csharp
+  - vb
+  name: Reason
+  nameWithType: VmStepResult.Reason
+  fullName: Pl0.Vm.VmStepResult.Reason
+  type: Property
+  source:
+    remote:
+      path: src/Pl0.Vm/VmStepResult.cs
+      branch: codex/006-embeddable-vm-nuget
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: Reason
+    path: src/Pl0.Vm/VmStepResult.cs
+    startLine: 31
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  summary: Ruft den Abschlussgrund ab. / Gets the completion reason.
+  example: []
+  syntax:
+    content: public VmCompletionReason Reason { get; }
+    parameters: []
+    return:
+      type: Pl0.Vm.VmCompletionReason
+    content.vb: Public ReadOnly Property Reason As VmCompletionReason
+  overload: Pl0.Vm.VmStepResult.Reason*
+- uid: Pl0.Vm.VmStepResult.CompletionReason
+  commentId: P:Pl0.Vm.VmStepResult.CompletionReason
+  id: CompletionReason
+  parent: Pl0.Vm.VmStepResult
+  langs:
+  - csharp
+  - vb
+  name: CompletionReason
+  nameWithType: VmStepResult.CompletionReason
+  fullName: Pl0.Vm.VmStepResult.CompletionReason
+  type: Property
+  source:
+    remote:
+      path: src/Pl0.Vm/VmStepResult.cs
+      branch: codex/006-embeddable-vm-nuget
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: CompletionReason
+    path: src/Pl0.Vm/VmStepResult.cs
+    startLine: 33
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  summary: Ruft den Abschlussgrund unter dem Vertragsnamen ab. / Gets the completion reason by its contract name.
+  example: []
+  syntax:
+    content: public VmCompletionReason CompletionReason { get; }
+    parameters: []
+    return:
+      type: Pl0.Vm.VmCompletionReason
+    content.vb: Public ReadOnly Property CompletionReason As VmCompletionReason
+  overload: Pl0.Vm.VmStepResult.CompletionReason*
+- uid: Pl0.Vm.VmStepResult.ExecutedInstructions
+  commentId: P:Pl0.Vm.VmStepResult.ExecutedInstructions
+  id: ExecutedInstructions
+  parent: Pl0.Vm.VmStepResult
+  langs:
+  - csharp
+  - vb
+  name: ExecutedInstructions
+  nameWithType: VmStepResult.ExecutedInstructions
+  fullName: Pl0.Vm.VmStepResult.ExecutedInstructions
+  type: Property
+  source:
+    remote:
+      path: src/Pl0.Vm/VmStepResult.cs
+      branch: codex/006-embeddable-vm-nuget
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: ExecutedInstructions
+    path: src/Pl0.Vm/VmStepResult.cs
+    startLine: 35
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  summary: Ruft den Instruktionszähler ab. / Gets the instruction counter.
+  example: []
+  syntax:
+    content: public int ExecutedInstructions { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property ExecutedInstructions As Integer
+  overload: Pl0.Vm.VmStepResult.ExecutedInstructions*
+- uid: Pl0.Vm.VmStepResult.Deconstruct(Pl0.Vm.VmState@,Pl0.Vm.VmStepStatus@,System.Collections.Generic.IReadOnlyList{Pl0.Vm.VmDiagnostic}@)
+  commentId: M:Pl0.Vm.VmStepResult.Deconstruct(Pl0.Vm.VmState@,Pl0.Vm.VmStepStatus@,System.Collections.Generic.IReadOnlyList{Pl0.Vm.VmDiagnostic}@)
+  id: Deconstruct(Pl0.Vm.VmState@,Pl0.Vm.VmStepStatus@,System.Collections.Generic.IReadOnlyList{Pl0.Vm.VmDiagnostic}@)
+  parent: Pl0.Vm.VmStepResult
+  langs:
+  - csharp
+  - vb
+  name: Deconstruct(out VmState, out VmStepStatus, out IReadOnlyList<VmDiagnostic>)
+  nameWithType: VmStepResult.Deconstruct(out VmState, out VmStepStatus, out IReadOnlyList<VmDiagnostic>)
+  fullName: Pl0.Vm.VmStepResult.Deconstruct(out Pl0.Vm.VmState, out Pl0.Vm.VmStepStatus, out System.Collections.Generic.IReadOnlyList<Pl0.Vm.VmDiagnostic>)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Vm/VmStepResult.cs
+      branch: codex/006-embeddable-vm-nuget
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: Deconstruct
+    path: src/Pl0.Vm/VmStepResult.cs
+    startLine: 40
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  summary: Zerlegt das bisherige Ergebnisformat. / Deconstructs the previous result shape.
+  example: []
+  syntax:
+    content: public void Deconstruct(out VmState State, out VmStepStatus Status, out IReadOnlyList<VmDiagnostic> Diagnostics)
+    parameters:
+    - id: State
+      type: Pl0.Vm.VmState
+      description: Zustand. / State.
+    - id: Status
+      type: Pl0.Vm.VmStepStatus
+      description: Kompatibler Status. / Compatible status.
+    - id: Diagnostics
+      type: System.Collections.Generic.IReadOnlyList{Pl0.Vm.VmDiagnostic}
+      description: Defensive Diagnosefolge. / Defensive diagnostic sequence.
+    content.vb: Public Sub Deconstruct(State As VmState, Status As VmStepStatus, Diagnostics As IReadOnlyList(Of VmDiagnostic))
+  overload: Pl0.Vm.VmStepResult.Deconstruct*
+  nameWithType.vb: VmStepResult.Deconstruct(VmState, VmStepStatus, IReadOnlyList(Of VmDiagnostic))
+  fullName.vb: Pl0.Vm.VmStepResult.Deconstruct(Pl0.Vm.VmState, Pl0.Vm.VmStepStatus, System.Collections.Generic.IReadOnlyList(Of Pl0.Vm.VmDiagnostic))
+  name.vb: Deconstruct(VmState, VmStepStatus, IReadOnlyList(Of VmDiagnostic))
 references:
 - uid: Pl0.Vm
   commentId: N:Pl0.Vm
@@ -474,6 +688,27 @@ references:
   - name: " "
   - name: T
   - name: )
+- uid: Pl0.Vm.VmDiagnostic[]
+  isExternal: true
+  href: Pl0.Vm.VmDiagnostic.html
+  name: VmDiagnostic[]
+  nameWithType: VmDiagnostic[]
+  fullName: Pl0.Vm.VmDiagnostic[]
+  nameWithType.vb: VmDiagnostic()
+  fullName.vb: Pl0.Vm.VmDiagnostic()
+  name.vb: VmDiagnostic()
+  spec.csharp:
+  - uid: Pl0.Vm.VmDiagnostic
+    name: VmDiagnostic
+    href: Pl0.Vm.VmDiagnostic.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Pl0.Vm.VmDiagnostic
+    name: VmDiagnostic
+    href: Pl0.Vm.VmDiagnostic.html
+  - name: (
+  - name: )
 - uid: Pl0.Vm.VmStepResult.#ctor*
   commentId: Overload:Pl0.Vm.VmStepResult.#ctor
   href: Pl0.Vm.VmStepResult.html#Pl0_Vm_VmStepResult__ctor_Pl0_Vm_VmState_Pl0_Vm_VmStepStatus_System_Collections_Generic_IReadOnlyList_Pl0_Vm_VmDiagnostic__
@@ -595,6 +830,24 @@ references:
     name: Generic
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Pl0.Vm.VmCompletionReason
+  commentId: T:Pl0.Vm.VmCompletionReason
+  parent: Pl0.Vm
+  href: Pl0.Vm.VmCompletionReason.html
+  name: VmCompletionReason
+  nameWithType: VmCompletionReason
+  fullName: Pl0.Vm.VmCompletionReason
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
 - uid: Pl0.Vm.VmStepResult.State*
   commentId: Overload:Pl0.Vm.VmStepResult.State
   href: Pl0.Vm.VmStepResult.html#Pl0_Vm_VmStepResult_State
@@ -613,3 +866,27 @@ references:
   name: Diagnostics
   nameWithType: VmStepResult.Diagnostics
   fullName: Pl0.Vm.VmStepResult.Diagnostics
+- uid: Pl0.Vm.VmStepResult.Reason*
+  commentId: Overload:Pl0.Vm.VmStepResult.Reason
+  href: Pl0.Vm.VmStepResult.html#Pl0_Vm_VmStepResult_Reason
+  name: Reason
+  nameWithType: VmStepResult.Reason
+  fullName: Pl0.Vm.VmStepResult.Reason
+- uid: Pl0.Vm.VmStepResult.CompletionReason*
+  commentId: Overload:Pl0.Vm.VmStepResult.CompletionReason
+  href: Pl0.Vm.VmStepResult.html#Pl0_Vm_VmStepResult_CompletionReason
+  name: CompletionReason
+  nameWithType: VmStepResult.CompletionReason
+  fullName: Pl0.Vm.VmStepResult.CompletionReason
+- uid: Pl0.Vm.VmStepResult.ExecutedInstructions*
+  commentId: Overload:Pl0.Vm.VmStepResult.ExecutedInstructions
+  href: Pl0.Vm.VmStepResult.html#Pl0_Vm_VmStepResult_ExecutedInstructions
+  name: ExecutedInstructions
+  nameWithType: VmStepResult.ExecutedInstructions
+  fullName: Pl0.Vm.VmStepResult.ExecutedInstructions
+- uid: Pl0.Vm.VmStepResult.Deconstruct*
+  commentId: Overload:Pl0.Vm.VmStepResult.Deconstruct
+  href: Pl0.Vm.VmStepResult.html#Pl0_Vm_VmStepResult_Deconstruct_Pl0_Vm_VmState__Pl0_Vm_VmStepStatus__System_Collections_Generic_IReadOnlyList_Pl0_Vm_VmDiagnostic___
+  name: Deconstruct
+  nameWithType: VmStepResult.Deconstruct
+  fullName: Pl0.Vm.VmStepResult.Deconstruct

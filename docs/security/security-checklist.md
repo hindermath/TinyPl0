@@ -1,5 +1,21 @@
 # Sicherheits-Checkliste / Security Checklist: TinyPl0
 
+## Feature 006 / Feature 006
+
+- [x] Optionen und vollständiger P-Code werden vor Stackallokation validiert.
+- [x] Ein gemeinsamer Decoder verhindert Run-/Step-Drift.
+- [x] Cancellation und Budget wirken vor dem nächsten Dispatch.
+- [x] I/O-Diagnosen enthalten weder fremde Exception-Texte noch Stacktraces.
+- [x] Pakete enthalten nur die erlaubte exakte Abhängigkeit.
+- [x] CI-Actions sind vollständig gepinnt und Jobs nutzen kleinste Rechte.
+- [x] OIDC ist der einzige autorisierte Publish-Credentialpfad.
+- [x] SBOM, VEX, Provenienz und Paar-Hashes sind lokal reproduzierbar.
+
+*English: Feature 006 validates options and P-Code before allocation, uses one
+decoder, applies cancellation and budget before dispatch, sanitises I/O
+failures, restricts package dependencies, pins workflow actions, authorises
+OIDC only, and generates reproducible supply-chain evidence.*
+
 **Feature**: `004-secure-development-hardening`
 **Sprache / Language**: C# 14 / .NET 10; PowerShell 7; Bash; YAML/JSON
 **Reviewer**: independent security reviewer

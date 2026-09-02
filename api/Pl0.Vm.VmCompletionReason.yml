@@ -1,0 +1,412 @@
+### YamlMime:ManagedReference
+items:
+- uid: Pl0.Vm.VmCompletionReason
+  commentId: T:Pl0.Vm.VmCompletionReason
+  id: VmCompletionReason
+  parent: Pl0.Vm
+  children:
+  - Pl0.Vm.VmCompletionReason.ArithmeticFault
+  - Pl0.Vm.VmCompletionReason.Cancelled
+  - Pl0.Vm.VmCompletionReason.Halted
+  - Pl0.Vm.VmCompletionReason.InputEndOfStream
+  - Pl0.Vm.VmCompletionReason.InputFormatError
+  - Pl0.Vm.VmCompletionReason.InstructionBudgetExceeded
+  - Pl0.Vm.VmCompletionReason.InvalidConfiguration
+  - Pl0.Vm.VmCompletionReason.InvalidProgram
+  - Pl0.Vm.VmCompletionReason.IoFault
+  - Pl0.Vm.VmCompletionReason.Running
+  - Pl0.Vm.VmCompletionReason.RuntimeFault
+  - Pl0.Vm.VmCompletionReason.StackFault
+  langs:
+  - csharp
+  - vb
+  name: VmCompletionReason
+  nameWithType: VmCompletionReason
+  fullName: Pl0.Vm.VmCompletionReason
+  type: Enum
+  source:
+    remote:
+      path: src/Pl0.Vm/VmCompletionReason.cs
+      branch: codex/006-embeddable-vm-nuget
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: VmCompletionReason
+    path: src/Pl0.Vm/VmCompletionReason.cs
+    startLine: 7
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  summary: >-
+    Beschreibt den stabilen Abschlussgrund einer VM-Ausführung.
+
+
+    Describes the stable completion reason of a VM execution.
+  example: []
+  syntax:
+    content: public enum VmCompletionReason
+    content.vb: Public Enum VmCompletionReason
+- uid: Pl0.Vm.VmCompletionReason.Running
+  commentId: F:Pl0.Vm.VmCompletionReason.Running
+  id: Running
+  parent: Pl0.Vm.VmCompletionReason
+  langs:
+  - csharp
+  - vb
+  name: Running
+  nameWithType: VmCompletionReason.Running
+  fullName: Pl0.Vm.VmCompletionReason.Running
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/VmCompletionReason.cs
+      branch: codex/006-embeddable-vm-nuget
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: Running
+    path: src/Pl0.Vm/VmCompletionReason.cs
+    startLine: 10
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  summary: Die Ausführung läuft. / Execution is running.
+  example: []
+  syntax:
+    content: Running = 0
+    return:
+      type: Pl0.Vm.VmCompletionReason
+- uid: Pl0.Vm.VmCompletionReason.Halted
+  commentId: F:Pl0.Vm.VmCompletionReason.Halted
+  id: Halted
+  parent: Pl0.Vm.VmCompletionReason
+  langs:
+  - csharp
+  - vb
+  name: Halted
+  nameWithType: VmCompletionReason.Halted
+  fullName: Pl0.Vm.VmCompletionReason.Halted
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/VmCompletionReason.cs
+      branch: codex/006-embeddable-vm-nuget
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: Halted
+    path: src/Pl0.Vm/VmCompletionReason.cs
+    startLine: 12
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  summary: Das Programm wurde regulär beendet. / The program halted normally.
+  example: []
+  syntax:
+    content: Halted = 1
+    return:
+      type: Pl0.Vm.VmCompletionReason
+- uid: Pl0.Vm.VmCompletionReason.Cancelled
+  commentId: F:Pl0.Vm.VmCompletionReason.Cancelled
+  id: Cancelled
+  parent: Pl0.Vm.VmCompletionReason
+  langs:
+  - csharp
+  - vb
+  name: Cancelled
+  nameWithType: VmCompletionReason.Cancelled
+  fullName: Pl0.Vm.VmCompletionReason.Cancelled
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/VmCompletionReason.cs
+      branch: codex/006-embeddable-vm-nuget
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: Cancelled
+    path: src/Pl0.Vm/VmCompletionReason.cs
+    startLine: 14
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  summary: Die Ausführung wurde abgebrochen. / Execution was cancelled.
+  example: []
+  syntax:
+    content: Cancelled = 2
+    return:
+      type: Pl0.Vm.VmCompletionReason
+- uid: Pl0.Vm.VmCompletionReason.InstructionBudgetExceeded
+  commentId: F:Pl0.Vm.VmCompletionReason.InstructionBudgetExceeded
+  id: InstructionBudgetExceeded
+  parent: Pl0.Vm.VmCompletionReason
+  langs:
+  - csharp
+  - vb
+  name: InstructionBudgetExceeded
+  nameWithType: VmCompletionReason.InstructionBudgetExceeded
+  fullName: Pl0.Vm.VmCompletionReason.InstructionBudgetExceeded
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/VmCompletionReason.cs
+      branch: codex/006-embeddable-vm-nuget
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: InstructionBudgetExceeded
+    path: src/Pl0.Vm/VmCompletionReason.cs
+    startLine: 16
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  summary: Das Instruktionsbudget wurde erreicht. / The instruction budget was reached.
+  example: []
+  syntax:
+    content: InstructionBudgetExceeded = 3
+    return:
+      type: Pl0.Vm.VmCompletionReason
+- uid: Pl0.Vm.VmCompletionReason.InvalidConfiguration
+  commentId: F:Pl0.Vm.VmCompletionReason.InvalidConfiguration
+  id: InvalidConfiguration
+  parent: Pl0.Vm.VmCompletionReason
+  langs:
+  - csharp
+  - vb
+  name: InvalidConfiguration
+  nameWithType: VmCompletionReason.InvalidConfiguration
+  fullName: Pl0.Vm.VmCompletionReason.InvalidConfiguration
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/VmCompletionReason.cs
+      branch: codex/006-embeddable-vm-nuget
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: InvalidConfiguration
+    path: src/Pl0.Vm/VmCompletionReason.cs
+    startLine: 18
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  summary: Die Konfiguration ist ungültig. / The configuration is invalid.
+  example: []
+  syntax:
+    content: InvalidConfiguration = 4
+    return:
+      type: Pl0.Vm.VmCompletionReason
+- uid: Pl0.Vm.VmCompletionReason.InvalidProgram
+  commentId: F:Pl0.Vm.VmCompletionReason.InvalidProgram
+  id: InvalidProgram
+  parent: Pl0.Vm.VmCompletionReason
+  langs:
+  - csharp
+  - vb
+  name: InvalidProgram
+  nameWithType: VmCompletionReason.InvalidProgram
+  fullName: Pl0.Vm.VmCompletionReason.InvalidProgram
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/VmCompletionReason.cs
+      branch: codex/006-embeddable-vm-nuget
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: InvalidProgram
+    path: src/Pl0.Vm/VmCompletionReason.cs
+    startLine: 20
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  summary: Das P-Code-Programm ist ungültig. / The P-Code program is invalid.
+  example: []
+  syntax:
+    content: InvalidProgram = 5
+    return:
+      type: Pl0.Vm.VmCompletionReason
+- uid: Pl0.Vm.VmCompletionReason.StackFault
+  commentId: F:Pl0.Vm.VmCompletionReason.StackFault
+  id: StackFault
+  parent: Pl0.Vm.VmCompletionReason
+  langs:
+  - csharp
+  - vb
+  name: StackFault
+  nameWithType: VmCompletionReason.StackFault
+  fullName: Pl0.Vm.VmCompletionReason.StackFault
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/VmCompletionReason.cs
+      branch: codex/006-embeddable-vm-nuget
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: StackFault
+    path: src/Pl0.Vm/VmCompletionReason.cs
+    startLine: 22
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  summary: Ein Stackfehler ist aufgetreten. / A stack fault occurred.
+  example: []
+  syntax:
+    content: StackFault = 6
+    return:
+      type: Pl0.Vm.VmCompletionReason
+- uid: Pl0.Vm.VmCompletionReason.ArithmeticFault
+  commentId: F:Pl0.Vm.VmCompletionReason.ArithmeticFault
+  id: ArithmeticFault
+  parent: Pl0.Vm.VmCompletionReason
+  langs:
+  - csharp
+  - vb
+  name: ArithmeticFault
+  nameWithType: VmCompletionReason.ArithmeticFault
+  fullName: Pl0.Vm.VmCompletionReason.ArithmeticFault
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/VmCompletionReason.cs
+      branch: codex/006-embeddable-vm-nuget
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: ArithmeticFault
+    path: src/Pl0.Vm/VmCompletionReason.cs
+    startLine: 24
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  summary: Ein Rechenfehler ist aufgetreten. / An arithmetic fault occurred.
+  example: []
+  syntax:
+    content: ArithmeticFault = 7
+    return:
+      type: Pl0.Vm.VmCompletionReason
+- uid: Pl0.Vm.VmCompletionReason.InputEndOfStream
+  commentId: F:Pl0.Vm.VmCompletionReason.InputEndOfStream
+  id: InputEndOfStream
+  parent: Pl0.Vm.VmCompletionReason
+  langs:
+  - csharp
+  - vb
+  name: InputEndOfStream
+  nameWithType: VmCompletionReason.InputEndOfStream
+  fullName: Pl0.Vm.VmCompletionReason.InputEndOfStream
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/VmCompletionReason.cs
+      branch: codex/006-embeddable-vm-nuget
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: InputEndOfStream
+    path: src/Pl0.Vm/VmCompletionReason.cs
+    startLine: 26
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  summary: Die Eingabe ist beendet. / The input stream ended.
+  example: []
+  syntax:
+    content: InputEndOfStream = 8
+    return:
+      type: Pl0.Vm.VmCompletionReason
+- uid: Pl0.Vm.VmCompletionReason.InputFormatError
+  commentId: F:Pl0.Vm.VmCompletionReason.InputFormatError
+  id: InputFormatError
+  parent: Pl0.Vm.VmCompletionReason
+  langs:
+  - csharp
+  - vb
+  name: InputFormatError
+  nameWithType: VmCompletionReason.InputFormatError
+  fullName: Pl0.Vm.VmCompletionReason.InputFormatError
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/VmCompletionReason.cs
+      branch: codex/006-embeddable-vm-nuget
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: InputFormatError
+    path: src/Pl0.Vm/VmCompletionReason.cs
+    startLine: 28
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  summary: Das Eingabeformat ist ungültig. / The input format is invalid.
+  example: []
+  syntax:
+    content: InputFormatError = 9
+    return:
+      type: Pl0.Vm.VmCompletionReason
+- uid: Pl0.Vm.VmCompletionReason.IoFault
+  commentId: F:Pl0.Vm.VmCompletionReason.IoFault
+  id: IoFault
+  parent: Pl0.Vm.VmCompletionReason
+  langs:
+  - csharp
+  - vb
+  name: IoFault
+  nameWithType: VmCompletionReason.IoFault
+  fullName: Pl0.Vm.VmCompletionReason.IoFault
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/VmCompletionReason.cs
+      branch: codex/006-embeddable-vm-nuget
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: IoFault
+    path: src/Pl0.Vm/VmCompletionReason.cs
+    startLine: 30
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  summary: Die Host-Ein-/Ausgabe ist fehlgeschlagen. / Host input/output failed.
+  example: []
+  syntax:
+    content: IoFault = 10
+    return:
+      type: Pl0.Vm.VmCompletionReason
+- uid: Pl0.Vm.VmCompletionReason.RuntimeFault
+  commentId: F:Pl0.Vm.VmCompletionReason.RuntimeFault
+  id: RuntimeFault
+  parent: Pl0.Vm.VmCompletionReason
+  langs:
+  - csharp
+  - vb
+  name: RuntimeFault
+  nameWithType: VmCompletionReason.RuntimeFault
+  fullName: Pl0.Vm.VmCompletionReason.RuntimeFault
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/VmCompletionReason.cs
+      branch: codex/006-embeddable-vm-nuget
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: RuntimeFault
+    path: src/Pl0.Vm/VmCompletionReason.cs
+    startLine: 32
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  summary: Ein sonstiger Laufzeitfehler ist aufgetreten. / Another runtime fault occurred.
+  example: []
+  syntax:
+    content: RuntimeFault = 11
+    return:
+      type: Pl0.Vm.VmCompletionReason
+references:
+- uid: Pl0.Vm
+  commentId: N:Pl0.Vm
+  href: Pl0.html
+  name: Pl0.Vm
+  nameWithType: Pl0.Vm
+  fullName: Pl0.Vm
+  spec.csharp:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Vm
+    name: Vm
+    href: Pl0.Vm.html
+  spec.vb:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Vm
+    name: Vm
+    href: Pl0.Vm.html
+- uid: Pl0.Vm.VmCompletionReason
+  commentId: T:Pl0.Vm.VmCompletionReason
+  parent: Pl0.Vm
+  href: Pl0.Vm.VmCompletionReason.html
+  name: VmCompletionReason
+  nameWithType: VmCompletionReason
+  fullName: Pl0.Vm.VmCompletionReason

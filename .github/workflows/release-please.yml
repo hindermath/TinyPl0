@@ -2,20 +2,187 @@ name: Release Please
 
 on:
   push:
-    branches:
-      - main
-
-permissions:
-  contents: write
-  pull-requests: write
+    branches: [main]
+  workflow_dispatch:
 
 jobs:
   release-please:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+      pull-requests: write
+    outputs:
+      release_created: ${{ steps.release.outputs.release_created }}
+      version: ${{ steps.release.outputs.version }}
     steps:
-      # Pinned Node.js 24-capable upstream SHA until the next tagged v4 release targets node24.
-      - uses: googleapis/release-please-action@45996ed1f6d02564a971a2fa1b5860e934307cf7
+      - id: release
+        uses: googleapis/release-please-action@45996ed1f6d02564a971a2fa1b5860e934307cf7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
+
+  build-release:
+    needs: release-please
+    if: needs.release-please.outputs.release_created == 'true'
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      id-token: write
+      attestations: write
+    steps:
+      - name: Checkout released commit
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - name: Setup .NET
+        uses: actions/setup-dotnet@d4c94342e560b34958eacfc5d055d21461ed1c5d
+        with:
+          dotnet-version: "10.0.x"
+      - name: Pack and validate
+        shell: pwsh
+        run: ./scripts/Test-NuGetPackages.ps1 -Configuration Release -Version '${{ needs.release-please.outputs.version }}' -OutputDirectory artifacts/packages
+      - name: Create SBOM, VEX and provenance input
+        shell: pwsh
+        run: ./scripts/New-NuGetReleaseEvidence.ps1 -PackageDirectory artifacts/packages -OutputDirectory artifacts/release-evidence
+      - name: Attest packages
+        uses: actions/attest@508db95dd578ae2727ebd6217d5ba78e4fbda05d
+        with:
+          subject-path: |
+            artifacts/packages/*.nupkg
+            artifacts/packages/*.snupkg
+      - name: Upload immutable release set
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: nuget-release-${{ needs.release-please.outputs.version }}
+          path: |
+            artifacts/packages
+            artifacts/release-evidence
+          if-no-files-found: error
+
+  publish-nuget:
+    needs: [release-please, build-release]
+    runs-on: ubuntu-24.04
+    environment: nuget-release
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Download immutable release set
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: nuget-release-${{ needs.release-please.outputs.version }}
+          path: artifacts
+      - name: Fail-closed paired publication preflight
+        id: preflight
+        shell: pwsh
+        run: |
+          Set-StrictMode -Version Latest
+          $ErrorActionPreference = 'Stop'
+          $version = '${{ needs.release-please.outputs.version }}'.ToLowerInvariant()
+          $states = @{}
+          foreach ($id in @('tinypl0.core', 'tinypl0.vm')) {
+            $uri = "https://api.nuget.org/v3-flatcontainer/$id/$version/$id.$version.nupkg"
+            $response = Invoke-WebRequest -Uri $uri -Method Head -SkipHttpErrorCheck
+            $states[$id] = $response.StatusCode
+          }
+          if ($states['tinypl0.core'] -ne $states['tinypl0.vm']) {
+            throw 'Partial publication detected; refusing all pushes.'
+          }
+          if ($states['tinypl0.core'] -eq 200) {
+            throw 'Both immutable IDs already exist; a new SemVer and hash reconciliation are required.'
+          }
+          if ($states['tinypl0.core'] -ne 404) {
+            throw "Unknown NuGet.org response; refusing publication."
+          }
+          "state=None" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+      - name: Obtain short-lived NuGet credential through OIDC
+        id: nuget-login
+        uses: NuGet/login@8d196754b4036150537f80ac539e15c2f1028841
+        with:
+          user: ${{ vars.NUGET_USER }}
+      - name: Push both packages without duplicate bypass
+        shell: pwsh
+        env:
+          NUGET_API_KEY: ${{ steps.nuget-login.outputs.NUGET_API_KEY }}
+        run: |
+          Set-StrictMode -Version Latest
+          $ErrorActionPreference = 'Stop'
+          foreach ($id in @('Core', 'Vm')) {
+            dotnet nuget push "artifacts/packages/TinyPl0.$id.${{ needs.release-please.outputs.version }}.nupkg" --source https://api.nuget.org/v3/index.json --api-key $env:NUGET_API_KEY
+            if ($LASTEXITCODE -ne 0) { throw "NuGet push failed for TinyPl0.$id." }
+          }
+
+  verify-public:
+    needs: [release-please, build-release, publish-nuget]
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+    steps:
+      - name: Setup .NET
+        uses: actions/setup-dotnet@d4c94342e560b34958eacfc5d055d21461ed1c5d
+        with:
+          dotnet-version: "10.0.x"
+      - name: Download release evidence
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: nuget-release-${{ needs.release-please.outputs.version }}
+          path: artifacts
+      - name: Wait for both public IDs and record public hashes
+        shell: pwsh
+        run: |
+          Set-StrictMode -Version Latest
+          $ErrorActionPreference = 'Stop'
+          $version = '${{ needs.release-please.outputs.version }}'.ToLowerInvariant()
+          $publicPackages = @()
+          foreach ($name in @('Core', 'Vm')) {
+            $id = "tinypl0.$($name.ToLowerInvariant())"
+            $uri = "https://api.nuget.org/v3-flatcontainer/$id/$version/$id.$version.nupkg"
+            $target = Join-Path $env:RUNNER_TEMP "$id.$version.nupkg"
+            $success = $false
+            foreach ($attempt in 1..12) {
+              $response = Invoke-WebRequest -Uri $uri -OutFile $target -SkipHttpErrorCheck
+              if ($response.StatusCode -eq 200) { $success = $true; break }
+              Start-Sleep -Seconds ([Math]::Min(60, 5 * $attempt))
+            }
+            if (-not $success) { throw "Public package did not converge: $id $version" }
+            dotnet nuget verify $target --all
+            if ($LASTEXITCODE -ne 0) { throw "Public package signature verification failed: $id" }
+            $publicPackages += [ordered]@{
+              id = $id
+              version = $version
+              url = $uri
+              sha256 = (Get-FileHash $target -Algorithm SHA256).Hash.ToLowerInvariant()
+            }
+          }
+          $publicPackages | ConvertTo-Json -Depth 4 |
+            Set-Content artifacts/release-evidence/public-package-hashes.json -Encoding utf8NoBOM
+      - name: Clean public consumer restore and execution
+        shell: pwsh
+        run: |
+          Set-StrictMode -Version Latest
+          $ErrorActionPreference = 'Stop'
+          $root = Join-Path $env:RUNNER_TEMP 'public-consumer'
+          dotnet new console --framework net10.0 --output $root --no-restore
+          @"
+          <Project Sdk="Microsoft.NET.Sdk">
+            <PropertyGroup><OutputType>Exe</OutputType><TargetFramework>net10.0</TargetFramework><ImplicitUsings>enable</ImplicitUsings></PropertyGroup>
+            <ItemGroup>
+              <PackageReference Include="TinyPl0.Core" Version="${{ needs.release-please.outputs.version }}" />
+              <PackageReference Include="TinyPl0.Vm" Version="${{ needs.release-please.outputs.version }}" />
+            </ItemGroup>
+          </Project>
+          "@ | Set-Content (Join-Path $root 'public-consumer.csproj')
+          @'
+          using Pl0.Core;
+          using Pl0.Vm;
+          var result = new VirtualMachine().Run([new(Opcode.Opr, 0, 0)]);
+          return result.Reason == VmCompletionReason.Halted ? 0 : 1;
+          '@ | Set-Content (Join-Path $root 'Program.cs')
+          $packages = Join-Path $env:RUNNER_TEMP 'public-packages'
+          dotnet restore (Join-Path $root 'public-consumer.csproj') --source https://api.nuget.org/v3/index.json --packages $packages --no-cache
+          dotnet run --project (Join-Path $root 'public-consumer.csproj') --configuration Release
+      - name: Upload final evidence
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: nuget-public-evidence-${{ needs.release-please.outputs.version }}
+          path: artifacts
+          if-no-files-found: error

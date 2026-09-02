@@ -6,11 +6,18 @@ items:
   parent: Pl0.Vm
   children:
   - Pl0.Vm.VmState.#ctor(System.Int32,System.Int32,System.Int32,System.Int32[],System.Nullable{Pl0.Core.Instruction})
+  - Pl0.Vm.VmState.#ctor(System.Int32,System.Int32,System.Int32,System.Int32[],System.Nullable{Pl0.Core.Instruction},System.Int32)
   - Pl0.Vm.VmState.B
+  - Pl0.Vm.VmState.BasePointer
   - Pl0.Vm.VmState.CurrentInstruction
+  - Pl0.Vm.VmState.Deconstruct(System.Int32@,System.Int32@,System.Int32@,System.Int32[]@,System.Nullable{Pl0.Core.Instruction}@)
+  - Pl0.Vm.VmState.ExecutedInstructions
   - Pl0.Vm.VmState.P
+  - Pl0.Vm.VmState.ProgramCounter
   - Pl0.Vm.VmState.Stack
+  - Pl0.Vm.VmState.StackTop
   - Pl0.Vm.VmState.T
+  - Pl0.Vm.VmState.stack
   langs:
   - csharp
   - vb
@@ -21,15 +28,15 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmState.cs
-      branch: codex/003-constitution-change
+      branch: codex/006-embeddable-vm-nuget
       repo: https://github.com/hindermath/TinyPl0.git
     id: VmState
     path: src/Pl0.Vm/VmState.cs
-    startLine: 12
+    startLine: 5
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
-  summary: Snapshot of the current VM state.
+  summary: Unveränderliche Momentaufnahme des VM-Zustands. / Immutable snapshot of VM state.
   example: []
   syntax:
     content: 'public sealed record VmState : IEquatable<VmState>'
@@ -45,6 +52,33 @@ items:
   - System.Object.GetType
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
+- uid: Pl0.Vm.VmState.stack
+  commentId: F:Pl0.Vm.VmState.stack
+  id: stack
+  parent: Pl0.Vm.VmState
+  langs:
+  - csharp
+  - vb
+  name: stack
+  nameWithType: VmState.stack
+  fullName: Pl0.Vm.VmState.stack
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/VmState.cs
+      branch: codex/006-embeddable-vm-nuget
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: stack
+    path: src/Pl0.Vm/VmState.cs
+    startLine: 7
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private readonly int[] stack
+    return:
+      type: System.Int32[]
+    content.vb: Private ReadOnly stack As Integer()
 - uid: Pl0.Vm.VmState.#ctor(System.Int32,System.Int32,System.Int32,System.Int32[],System.Nullable{Pl0.Core.Instruction})
   commentId: M:Pl0.Vm.VmState.#ctor(System.Int32,System.Int32,System.Int32,System.Int32[],System.Nullable{Pl0.Core.Instruction})
   id: '#ctor(System.Int32,System.Int32,System.Int32,System.Int32[],System.Nullable{Pl0.Core.Instruction})'
@@ -59,39 +93,89 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmState.cs
-      branch: codex/003-constitution-change
+      branch: codex/006-embeddable-vm-nuget
       repo: https://github.com/hindermath/TinyPl0.git
     id: .ctor
     path: src/Pl0.Vm/VmState.cs
-    startLine: 12
+    startLine: 14
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
-  summary: Snapshot of the current VM state.
+  summary: Erstellt die bisherige Zustandsform. / Creates the previous state shape.
   example: []
   syntax:
     content: public VmState(int P, int B, int T, int[] Stack, Instruction? CurrentInstruction)
     parameters:
     - id: P
       type: System.Int32
-      description: Program counter.
+      description: Befehlszeiger. / Program counter.
     - id: B
       type: System.Int32
-      description: Base pointer.
+      description: Basiszeiger. / Base pointer.
     - id: T
       type: System.Int32
-      description: Top-of-stack pointer.
+      description: Stackzeiger. / Stack pointer.
     - id: Stack
       type: System.Int32[]
-      description: Stack snapshot.
+      description: Zu kopierender Stack. / Stack to copy.
     - id: CurrentInstruction
       type: System.Nullable{Pl0.Core.Instruction}
-      description: Instruction at the current program counter.
+      description: Nächste Instruktion. / Next instruction.
     content.vb: Public Sub New(P As Integer, B As Integer, T As Integer, Stack As Integer(), CurrentInstruction As Instruction?)
   overload: Pl0.Vm.VmState.#ctor*
   nameWithType.vb: VmState.New(Integer, Integer, Integer, Integer(), Instruction?)
   fullName.vb: Pl0.Vm.VmState.New(Integer, Integer, Integer, Integer(), Pl0.Core.Instruction?)
   name.vb: New(Integer, Integer, Integer, Integer(), Instruction?)
+- uid: Pl0.Vm.VmState.#ctor(System.Int32,System.Int32,System.Int32,System.Int32[],System.Nullable{Pl0.Core.Instruction},System.Int32)
+  commentId: M:Pl0.Vm.VmState.#ctor(System.Int32,System.Int32,System.Int32,System.Int32[],System.Nullable{Pl0.Core.Instruction},System.Int32)
+  id: '#ctor(System.Int32,System.Int32,System.Int32,System.Int32[],System.Nullable{Pl0.Core.Instruction},System.Int32)'
+  parent: Pl0.Vm.VmState
+  langs:
+  - csharp
+  - vb
+  name: VmState(int, int, int, int[], Instruction?, int)
+  nameWithType: VmState.VmState(int, int, int, int[], Instruction?, int)
+  fullName: Pl0.Vm.VmState.VmState(int, int, int, int[], Pl0.Core.Instruction?, int)
+  type: Constructor
+  source:
+    remote:
+      path: src/Pl0.Vm/VmState.cs
+      branch: codex/006-embeddable-vm-nuget
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: .ctor
+    path: src/Pl0.Vm/VmState.cs
+    startLine: 23
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  summary: Erstellt einen Zustand mit Zähler. / Creates a state with a counter.
+  example: []
+  syntax:
+    content: public VmState(int P, int B, int T, int[] Stack, Instruction? CurrentInstruction, int ExecutedInstructions)
+    parameters:
+    - id: P
+      type: System.Int32
+      description: Befehlszeiger. / Program counter.
+    - id: B
+      type: System.Int32
+      description: Basiszeiger. / Base pointer.
+    - id: T
+      type: System.Int32
+      description: Stackzeiger. / Stack pointer.
+    - id: Stack
+      type: System.Int32[]
+      description: Zu kopierender Stack. / Stack to copy.
+    - id: CurrentInstruction
+      type: System.Nullable{Pl0.Core.Instruction}
+      description: Nächste Instruktion. / Next instruction.
+    - id: ExecutedInstructions
+      type: System.Int32
+      description: Begonnene Instruktionen. / Started instructions.
+    content.vb: Public Sub New(P As Integer, B As Integer, T As Integer, Stack As Integer(), CurrentInstruction As Instruction?, ExecutedInstructions As Integer)
+  overload: Pl0.Vm.VmState.#ctor*
+  nameWithType.vb: VmState.New(Integer, Integer, Integer, Integer(), Instruction?, Integer)
+  fullName.vb: Pl0.Vm.VmState.New(Integer, Integer, Integer, Integer(), Pl0.Core.Instruction?, Integer)
+  name.vb: New(Integer, Integer, Integer, Integer(), Instruction?, Integer)
 - uid: Pl0.Vm.VmState.P
   commentId: P:Pl0.Vm.VmState.P
   id: P
@@ -106,22 +190,22 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmState.cs
-      branch: codex/003-constitution-change
+      branch: codex/006-embeddable-vm-nuget
       repo: https://github.com/hindermath/TinyPl0.git
     id: P
     path: src/Pl0.Vm/VmState.cs
-    startLine: 13
+    startLine: 29
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
-  summary: Program counter.
+  summary: Ruft P ab. / Gets P.
   example: []
   syntax:
-    content: public int P { get; init; }
+    content: public int P { get; }
     parameters: []
     return:
       type: System.Int32
-    content.vb: Public Property P As Integer
+    content.vb: Public ReadOnly Property P As Integer
   overload: Pl0.Vm.VmState.P*
 - uid: Pl0.Vm.VmState.B
   commentId: P:Pl0.Vm.VmState.B
@@ -137,22 +221,22 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmState.cs
-      branch: codex/003-constitution-change
+      branch: codex/006-embeddable-vm-nuget
       repo: https://github.com/hindermath/TinyPl0.git
     id: B
     path: src/Pl0.Vm/VmState.cs
-    startLine: 14
+    startLine: 31
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
-  summary: Base pointer.
+  summary: Ruft B ab. / Gets B.
   example: []
   syntax:
-    content: public int B { get; init; }
+    content: public int B { get; }
     parameters: []
     return:
       type: System.Int32
-    content.vb: Public Property B As Integer
+    content.vb: Public ReadOnly Property B As Integer
   overload: Pl0.Vm.VmState.B*
 - uid: Pl0.Vm.VmState.T
   commentId: P:Pl0.Vm.VmState.T
@@ -168,22 +252,22 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmState.cs
-      branch: codex/003-constitution-change
+      branch: codex/006-embeddable-vm-nuget
       repo: https://github.com/hindermath/TinyPl0.git
     id: T
     path: src/Pl0.Vm/VmState.cs
-    startLine: 15
+    startLine: 33
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
-  summary: Top-of-stack pointer.
+  summary: Ruft T ab. / Gets T.
   example: []
   syntax:
-    content: public int T { get; init; }
+    content: public int T { get; }
     parameters: []
     return:
       type: System.Int32
-    content.vb: Public Property T As Integer
+    content.vb: Public ReadOnly Property T As Integer
   overload: Pl0.Vm.VmState.T*
 - uid: Pl0.Vm.VmState.Stack
   commentId: P:Pl0.Vm.VmState.Stack
@@ -199,22 +283,22 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmState.cs
-      branch: codex/003-constitution-change
+      branch: codex/006-embeddable-vm-nuget
       repo: https://github.com/hindermath/TinyPl0.git
     id: Stack
     path: src/Pl0.Vm/VmState.cs
-    startLine: 16
+    startLine: 35
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
-  summary: Stack snapshot.
+  summary: Ruft eine defensive Stackkopie ab. / Gets a defensive stack copy.
   example: []
   syntax:
-    content: public int[] Stack { get; init; }
+    content: public int[] Stack { get; }
     parameters: []
     return:
       type: System.Int32[]
-    content.vb: Public Property Stack As Integer()
+    content.vb: Public ReadOnly Property Stack As Integer()
   overload: Pl0.Vm.VmState.Stack*
 - uid: Pl0.Vm.VmState.CurrentInstruction
   commentId: P:Pl0.Vm.VmState.CurrentInstruction
@@ -230,23 +314,194 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmState.cs
-      branch: codex/003-constitution-change
+      branch: codex/006-embeddable-vm-nuget
       repo: https://github.com/hindermath/TinyPl0.git
     id: CurrentInstruction
     path: src/Pl0.Vm/VmState.cs
-    startLine: 17
+    startLine: 37
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
-  summary: Instruction at the current program counter.
+  summary: Ruft die nächste Instruktion ab. / Gets the next instruction.
   example: []
   syntax:
-    content: public Instruction? CurrentInstruction { get; init; }
+    content: public Instruction? CurrentInstruction { get; }
     parameters: []
     return:
       type: System.Nullable{Pl0.Core.Instruction}
-    content.vb: Public Property CurrentInstruction As Instruction?
+    content.vb: Public ReadOnly Property CurrentInstruction As Instruction?
   overload: Pl0.Vm.VmState.CurrentInstruction*
+- uid: Pl0.Vm.VmState.ExecutedInstructions
+  commentId: P:Pl0.Vm.VmState.ExecutedInstructions
+  id: ExecutedInstructions
+  parent: Pl0.Vm.VmState
+  langs:
+  - csharp
+  - vb
+  name: ExecutedInstructions
+  nameWithType: VmState.ExecutedInstructions
+  fullName: Pl0.Vm.VmState.ExecutedInstructions
+  type: Property
+  source:
+    remote:
+      path: src/Pl0.Vm/VmState.cs
+      branch: codex/006-embeddable-vm-nuget
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: ExecutedInstructions
+    path: src/Pl0.Vm/VmState.cs
+    startLine: 39
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  summary: Ruft den Instruktionszähler ab. / Gets the instruction counter.
+  example: []
+  syntax:
+    content: public int ExecutedInstructions { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property ExecutedInstructions As Integer
+  overload: Pl0.Vm.VmState.ExecutedInstructions*
+- uid: Pl0.Vm.VmState.ProgramCounter
+  commentId: P:Pl0.Vm.VmState.ProgramCounter
+  id: ProgramCounter
+  parent: Pl0.Vm.VmState
+  langs:
+  - csharp
+  - vb
+  name: ProgramCounter
+  nameWithType: VmState.ProgramCounter
+  fullName: Pl0.Vm.VmState.ProgramCounter
+  type: Property
+  source:
+    remote:
+      path: src/Pl0.Vm/VmState.cs
+      branch: codex/006-embeddable-vm-nuget
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: ProgramCounter
+    path: src/Pl0.Vm/VmState.cs
+    startLine: 41
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  summary: Ruft den Befehlszeiger unter beschreibendem Namen ab. / Gets the program counter by its descriptive name.
+  example: []
+  syntax:
+    content: public int ProgramCounter { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property ProgramCounter As Integer
+  overload: Pl0.Vm.VmState.ProgramCounter*
+- uid: Pl0.Vm.VmState.BasePointer
+  commentId: P:Pl0.Vm.VmState.BasePointer
+  id: BasePointer
+  parent: Pl0.Vm.VmState
+  langs:
+  - csharp
+  - vb
+  name: BasePointer
+  nameWithType: VmState.BasePointer
+  fullName: Pl0.Vm.VmState.BasePointer
+  type: Property
+  source:
+    remote:
+      path: src/Pl0.Vm/VmState.cs
+      branch: codex/006-embeddable-vm-nuget
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: BasePointer
+    path: src/Pl0.Vm/VmState.cs
+    startLine: 43
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  summary: Ruft den Basiszeiger unter beschreibendem Namen ab. / Gets the base pointer by its descriptive name.
+  example: []
+  syntax:
+    content: public int BasePointer { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property BasePointer As Integer
+  overload: Pl0.Vm.VmState.BasePointer*
+- uid: Pl0.Vm.VmState.StackTop
+  commentId: P:Pl0.Vm.VmState.StackTop
+  id: StackTop
+  parent: Pl0.Vm.VmState
+  langs:
+  - csharp
+  - vb
+  name: StackTop
+  nameWithType: VmState.StackTop
+  fullName: Pl0.Vm.VmState.StackTop
+  type: Property
+  source:
+    remote:
+      path: src/Pl0.Vm/VmState.cs
+      branch: codex/006-embeddable-vm-nuget
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: StackTop
+    path: src/Pl0.Vm/VmState.cs
+    startLine: 45
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  summary: Ruft den Stackzeiger unter beschreibendem Namen ab. / Gets the stack top by its descriptive name.
+  example: []
+  syntax:
+    content: public int StackTop { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property StackTop As Integer
+  overload: Pl0.Vm.VmState.StackTop*
+- uid: Pl0.Vm.VmState.Deconstruct(System.Int32@,System.Int32@,System.Int32@,System.Int32[]@,System.Nullable{Pl0.Core.Instruction}@)
+  commentId: M:Pl0.Vm.VmState.Deconstruct(System.Int32@,System.Int32@,System.Int32@,System.Int32[]@,System.Nullable{Pl0.Core.Instruction}@)
+  id: Deconstruct(System.Int32@,System.Int32@,System.Int32@,System.Int32[]@,System.Nullable{Pl0.Core.Instruction}@)
+  parent: Pl0.Vm.VmState
+  langs:
+  - csharp
+  - vb
+  name: Deconstruct(out int, out int, out int, out int[], out Instruction?)
+  nameWithType: VmState.Deconstruct(out int, out int, out int, out int[], out Instruction?)
+  fullName: Pl0.Vm.VmState.Deconstruct(out int, out int, out int, out int[], out Pl0.Core.Instruction?)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Vm/VmState.cs
+      branch: codex/006-embeddable-vm-nuget
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: Deconstruct
+    path: src/Pl0.Vm/VmState.cs
+    startLine: 52
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  summary: Zerlegt die bisherige Zustandsform. / Deconstructs the previous state shape.
+  example: []
+  syntax:
+    content: public void Deconstruct(out int P, out int B, out int T, out int[] Stack, out Instruction? CurrentInstruction)
+    parameters:
+    - id: P
+      type: System.Int32
+      description: Befehlszeiger. / Program counter.
+    - id: B
+      type: System.Int32
+      description: Basiszeiger. / Base pointer.
+    - id: T
+      type: System.Int32
+      description: Stackzeiger. / Stack pointer.
+    - id: Stack
+      type: System.Int32[]
+      description: Defensive Stackkopie. / Defensive stack copy.
+    - id: CurrentInstruction
+      type: System.Nullable{Pl0.Core.Instruction}
+      description: Nächste Instruktion. / Next instruction.
+    content.vb: Public Sub Deconstruct(P As Integer, B As Integer, T As Integer, Stack As Integer(), CurrentInstruction As Instruction?)
+  overload: Pl0.Vm.VmState.Deconstruct*
+  nameWithType.vb: VmState.Deconstruct(Integer, Integer, Integer, Integer(), Instruction?)
+  fullName.vb: Pl0.Vm.VmState.Deconstruct(Integer, Integer, Integer, Integer(), Pl0.Core.Instruction?)
+  name.vb: Deconstruct(Integer, Integer, Integer, Integer(), Instruction?)
 references:
 - uid: Pl0.Vm
   commentId: N:Pl0.Vm
@@ -544,26 +799,6 @@ references:
   - name: " "
   - name: T
   - name: )
-- uid: Pl0.Vm.VmState.#ctor*
-  commentId: Overload:Pl0.Vm.VmState.#ctor
-  href: Pl0.Vm.VmState.html#Pl0_Vm_VmState__ctor_System_Int32_System_Int32_System_Int32_System_Int32___System_Nullable_Pl0_Core_Instruction__
-  name: VmState
-  nameWithType: VmState.VmState
-  fullName: Pl0.Vm.VmState.VmState
-  nameWithType.vb: VmState.New
-  fullName.vb: Pl0.Vm.VmState.New
-  name.vb: New
-- uid: System.Int32
-  commentId: T:System.Int32
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.int32
-  name: int
-  nameWithType: int
-  fullName: int
-  nameWithType.vb: Integer
-  fullName.vb: Integer
-  name.vb: Integer
 - uid: System.Int32[]
   isExternal: true
   href: https://learn.microsoft.com/dotnet/api/system.int32
@@ -587,6 +822,26 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.int32
   - name: (
   - name: )
+- uid: Pl0.Vm.VmState.#ctor*
+  commentId: Overload:Pl0.Vm.VmState.#ctor
+  href: Pl0.Vm.VmState.html#Pl0_Vm_VmState__ctor_System_Int32_System_Int32_System_Int32_System_Int32___System_Nullable_Pl0_Core_Instruction__
+  name: VmState
+  nameWithType: VmState.VmState
+  fullName: Pl0.Vm.VmState.VmState
+  nameWithType.vb: VmState.New
+  fullName.vb: Pl0.Vm.VmState.New
+  name.vb: New
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
 - uid: System.Nullable{Pl0.Core.Instruction}
   commentId: T:System.Nullable{Pl0.Core.Instruction}
   parent: System
@@ -663,3 +918,33 @@ references:
   name: CurrentInstruction
   nameWithType: VmState.CurrentInstruction
   fullName: Pl0.Vm.VmState.CurrentInstruction
+- uid: Pl0.Vm.VmState.ExecutedInstructions*
+  commentId: Overload:Pl0.Vm.VmState.ExecutedInstructions
+  href: Pl0.Vm.VmState.html#Pl0_Vm_VmState_ExecutedInstructions
+  name: ExecutedInstructions
+  nameWithType: VmState.ExecutedInstructions
+  fullName: Pl0.Vm.VmState.ExecutedInstructions
+- uid: Pl0.Vm.VmState.ProgramCounter*
+  commentId: Overload:Pl0.Vm.VmState.ProgramCounter
+  href: Pl0.Vm.VmState.html#Pl0_Vm_VmState_ProgramCounter
+  name: ProgramCounter
+  nameWithType: VmState.ProgramCounter
+  fullName: Pl0.Vm.VmState.ProgramCounter
+- uid: Pl0.Vm.VmState.BasePointer*
+  commentId: Overload:Pl0.Vm.VmState.BasePointer
+  href: Pl0.Vm.VmState.html#Pl0_Vm_VmState_BasePointer
+  name: BasePointer
+  nameWithType: VmState.BasePointer
+  fullName: Pl0.Vm.VmState.BasePointer
+- uid: Pl0.Vm.VmState.StackTop*
+  commentId: Overload:Pl0.Vm.VmState.StackTop
+  href: Pl0.Vm.VmState.html#Pl0_Vm_VmState_StackTop
+  name: StackTop
+  nameWithType: VmState.StackTop
+  fullName: Pl0.Vm.VmState.StackTop
+- uid: Pl0.Vm.VmState.Deconstruct*
+  commentId: Overload:Pl0.Vm.VmState.Deconstruct
+  href: Pl0.Vm.VmState.html#Pl0_Vm_VmState_Deconstruct_System_Int32__System_Int32__System_Int32__System_Int32____System_Nullable_Pl0_Core_Instruction___
+  name: Deconstruct
+  nameWithType: VmState.Deconstruct
+  fullName: Pl0.Vm.VmState.Deconstruct

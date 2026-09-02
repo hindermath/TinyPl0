@@ -212,11 +212,17 @@ items:
   - uid: Pl0.Vm.VirtualMachineOptions
     name: VirtualMachineOptions
     type: Class
+  - uid: Pl0.Vm.VmCompletionReason
+    name: VmCompletionReason
+    type: Enum
   - uid: Pl0.Vm.VmDiagnostic
     name: VmDiagnostic
     type: Struct
   - uid: Pl0.Vm.VmExecutionResult
     name: VmExecutionResult
+    type: Class
+  - uid: Pl0.Vm.VmExecutionSession
+    name: VmExecutionSession
     type: Class
   - uid: Pl0.Vm.VmState
     name: VmState

@@ -12,6 +12,7 @@ const pages = [
   ['Startseite', '/index.html'],
   ['VirtualMachineOptions API', '/api/Pl0.Vm.VirtualMachineOptions.html'],
   ['VirtualMachine API', '/api/Pl0.Vm.VirtualMachine.html'],
+  ['VmExecutionSession API', '/api/Pl0.Vm.VmExecutionSession.html'],
 ];
 const results = [];
 const execFileAsync = promisify(execFile);
@@ -99,6 +100,7 @@ test.afterAll(async () => {
       const dumps = [
         ['api/Pl0.Vm.VirtualMachineOptions.html', '/private/tmp/tinypl0-004-virtual-machine-options.txt', ['VirtualMachineOptions', 'InstructionBudget', 'StackSize']],
         ['api/Pl0.Vm.VirtualMachine.html', '/private/tmp/tinypl0-004-virtual-machine.txt', ['VirtualMachine', 'Run', 'CultureNotFoundException']],
+        ['api/Pl0.Vm.VmExecutionSession.html', '/private/tmp/tinypl0-006-vm-execution-session.txt', ['VmExecutionSession', 'ExecuteNext', 'CancellationToken']],
       ];
       for (const [path, outputPath, tokens] of dumps) {
         const { stdout } = await execFileAsync('lynx', ['-dump', '-nolist', `${baseUrl}/${path}`]);
