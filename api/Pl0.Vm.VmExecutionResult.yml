@@ -162,7 +162,7 @@ items:
       repo: https://github.com/hindermath/TinyPl0.git
     id: .ctor
     path: src/Pl0.Vm/VmExecutionResult.cs
-    startLine: 21
+    startLine: 22
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -212,7 +212,7 @@ items:
       repo: https://github.com/hindermath/TinyPl0.git
     id: StackSnapshot
     path: src/Pl0.Vm/VmExecutionResult.cs
-    startLine: 26
+    startLine: 29
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -243,7 +243,7 @@ items:
       repo: https://github.com/hindermath/TinyPl0.git
     id: Top
     path: src/Pl0.Vm/VmExecutionResult.cs
-    startLine: 28
+    startLine: 31
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -274,7 +274,7 @@ items:
       repo: https://github.com/hindermath/TinyPl0.git
     id: Diagnostics
     path: src/Pl0.Vm/VmExecutionResult.cs
-    startLine: 30
+    startLine: 33
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -305,7 +305,7 @@ items:
       repo: https://github.com/hindermath/TinyPl0.git
     id: Reason
     path: src/Pl0.Vm/VmExecutionResult.cs
-    startLine: 32
+    startLine: 35
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -336,7 +336,7 @@ items:
       repo: https://github.com/hindermath/TinyPl0.git
     id: CompletionReason
     path: src/Pl0.Vm/VmExecutionResult.cs
-    startLine: 34
+    startLine: 37
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -367,7 +367,7 @@ items:
       repo: https://github.com/hindermath/TinyPl0.git
     id: ExecutedInstructions
     path: src/Pl0.Vm/VmExecutionResult.cs
-    startLine: 36
+    startLine: 39
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -398,7 +398,7 @@ items:
       repo: https://github.com/hindermath/TinyPl0.git
     id: State
     path: src/Pl0.Vm/VmExecutionResult.cs
-    startLine: 38
+    startLine: 41
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -429,7 +429,7 @@ items:
       repo: https://github.com/hindermath/TinyPl0.git
     id: Success
     path: src/Pl0.Vm/VmExecutionResult.cs
-    startLine: 40
+    startLine: 43
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm

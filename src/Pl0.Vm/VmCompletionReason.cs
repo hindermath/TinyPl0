@@ -1,13 +1,13 @@
 namespace Pl0.Vm;
 
 /// <summary>
-/// Beschreibt den stabilen Abschlussgrund einer VM-Ausführung.
+/// Beschreibt den stabilen Ausführungszustand oder Abschlussgrund einer VM-Ausführung.
 ///
-/// Describes the stable completion reason of a VM execution.
+/// Describes the stable execution state or completion reason of a VM execution.
 /// </summary>
 public enum VmCompletionReason
 {
-    /// <summary>Die Ausführung läuft. / Execution is running.</summary>
+    /// <summary>Die Ausführung läuft und ist noch nicht terminal. / Execution is running and is not terminal yet.</summary>
     Running = 0,
     /// <summary>Das Programm wurde regulär beendet. / The program halted normally.</summary>
     Halted = 1,

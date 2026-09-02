@@ -28,9 +28,4 @@
   <ItemGroup>
     <None Include="..\..\docs\nuget\TinyPl0.Vm.README.md" Pack="true" PackagePath="README.md" />
   </ItemGroup>
-  <Target Name="UseExactCorePackageVersion" BeforeTargets="GenerateNuspec">
-    <ItemGroup>
-      <ProjectReference Update="..\Pl0.Core\Pl0.Core.csproj" ProjectVersion="[$(TinyPl0PackageVersion)]" />
-    </ItemGroup>
-  </Target>
 </Project>
