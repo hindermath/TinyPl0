@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "2.0",
+  "schemaVersion": "1.0",
   "featurePath": "specs/006-embeddable-vm-nuget",
   "declaredAt": "2026-09-02T18:30:00Z",
   "gates": [

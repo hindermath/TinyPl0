@@ -52,3 +52,15 @@ before every local build or test run. The Windows CI finding was fixed with
 platform-neutral temporary test paths and rechecked with a focused test; the
 PR-ready version is `1.6.510.72`. The IDE still uses the public step interface
 and keeps its visible runtime behavior.*
+
+155. Agent (2026-09-02): Die Schemaangabe der Gate-Anforderungen wurde vor dem
+Release-Closeout an den installierten Vertrag `1.0` angeglichen; die
+lebenszyklusgebundene PreMerge- und PostMerge-Evidenz verwendet weiterhin
+Schema `2.0`. Für die beiden kausalen Release-Closeout-Commits wurde die
+IDE-Version ohne Produkt-Build oder Testlauf auf `1.6.512.72` ausgerichtet.
+
+*Before release closeout, the gate-requirements schema declaration was aligned
+with the installed `1.0` contract; lifecycle-bound PreMerge and PostMerge
+evidence continues to use schema `2.0`. For the two causal release-closeout
+commits, the IDE version was aligned to `1.6.512.72` without a product build or
+test run.*
