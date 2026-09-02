@@ -3,6 +3,7 @@ import { expect, test } from '@playwright/test';
 import { execFile } from 'node:child_process';
 import { readFile, stat, writeFile } from 'node:fs/promises';
 import { createServer } from 'node:http';
+import { tmpdir } from 'node:os';
 import { extname, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { promisify } from 'node:util';
@@ -98,9 +99,9 @@ test.afterAll(async () => {
 
     if (manageServer) {
       const dumps = [
-        ['api/Pl0.Vm.VirtualMachineOptions.html', '/private/tmp/tinypl0-004-virtual-machine-options.txt', ['VirtualMachineOptions', 'InstructionBudget', 'StackSize']],
-        ['api/Pl0.Vm.VirtualMachine.html', '/private/tmp/tinypl0-004-virtual-machine.txt', ['VirtualMachine', 'Run', 'CultureNotFoundException']],
-        ['api/Pl0.Vm.VmExecutionSession.html', '/private/tmp/tinypl0-006-vm-execution-session.txt', ['VmExecutionSession', 'ExecuteNext', 'CancellationToken']],
+        ['api/Pl0.Vm.VirtualMachineOptions.html', resolve(tmpdir(), 'tinypl0-004-virtual-machine-options.txt'), ['VirtualMachineOptions', 'InstructionBudget', 'StackSize']],
+        ['api/Pl0.Vm.VirtualMachine.html', resolve(tmpdir(), 'tinypl0-004-virtual-machine.txt'), ['VirtualMachine', 'Run', 'CultureNotFoundException']],
+        ['api/Pl0.Vm.VmExecutionSession.html', resolve(tmpdir(), 'tinypl0-006-vm-execution-session.txt'), ['VmExecutionSession', 'ExecuteNext', 'CancellationToken']],
       ];
       for (const [path, outputPath, tokens] of dumps) {
         const { stdout } = await execFileAsync('lynx', ['-dump', '-nolist', `${baseUrl}/${path}`]);

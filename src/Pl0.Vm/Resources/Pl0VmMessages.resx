@@ -65,14 +65,18 @@
   </data>
   <data name="Vm_E209_InvalidMaximumProgramLength" xml:space="preserve">
     <value>Die maximale Programmlänge muss zwischen 1 und 100.000 liegen.</value>
+    <comment>Code 209 bleibt für Validierungsfehler an P-Code-Programmen reserviert.</comment>
   </data>
   <data name="Vm_E209_InvalidProgram" xml:space="preserve">
     <value>Ungültiges P-Code-Programm: {0}.</value>
+    <comment>Code 209 bündelt ungültige Programmstruktur und ungültige Programmlänge.</comment>
   </data>
   <data name="Vm_E210_Cancelled" xml:space="preserve">
     <value>Die VM-Ausführung wurde abgebrochen.</value>
+    <comment>Code 210 bleibt für die kontrollierte Cancellation-Grenze reserviert.</comment>
   </data>
   <data name="Vm_E211_IoFailure" xml:space="preserve">
     <value>Die Host-Ein-/Ausgabe ist fehlgeschlagen.</value>
+    <comment>Code 211 bleibt für bereinigte Fehler an der Host-I/O-Grenze reserviert.</comment>
   </data>
 </root>
