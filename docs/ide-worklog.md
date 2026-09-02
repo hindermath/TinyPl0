@@ -64,3 +64,14 @@ with the installed `1.0` contract; lifecycle-bound PreMerge and PostMerge
 evidence continues to use schema `2.0`. For the two causal release-closeout
 commits, the IDE version was aligned to `1.6.512.72` without a product build or
 test run.*
+
+156. Agent (2026-09-02): Nach der erfolgreichen OIDC-Veröffentlichung wurde
+der öffentliche NuGet-Prüfpfad für repository-signierte Pakete und eine eng
+begrenzte, veröffentlichungsfreie Wiederaufnahme korrigiert. Für den
+zugehörigen Abschluss- und Review-Korrektur-Commits wurde die IDE-Version ohne
+Produkt-Build oder Testlauf auf `1.6.518.72` ausgerichtet.
+
+*After successful OIDC publication, the public NuGet verification path was
+corrected for repository-signed packages and a narrowly scoped recovery that
+cannot republish. The IDE version was aligned to `1.6.518.72` for the related
+closeout and review-fix commits without a product build or test run.*
