@@ -55,7 +55,7 @@
 - [x] T039 Increment governed IDE build before each local build/test and run Release build/test/coverage.
 - [x] T040 Run parity, packaging, consumer, security, dependency and evidence gates.
 - [x] T041 Freeze and validate the intended delivery set; align IDE version after PR allocation.
-- [ ] T042 Commit, push and open exactly one feature PR.
+- [x] T042 Commit, push and open exactly one feature PR.
 - [ ] T043 Converge exact-head checks, independent approval and review threads.
 - [ ] T044 Generate and validate temporary schema-2.0 PreMerge evidence for the exact head.
 - [ ] T045 Merge with narrowly authorized Admin Bypass only if every prior gate passes, then sync main.

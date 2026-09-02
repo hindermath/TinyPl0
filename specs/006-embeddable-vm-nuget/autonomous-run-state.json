@@ -28,8 +28,8 @@
   ],
   "tasks": {
     "path": "specs/006-embeddable-vm-nuget/tasks.md",
-    "sha256": "382b21273315129560aa542a4218f31df14ca0bb0c180550d6021497f63ac277",
-    "completed": 41,
+    "sha256": "f0b41517534076c19c11149028354136cf172969867d4b533ad5e967d622a2aa",
+    "completed": 42,
     "total": 50
   },
   "routing": {
@@ -140,7 +140,7 @@
         "exitCode": 0,
         "updatedAt": "2026-09-02T18:22:00Z",
         "resultPath": ".specify/runtime/autonomous-routing/a01cd5bd-fa86-49f1-b074-cb59a9c24862/tasks.result.json",
-        "resultSha256": "d96fb28a591dbe7adba5a1083a4113100460c1e461cb8320bd21c01fa3d55f90"
+        "resultSha256": "87c088be25e5a30d90d58c7f40abac5e4a35232ac3f03282b24640713c395f3a"
       },
       {
         "phaseId": "analyze",
@@ -190,8 +190,8 @@
       }
     ]
   },
-  "lastPassingGate": "T041: intended delivery set, secret scan, staged diff and commit-target IDE version validated",
-  "nextExactAction": "Amend rendered statistics, push and open the single feature PR.",
+  "lastPassingGate": "T042: one feature commit pushed and exactly one feature PR opened as PR #79",
+  "nextExactAction": "Freeze the final PR head and converge CI, independent approval and review threads.",
   "lastOperation": {
     "kind": "LocalImplementation",
     "state": "Completed",
@@ -208,5 +208,5 @@
     "postMergeActions": "Pending",
     "finalValidation": "Pending"
   },
-  "updatedAt": "2026-09-02T19:10:16Z"
+  "updatedAt": "2026-09-02T19:11:46Z"
 }

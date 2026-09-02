@@ -42,12 +42,12 @@ remain unchanged.*
 VM-Ausführungskern, Run/Step-Parität und die lokalen NuGet- sowie
 Dokumentationsnachweise vorbereitet. Vor jedem lokalen Build- oder Testlauf
 wurde der Buildzähler fortgeschrieben; nach dem abschließenden DocFX-Build
-steht die commitbereite Arbeitsversion bei `1.6.493.69`. Die IDE nutzt
+steht die PR-bereite Arbeitsversion bei `1.6.494.69`. Die IDE nutzt
 weiterhin die öffentliche Step-Schnittstelle und behält ihr sichtbares
 Laufzeitverhalten.
 
 *Autonomous run 006 prepared the shared VM execution engine, Run/Step parity,
 and the local NuGet and documentation evidence. The build counter was advanced
 before every local build or test run; after the final DocFX build, the
-commit-ready version is `1.6.493.69`. The IDE still uses the public step
+PR-ready version is `1.6.494.69`. The IDE still uses the public step
 interface and keeps its visible runtime behavior.*
