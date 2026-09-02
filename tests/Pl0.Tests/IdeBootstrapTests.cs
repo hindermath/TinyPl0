@@ -56,7 +56,7 @@ public sealed class IdeBootstrapTests
     [Fact]
     public void SourceWindow_Title_Shows_Dirty_Marker_For_Unsaved_And_Modified_Source()
     {
-        var savePath = Path.Combine("/tmp", "ide-dirty-marker", "demo.pl0");
+        var savePath = Path.Combine(Path.GetTempPath(), "ide-dirty-marker", "demo.pl0");
         var mainView = new IdeMainView(
             new StubIdeFileDialogService(savePath: savePath),
             new StubIdeFileStorage());
@@ -815,7 +815,7 @@ public sealed class IdeBootstrapTests
     [Fact]
     public void WindowTitles_Show_Only_FileName_After_Open()
     {
-        var sourcePath = Path.Combine("/tmp", "unterordner", "demo.pl0");
+        var sourcePath = Path.Combine(Path.GetTempPath(), "unterordner", "demo.pl0");
         var dialogs = new StubIdeFileDialogService(openPath: sourcePath);
         var mainView = new IdeMainView(dialogs, new StubIdeFileStorage(contentByPath: new Dictionary<string, string>
         {
@@ -1113,7 +1113,7 @@ public sealed class IdeBootstrapTests
     [Fact]
     public void WindowTitles_Use_Code_Display_Mode_After_File_Open()
     {
-        var sourcePath = Path.Combine("/tmp", "unterordner", "demo.pl0");
+        var sourcePath = Path.Combine(Path.GetTempPath(), "unterordner", "demo.pl0");
         var mainView = new IdeMainView(
             new StubIdeFileDialogService(openPath: sourcePath),
             new StubIdeFileStorage(contentByPath: new Dictionary<string, string>

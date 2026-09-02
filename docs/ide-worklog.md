@@ -41,13 +41,14 @@ remain unchanged.*
 154. Agent (2026-09-02): Der autonome Lauf 006 hat den gemeinsamen
 VM-Ausführungskern, Run/Step-Parität und die lokalen NuGet- sowie
 Dokumentationsnachweise vorbereitet. Vor jedem lokalen Build- oder Testlauf
-wurde der Buildzähler fortgeschrieben; nach dem abschließenden DocFX-Build
-steht die PR-bereite Arbeitsversion bei `1.6.494.69`. Die IDE nutzt
-weiterhin die öffentliche Step-Schnittstelle und behält ihr sichtbares
-Laufzeitverhalten.
+wurde der Buildzähler fortgeschrieben. Der Windows-CI-Befund wurde durch
+plattformneutrale temporäre Testpfade behoben und gezielt nachgeprüft; die
+PR-bereite Arbeitsversion ist `1.6.496.70`. Die IDE nutzt weiterhin die
+öffentliche Step-Schnittstelle und behält ihr sichtbares Laufzeitverhalten.
 
 *Autonomous run 006 prepared the shared VM execution engine, Run/Step parity,
 and the local NuGet and documentation evidence. The build counter was advanced
-before every local build or test run; after the final DocFX build, the
-PR-ready version is `1.6.494.69`. The IDE still uses the public step
-interface and keeps its visible runtime behavior.*
+before every local build or test run. The Windows CI finding was fixed with
+platform-neutral temporary test paths and rechecked with a focused test; the
+PR-ready version is `1.6.496.70`. The IDE still uses the public step interface
+and keeps its visible runtime behavior.*
