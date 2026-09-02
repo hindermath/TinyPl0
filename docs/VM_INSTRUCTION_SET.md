@@ -105,7 +105,7 @@ instruction `N+1`. Batch and step execution use the same counting point and
 diagnostic codes. A step failure is terminal and repeated `Step()` calls do not
 duplicate the budget diagnostic. The budget counts instructions; it is not a
 wall-clock or operating-system isolation guarantee.
-# Hostgrenzen / Host Boundaries
+## Hostgrenzen / Host Boundaries
 
 Deutsch: Vor dem ersten Dispatch prüft die VM Programmlänge, jeden Opcode,
 lexikalische Ebenen 0 bis 3, die OPR-Allowlist, nichtnegative Stackargumente

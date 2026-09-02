@@ -54,7 +54,7 @@ English: The VM validates a positive instruction budget and a stack size from
 Batch and step execution run at most `N` instructions and report the same
 terminal error before `N+1`. This policy complements pointer/stack checks and
 does not claim time or operating-system isolation.
-# Einbettbare VM und Paketgrenze / Embeddable VM and Package Boundary
+## Einbettbare VM und Paketgrenze / Embeddable VM and Package Boundary
 
 Deutsch: Pl0.Core bleibt abhängigkeitsfrei. Pl0.Vm hängt ausschließlich von
 exakt derselben TinyPl0.Core-Paketversion ab. Innerhalb von Pl0.Vm besitzt
