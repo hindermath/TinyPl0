@@ -5,18 +5,18 @@
 | Field | Value |
 |---|---|
 | Feature | `006-embeddable-vm-nuget` |
-| Binding intake | `requirements/intakes/active/Lastenheft_Embeddable-VM-und-NuGet.md` |
+| Binding intake | `requirements/intakes/archive/Lastenheft_Embeddable-VM-und-NuGet.006-embeddable-vm-nuget.md` (byte-identical closeout relocation) |
 | Delivery mode | `MergeAndSync` |
 | Provider authority | Current user request explicitly authorizes package publication; credentials must remain undisclosed and OIDC is preferred. |
 | Admin bypass | Explicitly authorized only for repository-policy delivery after technical, risk, evidence, and exact-head gates pass. |
 | Run-state path | `specs/006-embeddable-vm-nuget/autonomous-run-state.json` |
-| Run-state status | `Active`; local implementation complete, remote delivery pending |
+| Run-state status | `Completed`; product, release, public verification and causal series closeout complete |
 
 ## Frozen Inputs
 
 | Path | SHA-256 |
 |---|---|
-| `requirements/intakes/active/Lastenheft_Embeddable-VM-und-NuGet.md` | `a6e752dcc372c26626cf40cc0b1fb1da1a195a895f51129b87dc0920310b64d5` |
+| `requirements/intakes/archive/Lastenheft_Embeddable-VM-und-NuGet.006-embeddable-vm-nuget.md` | `a6e752dcc372c26626cf40cc0b1fb1da1a195a895f51129b87dc0920310b64d5` |
 | `requirements/intakes/series/tinypl0-delivery/intake-review-result.json` | `09d26eb8f267b92ce21ad9acaa0d316d29e7b51d893c8e3eed7910e7199cfea2` |
 | `requirements/intakes/series/tinypl0-delivery/intake-review-request.json` | `b23706568d8c66a62ca6df0dfd506378166a5d8108bf3012d30ec2802a3b7e04` |
 | `requirements/intakes/series/tinypl0-delivery/manifest.json` | `c73a65227e91123ccf017b03720695ad1c21b5910eb966a79a824069c8ff0a17` |
@@ -50,7 +50,7 @@ implementation to `long-running-implementation`, and retrospective to
 | Checklists | Pass | Pre-implementation and planning dispositions are complete. |
 | Plan review | Pass | Zero Critical, High, or Medium findings; two Low items were assigned before implementation. |
 | Tasks and Analyze | Pass | Fifty dependency-ordered tasks and a cross-artifact analysis with no unresolved finding. |
-| Implementation | Pass locally | T001-T040 complete; delivery and closeout T041-T050 remain open. |
+| Implementation | Pass | T001-T050 complete; product, release, provider verification and closeout are terminal. |
 
 ## Local Validation Snapshot
 
@@ -74,22 +74,49 @@ Required scope, thresholds, OIDC-only publication, fail-closed behavior, and
 acceptance boundaries did not weaken. Every affected local gate was rerun
 after this correction; no earlier remote or merge claim was retained.
 
-## Validation and Delivery
+## Remote Delivery and Public Evidence
 
-The gate contract was declared before the first implementation edit. The
-temporary schema-2.0 exact-head `PreMerge` snapshot will be generated only
-after the PR candidate is stable, so recording it cannot invalidate its own
-head binding. Package publication must fail closed when the authorized
-OIDC/provider route, immutable version, paired package identity, or public
-consumer evidence is unavailable. No secret value may enter source, command
-arguments, logs, evidence, or chat output. Admin bypass remains limited to the
-repository-policy merge step and cannot replace a technical, review, risk, or
-evidence gate.
+| Item | Result | Evidence |
+|---|---|---|
+| Feature delivery | Pass | PR [#79](https://github.com/hindermath/TinyPl0/pull/79), merge `6a886aad0a5d63d53f8352b5bd22972cb265a934` |
+| Release closeout | Pass | Release PR [#33](https://github.com/hindermath/TinyPl0/pull/33), merge `ff68fabd5a44d754dc50cdaac167f97ef2676a87` |
+| OIDC publication | Pass | Release run [33682479577](https://github.com/hindermath/TinyPl0/actions/runs/33682479577); both `.nupkg` and `.snupkg` pairs created and both public package pushes succeeded without a long-lived API key |
+| Recovery exact head | Pass | PR [#80](https://github.com/hindermath/TinyPl0/pull/80), head `3b746643f0be3e026660addb83c900be110c2d34`; technical checks pass, zero unresolved review threads, independent Copilot review with zero new comments, explicit unchanged-head Owner approval |
+| PreMerge | Pass | Schema 2.0, normalized SHA-256 `b3492f8e399583311768f7d355adf643086a509d3d73cc5374f9aec510c293b8` |
+| Narrow bypass and merge | Pass | Only the unavailable Claude review-policy check was bypassed; merge `baeca77a313d5acd4928531e4fba5e332ddef706`; local and remote `main` synchronized |
+| Verification-only recovery | Pass | Run [33687547664](https://github.com/hindermath/TinyPl0/actions/runs/33687547664) on the merge commit; `release-please`, `build-release` and `publish-nuget` skipped, only `verify-public` succeeded |
+| Public packages | Pass | [TinyPl0.Core 0.4.0](https://www.nuget.org/packages/TinyPl0.Core/0.4.0) and [TinyPl0.Vm 0.4.0](https://www.nuget.org/packages/TinyPl0.Vm/0.4.0) |
+| Public integrity | Pass | NuGet.org repository signatures valid; every unsigned ZIP entry matches the immutable source package; evidence artifact SHA-256 `5c62464d3c668de1444636707161a707768ee87c933b4a490199e6ab5b8f5d8b` |
+| Clean public consumer | Pass | NuGet.org-only .NET 10 restore compiled PL/0 and proved equal Run/Step completion reason, instruction count and output |
+| Secrets | Pass | Trusted Publishing used OIDC; no credential value entered source, arguments, evidence or chat output |
 
-## Resume Boundary
+The initial public verification failure was evidence-path failure, not a
+publication failure. The immutable package pair was never pushed again.
+Repository signing legitimately changed each complete public `.nupkg` hash;
+the final proof therefore verifies the repository signature and compares every
+unsigned ZIP entry against the source artifact.
 
-- Checkpoint commit: `9f39b2afb90aca406c2a59591f137f64e05b8d82`
-- Last passing gate: local implementation and validation through T040.
-- Next exact action: freeze the intended delivery set, align the commit-target
-  IDE version, commit, push, and open the single feature PR.
-- Follow-up feature: forbidden by the current request.
+## Causal Series Closeout
+
+- The accepted intake moved byte-identically to
+  `requirements/intakes/archive/Lastenheft_Embeddable-VM-und-NuGet.006-embeddable-vm-nuget.md`;
+  SHA-256 remains
+  `a6e752dcc372c26626cf40cc0b1fb1da1a195a895f51129b87dc0920310b64d5`.
+- The predecessor manifest and receipt remain byte-identical below
+  `requirements/intakes/series-archive/tinypl0-delivery/20260902T215535Z/`.
+- The successor keeps 15 targets, 5 roots and 11 binding dependencies.
+  Embeddable VM/NuGet is `Completed`; only
+  `requirements/intakes/active/Lastenheft_Quellcode_Doku.md` becomes the
+  declared `Eligible` successor. It was not executed.
+- Schema-2.0 PostMerge evidence binds the accepted PreMerge hash, reviewed
+  head, actual recovery merge, public evidence and lifecycle closeout.
+
+## Terminal Boundary
+
+- Checkpoint commit: recovery merge
+  `baeca77a313d5acd4928531e4fba5e332ddef706`.
+- Last passing gate: 50/50 tasks, exact-head PreMerge, MergeAndSync, OIDC
+  publication, verification-only public proof, byte-identical intake archive,
+  successor-series validation, PostMerge evidence and retrospective.
+- Next exact action for this autonomous run: `N/A`.
+- Follow-up feature: not started; it requires a separate explicit run.

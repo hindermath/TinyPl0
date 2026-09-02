@@ -20,12 +20,12 @@ const stableUuid = (key) => {
 const config = readJson("requirements/intake-governance-config.json");
 const seriesRoot = "requirements/intakes/series/tinypl0-delivery";
 const seriesId = stableUuid("series");
-const seriesReceiptId = "01ec955e-b458-469e-9dc8-4a76ba4154de";
-const seriesOperationId = "017dae9c-4f29-41ad-b234-bf4da48f4238";
+const seriesReceiptId = "daf8cfd0-7e7b-4242-b92a-515f9460016d";
+const seriesOperationId = "2fa42de1-416d-4627-aed9-5247c400fc14";
 const reviewId = "8804ad13-41b4-4feb-a10d-26d2f55333e6";
 const priorReviewId = "357ed01f-f120-4634-8596-45e7baffa17d";
 const createdAt = "2026-07-26T22:00:00Z";
-const seriesUpdatedAt = "2026-08-30T18:29:40Z";
+const seriesUpdatedAt = "2026-09-02T21:55:35Z";
 const reviewHead = "26a81e655b4e15f412a954f536681a842dea6e2f";
 const reviewedAt = "2026-08-30T14:55:45Z";
 const priorReviewArchivePath =
@@ -35,8 +35,8 @@ const members = [
   ["constitution-change", "Lastenheft_Constitution_Change.md", "Completed"],
   ["secure-development-hardening", "Lastenheft_Secure-Development-Hardening.md", "Completed"],
   ["sandbox-gestuetzte-secure-development-haertung", "Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md", "Completed"],
-  ["embeddable-vm-und-nuget", "Lastenheft_Embeddable-VM-und-NuGet.md", "Eligible"],
-  ["quellcode-doku", "Lastenheft_Quellcode_Doku.md", "Blocked"],
+  ["embeddable-vm-und-nuget", "Lastenheft_Embeddable-VM-und-NuGet.md", "Completed"],
+  ["quellcode-doku", "Lastenheft_Quellcode_Doku.md", "Eligible"],
   ["dokumentation-en", "Lastenheft_Dokumentation_EN.md", "Blocked"],
   ["ide-l10n", "Lastenheft_IDE-L10N.md", "Blocked"],
   ["a11y-ide", "Lastenheft_A11Y_IDE.md", "Blocked"],
@@ -61,6 +61,8 @@ const members = [
       ? "requirements/intakes/archive/Lastenheft_Secure-Development-Hardening.004-secure-development-hardening.md"
       : slug === "sandbox-gestuetzte-secure-development-haertung"
         ? "requirements/intakes/archive/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.005-sandbox-secure-development.md"
+        : slug === "embeddable-vm-und-nuget"
+          ? "requirements/intakes/archive/Lastenheft_Embeddable-VM-und-NuGet.006-embeddable-vm-nuget.md"
       : `requirements/intakes/active/${fileName}`,
   reviewPath: slug === "constitution-change"
     ? "requirements/intakes/archive/Lastenheft_Constitution_Change.003-constitution-change.md"
@@ -309,46 +311,31 @@ const seriesReceipt = {
   operation: {
     operationId: seriesOperationId,
     type: "Update",
-    authorityEvidence: "User explicitly instructed incorporation of the verified NuGet publication rules into the rank-4 intake on 2026-08-30.",
+    authorityEvidence: "Thorsten explicitly authorized completion of the Embeddable VM and NuGet autonomous run in DeliveryMode MergeAndSync with narrowly scoped admin bypass and directed that no follow-up feature be started; PR 80 was explicitly approved on 2026-09-02.",
   },
   status: "Ready",
   manifest: {path: manifestPath, normalizedSha256: manifestHash},
   supersedes: {
-    receiptPath: "requirements/intakes/series-archive/tinypl0-delivery/20260830T182940Z/receipt.json",
-    receiptNormalizedSha256: "40b065f557be1fc66f30ff31df83f3eeaf35d1089980777ba60cff4cf1be5b9e",
-    manifestArchivePath: "requirements/intakes/series-archive/tinypl0-delivery/20260830T182940Z/manifest.json",
-    manifestArchiveSha256: "573558ebd31b02d84d5399ee36479f37470cff90a4f1df2a478f378e77652c93",
+    receiptPath: "requirements/intakes/series-archive/tinypl0-delivery/20260902T215535Z/receipt.json",
+    receiptNormalizedSha256: "985b25c4a65c0ca3c14e307a43915e04a1ab88ab7fe313d6650329b2fbc518bd",
+    manifestArchivePath: "requirements/intakes/series-archive/tinypl0-delivery/20260902T215535Z/manifest.json",
+    manifestArchiveSha256: "c73a65227e91123ccf017b03720695ad1c21b5910eb966a79a824069c8ff0a17",
   },
   tombstone: {path: "N/A", normalizedSha256: "N/A"},
   nextAction: "$speckit-intake-series-status",
 };
 const seriesUpdatePaths = [
-  "requirements/intakes/active/Lastenheft_Embeddable-VM-und-NuGet.md",
-  "specs/intake-authoring-receipts/embeddable-vm-und-nuget.json",
-  "requirements/intakes/history/20260830T182940Z/Lastenheft_Embeddable-VM-und-NuGet.md",
-  "specs/intake-authoring-receipts/history/embeddable-vm-und-nuget.20260830T182940Z.json",
+  "requirements/intakes/archive/Lastenheft_Embeddable-VM-und-NuGet.006-embeddable-vm-nuget.md",
   manifestPath,
   `${seriesRoot}/receipt.json`,
   `${seriesRoot}/operation.json`,
   `${seriesRoot}/order.md`,
-  `${seriesRoot}/intake-review-result.json`,
-  `${seriesRoot}/intake-review-report.md`,
-  "requirements/intakes/series-archive/tinypl0-delivery/20260830T182940Z/manifest.json",
-  "requirements/intakes/series-archive/tinypl0-delivery/20260830T182940Z/receipt.json",
-  "requirements/intakes/series-archive/tinypl0-delivery/20260830T182940Z-review-invalidated/intake-review-request.json",
-  "requirements/intakes/series-archive/tinypl0-delivery/20260830T182940Z-review-invalidated/intake-review-result.json",
-  "requirements/intakes/series-archive/tinypl0-delivery/20260830T182940Z-review-invalidated/intake-review-report.md",
-  "specs/intake-authoring-receipts/quellcode-doku.json",
-  "specs/intake-authoring-receipts/dokumentation-en.json",
-  "specs/intake-authoring-receipts/ide-l10n.json",
-  "specs/intake-authoring-receipts/a11y-ide.json",
-  "specs/intake-authoring-receipts/options-als-parameter.json",
-  "specs/intake-authoring-receipts/vm-cli.json",
+  "requirements/intakes/series-archive/tinypl0-delivery/20260902T215535Z/manifest.json",
+  "requirements/intakes/series-archive/tinypl0-delivery/20260902T215535Z/receipt.json",
   "requirements/intake-governance-config.json",
   "Pflichtenheft.md",
   "Lastenheft_Abarbeitungsreihenfolge.md",
-  "scripts/render-requirements-intake-governance.mjs",
-  "scripts/validate-requirements-intake-alignment.mjs",
+  "scripts/render-requirements-intake-governance.mjs"
 ];
 const operation = {
   schemaVersion: "1.0",
@@ -357,7 +344,7 @@ const operation = {
   seriesId,
   type: "Update",
   status: "Published",
-  authorityEvidence: "User explicitly instructed incorporation of the verified NuGet publication rules into the rank-4 intake on 2026-08-30.",
+  authorityEvidence: "Thorsten explicitly authorized completion of the Embeddable VM and NuGet autonomous run in DeliveryMode MergeAndSync with narrowly scoped admin bypass and directed that no follow-up feature be started; PR 80 was explicitly approved on 2026-09-02.",
   proposalNormalizedSha256: manifestHash,
   preparedPaths: seriesUpdatePaths,
   validation: {bash: "Pass", powerShell: "Pass"},

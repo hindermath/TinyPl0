@@ -75,3 +75,18 @@ Produkt-Build oder Testlauf auf `1.6.518.72` ausgerichtet.
 corrected for repository-signed packages and a narrowly scoped recovery that
 cannot republish. The IDE version was aligned to `1.6.518.72` for the related
 closeout and review-fix commits without a product build or test run.*
+
+157. Agent (2026-09-03): Der veröffentlichungsfreie Recovery-Run hat beide
+öffentlichen NuGet-Pakete `0.4.0`, ihre Repository-Signaturen, den unsignierten
+Inhalt und den frischen Consumer erfolgreich bestätigt. Danach wurden Lauf
+006, Intake-Archiv und Serien-Lineage kausal abgeschlossen. Über Closeout-
+Commit 521 und die finale Statistik-Aktualisierung mit Commit 522 endet die
+IDE-Version ohne Produkt-Build oder Testlauf bei `1.6.522.72`; ein Folgefeature
+wurde nicht gestartet.
+
+*The verification-only recovery run successfully confirmed both public NuGet
+packages 0.4.0, their repository signatures, unsigned content, and the fresh
+consumer. Run 006, the intake archive, and series lineage were then closed
+causally. Across closeout commit 521 and the final statistics refresh at commit
+522, the IDE version ends at `1.6.522.72` without a product build or test run;
+no follow-up feature started.*
