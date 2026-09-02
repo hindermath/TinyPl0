@@ -4,9 +4,19 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+    inputs:
+      verify_version:
+        description: Existing public SemVer to verify without publishing again
+        required: false
+        type: string
+      release_run_id:
+        description: Run ID containing the immutable nuget-release artifact
+        required: false
+        type: string
 
 jobs:
   release-please:
+    if: github.event_name != 'workflow_dispatch' || inputs.verify_version == ''
     runs-on: ubuntu-24.04
     permissions:
       contents: write
@@ -113,8 +123,26 @@ jobs:
 
   verify-public:
     needs: [release-please, build-release, publish-nuget]
+    if: >-
+      ${{
+        always() &&
+        (
+          (
+            needs.release-please.result == 'success' &&
+            needs.build-release.result == 'success' &&
+            needs.publish-nuget.result == 'success' &&
+            needs.release-please.outputs.release_created == 'true'
+          ) ||
+          (
+            github.event_name == 'workflow_dispatch' &&
+            inputs.verify_version != '' &&
+            inputs.release_run_id != ''
+          )
+        )
+      }}
     runs-on: ubuntu-24.04
     permissions:
+      actions: read
       contents: read
     steps:
       - name: Setup .NET
@@ -122,16 +150,60 @@ jobs:
         with:
           dotnet-version: "10.0.x"
       - name: Download release evidence
+        if: inputs.verify_version == ''
         uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
           name: nuget-release-${{ needs.release-please.outputs.version }}
           path: artifacts
+      - name: Validate recovery inputs
+        if: inputs.verify_version != ''
+        shell: pwsh
+        run: |
+          Set-StrictMode -Version Latest
+          $ErrorActionPreference = 'Stop'
+          if ('${{ inputs.verify_version }}' -notmatch '^[0-9]+\.[0-9]+\.[0-9]+(?:-[0-9A-Za-z.-]+)?$') {
+            throw 'verify_version must be a stable or prerelease SemVer.'
+          }
+          if ('${{ inputs.release_run_id }}' -notmatch '^[1-9][0-9]*$') {
+            throw 'release_run_id must be a positive GitHub Actions run ID.'
+          }
+      - name: Download immutable evidence from the original release run
+        if: inputs.verify_version != ''
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: nuget-release-${{ inputs.verify_version }}
+          path: artifacts
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: ${{ inputs.release_run_id }}
       - name: Wait for both public IDs and record public hashes
         shell: pwsh
         run: |
           Set-StrictMode -Version Latest
           $ErrorActionPreference = 'Stop'
-          $version = '${{ needs.release-please.outputs.version }}'.ToLowerInvariant()
+          $version = '${{ inputs.verify_version || needs.release-please.outputs.version }}'.ToLowerInvariant()
+          function Get-PackageContentHashes([string]$Path) {
+            $archive = [System.IO.Compression.ZipFile]::OpenRead($Path)
+            try {
+              $hashes = [ordered]@{}
+              foreach ($entry in $archive.Entries | Sort-Object FullName) {
+                if ($entry.FullName -eq '.signature.p7s' -or [string]::IsNullOrEmpty($entry.Name)) { continue }
+                $stream = $entry.Open()
+                $sha256 = [System.Security.Cryptography.SHA256]::Create()
+                try {
+                  $hashes[$entry.FullName] = [Convert]::ToHexString(
+                    $sha256.ComputeHash($stream)).ToLowerInvariant()
+                }
+                finally {
+                  $sha256.Dispose()
+                  $stream.Dispose()
+                }
+              }
+              return $hashes
+            }
+            finally {
+              $archive.Dispose()
+            }
+          }
           $publicPackages = @()
           foreach ($name in @('Core', 'Vm')) {
             $id = "tinypl0.$($name.ToLowerInvariant())"
@@ -139,18 +211,31 @@ jobs:
             $target = Join-Path $env:RUNNER_TEMP "$id.$version.nupkg"
             $success = $false
             foreach ($attempt in 1..12) {
-              $response = Invoke-WebRequest -Uri $uri -OutFile $target -SkipHttpErrorCheck
-              if ($response.StatusCode -eq 200) { $success = $true; break }
+              $response = Invoke-WebRequest -Uri $uri -Method Head -SkipHttpErrorCheck
+              if ($response.StatusCode -eq 200) {
+                Invoke-WebRequest -Uri $uri -OutFile $target
+                $success = $true
+                break
+              }
               Start-Sleep -Seconds ([Math]::Min(60, 5 * $attempt))
             }
             if (-not $success) { throw "Public package did not converge: $id $version" }
+            $expectedPath = "artifacts/packages/TinyPl0.$name.$version.nupkg"
+            $expectedHash = (Get-FileHash $expectedPath -Algorithm SHA256).Hash.ToLowerInvariant()
+            $publicHash = (Get-FileHash $target -Algorithm SHA256).Hash.ToLowerInvariant()
+            $expectedContent = Get-PackageContentHashes $expectedPath | ConvertTo-Json -Compress
+            $publicContent = Get-PackageContentHashes $target | ConvertTo-Json -Compress
+            if ($publicContent -ne $expectedContent) { throw "Public package content mismatch: $id" }
             dotnet nuget verify $target --all
             if ($LASTEXITCODE -ne 0) { throw "Public package signature verification failed: $id" }
             $publicPackages += [ordered]@{
               id = $id
               version = $version
               url = $uri
-              sha256 = (Get-FileHash $target -Algorithm SHA256).Hash.ToLowerInvariant()
+              sourceSha256 = $expectedHash
+              publicSha256 = $publicHash
+              repositorySignature = 'verified'
+              unsignedContentMatch = $true
             }
           }
           $publicPackages | ConvertTo-Json -Depth 4 |
@@ -161,21 +246,43 @@ jobs:
           Set-StrictMode -Version Latest
           $ErrorActionPreference = 'Stop'
           $root = Join-Path $env:RUNNER_TEMP 'public-consumer'
+          $version = '${{ inputs.verify_version || needs.release-please.outputs.version }}'
           dotnet new console --framework net10.0 --output $root --no-restore
           @"
           <Project Sdk="Microsoft.NET.Sdk">
             <PropertyGroup><OutputType>Exe</OutputType><TargetFramework>net10.0</TargetFramework><ImplicitUsings>enable</ImplicitUsings></PropertyGroup>
             <ItemGroup>
-              <PackageReference Include="TinyPl0.Core" Version="${{ needs.release-please.outputs.version }}" />
-              <PackageReference Include="TinyPl0.Vm" Version="${{ needs.release-please.outputs.version }}" />
+              <PackageReference Include="TinyPl0.Core" Version="$version" />
+              <PackageReference Include="TinyPl0.Vm" Version="$version" />
             </ItemGroup>
           </Project>
           "@ | Set-Content (Join-Path $root 'public-consumer.csproj')
           @'
           using Pl0.Core;
           using Pl0.Vm;
-          var result = new VirtualMachine().Run([new(Opcode.Opr, 0, 0)]);
-          return result.Reason == VmCompletionReason.Halted ? 0 : 1;
+          const string source = "begin ! 7 end.";
+          CompilationResult compilation = new Pl0Compiler().Compile(source, CompilerOptions.Default);
+          if (!compilation.Success) return 1;
+
+          BufferedPl0Io runIo = new();
+          VmExecutionResult run = new VirtualMachine().Run(compilation.Instructions, runIo);
+
+          BufferedPl0Io stepIo = new();
+          SteppableVirtualMachine machine = new();
+          machine.Initialize(compilation.Instructions, stepIo);
+          VmStepResult step;
+          do
+          {
+              step = machine.Step();
+          }
+          while (step.Reason == VmCompletionReason.Running);
+
+          bool equivalent = run.Reason == VmCompletionReason.Halted &&
+              step.Reason == run.Reason &&
+              step.ExecutedInstructions == run.ExecutedInstructions &&
+              runIo.Output.SequenceEqual([7]) &&
+              stepIo.Output.SequenceEqual(runIo.Output);
+          return equivalent ? 0 : 1;
           '@ | Set-Content (Join-Path $root 'Program.cs')
           $packages = Join-Path $env:RUNNER_TEMP 'public-packages'
           dotnet restore (Join-Path $root 'public-consumer.csproj') --source https://api.nuget.org/v3/index.json --packages $packages --no-cache
@@ -183,6 +290,6 @@ jobs:
       - name: Upload final evidence
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: nuget-public-evidence-${{ needs.release-please.outputs.version }}
+          name: nuget-public-evidence-${{ inputs.verify_version || needs.release-please.outputs.version }}
           path: artifacts
           if-no-files-found: error

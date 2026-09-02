@@ -56,6 +56,24 @@ path, version, contents, and hashes.
    vergleichen und sauberen Consumer ausführen. / Redownload, compare, and run
    the clean consumer.
 
+Scheitert ausschließlich die öffentliche Nachprüfung nach bereits erfolgreichem
+Push, kann `workflow_dispatch` mit der vorhandenen SemVer und der ursprünglichen
+Release-Run-ID nur `verify-public` wieder aufnehmen. Dieser Pfad lädt das
+unveränderliche Release-Artefakt aus dem Ursprungsrun, überspringt Build und
+Veröffentlichung, erfasst Ursprungs- und öffentliche SHA-256-Hashes, prüft die
+NuGet.org-Repository-Signatur und vergleicht vor dem Consumer-Lauf jeden
+unsignierten ZIP-Eintrag bytegleich. Der vollständige öffentliche nupkg-Hash
+darf wegen der von NuGet.org ergänzten `.signature.p7s` abweichen; diese
+erwartete Signaturänderung darf niemals einen Inhaltsunterschied verdecken.
+/ If only public verification fails after a successful push,
+`workflow_dispatch` can resume only `verify-public` using the existing SemVer
+and original release run ID. It downloads the immutable source artifact, skips
+build and publication, records both source and public SHA-256 hashes, verifies
+the NuGet.org repository signature, and compares every unsigned ZIP entry
+byte-for-byte before running the consumer. The complete public nupkg hash may
+differ because NuGet.org adds `.signature.p7s`; that expected signature change
+must never hide a content difference.
+
 Jobberechtigungen werden am Job gesetzt, nicht global erweitert. Kein Job
 schreibt Repositoryinhalt oder erzeugt Providerpolicies. / Permissions are set
 per job and no job writes repository content or creates provider policies.

@@ -141,7 +141,7 @@
       "id": "006-embeddable-vm-nuget",
       "labelDe": "Embeddable VM/NuGet 006",
       "labelEn": "Embeddable VM/NuGet 006",
-      "netLines": 3636
+      "netLines": 3761
     }
   ],
   "excludedPaths": [
