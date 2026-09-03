@@ -61,6 +61,10 @@ public sealed class PackageWorkflowContractTests
         string core = File.ReadAllText(Path.Combine(RepoRoot, "docs", "nuget", "TinyPl0.Core.README.md"));
         string vm = File.ReadAllText(Path.Combine(RepoRoot, "docs", "nuget", "TinyPl0.Vm.README.md"));
 
+        Assert.Contains("## Deutsch", core);
+        Assert.Contains("## English", core);
+        Assert.Contains("## Deutsch", vm);
+        Assert.Contains("## English", vm);
         Assert.True(core.IndexOf("## Deutsch", StringComparison.Ordinal) <
                     core.IndexOf("## English", StringComparison.Ordinal));
         Assert.True(vm.IndexOf("## Deutsch", StringComparison.Ordinal) <

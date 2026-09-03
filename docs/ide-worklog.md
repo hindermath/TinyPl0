@@ -95,13 +95,13 @@ no follow-up feature started.*
 `TinyPl0.Vm` wurden als ausführliche, bilinguale und textfreundliche
 Paket-Landingpages überarbeitet. Der fachliche Feature-Commit verwendet
 Commitzählstand 524; nach dem Worklog-/Versions- und dem generierten
-Statistik-Folgecommit endet die IDE-Version bei `1.6.526.78`. Für fünf bereits
-ausgeführte und den abschließenden Testlauf wurde der Buildzähler auf 78
-fortgeschrieben.
+Statistik-Folgecommit endet die IDE-Version zunächst bei `1.6.526.78`. Der
+Review-Fix-Commit 527 verlangt beide Sprachüberschriften ausdrücklich und
+setzt die IDE-Version für den erneuten Testlauf auf `1.6.527.79`.
 
 *The NuGet descriptions for `TinyPl0.Core` and `TinyPl0.Vm` were revised as
 detailed, bilingual, and text-friendly package landing pages. The feature
 commit uses commit count 524; after the worklog/version and generated
-statistics follow-up commits, the IDE version ends at `1.6.526.78`. The build
-counter was advanced to 78 for five completed test invocations and the final
-test run.*
+statistics follow-up commits, the IDE version initially ends at `1.6.526.78`.
+Review-fix commit 527 explicitly requires both language headings and sets the
+IDE version to `1.6.527.79` for the repeated test run.*
