@@ -155,7 +155,7 @@
       "id": "nuget-package-descriptions",
       "labelDe": "NuGet-Beschreibungsseiten",
       "labelEn": "NuGet package descriptions",
-      "netLines": 633
+      "netLines": 637
     }
   ],
   "excludedPaths": [
