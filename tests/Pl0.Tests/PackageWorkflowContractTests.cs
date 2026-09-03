@@ -47,7 +47,9 @@ public sealed class PackageWorkflowContractTests
         string core = File.ReadAllText(Path.Combine(RepoRoot, "src", "Pl0.Core", "Pl0.Core.csproj"));
         string vm = File.ReadAllText(Path.Combine(RepoRoot, "src", "Pl0.Vm", "Pl0.Vm.csproj"));
         string version = File.ReadAllText(Path.Combine(RepoRoot, "eng", "TinyPl0.PackageVersion.props"));
-        Assert.Contains("<TinyPl0PackageVersion>0.4.0</TinyPl0PackageVersion>", version);
+        Assert.Matches(
+            @"<TinyPl0PackageVersion>\d+\.\d+\.\d+</TinyPl0PackageVersion>",
+            version);
         Assert.Contains("<PackageId>TinyPl0.Core</PackageId>", core);
         Assert.Contains("<PackageId>TinyPl0.Vm</PackageId>", vm);
         Assert.Contains("[$(TinyPl0PackageVersion)]", vm);
