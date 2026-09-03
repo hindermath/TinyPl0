@@ -506,24 +506,24 @@ Profil 2 verwendet Git-getrackte Textdateien und sichtbare Git-Aktivitaet. Die W
 
 | Kennzahl / Metric | Wert / Value |
 |---|---:|
-| Textbasis / Text base | 271484 lines |
+| Textbasis / Text base | 271488 lines |
 | Textdateien / Text files | 1982 |
 | Beobachtbarer Zeitraum / Observable period | 2025-09-07..2026-09-03 |
 | Aktivtage / Active days | 90 |
-| Relevante Commits / Relevant commits | 364 |
+| Relevante Commits / Relevant commits | 365 |
 | Zeilen je Aktivtag / Lines per active day | 3016.5 |
 | Peak-Tag im Fenster / Peak day in window | 2026-02-14 / 177480 |
 | Peak-Woche im Fenster / Peak week in window | 2026-02-08 / 186065 |
 | Laengste Serie / Longest streak | 9 days |
 | Speedup vs. 80 lines/day | 37.7x |
 | Speedup vs. 125 lines/day | 24.1x |
-| Methodik / Methodology | v2; source `85c29d278ebe` |
+| Methodik / Methodology | v2; source `778751698528` |
 
 ### Artefaktmix / Artifact Mix
 
 ```text
 Produktiv / Production          [#...................]   2.6% | 7060
-Tests                           [#...................]   4.8% | 13140
+Tests                           [#...................]   4.8% | 13144
 Dokumentation / Documentation   [###########.........]  54.1% | 146906
 Skripte / Scripts               [##..................]   8.3% | 22607
 Konfiguration / Configuration   [######..............]  28.4% | 77039
@@ -667,7 +667,7 @@ Slots 16..20
 | 17 | NuGet-Veröffentlichungsregeln / NuGet publishing policy | 1202 |
 | 18 | Embeddable VM/NuGet 006 / Embeddable VM/NuGet 006 | 3770 |
 | 19 | 006 Abschluss / 006 closeout | 681 |
-| 20 | NuGet-Beschreibungsseiten / NuGet package descriptions | 637 |
+| 20 | NuGet-Beschreibungsseiten / NuGet package descriptions | 641 |
 
 Die festen Slots halten den Phasenvergleich auch bei fehlenden oder spaeter ergaenzten Werten stabil.
 
@@ -717,6 +717,6 @@ DE: Das Fenster beginnt am 2025-09-07 und endet am 2026-09-03. Es enthaelt 90 ak
 | 2026-06 | 37650 |
 | 2026-07 | 78966 |
 | 2026-08 | 55167 |
-| 2026-09 | 18895 |
+| 2026-09 | 18913 |
 
 <!-- project-statistics-v2:end -->
