@@ -1,5 +1,38 @@
 # Changelog
 
+## [0.4.1](https://github.com/hindermath/TinyPl0/compare/v0.4.0...v0.4.1) (2026-09-03)
+
+
+### Bug Fixes / Fehlerbehebungen
+
+* **nuget:** improve package descriptions ([c1e88fe](https://github.com/hindermath/TinyPl0/commit/c1e88fe685c698309f532f748af2780707c4f0cb))
+* **nuget:** improve package descriptions ([334e8c1](https://github.com/hindermath/TinyPl0/commit/334e8c15a20d9abc0d7db6bce30889557fc04a30))
+* **release:** keep release PR gates valid ([b084288](https://github.com/hindermath/TinyPl0/commit/b08428814d1c8d5d60a931f18af3a2fa677fe8c0))
+* **release:** keep release PR gates valid ([8a6d27f](https://github.com/hindermath/TinyPl0/commit/8a6d27fcc23cb00266f42bfbb7c1db5c3ed1875c))
+* **release:** preserve artifact version casing ([6065346](https://github.com/hindermath/TinyPl0/commit/6065346927c1eb946201395f4a49eabec148c367))
+* **release:** recover public NuGet verification ([baeca77](https://github.com/hindermath/TinyPl0/commit/baeca77a313d5acd4928531e4fba5e332ddef706))
+* **release:** resume public NuGet verification ([6123028](https://github.com/hindermath/TinyPl0/commit/612302820a05d46d38ae243a3554e837dda1c6bf))
+* **release:** retry transient public downloads ([60608d5](https://github.com/hindermath/TinyPl0/commit/60608d514b6d8e85660d5a5baa7ed708025a55a0))
+
+
+### Documentation / Dokumentation
+
+* **stats:** refresh NuGet closeout metrics ([02c0b4d](https://github.com/hindermath/TinyPl0/commit/02c0b4dd9379f135e3975f367672283938635d2d))
+* **stats:** refresh NuGet description metrics ([0dab64c](https://github.com/hindermath/TinyPl0/commit/0dab64c808c9d7e5d1e10ef4cac57b59f0474b62))
+* **stats:** refresh NuGet review metrics ([43db616](https://github.com/hindermath/TinyPl0/commit/43db616154bb51203850bdc66ed2af91306d1d99))
+* **stats:** refresh release gate metrics ([da286ae](https://github.com/hindermath/TinyPl0/commit/da286aeabf25f49f57f8f25a0c3808155c054d15))
+* **stats:** refresh review-fix metrics ([7c50a07](https://github.com/hindermath/TinyPl0/commit/7c50a074334224669bddf2a69d37d69d488d4dc1))
+* **stats:** refresh run 006 closeout metrics ([5fe7594](https://github.com/hindermath/TinyPl0/commit/5fe75946ca74dc305e91abcf66c96ea7dd994c0c))
+* **stats:** refresh version-path metrics ([3b74664](https://github.com/hindermath/TinyPl0/commit/3b746643f0be3e026660addb83c900be110c2d34))
+
+
+### Maintenance / Wartung
+
+* **governance:** close embeddable VM NuGet run ([1af6260](https://github.com/hindermath/TinyPl0/commit/1af6260843c5a91a982ec51be70d83c03347ae05))
+* **governance:** close embeddable VM NuGet run ([5b7b2aa](https://github.com/hindermath/TinyPl0/commit/5b7b2aa970b9f97ff4badf99da906dcb83e5b2a1))
+* **ide:** align NuGet documentation version ([85c29d2](https://github.com/hindermath/TinyPl0/commit/85c29d278ebe74680783aba947f5b6695e02055a))
+* **ide:** align NuGet review version ([0093944](https://github.com/hindermath/TinyPl0/commit/0093944ccea4d6eb095eccc5d7ba2c423e9f1486))
+
 ## [0.4.0](https://github.com/hindermath/TinyPl0/compare/v0.3.0...v0.4.0) (2026-09-02)
 
 
