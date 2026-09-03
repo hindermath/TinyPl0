@@ -1,3 +1,6 @@
+using Pl0.Core;
+using Pl0.Vm;
+
 namespace Pl0.Tests;
 
 public sealed class PackageWorkflowContractTests
@@ -50,6 +53,69 @@ public sealed class PackageWorkflowContractTests
         Assert.Contains("[$(TinyPl0PackageVersion)]", vm);
         Assert.DoesNotContain("Terminal.Gui", core);
         Assert.DoesNotContain("Terminal.Gui", vm);
+    }
+
+    [Fact]
+    public void Package_Readmes_Are_Bilingual_And_Keep_Safety_Contracts()
+    {
+        string core = File.ReadAllText(Path.Combine(RepoRoot, "docs", "nuget", "TinyPl0.Core.README.md"));
+        string vm = File.ReadAllText(Path.Combine(RepoRoot, "docs", "nuget", "TinyPl0.Vm.README.md"));
+
+        Assert.True(core.IndexOf("## Deutsch", StringComparison.Ordinal) <
+                    core.IndexOf("## English", StringComparison.Ordinal));
+        Assert.True(vm.IndexOf("## Deutsch", StringComparison.Ordinal) <
+                    vm.IndexOf("## English", StringComparison.Ordinal));
+        Assert.Contains("CompilationResult.Success", core);
+        Assert.Contains("VmCompletionReason.Halted", vm);
+        Assert.Contains("InstructionBudget", vm);
+        Assert.Contains("CancellationToken", vm);
+        Assert.Contains("IPl0Io", vm);
+    }
+
+    [Fact]
+    public void Package_Metadata_Contains_Discovery_Tags()
+    {
+        string core = File.ReadAllText(Path.Combine(RepoRoot, "src", "Pl0.Core", "Pl0.Core.csproj"));
+        string vm = File.ReadAllText(Path.Combine(RepoRoot, "src", "Pl0.Vm", "Pl0.Vm.csproj"));
+
+        foreach (string tag in new[] { "compiler-construction", "p-code", "teaching" })
+        {
+            Assert.Contains(tag, core);
+            Assert.Contains(tag, vm);
+        }
+
+        Assert.Contains("virtual-machine;vm", vm);
+    }
+
+    [Fact]
+    public void Package_Readme_Examples_Use_Current_Public_Apis()
+    {
+        const string source = """
+            const answer = 42;
+            begin
+              ! answer
+            end.
+            """;
+        CompilerOptions compilerOptions = new(Pl0Dialect.Extended, Language: "de");
+        CompilationResult compilation = new Pl0Compiler().Compile(source, compilerOptions);
+        Assert.True(compilation.Success);
+
+        BufferedPl0Io io = new();
+        VirtualMachineOptions vmOptions = new(
+            StackSize: 500,
+            Language: "de",
+            InstructionBudget: 10_000,
+            MaximumProgramLength: 1_000);
+        VmExecutionResult result = new VirtualMachine().Run(compilation.Instructions, io, vmOptions);
+
+        Assert.Equal(VmCompletionReason.Halted, result.Reason);
+        Assert.Equal([42], io.Output);
+
+        Instruction[] program = [new(Opcode.Opr, 0, 0)];
+        SteppableVirtualMachine debugger = new();
+        debugger.Initialize(program, options: vmOptions);
+        VmStepResult step = debugger.Step();
+        Assert.Equal(VmCompletionReason.Halted, step.Reason);
     }
 
     private static string RepoRoot

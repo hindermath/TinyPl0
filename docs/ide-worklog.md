@@ -90,3 +90,14 @@ consumer. Run 006, the intake archive, and series lineage were then closed
 causally. Across closeout commit 521 and the final statistics refresh at commit
 522, the IDE version ends at `1.6.522.72` without a product build or test run;
 no follow-up feature started.*
+
+158. Agent (2026-09-03): Die NuGet-Beschreibungen für `TinyPl0.Core` und
+`TinyPl0.Vm` wurden als ausführliche, bilinguale und textfreundliche
+Paket-Landingpages überarbeitet. Der geplante Feature-Commit erhält den
+Commitzählstand 524. Für fünf bereits ausgeführte und den abschließenden
+Testlauf wurde der Buildzähler regelkonform auf `1.6.524.78` fortgeschrieben.
+
+*The NuGet descriptions for `TinyPl0.Core` and `TinyPl0.Vm` were revised as
+detailed, bilingual, and text-friendly package landing pages. The planned
+feature commit uses commit count 524. The build counter was advanced to
+`1.6.524.78` for five completed test invocations and the final test run.*

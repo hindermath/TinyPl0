@@ -12,8 +12,8 @@
     <PackageVersion>$(TinyPl0PackageVersion)</PackageVersion>
     <Version>$(TinyPl0PackageVersion)</Version>
     <Authors>Thorsten Hindermann</Authors>
-    <Description>Embeddable PL/0 virtual machine for .NET 10 / Einbettbare PL/0-VM für .NET 10</Description>
-    <PackageTags>pl0;virtual-machine;education;dotnet</PackageTags>
+    <Description>Einbettbare, didaktische P-Code-VM des historischen PL/0 für .NET 10 mit vollständiger und schrittweiser Ausführung, Host-I/O und begrenzbaren Laufzeitressourcen. / Embeddable educational P-Code VM for historical PL/0 on .NET 10 with complete and stepwise execution, host I/O, and bounded runtime resources.</Description>
+    <PackageTags>pl0;virtual-machine;vm;compiler-construction;p-code;education;teaching;dotnet</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryType>git</RepositoryType>
