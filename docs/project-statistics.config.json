@@ -155,10 +155,13 @@
       "id": "nuget-package-descriptions",
       "labelDe": "NuGet-Beschreibungsseiten",
       "labelEn": "NuGet package descriptions",
-      "netLines": 641
+      "netLines": 646
     }
   ],
   "excludedPaths": [
+    ".release-please-manifest.json",
+    "CHANGELOG.md",
+    "eng/TinyPl0.PackageVersion.props",
     "src/Pl0.Ide/Pl0.Ide.csproj"
   ],
   "categoryOverrides": []

@@ -94,16 +94,16 @@ no follow-up feature started.*
 158. Agent (2026-09-03): Die NuGet-Beschreibungen für `TinyPl0.Core` und
 `TinyPl0.Vm` wurden als ausführliche, bilinguale und textfreundliche
 Paket-Landingpages überarbeitet. Der fachliche Feature-Commit verwendet
-Commitzählstand 524; nach dem Worklog-/Versions- und dem generierten
-Statistik-Folgecommit endet die IDE-Version zunächst bei `1.6.526.78`. Der
-Review-Fix-Commit 527 verlangt beide Sprachüberschriften ausdrücklich. Nach
-dem erneuten Testlauf, dem Worklog-Zwischencommit 528 und Statistik-
-Folgecommit 529 endet die Version bei `1.6.529.79`.
+Commitzählstand 524; Review-Fix 527 verlangt beide Sprachüberschriften. Der
+Folgebranch entkoppelt den Paketvertragstest von der konkreten Release-Version
+und die Statistik von generierten Release-Metadaten. Nach erneutem Testlauf,
+Fix-Commit 531 und Statistik-Folgecommit 532 endet die IDE-Version bei
+`1.6.532.80`.
 
 *The NuGet descriptions for `TinyPl0.Core` and `TinyPl0.Vm` were revised as
-detailed, bilingual, and text-friendly package landing pages. The feature
-commit uses commit count 524; after the worklog/version and generated
-statistics follow-up commits, the IDE version initially ends at `1.6.526.78`.
-Review-fix commit 527 explicitly requires both language headings. After the
-repeated test run, worklog intermediate commit 528, and statistics follow-up
-commit 529, the version ends at `1.6.529.79`.*
+detailed, bilingual, and text-friendly package landing pages. Feature commit
+524 implements the content, and review fix 527 requires both language
+headings. The follow-up branch makes the package contract independent of the
+specific release version and excludes generated release metadata from the
+statistics. After the repeated test run, fix commit 531, and statistics
+follow-up commit 532, the IDE version ends at `1.6.532.80`.*
