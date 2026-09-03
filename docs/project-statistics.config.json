@@ -149,6 +149,13 @@
       "labelDe": "006 Abschluss",
       "labelEn": "006 closeout",
       "netLines": 681
+    },
+    {
+      "slot": 20,
+      "id": "nuget-package-descriptions",
+      "labelDe": "NuGet-Beschreibungsseiten",
+      "labelEn": "NuGet package descriptions",
+      "netLines": 641
     }
   ],
   "excludedPaths": [

@@ -17,8 +17,8 @@
     <PackageVersion Condition="'$(BuildProjectReferences)' == 'false'">[$(TinyPl0PackageVersion)]</PackageVersion>
     <Version>$(TinyPl0PackageVersion)</Version>
     <Authors>Thorsten Hindermann</Authors>
-    <Description>PL/0 compiler core for .NET 10 / PL/0-Compilerkern für .NET 10</Description>
-    <PackageTags>pl0;compiler;education;dotnet</PackageTags>
+    <Description>Didaktischer Compilerkern des historischen PL/0 für .NET 10 mit Lexer, Parser, Diagnosen und typisierter P-Code-Erzeugung ohne Laufzeitabhängigkeiten. / Educational compiler core for historical PL/0 on .NET 10 with a lexer, parser, diagnostics, and typed P-Code generation without runtime dependencies.</Description>
+    <PackageTags>pl0;compiler;compiler-construction;p-code;education;teaching;dotnet</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryType>git</RepositoryType>
