@@ -118,3 +118,14 @@ und keine Änderung des IDE-Verhaltens. Die Produktregression läuft in der PR-C
 twelve. Integration commit 536 aligns only the required IDE version metadata
 to `1.6.536.80`; no local product build/test, NuGet publication or IDE behavior
 change occurs. Product regression runs in PR CI.*
+
+Die oben genannte Version bezeichnet ausschließlich den Integrationscommit,
+nicht den finalen PR-Stand. Statistikfolgecommit 537 verwendete `1.6.537.80`.
+Weitere Review-/Statistikcommits schreiben den Commitzähler gemäß Repository-Regel
+fort; die jeweils wirksame Version steht verbindlich in
+`src/Pl0.Ide/Pl0.Ide.csproj` (alle drei Versionsfelder identisch).
+
+*The version above describes the integration commit, not the final PR head.
+Statistics follow-up commit 537 used `1.6.537.80`. Subsequent review/statistics
+commits advance the counter under the repository rule. The authoritative
+current version is in `src/Pl0.Ide/Pl0.Ide.csproj`, with all three fields aligned.*
