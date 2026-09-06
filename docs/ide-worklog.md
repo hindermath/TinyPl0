@@ -129,3 +129,15 @@ fort; die jeweils wirksame Version steht verbindlich in
 Statistics follow-up commit 537 used `1.6.537.80`. Subsequent review/statistics
 commits advance the counter under the repository rule. The authoritative
 current version is in `src/Pl0.Ide/Pl0.Ide.csproj`, with all three fields aligned.*
+
+160. Agent (2026-09-06): Kanonisches Assurance-Patch v0.1.3 übernommen.
+Zwölf andere Presets unverändert; keine IDE-Verhaltensänderung, kein lokaler
+Produkt-Build/-Test und kein NuGet-Release. Der vorgeschriebene Commitzähler
+wird bei jedem Commit fortgeschrieben; die drei Felder in
+`src/Pl0.Ide/Pl0.Ide.csproj` bleiben die einzige aktuelle Versionsquelle.
+Nachweis: `docs/maintenance/assurance-v013-adoption.md`.
+
+*Adopt canonical Assurance v0.1.3, preserving twelve other presets. No IDE
+behavior change, local product build/test or NuGet release. Advance mandatory
+commit metadata at each commit; the three csproj fields remain authoritative.
+See the adoption record for verification and boundaries.*
