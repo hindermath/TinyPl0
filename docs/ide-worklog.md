@@ -107,3 +107,14 @@ headings. The follow-up branch makes the package contract independent of the
 specific release version and excludes generated release metadata from the
 statistics. After the repeated test run, fix commit 531, and statistics
 follow-up commit 532, the IDE version ends at `1.6.532.80`.*
+
+159. Agent (2026-09-06): Assurance v0.1.2 wurde als 13. Preset ergänzt.
+Die zwölf bestehenden Presets bleiben unverändert. Für Integrationscommit 536
+wird ausschließlich die vorgeschriebene IDE-Versionsmetadatenpflege auf
+`1.6.536.80` vorgenommen; kein lokaler Produkt-Build/Test, keine NuGet-Veröffentlichung
+und keine Änderung des IDE-Verhaltens. Die Produktregression läuft in der PR-CI.
+
+*Assurance v0.1.2 is added as the thirteenth preset, preserving the original
+twelve. Integration commit 536 aligns only the required IDE version metadata
+to `1.6.536.80`; no local product build/test, NuGet publication or IDE behavior
+change occurs. Product regression runs in PR CI.*
