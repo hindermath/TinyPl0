@@ -384,7 +384,7 @@ rekonstruiert.
 | 2026-09-06 | Assurance-Profil v0.1.2 integriert / Assurance profile v0.1.2 integrated | Arbeitsfenster: eine sichtbare Agentensitzung am 2026-09-06; Branch `codex/assurance-preset-integration`. Nur freigegebene Repository-Integration, keine Produktcode- oder Produkttest-Aenderung. Wiederverwendetes Paket und Dokumentations-/Konfigurationsdelta vor Statistik-Selbstnachweis: +4255 / -18 Zeilen; importiertes Paket ist keine neu entwickelte Produktlogik. Zwoelf bestehende Presets, alte Profile, projektgefuehrte Baseline und menschliche Entscheidungen bleiben unveraendert. Paketbindung, exakte 13er-Matrix, Byte-Erhalt, isolierte Vertrags-/Oberflaechentests und lesender Status sind im Integrationsnachweis dokumentiert; Lieferung folgt per fokussiertem PR mit CI und MergeAndSync. Keine Home-Verteilung oder fachlichen Reviews. Referenzen bleiben im unveraenderten Statistikprofil konfiguriert. / One visible session integrates only the approved repository profile. Imported package content is reuse, not new product logic. Product code/tests and the original twelve presets remain unchanged; see the integration record for tests and boundaries. |
 | 2026-09-06 | Assurance v0.1.3 – genehmigte Korrekturadoption / approved patch adoption | Eine sichtbare Agentensitzung; Branch `codex/assurance-v013-adoption`. Oeffentliches unveraendertes Paket ersetzt ausschliesslich Assurance, zwoelf weitere Presets und bestehende Profile bleiben erhalten. Gestagter Paket-/Konfigurations-/Dokumentationsdelta: +533 / -34 Zeilen vor Statistik-Selbstnachweis; importierte Zeilen sind wiederverwendetes Paket, keine neu entwickelte Produktlogik. Keine Runtime-/API-Aenderung und keine neue fachliche Freigabe. Technische Bindungen und vorgeschriebene Build-Metadaten werden nur soweit erforderlich mitgefuehrt. Nachweise: `docs/maintenance/assurance-v013-adoption.md`. Lieferung ueber CI, Review und MergeAndSync; kein Home-Sync. / One visible session adopts the immutable public patch, preserving twelve presets and profiles. Reused package volume is not new product logic. No runtime/API or human-approval change; only required technical bindings and build metadata follow. See adoption evidence; CI/review gate MergeAndSync. |
 | 2026-09-07 | Assurance-Integration und Evidence-Navigation / Assurance integration and evidence navigation | Branch `codex/assurance-evidence-matrix`; sichtbare Sitzung 2026-09-07. Ausschliesslich Dokumentations- und vorgeschriebene Metadatenaenderungen: +252 / -3 Textzeilen vor Statistik-Selbstnachweis. Keine Paket- oder Profilaenderung und keine neue Produktlogik; die Matrix referenziert unveraenderte vorhandene Nachweise. Zwoelf Presets unveraendert, keine fachliche Freigabe, kein Home-Sync. Referenzen: 80 Zeilen/Arbeitstag konservativ, repo-spezifische Thorsten-Solo-Basis laut Profilkonfiguration; Speedup ist Lieferdichte. / One visible session; documentation/evidence-index and mandatory metadata volume only. No changes to packages, profiles, product logic, or human approvals. Twelve presets preserved; CI/review and MergeAndSync; no Home sync. Manual effort follows the repository statistics configuration. |
-| 2026-09-07 | Assurance-Evidence-Vertrag / Assurance evidence contract | Branch codex/assurance-evidence-migration, sichtbare Sitzung 2026-09-07. 157 historische Kontrollen quellengebunden abgebildet, vier Gates Blocked, vier menschliche Entscheidungen Open; 2795 neue Evidence-/Dokumentationszeilen vor Ledger und Delivery-Metadaten, 0 neue Produkt-/Testlogikzeilen. Quellen- und Shell-Paritätsprüfung: docs/security/secure-development/2026-08-30-tinypl0-hardening/assurance-validation.json. Presets und Altbewertungen unverändert. / Source-bound migration and read-only parity verification; no approval inferred, no Home sync. Manual reference: 80 lines/workday and the repository-specific configuration; speedup is delivery density, not stopwatch time. |
+| 2026-09-07 | Assurance-Evidence-Vertrag / Assurance evidence contract | Branch `codex/assurance-evidence-migration`, sichtbare Sitzung 2026-09-07. 157 historische Kontrollen quellengebunden abgebildet, vier Gates Blocked, vier menschliche Entscheidungen Open; 2795 neue Evidence-/Dokumentationszeilen vor Ledger und Delivery-Metadaten, 0 neue Produkt-/Testlogikzeilen. Quellen- und Shell-Paritätsprüfung: docs/security/secure-development/2026-08-30-tinypl0-hardening/assurance-validation.json. Presets und Altbewertungen unverändert. / Source-bound migration and read-only parity verification; no approval inferred, no Home sync. Manual reference: 80 lines/workday and the repository-specific configuration; speedup is delivery density, not stopwatch time. |
 
 ## Statistikprofil-1-Archiv / Statistics Profile 1 Archive
 - Stand 2026-05-05: `88` Produktionsdateien mit `6950` Zeilen, `22` Testdateien mit `3536` Zeilen und `562` Dokumentationsdateien mit `36625` Zeilen.
@@ -510,25 +510,25 @@ Profil 2 verwendet Git-getrackte Textdateien und sichtbare Git-Aktivitaet. Die W
 
 | Kennzahl / Metric | Wert / Value |
 |---|---:|
-| Textbasis / Text base | 278807 lines |
+| Textbasis / Text base | 278811 lines |
 | Textdateien / Text files | 2018 |
 | Beobachtbarer Zeitraum / Observable period | 2025-09-14..2026-09-07 |
 | Aktivtage / Active days | 92 |
-| Relevante Commits / Relevant commits | 369 |
-| Zeilen je Aktivtag / Lines per active day | 3030.5 |
+| Relevante Commits / Relevant commits | 370 |
+| Zeilen je Aktivtag / Lines per active day | 3030.6 |
 | Peak-Tag im Fenster / Peak day in window | 2026-02-14 / 177480 |
 | Peak-Woche im Fenster / Peak week in window | 2026-02-08 / 186065 |
 | Laengste Serie / Longest streak | 9 days |
 | Speedup vs. 80 lines/day | 37.9x |
 | Speedup vs. 125 lines/day | 24.2x |
-| Methodik / Methodology | v2; source `9d8fe2db2a30` |
+| Methodik / Methodology | v2; source `4de9491c62c5` |
 
 ### Artefaktmix / Artifact Mix
 
 ```text
 Produktiv / Production          [#...................]   2.5% | 7060
 Tests                           [#...................]   4.7% | 13146
-Dokumentation / Documentation   [###########.........]  55.3% | 154207
+Dokumentation / Documentation   [###########.........]  55.3% | 154211
 Skripte / Scripts               [##..................]   8.1% | 22629
 Konfiguration / Configuration   [######..............]  27.6% | 77033
 Daten und Medien / Data and media [....................]   0.0% | 0
@@ -695,7 +695,7 @@ Die Faktoren vergleichen sichtbare Lieferdichte mit den dokumentierten manuellen
 Scale: 0..5000 lines/day
 Experienced manual [#...................] 80
 Thorsten solo      [#...................] 125
-Visible repository [############........] 3030.5
+Visible repository [############........] 3030.6
 ```
 
 Die gemeinsame Skala vergleicht Referenzen und sichtbare Lieferdichte. Sie schreibt die Git-Aktivitaet keiner Person oder KI pauschal zu.
@@ -721,6 +721,6 @@ DE: Das Fenster beginnt am 2025-09-14 und endet am 2026-09-07. Es enthaelt 92 ak
 | 2026-06 | 37650 |
 | 2026-07 | 78913 |
 | 2026-08 | 55167 |
-| 2026-09 | 26670 |
+| 2026-09 | 26688 |
 
 <!-- project-statistics-v2:end -->
