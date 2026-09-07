@@ -8,8 +8,8 @@
   "runbookApplicability": "N/A",
   "runbookRationale": "DE: Nur repository-interne Evidence-Migration nach assurance-migration.md; kein Trainings-, Pilot-, Image- oder Produktionslauf. EN: Repository-internal evidence migration following assurance-migration.md only; no training, pilot, image or production run.",
   "review": {
-    "owner": "Repository maintainer; no approval inferred",
-    "reviewer": "Codex; automated technical migration inspection only, not independent human review",
+    "owner": "DE: Repository-Maintainer; keine Freigabe abgeleitet. EN: Repository maintainer; no approval inferred.",
+    "reviewer": "DE: Codex; ausschließlich automatisierte technische Migrationsprüfung, kein unabhängiger menschlicher Review. EN: Codex; automated technical migration inspection only, not independent human review.",
     "reviewedAt": "2026-09-07T20:51:01Z",
     "reviewDue": "2026-09-14",
     "residualRisk": "DE: Historische Bewertungen, Quellenabweichungen und offene fachliche Entscheidungen; keine Risikoakzeptanz. EN: Historical assessments, source drift and open domain decisions; no risk acceptance.",
@@ -27,7 +27,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-01-02",
@@ -40,7 +40,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-01-03",
@@ -53,7 +53,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-01-04",
@@ -66,7 +66,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-01-05",
@@ -79,7 +79,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-01-06",
@@ -92,7 +92,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-01-07",
@@ -105,7 +105,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-01-08",
@@ -118,7 +118,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-01-09",
@@ -131,7 +131,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-01-10",
@@ -144,7 +144,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-01-11",
@@ -157,7 +157,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-01-12",
@@ -170,7 +170,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-02-01",
@@ -183,7 +183,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-02-02",
@@ -196,7 +196,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-02-03",
@@ -209,7 +209,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-02-04",
@@ -222,7 +222,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-02-05",
@@ -235,7 +235,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-02-06",
@@ -248,7 +248,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-02-07",
@@ -261,7 +261,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-02-08",
@@ -274,7 +274,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-02-09",
@@ -287,7 +287,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-02-10",
@@ -300,7 +300,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-02-11",
@@ -313,7 +313,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-02-12",
@@ -326,7 +326,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-02-13",
@@ -339,7 +339,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-03-01",
@@ -352,7 +352,7 @@
       "nextAction": "DE: Keine Umsetzung in diesem Lauf; Trigger beobachten. EN: No implementation in this run; monitor the trigger.",
       "dueAt": "Product scope changes and makes this control applicable.",
       "sourceStatus": "N/A / Not Assessed",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-03-02",
@@ -365,7 +365,7 @@
       "nextAction": "DE: Keine Umsetzung in diesem Lauf; Trigger beobachten. EN: No implementation in this run; monitor the trigger.",
       "dueAt": "Product scope changes and makes this control applicable.",
       "sourceStatus": "N/A / Not Assessed",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-03-03",
@@ -378,7 +378,7 @@
       "nextAction": "DE: Keine Umsetzung in diesem Lauf; Trigger beobachten. EN: No implementation in this run; monitor the trigger.",
       "dueAt": "Product scope changes and makes this control applicable.",
       "sourceStatus": "N/A / Not Assessed",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-03-04",
@@ -391,7 +391,7 @@
       "nextAction": "DE: Keine Umsetzung in diesem Lauf; Trigger beobachten. EN: No implementation in this run; monitor the trigger.",
       "dueAt": "Product scope changes and makes this control applicable.",
       "sourceStatus": "N/A / Not Assessed",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-03-05",
@@ -404,7 +404,7 @@
       "nextAction": "DE: Keine Umsetzung in diesem Lauf; Trigger beobachten. EN: No implementation in this run; monitor the trigger.",
       "dueAt": "Product scope changes and makes this control applicable.",
       "sourceStatus": "N/A / Not Assessed",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-03-06",
@@ -417,7 +417,7 @@
       "nextAction": "DE: Keine Umsetzung in diesem Lauf; Trigger beobachten. EN: No implementation in this run; monitor the trigger.",
       "dueAt": "Product scope changes and makes this control applicable.",
       "sourceStatus": "N/A / Not Assessed",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-03-07",
@@ -430,7 +430,7 @@
       "nextAction": "DE: Keine Umsetzung in diesem Lauf; Trigger beobachten. EN: No implementation in this run; monitor the trigger.",
       "dueAt": "Product scope changes and makes this control applicable.",
       "sourceStatus": "N/A / Not Assessed",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-03-08",
@@ -443,7 +443,7 @@
       "nextAction": "DE: Keine Umsetzung in diesem Lauf; Trigger beobachten. EN: No implementation in this run; monitor the trigger.",
       "dueAt": "Product scope changes and makes this control applicable.",
       "sourceStatus": "N/A / Not Assessed",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-03-09",
@@ -456,7 +456,7 @@
       "nextAction": "DE: Keine Umsetzung in diesem Lauf; Trigger beobachten. EN: No implementation in this run; monitor the trigger.",
       "dueAt": "Product scope changes and makes this control applicable.",
       "sourceStatus": "N/A / Not Assessed",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-03-10",
@@ -469,7 +469,7 @@
       "nextAction": "DE: Keine Umsetzung in diesem Lauf; Trigger beobachten. EN: No implementation in this run; monitor the trigger.",
       "dueAt": "Product scope changes and makes this control applicable.",
       "sourceStatus": "N/A / Not Assessed",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-03-11",
@@ -482,7 +482,7 @@
       "nextAction": "DE: Keine Umsetzung in diesem Lauf; Trigger beobachten. EN: No implementation in this run; monitor the trigger.",
       "dueAt": "Product scope changes and makes this control applicable.",
       "sourceStatus": "N/A / Not Assessed",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-03-12",
@@ -495,7 +495,7 @@
       "nextAction": "DE: Keine Umsetzung in diesem Lauf; Trigger beobachten. EN: No implementation in this run; monitor the trigger.",
       "dueAt": "Product scope changes and makes this control applicable.",
       "sourceStatus": "N/A / Not Assessed",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-03-13",
@@ -508,7 +508,7 @@
       "nextAction": "DE: Keine Umsetzung in diesem Lauf; Trigger beobachten. EN: No implementation in this run; monitor the trigger.",
       "dueAt": "Product scope changes and makes this control applicable.",
       "sourceStatus": "N/A / Not Assessed",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-03-14",
@@ -521,7 +521,7 @@
       "nextAction": "DE: Keine Umsetzung in diesem Lauf; Trigger beobachten. EN: No implementation in this run; monitor the trigger.",
       "dueAt": "Product scope changes and makes this control applicable.",
       "sourceStatus": "N/A / Not Assessed",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-03-15",
@@ -534,7 +534,7 @@
       "nextAction": "DE: Keine Umsetzung in diesem Lauf; Trigger beobachten. EN: No implementation in this run; monitor the trigger.",
       "dueAt": "Product scope changes and makes this control applicable.",
       "sourceStatus": "N/A / Not Assessed",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-04-01",
@@ -547,7 +547,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-04-02",
@@ -560,7 +560,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-04-03",
@@ -573,7 +573,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-04-04",
@@ -586,7 +586,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-04-05",
@@ -599,7 +599,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-04-06",
@@ -612,7 +612,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-04-07",
@@ -625,7 +625,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-04-08",
@@ -638,7 +638,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-04-09",
@@ -651,7 +651,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-04-10",
@@ -664,7 +664,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-05-01",
@@ -677,7 +677,7 @@
       "nextAction": "DE: Bei Dependency-, Workflow-, Policy- oder Scope-Änderung erneut prüfen. EN: Reassess after a dependency, workflow, policy, or scope change.",
       "dueAt": "2026-11-30 or earlier on relevant change.",
       "sourceStatus": "Applicable / Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-05-02",
@@ -690,7 +690,7 @@
       "nextAction": "DE: Bei Dependency-, Workflow-, Policy- oder Scope-Änderung erneut prüfen. EN: Reassess after a dependency, workflow, policy, or scope change.",
       "dueAt": "2026-11-30 or earlier on relevant change.",
       "sourceStatus": "Applicable / Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-05-03",
@@ -703,7 +703,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-05-04",
@@ -716,7 +716,7 @@
       "nextAction": "DE: Bei Dependency-, Workflow-, Policy- oder Scope-Änderung erneut prüfen. EN: Reassess after a dependency, workflow, policy, or scope change.",
       "dueAt": "2026-11-30 or earlier on relevant change.",
       "sourceStatus": "Applicable / Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-05-05",
@@ -729,7 +729,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-05-06",
@@ -742,7 +742,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-05-07",
@@ -755,7 +755,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-05-08",
@@ -768,7 +768,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-05-09",
@@ -781,7 +781,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-05-10",
@@ -794,7 +794,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-05-11",
@@ -807,7 +807,7 @@
       "nextAction": "DE: Bei Dependency-, Workflow-, Policy- oder Scope-Änderung erneut prüfen. EN: Reassess after a dependency, workflow, policy, or scope change.",
       "dueAt": "2026-11-30 or earlier on relevant change.",
       "sourceStatus": "Applicable / Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-05-12",
@@ -820,7 +820,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-05-13",
@@ -833,7 +833,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-06-01",
@@ -846,7 +846,7 @@
       "nextAction": "DE: Bei Dependency-, Workflow-, Policy- oder Scope-Änderung erneut prüfen. EN: Reassess after a dependency, workflow, policy, or scope change.",
       "dueAt": "2026-11-30 or earlier on relevant change.",
       "sourceStatus": "Applicable / Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-06-02",
@@ -859,7 +859,7 @@
       "nextAction": "DE: Bei Dependency-, Workflow-, Policy- oder Scope-Änderung erneut prüfen. EN: Reassess after a dependency, workflow, policy, or scope change.",
       "dueAt": "2026-11-30 or earlier on relevant change.",
       "sourceStatus": "Applicable / Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-06-03",
@@ -872,7 +872,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-06-04",
@@ -885,7 +885,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-06-05",
@@ -898,7 +898,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-06-06",
@@ -911,7 +911,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-06-07",
@@ -924,7 +924,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-06-08",
@@ -937,7 +937,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-06-09",
@@ -950,7 +950,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-06-10",
@@ -963,7 +963,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-06-11",
@@ -976,7 +976,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-07-01",
@@ -989,7 +989,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-07-02",
@@ -1002,7 +1002,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-07-03",
@@ -1015,7 +1015,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-07-04",
@@ -1028,7 +1028,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-07-05",
@@ -1041,7 +1041,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-07-06",
@@ -1054,7 +1054,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-07-07",
@@ -1067,7 +1067,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-07-08",
@@ -1080,7 +1080,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-07-09",
@@ -1093,7 +1093,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-07-10",
@@ -1106,7 +1106,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-07-11",
@@ -1119,7 +1119,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-07-12",
@@ -1132,7 +1132,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-08-01",
@@ -1145,7 +1145,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-08-02",
@@ -1158,7 +1158,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-08-03",
@@ -1171,7 +1171,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-08-04",
@@ -1184,7 +1184,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-08-05",
@@ -1197,7 +1197,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-08-06",
@@ -1210,7 +1210,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-08-07",
@@ -1223,7 +1223,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-08-08",
@@ -1236,7 +1236,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-08-09",
@@ -1249,7 +1249,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-08-10",
@@ -1262,7 +1262,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-08-11",
@@ -1275,7 +1275,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-08-12",
@@ -1286,9 +1286,9 @@
       "reevaluationTrigger": "DE: Before feature closeout and after a relevant code, dependency, workflow, or evidence change. EN: Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "owner": "TinyPl0 maintainer",
       "nextAction": "DE: Keine lokale Maßnahme; bei API-, Theme-, Navigations- oder Harness-Änderung erneut prüfen. EN: No local action; re-evaluate after an API, theme, navigation, or harness change.",
-      "dueAt": "Before any positive Assurance decision; source has no assigned calendar deadline",
+      "dueAt": "DE: Vor jeder positiven Assurance-Entscheidung; Quelle enthält keinen zugewiesenen Kalendertermin. EN: Before any positive Assurance decision; source has no assigned calendar deadline.",
       "sourceStatus": "Applicable / Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-08-13",
@@ -1301,7 +1301,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-09-01",
@@ -1314,7 +1314,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-09-02",
@@ -1327,7 +1327,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-09-03",
@@ -1340,7 +1340,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-09-04",
@@ -1353,7 +1353,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-09-05",
@@ -1366,7 +1366,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-09-06",
@@ -1379,7 +1379,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-09-07",
@@ -1392,7 +1392,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-09-08",
@@ -1405,7 +1405,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-09-09",
@@ -1418,7 +1418,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-09-10",
@@ -1431,7 +1431,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-09-11",
@@ -1444,7 +1444,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-09-12",
@@ -1457,7 +1457,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-09-13",
@@ -1468,9 +1468,9 @@
       "reevaluationTrigger": "DE: Before feature closeout and after a relevant code, dependency, workflow, or evidence change. EN: Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "owner": "TinyPl0 maintainer",
       "nextAction": "DE: Keine Änderung; Parität an der finalen Gate-Grenze erneut prüfen. EN: No change; revalidate parity at the final gate boundary.",
-      "dueAt": "Before any positive Assurance decision; source has no assigned calendar deadline",
+      "dueAt": "DE: Vor jeder positiven Assurance-Entscheidung; Quelle enthält keinen zugewiesenen Kalendertermin. EN: Before any positive Assurance decision; source has no assigned calendar deadline.",
       "sourceStatus": "Applicable / Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-09-14",
@@ -1483,7 +1483,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-09-15",
@@ -1496,7 +1496,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-09-16",
@@ -1509,7 +1509,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-09-17",
@@ -1522,7 +1522,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-10-01",
@@ -1535,7 +1535,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-10-02",
@@ -1548,7 +1548,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-10-03",
@@ -1561,7 +1561,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-10-04",
@@ -1574,7 +1574,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-10-05",
@@ -1587,7 +1587,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-10-06",
@@ -1600,7 +1600,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-10-07",
@@ -1613,7 +1613,7 @@
       "nextAction": "DE: Bei Dependency-, Workflow-, Policy- oder Scope-Änderung erneut prüfen. EN: Reassess after a dependency, workflow, policy, or scope change.",
       "dueAt": "2026-11-30 or earlier on relevant change.",
       "sourceStatus": "Applicable / Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-10-08",
@@ -1626,7 +1626,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-10-09",
@@ -1637,9 +1637,9 @@
       "reevaluationTrigger": "DE: Before feature closeout and after a relevant code, dependency, workflow, or evidence change. EN: Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "owner": "TinyPl0 maintainer",
       "nextAction": "DE: Keine lokale Maßnahme; bei Server-, Workflow- oder Browser-Harness-Änderung erneut prüfen. EN: No local action; re-evaluate after a server, workflow, or browser-harness change.",
-      "dueAt": "Before any positive Assurance decision; source has no assigned calendar deadline",
+      "dueAt": "DE: Vor jeder positiven Assurance-Entscheidung; Quelle enthält keinen zugewiesenen Kalendertermin. EN: Before any positive Assurance decision; source has no assigned calendar deadline.",
       "sourceStatus": "Applicable / Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-10-10",
@@ -1652,7 +1652,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-10-11",
@@ -1665,7 +1665,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-10-12",
@@ -1678,7 +1678,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-10-13",
@@ -1691,7 +1691,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-10-14",
@@ -1704,7 +1704,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-10-15",
@@ -1717,7 +1717,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-10-16",
@@ -1730,7 +1730,7 @@
       "nextAction": "DE: Evidence im geplanten Security- oder Architekturpfad vervollständigen. EN: Complete evidence in the planned security or architecture path.",
       "dueAt": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
       "sourceStatus": "Applicable / Partly Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-10-17",
@@ -1743,7 +1743,7 @@
       "nextAction": "DE: Bei Dependency-, Workflow-, Policy- oder Scope-Änderung erneut prüfen. EN: Reassess after a dependency, workflow, policy, or scope change.",
       "dueAt": "2026-11-30 or earlier on relevant change.",
       "sourceStatus": "Applicable / Fulfilled",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-11-01",
@@ -1756,7 +1756,7 @@
       "nextAction": "DE: Keine Umsetzung in diesem Lauf; Trigger beobachten. EN: No implementation in this run; monitor the trigger.",
       "dueAt": "Product scope changes and makes this control applicable.",
       "sourceStatus": "N/A / Not Assessed",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-11-02",
@@ -1769,7 +1769,7 @@
       "nextAction": "DE: Keine Umsetzung in diesem Lauf; Trigger beobachten. EN: No implementation in this run; monitor the trigger.",
       "dueAt": "Product scope changes and makes this control applicable.",
       "sourceStatus": "N/A / Not Assessed",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-11-03",
@@ -1782,7 +1782,7 @@
       "nextAction": "DE: Keine Umsetzung in diesem Lauf; Trigger beobachten. EN: No implementation in this run; monitor the trigger.",
       "dueAt": "Product scope changes and makes this control applicable.",
       "sourceStatus": "N/A / Not Assessed",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-11-04",
@@ -1795,7 +1795,7 @@
       "nextAction": "DE: Keine Umsetzung in diesem Lauf; Trigger beobachten. EN: No implementation in this run; monitor the trigger.",
       "dueAt": "Product scope changes and makes this control applicable.",
       "sourceStatus": "N/A / Not Assessed",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-11-05",
@@ -1808,7 +1808,7 @@
       "nextAction": "DE: Keine Umsetzung in diesem Lauf; Trigger beobachten. EN: No implementation in this run; monitor the trigger.",
       "dueAt": "Product scope changes and makes this control applicable.",
       "sourceStatus": "N/A / Not Assessed",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-11-06",
@@ -1821,7 +1821,7 @@
       "nextAction": "DE: Keine Umsetzung in diesem Lauf; Trigger beobachten. EN: No implementation in this run; monitor the trigger.",
       "dueAt": "Product scope changes and makes this control applicable.",
       "sourceStatus": "N/A / Not Assessed",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-11-07",
@@ -1834,7 +1834,7 @@
       "nextAction": "DE: Keine Umsetzung in diesem Lauf; Trigger beobachten. EN: No implementation in this run; monitor the trigger.",
       "dueAt": "Product scope changes and makes this control applicable.",
       "sourceStatus": "N/A / Not Assessed",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-11-08",
@@ -1847,7 +1847,7 @@
       "nextAction": "DE: Keine Umsetzung in diesem Lauf; Trigger beobachten. EN: No implementation in this run; monitor the trigger.",
       "dueAt": "Product scope changes and makes this control applicable.",
       "sourceStatus": "N/A / Not Assessed",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-11-09",
@@ -1860,7 +1860,7 @@
       "nextAction": "DE: Keine Umsetzung in diesem Lauf; Trigger beobachten. EN: No implementation in this run; monitor the trigger.",
       "dueAt": "Product scope changes and makes this control applicable.",
       "sourceStatus": "N/A / Not Assessed",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-11-10",
@@ -1873,7 +1873,7 @@
       "nextAction": "DE: Keine Umsetzung in diesem Lauf; Trigger beobachten. EN: No implementation in this run; monitor the trigger.",
       "dueAt": "Product scope changes and makes this control applicable.",
       "sourceStatus": "N/A / Not Assessed",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-11-11",
@@ -1886,7 +1886,7 @@
       "nextAction": "DE: Keine Umsetzung in diesem Lauf; Trigger beobachten. EN: No implementation in this run; monitor the trigger.",
       "dueAt": "Product scope changes and makes this control applicable.",
       "sourceStatus": "N/A / Not Assessed",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-11-12",
@@ -1899,7 +1899,7 @@
       "nextAction": "DE: Keine Umsetzung in diesem Lauf; Trigger beobachten. EN: No implementation in this run; monitor the trigger.",
       "dueAt": "Product scope changes and makes this control applicable.",
       "sourceStatus": "N/A / Not Assessed",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-12-01",
@@ -1912,7 +1912,7 @@
       "nextAction": "DE: Keine Umsetzung in diesem Lauf; Trigger beobachten. EN: No implementation in this run; monitor the trigger.",
       "dueAt": "Separate accepted sandbox-hardening run with explicit user authority.",
       "sourceStatus": "N/A / Not Assessed",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-12-02",
@@ -1925,7 +1925,7 @@
       "nextAction": "DE: Keine Umsetzung in diesem Lauf; Trigger beobachten. EN: No implementation in this run; monitor the trigger.",
       "dueAt": "Separate accepted sandbox-hardening run with explicit user authority.",
       "sourceStatus": "N/A / Not Assessed",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-12-03",
@@ -1938,7 +1938,7 @@
       "nextAction": "DE: Keine Umsetzung in diesem Lauf; Trigger beobachten. EN: No implementation in this run; monitor the trigger.",
       "dueAt": "Separate accepted sandbox-hardening run with explicit user authority.",
       "sourceStatus": "N/A / Not Assessed",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-12-04",
@@ -1951,7 +1951,7 @@
       "nextAction": "DE: Keine Umsetzung in diesem Lauf; Trigger beobachten. EN: No implementation in this run; monitor the trigger.",
       "dueAt": "Separate accepted sandbox-hardening run with explicit user authority.",
       "sourceStatus": "N/A / Not Assessed",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-12-05",
@@ -1964,7 +1964,7 @@
       "nextAction": "DE: Keine Umsetzung in diesem Lauf; Trigger beobachten. EN: No implementation in this run; monitor the trigger.",
       "dueAt": "Separate accepted sandbox-hardening run with explicit user authority.",
       "sourceStatus": "N/A / Not Assessed",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-12-06",
@@ -1977,7 +1977,7 @@
       "nextAction": "DE: Keine Umsetzung in diesem Lauf; Trigger beobachten. EN: No implementation in this run; monitor the trigger.",
       "dueAt": "Separate accepted sandbox-hardening run with explicit user authority.",
       "sourceStatus": "N/A / Not Assessed",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-12-07",
@@ -1990,7 +1990,7 @@
       "nextAction": "DE: Keine Umsetzung in diesem Lauf; Trigger beobachten. EN: No implementation in this run; monitor the trigger.",
       "dueAt": "Separate accepted sandbox-hardening run with explicit user authority.",
       "sourceStatus": "N/A / Not Assessed",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-12-08",
@@ -2003,7 +2003,7 @@
       "nextAction": "DE: Keine Umsetzung in diesem Lauf; Trigger beobachten. EN: No implementation in this run; monitor the trigger.",
       "dueAt": "Separate accepted sandbox-hardening run with explicit user authority.",
       "sourceStatus": "N/A / Not Assessed",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-12-09",
@@ -2016,7 +2016,7 @@
       "nextAction": "DE: Keine Umsetzung in diesem Lauf; Trigger beobachten. EN: No implementation in this run; monitor the trigger.",
       "dueAt": "Separate accepted sandbox-hardening run with explicit user authority.",
       "sourceStatus": "N/A / Not Assessed",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-12-10",
@@ -2029,7 +2029,7 @@
       "nextAction": "DE: Keine Umsetzung in diesem Lauf; Trigger beobachten. EN: No implementation in this run; monitor the trigger.",
       "dueAt": "Separate accepted sandbox-hardening run with explicit user authority.",
       "sourceStatus": "N/A / Not Assessed",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-12-11",
@@ -2042,7 +2042,7 @@
       "nextAction": "DE: Keine Umsetzung in diesem Lauf; Trigger beobachten. EN: No implementation in this run; monitor the trigger.",
       "dueAt": "Separate accepted sandbox-hardening run with explicit user authority.",
       "sourceStatus": "N/A / Not Assessed",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "CL-12-12",
@@ -2055,7 +2055,7 @@
       "nextAction": "DE: Keine Umsetzung in diesem Lauf; Trigger beobachten. EN: No implementation in this run; monitor the trigger.",
       "dueAt": "Separate accepted sandbox-hardening run with explicit user authority.",
       "sourceStatus": "N/A / Not Assessed",
-      "assessmentSemantics": "HistoricalSourceMappingOnly; current effectiveness not revalidated"
+      "assessmentSemantics": "HistoricalSourceMappingOnly"
     },
     {
       "id": "MIGRATION-FRESHNESS",
@@ -2063,8 +2063,8 @@
       "implementation": "Not Assessed",
       "evidence": "docs/security/secure-development/2026-08-30-tinypl0-hardening/assurance-migration.md",
       "nextAction": "DE: Historische Kontrollnachweise und Scope anhand des Quellenberichts neu prüfen; keine automatische Statusanhebung. EN: Revalidate historical evidence and scope using the source report; no automatic promotion.",
-      "owner": "Repository maintainer; assignment pending",
-      "dueAt": "Before any positive Assurance decision; owner date not assigned"
+      "owner": "DE: Repository-Maintainer; konkrete Zuweisung offen. EN: Repository maintainer; assignment pending.",
+      "dueAt": "DE: Vor jeder positiven Assurance-Entscheidung; kein Owner-Termin zugewiesen. EN: Before any positive Assurance decision; owner date not assigned."
     }
   ],
   "outcome": "Blocked",
@@ -2076,7 +2076,7 @@
     "sourceArray": "items",
     "sourceControlCount": 157,
     "inspectedHead": "98d9465e3eae454bf3130f2fb634c0794a704843",
-    "scope": "Technical evidence migration and gap inspection only",
+    "scope": "DE: Nur technische Evidence-Migration und Lückenprüfung. EN: Technical evidence migration and gap inspection only.",
     "sourceAssessmentsReapproved": false,
     "humanApprovalsGranted": false,
     "technicalReviewOnly": true

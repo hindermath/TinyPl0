@@ -2,7 +2,7 @@
   "schemaVersion": "1.0",
   "documentType": "AssuranceMigrationInspection",
   "inspectedAt": "2026-09-07T20:51:01Z",
-  "scope": "Read-only source identity, version and reference inspection; not a domain effectiveness review",
+  "scope": "DE: Lesende Prüfung von Quellenidentität, Versionen und Referenzen; keine fachliche Wirksamkeitsprüfung. EN: Read-only source identity, version and reference inspection; not a domain effectiveness review.",
   "sourcePath": "docs/security/secure-development/2026-08-30-tinypl0-hardening/assessment.json",
   "sourceSha256": "ec978f6911ec00e77427cdcd4d7b0a628df63b70c075fb793200a671a6aef905",
   "sourceControlCount": 157,
@@ -149,6 +149,6 @@
       "anchorChecked": false
     }
   ],
-  "referenceBoundary": "File existence/hash only; Markdown anchors and external URLs not verified; no claim of control effectiveness",
-  "humanDecisionBoundary": "No historical approval transferred or new approval granted"
+  "referenceBoundary": "DE: Nur Dateiexistenz/Hashes; Markdown-Anker und externe URLs nicht geprüft; keine Aussage zur Kontrollwirksamkeit. EN: File existence/hash only; Markdown anchors and external URLs not verified; no claim of control effectiveness.",
+  "humanDecisionBoundary": "DE: Keine historische Freigabe übertragen oder neue Freigabe erteilt. EN: No historical approval transferred or new approval granted."
 }
