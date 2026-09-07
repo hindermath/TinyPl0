@@ -141,3 +141,5 @@ Nachweis: `docs/maintenance/assurance-v013-adoption.md`.
 behavior change, local product build/test or NuGet release. Advance mandatory
 commit metadata at each commit; the three csproj fields remain authoritative.
 See the adoption record for verification and boundaries.*
+
+161. Agent (2026-09-07): Fehlende Evidence-Matrix aus 157 vorhandenen Kontrollbewertungen ergänzt. Bewertungs-JSON, alle 13 Presets und generierte Befehle unverändert. Kein IDE-Verhalten, Build, lokaler Produkttest oder NuGet-Release; verpflichtende Commit-Versionsmetadaten fortgeschrieben. Status in beiden Shells weiterhin Blocked wegen fehlender baseline.json. / Add the missing index of 157 existing assessments; preserve all source evidence and presets. No IDE behavior change, local product build/test or NuGet release. Mandatory commit metadata advances; both status validators still block on absent baseline.json.
