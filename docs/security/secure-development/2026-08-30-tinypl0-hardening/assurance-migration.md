@@ -22,8 +22,9 @@ Sie dokumentieren, was fehlt; ihre Existenz ist kein positiver Prüfnachweis.
 - Die ursprünglichen Reviewer, Reviewdaten, Rollen, Risiken und Begründungen
   bleiben in der Quelle erhalten. Codex ist nur als heutiger technischer Prüfer
   benannt, ausdrücklich nicht als unabhängiger menschlicher Reviewer.
-- reviewDue gilt nur für diese technische Momentaufnahme am Prüftag. Es
-  verlängert keinen alten Review. Nicht zugewiesene Termine werden nicht erfunden.
+- reviewDue ist die vom technischen Prüfer gesetzte Wiedervorlage nach sieben
+  Tagen, keine fachliche Gültigkeitsverlängerung und kein menschlich zugesagter
+  Termin. Quellen-/Scope-Änderungen verlangen sofortige erneute Prüfung.
 - development bezeichnet ausschließlich die technische Repository-Arbeit,
   keinen Trainings-, Pilot- oder Produktbetrieb. Ablauf steht in diesem Dokument.
 
@@ -88,8 +89,9 @@ Not Assessed, Open to Open/Not Assessed, and N/A to N/A/Not Assessed.
 MIGRATION-FRESHNESS prevents a migration from becoming a positive gate result.
 
 Codex records only the present automated technical inspection. Its reviewDue
-expires after the inspection date and does not renew historical reviews or
-invent a human deadline. The development mode is repository-internal evidence
+is a seven-day technical reinspection limit set by the inspecting agent, not
+renewed domain validity or a human commitment. Source/scope changes require
+immediate reinspection. The development mode is repository-internal evidence
 work only, with no training, pilot or product operation. The source report
 lists actual version mismatches and reference existence/hash checks. It does
 not verify anchors, external sources or control effectiveness. Baseline sources

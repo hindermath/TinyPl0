@@ -11,9 +11,9 @@
     "owner": "Repository maintainer; no approval inferred",
     "reviewer": "Codex; automated technical migration inspection only, not independent human review",
     "reviewedAt": "2026-09-07T20:51:01Z",
-    "reviewDue": "2026-09-07",
+    "reviewDue": "2026-09-14",
     "residualRisk": "DE: Historische Bewertungen, Quellenabweichungen und offene fachliche Entscheidungen; keine Risikoakzeptanz. EN: Historical assessments, source drift and open domain decisions; no risk acceptance.",
-    "reevaluationTrigger": "DE: Vor positiver Gate-Entscheidung oder bei Quellen-/Scope-Änderung; technische Momentaufnahme gilt nur am Prüftag. EN: Before a positive gate decision or any source/scope change; technical snapshot valid only on its inspection date."
+    "reevaluationTrigger": "DE: Sofort bei Quellen-/Scope-Änderung und vor positiver Gate-Entscheidung; spätestens nach sieben Tagen technisch neu prüfen. Keine fachliche Gültigkeitsverlängerung. EN: Immediately on source/scope change and before a positive gate decision; technical reinspection within seven days. No extension of domain validity."
   },
   "assessments": [
     {

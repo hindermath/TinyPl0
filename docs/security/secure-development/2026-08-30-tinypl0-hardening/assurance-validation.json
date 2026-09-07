@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0",
-  "checkedAt": "2026-09-07T20:53:05Z",
+  "checkedAt": "2026-09-07T21:00:45Z",
   "platform": "Darwin; Bash first, PowerShell 7 cross-check; not native Windows",
   "context": "docs/security/secure-development/2026-08-30-tinypl0-hardening",
   "sourceSha256": "ec978f6911ec00e77427cdcd4d7b0a628df63b70c075fb793200a671a6aef905",
@@ -8,15 +8,15 @@
   "gateOutcomes": "Blocked",
   "humanDecisions": "All four Open",
   "protectedFiles": {
-    "baselineHead": "98d9465e3eae454bf3130f2fb634c0794a704843",
     "count": 2016,
-    "inventorySha256": "0dffcadce9f148b7d63a0af80f14b246ac98a7f1ef74c3a2c24d49e74e837c9a"
+    "inventorySha256": "0dffcadce9f148b7d63a0af80f14b246ac98a7f1ef74c3a2c24d49e74e837c9a",
+    "baselineHead": "98d9465e3eae454bf3130f2fb634c0794a704843"
   },
   "gateFileHashes": {
-    "docs/security/secure-development/2026-08-30-tinypl0-hardening/baseline.json": "1a7f66afb1502d9f749fb5d4d08921434543c9e3abb315e4acb22c306e2a628d",
-    "docs/security/secure-development/2026-08-30-tinypl0-hardening/deltas/2026-09-07-assurance-migration.json": "5464d0fb66b6a15d577610952e6f75bab4b675fdac556bb715206c6e1d1de229",
-    "docs/security/secure-development/2026-08-30-tinypl0-hardening/closure.json": "fed9b29f478caf985d943510bf26060e65d0cf853e9069ad09296c2c50a14ba2",
-    "docs/security/secure-development/2026-08-30-tinypl0-hardening/image-impact.json": "41ef6b1428f1ce38316639428fc58b5380a20ef48d154cef678365c61e60cdfe"
+    "docs/security/secure-development/2026-08-30-tinypl0-hardening/baseline.json": "f46a45c84d3bff084dee0c275f15134e01d052b7ce7ac6133a52ac0098203088",
+    "docs/security/secure-development/2026-08-30-tinypl0-hardening/deltas/2026-09-07-assurance-migration.json": "8d6a7f7c7b4cc2b5b3182864011cefc29be7d3e37fefc75f33ab86880bd19519",
+    "docs/security/secure-development/2026-08-30-tinypl0-hardening/closure.json": "742ea6e99157f3f14492c3b9432d44b95f511d3a4f71e17ee5a6caeca2611c89",
+    "docs/security/secure-development/2026-08-30-tinypl0-hardening/image-impact.json": "b76b21c85182b7d13849ab452c5e3acdaceab052a298afa64ce8a9b2a9671494"
   },
   "readOnlyPreservation": true,
   "shellParity": true,
