@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "1.0",
+  "documentType": "SecureDevelopmentGateEvidence",
+  "contextId": "tinypl0-hardening",
+  "gate": "image-impact",
+  "mode": "development",
+  "createdAt": "2026-09-07T20:51:01Z",
+  "runbookApplicability": "N/A",
+  "runbookRationale": "DE: Nur repository-interne Evidence-Migration nach assurance-migration.md; kein Trainings-, Pilot-, Image- oder Produktionslauf. EN: Repository-internal evidence migration following assurance-migration.md only; no training, pilot, image or production run.",
+  "review": {
+    "owner": "Repository maintainer; no approval inferred",
+    "reviewer": "Codex; automated technical migration inspection only, not independent human review",
+    "reviewedAt": "2026-09-07T20:51:01Z",
+    "reviewDue": "2026-09-07",
+    "residualRisk": "DE: Historische Bewertungen, Quellenabweichungen und offene fachliche Entscheidungen; keine Risikoakzeptanz. EN: Historical assessments, source drift and open domain decisions; no risk acceptance.",
+    "reevaluationTrigger": "DE: Vor positiver Gate-Entscheidung oder bei Quellen-/Scope-Änderung; technische Momentaufnahme gilt nur am Prüftag. EN: Before a positive gate decision or any source/scope change; technical snapshot valid only on its inspection date."
+  },
+  "assessments": [
+    {
+      "id": "MIGRATION-IMAGE-IMPACT",
+      "applicability": "Open",
+      "implementation": "Not Assessed",
+      "evidence": "docs/security/secure-development/2026-08-30-tinypl0-hardening/assurance-migration.md",
+      "nextAction": "DE: Echte kontextspezifische Gate-Nachweise prüfen und ergänzen; technische Migration ist keine Freigabe. EN: Review and attach genuine context-specific gate evidence; migration grants no approval.",
+      "owner": "Repository maintainer; assignment pending",
+      "dueAt": "Before any positive Assurance decision; owner date not assigned"
+    }
+  ],
+  "outcome": "Blocked",
+  "acceptedRisks": [],
+  "externalComparisonBoundary": "HOSK/GWDG: ExternalComparison only; never local evidence",
+  "migration": {
+    "sourcePath": "docs/security/secure-development/2026-08-30-tinypl0-hardening/assessment.json",
+    "sourceSha256": "ec978f6911ec00e77427cdcd4d7b0a628df63b70c075fb793200a671a6aef905",
+    "sourceArray": "items",
+    "sourceControlCount": 157,
+    "inspectedHead": "98d9465e3eae454bf3130f2fb634c0794a704843",
+    "scope": "Technical evidence migration and gap inspection only",
+    "sourceAssessmentsReapproved": false,
+    "humanApprovalsGranted": false,
+    "technicalReviewOnly": true
+  },
+  "imageChecks": {
+    "build": "Not Assessed",
+    "compose": "Not Assessed",
+    "toolchain": "Not Assessed",
+    "ociDigest": "Not Assessed",
+    "sbom": "Not Assessed",
+    "secrets": "Not Assessed",
+    "mounts": "Not Assessed",
+    "network": "Not Assessed",
+    "ci": "Not Assessed"
+  }
+}

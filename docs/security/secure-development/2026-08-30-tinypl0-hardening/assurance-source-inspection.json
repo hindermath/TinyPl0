@@ -1,0 +1,154 @@
+{
+  "schemaVersion": "1.0",
+  "documentType": "AssuranceMigrationInspection",
+  "inspectedAt": "2026-09-07T20:51:01Z",
+  "scope": "Read-only source identity, version and reference inspection; not a domain effectiveness review",
+  "sourcePath": "docs/security/secure-development/2026-08-30-tinypl0-hardening/assessment.json",
+  "sourceSha256": "ec978f6911ec00e77427cdcd4d7b0a628df63b70c075fb793200a671a6aef905",
+  "sourceControlCount": 157,
+  "baselineVersion": "3.2.0",
+  "documentDrift": [
+    {
+      "kind": "VersionDrift",
+      "observedVersion": "1.2.0",
+      "path": "mitgeltende-dokumente/Richtlinie_Secure-Development-Life-Cycle.md",
+      "declaredVersion": "1.1.0"
+    }
+  ],
+  "referenceChecks": [
+    {
+      "id": "T072-SC-CL-05-01",
+      "path": "docs/security/supply-chain-evidence.json",
+      "expectedSha256": "d60c4ef48211d97b615f69e8a6439031ac6440bf574110e7e41e04921f44ea57",
+      "observedSha256": "d60c4ef48211d97b615f69e8a6439031ac6440bf574110e7e41e04921f44ea57",
+      "result": "HashMatch",
+      "anchorChecked": false
+    },
+    {
+      "id": "T072-SC-CL-05-02",
+      "path": "docs/security/supply-chain-evidence.json",
+      "expectedSha256": "d60c4ef48211d97b615f69e8a6439031ac6440bf574110e7e41e04921f44ea57",
+      "observedSha256": "d60c4ef48211d97b615f69e8a6439031ac6440bf574110e7e41e04921f44ea57",
+      "result": "HashMatch",
+      "anchorChecked": false
+    },
+    {
+      "id": "T072-SC-CL-05-04",
+      "path": "docs/security/dependency-audit.md",
+      "expectedSha256": "7f21082d425bed15a3952d1c8fdfc45b088f2f913bfb6a5155048e92d0d9f402",
+      "observedSha256": "60893e9ee35b8fdfb9d74cba399356cd7583ef277d7a632ba8ac202d6c90253d",
+      "result": "HashDrift",
+      "anchorChecked": false
+    },
+    {
+      "id": "T072-SC-CL-05-11",
+      "path": "docs/security/supply-chain-evidence.md",
+      "expectedSha256": "05b6ad872d6c1e2d88ba1e0726bd227a03325f8d0e9dbcd55afc358e34610137",
+      "observedSha256": "41abcc63e6f8186e991c7e0848f140dfb658416d43a7fb3f974c5f4428732113",
+      "result": "HashDrift",
+      "anchorChecked": false
+    },
+    {
+      "id": "T072-CVD-CL-06-01",
+      "path": ".github/SECURITY.md",
+      "expectedSha256": "067fe2e0a14f6c27c67e98c711f4559c6a6bb8c3f28708d34e174b58f47df48a",
+      "observedSha256": "067fe2e0a14f6c27c67e98c711f4559c6a6bb8c3f28708d34e174b58f47df48a",
+      "result": "HashMatch",
+      "anchorChecked": false
+    },
+    {
+      "id": "T072-CVD-CL-06-02",
+      "path": "docfx/.well-known/security.txt",
+      "expectedSha256": "c173c620bab35639cbc3d2325518c03f3a27bdea38d4c4d428ef641004a36065",
+      "observedSha256": "c173c620bab35639cbc3d2325518c03f3a27bdea38d4c4d428ef641004a36065",
+      "result": "HashMatch",
+      "anchorChecked": false
+    },
+    {
+      "id": "T072-A11Y-CL-08-12-INVENTORY",
+      "path": "tests/a11y/package-lock.json",
+      "expectedSha256": "446531add651dcf74d6091a055f176bcef11be130d2d5cb3033eeb6416f8a13a",
+      "observedSha256": "446531add651dcf74d6091a055f176bcef11be130d2d5cb3033eeb6416f8a13a",
+      "result": "HashMatch",
+      "anchorChecked": false
+    },
+    {
+      "result": "NotCheckedExternal",
+      "path": "/private/tmp/tinypl0-004-axe.json",
+      "expectedSha256": "b01856d34bacb4215a958b0382add5ea44a87e2d1e6e77a2e2457adb45a8f23b",
+      "id": "T078-A11Y-CL-08-12-HOST"
+    },
+    {
+      "id": "EV-CL-09-13-AGENTS",
+      "path": "AGENTS.md",
+      "expectedSha256": "d3ee5b2f63d9eabf666a3075b2ebba416684d1ee23a4d2f0435313e629700d00",
+      "observedSha256": "649718b83e8e6b6a49fbcd99a2080b9afb5eb05efa62ce289970315c0e2575c7",
+      "result": "HashDrift",
+      "anchorChecked": false
+    },
+    {
+      "id": "EV-CL-09-13-CLAUDE",
+      "path": "CLAUDE.md",
+      "expectedSha256": "cf6c6dcba1820cf07a2806bebfaaf7ab32d19b9fab49cc9ffb5ea87b8ce0fbc5",
+      "observedSha256": "55176b8ed99706600a1b63cd9100bcd624ee7123d9f24ce2b763b534b792b1d7",
+      "result": "HashDrift",
+      "anchorChecked": false
+    },
+    {
+      "id": "EV-CL-09-13-GEMINI",
+      "path": "GEMINI.md",
+      "expectedSha256": "133e64d0bde86aef17be7c4933f32d3fa28e42d096b7f59e20f7fb7a2c90960f",
+      "observedSha256": "b94526774afab2d2ade65e5dce0022001e0fcf8fba644ade099e5f94cf9b4e10",
+      "result": "HashDrift",
+      "anchorChecked": false
+    },
+    {
+      "id": "EV-CL-09-13-COPILOT",
+      "path": ".github/copilot-instructions.md",
+      "expectedSha256": "df951425953c84fd799bac4987006ffcc1ce7f8bac24ae3f0788952e9f8c0460",
+      "observedSha256": "9afb1e36df6b3cd547a0e1055629dfcae17269d62e06384a3c90ecdecae179cd",
+      "result": "HashDrift",
+      "anchorChecked": false
+    },
+    {
+      "id": "EV-CL-09-13-COPILOT-AGENT",
+      "path": ".github/agents/copilot-instructions.md",
+      "expectedSha256": "df951425953c84fd799bac4987006ffcc1ce7f8bac24ae3f0788952e9f8c0460",
+      "observedSha256": "1b23d57ae0e005e9a1740aa46af9ff6386cd62595812d28baa23cc044083c2ca",
+      "result": "HashDrift",
+      "anchorChecked": false
+    },
+    {
+      "id": "T072-GITIGNORE-CL-10-07",
+      "path": ".gitignore",
+      "expectedSha256": "24d526aa3b763d91991b8592d968b2dbcce5782ed72024569cda60ded46cbd42",
+      "observedSha256": "6cb44c53fd5a74081ed5efb1cdcf8757f120b0c0be06a922fe33c4ea4435e7f1",
+      "result": "HashDrift",
+      "anchorChecked": false
+    },
+    {
+      "id": "T072-A11Y-CL-10-09-INVENTORY",
+      "path": "tests/a11y/package-lock.json",
+      "expectedSha256": "446531add651dcf74d6091a055f176bcef11be130d2d5cb3033eeb6416f8a13a",
+      "observedSha256": "446531add651dcf74d6091a055f176bcef11be130d2d5cb3033eeb6416f8a13a",
+      "result": "HashMatch",
+      "anchorChecked": false
+    },
+    {
+      "result": "NotCheckedExternal",
+      "path": "/private/tmp/tinypl0-004-a11y.log",
+      "expectedSha256": "c7e1438448b0217f8da02beed0a35a5056e37efe2b06be4b611913dbd00eee66",
+      "id": "T080-A11Y-CL-10-09-HOST"
+    },
+    {
+      "id": "T072-BASELINE-CL-10-17",
+      "path": "docs/secure-development/baseline-manifest.json",
+      "expectedSha256": "b290baf2e5a01307f246a2a9abd3113d86a89f303c4e636270b1a9e0aef874cf",
+      "observedSha256": "b290baf2e5a01307f246a2a9abd3113d86a89f303c4e636270b1a9e0aef874cf",
+      "result": "HashMatch",
+      "anchorChecked": false
+    }
+  ],
+  "referenceBoundary": "File existence/hash only; Markdown anchors and external URLs not verified; no claim of control effectiveness",
+  "humanDecisionBoundary": "No historical approval transferred or new approval granted"
+}
