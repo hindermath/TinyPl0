@@ -1,19 +1,21 @@
 {
   "schemaVersion": "1.0",
-  "checkedAt": "2026-09-07T21:13:39Z",
-  "platform": "Darwin; Bash first, PowerShell 7 cross-check; not native Windows",
+  "checkedAt": "2026-09-07T21:22:10Z",
+  "platform": "DE: Darwin; zuerst Bash, Gegenprüfung mit PowerShell 7; kein natives Windows. EN: Darwin; Bash first, PowerShell 7 cross-check; not native Windows.",
   "context": "docs/security/secure-development/2026-08-30-tinypl0-hardening",
   "sourceSha256": "ec978f6911ec00e77427cdcd4d7b0a628df63b70c075fb793200a671a6aef905",
   "controlMappingsVerified": 157,
   "gateOutcomes": "Blocked",
-  "humanDecisions": "All four Open",
+  "humanDecisions": "DE: Alle vier Entscheidungen Open. EN: All four decisions Open.",
   "protectedFiles": {
-    "count": 2016,
+    "metadataException": null,
     "baselineHead": "98d9465e3eae454bf3130f2fb634c0794a704843",
+    "comparison": "DE: Vor Fingerprint-Vergleich nur die geprüfte Metadatenausnahme rechnerisch zurücknehmen; alle anderen geschützten Dateien bytegleich. EN: Restore only the validated metadata exception before comparing the original fingerprint; all other protected files byte-identical.",
+    "count": 2016,
     "inventorySha256": "0dffcadce9f148b7d63a0af80f14b246ac98a7f1ef74c3a2c24d49e74e837c9a"
   },
   "gateFileHashes": {
-    "docs/security/secure-development/2026-08-30-tinypl0-hardening/baseline.json": "15776b938c18ca65b7d29c1becc6afe10cbf7ed8e1320af11af2a39090cbc4ab",
+    "docs/security/secure-development/2026-08-30-tinypl0-hardening/baseline.json": "a9f7713f3ba9768c082668ee710d92e3afa6fc170387e150cad4162b66788f0b",
     "docs/security/secure-development/2026-08-30-tinypl0-hardening/deltas/2026-09-07-assurance-migration.json": "2efead49ec44781d5caa0f9a28c3fa13f52d8ccb34b1ff1c29f65cd0fb750e9e",
     "docs/security/secure-development/2026-08-30-tinypl0-hardening/closure.json": "ae034706c5ca67c70f4612488148c5c493f3cdbe8b64e7a742c5211551bf11f4",
     "docs/security/secure-development/2026-08-30-tinypl0-hardening/image-impact.json": "f631517a9ab0e1552434a66235fd8181fece6a20dd8972aa75f6b7bf958db6a6"
@@ -118,5 +120,5 @@
       "outcome": "Blocked"
     }
   ],
-  "interpretation": "Exit 0 may mean valid blocked evidence; never treat it as substantive Ready."
+  "interpretation": "DE: Exit 0 kann gültige gesperrte Evidence bedeuten; niemals als fachliches Ready werten. EN: Exit 0 may mean valid blocked evidence; never treat it as substantive Ready."
 }
