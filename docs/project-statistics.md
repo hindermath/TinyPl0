@@ -383,6 +383,7 @@ rekonstruiert.
 | 2026-09-03 | NuGet-Beschreibungsseiten für Core und VM ausführlich erneuert | Branches `codex/nuget-package-descriptions` und `codex/nuget-release-pr-gates`, sichtbares Arbeitsfenster eine Agentensitzung am 2026-09-03. Die gepackten NuGet-READMEs erklären Lernenden, Lehrenden und Host-Entwicklern den historischen PL/0-Bezug, Umfang, Installation, Dialekte, Compilerdiagnosen, vollständige und schrittweise VM-Ausführung, `IPl0Io`, Laufzeitgrenzen, Abbruch und Erfolgskriterien. Das VM-Schnellstartbeispiel verwendet denselben mehrzeiligen PL/0-Quelltext wie die Core-README und verbindet dadurch Kompilierung und Ausführung didaktisch. Beide Sprachhälften sind inhaltlich gleichwertig, stehen in der Reihenfolge Deutsch vor Englisch und verwenden eine text-first Überschriften- und Listenstruktur für WCAG 2.2 AA. Die Galerie-Kurzbeschreibungen beginnen ebenfalls auf Deutsch; Tags für `compiler-construction`, `p-code`, `vm` und `teaching` verbessern die fachliche Auffindbarkeit. Der Paketvertrag akzeptiert jede stabile dreiteilige Release-Version und prüft weiterhin die exakte VM-Core-Kopplung; die Statistik schließt nur die drei von Release Please generierten Dateien aus, damit ein Versions-PR keine inhaltliche Statistikdrift erzeugt. Umfang vor diesem Ledger-Eintrag: `0` Produktionscode-Zeilen, Tests `+72 / -0 = +72`, Dokumentation `+593 / -22 = +571` und Konfiguration `+3 / -0 = +3`; ersetzte Projektmetadatenzeilen haben keinen Nettoeffekt. Die Netto-Gesamtbasis von `646` Zeilen entspricht bei 80 Zeilen/Arbeitstag `8.1` Tagen beziehungsweise `63.0` Stunden und bei der Thorsten-Solo-Basis von 125 Zeilen/Arbeitstag `5.2` Tagen beziehungsweise `40.3` Stunden, jeweils mit `7.8` Stunden pro Tag. Das sind bei 21.5 Arbeitstagen pro Monat etwa `0.4` beziehungsweise `0.2` Arbeitsmonate; gegen einen sichtbaren Aktivtag ergibt sich ein blended repository speedup von `8.1x` beziehungsweise `5.2x`, keine Stoppuhrmessung. Validierung: `6/6` gezielte Paketvertragstests und `310/310` Gesamttests, warnungsfreie Builds, vier Release-Paketdateien, jeweils genau eine bytegleiche `README.md`, deutsch beginnende Description, vollständige Tags, exakte VM-Core-Abhängigkeit, ausdrücklich vorhandene Überschriften und geprüfte Sprachreihenfolge, geprüfte HTTP-200-Dokumentationsziele, releasefähiger Paketversionstest, Statistikstatus `CURRENT` sowie `git diff --check`. Vor dem vorgesehenen Release wurde kein Paket manuell veröffentlicht und keine öffentliche NuGet-Seite verändert. English: The package landing pages now provide equivalent German-first and English guidance, a shared source example across Core and VM, verified APIs, safer host integration advice, improved discovery metadata, and release-ready package and statistics contracts without manual publication. |
 | 2026-09-06 | Assurance-Profil v0.1.2 integriert / Assurance profile v0.1.2 integrated | Arbeitsfenster: eine sichtbare Agentensitzung am 2026-09-06; Branch `codex/assurance-preset-integration`. Nur freigegebene Repository-Integration, keine Produktcode- oder Produkttest-Aenderung. Wiederverwendetes Paket und Dokumentations-/Konfigurationsdelta vor Statistik-Selbstnachweis: +4255 / -18 Zeilen; importiertes Paket ist keine neu entwickelte Produktlogik. Zwoelf bestehende Presets, alte Profile, projektgefuehrte Baseline und menschliche Entscheidungen bleiben unveraendert. Paketbindung, exakte 13er-Matrix, Byte-Erhalt, isolierte Vertrags-/Oberflaechentests und lesender Status sind im Integrationsnachweis dokumentiert; Lieferung folgt per fokussiertem PR mit CI und MergeAndSync. Keine Home-Verteilung oder fachlichen Reviews. Referenzen bleiben im unveraenderten Statistikprofil konfiguriert. / One visible session integrates only the approved repository profile. Imported package content is reuse, not new product logic. Product code/tests and the original twelve presets remain unchanged; see the integration record for tests and boundaries. |
 | 2026-09-06 | Assurance v0.1.3 – genehmigte Korrekturadoption / approved patch adoption | Eine sichtbare Agentensitzung; Branch `codex/assurance-v013-adoption`. Oeffentliches unveraendertes Paket ersetzt ausschliesslich Assurance, zwoelf weitere Presets und bestehende Profile bleiben erhalten. Gestagter Paket-/Konfigurations-/Dokumentationsdelta: +533 / -34 Zeilen vor Statistik-Selbstnachweis; importierte Zeilen sind wiederverwendetes Paket, keine neu entwickelte Produktlogik. Keine Runtime-/API-Aenderung und keine neue fachliche Freigabe. Technische Bindungen und vorgeschriebene Build-Metadaten werden nur soweit erforderlich mitgefuehrt. Nachweise: `docs/maintenance/assurance-v013-adoption.md`. Lieferung ueber CI, Review und MergeAndSync; kein Home-Sync. / One visible session adopts the immutable public patch, preserving twelve presets and profiles. Reused package volume is not new product logic. No runtime/API or human-approval change; only required technical bindings and build metadata follow. See adoption evidence; CI/review gate MergeAndSync. |
+| 2026-09-07 | Assurance-Integration und Evidence-Navigation / Assurance integration and evidence navigation | Branch `codex/assurance-evidence-matrix`; sichtbare Sitzung 2026-09-07. Paket-, Profil- und Dokumentationsaenderungen: +252 / -3 Textzeilen vor Statistik-Selbstnachweis. Wiederverwendete Paketzeilen sind keine neu entwickelte Produktlogik; vorhandene Nachweise werden nur referenziert. Zwoelf Presets unveraendert, keine fachliche Freigabe, kein Home-Sync. Referenzen: 80 Zeilen/Arbeitstag konservativ, repo-spezifische Thorsten-Solo-Basis laut Profilkonfiguration; Speedup ist Lieferdichte. / One visible session; reused package and evidence-index volume, no new product logic or human approval. Twelve presets preserved; CI/review and MergeAndSync; no Home sync. Manual effort follows the repository statistics configuration. |
 
 ## Statistikprofil-1-Archiv / Statistics Profile 1 Archive
 - Stand 2026-05-05: `88` Produktionsdateien mit `6950` Zeilen, `22` Testdateien mit `3536` Zeilen und `562` Dokumentationsdateien mit `36625` Zeilen.
@@ -508,25 +509,25 @@ Profil 2 verwendet Git-getrackte Textdateien und sichtbare Git-Aktivitaet. Die W
 
 | Kennzahl / Metric | Wert / Value |
 |---|---:|
-| Textbasis / Text base | 275759 lines |
-| Textdateien / Text files | 2010 |
-| Beobachtbarer Zeitraum / Observable period | 2025-09-14..2026-09-06 |
-| Aktivtage / Active days | 91 |
-| Relevante Commits / Relevant commits | 366 |
-| Zeilen je Aktivtag / Lines per active day | 3030.3 |
+| Textbasis / Text base | 276008 lines |
+| Textdateien / Text files | 2011 |
+| Beobachtbarer Zeitraum / Observable period | 2025-09-14..2026-09-07 |
+| Aktivtage / Active days | 92 |
+| Relevante Commits / Relevant commits | 367 |
+| Zeilen je Aktivtag / Lines per active day | 3000.1 |
 | Peak-Tag im Fenster / Peak day in window | 2026-02-14 / 177480 |
 | Peak-Woche im Fenster / Peak week in window | 2026-02-08 / 186065 |
 | Laengste Serie / Longest streak | 9 days |
-| Speedup vs. 80 lines/day | 37.9x |
-| Speedup vs. 125 lines/day | 24.2x |
-| Methodik / Methodology | v2; source `20c7894afecb` |
+| Speedup vs. 80 lines/day | 37.5x |
+| Speedup vs. 125 lines/day | 24.0x |
+| Methodik / Methodology | v2; source `6a8465ce1ec7` |
 
 ### Artefaktmix / Artifact Mix
 
 ```text
 Produktiv / Production          [#...................]   2.6% | 7060
 Tests                           [#...................]   4.8% | 13146
-Dokumentation / Documentation   [###########.........]  54.8% | 151159
+Dokumentation / Documentation   [###########.........]  54.9% | 151408
 Skripte / Scripts               [##..................]   8.2% | 22629
 Konfiguration / Configuration   [######..............]  27.9% | 77033
 Daten und Medien / Data and media [....................]   0.0% | 0
@@ -553,7 +554,7 @@ Sa/Sa  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 4 4 0 0 2
 ```text
 Wochen / Weeks 27..52 | 2026-03-15..2026-09-12
 So/Su  1 4 0 0 1 0 0 0 0 0 0 1 0 4 0 0 0 1 4 4 1 4 4 0 4 4
-Mo/Mo  1 0 2 0 1 4 0 4 0 0 0 0 0 0 0 3 1 4 4 0 0 0 2 0 0 -
+Mo/Mo  1 0 2 0 1 4 0 4 0 0 0 0 0 0 0 3 1 4 4 0 0 0 2 0 0 2
 Di/Tu  0 0 2 0 0 0 0 2 0 0 3 0 0 0 0 2 0 3 4 4 0 0 0 0 2 -
 Mi/We  1 1 0 0 0 3 0 2 0 0 0 2 0 4 0 2 0 0 2 4 0 0 0 0 4 -
 Do/Th  0 0 0 0 0 0 4 0 0 0 1 1 4 1 0 0 0 1 4 0 0 4 0 0 4 -
@@ -679,8 +680,8 @@ Die festen Slots halten den Phasenvergleich auch bei fehlenden oder spaeter erga
 
 ```text
 Scale: 0..50x
-80 lines/day       [###############.....] 37.9x
-125 lines/day      [##########..........] 24.2x
+80 lines/day       [###############.....] 37.5x
+125 lines/day      [##########..........] 24.0x
 ```
 
 Die Faktoren vergleichen sichtbare Lieferdichte mit den dokumentierten manuellen Referenzen. Sie messen keine Arbeitszeit.
@@ -693,7 +694,7 @@ Die Faktoren vergleichen sichtbare Lieferdichte mit den dokumentierten manuellen
 Scale: 0..5000 lines/day
 Experienced manual [#...................] 80
 Thorsten solo      [#...................] 125
-Visible repository [############........] 3030.3
+Visible repository [############........] 3000.1
 ```
 
 Die gemeinsame Skala vergleicht Referenzen und sichtbare Lieferdichte. Sie schreibt die Git-Aktivitaet keiner Person oder KI pauschal zu.
@@ -702,9 +703,9 @@ Die gemeinsame Skala vergleicht Referenzen und sichtbare Lieferdichte. Sie schre
 
 ### Textalternative / Text Alternative
 
-DE: Das Fenster beginnt am 2025-09-14 und endet am 2026-09-06. Es enthaelt 91 aktive und 267 inaktive vergangene Tage. Peak-Tag: 2026-02-14 / 177480. Peak-Woche: 2026-02-08 / 186065. Laengste Serie: 9 Tage (2026-02-14..2026-02-22).
+DE: Das Fenster beginnt am 2025-09-14 und endet am 2026-09-07. Es enthaelt 92 aktive und 267 inaktive vergangene Tage. Peak-Tag: 2026-02-14 / 177480. Peak-Woche: 2026-02-08 / 186065. Laengste Serie: 9 Tage (2026-02-14..2026-02-22).
 
-*EN: The window starts on 2025-09-14 and ends on 2026-09-06. It contains 91 active and 267 inactive elapsed days. Peak day: 2026-02-14 / 177480. Peak week: 2026-02-08 / 186065. Longest streak: 9 days (2026-02-14..2026-02-22).*
+*EN: The window starts on 2025-09-14 and ends on 2026-09-07. It contains 92 active and 267 inactive elapsed days. Peak day: 2026-02-14 / 177480. Peak week: 2026-02-08 / 186065. Longest streak: 9 days (2026-02-14..2026-02-22).*
 
 | Monat / Month | Geaenderte Textzeilen / Changed text lines |
 |---|---:|
@@ -719,6 +720,6 @@ DE: Das Fenster beginnt am 2025-09-14 und endet am 2026-09-06. Es enthaelt 91 ak
 | 2026-06 | 37650 |
 | 2026-07 | 78913 |
 | 2026-08 | 55167 |
-| 2026-09 | 23584 |
+| 2026-09 | 23833 |
 
 <!-- project-statistics-v2:end -->
