@@ -73,8 +73,8 @@
       "anchorChecked": false
     },
     {
-      "result": "NotCheckedExternal",
-      "path": "/private/tmp/tinypl0-004-axe.json",
+      "result": "NotCheckedHostLocal",
+      "path": "HOST_ONLY:tinypl0-004-axe.json",
       "expectedSha256": "b01856d34bacb4215a958b0382add5ea44a87e2d1e6e77a2e2457adb45a8f23b",
       "id": "T078-A11Y-CL-08-12-HOST"
     },
@@ -135,8 +135,8 @@
       "anchorChecked": false
     },
     {
-      "result": "NotCheckedExternal",
-      "path": "/private/tmp/tinypl0-004-a11y.log",
+      "result": "NotCheckedHostLocal",
+      "path": "HOST_ONLY:tinypl0-004-a11y.log",
       "expectedSha256": "c7e1438448b0217f8da02beed0a35a5056e37efe2b06be4b611913dbd00eee66",
       "id": "T080-A11Y-CL-10-09-HOST"
     },

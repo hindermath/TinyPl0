@@ -32,7 +32,9 @@ Sie dokumentieren, was fehlt; ihre Existenz ist kein positiver Prüfnachweis.
 
 - mitgeltende-dokumente/Richtlinie_Secure-Development-Life-Cycle.md: VersionDrift, Manifest 1.1.0, Datei / file 1.2.0.
 
-Referenzprüfung: HashMatch: 7; HashDrift: 8; NotCheckedExternal: 2.
+Referenzprüfung: HashMatch: 7; HashDrift: 8; NotCheckedHostLocal: 2.
+Host-lokale Referenzen erscheinen nur als HOST_ONLY-Kennung mit Dateiname und
+Quellhash. Die tatsächlichen Hostpfade wurden nicht gelesen oder neu publiziert.
 Alle Einzelpfade und Alt-/Ist-Hashes stehen in
 [assurance-source-inspection.json](assurance-source-inspection.json).
 Dateiexistenz und Hashgleichheit sind keine Wirksamkeitsnachweise. Fragmente,
@@ -94,8 +96,10 @@ renewed domain validity or a human commitment. Source/scope changes require
 immediate reinspection. The development mode is repository-internal evidence
 work only, with no training, pilot or product operation. The source report
 lists actual version mismatches and reference existence/hash checks. It does
-not verify anchors, external sources or control effectiveness. Baseline sources
-and all installed presets stay unchanged.
+not verify anchors, external sources or control effectiveness. Host-local
+references use HOST_ONLY identifiers with filename and source hash; actual
+host paths were not read or newly published. Baseline sources and all installed
+presets stay unchanged.
 
 Next: the owner resolves version drift; review historical source freshness and
 scope, including CL-02-13; supply genuine delta and image evidence; record each
