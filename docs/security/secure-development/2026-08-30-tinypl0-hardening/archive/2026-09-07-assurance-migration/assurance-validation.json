@@ -1,0 +1,124 @@
+{
+  "schemaVersion": "1.0",
+  "checkedAt": "2026-09-07T21:31:05Z",
+  "platform": "DE: Darwin; zuerst Bash, Gegenprüfung mit PowerShell 7; kein natives Windows. EN: Darwin; Bash first, PowerShell 7 cross-check; not native Windows.",
+  "context": "docs/security/secure-development/2026-08-30-tinypl0-hardening",
+  "sourceSha256": "ec978f6911ec00e77427cdcd4d7b0a628df63b70c075fb793200a671a6aef905",
+  "controlMappingsVerified": 157,
+  "gateOutcomes": "Blocked",
+  "humanDecisions": "DE: Alle vier Entscheidungen Open. EN: All four decisions Open.",
+  "protectedFiles": {
+    "metadataException": null,
+    "comparison": "DE: Vor Fingerprint-Vergleich nur die geprüfte Metadatenausnahme rechnerisch zurücknehmen; alle anderen geschützten Dateien bytegleich. EN: Restore only the validated metadata exception before comparing the original fingerprint; all other protected files byte-identical.",
+    "inventorySha256": "0dffcadce9f148b7d63a0af80f14b246ac98a7f1ef74c3a2c24d49e74e837c9a",
+    "count": 2016,
+    "baselineHead": "98d9465e3eae454bf3130f2fb634c0794a704843"
+  },
+  "gateFileHashes": {
+    "docs/security/secure-development/2026-08-30-tinypl0-hardening/baseline.json": "e33be6d734fcc0564cf20b8ee767d79787747f530ac0f7931d0d828535b8d414",
+    "docs/security/secure-development/2026-08-30-tinypl0-hardening/deltas/2026-09-07-assurance-migration.json": "7c2ae69c8479be7cfb501a65f43c175b98df16f73a49e32547955f6bbc62debe",
+    "docs/security/secure-development/2026-08-30-tinypl0-hardening/closure.json": "1afa679b8e8871e2f991622a21d3fe1a01b9c22e91fb55e9884bea988b98f019",
+    "docs/security/secure-development/2026-08-30-tinypl0-hardening/image-impact.json": "444eafebaf08325d3a0425261cce48806c8da27bdd1f7644bb2204a44b6657e0"
+  },
+  "readOnlyPreservation": true,
+  "shellParity": true,
+  "calls": [
+    {
+      "operation": "status-before",
+      "shell": "Bash",
+      "command": "bash .specify/presets/secure-development-assurance-governance/scripts/validate-secure-development-assurance.sh status docs/security/secure-development/2026-08-30-tinypl0-hardening",
+      "exitCode": 2,
+      "output": "Blocked: Dokumentversion stimmt nicht: mitgeltende-dokumente/Richtlinie_Secure-Development-Life-Cycle.md",
+      "outcome": "Blocked"
+    },
+    {
+      "operation": "status-before",
+      "shell": "PowerShell",
+      "command": "pwsh -NoProfile -File .specify/presets/secure-development-assurance-governance/scripts/validate-secure-development-assurance.ps1 -Action Status -EvidenceDirectory docs/security/secure-development/2026-08-30-tinypl0-hardening",
+      "exitCode": 2,
+      "output": "Blocked: Dokumentversion stimmt nicht: mitgeltende-dokumente/Richtlinie_Secure-Development-Life-Cycle.md",
+      "outcome": "Blocked"
+    },
+    {
+      "operation": "baseline",
+      "shell": "Bash",
+      "command": "bash .specify/presets/secure-development-assurance-governance/scripts/validate-secure-development-assurance.sh review baseline tinypl0-hardening development",
+      "exitCode": 2,
+      "output": "Blocked: Dokumentversion stimmt nicht: mitgeltende-dokumente/Richtlinie_Secure-Development-Life-Cycle.md",
+      "outcome": "Blocked"
+    },
+    {
+      "operation": "baseline",
+      "shell": "PowerShell",
+      "command": "pwsh -NoProfile -File .specify/presets/secure-development-assurance-governance/scripts/validate-secure-development-assurance.ps1 -Action Review -Gate baseline -ContextId tinypl0-hardening -Mode development",
+      "exitCode": 2,
+      "output": "Blocked: Dokumentversion stimmt nicht: mitgeltende-dokumente/Richtlinie_Secure-Development-Life-Cycle.md",
+      "outcome": "Blocked"
+    },
+    {
+      "operation": "delta",
+      "shell": "Bash",
+      "command": "bash .specify/presets/secure-development-assurance-governance/scripts/validate-secure-development-assurance.sh review delta tinypl0-hardening development",
+      "exitCode": 0,
+      "output": "Reviewed: gate=delta context=tinypl0-hardening mode=development outcome=Blocked",
+      "outcome": "Blocked"
+    },
+    {
+      "operation": "delta",
+      "shell": "PowerShell",
+      "command": "pwsh -NoProfile -File .specify/presets/secure-development-assurance-governance/scripts/validate-secure-development-assurance.ps1 -Action Review -Gate delta -ContextId tinypl0-hardening -Mode development",
+      "exitCode": 0,
+      "output": "Reviewed: gate=delta context=tinypl0-hardening mode=development outcome=Blocked",
+      "outcome": "Blocked"
+    },
+    {
+      "operation": "closure",
+      "shell": "Bash",
+      "command": "bash .specify/presets/secure-development-assurance-governance/scripts/validate-secure-development-assurance.sh review closure tinypl0-hardening development",
+      "exitCode": 0,
+      "output": "Reviewed: gate=closure context=tinypl0-hardening mode=development outcome=Blocked",
+      "outcome": "Blocked"
+    },
+    {
+      "operation": "closure",
+      "shell": "PowerShell",
+      "command": "pwsh -NoProfile -File .specify/presets/secure-development-assurance-governance/scripts/validate-secure-development-assurance.ps1 -Action Review -Gate closure -ContextId tinypl0-hardening -Mode development",
+      "exitCode": 0,
+      "output": "Reviewed: gate=closure context=tinypl0-hardening mode=development outcome=Blocked",
+      "outcome": "Blocked"
+    },
+    {
+      "operation": "image-impact",
+      "shell": "Bash",
+      "command": "bash .specify/presets/secure-development-assurance-governance/scripts/validate-secure-development-assurance.sh review image-impact tinypl0-hardening development",
+      "exitCode": 0,
+      "output": "Reviewed: gate=image-impact context=tinypl0-hardening mode=development outcome=Blocked",
+      "outcome": "Blocked"
+    },
+    {
+      "operation": "image-impact",
+      "shell": "PowerShell",
+      "command": "pwsh -NoProfile -File .specify/presets/secure-development-assurance-governance/scripts/validate-secure-development-assurance.ps1 -Action Review -Gate image-impact -ContextId tinypl0-hardening -Mode development",
+      "exitCode": 0,
+      "output": "Reviewed: gate=image-impact context=tinypl0-hardening mode=development outcome=Blocked",
+      "outcome": "Blocked"
+    },
+    {
+      "operation": "status-after",
+      "shell": "Bash",
+      "command": "bash .specify/presets/secure-development-assurance-governance/scripts/validate-secure-development-assurance.sh status docs/security/secure-development/2026-08-30-tinypl0-hardening",
+      "exitCode": 2,
+      "output": "Blocked: Dokumentversion stimmt nicht: mitgeltende-dokumente/Richtlinie_Secure-Development-Life-Cycle.md",
+      "outcome": "Blocked"
+    },
+    {
+      "operation": "status-after",
+      "shell": "PowerShell",
+      "command": "pwsh -NoProfile -File .specify/presets/secure-development-assurance-governance/scripts/validate-secure-development-assurance.ps1 -Action Status -EvidenceDirectory docs/security/secure-development/2026-08-30-tinypl0-hardening",
+      "exitCode": 2,
+      "output": "Blocked: Dokumentversion stimmt nicht: mitgeltende-dokumente/Richtlinie_Secure-Development-Life-Cycle.md",
+      "outcome": "Blocked"
+    }
+  ],
+  "interpretation": "DE: Exit 0 kann gültige gesperrte Evidence bedeuten; niemals als fachliches Ready werten. EN: Exit 0 may mean valid blocked evidence; never treat it as substantive Ready."
+}

@@ -386,6 +386,8 @@ rekonstruiert.
 | 2026-09-07 | Assurance-Integration und Evidence-Navigation / Assurance integration and evidence navigation | Branch `codex/assurance-evidence-matrix`; sichtbare Sitzung 2026-09-07. Ausschliesslich Dokumentations- und vorgeschriebene Metadatenaenderungen: +252 / -3 Textzeilen vor Statistik-Selbstnachweis. Keine Paket- oder Profilaenderung und keine neue Produktlogik; die Matrix referenziert unveraenderte vorhandene Nachweise. Zwoelf Presets unveraendert, keine fachliche Freigabe, kein Home-Sync. Referenzen: 80 Zeilen/Arbeitstag konservativ, repo-spezifische Thorsten-Solo-Basis laut Profilkonfiguration; Speedup ist Lieferdichte. / One visible session; documentation/evidence-index and mandatory metadata volume only. No changes to packages, profiles, product logic, or human approvals. Twelve presets preserved; CI/review and MergeAndSync; no Home sync. Manual effort follows the repository statistics configuration. |
 | 2026-09-07 | Assurance-Evidence-Vertrag / Assurance evidence contract | Branch `codex/assurance-evidence-migration`, sichtbare Sitzung 2026-09-07. 157 historische Kontrollen quellengebunden abgebildet, vier Gates Blocked, vier menschliche Entscheidungen Open; 2795 neue Evidence-/Dokumentationszeilen vor Ledger und Delivery-Metadaten, 0 neue Produkt-/Testlogikzeilen. Quellen- und Shell-Paritätsprüfung: docs/security/secure-development/2026-08-30-tinypl0-hardening/assurance-validation.json. Presets und Altbewertungen unverändert. / Source-bound migration and read-only parity verification; no approval inferred, no Home sync. Manual reference: 80 lines/workday and the repository-specific configuration; speedup is delivery density, not stopwatch time. |
 
+| 2026-09-08 | Assurance-Baseline und Gate-Revalidierung / Assurance baseline and gate revalidation | Branch `codex/assurance-evidence-ready`; sichtbare Sitzung 2026-09-08. Die verwaltete Baseline ist auf 3.2.0 synchronisiert, der fruehere blockierte Gate-Satz auditierbar archiviert und der aktive Evidence-Vertrag fuer Baseline, Delta, Closure und Image Impact in Bash und PowerShell mit Gesamtstatus `Ready` geprueft. Die 157 fachlichen Bewertungen bleiben unveraendert; technische Validierung ist `Fulfilled`, Pilotfreigabe, Projektabnahme und allgemeine Freigabe bleiben `Open`. Umfang vor Statistik- und Versionsmetadaten: `+2871 / -2260` Dokumentations-, Governance- und Evidence-Zeilen, `0` Produkt- und `0` Testcode-Zeilen. Dreizehn Presets bleiben unveraendert; keine Produkt-, API-, Paket-, Image- oder Home-Sync-Aenderung. / Synchronize baseline 3.2.0, archive the superseded blocked gate set, and validate all active gates plus overall status as `Ready` in Bash and PowerShell. Preserve 157 domain assessments and all human approval boundaries. No product, package, image, or Home-sync change; manual references remain defined by the repository statistics configuration. |
+
 ## Statistikprofil-1-Archiv / Statistics Profile 1 Archive
 - Stand 2026-05-05: `88` Produktionsdateien mit `6950` Zeilen, `22` Testdateien mit `3536` Zeilen und `562` Dokumentationsdateien mit `36625` Zeilen.
 - Die beobachtbare Gesamtbasis fuer die manuelle Referenz liegt bei `47111` Zeilen. Das entspricht konservativ `588.9` Arbeitstagen fuer einen erfahrenen Entwickler oder `376.9` Arbeitstagen fuer die Thorsten-Solo-Referenz; sichtbar dokumentiert sind `43` Git-Aktivtage.
@@ -510,25 +512,25 @@ Profil 2 verwendet Git-getrackte Textdateien und sichtbare Git-Aktivitaet. Die W
 
 | Kennzahl / Metric | Wert / Value |
 |---|---:|
-| Textbasis / Text base | 278833 lines |
-| Textdateien / Text files | 2018 |
-| Beobachtbarer Zeitraum / Observable period | 2025-09-14..2026-09-07 |
-| Aktivtage / Active days | 92 |
-| Relevante Commits / Relevant commits | 373 |
-| Zeilen je Aktivtag / Lines per active day | 3030.8 |
+| Textbasis / Text base | 279483 lines |
+| Textdateien / Text files | 2024 |
+| Beobachtbarer Zeitraum / Observable period | 2025-09-14..2026-09-08 |
+| Aktivtage / Active days | 93 |
+| Relevante Commits / Relevant commits | 375 |
+| Zeilen je Aktivtag / Lines per active day | 3005.2 |
 | Peak-Tag im Fenster / Peak day in window | 2026-02-14 / 177480 |
 | Peak-Woche im Fenster / Peak week in window | 2026-02-08 / 186065 |
 | Laengste Serie / Longest streak | 9 days |
-| Speedup vs. 80 lines/day | 37.9x |
-| Speedup vs. 125 lines/day | 24.2x |
-| Methodik / Methodology | v2; source `eaab44221ac8` |
+| Speedup vs. 80 lines/day | 37.6x |
+| Speedup vs. 125 lines/day | 24.0x |
+| Methodik / Methodology | v2; source `84cf4b66ae53` |
 
 ### Artefaktmix / Artifact Mix
 
 ```text
 Produktiv / Production          [#...................]   2.5% | 7060
 Tests                           [#...................]   4.7% | 13146
-Dokumentation / Documentation   [###########.........]  55.3% | 154233
+Dokumentation / Documentation   [###########.........]  55.4% | 154883
 Skripte / Scripts               [##..................]   8.1% | 22629
 Konfiguration / Configuration   [######..............]  27.6% | 77033
 Daten und Medien / Data and media [....................]   0.0% | 0
@@ -556,7 +558,7 @@ Sa/Sa  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 4 4 0 0 2
 Wochen / Weeks 27..52 | 2026-03-15..2026-09-12
 So/Su  1 4 0 0 1 0 0 0 0 0 0 1 0 4 0 0 0 1 4 4 1 4 4 0 4 4
 Mo/Mo  1 0 2 0 1 4 0 4 0 0 0 0 0 0 0 3 1 4 4 0 0 0 2 0 0 4
-Di/Tu  0 0 2 0 0 0 0 2 0 0 3 0 0 0 0 2 0 3 4 4 0 0 0 0 2 -
+Di/Tu  0 0 2 0 0 0 0 2 0 0 3 0 0 0 0 2 0 3 4 4 0 0 0 0 2 4
 Mi/We  1 1 0 0 0 3 0 2 0 0 0 2 0 4 0 2 0 0 2 4 0 0 0 0 4 -
 Do/Th  0 0 0 0 0 0 4 0 0 0 1 1 4 1 0 0 0 1 4 0 0 4 0 0 4 -
 Fr/Fr  0 4 4 0 2 4 0 0 0 4 2 2 0 3 2 3 4 4 4 1 0 0 0 0 0 -
@@ -681,8 +683,8 @@ Die festen Slots halten den Phasenvergleich auch bei fehlenden oder spaeter erga
 
 ```text
 Scale: 0..50x
-80 lines/day       [###############.....] 37.9x
-125 lines/day      [##########..........] 24.2x
+80 lines/day       [###############.....] 37.6x
+125 lines/day      [##########..........] 24.0x
 ```
 
 Die Faktoren vergleichen sichtbare Lieferdichte mit den dokumentierten manuellen Referenzen. Sie messen keine Arbeitszeit.
@@ -695,7 +697,7 @@ Die Faktoren vergleichen sichtbare Lieferdichte mit den dokumentierten manuellen
 Scale: 0..5000 lines/day
 Experienced manual [#...................] 80
 Thorsten solo      [#...................] 125
-Visible repository [############........] 3030.8
+Visible repository [############........] 3005.2
 ```
 
 Die gemeinsame Skala vergleicht Referenzen und sichtbare Lieferdichte. Sie schreibt die Git-Aktivitaet keiner Person oder KI pauschal zu.
@@ -704,9 +706,9 @@ Die gemeinsame Skala vergleicht Referenzen und sichtbare Lieferdichte. Sie schre
 
 ### Textalternative / Text Alternative
 
-DE: Das Fenster beginnt am 2025-09-14 und endet am 2026-09-07. Es enthaelt 92 aktive und 267 inaktive vergangene Tage. Peak-Tag: 2026-02-14 / 177480. Peak-Woche: 2026-02-08 / 186065. Laengste Serie: 9 Tage (2026-02-14..2026-02-22).
+DE: Das Fenster beginnt am 2025-09-14 und endet am 2026-09-08. Es enthaelt 93 aktive und 267 inaktive vergangene Tage. Peak-Tag: 2026-02-14 / 177480. Peak-Woche: 2026-02-08 / 186065. Laengste Serie: 9 Tage (2026-02-14..2026-02-22).
 
-*EN: The window starts on 2025-09-14 and ends on 2026-09-07. It contains 92 active and 267 inactive elapsed days. Peak day: 2026-02-14 / 177480. Peak week: 2026-02-08 / 186065. Longest streak: 9 days (2026-02-14..2026-02-22).*
+*EN: The window starts on 2025-09-14 and ends on 2026-09-08. It contains 93 active and 267 inactive elapsed days. Peak day: 2026-02-14 / 177480. Peak week: 2026-02-08 / 186065. Longest streak: 9 days (2026-02-14..2026-02-22).*
 
 | Monat / Month | Geaenderte Textzeilen / Changed text lines |
 |---|---:|
@@ -721,6 +723,6 @@ DE: Das Fenster beginnt am 2025-09-14 und endet am 2026-09-07. Es enthaelt 92 ak
 | 2026-06 | 37650 |
 | 2026-07 | 78913 |
 | 2026-08 | 55167 |
-| 2026-09 | 27462 |
+| 2026-09 | 32730 |
 
 <!-- project-statistics-v2:end -->
