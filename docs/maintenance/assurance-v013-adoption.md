@@ -52,6 +52,18 @@ No gate, human approval or next substantive action is inferred. Baseline
 3.2.0 and evidence are unchanged. Only mandatory IDE commit-version metadata
 advance; no behavior or NuGet version changes. Existing PR CI tests the product.*
 
+Dieser ursprüngliche Installations-Snapshot wird durch die spätere
+projektgeführte Revalidierung ergänzt. Der aktuelle Abschluss steht im
+[v0.1.3-Feldbericht](secure-development-assurance-v013-field-test.md). Seine
+Empfehlung `ReleaseAccepted` gilt nur für das Preset in TinyPl0; alle drei
+menschlichen Freigaben bleiben `Open`.
+
+*The later project-owned revalidation supplements this original installation
+snapshot. The current closeout is recorded in the
+[v0.1.3 field-test report](secure-development-assurance-v013-field-test.md).
+Its `ReleaseAccepted` recommendation covers only the preset in TinyPl0; all
+three human approval boundaries remain `Open`.*
+
 Vorher-Snapshot: 593 geschützte Dateien außerhalb der ausdrücklich
 aktualisierten Assurance-Paket-/Command-Oberflächen. Die zwölf anderen
 Registereinträge und ältere Profildefinitionen werden exakt verglichen.

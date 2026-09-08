@@ -1,27 +1,34 @@
 # Cloud-Compliance-Assurance / Cloud Compliance Assurance
 
-Deutsch: BSI C5 wird nur als Assurance-Fragenkatalog für die genutzte GitHub-
-Delivery-Fläche betrachtet. Dieses Repository besitzt keine Provider-
-Auditberichte und behauptet keine C5-Testierung, Zertifizierung oder regionale
-Cloud-Zusage. Lokale TinyPl0-Ausführung bleibt außerhalb eines Cloud-Runtime-
-Claims. Nachweisbar sind projektseitig minimale Workflow-Rechte, volle Action-
-SHAs, Lockfiles, Artefakthashes und getrennte Review-Gates.
+## Entscheidung / Decision
 
-English: BSI C5 is used only as an assurance question set for the GitHub
-delivery surface. The repository holds no provider audit report and claims no
-C5 attestation, certification, or regional cloud commitment. Local TinyPl0 use
-is outside a cloud-runtime claim. Project evidence covers least workflow
-permissions, full action SHAs, lockfiles, artefact hashes, and separate reviews.
+Deutsch: BSI C5 ist für den aktuellen TinyPl0-Produktscope `N/A`. TinyPl0 ist
+ein nichtkommerzieller Lern- und Beispielcompiler und betreibt oder liefert
+keine Cloud-Runtime. GitHub, CI, NuGet und Artefakthosting sind ausschließlich
+Entwicklungs- und Lieferinfrastruktur; sie machen das Produkt nicht zu einem
+Cloud-Dienst. Deshalb ist kein C5-Test oder Provider-Testat erforderlich. Es
+wird keine C5-Testierung, Zertifizierung oder Providerfreigabe behauptet.
 
-| Assurance-Thema / Topic | Ist-Evidence / Current evidence | Grenze / Boundary |
-|---|---|---|
-| Organisation und Rollen | Workflow-/Review-Verantwortung | keine Provider-Organisationsprüfung |
-| Change/Build integrity | Git-History, Pins, SBOM, Hashmanifest | Attestation erst nach realem Providerlauf |
-| Logging/Monitoring | Provider-Checklogs bei PR/Release | keine lokale Langzeitaufbewahrung belegt |
-| Portabilität | Source + DocFX + Buildskripte | Pages-/Actions-Verlauf nicht automatisch portiert |
-| Incident/CVD | `SECURITY.md`, RFC-9116 `security.txt` | Provider-Incidentprozess separat |
+English: BSI C5 is `N/A` for the current TinyPl0 product scope. TinyPl0 is a
+non-commercial teaching and example compiler and neither operates nor ships a
+cloud runtime. GitHub, CI, NuGet, and artifact hosting are development and
+delivery infrastructure only; they do not turn the product into a cloud
+service. No C5 test or provider attestation is required, and no C5 attestation,
+certification, or provider approval is claimed.
 
-Owner: TinyPl0-Maintainer. Wiedervorlage bei Cloud-Runtime, Providerwechsel,
-vertraglicher Assurance-Anforderung oder Release. Evidence-Ziel: aktueller
-Providerbericht beziehungsweise dokumentierte Nichtverfügbarkeit plus
-kompensierende Kontrollen.
+| Feld / Field | Wert / Value |
+|---|---|
+| Prüftag / Review date | `2026-09-08` |
+| Owner | Thorsten Hindermann, TinyPl0 project owner |
+| Produktscope / Product scope | Nichtkommerzielles Ausbildungs- und Beispielprogramm / Non-commercial training and example program |
+| C5-Status | `N/A` |
+| Regulatorische Wiedervorlage / Regulatory review | `2026-12-31` |
+| Frühere Trigger / Earlier triggers | Cloud-Runtime, Managed Service, produktives Hosting, Kundenübergabe oder vertragliche Provider-Assurance / cloud runtime, managed service, production hosting, customer handover, or contractual provider assurance |
+
+Projektseitige Workflow-Rechte, Action-Pins, Lockfiles, Artefakthashes und
+getrennte Review-Gates bleiben anwendbare Lieferkettenkontrollen. Sie sind kein
+C5-Test. Restrisiko ist eine unbemerkte Scopeänderung.
+
+*Project-side workflow permissions, action pins, lockfiles, artifact hashes,
+and separate review gates remain applicable supply-chain controls. They are not
+a C5 test. Residual risk is an unnoticed scope change.*

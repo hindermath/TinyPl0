@@ -6,14 +6,16 @@
 auf Version 3.2.0 synchronisiert und der technische Evidence-Vertrag des
 13. Presets erneut geprüft. Baseline, Delta, Closure und Image Impact sind
 Ready; der strengste technische Gesamtstatus ist Ready. Das ist keine
-fachliche Neubewertung der 157 Kontrollpunkte. 11 Kontrollen sind als erfuellt, 107 als teilweise erfuellt und 39 als nicht anwendbar dokumentiert.
+fachliche Neubewertung der 157 Kontrollpunkte. 11 Kontrollen sind als erfüllt,
+94 als teilweise erfüllt und 52 als nicht anwendbar dokumentiert.
 Pilotfreigabe, Projektabnahme und allgemeine Freigabe bleiben Open.
 
 **EN:** On 2026-09-08, the repository-local secure-development baseline was
 synchronized to version 3.2.0 and the thirteenth preset's technical evidence
 contract was revalidated. Baseline, delta, closure, and image impact are
 Ready; the strictest technical overall status is Ready. This is not a new
-domain assessment of the 157 controls. 11 controls are recorded as fulfilled, 107 as partly fulfilled, and 39 as not applicable. Pilot
+domain assessment of the 157 controls. 11 controls are recorded as fulfilled,
+94 as partly fulfilled, and 52 as not applicable. Pilot
 authorization, project acceptance, and general release remain Open.
 
 **DE:** Aktuelle maschinenlesbare Gates sind baseline.json,
@@ -46,7 +48,7 @@ roles do not constitute newly granted approvals.*
 - Kontext / context: `2026-08-30-tinypl0-hardening`.
 - Kanonische Bewertungsquelle / canonical assessment source: [assessment.json](assessment.json).
 - SHA-256 der unveränderten Dateibytes / SHA-256 of unchanged file bytes:
-  `ec978f6911ec00e77427cdcd4d7b0a628df63b70c075fb793200a671a6aef905`.
+  `78429eab1ba1ca5f3764e71bdef9b897da067ad0bec66de775f568a27c2f0b2c`.
 - Git-Stand vor Indexergänzung / Git HEAD before adding this index: `a3835067ef3cfad37248f2e5be2329fb2694a289`.
 - Umfang / scope: 157 eindeutige Kontroll-IDs / unique control IDs.
 - Hash oben ist ein Dateibyte-Hash, keine neue normalisierte Baseline-Bindung.
@@ -58,8 +60,8 @@ roles do not constitute newly granted approvals.*
 
 ### Quellenstatus, nicht Assurance-Ergebnis / Source States, Not Assurance Outcomes
 
-- `Applicable / Partly Fulfilled`: 107
-- `N/A / Not Assessed`: 39
+- `Applicable / Partly Fulfilled`: 94
+- `N/A / Not Assessed`: 52
 - `Applicable / Fulfilled`: 11
 
 ## Kontrollzuordnung / Control Mapping
@@ -97,7 +99,7 @@ an evidence ID does not prove freshness or effectiveness.
 | CL-02-10 | Applicable / Partly Fulfilled | Keine Referenz / no reference | `items[21]` |
 | CL-02-11 | Applicable / Partly Fulfilled | Keine Referenz / no reference | `items[22]` |
 | CL-02-12 | Applicable / Partly Fulfilled | Keine Referenz / no reference | `items[23]` |
-| CL-02-13 | Applicable / Partly Fulfilled | Keine Referenz / no reference | `items[24]` |
+| CL-02-13 | N/A / Not Assessed | `docs/security/cloud-compliance-assurance.md` | `items[24]` |
 | CL-03-01 | N/A / Not Assessed | Keine Referenz / no reference | `items[25]` |
 | CL-03-02 | N/A / Not Assessed | Keine Referenz / no reference | `items[26]` |
 | CL-03-03 | N/A / Not Assessed | Keine Referenz / no reference | `items[27]` |
@@ -147,18 +149,18 @@ an evidence ID does not prove freshness or effectiveness.
 | CL-06-09 | Applicable / Partly Fulfilled | Keine Referenz / no reference | `items[71]` |
 | CL-06-10 | Applicable / Partly Fulfilled | Keine Referenz / no reference | `items[72]` |
 | CL-06-11 | Applicable / Partly Fulfilled | Keine Referenz / no reference | `items[73]` |
-| CL-07-01 | Applicable / Partly Fulfilled | Keine Referenz / no reference | `items[74]` |
-| CL-07-02 | Applicable / Partly Fulfilled | Keine Referenz / no reference | `items[75]` |
-| CL-07-03 | Applicable / Partly Fulfilled | Keine Referenz / no reference | `items[76]` |
-| CL-07-04 | Applicable / Partly Fulfilled | Keine Referenz / no reference | `items[77]` |
-| CL-07-05 | Applicable / Partly Fulfilled | Keine Referenz / no reference | `items[78]` |
-| CL-07-06 | Applicable / Partly Fulfilled | Keine Referenz / no reference | `items[79]` |
-| CL-07-07 | Applicable / Partly Fulfilled | Keine Referenz / no reference | `items[80]` |
-| CL-07-08 | Applicable / Partly Fulfilled | Keine Referenz / no reference | `items[81]` |
-| CL-07-09 | Applicable / Partly Fulfilled | Keine Referenz / no reference | `items[82]` |
-| CL-07-10 | Applicable / Partly Fulfilled | Keine Referenz / no reference | `items[83]` |
-| CL-07-11 | Applicable / Partly Fulfilled | Keine Referenz / no reference | `items[84]` |
-| CL-07-12 | Applicable / Partly Fulfilled | Keine Referenz / no reference | `items[85]` |
+| CL-07-01 | N/A / Not Assessed | `docs/security/cra-applicability.md`; `docs/security/regulatory-applicability.md` | `items[74]` |
+| CL-07-02 | N/A / Not Assessed | `docs/security/cra-applicability.md`; `docs/security/regulatory-applicability.md` | `items[75]` |
+| CL-07-03 | N/A / Not Assessed | `docs/security/cra-applicability.md`; `docs/security/regulatory-applicability.md` | `items[76]` |
+| CL-07-04 | N/A / Not Assessed | `docs/security/cra-applicability.md`; `docs/security/regulatory-applicability.md` | `items[77]` |
+| CL-07-05 | N/A / Not Assessed | `docs/security/cra-applicability.md`; `docs/security/regulatory-applicability.md` | `items[78]` |
+| CL-07-06 | N/A / Not Assessed | `docs/security/cra-applicability.md`; `docs/security/regulatory-applicability.md` | `items[79]` |
+| CL-07-07 | N/A / Not Assessed | `docs/security/cra-applicability.md`; `docs/security/regulatory-applicability.md` | `items[80]` |
+| CL-07-08 | N/A / Not Assessed | `docs/security/cra-applicability.md`; `docs/security/regulatory-applicability.md` | `items[81]` |
+| CL-07-09 | N/A / Not Assessed | `docs/security/cra-applicability.md`; `docs/security/regulatory-applicability.md` | `items[82]` |
+| CL-07-10 | N/A / Not Assessed | `docs/security/cra-applicability.md`; `docs/security/regulatory-applicability.md` | `items[83]` |
+| CL-07-11 | N/A / Not Assessed | `docs/security/cra-applicability.md`; `docs/security/regulatory-applicability.md` | `items[84]` |
+| CL-07-12 | N/A / Not Assessed | `docs/security/cra-applicability.md`; `docs/security/regulatory-applicability.md` | `items[85]` |
 | CL-08-01 | Applicable / Partly Fulfilled | Keine Referenz / no reference | `items[86]` |
 | CL-08-02 | Applicable / Partly Fulfilled | Keine Referenz / no reference | `items[87]` |
 | CL-08-03 | Applicable / Partly Fulfilled | Keine Referenz / no reference | `items[88]` |
@@ -231,29 +233,32 @@ an evidence ID does not prove freshness or effectiveness.
 | CL-12-11 | N/A / Not Assessed | Keine Referenz / no reference | `items[155]` |
 | CL-12-12 | N/A / Not Assessed | Keine Referenz / no reference | `items[156]` |
 
-## Assurance-Lücke und nächste Aktion / Assurance Gap and Next Action
+## Aktuelles Assurance-Ergebnis und nächste Aktion / Current Assurance Result and Next Action
 
-Die Matrix ergänzt nur die zuvor fehlende Navigation. In diesem Kontext fehlen
-weiterhin `baseline.json`, mindestens ein `deltas/*.json`, `closure.json` und
-`image-impact.json` im Assurance-Vertrag. Deshalb bleibt der lesende Status
-`Blocked`. Die vorhandene Selbstprüfung wird nicht nachträglich zu einem
-Assurance-Review erklärt. `technicalValidation`, `pilotAuthorization`,
-`projectAcceptance` und `generalRelease` werden weder abgeleitet noch geändert.
+Alle vier Gate-Dateien sind für den exakt gebundenen Development-Kontext
+vorhanden und technisch `Ready`; `technicalValidation` ist `Fulfilled`.
+`pilotAuthorization`, `projectAcceptance` und `generalRelease` bleiben
+ausdrücklich `Open`. Die technische Evidence wird am 2027-09-08 erneut geprüft.
+C5 sowie CRA und formale Produktkonformität sind für den gegenwärtigen
+nichtkommerziellen Ausbildungs- und Beispielscope `N/A`; die regulatorische
+Scopeprüfung wird am 2026-12-31 oder früher bei Marktbereitstellung,
+kommerzieller Nutzung, Kundenübergabe, Supportvertrag oder geänderter
+Hersteller-/Steward-Rolle wiederholt.
 
-Nächster fachlicher Schritt ist ein separat beauftragter Review/Migrationslauf:
-Quellenaktualität und Manifestbindung prüfen, fehlende Gate-Evidence mit realen
-Owner-/Reviewdaten erstellen und menschliche Entscheidungen getrennt belassen.
-Erst danach erneut `status` ausführen. Keine vollständige C5-Prüfung und keine
-Aussage zu C5-Konformität, Testatreife oder Zertifizierung. `CL-02-13` bleibt
-die unveränderte projektbezogene Bewertung in der Quelle.
+TinyPl0 empfiehlt für diesen begrenzten Projektfeldtest
+`ReleaseAccepted` für das unveränderte Preset v0.1.3. Die nächste zentrale
+Aktion bleibt ausgesetzt, bis alle fünf Projektberichte vorliegen und
+`github/spec-kit#4455` entschieden ist. Daraus entsteht keine Produkt-, C5-,
+Konformitäts- oder Zertifizierungsfreigabe.
 
-*Only the missing navigation is added. The four gate JSON contracts are still
-absent, so read-only status remains Blocked. Existing self-review is not
-reclassified as an Assurance review; none of the four human decision boundaries
-is inferred or changed. A separately authorized domain review/migration must
-check freshness and manifest bindings, provide real gate evidence and review
-metadata, then rerun status. No complete C5 assessment or conformity,
-attestation-readiness or certification claim is made.*
+*All four gate files are technically Ready for the exact development context,
+and technical validation is Fulfilled. The three human decisions remain Open.
+Technical evidence is due again on 2027-09-08. C5, CRA, and formal product
+conformity are N/A for the current non-commercial training and example scope;
+regulatory scope is reviewed again on 2026-12-31 or earlier upon a defined
+commercialization or role-change trigger. TinyPl0 recommends ReleaseAccepted
+for the unchanged v0.1.3 preset in this bounded project field test. Central
+acceptance waits for all five reports and github/spec-kit#4455.*
 
 ## Leserpfad und Dokumentationsauswirkung / Reader Path and Documentation Impact
 
