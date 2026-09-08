@@ -1,6 +1,6 @@
 # Projektstatistik TinyPl0
 
-Stand: 2026-09-03 (NuGet-Beschreibungsseiten für TinyPl0.Core und TinyPl0.Vm)
+Stand: 2026-09-08 (Secure Development Assurance v0.1.3-Feldtest)
 
 ## Zweck und Pflege
 
@@ -387,6 +387,7 @@ rekonstruiert.
 | 2026-09-07 | Assurance-Evidence-Vertrag / Assurance evidence contract | Branch `codex/assurance-evidence-migration`, sichtbare Sitzung 2026-09-07. 157 historische Kontrollen quellengebunden abgebildet, vier Gates Blocked, vier menschliche Entscheidungen Open; 2795 neue Evidence-/Dokumentationszeilen vor Ledger und Delivery-Metadaten, 0 neue Produkt-/Testlogikzeilen. Quellen- und Shell-Paritätsprüfung: docs/security/secure-development/2026-08-30-tinypl0-hardening/assurance-validation.json. Presets und Altbewertungen unverändert. / Source-bound migration and read-only parity verification; no approval inferred, no Home sync. Manual reference: 80 lines/workday and the repository-specific configuration; speedup is delivery density, not stopwatch time. |
 
 | 2026-09-08 | Assurance-Baseline und Gate-Revalidierung / Assurance baseline and gate revalidation | Branch `codex/assurance-evidence-ready`; sichtbare Sitzung 2026-09-08. Die verwaltete Baseline ist auf 3.2.0 synchronisiert, der fruehere blockierte Gate-Satz auditierbar archiviert und der aktive Evidence-Vertrag fuer Baseline, Delta, Closure und Image Impact in Bash und PowerShell mit Gesamtstatus `Ready` geprueft. Die 157 fachlichen Bewertungen bleiben unveraendert; technische Validierung ist `Fulfilled`, Pilotfreigabe, Projektabnahme und allgemeine Freigabe bleiben `Open`. Umfang vor Statistik- und Versionsmetadaten: `+2871 / -2260` Dokumentations-, Governance- und Evidence-Zeilen, `0` Produkt- und `0` Testcode-Zeilen. Dreizehn Presets bleiben unveraendert; keine Produkt-, API-, Paket-, Image- oder Home-Sync-Aenderung. / Synchronize baseline 3.2.0, archive the superseded blocked gate set, and validate all active gates plus overall status as `Ready` in Bash and PowerShell. Preserve 157 domain assessments and all human approval boundaries. No product, package, image, or Home-sync change; manual references remain defined by the repository statistics configuration. |
+| 2026-09-08 | Assurance-v0.1.3-Projektfeldtest abgeschlossen / Assurance v0.1.3 project field test closed | Branch `codex/assurance-v013-field-test-closeout`; eine sichtbare Sitzung. Das unveränderte Preset erhält für TinyPl0 die begrenzte Empfehlung `ReleaseAccepted`. C5 sowie CRA und formale Produktkonformität sind für den aktuellen nichtkommerziellen Ausbildungs-/Beispielscope `N/A`; technische Wiedervorlage ist 2027-09-08, regulatorische Scopeprüfung 2026-12-31. Alle vier Gates sind in Bash und PowerShell `Ready`, 7/7 Roh-Hashes blieben unverändert, die 157-ID-Matrix enthält 11 erfüllte, 94 teilweise erfüllte und 52 N/A-Kontrollen. Paket-, Oberflächen-, Negativ-, Zeilenendungs- und Kompositionstests sind grün. Umfang des Evidence-Commits: `+698 / -476` Textzeilen; davon `0` Produktlogik- und `0` Testcode-Zeilen, ausschließlich die vorgeschriebenen IDE-Versionsmetadaten folgen dem Commit. Menschliche Freigaben bleiben `Open`; keine Produkt-, API-, Runtime-, Paket-, Image- oder Home-Sync-Änderung. / The unchanged preset earns the bounded TinyPl0 recommendation `ReleaseAccepted`; all human approvals remain Open. C5/CRA/conformity are N/A in the current non-commercial scope, while cross-shell gates, raw-byte preservation, package regression, generated surfaces, line endings, and composition pass. No product behavior, API, runtime, package, image, or Home-sync change. |
 
 ## Statistikprofil-1-Archiv / Statistics Profile 1 Archive
 - Stand 2026-05-05: `88` Produktionsdateien mit `6950` Zeilen, `22` Testdateien mit `3536` Zeilen und `562` Dokumentationsdateien mit `36625` Zeilen.
@@ -512,27 +513,27 @@ Profil 2 verwendet Git-getrackte Textdateien und sichtbare Git-Aktivitaet. Die W
 
 | Kennzahl / Metric | Wert / Value |
 |---|---:|
-| Textbasis / Text base | 279483 lines |
-| Textdateien / Text files | 2024 |
+| Textbasis / Text base | 279705 lines |
+| Textdateien / Text files | 2026 |
 | Beobachtbarer Zeitraum / Observable period | 2025-09-14..2026-09-08 |
 | Aktivtage / Active days | 93 |
-| Relevante Commits / Relevant commits | 375 |
-| Zeilen je Aktivtag / Lines per active day | 3005.2 |
+| Relevante Commits / Relevant commits | 377 |
+| Zeilen je Aktivtag / Lines per active day | 3007.6 |
 | Peak-Tag im Fenster / Peak day in window | 2026-02-14 / 177480 |
 | Peak-Woche im Fenster / Peak week in window | 2026-02-08 / 186065 |
 | Laengste Serie / Longest streak | 9 days |
 | Speedup vs. 80 lines/day | 37.6x |
-| Speedup vs. 125 lines/day | 24.0x |
-| Methodik / Methodology | v2; source `84cf4b66ae53` |
+| Speedup vs. 125 lines/day | 24.1x |
+| Methodik / Methodology | v2; source `1265588d2dc7` |
 
 ### Artefaktmix / Artifact Mix
 
 ```text
 Produktiv / Production          [#...................]   2.5% | 7060
-Tests                           [#...................]   4.7% | 13146
-Dokumentation / Documentation   [###########.........]  55.4% | 154883
+Tests                           [#...................]   4.8% | 13310
+Dokumentation / Documentation   [###########.........]  55.4% | 154941
 Skripte / Scripts               [##..................]   8.1% | 22629
-Konfiguration / Configuration   [######..............]  27.6% | 77033
+Konfiguration / Configuration   [######..............]  27.5% | 77033
 Daten und Medien / Data and media [....................]   0.0% | 0
 Sonstiger Text / Other text     [#...................]   1.7% | 4732
 ```
@@ -684,7 +685,7 @@ Die festen Slots halten den Phasenvergleich auch bei fehlenden oder spaeter erga
 ```text
 Scale: 0..50x
 80 lines/day       [###############.....] 37.6x
-125 lines/day      [##########..........] 24.0x
+125 lines/day      [##########..........] 24.1x
 ```
 
 Die Faktoren vergleichen sichtbare Lieferdichte mit den dokumentierten manuellen Referenzen. Sie messen keine Arbeitszeit.
@@ -697,7 +698,7 @@ Die Faktoren vergleichen sichtbare Lieferdichte mit den dokumentierten manuellen
 Scale: 0..5000 lines/day
 Experienced manual [#...................] 80
 Thorsten solo      [#...................] 125
-Visible repository [############........] 3005.2
+Visible repository [############........] 3007.6
 ```
 
 Die gemeinsame Skala vergleicht Referenzen und sichtbare Lieferdichte. Sie schreibt die Git-Aktivitaet keiner Person oder KI pauschal zu.
@@ -723,6 +724,6 @@ DE: Das Fenster beginnt am 2025-09-14 und endet am 2026-09-08. Es enthaelt 93 ak
 | 2026-06 | 37650 |
 | 2026-07 | 78913 |
 | 2026-08 | 55167 |
-| 2026-09 | 32730 |
+| 2026-09 | 33900 |
 
 <!-- project-statistics-v2:end -->

@@ -6,7 +6,8 @@
 Baseline-Versionsabweichung und vervollstaendigt den Assurance-Evidence-Vertrag.
 Alle vier technischen Gates sowie der strengste Gesamtstatus sind Ready.
 Dieses Ergebnis bewertet die Integritaet des Gate-Satzes, nicht die Wirksamkeit
-aller fachlichen Kontrollen. 11 Kontrollen sind als erfuellt, 107 als teilweise erfuellt und 39 als nicht anwendbar dokumentiert. Es wird keine
+aller fachlichen Kontrollen. 11 Kontrollen sind als erfuellt, 94 als teilweise
+erfuellt und 52 als nicht anwendbar dokumentiert. Es wird keine
 Risikoakzeptanz, Zertifizierung, Rechts-, C5-, Pilot-, Projekt- oder
 Releasefreigabe abgeleitet.
 
@@ -14,7 +15,8 @@ Releasefreigabe abgeleitet.
 baseline version drift and completes the Assurance evidence contract. All four
 technical gates and the strictest overall status are Ready. This result
 assesses gate-set integrity, not the effectiveness of every domain control.
-11 controls are recorded as fulfilled, 107 as partly fulfilled, and 39 as not applicable. No risk acceptance, certification, legal, C5,
+11 controls are recorded as fulfilled, 94 as partly fulfilled, and 52 as not
+applicable. No risk acceptance, certification, legal, C5,
 pilot, project, or release approval is inferred.
 
 ## Aenderung / Change
@@ -28,8 +30,10 @@ pilot, project, or release approval is inferred.
 - Der frühere blockierte Migrations-Gate-Satz bleibt unter
   archive/2026-09-07-assurance-migration/ als historische Evidence der
   damaligen Abweichung erhalten.
-- Die aktiven Gates bewerten nur den technischen Evidence-Vertrag. Fachliche
-  Kontrolldispositionen werden nicht zu erfüllten Zuständen hochgestuft.
+- Die aktiven Gates bewerten nur den technischen Evidence-Vertrag. C5 und die
+  zwölf CRA-Kontrollen sind für den aktuellen nichtkommerziellen Ausbildungs-
+  und Beispielscope begründet `N/A`; keine Kontrolle wird zu einem erfüllten
+  Zustand hochgestuft.
 
 **EN:**
 
@@ -38,9 +42,9 @@ pilot, project, or release approval is inferred.
   CL-09, and CL-12 2.2.0, SDLC guideline 1.2.0, and integration map 1.4.0.
 - The former blocked migration gate set is retained under
   archive/2026-09-07-assurance-migration/; it remains historical evidence of the earlier drift.
-- Active gates assess the technical evidence-contract layer. The unchanged
-  domain source is [assessment.json](assessment.json); its
-  values are not promoted to fulfilled states.
+- Active gates assess the technical evidence-contract layer. C5 and the twelve
+  CRA controls are reasoned `N/A` for the current non-commercial training and
+  example scope; no source value is promoted to a fulfilled state.
 ## Gate-Nachweise / Gate Evidence
 
 | Gate | Ergebnis / Outcome | Evidence-Grenze / Evidence boundary |
@@ -68,7 +72,9 @@ Revalidierungsbericht, Validierungsreceipt und Projektstatistik. Der Leserpfad
 führt von der Matrix über die Gates zur fachlichen Quelle. Die Evidence ist
 repository-lokal, DE-zuerst/EN-danach, textorientiert und benötigt keinen
 Home-Sync. Nach jeder relevanten Quellen-, Scope-, Produkt- oder
-Infrastrukturänderung, spätestens am 2026-09-15, ist neu zu bewerten.
+Infrastrukturänderung, spätestens am 2027-09-08, ist neu zu bewerten. Die
+regulatorische Scopeentscheidung besitzt zusätzlich die Wiedervorlage
+2026-12-31.
 
 **EN:**
 
@@ -91,14 +97,18 @@ Infrastrukturänderung, spätestens am 2026-09-15, ist neu zu bewerten.
   NoHomeSyncRequired.
 - Re-evaluation: immediately after any baseline, evidence, product,
   architecture, dependency, workflow, distribution, image, or scope change,
-  and no later than 2026-09-15.
+  and no later than 2027-09-08. The regulatory scope decision is additionally
+  reviewed on 2026-12-31.
 
 ## Naechste Aktion / Next Action
 
 **DE:** pilotAuthorization, projectAcceptance und generalRelease bleiben
-Open, bis ausdrücklich befugte menschliche Evidence vorliegt. Nach jedem
-Re-Evaluation-Trigger sind alle Gates erneut zu prüfen.
+Open, bis ausdrücklich befugte menschliche Evidence vorliegt. Der
+projektbezogene v0.1.3-Feldtest empfiehlt `ReleaseAccepted` nur für das Preset;
+die zentrale Preset-Abnahme wartet auf alle fünf Projekte und
+`github/spec-kit#4455`.
 
 **EN:** Keep pilotAuthorization, projectAcceptance, and generalRelease Open
-until explicitly authorised human evidence exists. Re-run all gates whenever a
-re-evaluation trigger occurs.
+until explicitly authorised human evidence exists. The project field test
+recommends `ReleaseAccepted` for the preset only; the central preset decision
+waits for all five projects and `github/spec-kit#4455`.

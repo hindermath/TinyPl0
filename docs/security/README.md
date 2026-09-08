@@ -2,7 +2,7 @@
 
 **Repository**: TinyPl0 (Level 2)
 **Feature**: `004-secure-development-hardening`
-**Stand / Date**: 2026-08-30
+**Stand / Date**: 2026-09-08
 **Home-Sync**: `false`
 
 Deutsch: Dieser text-first Index trennt veröffentlichbare Lern-/Policy-Inhalte
@@ -23,10 +23,10 @@ Links, paths, and status words carry the meaning without colour.
 | Dependency Audit | [dependency-audit.md](dependency-audit.md) | 0 known Critical/High |
 | ASVS 5.0.0 L1 | [asvs-verification.md](asvs-verification.md) | 70/70 mapped |
 | Supply Chain | [supply-chain-evidence.md](supply-chain-evidence.md) | local SBOM/artifact evidence; provider claims bounded |
-| CRA | [cra-applicability.md](cra-applicability.md) | technical readiness; business role Open |
+| CRA | [cra-applicability.md](cra-applicability.md) | N/A in current non-commercial training/example scope; review 2026-12-31 |
 | Regulierung / regulation | [regulatory-applicability.md](regulatory-applicability.md) | reasoned N/A decisions |
 | Cloud-Autonomie / cloud autonomy | [cloud-autonomy-applicability.md](cloud-autonomy-applicability.md) | C3A lens Applicable to delivery |
-| Cloud-Assurance | [cloud-compliance-assurance.md](cloud-compliance-assurance.md) | C5 lens; no certification claim |
+| Cloud-Assurance | [cloud-compliance-assurance.md](cloud-compliance-assurance.md) | C5 N/A in current product scope; no attestation claim |
 | Zero Trust | [zero-trust-applicability.md](zero-trust-applicability.md) | N/A with trigger |
 | SAMM | [samm-assessment.md](samm-assessment.md) | internal maturity snapshot |
 | CVD Policy | `.github/SECURITY.md` | public policy source; published through the repository host |

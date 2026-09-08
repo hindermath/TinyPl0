@@ -1415,59 +1415,59 @@
     },
     {
       "clId": "CL-02-13",
-      "applicability": "Applicable",
-      "implementation": "Partly Fulfilled",
+      "applicability": "N/A",
+      "implementation": "Not Assessed",
       "rationale": {
-        "de": "Der Prüfpunkt 'Cloud-Compliance-Assurance / Cloud Compliance Assurance' ist anwendbar und besitzt im Ausgangsstand nur Teilnachweise.",
-        "en": "The checkpoint 'Cloud-Compliance-Assurance / Cloud Compliance Assurance' applies and has only partial baseline evidence."
+        "de": "TinyPl0 ist ein nichtkommerzieller Lern- und Beispielcompiler ohne Produkt-Cloud-Runtime. GitHub, CI, NuGet und Artefakthosting sind Entwicklungs- und Lieferinfrastruktur; ein C5-Test oder Provider-Testat ist fuer den aktuellen Produktscope nicht erforderlich.",
+        "en": "TinyPl0 is a non-commercial teaching and example compiler without a product cloud runtime. GitHub, CI, NuGet, and artifact hosting are development and delivery infrastructure; a C5 test or provider attestation is not required for the current product scope."
       },
-      "evidence": [],
+      "evidence": [
+        "docs/security/cloud-compliance-assurance.md"
+      ],
       "ownerRole": "TinyPl0 maintainer",
       "reviewerRole": "Independent security reviewer",
       "residualRisk": {
         "asset": {
-          "de": "Nachvollziehbarer und sicherer TinyPl0-Lieferstand",
-          "en": "Traceable and secure TinyPl0 delivery state"
+          "de": "Korrekte C5-Scopeklassifikation",
+          "en": "Correct C5 scope classification"
         },
         "threat": {
-          "de": "Eine unvollständige Kontrolle kann Sicherheit oder Nachvollziehbarkeit schwächen.",
-          "en": "An incomplete control can weaken security or traceability."
+          "de": "Eine unbemerkte Cloud- oder Vertragsscopeaenderung kann die N/A-Entscheidung veralten lassen.",
+          "en": "An unnoticed cloud or contractual scope change can invalidate the N/A decision."
         },
         "stride": [
-          "T",
           "R"
         ],
         "cia": [
-          "Integrity",
-          "Availability"
+          "Integrity"
         ],
         "capec": [],
-        "likelihood": "Medium",
+        "likelihood": "Low",
         "impact": "Medium",
-        "severity": "Medium",
+        "severity": "Low",
         "mitigations": {
-          "de": "Evidence-first-Prüfung, unabhängiger Review und fail-closed Gates.",
-          "en": "Evidence-first assessment, independent review, and fail-closed gates."
+          "de": "Feste Wiedervorlage und ereignisgesteuerte Neubeurteilung.",
+          "en": "Fixed review date and event-driven reassessment."
         },
-        "residualSeverity": "Medium",
+        "residualSeverity": "Low",
         "acceptance": null
       },
       "reevaluation": {
         "trigger": {
-          "de": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
-          "en": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change."
+          "de": "Cloud-Runtime, Managed Service, produktives Hosting, Kundenuebergabe oder vertragliche Provider-Assurance.",
+          "en": "Cloud runtime, managed service, production hosting, customer handover, or contractual provider assurance."
         },
-        "targetDate": null
+        "targetDate": "2026-12-31"
       },
       "nextAction": {
-        "de": "Evidence im geplanten Security- oder Architekturpfad vervollständigen.",
-        "en": "Complete evidence in the planned security or architecture path."
+        "de": "Am 2026-12-31 oder beim frueheren Scope-Trigger neu bewerten.",
+        "en": "Re-evaluate on 2026-12-31 or an earlier scope trigger."
       },
-      "priority": "Medium",
-      "targetDateOrTrigger": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
+      "priority": "Low",
+      "targetDateOrTrigger": "2026-12-31 or earlier on a documented C5 scope trigger.",
       "expectedEvidence": {
-        "de": "Existierende, hash- und commitgebundene Gate-Evidence.",
-        "en": "Existing gate evidence bound to hashes and the assessed commit."
+        "de": "Aktualisierte projektbezogene C5-Anwendbarkeitsentscheidung.",
+        "en": "Updated project-specific C5 applicability decision."
       },
       "findingId": null
     },
@@ -4441,697 +4441,709 @@
     },
     {
       "clId": "CL-07-01",
-      "applicability": "Applicable",
-      "implementation": "Partly Fulfilled",
+      "applicability": "N/A",
+      "implementation": "Not Assessed",
       "rationale": {
-        "de": "Der Prüfpunkt 'Produktart bestimmen / Determine Product Class' ist anwendbar und besitzt im Ausgangsstand nur Teilnachweise.",
-        "en": "The checkpoint 'Produktart bestimmen / Determine Product Class' applies and has only partial baseline evidence."
+        "de": "TinyPl0 ist im aktuellen Scope ein nichtkommerzielles Ausbildungs- und Beispielprogramm ohne beabsichtigte Marktbereitstellung, Kundenuebergabe oder kommerzielle Nutzung. CRA-Produkt- und Konformitaetspflichten sind fuer diesen begrenzten Scope N/A; dies ist keine Rechtsberatung oder Konformitaetsbehauptung.",
+        "en": "TinyPl0 is currently a non-commercial training and example program without intended market placement, customer handover, or commercial use. CRA product and conformity duties are N/A for this bounded scope; this is not legal advice or a conformity claim."
       },
-      "evidence": [],
+      "evidence": [
+        "docs/security/cra-applicability.md",
+        "docs/security/regulatory-applicability.md"
+      ],
       "ownerRole": "TinyPl0 maintainer",
       "reviewerRole": "Independent security reviewer",
       "residualRisk": {
         "asset": {
-          "de": "Nachvollziehbarer und sicherer TinyPl0-Lieferstand",
-          "en": "Traceable and secure TinyPl0 delivery state"
+          "de": "Korrekte CRA- und Konformitaets-Scopeklassifikation",
+          "en": "Correct CRA and conformity scope classification"
         },
         "threat": {
-          "de": "Eine unvollständige Kontrolle kann Sicherheit oder Nachvollziehbarkeit schwächen.",
-          "en": "An incomplete control can weaken security or traceability."
+          "de": "Eine unbemerkte wirtschaftliche oder marktbezogene Scopeaenderung kann die N/A-Entscheidung veralten lassen.",
+          "en": "An unnoticed economic or market-related scope change can invalidate the N/A decision."
         },
         "stride": [
-          "T",
           "R"
         ],
         "cia": [
-          "Integrity",
-          "Availability"
+          "Integrity"
         ],
         "capec": [],
-        "likelihood": "Medium",
+        "likelihood": "Low",
         "impact": "Medium",
-        "severity": "Medium",
+        "severity": "Low",
         "mitigations": {
-          "de": "Evidence-first-Prüfung, unabhängiger Review und fail-closed Gates.",
-          "en": "Evidence-first assessment, independent review, and fail-closed gates."
+          "de": "Feste Wiedervorlage und ereignisgesteuerte Neubeurteilung.",
+          "en": "Fixed review date and event-driven reassessment."
         },
-        "residualSeverity": "Medium",
+        "residualSeverity": "Low",
         "acceptance": null
       },
       "reevaluation": {
         "trigger": {
-          "de": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
-          "en": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change."
+          "de": "Kommerzielle Nutzung, Marktbereitstellung, Kundenuebergabe, Supportvertrag oder geaenderte Hersteller-/Steward-Rolle.",
+          "en": "Commercial use, market placement, customer handover, support contract, or changed manufacturer/steward role."
         },
-        "targetDate": null
+        "targetDate": "2026-12-31"
       },
       "nextAction": {
-        "de": "Evidence im geplanten Security- oder Architekturpfad vervollständigen.",
-        "en": "Complete evidence in the planned security or architecture path."
+        "de": "Am 2026-12-31 oder beim frueheren Scope-Trigger neu bewerten.",
+        "en": "Re-evaluate on 2026-12-31 or an earlier scope trigger."
       },
-      "priority": "Medium",
-      "targetDateOrTrigger": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
+      "priority": "Low",
+      "targetDateOrTrigger": "2026-12-31 or earlier on a documented CRA scope trigger.",
       "expectedEvidence": {
-        "de": "Existierende, hash- und commitgebundene Gate-Evidence.",
-        "en": "Existing gate evidence bound to hashes and the assessed commit."
+        "de": "Aktualisierte projektbezogene CRA- und Konformitaets-Anwendbarkeitsentscheidung.",
+        "en": "Updated project-specific CRA and conformity applicability decision."
       },
       "findingId": null
     },
     {
       "clId": "CL-07-02",
-      "applicability": "Applicable",
-      "implementation": "Partly Fulfilled",
+      "applicability": "N/A",
+      "implementation": "Not Assessed",
       "rationale": {
-        "de": "Der Prüfpunkt 'Kritikalität nach Anhang III / Criticality per Annex III' ist anwendbar und besitzt im Ausgangsstand nur Teilnachweise.",
-        "en": "The checkpoint 'Kritikalität nach Anhang III / Criticality per Annex III' applies and has only partial baseline evidence."
+        "de": "TinyPl0 ist im aktuellen Scope ein nichtkommerzielles Ausbildungs- und Beispielprogramm ohne beabsichtigte Marktbereitstellung, Kundenuebergabe oder kommerzielle Nutzung. CRA-Produkt- und Konformitaetspflichten sind fuer diesen begrenzten Scope N/A; dies ist keine Rechtsberatung oder Konformitaetsbehauptung.",
+        "en": "TinyPl0 is currently a non-commercial training and example program without intended market placement, customer handover, or commercial use. CRA product and conformity duties are N/A for this bounded scope; this is not legal advice or a conformity claim."
       },
-      "evidence": [],
+      "evidence": [
+        "docs/security/cra-applicability.md",
+        "docs/security/regulatory-applicability.md"
+      ],
       "ownerRole": "TinyPl0 maintainer",
       "reviewerRole": "Independent security reviewer",
       "residualRisk": {
         "asset": {
-          "de": "Nachvollziehbarer und sicherer TinyPl0-Lieferstand",
-          "en": "Traceable and secure TinyPl0 delivery state"
+          "de": "Korrekte CRA- und Konformitaets-Scopeklassifikation",
+          "en": "Correct CRA and conformity scope classification"
         },
         "threat": {
-          "de": "Eine unvollständige Kontrolle kann Sicherheit oder Nachvollziehbarkeit schwächen.",
-          "en": "An incomplete control can weaken security or traceability."
+          "de": "Eine unbemerkte wirtschaftliche oder marktbezogene Scopeaenderung kann die N/A-Entscheidung veralten lassen.",
+          "en": "An unnoticed economic or market-related scope change can invalidate the N/A decision."
         },
         "stride": [
-          "T",
           "R"
         ],
         "cia": [
-          "Integrity",
-          "Availability"
+          "Integrity"
         ],
         "capec": [],
-        "likelihood": "Medium",
+        "likelihood": "Low",
         "impact": "Medium",
-        "severity": "Medium",
+        "severity": "Low",
         "mitigations": {
-          "de": "Evidence-first-Prüfung, unabhängiger Review und fail-closed Gates.",
-          "en": "Evidence-first assessment, independent review, and fail-closed gates."
+          "de": "Feste Wiedervorlage und ereignisgesteuerte Neubeurteilung.",
+          "en": "Fixed review date and event-driven reassessment."
         },
-        "residualSeverity": "Medium",
+        "residualSeverity": "Low",
         "acceptance": null
       },
       "reevaluation": {
         "trigger": {
-          "de": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
-          "en": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change."
+          "de": "Kommerzielle Nutzung, Marktbereitstellung, Kundenuebergabe, Supportvertrag oder geaenderte Hersteller-/Steward-Rolle.",
+          "en": "Commercial use, market placement, customer handover, support contract, or changed manufacturer/steward role."
         },
-        "targetDate": null
+        "targetDate": "2026-12-31"
       },
       "nextAction": {
-        "de": "Evidence im geplanten Security- oder Architekturpfad vervollständigen.",
-        "en": "Complete evidence in the planned security or architecture path."
+        "de": "Am 2026-12-31 oder beim frueheren Scope-Trigger neu bewerten.",
+        "en": "Re-evaluate on 2026-12-31 or an earlier scope trigger."
       },
-      "priority": "Medium",
-      "targetDateOrTrigger": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
+      "priority": "Low",
+      "targetDateOrTrigger": "2026-12-31 or earlier on a documented CRA scope trigger.",
       "expectedEvidence": {
-        "de": "Existierende, hash- und commitgebundene Gate-Evidence.",
-        "en": "Existing gate evidence bound to hashes and the assessed commit."
+        "de": "Aktualisierte projektbezogene CRA- und Konformitaets-Anwendbarkeitsentscheidung.",
+        "en": "Updated project-specific CRA and conformity applicability decision."
       },
       "findingId": null
     },
     {
       "clId": "CL-07-03",
-      "applicability": "Applicable",
-      "implementation": "Partly Fulfilled",
+      "applicability": "N/A",
+      "implementation": "Not Assessed",
       "rationale": {
-        "de": "Der Prüfpunkt 'Kritisch nach Anhang IV / Critical per Annex IV' ist anwendbar und besitzt im Ausgangsstand nur Teilnachweise.",
-        "en": "The checkpoint 'Kritisch nach Anhang IV / Critical per Annex IV' applies and has only partial baseline evidence."
+        "de": "TinyPl0 ist im aktuellen Scope ein nichtkommerzielles Ausbildungs- und Beispielprogramm ohne beabsichtigte Marktbereitstellung, Kundenuebergabe oder kommerzielle Nutzung. CRA-Produkt- und Konformitaetspflichten sind fuer diesen begrenzten Scope N/A; dies ist keine Rechtsberatung oder Konformitaetsbehauptung.",
+        "en": "TinyPl0 is currently a non-commercial training and example program without intended market placement, customer handover, or commercial use. CRA product and conformity duties are N/A for this bounded scope; this is not legal advice or a conformity claim."
       },
-      "evidence": [],
+      "evidence": [
+        "docs/security/cra-applicability.md",
+        "docs/security/regulatory-applicability.md"
+      ],
       "ownerRole": "TinyPl0 maintainer",
       "reviewerRole": "Independent security reviewer",
       "residualRisk": {
         "asset": {
-          "de": "Nachvollziehbarer und sicherer TinyPl0-Lieferstand",
-          "en": "Traceable and secure TinyPl0 delivery state"
+          "de": "Korrekte CRA- und Konformitaets-Scopeklassifikation",
+          "en": "Correct CRA and conformity scope classification"
         },
         "threat": {
-          "de": "Eine unvollständige Kontrolle kann Sicherheit oder Nachvollziehbarkeit schwächen.",
-          "en": "An incomplete control can weaken security or traceability."
+          "de": "Eine unbemerkte wirtschaftliche oder marktbezogene Scopeaenderung kann die N/A-Entscheidung veralten lassen.",
+          "en": "An unnoticed economic or market-related scope change can invalidate the N/A decision."
         },
         "stride": [
-          "T",
           "R"
         ],
         "cia": [
-          "Integrity",
-          "Availability"
+          "Integrity"
         ],
         "capec": [],
-        "likelihood": "Medium",
+        "likelihood": "Low",
         "impact": "Medium",
-        "severity": "Medium",
+        "severity": "Low",
         "mitigations": {
-          "de": "Evidence-first-Prüfung, unabhängiger Review und fail-closed Gates.",
-          "en": "Evidence-first assessment, independent review, and fail-closed gates."
+          "de": "Feste Wiedervorlage und ereignisgesteuerte Neubeurteilung.",
+          "en": "Fixed review date and event-driven reassessment."
         },
-        "residualSeverity": "Medium",
+        "residualSeverity": "Low",
         "acceptance": null
       },
       "reevaluation": {
         "trigger": {
-          "de": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
-          "en": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change."
+          "de": "Kommerzielle Nutzung, Marktbereitstellung, Kundenuebergabe, Supportvertrag oder geaenderte Hersteller-/Steward-Rolle.",
+          "en": "Commercial use, market placement, customer handover, support contract, or changed manufacturer/steward role."
         },
-        "targetDate": null
+        "targetDate": "2026-12-31"
       },
       "nextAction": {
-        "de": "Evidence im geplanten Security- oder Architekturpfad vervollständigen.",
-        "en": "Complete evidence in the planned security or architecture path."
+        "de": "Am 2026-12-31 oder beim frueheren Scope-Trigger neu bewerten.",
+        "en": "Re-evaluate on 2026-12-31 or an earlier scope trigger."
       },
-      "priority": "Medium",
-      "targetDateOrTrigger": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
+      "priority": "Low",
+      "targetDateOrTrigger": "2026-12-31 or earlier on a documented CRA scope trigger.",
       "expectedEvidence": {
-        "de": "Existierende, hash- und commitgebundene Gate-Evidence.",
-        "en": "Existing gate evidence bound to hashes and the assessed commit."
+        "de": "Aktualisierte projektbezogene CRA- und Konformitaets-Anwendbarkeitsentscheidung.",
+        "en": "Updated project-specific CRA and conformity applicability decision."
       },
       "findingId": null
     },
     {
       "clId": "CL-07-04",
-      "applicability": "Applicable",
-      "implementation": "Partly Fulfilled",
+      "applicability": "N/A",
+      "implementation": "Not Assessed",
       "rationale": {
-        "de": "Der Prüfpunkt 'Sicherheits-Anforderungen Anhang I Teil I / Annex I Part I Requirements' ist anwendbar und besitzt im Ausgangsstand nur Teilnachweise.",
-        "en": "The checkpoint 'Sicherheits-Anforderungen Anhang I Teil I / Annex I Part I Requirements' applies and has only partial baseline evidence."
+        "de": "TinyPl0 ist im aktuellen Scope ein nichtkommerzielles Ausbildungs- und Beispielprogramm ohne beabsichtigte Marktbereitstellung, Kundenuebergabe oder kommerzielle Nutzung. CRA-Produkt- und Konformitaetspflichten sind fuer diesen begrenzten Scope N/A; dies ist keine Rechtsberatung oder Konformitaetsbehauptung.",
+        "en": "TinyPl0 is currently a non-commercial training and example program without intended market placement, customer handover, or commercial use. CRA product and conformity duties are N/A for this bounded scope; this is not legal advice or a conformity claim."
       },
-      "evidence": [],
+      "evidence": [
+        "docs/security/cra-applicability.md",
+        "docs/security/regulatory-applicability.md"
+      ],
       "ownerRole": "TinyPl0 maintainer",
       "reviewerRole": "Independent security reviewer",
       "residualRisk": {
         "asset": {
-          "de": "Nachvollziehbarer und sicherer TinyPl0-Lieferstand",
-          "en": "Traceable and secure TinyPl0 delivery state"
+          "de": "Korrekte CRA- und Konformitaets-Scopeklassifikation",
+          "en": "Correct CRA and conformity scope classification"
         },
         "threat": {
-          "de": "Eine unvollständige Kontrolle kann Sicherheit oder Nachvollziehbarkeit schwächen.",
-          "en": "An incomplete control can weaken security or traceability."
+          "de": "Eine unbemerkte wirtschaftliche oder marktbezogene Scopeaenderung kann die N/A-Entscheidung veralten lassen.",
+          "en": "An unnoticed economic or market-related scope change can invalidate the N/A decision."
         },
         "stride": [
-          "T",
           "R"
         ],
         "cia": [
-          "Integrity",
-          "Availability"
+          "Integrity"
         ],
         "capec": [],
-        "likelihood": "Medium",
+        "likelihood": "Low",
         "impact": "Medium",
-        "severity": "Medium",
+        "severity": "Low",
         "mitigations": {
-          "de": "Evidence-first-Prüfung, unabhängiger Review und fail-closed Gates.",
-          "en": "Evidence-first assessment, independent review, and fail-closed gates."
+          "de": "Feste Wiedervorlage und ereignisgesteuerte Neubeurteilung.",
+          "en": "Fixed review date and event-driven reassessment."
         },
-        "residualSeverity": "Medium",
+        "residualSeverity": "Low",
         "acceptance": null
       },
       "reevaluation": {
         "trigger": {
-          "de": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
-          "en": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change."
+          "de": "Kommerzielle Nutzung, Marktbereitstellung, Kundenuebergabe, Supportvertrag oder geaenderte Hersteller-/Steward-Rolle.",
+          "en": "Commercial use, market placement, customer handover, support contract, or changed manufacturer/steward role."
         },
-        "targetDate": null
+        "targetDate": "2026-12-31"
       },
       "nextAction": {
-        "de": "Evidence im geplanten Security- oder Architekturpfad vervollständigen.",
-        "en": "Complete evidence in the planned security or architecture path."
+        "de": "Am 2026-12-31 oder beim frueheren Scope-Trigger neu bewerten.",
+        "en": "Re-evaluate on 2026-12-31 or an earlier scope trigger."
       },
-      "priority": "Medium",
-      "targetDateOrTrigger": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
+      "priority": "Low",
+      "targetDateOrTrigger": "2026-12-31 or earlier on a documented CRA scope trigger.",
       "expectedEvidence": {
-        "de": "Existierende, hash- und commitgebundene Gate-Evidence.",
-        "en": "Existing gate evidence bound to hashes and the assessed commit."
+        "de": "Aktualisierte projektbezogene CRA- und Konformitaets-Anwendbarkeitsentscheidung.",
+        "en": "Updated project-specific CRA and conformity applicability decision."
       },
       "findingId": null
     },
     {
       "clId": "CL-07-05",
-      "applicability": "Applicable",
-      "implementation": "Partly Fulfilled",
+      "applicability": "N/A",
+      "implementation": "Not Assessed",
       "rationale": {
-        "de": "Der Prüfpunkt 'Schwachstellenbehandlung Anhang I Teil II / Annex I Part II Vulnerability Handling' ist anwendbar und besitzt im Ausgangsstand nur Teilnachweise.",
-        "en": "The checkpoint 'Schwachstellenbehandlung Anhang I Teil II / Annex I Part II Vulnerability Handling' applies and has only partial baseline evidence."
+        "de": "TinyPl0 ist im aktuellen Scope ein nichtkommerzielles Ausbildungs- und Beispielprogramm ohne beabsichtigte Marktbereitstellung, Kundenuebergabe oder kommerzielle Nutzung. CRA-Produkt- und Konformitaetspflichten sind fuer diesen begrenzten Scope N/A; dies ist keine Rechtsberatung oder Konformitaetsbehauptung.",
+        "en": "TinyPl0 is currently a non-commercial training and example program without intended market placement, customer handover, or commercial use. CRA product and conformity duties are N/A for this bounded scope; this is not legal advice or a conformity claim."
       },
-      "evidence": [],
+      "evidence": [
+        "docs/security/cra-applicability.md",
+        "docs/security/regulatory-applicability.md"
+      ],
       "ownerRole": "TinyPl0 maintainer",
       "reviewerRole": "Independent security reviewer",
       "residualRisk": {
         "asset": {
-          "de": "Nachvollziehbarer und sicherer TinyPl0-Lieferstand",
-          "en": "Traceable and secure TinyPl0 delivery state"
+          "de": "Korrekte CRA- und Konformitaets-Scopeklassifikation",
+          "en": "Correct CRA and conformity scope classification"
         },
         "threat": {
-          "de": "Eine unvollständige Kontrolle kann Sicherheit oder Nachvollziehbarkeit schwächen.",
-          "en": "An incomplete control can weaken security or traceability."
+          "de": "Eine unbemerkte wirtschaftliche oder marktbezogene Scopeaenderung kann die N/A-Entscheidung veralten lassen.",
+          "en": "An unnoticed economic or market-related scope change can invalidate the N/A decision."
         },
         "stride": [
-          "T",
           "R"
         ],
         "cia": [
-          "Integrity",
-          "Availability"
+          "Integrity"
         ],
         "capec": [],
-        "likelihood": "Medium",
+        "likelihood": "Low",
         "impact": "Medium",
-        "severity": "Medium",
+        "severity": "Low",
         "mitigations": {
-          "de": "Evidence-first-Prüfung, unabhängiger Review und fail-closed Gates.",
-          "en": "Evidence-first assessment, independent review, and fail-closed gates."
+          "de": "Feste Wiedervorlage und ereignisgesteuerte Neubeurteilung.",
+          "en": "Fixed review date and event-driven reassessment."
         },
-        "residualSeverity": "Medium",
+        "residualSeverity": "Low",
         "acceptance": null
       },
       "reevaluation": {
         "trigger": {
-          "de": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
-          "en": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change."
+          "de": "Kommerzielle Nutzung, Marktbereitstellung, Kundenuebergabe, Supportvertrag oder geaenderte Hersteller-/Steward-Rolle.",
+          "en": "Commercial use, market placement, customer handover, support contract, or changed manufacturer/steward role."
         },
-        "targetDate": null
+        "targetDate": "2026-12-31"
       },
       "nextAction": {
-        "de": "Evidence im geplanten Security- oder Architekturpfad vervollständigen.",
-        "en": "Complete evidence in the planned security or architecture path."
+        "de": "Am 2026-12-31 oder beim frueheren Scope-Trigger neu bewerten.",
+        "en": "Re-evaluate on 2026-12-31 or an earlier scope trigger."
       },
-      "priority": "Medium",
-      "targetDateOrTrigger": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
+      "priority": "Low",
+      "targetDateOrTrigger": "2026-12-31 or earlier on a documented CRA scope trigger.",
       "expectedEvidence": {
-        "de": "Existierende, hash- und commitgebundene Gate-Evidence.",
-        "en": "Existing gate evidence bound to hashes and the assessed commit."
+        "de": "Aktualisierte projektbezogene CRA- und Konformitaets-Anwendbarkeitsentscheidung.",
+        "en": "Updated project-specific CRA and conformity applicability decision."
       },
       "findingId": null
     },
     {
       "clId": "CL-07-06",
-      "applicability": "Applicable",
-      "implementation": "Partly Fulfilled",
+      "applicability": "N/A",
+      "implementation": "Not Assessed",
       "rationale": {
-        "de": "Der Prüfpunkt 'Konformitätsbewertung / Conformity Assessment' ist anwendbar und besitzt im Ausgangsstand nur Teilnachweise.",
-        "en": "The checkpoint 'Konformitätsbewertung / Conformity Assessment' applies and has only partial baseline evidence."
+        "de": "TinyPl0 ist im aktuellen Scope ein nichtkommerzielles Ausbildungs- und Beispielprogramm ohne beabsichtigte Marktbereitstellung, Kundenuebergabe oder kommerzielle Nutzung. CRA-Produkt- und Konformitaetspflichten sind fuer diesen begrenzten Scope N/A; dies ist keine Rechtsberatung oder Konformitaetsbehauptung.",
+        "en": "TinyPl0 is currently a non-commercial training and example program without intended market placement, customer handover, or commercial use. CRA product and conformity duties are N/A for this bounded scope; this is not legal advice or a conformity claim."
       },
-      "evidence": [],
+      "evidence": [
+        "docs/security/cra-applicability.md",
+        "docs/security/regulatory-applicability.md"
+      ],
       "ownerRole": "TinyPl0 maintainer",
       "reviewerRole": "Independent security reviewer",
       "residualRisk": {
         "asset": {
-          "de": "Nachvollziehbarer und sicherer TinyPl0-Lieferstand",
-          "en": "Traceable and secure TinyPl0 delivery state"
+          "de": "Korrekte CRA- und Konformitaets-Scopeklassifikation",
+          "en": "Correct CRA and conformity scope classification"
         },
         "threat": {
-          "de": "Eine unvollständige Kontrolle kann Sicherheit oder Nachvollziehbarkeit schwächen.",
-          "en": "An incomplete control can weaken security or traceability."
+          "de": "Eine unbemerkte wirtschaftliche oder marktbezogene Scopeaenderung kann die N/A-Entscheidung veralten lassen.",
+          "en": "An unnoticed economic or market-related scope change can invalidate the N/A decision."
         },
         "stride": [
-          "T",
           "R"
         ],
         "cia": [
-          "Integrity",
-          "Availability"
+          "Integrity"
         ],
         "capec": [],
-        "likelihood": "Medium",
+        "likelihood": "Low",
         "impact": "Medium",
-        "severity": "Medium",
+        "severity": "Low",
         "mitigations": {
-          "de": "Evidence-first-Prüfung, unabhängiger Review und fail-closed Gates.",
-          "en": "Evidence-first assessment, independent review, and fail-closed gates."
+          "de": "Feste Wiedervorlage und ereignisgesteuerte Neubeurteilung.",
+          "en": "Fixed review date and event-driven reassessment."
         },
-        "residualSeverity": "Medium",
+        "residualSeverity": "Low",
         "acceptance": null
       },
       "reevaluation": {
         "trigger": {
-          "de": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
-          "en": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change."
+          "de": "Kommerzielle Nutzung, Marktbereitstellung, Kundenuebergabe, Supportvertrag oder geaenderte Hersteller-/Steward-Rolle.",
+          "en": "Commercial use, market placement, customer handover, support contract, or changed manufacturer/steward role."
         },
-        "targetDate": null
+        "targetDate": "2026-12-31"
       },
       "nextAction": {
-        "de": "Evidence im geplanten Security- oder Architekturpfad vervollständigen.",
-        "en": "Complete evidence in the planned security or architecture path."
+        "de": "Am 2026-12-31 oder beim frueheren Scope-Trigger neu bewerten.",
+        "en": "Re-evaluate on 2026-12-31 or an earlier scope trigger."
       },
-      "priority": "Medium",
-      "targetDateOrTrigger": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
+      "priority": "Low",
+      "targetDateOrTrigger": "2026-12-31 or earlier on a documented CRA scope trigger.",
       "expectedEvidence": {
-        "de": "Existierende, hash- und commitgebundene Gate-Evidence.",
-        "en": "Existing gate evidence bound to hashes and the assessed commit."
+        "de": "Aktualisierte projektbezogene CRA- und Konformitaets-Anwendbarkeitsentscheidung.",
+        "en": "Updated project-specific CRA and conformity applicability decision."
       },
       "findingId": null
     },
     {
       "clId": "CL-07-07",
-      "applicability": "Applicable",
-      "implementation": "Partly Fulfilled",
+      "applicability": "N/A",
+      "implementation": "Not Assessed",
       "rationale": {
-        "de": "Der Prüfpunkt 'CE-Kennzeichnung / CE Marking' ist anwendbar und besitzt im Ausgangsstand nur Teilnachweise.",
-        "en": "The checkpoint 'CE-Kennzeichnung / CE Marking' applies and has only partial baseline evidence."
+        "de": "TinyPl0 ist im aktuellen Scope ein nichtkommerzielles Ausbildungs- und Beispielprogramm ohne beabsichtigte Marktbereitstellung, Kundenuebergabe oder kommerzielle Nutzung. CRA-Produkt- und Konformitaetspflichten sind fuer diesen begrenzten Scope N/A; dies ist keine Rechtsberatung oder Konformitaetsbehauptung.",
+        "en": "TinyPl0 is currently a non-commercial training and example program without intended market placement, customer handover, or commercial use. CRA product and conformity duties are N/A for this bounded scope; this is not legal advice or a conformity claim."
       },
-      "evidence": [],
+      "evidence": [
+        "docs/security/cra-applicability.md",
+        "docs/security/regulatory-applicability.md"
+      ],
       "ownerRole": "TinyPl0 maintainer",
       "reviewerRole": "Independent security reviewer",
       "residualRisk": {
         "asset": {
-          "de": "Nachvollziehbarer und sicherer TinyPl0-Lieferstand",
-          "en": "Traceable and secure TinyPl0 delivery state"
+          "de": "Korrekte CRA- und Konformitaets-Scopeklassifikation",
+          "en": "Correct CRA and conformity scope classification"
         },
         "threat": {
-          "de": "Eine unvollständige Kontrolle kann Sicherheit oder Nachvollziehbarkeit schwächen.",
-          "en": "An incomplete control can weaken security or traceability."
+          "de": "Eine unbemerkte wirtschaftliche oder marktbezogene Scopeaenderung kann die N/A-Entscheidung veralten lassen.",
+          "en": "An unnoticed economic or market-related scope change can invalidate the N/A decision."
         },
         "stride": [
-          "T",
           "R"
         ],
         "cia": [
-          "Integrity",
-          "Availability"
+          "Integrity"
         ],
         "capec": [],
-        "likelihood": "Medium",
+        "likelihood": "Low",
         "impact": "Medium",
-        "severity": "Medium",
+        "severity": "Low",
         "mitigations": {
-          "de": "Evidence-first-Prüfung, unabhängiger Review und fail-closed Gates.",
-          "en": "Evidence-first assessment, independent review, and fail-closed gates."
+          "de": "Feste Wiedervorlage und ereignisgesteuerte Neubeurteilung.",
+          "en": "Fixed review date and event-driven reassessment."
         },
-        "residualSeverity": "Medium",
+        "residualSeverity": "Low",
         "acceptance": null
       },
       "reevaluation": {
         "trigger": {
-          "de": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
-          "en": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change."
+          "de": "Kommerzielle Nutzung, Marktbereitstellung, Kundenuebergabe, Supportvertrag oder geaenderte Hersteller-/Steward-Rolle.",
+          "en": "Commercial use, market placement, customer handover, support contract, or changed manufacturer/steward role."
         },
-        "targetDate": null
+        "targetDate": "2026-12-31"
       },
       "nextAction": {
-        "de": "Evidence im geplanten Security- oder Architekturpfad vervollständigen.",
-        "en": "Complete evidence in the planned security or architecture path."
+        "de": "Am 2026-12-31 oder beim frueheren Scope-Trigger neu bewerten.",
+        "en": "Re-evaluate on 2026-12-31 or an earlier scope trigger."
       },
-      "priority": "Medium",
-      "targetDateOrTrigger": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
+      "priority": "Low",
+      "targetDateOrTrigger": "2026-12-31 or earlier on a documented CRA scope trigger.",
       "expectedEvidence": {
-        "de": "Existierende, hash- und commitgebundene Gate-Evidence.",
-        "en": "Existing gate evidence bound to hashes and the assessed commit."
+        "de": "Aktualisierte projektbezogene CRA- und Konformitaets-Anwendbarkeitsentscheidung.",
+        "en": "Updated project-specific CRA and conformity applicability decision."
       },
       "findingId": null
     },
     {
       "clId": "CL-07-08",
-      "applicability": "Applicable",
-      "implementation": "Partly Fulfilled",
+      "applicability": "N/A",
+      "implementation": "Not Assessed",
       "rationale": {
-        "de": "Der Prüfpunkt 'Technische Dokumentation / Technical Documentation' ist anwendbar und besitzt im Ausgangsstand nur Teilnachweise.",
-        "en": "The checkpoint 'Technische Dokumentation / Technical Documentation' applies and has only partial baseline evidence."
+        "de": "TinyPl0 ist im aktuellen Scope ein nichtkommerzielles Ausbildungs- und Beispielprogramm ohne beabsichtigte Marktbereitstellung, Kundenuebergabe oder kommerzielle Nutzung. CRA-Produkt- und Konformitaetspflichten sind fuer diesen begrenzten Scope N/A; dies ist keine Rechtsberatung oder Konformitaetsbehauptung.",
+        "en": "TinyPl0 is currently a non-commercial training and example program without intended market placement, customer handover, or commercial use. CRA product and conformity duties are N/A for this bounded scope; this is not legal advice or a conformity claim."
       },
-      "evidence": [],
+      "evidence": [
+        "docs/security/cra-applicability.md",
+        "docs/security/regulatory-applicability.md"
+      ],
       "ownerRole": "TinyPl0 maintainer",
       "reviewerRole": "Independent security reviewer",
       "residualRisk": {
         "asset": {
-          "de": "Nachvollziehbarer und sicherer TinyPl0-Lieferstand",
-          "en": "Traceable and secure TinyPl0 delivery state"
+          "de": "Korrekte CRA- und Konformitaets-Scopeklassifikation",
+          "en": "Correct CRA and conformity scope classification"
         },
         "threat": {
-          "de": "Eine unvollständige Kontrolle kann Sicherheit oder Nachvollziehbarkeit schwächen.",
-          "en": "An incomplete control can weaken security or traceability."
+          "de": "Eine unbemerkte wirtschaftliche oder marktbezogene Scopeaenderung kann die N/A-Entscheidung veralten lassen.",
+          "en": "An unnoticed economic or market-related scope change can invalidate the N/A decision."
         },
         "stride": [
-          "T",
           "R"
         ],
         "cia": [
-          "Integrity",
-          "Availability"
+          "Integrity"
         ],
         "capec": [],
-        "likelihood": "Medium",
+        "likelihood": "Low",
         "impact": "Medium",
-        "severity": "Medium",
+        "severity": "Low",
         "mitigations": {
-          "de": "Evidence-first-Prüfung, unabhängiger Review und fail-closed Gates.",
-          "en": "Evidence-first assessment, independent review, and fail-closed gates."
+          "de": "Feste Wiedervorlage und ereignisgesteuerte Neubeurteilung.",
+          "en": "Fixed review date and event-driven reassessment."
         },
-        "residualSeverity": "Medium",
+        "residualSeverity": "Low",
         "acceptance": null
       },
       "reevaluation": {
         "trigger": {
-          "de": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
-          "en": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change."
+          "de": "Kommerzielle Nutzung, Marktbereitstellung, Kundenuebergabe, Supportvertrag oder geaenderte Hersteller-/Steward-Rolle.",
+          "en": "Commercial use, market placement, customer handover, support contract, or changed manufacturer/steward role."
         },
-        "targetDate": null
+        "targetDate": "2026-12-31"
       },
       "nextAction": {
-        "de": "Evidence im geplanten Security- oder Architekturpfad vervollständigen.",
-        "en": "Complete evidence in the planned security or architecture path."
+        "de": "Am 2026-12-31 oder beim frueheren Scope-Trigger neu bewerten.",
+        "en": "Re-evaluate on 2026-12-31 or an earlier scope trigger."
       },
-      "priority": "Medium",
-      "targetDateOrTrigger": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
+      "priority": "Low",
+      "targetDateOrTrigger": "2026-12-31 or earlier on a documented CRA scope trigger.",
       "expectedEvidence": {
-        "de": "Existierende, hash- und commitgebundene Gate-Evidence.",
-        "en": "Existing gate evidence bound to hashes and the assessed commit."
+        "de": "Aktualisierte projektbezogene CRA- und Konformitaets-Anwendbarkeitsentscheidung.",
+        "en": "Updated project-specific CRA and conformity applicability decision."
       },
       "findingId": null
     },
     {
       "clId": "CL-07-09",
-      "applicability": "Applicable",
-      "implementation": "Partly Fulfilled",
+      "applicability": "N/A",
+      "implementation": "Not Assessed",
       "rationale": {
-        "de": "Der Prüfpunkt 'Meldepflichten 24 / 72 Stunden / 24- and 72-hour Reports' ist anwendbar und besitzt im Ausgangsstand nur Teilnachweise.",
-        "en": "The checkpoint 'Meldepflichten 24 / 72 Stunden / 24- and 72-hour Reports' applies and has only partial baseline evidence."
+        "de": "TinyPl0 ist im aktuellen Scope ein nichtkommerzielles Ausbildungs- und Beispielprogramm ohne beabsichtigte Marktbereitstellung, Kundenuebergabe oder kommerzielle Nutzung. CRA-Produkt- und Konformitaetspflichten sind fuer diesen begrenzten Scope N/A; dies ist keine Rechtsberatung oder Konformitaetsbehauptung.",
+        "en": "TinyPl0 is currently a non-commercial training and example program without intended market placement, customer handover, or commercial use. CRA product and conformity duties are N/A for this bounded scope; this is not legal advice or a conformity claim."
       },
-      "evidence": [],
+      "evidence": [
+        "docs/security/cra-applicability.md",
+        "docs/security/regulatory-applicability.md"
+      ],
       "ownerRole": "TinyPl0 maintainer",
       "reviewerRole": "Independent security reviewer",
       "residualRisk": {
         "asset": {
-          "de": "Nachvollziehbarer und sicherer TinyPl0-Lieferstand",
-          "en": "Traceable and secure TinyPl0 delivery state"
+          "de": "Korrekte CRA- und Konformitaets-Scopeklassifikation",
+          "en": "Correct CRA and conformity scope classification"
         },
         "threat": {
-          "de": "Eine unvollständige Kontrolle kann Sicherheit oder Nachvollziehbarkeit schwächen.",
-          "en": "An incomplete control can weaken security or traceability."
+          "de": "Eine unbemerkte wirtschaftliche oder marktbezogene Scopeaenderung kann die N/A-Entscheidung veralten lassen.",
+          "en": "An unnoticed economic or market-related scope change can invalidate the N/A decision."
         },
         "stride": [
-          "T",
           "R"
         ],
         "cia": [
-          "Integrity",
-          "Availability"
+          "Integrity"
         ],
         "capec": [],
-        "likelihood": "Medium",
+        "likelihood": "Low",
         "impact": "Medium",
-        "severity": "Medium",
+        "severity": "Low",
         "mitigations": {
-          "de": "Evidence-first-Prüfung, unabhängiger Review und fail-closed Gates.",
-          "en": "Evidence-first assessment, independent review, and fail-closed gates."
+          "de": "Feste Wiedervorlage und ereignisgesteuerte Neubeurteilung.",
+          "en": "Fixed review date and event-driven reassessment."
         },
-        "residualSeverity": "Medium",
+        "residualSeverity": "Low",
         "acceptance": null
       },
       "reevaluation": {
         "trigger": {
-          "de": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
-          "en": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change."
+          "de": "Kommerzielle Nutzung, Marktbereitstellung, Kundenuebergabe, Supportvertrag oder geaenderte Hersteller-/Steward-Rolle.",
+          "en": "Commercial use, market placement, customer handover, support contract, or changed manufacturer/steward role."
         },
-        "targetDate": null
+        "targetDate": "2026-12-31"
       },
       "nextAction": {
-        "de": "Evidence im geplanten Security- oder Architekturpfad vervollständigen.",
-        "en": "Complete evidence in the planned security or architecture path."
+        "de": "Am 2026-12-31 oder beim frueheren Scope-Trigger neu bewerten.",
+        "en": "Re-evaluate on 2026-12-31 or an earlier scope trigger."
       },
-      "priority": "Medium",
-      "targetDateOrTrigger": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
+      "priority": "Low",
+      "targetDateOrTrigger": "2026-12-31 or earlier on a documented CRA scope trigger.",
       "expectedEvidence": {
-        "de": "Existierende, hash- und commitgebundene Gate-Evidence.",
-        "en": "Existing gate evidence bound to hashes and the assessed commit."
+        "de": "Aktualisierte projektbezogene CRA- und Konformitaets-Anwendbarkeitsentscheidung.",
+        "en": "Updated project-specific CRA and conformity applicability decision."
       },
       "findingId": null
     },
     {
       "clId": "CL-07-10",
-      "applicability": "Applicable",
-      "implementation": "Partly Fulfilled",
+      "applicability": "N/A",
+      "implementation": "Not Assessed",
       "rationale": {
-        "de": "Der Prüfpunkt 'Lebenszyklus und Support / Lifecycle and Support' ist anwendbar und besitzt im Ausgangsstand nur Teilnachweise.",
-        "en": "The checkpoint 'Lebenszyklus und Support / Lifecycle and Support' applies and has only partial baseline evidence."
+        "de": "TinyPl0 ist im aktuellen Scope ein nichtkommerzielles Ausbildungs- und Beispielprogramm ohne beabsichtigte Marktbereitstellung, Kundenuebergabe oder kommerzielle Nutzung. CRA-Produkt- und Konformitaetspflichten sind fuer diesen begrenzten Scope N/A; dies ist keine Rechtsberatung oder Konformitaetsbehauptung.",
+        "en": "TinyPl0 is currently a non-commercial training and example program without intended market placement, customer handover, or commercial use. CRA product and conformity duties are N/A for this bounded scope; this is not legal advice or a conformity claim."
       },
-      "evidence": [],
+      "evidence": [
+        "docs/security/cra-applicability.md",
+        "docs/security/regulatory-applicability.md"
+      ],
       "ownerRole": "TinyPl0 maintainer",
       "reviewerRole": "Independent security reviewer",
       "residualRisk": {
         "asset": {
-          "de": "Nachvollziehbarer und sicherer TinyPl0-Lieferstand",
-          "en": "Traceable and secure TinyPl0 delivery state"
+          "de": "Korrekte CRA- und Konformitaets-Scopeklassifikation",
+          "en": "Correct CRA and conformity scope classification"
         },
         "threat": {
-          "de": "Eine unvollständige Kontrolle kann Sicherheit oder Nachvollziehbarkeit schwächen.",
-          "en": "An incomplete control can weaken security or traceability."
+          "de": "Eine unbemerkte wirtschaftliche oder marktbezogene Scopeaenderung kann die N/A-Entscheidung veralten lassen.",
+          "en": "An unnoticed economic or market-related scope change can invalidate the N/A decision."
         },
         "stride": [
-          "T",
           "R"
         ],
         "cia": [
-          "Integrity",
-          "Availability"
+          "Integrity"
         ],
         "capec": [],
-        "likelihood": "Medium",
+        "likelihood": "Low",
         "impact": "Medium",
-        "severity": "Medium",
+        "severity": "Low",
         "mitigations": {
-          "de": "Evidence-first-Prüfung, unabhängiger Review und fail-closed Gates.",
-          "en": "Evidence-first assessment, independent review, and fail-closed gates."
+          "de": "Feste Wiedervorlage und ereignisgesteuerte Neubeurteilung.",
+          "en": "Fixed review date and event-driven reassessment."
         },
-        "residualSeverity": "Medium",
+        "residualSeverity": "Low",
         "acceptance": null
       },
       "reevaluation": {
         "trigger": {
-          "de": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
-          "en": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change."
+          "de": "Kommerzielle Nutzung, Marktbereitstellung, Kundenuebergabe, Supportvertrag oder geaenderte Hersteller-/Steward-Rolle.",
+          "en": "Commercial use, market placement, customer handover, support contract, or changed manufacturer/steward role."
         },
-        "targetDate": null
+        "targetDate": "2026-12-31"
       },
       "nextAction": {
-        "de": "Evidence im geplanten Security- oder Architekturpfad vervollständigen.",
-        "en": "Complete evidence in the planned security or architecture path."
+        "de": "Am 2026-12-31 oder beim frueheren Scope-Trigger neu bewerten.",
+        "en": "Re-evaluate on 2026-12-31 or an earlier scope trigger."
       },
-      "priority": "Medium",
-      "targetDateOrTrigger": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
+      "priority": "Low",
+      "targetDateOrTrigger": "2026-12-31 or earlier on a documented CRA scope trigger.",
       "expectedEvidence": {
-        "de": "Existierende, hash- und commitgebundene Gate-Evidence.",
-        "en": "Existing gate evidence bound to hashes and the assessed commit."
+        "de": "Aktualisierte projektbezogene CRA- und Konformitaets-Anwendbarkeitsentscheidung.",
+        "en": "Updated project-specific CRA and conformity applicability decision."
       },
       "findingId": null
     },
     {
       "clId": "CL-07-11",
-      "applicability": "Applicable",
-      "implementation": "Partly Fulfilled",
+      "applicability": "N/A",
+      "implementation": "Not Assessed",
       "rationale": {
-        "de": "Der Prüfpunkt 'Hersteller-Pflichten und -Verträge / Manufacturer Duties and Contracts' ist anwendbar und besitzt im Ausgangsstand nur Teilnachweise.",
-        "en": "The checkpoint 'Hersteller-Pflichten und -Verträge / Manufacturer Duties and Contracts' applies and has only partial baseline evidence."
+        "de": "TinyPl0 ist im aktuellen Scope ein nichtkommerzielles Ausbildungs- und Beispielprogramm ohne beabsichtigte Marktbereitstellung, Kundenuebergabe oder kommerzielle Nutzung. CRA-Produkt- und Konformitaetspflichten sind fuer diesen begrenzten Scope N/A; dies ist keine Rechtsberatung oder Konformitaetsbehauptung.",
+        "en": "TinyPl0 is currently a non-commercial training and example program without intended market placement, customer handover, or commercial use. CRA product and conformity duties are N/A for this bounded scope; this is not legal advice or a conformity claim."
       },
-      "evidence": [],
+      "evidence": [
+        "docs/security/cra-applicability.md",
+        "docs/security/regulatory-applicability.md"
+      ],
       "ownerRole": "TinyPl0 maintainer",
       "reviewerRole": "Independent security reviewer",
       "residualRisk": {
         "asset": {
-          "de": "Nachvollziehbarer und sicherer TinyPl0-Lieferstand",
-          "en": "Traceable and secure TinyPl0 delivery state"
+          "de": "Korrekte CRA- und Konformitaets-Scopeklassifikation",
+          "en": "Correct CRA and conformity scope classification"
         },
         "threat": {
-          "de": "Eine unvollständige Kontrolle kann Sicherheit oder Nachvollziehbarkeit schwächen.",
-          "en": "An incomplete control can weaken security or traceability."
+          "de": "Eine unbemerkte wirtschaftliche oder marktbezogene Scopeaenderung kann die N/A-Entscheidung veralten lassen.",
+          "en": "An unnoticed economic or market-related scope change can invalidate the N/A decision."
         },
         "stride": [
-          "T",
           "R"
         ],
         "cia": [
-          "Integrity",
-          "Availability"
+          "Integrity"
         ],
         "capec": [],
-        "likelihood": "Medium",
+        "likelihood": "Low",
         "impact": "Medium",
-        "severity": "Medium",
+        "severity": "Low",
         "mitigations": {
-          "de": "Evidence-first-Prüfung, unabhängiger Review und fail-closed Gates.",
-          "en": "Evidence-first assessment, independent review, and fail-closed gates."
+          "de": "Feste Wiedervorlage und ereignisgesteuerte Neubeurteilung.",
+          "en": "Fixed review date and event-driven reassessment."
         },
-        "residualSeverity": "Medium",
+        "residualSeverity": "Low",
         "acceptance": null
       },
       "reevaluation": {
         "trigger": {
-          "de": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
-          "en": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change."
+          "de": "Kommerzielle Nutzung, Marktbereitstellung, Kundenuebergabe, Supportvertrag oder geaenderte Hersteller-/Steward-Rolle.",
+          "en": "Commercial use, market placement, customer handover, support contract, or changed manufacturer/steward role."
         },
-        "targetDate": null
+        "targetDate": "2026-12-31"
       },
       "nextAction": {
-        "de": "Evidence im geplanten Security- oder Architekturpfad vervollständigen.",
-        "en": "Complete evidence in the planned security or architecture path."
+        "de": "Am 2026-12-31 oder beim frueheren Scope-Trigger neu bewerten.",
+        "en": "Re-evaluate on 2026-12-31 or an earlier scope trigger."
       },
-      "priority": "Medium",
-      "targetDateOrTrigger": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
+      "priority": "Low",
+      "targetDateOrTrigger": "2026-12-31 or earlier on a documented CRA scope trigger.",
       "expectedEvidence": {
-        "de": "Existierende, hash- und commitgebundene Gate-Evidence.",
-        "en": "Existing gate evidence bound to hashes and the assessed commit."
+        "de": "Aktualisierte projektbezogene CRA- und Konformitaets-Anwendbarkeitsentscheidung.",
+        "en": "Updated project-specific CRA and conformity applicability decision."
       },
       "findingId": null
     },
     {
       "clId": "CL-07-12",
-      "applicability": "Applicable",
-      "implementation": "Partly Fulfilled",
+      "applicability": "N/A",
+      "implementation": "Not Assessed",
       "rationale": {
-        "de": "Der Prüfpunkt 'Nichtanwendbarkeit dokumentieren / Document Non-Applicability' ist anwendbar und besitzt im Ausgangsstand nur Teilnachweise.",
-        "en": "The checkpoint 'Nichtanwendbarkeit dokumentieren / Document Non-Applicability' applies and has only partial baseline evidence."
+        "de": "TinyPl0 ist im aktuellen Scope ein nichtkommerzielles Ausbildungs- und Beispielprogramm ohne beabsichtigte Marktbereitstellung, Kundenuebergabe oder kommerzielle Nutzung. CRA-Produkt- und Konformitaetspflichten sind fuer diesen begrenzten Scope N/A; dies ist keine Rechtsberatung oder Konformitaetsbehauptung.",
+        "en": "TinyPl0 is currently a non-commercial training and example program without intended market placement, customer handover, or commercial use. CRA product and conformity duties are N/A for this bounded scope; this is not legal advice or a conformity claim."
       },
-      "evidence": [],
+      "evidence": [
+        "docs/security/cra-applicability.md",
+        "docs/security/regulatory-applicability.md"
+      ],
       "ownerRole": "TinyPl0 maintainer",
       "reviewerRole": "Independent security reviewer",
       "residualRisk": {
         "asset": {
-          "de": "Nachvollziehbarer und sicherer TinyPl0-Lieferstand",
-          "en": "Traceable and secure TinyPl0 delivery state"
+          "de": "Korrekte CRA- und Konformitaets-Scopeklassifikation",
+          "en": "Correct CRA and conformity scope classification"
         },
         "threat": {
-          "de": "Eine unvollständige Kontrolle kann Sicherheit oder Nachvollziehbarkeit schwächen.",
-          "en": "An incomplete control can weaken security or traceability."
+          "de": "Eine unbemerkte wirtschaftliche oder marktbezogene Scopeaenderung kann die N/A-Entscheidung veralten lassen.",
+          "en": "An unnoticed economic or market-related scope change can invalidate the N/A decision."
         },
         "stride": [
-          "T",
           "R"
         ],
         "cia": [
-          "Integrity",
-          "Availability"
+          "Integrity"
         ],
         "capec": [],
-        "likelihood": "Medium",
+        "likelihood": "Low",
         "impact": "Medium",
-        "severity": "Medium",
+        "severity": "Low",
         "mitigations": {
-          "de": "Evidence-first-Prüfung, unabhängiger Review und fail-closed Gates.",
-          "en": "Evidence-first assessment, independent review, and fail-closed gates."
+          "de": "Feste Wiedervorlage und ereignisgesteuerte Neubeurteilung.",
+          "en": "Fixed review date and event-driven reassessment."
         },
-        "residualSeverity": "Medium",
+        "residualSeverity": "Low",
         "acceptance": null
       },
       "reevaluation": {
         "trigger": {
-          "de": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
-          "en": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change."
+          "de": "Kommerzielle Nutzung, Marktbereitstellung, Kundenuebergabe, Supportvertrag oder geaenderte Hersteller-/Steward-Rolle.",
+          "en": "Commercial use, market placement, customer handover, support contract, or changed manufacturer/steward role."
         },
-        "targetDate": null
+        "targetDate": "2026-12-31"
       },
       "nextAction": {
-        "de": "Evidence im geplanten Security- oder Architekturpfad vervollständigen.",
-        "en": "Complete evidence in the planned security or architecture path."
+        "de": "Am 2026-12-31 oder beim frueheren Scope-Trigger neu bewerten.",
+        "en": "Re-evaluate on 2026-12-31 or an earlier scope trigger."
       },
-      "priority": "Medium",
-      "targetDateOrTrigger": "Before feature closeout and after a relevant code, dependency, workflow, or evidence change.",
+      "priority": "Low",
+      "targetDateOrTrigger": "2026-12-31 or earlier on a documented CRA scope trigger.",
       "expectedEvidence": {
-        "de": "Existierende, hash- und commitgebundene Gate-Evidence.",
-        "en": "Existing gate evidence bound to hashes and the assessed commit."
+        "de": "Aktualisierte projektbezogene CRA- und Konformitaets-Anwendbarkeitsentscheidung.",
+        "en": "Updated project-specific CRA and conformity applicability decision."
       },
       "findingId": null
     },
