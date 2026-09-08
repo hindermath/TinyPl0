@@ -36,7 +36,7 @@ Liefercommits fortgeschrieben.
 | Preset-Profil | 13 Presets, exakt |
 | Host | macOS 26.6.2, Apple Silicon |
 | Shells | GNU Bash 3.2.57; PowerShell 7.6.5; jq 1.7.1 |
-| Delivery | TinyPl0 PR #92; geprüfter Evidence-Commit wird nach der unveränderlichen Git-Bindung ergänzt |
+| Delivery | [TinyPl0 PR #92](https://github.com/hindermath/TinyPl0/pull/92); geprüfter Evidence-Commit `ee09d2008e01024a60be118def05d1aca8b32f0a` |
 
 ## Technische Prüfung / Technical Validation
 
