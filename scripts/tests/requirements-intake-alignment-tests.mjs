@@ -191,8 +191,12 @@ const firstWrite = renderLinkedIntakeViews(renderOptions(positive, {write: true}
 if (firstWrite.writes !== 2) throw new Error("write mode did not publish both linked views");
 const rootOutput = fs.readFileSync(path.join(positive.fixtureRoot, positive.outputs[0]), "utf8");
 const seriesOutput = fs.readFileSync(path.join(positive.fixtureRoot, positive.outputs[1]), "utf8");
-const expectedRoot = fs.readFileSync(path.join(root, fixtureSource, "positive/expected-root.md"), "utf8");
-const expectedSeries = fs.readFileSync(path.join(root, fixtureSource, "positive/expected-series.md"), "utf8");
+const expectedRoot = normalize(
+  fs.readFileSync(path.join(root, fixtureSource, "positive/expected-root.md"), "utf8"),
+);
+const expectedSeries = normalize(
+  fs.readFileSync(path.join(root, fixtureSource, "positive/expected-series.md"), "utf8"),
+);
 if (rootOutput !== expectedRoot || seriesOutput !== expectedSeries) {
   throw new Error("five-field linked intake projection differs from expected bytes");
 }
