@@ -4,6 +4,7 @@ import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import process from "node:process";
+import {fileURLToPath} from "node:url";
 
 class LinkedIntakeError extends Error {
   constructor(code, message) {
@@ -43,6 +44,7 @@ function lieReadJson(absolutePath, subject) {
 
 function lieSafeRelative(relativePath, code = "LIE003") {
   if (typeof relativePath !== "string" || relativePath.length === 0 ||
+      /[\u0000-\u001f\u007f]/u.test(relativePath) ||
       relativePath.includes("\\") || relativePath.startsWith("/") ||
       /^\/?[A-Za-z]:\//.test(relativePath) || relativePath.startsWith("//")) {
     lieFail(code, "path is not safely repository-relative");
@@ -85,6 +87,13 @@ function lieResolveExisting(rootPath, relativePath) {
 function lieResolveOutput(rootPath, relativePath) {
   const safe = lieSafeRelative(relativePath);
   const absolute = path.join(rootPath, ...safe.split("/"));
+  if (fs.existsSync(absolute)) {
+    const entry = fs.lstatSync(absolute);
+    if (entry.isSymbolicLink() || !entry.isFile()) {
+      lieFail("LIE005", `output is a symlink or not a regular file: ${safe}`);
+    }
+    lieInsideRoot(rootPath, fs.realpathSync(absolute), "LIE005");
+  }
   let ancestor = path.dirname(absolute);
   while (!fs.existsSync(ancestor) && ancestor !== path.dirname(ancestor)) {
     ancestor = path.dirname(ancestor);
@@ -94,6 +103,9 @@ function lieResolveOutput(rootPath, relativePath) {
 }
 
 function lieEscapeLabel(value) {
+  if (/[\u0000-\u001f\u007f]/u.test(value)) {
+    lieFail("LIE002", "display value contains control characters");
+  }
   return value
     .replaceAll("\\", "\\\\")
     .replaceAll("|", "\\|")
@@ -113,10 +125,13 @@ function lieRelativeDestination(outputPath, targetPath, directory = false) {
   return lieEncodeDestination(relative, directory);
 }
 
-function lieValidateManifest(rootPath, manifestPath) {
+function lieValidateManifest(rootPath, manifestPath, manifestOverride) {
   const manifestRecord = lieResolveExisting(rootPath, manifestPath);
-  const manifest = lieReadJson(manifestRecord.absolute, manifestRecord.safe);
-  if (manifest.schemaVersion !== "1.0" || !Array.isArray(manifest.orderedTargets) ||
+  const manifest = manifestOverride === undefined
+    ? lieReadJson(manifestRecord.absolute, manifestRecord.safe)
+    : manifestOverride;
+  if (!manifest || typeof manifest !== "object" || Array.isArray(manifest) ||
+      manifest.schemaVersion !== "1.0" || !Array.isArray(manifest.orderedTargets) ||
       !Array.isArray(manifest.dependencies) || !Array.isArray(manifest.roots)) {
     lieFail("LIE002", "series manifest is unsupported or incomplete");
   }
@@ -199,7 +214,11 @@ function lieFeatureProofs(rootPath, target) {
     const stateRelative = `specs/${directory.name}/autonomous-run-state.json`;
     const stateAbsolute = path.join(rootPath, ...stateRelative.split("/"));
     if (!fs.existsSync(stateAbsolute)) continue;
-    const state = lieReadJson(stateAbsolute, stateRelative);
+    const stateRecord = lieResolveExisting(rootPath, stateRelative);
+    const state = lieReadJson(stateRecord.absolute, stateRecord.safe);
+    if (!state || typeof state !== "object" || Array.isArray(state)) {
+      lieFail("LIE008", `feature evidence is invalid: ${stateRelative}`);
+    }
     const accepted = Array.isArray(state.acceptedArtifacts)
       ? state.acceptedArtifacts.filter((artifact) => artifact?.path === target.path)
       : [];
@@ -213,6 +232,9 @@ function lieFeatureProofs(rootPath, target) {
       lieFail("LIE008", `feature evidence is invalid for ${target.path}`);
     }
     const safeFeature = lieSafeRelative(featurePath, "LIE008");
+    if (safeFeature !== `specs/${directory.name}`) {
+      lieFail("LIE008", `feature path differs from its state location: ${stateRelative}`);
+    }
     const featureAbsolute = path.join(rootPath, ...safeFeature.split("/"));
     if (!fs.existsSync(featureAbsolute) || !fs.statSync(featureAbsolute).isDirectory()) {
       lieFail("LIE008", `feature target is missing for ${target.path}`);
@@ -299,29 +321,41 @@ function lieRestoreOutputs(backups) {
   }
 }
 
-export function renderLinkedIntakeViews(options = {}) {
+function liePrepareLinkedIntakeViews(options = {}) {
   const rootPath = fs.realpathSync(path.resolve(options.root ?? process.cwd()));
   const manifestPath = lieSafeRelative(options.manifestPath);
   const outputPaths = options.outputPaths;
   if (!Array.isArray(outputPaths) || outputPaths.length !== 2) {
     lieFail("LIE002", "exactly two linked intake outputs are required");
   }
-  const manifestData = lieValidateManifest(rootPath, manifestPath);
+  const manifestData = lieValidateManifest(rootPath, manifestPath, options.manifest);
   const outputs = outputPaths.map((outputPath) => lieResolveOutput(rootPath, outputPath));
   if (new Set(outputs.map((output) => output.safe)).size !== outputs.length ||
       outputs.some((output) => output.safe === manifestData.manifestPath ||
         manifestData.targetByPath.has(output.safe))) {
     lieFail("LIE006", "output overlaps a canonical input or another output");
   }
-  const views = outputs.map((output) => {
-    const table = lieTable(rootPath, manifestData, output.safe);
+  const tables = outputs.map((output) => ({
+    ...output,
+    content: lieTable(rootPath, manifestData, output.safe),
+  }));
+  assertLinkedIntakeViewParity(tables.map(({safe, content}) => ({
+    outputPath: safe,
+    content,
+  })));
+  const generationSha256 = lieDigest(JSON.stringify(lieSemanticRows({
+    outputPath: tables[0].safe,
+    content: tables[0].content,
+  })));
+  const views = tables.map((output) => {
     const content = typeof options.decorateOutput === "function"
       ? options.decorateOutput({
         outputPath: output.safe,
         manifestPath: manifestData.manifestPath,
-        table,
+        table: output.content,
+        generationSha256,
       })
-      : table;
+      : output.content;
     if (typeof content !== "string" || content.includes("\0") ||
         /[ \t]+$/m.test(content) || content.includes(rootPath)) {
       lieFail("LIE002", "generated output violates the text contract");
@@ -332,6 +366,13 @@ export function renderLinkedIntakeViews(options = {}) {
     outputPath: safe,
     content,
   })));
+  return {rootPath, views, generationSha256};
+}
+
+function liePublishOutputs(rootPath, views, options = {}) {
+  if (new Set(views.map((view) => view.safe)).size !== views.length) {
+    lieFail("LIE006", "publication contains duplicate outputs");
+  }
 
   const changed = views.filter((view) =>
     !fs.existsSync(view.absolute) ||
@@ -371,12 +412,23 @@ export function renderLinkedIntakeViews(options = {}) {
     lieRestoreOutputs(backups);
     lieFail("LIE010", "publication failed; the previous outputs were restored");
   }
-  return {status: "Updated", writes: changed.length, outputs: views.map((view) => view.safe)};
+  return {
+    status: "Updated",
+    writes: changed.length,
+    outputs: views.map((view) => view.safe),
+  };
 }
 
-function tinyPl0OrderDocument({outputPath, manifestPath, table}) {
+export function renderLinkedIntakeViews(options = {}) {
+  const prepared = liePrepareLinkedIntakeViews(options);
+  return liePublishOutputs(prepared.rootPath, prepared.views, options);
+}
+
+function tinyPl0OrderDocument({outputPath, manifestPath, table, generationSha256}) {
   const manifestDestination = lieRelativeDestination(outputPath, manifestPath);
   return `# TinyPl0 Intake-Reihenfolge / Intake Order
+
+<!-- linked-intake-generation: ${generationSha256} -->
 
 Diese Ansicht wird aus der kanonischen Intake-Serie abgeleitet. Verbindliche
 Maschinendaten stehen im [Serienmanifest](${manifestDestination}).
@@ -393,16 +445,19 @@ Nur \`Eligible\` bezeichnet die bevorzugte nächste Ausführung. \`Pending\` ode
 `;
 }
 
+function runCli() {
 const root = process.cwd();
 const write = process.argv.includes("--write");
 if (process.argv.includes("--help") || process.argv.includes("-h")) {
   console.log(`Verwendung / Usage: node scripts/render-requirements-intake-governance.mjs [--write]
 
 Ohne Option werden alle erzeugten Intake-Governance-Artefakte schreibgeschützt
-geprüft. --write aktualisiert sie atomar aus ihren kanonischen Quellen.
+geprüft. --write veröffentlicht eine vorab validierte Generation; erkannte
+Fehler werden zurückgerollt und ein gemeinsamer Marker bindet beide Ansichten.
 
 Without an option, all generated intake-governance artifacts are checked
-without writes. --write updates them atomically from their canonical sources.`);
+without writes. --write publishes one prevalidated generation, rolls back
+detected failures, and binds both views with a shared marker.`);
   process.exit(0);
 }
 const normalize = (value) => value.replace(/^\uFEFF/, "").replace(/\r\n?/g, "\n");
@@ -847,30 +902,30 @@ const outputs = [
   ]),
 ];
 
-for (const [relativePath, content] of outputs) {
-  const fullPath = path.join(root, relativePath);
-  if (write) {
-    fs.mkdirSync(path.dirname(fullPath), {recursive: true});
-    fs.writeFileSync(fullPath, content);
-  } else if (!fs.existsSync(fullPath) || normalize(read(relativePath)) !== normalize(content)) {
-    console.error(`stale generated intake-governance artifact: ${relativePath}`);
-    process.exit(1);
-  }
-}
-
-renderLinkedIntakeViews({
+const linked = liePrepareLinkedIntakeViews({
   root,
   manifestPath,
+  manifest,
   outputPaths: [
     "Lastenheft_Abarbeitungsreihenfolge.md",
     `${seriesRoot}/order.md`,
   ],
-  write,
   decorateOutput: tinyPl0OrderDocument,
 });
+const rootPath = fs.realpathSync(path.resolve(root));
+const legacyViews = outputs.map(([relativePath, content]) => ({
+  ...lieResolveOutput(rootPath, relativePath),
+  content: lieNormalize(content),
+}));
+liePublishOutputs(rootPath, [...legacyViews, ...linked.views], {write});
 const configuredCountMismatch =
   config.schemaVersion === "1.0" && members.length !== config.activeIntakeCount;
 if (configuredCountMismatch || targets.length !== new Set(targets).size) {
   throw new Error("configured active intake cardinality differs from generated members");
 }
 console.log(`TinyPl0 intake governance PASS (${members.length} series targets, ${dependencies.length} binding edges)`);
+}
+
+const invokedAsCli = Boolean(process.argv[1]) &&
+  path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
+if (invokedAsCli) runCli();

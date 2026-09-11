@@ -1,5 +1,7 @@
 # TinyPl0 Intake-Reihenfolge / Intake Order
 
+<!-- linked-intake-generation: 9f9281dcd0f85ac26071642e811e4d5d4e1e6b87ee937cc93376895252c2092e -->
+
 Diese Ansicht wird aus der kanonischen Intake-Serie abgeleitet. Verbindliche
 Maschinendaten stehen im [Serienmanifest](requirements/intakes/series/tinypl0-delivery/manifest.json).
 

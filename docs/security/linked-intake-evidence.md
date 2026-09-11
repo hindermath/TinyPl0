@@ -25,7 +25,7 @@ not change.*
 | Doppelte Identität oder Ausgabeüberschreibung | Integrität | Eindeutige Ziele und Positionen; Outputs dürfen weder Quellen noch einander überlappen; `LIE006`. |
 | Ungültige Kante, Wurzel oder Zyklus | Integrität/Verfügbarkeit | Bekannte Kantenarten und Bindungen, vorhandene Endpunkte, Vorwärtsreihenfolge, berechnete Wurzeln und DAG-Prüfung; `LIE007`. |
 | Erfundenes oder mehrdeutiges Feature-Evidence | Integrität/Nachvollziehbarkeit | Genau ein abgeschlossener Zustand mit übereinstimmendem akzeptiertem Artefakthash und vier terminalen Closeout-Feldern; `LIE008`. |
-| Teilweise oder widersprüchliche Veröffentlichung | Integrität/Verfügbarkeit | Beide Kandidaten werden vorab gebildet, semantisch verglichen, über temporäre Dateien ersetzt und bei Fehler vollständig zurückgerollt; `LIE010`, `LIE011`. |
+| Teilweise oder widersprüchliche Veröffentlichung | Integrität/Verfügbarkeit | Alle Kandidaten werden vorab gebildet und semantisch verglichen. Erkannte Fehler rollen den Stand zurück; ein gemeinsamer SHA-256-Generationsmarker macht einen extern unterbrochenen Mehrdateien-Replace erkennbar und beim nächsten Write reparierbar; `LIE010`, `LIE011`. |
 
 Diagnosen nennen ausschließlich stabile Fehlerklassen und sichere relative
 Subjects. Der Renderer schreibt keine Credentials, Umgebungsvariablen,

@@ -9,7 +9,7 @@ Kanonisches tinypl0-delivery-Manifest
   -> UTF-8-, Schema-, Pfad-, Hash-, Graph- und Proof-Validierung
   -> eine typisierte Fünf-Felder-Projektion
   -> Root-Ansicht + Series-Ansicht mit relativem Linkkontext
-  -> Check oder lokale Zwei-Dateien-Publikation mit Rollback
+  -> Check oder vorbereitete Mehrdateien-Publikation mit Rollback und Generationsmarker
 ```
 
 Die kanonische fachliche Identität bleibt das Manifest. Beide Ansichten
@@ -17,13 +17,20 @@ enthalten dieselben Positionen, Statuswerte, vollständigen Intake-Dateinamen,
 direkten eingehenden Kanten und Featurezustände. Nur die relativen Linkziele
 unterscheiden sich wegen ihrer verschiedenen Verzeichnisse. Fehlender
 Feature-Abschluss wird ausdrücklich als Fallback dargestellt und nicht
-erraten.
+erraten. Beide Ansichten tragen denselben SHA-256-Generationsmarker. Dadurch
+erkennen Leser und der nächste Check einen durch Prozess- oder Rechnerabbruch
+unterbrochenen Mehrdateien-Replace; ein erneuter Write repariert ihn aus den
+kanonischen Quellen. Bei im Prozess erkannten Fehlern stellt der Renderer die
+vorherigen Dateien wieder her.
 
 *The manifest remains the canonical functional identity. Both views contain
 the same positions, status values, complete intake filenames, direct incoming
 edges, and feature states. Only relative link targets differ because the files
 live in different directories. Missing feature completion is shown explicitly
-as a fallback and is never inferred.*
+as a fallback and is never inferred. Both views carry the same SHA-256
+generation marker, so readers and the next check detect an interrupted
+multi-file replace; rerunning write repairs it from canonical sources. Errors
+caught in-process restore the previous files.*
 
 ## Qualitätsziele / Quality goals
 
@@ -32,7 +39,7 @@ as a fallback and is never inferred.*
 | Integrität | Quelle, Hash, Pfad, Kante oder Proof ist ungültig. | Stabiler `LIE001`–`LIE011`-Blocker; kein Output wird verändert. |
 | Determinismus | Unveränderte Eingaben werden erneut verarbeitet. | Beide Dateien bleiben bytegleich; `writes=0`. |
 | Semantische Parität | Root- und Series-Kontext benötigen verschiedene relative Links. | Normalisierte fünf Felder sind identisch; nur das relative Ziel ist kontextabhängig. |
-| Wiederherstellbarkeit | Publication scheitert vor oder während des Replace. | Beide Altstände werden wiederhergestellt; temporäre Dateien werden entfernt. |
+| Wiederherstellbarkeit | Publication scheitert im Prozess oder wird extern abgebrochen. | Erkannte Fehler stellen Altstände wieder her; ein gemeinsamer Generationsmarker macht einen extern unterbrochenen Replace erkennbar und reparierbar. |
 | Produktisolation | Der Governance-Renderer wird erweitert. | Kein Produkt-, Compiler-, VM-, Golden-, API-, Paket- oder Dependency-Diff. |
 | Portabilität | Derselbe Node-Lauf wird unter Linux und Windows geprüft. | Exact-head-Proofs binden Kommando, Runner, Exitcode, Hashes und Write-Count. |
 
