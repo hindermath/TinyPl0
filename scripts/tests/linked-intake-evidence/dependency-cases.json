@@ -1,0 +1,9 @@
+{
+  "schemaVersion": "1.0",
+  "rootFallback": "— (Root / keine direkte Abhängigkeit)",
+  "cases": [
+    {"id":"zero-incoming","incomingCount":0},
+    {"id":"one-incoming","incomingCount":1},
+    {"id":"multiple-incoming","incomingCount":2}
+  ]
+}

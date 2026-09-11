@@ -1,0 +1,11 @@
+{
+  "schemaVersion": "1.0",
+  "fallback": "— (kein Spec-Kit-Feature / no Spec Kit feature)",
+  "cases": [
+    {"id":"feature-binding","proofCount":1,"targetExists":true,"expectedState":"Linked"},
+    {"id":"no-evidence","proofCount":0,"targetExists":false,"expectedState":"NoEvidence"},
+    {"id":"ambiguous","proofCount":2,"targetExists":true,"expectedState":"Ambiguous","expectedDiagnostic":"LIE008"},
+    {"id":"invalid","proofCount":1,"targetExists":false,"expectedState":"Invalid","expectedDiagnostic":"LIE008"},
+    {"id":"similarity-is-not-proof","proofCount":0,"numericOrSlugSimilarity":true,"expectedState":"NoEvidence"}
+  ]
+}

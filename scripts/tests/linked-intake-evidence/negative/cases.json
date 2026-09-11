@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "1.0",
+  "defaultExpectedWrites": 0,
+  "cases": [
+    {"id":"invalid-utf8","expectedDiagnostic":"LIE001","writes":0},
+    {"id":"embedded-nul","expectedDiagnostic":"LIE001","writes":0},
+    {"id":"missing-required-field","expectedDiagnostic":"LIE002","writes":0},
+    {"id":"non-string-target-field","expectedDiagnostic":"LIE002","writes":0},
+    {"id":"absolute-path","expectedDiagnostic":"LIE003","writes":0},
+    {"id":"parent-traversal","expectedDiagnostic":"LIE003","writes":0},
+    {"id":"missing-target","expectedDiagnostic":"LIE004","writes":0},
+    {"id":"symlink-escape","expectedDiagnostic":"LIE005","writes":0},
+    {"id":"duplicate-identity","expectedDiagnostic":"LIE006","writes":0},
+    {"id":"output-overlap","expectedDiagnostic":"LIE006","writes":0},
+    {"id":"unknown-endpoint","expectedDiagnostic":"LIE007","writes":0},
+    {"id":"self-edge","expectedDiagnostic":"LIE007","writes":0},
+    {"id":"dependency-cycle","expectedDiagnostic":"LIE007","writes":0},
+    {"id":"incorrect-root-set","expectedDiagnostic":"LIE007","writes":0},
+    {"id":"ambiguous-feature-proof","expectedDiagnostic":"LIE008","writes":0},
+    {"id":"invalid-feature-target","expectedDiagnostic":"LIE008","writes":0},
+    {"id":"target-hash-mismatch","expectedDiagnostic":"LIE009","writes":0},
+    {"id":"stale-check-output","expectedDiagnostic":"LIE009","writes":0},
+    {"id":"simulated-publish-failure","expectedDiagnostic":"LIE010","writes":0},
+    {"id":"root-series-drift","expectedDiagnostic":"LIE011","writes":0}
+  ]
+}
