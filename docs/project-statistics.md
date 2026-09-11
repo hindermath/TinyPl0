@@ -513,24 +513,24 @@ Profil 2 verwendet Git-getrackte Textdateien und sichtbare Git-Aktivitaet. Die W
 
 | Kennzahl / Metric | Wert / Value |
 |---|---:|
-| Textbasis / Text base | 280862 lines |
+| Textbasis / Text base | 280866 lines |
 | Textdateien / Text files | 2036 |
 | Beobachtbarer Zeitraum / Observable period | 2025-09-14..2026-09-11 |
 | Aktivtage / Active days | 94 |
-| Relevante Commits / Relevant commits | 378 |
+| Relevante Commits / Relevant commits | 379 |
 | Zeilen je Aktivtag / Lines per active day | 2987.9 |
 | Peak-Tag im Fenster / Peak day in window | 2026-02-14 / 177480 |
 | Peak-Woche im Fenster / Peak week in window | 2026-02-08 / 186065 |
 | Laengste Serie / Longest streak | 9 days |
 | Speedup vs. 80 lines/day | 37.3x |
 | Speedup vs. 125 lines/day | 23.9x |
-| Methodik / Methodology | v2; source `150d74081fa1` |
+| Methodik / Methodology | v2; source `98eaac2d3970` |
 
 ### Artefaktmix / Artifact Mix
 
 ```text
 Produktiv / Production          [#...................]   2.5% | 7060
-Tests                           [#...................]   4.9% | 13727
+Tests                           [#...................]   4.9% | 13731
 Dokumentation / Documentation   [###########.........]  55.2% | 155159
 Skripte / Scripts               [##..................]   8.2% | 23037
 Konfiguration / Configuration   [#####...............]  27.5% | 77147
@@ -675,7 +675,7 @@ Slots 16..21
 | 18 | Embeddable VM/NuGet 006 / Embeddable VM/NuGet 006 | 3770 |
 | 19 | 006 Abschluss / 006 closeout | 681 |
 | 20 | NuGet-Beschreibungsseiten / NuGet package descriptions | 646 |
-| 21 | Feature 032 verlinkte Intake-Evidence / Feature 032 linked intake evidence | 1149 |
+| 21 | Feature 032 verlinkte Intake-Evidence / Feature 032 linked intake evidence | 1153 |
 
 Die festen Slots halten den Phasenvergleich auch bei fehlenden oder spaeter ergaenzten Werten stabil.
 
@@ -725,6 +725,6 @@ DE: Das Fenster beginnt am 2025-09-14 und endet am 2026-09-11. Es enthaelt 94 ak
 | 2026-06 | 37650 |
 | 2026-07 | 78913 |
 | 2026-08 | 55167 |
-| 2026-09 | 35137 |
+| 2026-09 | 35147 |
 
 <!-- project-statistics-v2:end -->
