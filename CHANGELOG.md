@@ -1,5 +1,65 @@
 # Changelog
 
+## [0.5.0](https://github.com/hindermath/TinyPl0/compare/v0.4.1...v0.5.0) (2026-09-12)
+
+
+### Features / Neue Funktionen
+
+* **governance:** link TinyPl0 intake evidence ([c4f720f](https://github.com/hindermath/TinyPl0/commit/c4f720f2b5deea52d3f790ffe5b3fd17d20e8007))
+* **governance:** link TinyPl0 intake evidence ([150d740](https://github.com/hindermath/TinyPl0/commit/150d74081fa11f90300248f3496a530f2b3b2981))
+
+
+### Bug Fixes / Fehlerbehebungen
+
+* adopt Assurance v0.1.3 with preserved preset profile ([20c7894](https://github.com/hindermath/TinyPl0/commit/20c7894afecbaa0b7e5d42560cac69032d269313))
+* adopt canonical Assurance v0.1.3 ([a383506](https://github.com/hindermath/TinyPl0/commit/a3835067ef3cfad37248f2e5be2329fb2694a289))
+* **governance:** harden linked intake evidence ([95902a6](https://github.com/hindermath/TinyPl0/commit/95902a656464f8e89aacb416197fcb7e7e1a3098))
+
+
+### Documentation / Dokumentation
+
+* add source-bound secure development evidence matrix ([0185500](https://github.com/hindermath/TinyPl0/commit/018550004034a2393144d7e5fc958aebf7d428a5))
+* add source-bound secure development evidence matrix ([6a8465c](https://github.com/hindermath/TinyPl0/commit/6a8465ce1ec7ed7b62c566d60214fd30e6880037))
+* align migration ledger and statistics ([3364584](https://github.com/hindermath/TinyPl0/commit/3364584d6aa108957ab96a7206e4f1d5a7a85a0b))
+* bind historical assessments to blocked Assurance gates ([75310c7](https://github.com/hindermath/TinyPl0/commit/75310c7fd194b6ee22a96a4cc798e555352c5226))
+* bound technical reinspection without renewing approvals ([9d8fe2d](https://github.com/hindermath/TinyPl0/commit/9d8fe2db2a3004bd032178bea90f3a7d40c1918d))
+* clarify evidence-only statistics wording ([98d9465](https://github.com/hindermath/TinyPl0/commit/98d9465e3eae454bf3130f2fb634c0794a704843))
+* clarify evidence-only statistics wording ([f7a9dc9](https://github.com/hindermath/TinyPl0/commit/f7a9dc9a4eee2bb6b8d3fe23b2adf568ef4d42f3))
+* clarify integration and final version traceability ([ef5fcc8](https://github.com/hindermath/TinyPl0/commit/ef5fcc83452e8d0cde3894d35e61097799df15f8))
+* close Assurance v0.1.3 TinyPl0 field test ([a988d64](https://github.com/hindermath/TinyPl0/commit/a988d6418aeddf3e8979edb3f1e25275661bdf2a))
+* distinguish source quotations from translated review metadata ([de51df0](https://github.com/hindermath/TinyPl0/commit/de51df099cb76dd02fcc6400947fc2f292aa4a2d))
+* distinguish technical reinspection from domain deadlines ([eaab442](https://github.com/hindermath/TinyPl0/commit/eaab44221ac86d4327df2178cfb1746f68fc93c3))
+* keep host-only evidence references portable ([4de9491](https://github.com/hindermath/TinyPl0/commit/4de9491c62c5d53323c387e5d595253cf68423a1))
+* make migration decision boundaries bilingual ([1dd9dae](https://github.com/hindermath/TinyPl0/commit/1dd9dae66fa0f0881cae9a8410a122c27e37a33f))
+* make unchanged-product boundary explicit in English ([4679135](https://github.com/hindermath/TinyPl0/commit/4679135808e5376fd050eea8750064984a7920bb))
+* migrate historical evidence into blocked Assurance gates ([3ffd2fa](https://github.com/hindermath/TinyPl0/commit/3ffd2fa5462d3775af7c0778fe2c75bf8ee448d3))
+* record generated statistics impact for preset rollout ([9f42bed](https://github.com/hindermath/TinyPl0/commit/9f42bedbcc6491f4d8f2d86fde46321f0bef2adb))
+* refresh Assurance adoption statistics and commit metadata ([b715444](https://github.com/hindermath/TinyPl0/commit/b715444b24b68b96f12d1d61d7d5b2b2fbfec8ba))
+* refresh assurance integration statistics ([1b68841](https://github.com/hindermath/TinyPl0/commit/1b68841f7653579f434e40acdb4db29574556321))
+* refresh evidence index statistics and commit metadata ([083726a](https://github.com/hindermath/TinyPl0/commit/083726a3aded5d834894b3a38b5e96e1a2e03ed9))
+* refresh integration review statistics ([bbb3a5b](https://github.com/hindermath/TinyPl0/commit/bbb3a5b79dac8fa2d242a1760e8ad1a6dd01ef60))
+* refresh migration review statistics ([aabe4d1](https://github.com/hindermath/TinyPl0/commit/aabe4d1c2f627228232d48aadad7839c764e7326))
+* refresh project statistics ([8eb6189](https://github.com/hindermath/TinyPl0/commit/8eb61893568fcb1bbd684d5bd2d62ee689825033))
+* refresh project statistics for v0.4.4 ([3815596](https://github.com/hindermath/TinyPl0/commit/3815596baeefda48ca59aa451c91d85dafbd0d8c))
+* refresh statistics after evidence review ([bd47b6c](https://github.com/hindermath/TinyPl0/commit/bd47b6c33657a2669e55a69ad35d6366a73fb8f8))
+* regenerate project statistics after preset update ([a21fac0](https://github.com/hindermath/TinyPl0/commit/a21fac00c2757fe77925af9c0bb032a7c13e2005))
+* render evidence migration statistics ([4154ca6](https://github.com/hindermath/TinyPl0/commit/4154ca61302e680676b0c0926950f54afa173a9c))
+* render final migration review statistics ([02b2a30](https://github.com/hindermath/TinyPl0/commit/02b2a308023630c1d7c934cfd9eed0b7c676d0db))
+* **statistics:** refresh portable fixture proof ([9b447fe](https://github.com/hindermath/TinyPl0/commit/9b447fe40c8f22df7eaa55e159eeca7b2bf7e0b6))
+* **statistics:** render linked intake evidence ([dd1cd4c](https://github.com/hindermath/TinyPl0/commit/dd1cd4c055589c1c50fa811d8015a481fa5fb601))
+* **stats:** refresh linked evidence metrics ([14165e2](https://github.com/hindermath/TinyPl0/commit/14165e2f868015e04c933de2f06c95e1cc97286a))
+* update bilingual migration statistics ([05b34f5](https://github.com/hindermath/TinyPl0/commit/05b34f5cf0590eb32021c117f885e3b2157048b9))
+
+
+### Maintenance / Wartung
+
+* adopt Autonomous Run Governance v0.4.2 ([c4c7303](https://github.com/hindermath/TinyPl0/commit/c4c73034484dc4e7c5ed7215a38a61b394bb8ab5))
+* integrate approved assurance preset v0.1.2 ([312c8b0](https://github.com/hindermath/TinyPl0/commit/312c8b05264f8de98afb5601de37b2192f20ba44))
+* integrate Assurance v0.1.2 as thirteenth preset ([c5e722f](https://github.com/hindermath/TinyPl0/commit/c5e722f559ea957e0728465319235d2e5c7dc6ec))
+* roll autonomous governance to v0.4.4 ([e200c20](https://github.com/hindermath/TinyPl0/commit/e200c200349e87425b5b9fd596e049cdf95dc576))
+* update autonomous run governance to v0.4.4 ([4311522](https://github.com/hindermath/TinyPl0/commit/431152247d0b67350340daa4df6d8881a592c0c9))
+* update rollout to autonomous governance v0.4.3 ([ca529cb](https://github.com/hindermath/TinyPl0/commit/ca529cb83ac0878dc20dab75bbc3cae30cd44b28))
+
 ## [0.4.1](https://github.com/hindermath/TinyPl0/compare/v0.4.0...v0.4.1) (2026-09-03)
 
 
