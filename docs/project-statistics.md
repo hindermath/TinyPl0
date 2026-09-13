@@ -390,6 +390,7 @@ rekonstruiert.
 | 2026-09-08 | Assurance-v0.1.3-Projektfeldtest abgeschlossen / Assurance v0.1.3 project field test closed | Branch `codex/assurance-v013-field-test-closeout`; eine sichtbare Sitzung. Das unveränderte Preset erhält für TinyPl0 die begrenzte Empfehlung `ReleaseAccepted`. C5 sowie CRA und formale Produktkonformität sind für den aktuellen nichtkommerziellen Ausbildungs-/Beispielscope `N/A`; technische Wiedervorlage ist 2027-09-08, regulatorische Scopeprüfung 2026-12-31. Alle vier Gates sind in Bash und PowerShell `Ready`, 7/7 Roh-Hashes blieben unverändert, die 157-ID-Matrix enthält 11 erfüllte, 94 teilweise erfüllte und 52 N/A-Kontrollen. Paket-, Oberflächen-, Negativ-, Zeilenendungs- und Kompositionstests sind grün. Umfang des Evidence-Commits: `+698 / -476` Textzeilen; davon `0` Produktlogik- und `0` Testcode-Zeilen, ausschließlich die vorgeschriebenen IDE-Versionsmetadaten folgen dem Commit. Menschliche Freigaben bleiben `Open`; keine Produkt-, API-, Runtime-, Paket-, Image- oder Home-Sync-Änderung. / The unchanged preset earns the bounded TinyPl0 recommendation `ReleaseAccepted`; all human approvals remain Open. C5/CRA/conformity are N/A in the current non-commercial scope, while cross-shell gates, raw-byte preservation, package regression, generated surfaces, line endings, and composition pass. No product behavior, API, runtime, package, image, or Home-sync change. |
 
 | 2026-09-13 | Intake-Lifecycle-Preset-Rollout / Intake lifecycle preset rollout | Vorhandene Authoring-/Review-/Sequencing-Presets auf 0.3.2/0.2.2/0.2.4 aktualisiert; optionale Profile und Dokumentation nachgefuehrt. Pruefnachweise in docs/maintenance/intake-lifecycle-fleet-rollout.json. / Update existing presets and profile references; preserve other presets and project extensions. |
+| 2026-09-13 | Mermaid und Abschlussberichte | Neue textbasierte Diagrammregel, Berichtsvorlage, Agent-Paritaet und versionierte Governance; kein Produktcode. / Text-first diagram and completion-report governance; no product code. |
 
 ## Statistikprofil-1-Archiv / Statistics Profile 1 Archive
 - Stand 2026-05-05: `88` Produktionsdateien mit `6950` Zeilen, `22` Testdateien mit `3536` Zeilen und `562` Dokumentationsdateien mit `36625` Zeilen.
@@ -515,27 +516,27 @@ Profil 2 verwendet Git-getrackte Textdateien und sichtbare Git-Aktivitaet. Die W
 
 | Kennzahl / Metric | Wert / Value |
 |---|---:|
-| Textbasis / Text base | 284932 lines |
-| Textdateien / Text files | 2052 |
+| Textbasis / Text base | 285818 lines |
+| Textdateien / Text files | 2056 |
 | Beobachtbarer Zeitraum / Observable period | 2025-09-21..2026-09-13 |
 | Aktivtage / Active days | 96 |
-| Relevante Commits / Relevant commits | 387 |
-| Zeilen je Aktivtag / Lines per active day | 2968.0 |
+| Relevante Commits / Relevant commits | 390 |
+| Zeilen je Aktivtag / Lines per active day | 2977.3 |
 | Peak-Tag im Fenster / Peak day in window | 2026-02-14 / 177480 |
 | Peak-Woche im Fenster / Peak week in window | 2026-02-08 / 186065 |
 | Laengste Serie / Longest streak | 9 days |
-| Speedup vs. 80 lines/day | 37.1x |
-| Speedup vs. 125 lines/day | 23.7x |
-| Methodik / Methodology | v2; source `d77d4e11280a` |
+| Speedup vs. 80 lines/day | 37.2x |
+| Speedup vs. 125 lines/day | 23.8x |
+| Methodik / Methodology | v2; source `b2a5e8f4d38d` |
 
 ### Artefaktmix / Artifact Mix
 
 ```text
 Produktiv / Production          [#...................]   2.5% | 7060
 Tests                           [#...................]   4.8% | 13819
-Dokumentation / Documentation   [###########.........]  55.7% | 158736
-Skripte / Scripts               [##..................]   8.2% | 23422
-Konfiguration / Configuration   [#####...............]  27.1% | 77163
+Dokumentation / Documentation   [###########.........]  55.8% | 159476
+Skripte / Scripts               [##..................]   8.2% | 23568
+Konfiguration / Configuration   [#####...............]  27.0% | 77163
 Daten und Medien / Data and media [....................]   0.0% | 0
 Sonstiger Text / Other text     [#...................]   1.7% | 4732
 ```
@@ -687,8 +688,8 @@ Die festen Slots halten den Phasenvergleich auch bei fehlenden oder spaeter erga
 
 ```text
 Scale: 0..50x
-80 lines/day       [###############.....] 37.1x
-125 lines/day      [#########...........] 23.7x
+80 lines/day       [###############.....] 37.2x
+125 lines/day      [##########..........] 23.8x
 ```
 
 Die Faktoren vergleichen sichtbare Lieferdichte mit den dokumentierten manuellen Referenzen. Sie messen keine Arbeitszeit.
@@ -701,7 +702,7 @@ Die Faktoren vergleichen sichtbare Lieferdichte mit den dokumentierten manuellen
 Scale: 0..5000 lines/day
 Experienced manual [#...................] 80
 Thorsten solo      [#...................] 125
-Visible repository [############........] 2968.0
+Visible repository [############........] 2977.3
 ```
 
 Die gemeinsame Skala vergleicht Referenzen und sichtbare Lieferdichte. Sie schreibt die Git-Aktivitaet keiner Person oder KI pauschal zu.
@@ -727,6 +728,6 @@ DE: Das Fenster beginnt am 2025-09-21 und endet am 2026-09-13. Es enthaelt 96 ak
 | 2026-06 | 37650 |
 | 2026-07 | 78913 |
 | 2026-08 | 55167 |
-| 2026-09 | 42313 |
+| 2026-09 | 43289 |
 
 <!-- project-statistics-v2:end -->
