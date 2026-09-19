@@ -56,6 +56,32 @@ creation. Commit installation first, initialize and review configuration next,
 then commit configuration/workflow before measuring. Disable reference models;
 use UTC and 52 weeks. Reproducibility and freshness are different results.
 
+## Konfiguration und Pruefpfad / Configuration and proof path
+
+Installation und Kontexterzeugung sind getrennt. Die Konfiguration uebernimmt
+die vier vorhandenen Ausschluesse fuer Release-/IDE-Metadaten, keine alten
+manuellen Phasensummen und keine Referenzmodelle. Profil 2 schliesst den neuen
+Kontext aus. Alle fuenf Agentenflaechen und die README verlinken denselben
+[Bedienpfad](../project-statistics/README.md). Das neue Pruefskript besitzt
+zweisprachige Hilfe und eine Manpage; ein lokaler Skriptkatalog existiert hier
+nicht. Es wird nur diese projektlokale Pruefung ergaenzt, keine Flottenwartung.
+
+Der installierte Lifecycle-Test bestand lokal; die Statistik-Suite bestand
+mit 67 Assertions unter PowerShell 7.6.6/macOS. Der neue CI-Workflow prueft
+Linux und Windows am exakten PR-Head, ohne Snapshot-Regenerierung. Bestehende
+Produkt-, Dokumentations-/A11Y- und Governance-Workflows bleiben aktiv.
+Die reale Messung und deren CI-Ergebnisse werden nach dem Inhaltscommit im
+Kontext beziehungsweise PR dokumentiert, nicht als vorweggenommene Abnahme.
+
+Configuration preserves four legacy release/version exclusions, omits authored
+phase totals and disables references. Five agent surfaces and README share the
+usage path. The new local proof script has bilingual help and a manual; this
+repository has no local script catalog. The installed lifecycle and all 67
+Unix assertions passed locally. CI checks Linux and Windows on the exact PR
+head without regenerating snapshots; existing product, docs/A11Y and governance
+workflows stay active. Actual measurement/CI results follow the content commit
+in the context/PR; they do not preempt human acceptance.
+
 ## Dokumentationsauswirkung / Documentation impact
 
 `UpdateRequired`; Owner: Thorsten Hindermann. Zielgruppen: Lernende ab dem

@@ -167,6 +167,7 @@
     }
   ],
   "excludedPaths": [
+    "docs/project-statistics/*",
     ".release-please-manifest.json",
     "CHANGELOG.md",
     "eng/TinyPl0.PackageVersion.props",

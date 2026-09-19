@@ -454,9 +454,22 @@ Die lebende Projektstatistik steht in `docs/project-statistics.md`. Sie wird rep
 
 ## Secure Development Assurance – Projektintegration / Project Integration
 
-Das ausdrücklich freigegebene 13-Preset-Profil ergänzt die bisherigen zwölf Presets unverändert. [Bedienung und Integrationsnachweis](docs/maintenance/secure-development-assurance-integration.md).
+Die erhaltene 13-Preset-Assurance-Basis wird im aktuellen 14er-Profil um Statistik ergänzt. [Assurance-Bedienung und historischer Integrationsnachweis](docs/maintenance/secure-development-assurance-integration.md).
 
-*The explicitly approved thirteen-preset profile preserves the existing twelve presets. See the linked usage and integration record.*
+*The current fourteen-preset profile adds statistics to the preserved thirteen-preset assurance base. See the linked historical assurance integration record.*
+
+## Reproduzierbare Projekttransparenz / Reproducible project transparency
+
+Das Statistik-Preset v0.1.0 ergänzt Profil 2 um einen getrennten, Git- und
+hashgebundenen Bericht. Es misst keine KI-Produktivität oder Lernleistung.
+Voraussetzungen: Git, PowerShell 7 und die installierte 14er-Matrix.
+[Einstieg und sichere Statusprüfung](docs/project-statistics/README.md) führen
+zum Bericht, zur Konfiguration und zum abnahmegebundenen Pflegeablauf.
+
+*Statistics v0.1.0 adds a separate Git/hash-bound report without replacing
+Profile 2 or measuring AI productivity or learning. Requires Git, PowerShell 7
+and fourteen installed presets. Follow the linked guide for read-only status,
+configuration and the approval-bound maintenance workflow.*
 
 <!-- BEGIN spec-kit-diagrams-completion -->
 ## Diagramme und Ergebnisberichte / Diagrams and outcome reports
