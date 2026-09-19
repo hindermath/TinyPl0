@@ -266,27 +266,24 @@ never relies on visual-only dependency information, and uses WCAG 2.2 Level AA
 as the applicable review baseline.*
 <!-- learner-a11y-baseline:end -->
 
-<!-- didactic-xml-tdd-guidance:begin -->
-## Didaktische und sprachliche Klarheit / Pedagogical and Linguistic Clarity
+## macOS-first-Plattformnachweis / macOS-First Platform Evidence
 
-- Neue oder geänderte Lerninhalte stehen Deutsch zuerst und Englisch danach
-  auf CEFR B2 und bleiben text-first; WCAG 2.2 Level AA gilt, soweit anwendbar.
-- Extern öffentliche APIs erhalten vollständige, fachlich anwendbare
-  XML-Dokumentation. CS1591 wird nicht global oder projektweit unterdrückt;
-  lokale, private und generierte Flächen bleiben ausgeschlossen.
-- API-Signatur- oder XML-Kommentaränderungen verlangen DocFX sowie
-  Playwright/axe- und `lynx`-Evidence im selben Arbeitsgegenstand.
-- Nicht-triviale Logik wird auf kurze zweisprachige Warum-Kommentare geprüft.
-  Neue Funktionen und Fehlerkorrekturen belegen TDD Rot, Grün und Regression;
-  reine Text-/Governance-Arbeit erhält ein begründetes `N/A` mit Trigger.
+Auf macOS zuerst lokal im passenden Safe Mode prüfen. Fehlt ein nativer
+Linux-Host, einen isolierten nativen Container mit schreibgeschütztem
+Repository und ohne unnötiges Netzwerk oder einen eng begrenzten nativen
+Linux-CI-Job verwenden. Fehlt ein nativer Windows-Host, einen eng begrenzten
+nativen Windows-CI-Job verwenden. Evidence bindet exakten Commit, Befehl,
+Runner/Plattform, Exitcode, Payload-SHA-256, Entscheidungs-SHA-256 und
+Nullschreibwerte. Ein Teilnachweis ist kein Vollregressions-, Security-, A11Y-,
+Review- oder Delivery-Pass.
 
-*Learner-facing content is German-first/English-second at CEFR B2 and remains
-text-first under WCAG 2.2 AA where applicable. Externally public APIs receive
-complete applicable XML documentation without global or project-wide CS1591
-suppression. API/XML changes require DocFX, Playwright/axe, and `lynx` evidence
-in the same work item. Review non-trivial logic for bilingual why-comments and
-record TDD red, green, and regression evidence or a reasoned `N/A`.*
-<!-- didactic-xml-tdd-guidance:end -->
+*Run the matching local safe mode on macOS first. Without a native Linux host,
+use an isolated native container with a read-only repository and no unnecessary
+network, or narrowly scoped native Linux CI. Without a native Windows host,
+use narrowly scoped native Windows CI. Evidence binds the exact commit,
+command, runner/platform, exit code, payload SHA-256, decision SHA-256, and
+zero-write values. A partial proof is not a full regression, security,
+accessibility, review, or delivery pass.*
 
 <!-- EN: CLAUDE.md contains bilingual Claude guidance for this level-2 project. -->
 

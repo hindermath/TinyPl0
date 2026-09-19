@@ -8,22 +8,12 @@ Schritte für ein neues Feature:
 1. **Spezifikation erstellen** — `speckit specify "Feature-Name"` → `specs/{branch}/spec.md`
 2. **Klärungsfragen** — `speckit clarify` → offene Fragen in `spec.md` beantworten
 3. **Implementierungsplan** — `speckit plan` → `specs/{branch}/plan.md`
-4. **Aufgabenliste** — `speckit tasks` → `specs/{branch}/tasks.md`; Tests stehen
-   vor ihrer Umsetzung und nennen Rot-, Grün- und Regressionsevidenz oder ein
-   begründetes Text-/Governance-`N/A`.
-5. **Konvergenz prüfen** — `speckit analyze` → Critical-, High- und Medium-
-   Befunde vor dem ersten Implementierungs-Edit schließen.
-6. **Evidenz anlegen** — Run-Zustand, akzeptierte Hashes, Gate-Vertrag und
-   Delivery-Set vor dem ersten Implementierungs-Edit dokumentieren.
-7. **Implementieren** — `speckit implement` → Aufgaben in Abhängigkeitsreihenfolge
-   abarbeiten; öffentliche XML-, DocFX-/A11Y- und per-Aufruf-Versionsevidenz
-   fail-closed führen.
-8. **Validieren** — `bash ~/scripts/check-homogeneity.sh "$PWD"` oder
+4. **Aufgabenliste** — `speckit tasks` → `specs/{branch}/tasks.md`
+5. **Implementieren** — `speckit implement` → Aufgaben aus `tasks.md` abarbeiten
+6. **Validieren** — `bash ~/scripts/check-homogeneity.sh "$PWD"` oder
    `pwsh ~/scripts/check-homogeneity.ps1 -TargetDir "$PWD"` → Compliance-Score prüfen
 
 Alle Spec-Artefakte werden im Branch-Verzeichnis `specs/{branch}/` gespeichert und versioniert.
-Lokale Implementierungsautorität erteilt keine Commit-, Push-, PR-, Merge- oder
-Post-Merge-Rechte. Diese Grenzen werden separat und ausdrücklich autorisiert.
 
 ### Governance-Presets
 
@@ -147,6 +137,13 @@ Bei jeder Preset-Version oder Prioritätsänderung zuerst die zentrale Matrix
 aktualisieren und danach README-Tabellen, Constitution, Agenten-Dateien und
 Templates gemeinsam prüfen.
 
+Plattformnachweise laufen agentenneutral macOS-first: zuerst lokal im passenden
+Safe Mode, bei fehlendem Linux-Host in einem isolierten nativen Container oder
+eng begrenzter nativer Linux-CI und bei fehlendem Windows-Host in eng begrenzter
+nativer Windows-CI. Evidence bindet exakten Commit, Befehl, Runner/Plattform,
+Exitcode, Payload-/Entscheidungs-SHA-256 und Nullschreibwerte. Ein Teilnachweis
+ist kein vollständiger Regressionspass.
+
 ---
 
 ## Spec-kit Workflow
@@ -159,21 +156,12 @@ Steps for a new feature:
 1. **Create specification** — `speckit specify "Feature Name"` → `specs/{branch}/spec.md`
 2. **Clarification questions** — `speckit clarify` → answer open questions in `spec.md`
 3. **Implementation plan** — `speckit plan` → `specs/{branch}/plan.md`
-4. **Task list** — `speckit tasks` → `specs/{branch}/tasks.md`; tests precede
-   implementation and name red, green, and regression evidence or a reasoned
-   text/governance `N/A`.
-5. **Analyze convergence** — `speckit analyze` → close Critical, High, and
-   Medium findings before the first implementation edit.
-6. **Create evidence** — record run state, accepted hashes, gate contract, and
-   delivery set before the first implementation edit.
-7. **Implement** — `speckit implement` → follow dependency order and keep public
-   XML, DocFX/A11Y, and per-invocation version evidence fail-closed.
-8. **Validate** — `bash ~/scripts/check-homogeneity.sh "$PWD"` or
+4. **Task list** — `speckit tasks` → `specs/{branch}/tasks.md`
+5. **Implement** — `speckit implement` → work through tasks in `tasks.md`
+6. **Validate** — `bash ~/scripts/check-homogeneity.sh "$PWD"` or
    `pwsh ~/scripts/check-homogeneity.ps1 -TargetDir "$PWD"` → check compliance score
 
 All spec artefacts are stored and versioned in the branch directory `specs/{branch}/`.
-Local implementation authority grants no commit, push, pull-request, merge, or
-post-merge rights. Those boundaries require separate explicit authorization.
 
 ### Governance Presets
 
@@ -181,6 +169,13 @@ Registered level-0, level-1, and level-2 repositories install Spec Kit
 governance presets from the central matrix
 `scripts/config/spec-kit-governance-presets.json`. The standard set for this
 workspace family is:
+
+Platform evidence follows an agent-neutral macOS-first path: matching local
+safe mode first, isolated native Linux container or narrowly scoped native
+Linux CI when no Linux host is available, and narrowly scoped native Windows
+CI when no Windows host is available. Evidence binds the exact commit,
+command, runner/platform, exit code, payload and decision SHA-256, and
+zero-write values. A partial proof is not a full regression pass.
 
 | Preset ID | Name | Version | Priority |
 |---|---|---:|---:|
