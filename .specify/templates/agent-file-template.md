@@ -25,6 +25,24 @@ Auto-generated from all feature plans. Last updated: [DATE]
 [LAST 3 FEATURES AND WHAT THEY ADDED]
 
 
+## macOS-first-Plattformnachweis / macOS-First Platform Evidence
+
+- Zuerst die passende lokale macOS-Safe-Mode-Prüfung ausführen.
+- Fehlt ein nativer Linux-Host, einen isolierten nativen Container mit
+  schreibgeschütztem Repository und ohne unnötiges Netzwerk oder eng begrenzte
+  native Linux-CI verwenden; ohne nativen Windows-Host eng begrenzte native
+  Windows-CI verwenden.
+- Evidence an exakten Commit, Befehl, Runner/Plattform, Exitcode,
+  Payload-SHA-256, Entscheidungs-SHA-256 und Nullschreibwerte binden.
+- Teilnachweise nie als vollständigen Regressions-, Security-, A11Y-, Review-
+  oder Delivery-Pass ausgeben.
+
+*Run the matching local macOS safe mode first. Without a native target host,
+use isolated native Linux container/CI or narrowly scoped native Windows CI as
+applicable. Bind exact commit, command, runner/platform, exit code, payload and
+decision SHA-256, and zero-write values. Never promote partial proof to a full
+regression, security, accessibility, review, or delivery pass.*
+
 ## Spec-Kit-Modell-Routing / Spec Kit Model Routing
 
 - Modellwahl ist operative Agenten-Routing-Guidance, keine Feature-Anforderung. Modellnamen nicht in `spec.md`, `plan.md`, `tasks.md` oder einzelne Feature-Specs schreiben; diese Artefakte muessen reproduzierbar bleiben, auch wenn Modellnamen wechseln oder ein anderer KI-Agent verwendet wird.
@@ -54,27 +72,6 @@ Installing either autonomous preset starts no run and grants no remote, merge,
 bypass, cancellation, secret, or provider authority. Complete autonomous and
 parallel autonomous runs require explicit delegation. Parallel campaigns use
 separate worktrees and at most three concurrently active workers.
-
-## Didaktische und sprachliche Klarheit / Pedagogical and Linguistic Clarity
-
-- Neue oder geänderte lernendenseitige Inhalte stehen Deutsch zuerst und
-  Englisch danach auf CEFR B2 und bleiben text-first; WCAG 2.2 Level AA gilt,
-  soweit die Kriterien anwendbar sind.
-- Extern öffentliche APIs erhalten vollständige, fachlich anwendbare
-  XML-Dokumentation. CS1591 darf nicht global oder projektweit unterdrückt
-  werden; lokale, private und generierte Flächen bleiben ausgeschlossen.
-- API-Signatur- oder XML-Kommentaränderungen verlangen DocFX und eine
-  textorientierte A11Y-Prüfung im selben Arbeitsgegenstand.
-- Nicht-triviale Logik wird auf kurze zweisprachige Warum-Kommentare geprüft.
-  Neue Funktionen und Fehlerkorrekturen belegen TDD Rot, Grün und Regression;
-  reine Text-/Governance-Arbeit dokumentiert ein begründetes `N/A` mit Trigger.
-
-*Learner-facing content is German-first/English-second at CEFR B2 and remains
-text-first under WCAG 2.2 AA where applicable. Externally public APIs receive
-complete applicable XML documentation without global or project-wide CS1591
-suppression. API or XML changes require DocFX and text-oriented accessibility
-evidence. Review non-trivial logic for bilingual why-comments, and record TDD
-red, green, and regression evidence or a reasoned text/governance `N/A`.*
 
 <!-- MANUAL ADDITIONS START -->
 <!-- MANUAL ADDITIONS END -->

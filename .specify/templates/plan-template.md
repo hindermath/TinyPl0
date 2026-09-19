@@ -100,18 +100,12 @@
   and which manual/Thorsten-Solo baseline applies.
 - **Agent guidance parity**: State whether `AGENTS.md`, `CLAUDE.md`,
   `GEMINI.md`, and `.github/copilot-instructions.md` are affected together.
-- **Public XML documentation**: Identify every externally public API surface,
-  require complete applicable XML elements, and reject global or project-wide
-  CS1591 suppression. Exclude locals, private members, and generated surfaces.
-- **TDD evidence**: Plan an observable test-first red result, the unchanged
-  test turning green after the minimum implementation, and regression evidence.
-  For pure text/governance work, record a reasoned `N/A` and re-evaluation trigger.
-- **DocFX and text accessibility**: When API signatures or XML comments change,
-  plan DocFX plus representative Playwright/axe and `lynx` evidence from the
-  same work item.
-- **Per-invocation versioning**: If the repository governs a build counter,
-  plan one counter increment immediately before every build or test invocation
-  and name the exact evidence path.
+- **macOS-first platform evidence**: Name the local macOS safe-mode command.
+  If a native Linux or Windows host is unavailable, plan an isolated native
+  Linux container or narrowly scoped native Linux/Windows CI. Bind exact
+  commit, command, runner/platform, exit code, payload SHA-256, decision
+  SHA-256, and zero-write values. State which partial proofs cannot establish
+  a full regression pass.
 - **Documentation Impact**: Select exactly one of `UpdateRequired`,
   `NoUpdateRequired`, `GeneratedUpdate`, or `FollowUp`. Identify source of
   truth, owner, affected documents, generated derivations, validation, and

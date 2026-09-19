@@ -8,9 +8,7 @@ description: "Task list template for feature implementation"
 **Input**: Design documents from `/specs/[###-feature-name]/`
 **Prerequisites**: plan.md (required), spec.md (required for user stories), research.md, data-model.md, contracts/
 
-**Tests**: For features and bug fixes, write the test first and require an
-observable expected failure before implementation. Pure text/governance work
-may use a reasoned `N/A` with a re-evaluation trigger.
+**Tests**: The examples below include test tasks. Tests are OPTIONAL - only include them if explicitly requested in the feature specification.
 
 **Organization**: Tasks are grouped by user story to enable independent implementation and testing of each story.
 
@@ -19,15 +17,6 @@ may use a reasoned `N/A` with a re-evaluation trigger.
 - **[P]**: Can run in parallel (different files, no dependencies)
 - **[Story]**: Which user story this task belongs to (e.g., US1, US2, US3)
 - Include exact file paths in descriptions
-- Order the corresponding test before each implementation task and name red,
-  green, and regression evidence explicitly.
-- For externally public APIs, schedule complete applicable XML documentation
-  and removal of every global or project-wide CS1591 suppression. Exclude
-  locals, private members, and generated surfaces.
-- If API signatures or XML comments change, schedule DocFX plus representative
-  Playwright/axe and `lynx` checks in the same work item.
-- Before every governed build/test invocation, schedule its own version/build-
-  counter increment and exact evidence path.
 
 ## Path Conventions
 
@@ -166,13 +155,11 @@ Examples of foundational tasks (adjust based on your project):
 - [ ] TXXX [P] Verify the exact eight-preset matrix with `install-spec-kit-governance-presets.* --check-only` / `-CheckOnly`; document any justified repository exception
 - [ ] TXXX [P] Verify primary implementation language against the MSL allow-list in `constitution.md`, Principle XI; cite the Level-2 non-MSL justification if applicable
 - [ ] TXXX [P] Run the required A11Y/text-first review path for affected user-facing artefacts
-- [ ] TXXX Verify complete applicable XML documentation for externally public APIs; reject global/project-wide CS1591 suppression and exclude local/private/generated surfaces
-- [ ] TXXX When API signatures or XML comments changed, run DocFX and representative Playwright/axe plus `lynx` checks from the same work item
-- [ ] TXXX Record the test-first red failure, unchanged-test green result, and regression evidence, or a reasoned pure text/governance `N/A` with re-evaluation trigger
-- [ ] TXXX Increment the governed version/build counter immediately before each individual build or test invocation and record the value
 - [ ] TXXX [P] Verify learner-facing content is DE-first/EN-second at CEFR B2, explains technical terms at first use, assumes no prior Spec Kit experience, and provides text-first explanations for dependencies, states, and decisions
 - [ ] TXXX [P] Update `docs/project-statistics.md` when the feature changes statistics-relevant artefacts or delivery evidence
 - [ ] TXXX [P] Review and synchronize affected AI-agent guidance files: `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md`
+- [ ] TXXX Validate platform-dependent changes macOS-first: matching local safe mode, then isolated native Linux container or narrowly scoped native Linux/Windows CI only when the target host is unavailable
+- [ ] TXXX Bind each portable platform proof to exact commit, command, runner/platform, exit code, payload SHA-256, decision SHA-256, and zero-write values; do not infer a full regression pass from a partial proof
 - [ ] TXXX Record exactly one Documentation Impact decision and complete its
   required update, generated render, no-change rationale, or bounded follow-up
   evidence
@@ -185,9 +172,6 @@ Examples of foundational tasks (adjust based on your project):
 - [ ] TXXX Performance optimization across all stories
 - [ ] TXXX [P] Additional unit tests (if requested) in tests/unit/
 - [ ] TXXX Security hardening
-- [ ] TXXX Review dependencies for outdated and vulnerable packages without silently changing accepted scope
-- [ ] TXXX Update the repository statistics ledger with exact production/test/documentation counts and documented manual baselines when required
-- [ ] TXXX Validate the exact delivery set and all applicable gates fail-closed; do not claim remote, merge, or closeout evidence without current authority
 - [ ] TXXX [P] Verify AI-generated and human-written code against secure-coding rules in `constitution.md`, Principle XII, plus the applicable profile in `.specify/templates/secure-coding-language-rules-template.md`; MSL status alone is not sufficient evidence for secure API, I/O, auth, SQL, crypto, logging, or dependency handling
 - [ ] TXXX [P] Verify architecture against secure-architecture principles in `constitution.md`, Principle XIII (trust boundaries, defense in depth, least privilege, fail-safe defaults, attack surface reduction, separation of concerns, secure configuration, supply-chain security)
 - [ ] TXXX [P] Update mandatory security documentation in `docs/security/`: threat model, security checklist, dependency audit, arc42 security concepts, and security quality scenarios (SHOULD) - using templates from `.specify/templates/`
