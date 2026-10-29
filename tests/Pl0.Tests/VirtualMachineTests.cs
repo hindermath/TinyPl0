@@ -7,6 +7,7 @@ public sealed class VirtualMachineTests
 {
     private const int InstructionBudgetDiagnosticCode = 207;
     private const int StackConfigurationDiagnosticCode = 208;
+    private const int IntegerDivisionOverflowDiagnosticCode = 212;
 
     [Fact]
     public void EndToEnd_Run_With_Input_And_Output_Works()
@@ -95,6 +96,71 @@ public sealed class VirtualMachineTests
 
         Assert.False(result.Success);
         Assert.Contains(result.Diagnostics, d => d.Code == 206);
+    }
+
+    [Fact]
+    public void Signed_Division_Overflow_Returns_Controlled_Arithmetic_Diagnostic()
+    {
+        Instruction[] program =
+        [
+            new(Opcode.Lit, 0, int.MinValue),
+            new(Opcode.Lit, 0, -1),
+            new(Opcode.Opr, 0, 5)
+        ];
+
+        VmExecutionResult result = new VirtualMachine().Run(program);
+
+        Assert.Equal(VmCompletionReason.ArithmeticFault, result.Reason);
+        Assert.Equal(IntegerDivisionOverflowDiagnosticCode, Assert.Single(result.Diagnostics).Code);
+    }
+
+    [Fact]
+    public void Compiled_Input_Signed_Division_Overflow_Returns_Controlled_Arithmetic_Diagnostic()
+    {
+        const string source = """
+                              var dividend, divisor;
+                              begin
+                                ? dividend;
+                                ? divisor;
+                                ! dividend / divisor
+                              end.
+                              """;
+        CompilationResult compilation = new Pl0Compiler().Compile(source, CompilerOptions.Default);
+        Assert.True(compilation.Success);
+
+        var io = new BufferedPl0Io([int.MinValue, -1]);
+        VmExecutionResult result = new VirtualMachine().Run(compilation.Instructions, io);
+
+        Assert.Equal(VmCompletionReason.ArithmeticFault, result.Reason);
+        Assert.Equal(IntegerDivisionOverflowDiagnosticCode, Assert.Single(result.Diagnostics).Code);
+        Assert.Empty(io.Output);
+    }
+
+    [Theory]
+    [InlineData(int.MinValue, 1, int.MinValue)]
+    [InlineData(-1, int.MinValue, 0)]
+    [InlineData(int.MaxValue, -1, -int.MaxValue)]
+    [InlineData(7, 2, 3)]
+    [InlineData(-7, 2, -3)]
+    public void Valid_Signed_Division_Preserves_Truncating_Integer_Semantics(
+        int dividend,
+        int divisor,
+        int expected)
+    {
+        var io = new BufferedPl0Io();
+        Instruction[] program =
+        [
+            new(Opcode.Lit, 0, dividend),
+            new(Opcode.Lit, 0, divisor),
+            new(Opcode.Opr, 0, 5),
+            new(Opcode.Opr, 0, 15),
+            new(Opcode.Opr, 0, 0)
+        ];
+
+        VmExecutionResult result = new VirtualMachine().Run(program, io);
+
+        Assert.True(result.Success);
+        Assert.Equal([expected], io.Output);
     }
 
     [Fact]

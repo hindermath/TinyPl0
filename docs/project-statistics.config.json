@@ -172,6 +172,14 @@
       "labelEn": "Storage check-only Make hardening",
       "netLines": 187,
       "activeDays": 1
+    },
+    {
+      "slot": 23,
+      "id": "vm-integer-division-overflow",
+      "labelDe": "VM-Ganzzahldivisions-Härtung",
+      "labelEn": "VM integer division hardening",
+      "netLines": 262,
+      "activeDays": 1
     }
   ],
   "excludedPaths": [

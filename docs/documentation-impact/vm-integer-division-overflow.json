@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "1.1",
+  "feature": "vm-integer-division-overflow",
+  "entries": [
+    {
+      "changeId": "CHG212",
+      "scope": "Controlled handling of the unrepresentable signed Int32 division at the shared VM boundary",
+      "decision": "UpdateRequired",
+      "rationale": "The observable arithmetic-fault contract gains diagnostic 212 and security documentation must describe the closed exception boundary, preserved stack state, and unchanged legitimate division semantics.",
+      "documents": [
+        "docs/VM_INSTRUCTION_SET.md",
+        "docs/HOSTING_VM.md",
+        "docs/nuget/TinyPl0.Vm.README.md",
+        "docs/TRACEABILITY_MATRIX.md",
+        "docs/security/threat-model.md",
+        "docs/security/security-quality-scenarios.md",
+        "docs/security/security-checklist.md",
+        "docs/architecture/adr/0002-shared-vm-execution-session.md"
+      ],
+      "owner": "TinyPl0 repository maintainer",
+      "audiences": [
+        "VM host developers",
+        "CLI and IDE users",
+        "Security and release reviewers",
+        "Learners and teachers"
+      ],
+      "readerPaths": [
+        "VM instruction set to diagnostic contract and hosting guidance",
+        "Threat model to security scenario, checklist, and executable regression evidence",
+        "NuGet package README to structured arithmetic-fault handling"
+      ],
+      "canonicalSource": "src/Pl0.Vm/VmExecutionSession.cs",
+      "navigationImpact": "No new navigation node; existing VM, hosting, package, architecture, and security reader paths are updated in place.",
+      "documentClass": "ActiveSemanticSecurityAndPackageGuidance",
+      "languageStrategy": "User-facing guidance remains German first and English second at CEFR B2; stable code and resource identifiers remain language-neutral.",
+      "languagePartners": [],
+      "platformAndExampleProof": "The shared .NET VM kernel is exercised through direct instructions, mnemonic and numeric P-Code, batch and step execution, German and English resources, missing-resource fallbacks, and valid signed-division controls.",
+      "distributionClass": "sourceOnly",
+      "homeSyncRequired": false,
+      "evidence": "docs/documentation-impact/vm-integer-division-overflow.json",
+      "risk": "Low after focused and full regression gates; future arithmetic operators, numeric widths, VM decoders, resource keys, or public diagnostic contracts require re-evaluation.",
+      "criticality": "Security",
+      "reevaluationTrigger": "A change to OPR arithmetic, integer representation, VM execution boundaries, diagnostics, localization, CLI/IDE presentation, or package behavior."
+    }
+  ]
+}

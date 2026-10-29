@@ -62,6 +62,19 @@ public sealed class PCodeSerializerTests
     }
 
     [Theory]
+    [InlineData("lit 0 -2147483648\nlit 0 -1\nopr 0 5")]
+    [InlineData("0 0 -2147483648\n0 0 -1\n1 0 5")]
+    public void Parsed_PCode_Signed_Division_Overflow_Returns_Controlled_Diagnostic(string text)
+    {
+        IReadOnlyList<Instruction> program = PCodeSerializer.Parse(text);
+
+        VmExecutionResult result = new VirtualMachine().Run(program);
+
+        Assert.Equal(VmCompletionReason.ArithmeticFault, result.Reason);
+        Assert.Equal(212, Assert.Single(result.Diagnostics).Code);
+    }
+
+    [Theory]
     [MemberData(nameof(CurrentIntMnemonics))]
     public void Parse_Current_Int_Mnemonics_Produces_Int_Instruction(string mnemonic)
     {

@@ -19,9 +19,10 @@ OIDC-Environment und Provider-Attestierung.
 *English: New trust boundaries cover P-Code, options, and cancellation into
 the shared session, IPl0Io into the host, and GitHub OIDC through NuGet.org to
 the public consumer. Risks include tampered instructions, resource exhaustion,
-raw host-error disclosure, package substitution (CAPEC-438), and publisher
-identity misbinding. Pre-validation plus runtime bounds and paired state plus
-hashes, OIDC environment, and attestation provide defence in depth.*
+unrepresentable signed division escaping as a CLR exception, raw host-error
+disclosure, package substitution (CAPEC-438), and publisher identity
+misbinding. Pre-validation plus runtime operand and resource bounds, paired
+state plus hashes, OIDC environment, and attestation provide defence in depth.*
 
 ## Bestehendes Feature-004-Basismodell / Existing Feature 004 Base Model
 
@@ -74,6 +75,7 @@ component gains new network, secret, or administrative privilege.
 | TM-05 | TB6 | T,I | Traversal, externe Bindung oder Headermissbrauch | High | ASVS-L1 read-only Gate; Produktedit nur neuer Intake |
 | TM-06 | TB7 | T,R | ungepinnte oder unbelegte Artefakte | High | volle Pins, Dependency Review, Hash/SBOM, CAPEC-438 |
 | TM-07 | Repo root | I,T | versehentliches Tracking sensibler neuer Dateien | High | deny-by-default `.gitignore`, synthetische Sentinels |
+| TM-08 | TB2/TB3 | D | nicht darstellbare vorzeichenbehaftete Division verlässt die VM als CLR-Ausnahme | Medium | Operandenprüfung vor Stack-Mutation, kontrollierter `ArithmeticFault` 212, Batch-/Step-/Serializer-Negativtests |
 
 Spoofing und Elevation of Privilege sind für das lokale Produkt ohne Konten
 oder Rollen `N/A`; sie werden bei Remote-/Auth-Scope neu bewertet. Repudiation
@@ -84,7 +86,7 @@ gilt für Build- und Review-Evidence, nicht für Benutzerkonten.
 - Positiv: haltendes Programm innerhalb Budget und gültigem Stack.
 - Grenze: genau `N` Instruktionen, Stack `3` und `1_000_000`.
 - Negativ: Budget `0/-1`, Stack negativ, `0/1/2`, `1_000_001`, `int.MaxValue`.
-- Missbrauch: Endlosschleife, beschädigtes P-Code, Traversal/unerwartete HTTP-
+- Missbrauch: Endlosschleife, beschädigtes P-Code, `Int32.MinValue / -1`, Traversal/unerwartete HTTP-
   Methoden, manipuliertes Dependency-/Workflow-Artefakt.
 
 ## Restrisiken / Residual Risks
