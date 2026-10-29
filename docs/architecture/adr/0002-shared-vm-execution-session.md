@@ -16,6 +16,9 @@ Folgen: Parität entsteht strukturell und wird zusätzlich getestet. Die Session
 bleibt intern. Cancellation ist kooperativ und bietet keine Zeit- oder
 OS-Sandbox-Garantie. Der bewusste Trade-off ist eine vollständige defensive
 Stackkopie pro sichtbarem Step zugunsten eines einfachen, sicheren Lehr-API.
+Arithmetische Randfälle werden deshalb ebenfalls hier kontrolliert: Die
+nicht darstellbare Division `Int32.MinValue / -1` endet vor einer
+Stackänderung mit Diagnose 212 statt mit einer CLR-Ausnahme.
 
 ## English
 
@@ -29,3 +32,6 @@ Parity is structural and additionally tested. The session remains internal.
 Cancellation is cooperative and is not a time or operating-system sandbox.
 The accepted trade-off is a complete defensive stack copy per visible step in
 favour of a simple and safe teaching API.
+Arithmetic edge cases are therefore controlled here as well: the
+unrepresentable `Int32.MinValue / -1` division terminates before stack mutation
+with diagnostic 212 instead of a CLR exception.

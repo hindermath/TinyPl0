@@ -17,6 +17,8 @@ public sealed class VirtualMachineParityTests
     {
         AssertParity([new(Opcode.Lit, 0, 1), new(Opcode.Lit, 0, 0), new(Opcode.Opr, 0, 5)],
             () => new BufferedPl0Io(), VmCompletionReason.ArithmeticFault, []);
+        AssertParity([new(Opcode.Lit, 0, int.MinValue), new(Opcode.Lit, 0, -1), new(Opcode.Opr, 0, 5)],
+            () => new BufferedPl0Io(), VmCompletionReason.ArithmeticFault, []);
         AssertParity([new(Opcode.Opr, 0, 1)],
             () => new BufferedPl0Io(), VmCompletionReason.StackFault, []);
     }

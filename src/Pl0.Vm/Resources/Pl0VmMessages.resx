@@ -79,4 +79,8 @@
     <value>Die Host-Ein-/Ausgabe ist fehlgeschlagen.</value>
     <comment>Code 211 bleibt für bereinigte Fehler an der Host-I/O-Grenze reserviert.</comment>
   </data>
+  <data name="Vm_E212_IntegerDivisionOverflow" xml:space="preserve">
+    <value>Ganzzahlige Division ist übergelaufen.</value>
+    <comment>Code 212 bleibt für den nicht darstellbaren Int32-Minimalwert geteilt durch minus eins reserviert.</comment>
+  </data>
 </root>

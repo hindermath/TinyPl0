@@ -79,4 +79,8 @@
     <value>Host input/output failed.</value>
     <comment>Code 211 remains reserved for sanitized host I/O boundary failures.</comment>
   </data>
+  <data name="Vm_E212_IntegerDivisionOverflow" xml:space="preserve">
+    <value>Integer division overflow.</value>
+    <comment>Code 212 remains reserved for the unrepresentable Int32 minimum value divided by minus one.</comment>
+  </data>
 </root>

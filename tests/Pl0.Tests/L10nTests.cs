@@ -414,6 +414,25 @@ public sealed class L10nTests
         Assert.Contains(result.Diagnostics, d => d.Message.Contains("Division by zero"));
     }
 
+    [Theory]
+    [InlineData("de", "Ganzzahlige Division ist übergelaufen")]
+    [InlineData("en", "Integer division overflow")]
+    public void Vm_IntegerDivisionOverflow_Is_Localized(string language, string expected)
+    {
+        Instruction[] program =
+        [
+            new(Opcode.Lit, 0, int.MinValue),
+            new(Opcode.Lit, 0, -1),
+            new(Opcode.Opr, 0, 5)
+        ];
+        var options = new VirtualMachineOptions(Language: language);
+
+        VmExecutionResult result = new VirtualMachine().Run(program, options: options);
+
+        Assert.Equal(212, Assert.Single(result.Diagnostics).Code);
+        Assert.Contains(expected, result.Diagnostics[0].Message, StringComparison.Ordinal);
+    }
+
     [Fact]
     public void Vm_EndOfInput_En()
     {

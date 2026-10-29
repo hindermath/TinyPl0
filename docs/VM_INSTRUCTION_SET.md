@@ -46,7 +46,7 @@ material and existing artifacts remain consistent.
 | 2 | Addition |
 | 3 | Subtraktion |
 | 4 | Multiplikation |
-| 5 | Division |
+| 5 | Vorzeichenbehaftete Integer-Division mit Abschneiden gegen null |
 | 6 | `odd`-Test |
 | 8 | Gleichheit (`=`) |
 | 9 | Ungleichheit (`#`) |
@@ -73,9 +73,20 @@ Statische Kette (`base(l)`) wird ueber `ResolveBase` aufgeloest.
 | 206 | Division durch 0 |
 | 207 | Ungültiges oder ausgeschöpftes Instruktionsbudget |
 | 208 | Ungültige Stackgröße außerhalb `3..1_000_000` |
+| 212 | Nicht darstellbare Integer-Division `-2147483648 / -1` |
 | 98 | EOF bei Integer-Eingabe |
 | 97 | Ungueltiges Integer-Format bei Eingabe |
 | 99 | Sonstiger VM-Laufzeitfehler (z. B. Stack-/Pointerfehler) |
+
+OPR 5 prüft Division durch null und den einzigen in `Int32` nicht
+darstellbaren Quotienten vor einer Stackänderung. Beide Fälle enden als
+kontrollierter `ArithmeticFault`; es verlässt keine CLR-Ausnahme die VM-Grenze.
+Alle anderen Quotienten behalten die C#-Semantik mit Abschneiden gegen null.
+
+*OPR 5 checks division by zero and the only quotient that `Int32` cannot
+represent before mutating the stack. Both cases terminate as controlled
+`ArithmeticFault` results; no CLR exception escapes the VM boundary. All other
+quotients retain C# truncation-towards-zero semantics.*
 
 ## Ressourcenbudget und Optionsgrenzen / Resource Budget and Option Limits
 

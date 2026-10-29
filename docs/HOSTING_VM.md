@@ -21,6 +21,11 @@ Nach jedem terminalen Grund liefert Step dieselbe Momentaufnahme, denselben
 Grund, dieselben Diagnosen und dieselbe Instruktionszahl. Stackarrays sind
 defensive Kopien.
 
+Rechenfehler werden ebenfalls strukturiert zurückgegeben: Code 206 bezeichnet
+Division durch null, Code 212 die nicht darstellbare Division
+`Int32.MinValue / -1`. Beide liefern `VmCompletionReason.ArithmeticFault`, ohne
+eine CLR-Ausnahme oder Operandenwerte an den Host weiterzugeben.
+
 ## English
 
 Install TinyPl0.Core and TinyPl0.Vm at the same stable version. Core compiles
@@ -37,3 +42,7 @@ without side effects. Invalid options and P-Code become terminal before stack
 allocation. Started host I/O cannot be rolled back; cancellation observed
 during it takes effect at the next instruction boundary. Repeated terminal
 steps return the same projection, and stack arrays are defensive copies.
+Arithmetic failures are structured as well: code 206 identifies division by
+zero and code 212 identifies the unrepresentable `Int32.MinValue / -1`
+division. Both return `VmCompletionReason.ArithmeticFault` without exposing a
+CLR exception or operand values to the host.

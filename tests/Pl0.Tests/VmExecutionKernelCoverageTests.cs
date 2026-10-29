@@ -44,6 +44,28 @@ public sealed class VmExecutionKernelCoverageTests
     }
 
     [Theory]
+    [InlineData("de", "Ganzzahlige Division ist übergelaufen")]
+    [InlineData("en", "Integer division overflow")]
+    public void Missing_Resources_Use_Safe_Integer_Division_Overflow_Fallbacks(
+        string language,
+        string expected)
+    {
+        var options = new VirtualMachineOptions(
+            Language: language,
+            Messages: new MissingResourceManager());
+
+        VmExecutionResult result = new VirtualMachine().Run(
+        [
+            new(Opcode.Lit, 0, int.MinValue),
+            new(Opcode.Lit, 0, -1),
+            new(Opcode.Opr, 0, 5)
+        ], options: options);
+
+        Assert.Equal(VmCompletionReason.ArithmeticFault, result.Reason);
+        Assert.Contains(expected, Assert.Single(result.Diagnostics).Message, StringComparison.Ordinal);
+    }
+
+    [Theory]
     [InlineData(2)]
     [InlineData(5)]
     public void Binary_Operations_With_One_Operand_Report_Stack_Underflow(int operation)

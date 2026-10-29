@@ -12,6 +12,7 @@ internal sealed class VmExecutionSession
     private const int InputEofCode = 98;
     private const int InputFormatCode = 97;
     private const int DivisionCode = 206;
+    private const int IntegerDivisionOverflowCode = 212;
     private static readonly int[] AllowedOprCodes = [0, 1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15];
 
     private Instruction[] program;
@@ -262,13 +263,30 @@ internal sealed class VmExecutionSession
             case 4: return Binary((x, y) => x * y);
             case 5:
                 if (!TryPeek(t) || !TryPeek(t - 1)) return VmCompletionReason.StackFault;
-                if (stack[t] == 0)
+                int divisor = stack[t];
+                int dividend = stack[t - 1];
+                if (divisor == 0)
                 {
                     diagnostics.Add(new VmDiagnostic(DivisionCode,
                         messages.GetString("Vm_E206_DivisionByZero", culture) ?? "Division by zero."));
                     return VmCompletionReason.ArithmeticFault;
                 }
-                t--; stack[t] /= stack[t + 1]; return null;
+                // DE: Genau diese Operanden sind die einzige vorzeichenbehaftete
+                // Division, die Int32 nicht darstellen kann. Die Prüfung muss vor
+                // jeder Stack-Mutation erfolgen, damit Step einen gültigen Zustand
+                // behält und keine CLR-Ausnahme die VM-Grenze verlässt.
+                // EN: These operands are the only signed division that Int32 cannot
+                // represent. Check them before mutating the stack so Step preserves
+                // valid state and no CLR exception escapes the VM boundary.
+                if (dividend == int.MinValue && divisor == -1)
+                {
+                    diagnostics.Add(LocalizedDiagnostic(IntegerDivisionOverflowCode,
+                        "Vm_E212_IntegerDivisionOverflow",
+                        "Ganzzahlige Division ist übergelaufen.",
+                        "Integer division overflow."));
+                    return VmCompletionReason.ArithmeticFault;
+                }
+                t--; stack[t] = dividend / divisor; return null;
             case 6:
                 if (!TryPeek(t)) return VmCompletionReason.StackFault;
                 stack[t] = Math.Abs(stack[t] % 2); return null;

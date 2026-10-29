@@ -7,6 +7,7 @@ public sealed class SteppableVirtualMachineTests
 {
     private const int InstructionBudgetDiagnosticCode = 207;
     private const int StackConfigurationDiagnosticCode = 208;
+    private const int IntegerDivisionOverflowDiagnosticCode = 212;
 
     [Fact]
     public void Initialize_Sets_Start_Registers_And_Running_State()
@@ -84,6 +85,35 @@ public sealed class SteppableVirtualMachineTests
         Assert.Equal(stateBeforeError.T, vm.State.T);
         Assert.Equal(stackBeforeError, vm.State.Stack);
         Assert.Equal(VmStepStatus.Error, stepAfterError.Status);
+    }
+
+    [Fact]
+    public void Step_On_Signed_Division_Overflow_Is_Terminal_And_Preserves_PreDispatch_State()
+    {
+        var vm = new SteppableVirtualMachine();
+        vm.Initialize(
+        [
+            new Instruction(Opcode.Lit, 0, int.MinValue),
+            new Instruction(Opcode.Lit, 0, -1),
+            new Instruction(Opcode.Opr, 0, 5)
+        ]);
+
+        _ = vm.Step();
+        _ = vm.Step();
+        VmState stateBeforeError = vm.State;
+        int[] stackBeforeError = stateBeforeError.Stack.ToArray();
+
+        VmStepResult errorStep = vm.Step();
+        VmStepResult repeated = vm.Step();
+
+        Assert.Equal(VmStepStatus.Error, errorStep.Status);
+        Assert.Equal(VmCompletionReason.ArithmeticFault, errorStep.Reason);
+        Assert.Equal(IntegerDivisionOverflowDiagnosticCode, Assert.Single(errorStep.Diagnostics).Code);
+        Assert.Equal(stateBeforeError.P, errorStep.State.P);
+        Assert.Equal(stateBeforeError.B, errorStep.State.B);
+        Assert.Equal(stateBeforeError.T, errorStep.State.T);
+        Assert.Equal(stackBeforeError, errorStep.State.Stack);
+        Assert.Same(errorStep, repeated);
     }
 
     [Fact]

@@ -171,6 +171,8 @@ Andere Gründe beschreiben zum Beispiel Abbruch, ein erreichtes
 Instruktionsbudget, ungültigen P-Code, Stack- oder Rechenfehler und fehlgeschlagene
 Host-Ein-/Ausgabe. Zeige Diagnosecode und Meldung als Text an. Die Diagnosen
 verwenden stabile Codes und enthalten keine fremden Exception-Texte.
+Division durch null (206) und `Int32.MinValue / -1` (212) werden beide als
+kontrollierter `ArithmeticFault` zurückgegeben.
 
 ### Weiterführende Dokumentation
 
@@ -349,6 +351,8 @@ Other reasons describe cancellation, an exhausted instruction budget, invalid
 P-Code, stack or arithmetic faults, and failed host input/output. Expose the
 diagnostic code and message as text. Diagnostics use stable codes and do not
 contain foreign exception text.
+Division by zero (206) and `Int32.MinValue / -1` (212) are both returned as a
+controlled `ArithmeticFault`.
 
 ### Further documentation
 
