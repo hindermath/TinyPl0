@@ -254,7 +254,7 @@ internal sealed class VmExecutionSession
         switch (code)
         {
             case 0:
-                t = b - 1; p = stack[t + 3]; b = stack[t + 2]; return null;
+                return ExecuteReturn();
             case 1:
                 if (!TryPeek(t)) return VmCompletionReason.StackFault;
                 stack[t] = -stack[t]; return null;
@@ -313,6 +313,43 @@ internal sealed class VmExecutionSession
                 return RuntimeFaultReason($"OPR {code}");
         }
     }
+
+    private VmCompletionReason? ExecuteReturn()
+    {
+        long dynamicLinkIndex = (long)b + 1;
+        long returnAddressIndex = (long)b + 2;
+        if (!IsValidStackIndex(b) ||
+            !IsValidStackIndex(dynamicLinkIndex) ||
+            !IsValidStackIndex(returnAddressIndex))
+            return InvalidReturnFrame();
+
+        int dynamicLink = stack[(int)dynamicLinkIndex];
+        int returnAddress = stack[(int)returnAddressIndex];
+        bool isRootReturn = b == 1 && returnAddress == 0;
+
+        // DE: Beim Root-Return beendet die Rücksprungadresse null die VM; der
+        // historische dynamische Link kann dort von handgeschriebenem P-Code
+        // als Operand genutzt worden sein und wird nicht mehr dereferenziert.
+        // Jeder echte Rücksprung benötigt dagegen einen gültigen dynamischen
+        // Link. Erst nach vollständiger Prüfung werden Register geändert.
+        // EN: On the root return, return address zero halts the VM; handwritten
+        // P-code may historically have used the dynamic-link cell as an operand,
+        // and it is not dereferenced after halt. Every real return instead needs
+        // a valid dynamic link. Mutate registers only after the complete check.
+        if (!isRootReturn &&
+            (returnAddress == 0 || !IsValidStackIndex(dynamicLink)))
+            return InvalidReturnFrame();
+
+        t = b - 1;
+        p = returnAddress;
+        b = dynamicLink;
+        return null;
+    }
+
+    private VmCompletionReason InvalidReturnFrame() =>
+        StackFault("Vm_E99_InvalidReturnFrame",
+            "Ungültiger Aufrufrahmen bei der Rückkehr: Basiszeiger {0}.",
+            "Invalid call frame during return: base pointer {0}.", b);
 
     private VmCompletionReason? Binary(Func<int, int, int> operation)
     {

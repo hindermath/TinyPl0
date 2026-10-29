@@ -180,6 +180,14 @@
       "labelEn": "VM integer division hardening",
       "netLines": 262,
       "activeDays": 1
+    },
+    {
+      "slot": 24,
+      "id": "vm-return-frame-validation",
+      "labelDe": "VM-Rücksprungrahmen-Härtung",
+      "labelEn": "VM return-frame hardening",
+      "netLines": 319,
+      "activeDays": 1
     }
   ],
   "excludedPaths": [

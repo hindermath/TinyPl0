@@ -36,6 +36,9 @@
   <data name="Vm_E99_InvalidBasePointer" xml:space="preserve">
     <value>Ungültiger Basiszeiger beim Auflösen der Ebene: {0}.</value>
   </data>
+  <data name="Vm_E99_InvalidReturnFrame" xml:space="preserve">
+    <value>Ungültiger Aufrufrahmen bei der Rückkehr: Basiszeiger {0}.</value>
+  </data>
   <data name="Vm_E99_StackOverflow" xml:space="preserve">
     <value>Stack-Überlauf.</value>
   </data>

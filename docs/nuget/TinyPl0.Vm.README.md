@@ -173,6 +173,9 @@ Host-Ein-/Ausgabe. Zeige Diagnosecode und Meldung als Text an. Die Diagnosen
 verwenden stabile Codes und enthalten keine fremden Exception-Texte.
 Division durch null (206) und `Int32.MinValue / -1` (212) werden beide als
 kontrollierter `ArithmeticFault` zurückgegeben.
+Ein beschädigter Nicht-Root-Aufrufrahmen wird beim Rücksprung vor einer
+Registeränderung als `StackFault` mit Diagnose 99 zurückgegeben. Dadurch verlässt keine
+CLR-Indexausnahme die Batch- oder Step-API.
 
 ### Weiterführende Dokumentation
 
@@ -353,6 +356,9 @@ diagnostic code and message as text. Diagnostics use stable codes and do not
 contain foreign exception text.
 Division by zero (206) and `Int32.MinValue / -1` (212) are both returned as a
 controlled `ArithmeticFault`.
+A corrupted non-root call frame encountered during return is reported before
+register mutation as a `StackFault` with diagnostic 99. No CLR index exception escapes
+the batch or step API.
 
 ### Further documentation
 

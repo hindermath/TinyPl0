@@ -5,6 +5,28 @@ namespace Pl0.Tests;
 
 public sealed class VmExecutionBoundaryTests
 {
+    public static TheoryData<Instruction[]> CorruptedReturnFrames => new()
+    {
+        {
+            [
+                new Instruction(Opcode.Cal, 0, 2),
+                new Instruction(Opcode.Opr, 0, 0),
+                new Instruction(Opcode.Lit, 0, -100),
+                new Instruction(Opcode.Sto, 0, 1),
+                new Instruction(Opcode.Opr, 0, 0)
+            ]
+        },
+        {
+            [
+                new Instruction(Opcode.Cal, 0, 2),
+                new Instruction(Opcode.Opr, 0, 0),
+                new Instruction(Opcode.Lit, 0, -100),
+                new Instruction(Opcode.Lit, 0, -100),
+                new Instruction(Opcode.Opr, 0, 0)
+            ]
+        }
+    };
+
     public static TheoryData<Instruction[]> InvalidPrograms => new()
     {
         { [new Instruction(Opcode.Lit, -1, 0)] },
@@ -60,5 +82,61 @@ public sealed class VmExecutionBoundaryTests
 
         Assert.Equal(VmCompletionReason.StackFault, load.Reason);
         Assert.Equal(VmCompletionReason.StackFault, store.Reason);
+    }
+
+    [Theory]
+    [MemberData(nameof(CorruptedReturnFrames))]
+    public void Corrupted_Return_Frames_Are_Contained_Without_Host_Exceptions(Instruction[] program)
+    {
+        VmExecutionResult result = new VirtualMachine().Run(program);
+
+        Assert.Equal(VmCompletionReason.StackFault, result.Reason);
+        Assert.Equal(4, result.ExecutedInstructions);
+        Assert.Equal(99, Assert.Single(result.Diagnostics).Code);
+        Assert.DoesNotContain("IndexOutOfRangeException", result.Diagnostics[0].Message, StringComparison.Ordinal);
+    }
+
+    [Theory]
+    [InlineData(int.MinValue)]
+    [InlineData(-1)]
+    [InlineData(0)]
+    [InlineData(501)]
+    [InlineData(int.MaxValue)]
+    public void Invalid_Dynamic_Links_Are_Rejected_Before_Register_Mutation(int dynamicLink)
+    {
+        Instruction[] program =
+        [
+            new(Opcode.Cal, 0, 2),
+            new(Opcode.Opr, 0, 0),
+            new(Opcode.Lit, 0, dynamicLink),
+            new(Opcode.Sto, 0, 1),
+            new(Opcode.Opr, 0, 0)
+        ];
+
+        VmExecutionResult result = new VirtualMachine().Run(program);
+
+        Assert.Equal(VmCompletionReason.StackFault, result.Reason);
+        Assert.Equal(1, result.State.B);
+        Assert.Equal(0, result.State.T);
+        Assert.Equal(4, result.State.P);
+    }
+
+    [Fact]
+    public void Root_Return_Allows_Historical_Operand_Use_Of_The_Dynamic_Link_Cell()
+    {
+        var io = new BufferedPl0Io();
+        Instruction[] program =
+        [
+            new(Opcode.Lit, 0, 7),
+            new(Opcode.Lit, 0, 2),
+            new(Opcode.Opr, 0, 2),
+            new(Opcode.Opr, 0, 15),
+            new(Opcode.Opr, 0, 0)
+        ];
+
+        VmExecutionResult result = new VirtualMachine().Run(program, io);
+
+        Assert.Equal(VmCompletionReason.Halted, result.Reason);
+        Assert.Equal([9], io.Output);
     }
 }

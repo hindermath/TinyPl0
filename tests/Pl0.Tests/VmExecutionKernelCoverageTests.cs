@@ -66,6 +66,30 @@ public sealed class VmExecutionKernelCoverageTests
     }
 
     [Theory]
+    [InlineData("de", "Ungültiger Aufrufrahmen")]
+    [InlineData("en", "Invalid call frame")]
+    public void Missing_Resources_Use_Safe_Invalid_Return_Frame_Fallbacks(
+        string language,
+        string expected)
+    {
+        var options = new VirtualMachineOptions(
+            Language: language,
+            Messages: new MissingResourceManager());
+
+        VmExecutionResult result = new VirtualMachine().Run(
+        [
+            new(Opcode.Cal, 0, 2),
+            new(Opcode.Opr, 0, 0),
+            new(Opcode.Lit, 0, -100),
+            new(Opcode.Sto, 0, 1),
+            new(Opcode.Opr, 0, 0)
+        ], options: options);
+
+        Assert.Equal(VmCompletionReason.StackFault, result.Reason);
+        Assert.Contains(expected, Assert.Single(result.Diagnostics).Message, StringComparison.Ordinal);
+    }
+
+    [Theory]
     [InlineData(2)]
     [InlineData(5)]
     public void Binary_Operations_With_One_Operand_Report_Stack_Underflow(int operation)

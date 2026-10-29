@@ -76,6 +76,7 @@ component gains new network, secret, or administrative privilege.
 | TM-06 | TB7 | T,R | ungepinnte oder unbelegte Artefakte | High | volle Pins, Dependency Review, Hash/SBOM, CAPEC-438 |
 | TM-07 | Repo root | I,T | versehentliches Tracking sensibler neuer Dateien | High | deny-by-default `.gitignore`, synthetische Sentinels |
 | TM-08 | TB2/TB3 | D | nicht darstellbare vorzeichenbehaftete Division verlässt die VM als CLR-Ausnahme | Medium | Operandenprüfung vor Stack-Mutation, kontrollierter `ArithmeticFault` 212, Batch-/Step-/Serializer-Negativtests |
+| TM-09 | TB2/TB3 | T,D,I | beschädigter dynamischer Link löst beim Nicht-Root-Rücksprung eine CLR-Indexausnahme aus | Medium | vollständige Nicht-Root-Frame-Prüfung vor Registermutation, kontrollierter `StackFault` 99, Batch-/Step-/Serializer-Negativtests |
 
 Spoofing und Elevation of Privilege sind für das lokale Produkt ohne Konten
 oder Rollen `N/A`; sie werden bei Remote-/Auth-Scope neu bewertet. Repudiation
@@ -86,7 +87,8 @@ gilt für Build- und Review-Evidence, nicht für Benutzerkonten.
 - Positiv: haltendes Programm innerhalb Budget und gültigem Stack.
 - Grenze: genau `N` Instruktionen, Stack `3` und `1_000_000`.
 - Negativ: Budget `0/-1`, Stack negativ, `0/1/2`, `1_000_001`, `int.MaxValue`.
-- Missbrauch: Endlosschleife, beschädigtes P-Code, `Int32.MinValue / -1`, Traversal/unerwartete HTTP-
+- Missbrauch: Endlosschleife, beschädigtes P-Code und Rücksprungrahmen,
+  `Int32.MinValue / -1`, Traversal/unerwartete HTTP-
   Methoden, manipuliertes Dependency-/Workflow-Artefakt.
 
 ## Restrisiken / Residual Risks

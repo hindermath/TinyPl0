@@ -392,6 +392,7 @@ rekonstruiert.
 | 2026-09-13 | Intake-Lifecycle-Preset-Rollout / Intake lifecycle preset rollout | Vorhandene Authoring-/Review-/Sequencing-Presets auf 0.3.2/0.2.2/0.2.4 aktualisiert; optionale Profile und Dokumentation nachgefuehrt. Pruefnachweise in docs/maintenance/intake-lifecycle-fleet-rollout.json. / Update existing presets and profile references; preserve other presets and project extensions. |
 | 2026-09-13 | Mermaid und Abschlussberichte | Neue textbasierte Diagrammregel, Berichtsvorlage, Agent-Paritaet und versionierte Governance; kein Produktcode. / Text-first diagram and completion-report governance; no product code. |
 | 2026-09-19 | Statistik-Preset-Rollout / Statistics preset rollout | Branch `codex/project-statistics-rollout-v010`; Installation von v0.1.0 bei Prioritaet 90, 13 bestehende Presets erhalten. Separater UTC-Kontext ohne Referenzmodelle, native Pruefautomation, fuenf Agentenflaechen und Navigation. Keine Produktlogik, nur vorgeschriebene IDE-Versionsmetadaten. Installation: +2611/-3 Zeilen einschliesslich uebernommenem Paket, nicht eigene Produktentwicklung; Pruef-/Dokumentationsumfang im PR-Diff. Sichtbares Arbeitsfenster: 2026-09-19, keine gemessene Personenzeit. Bestehende Referenzen 80/125 bleiben Modellannahmen. Quellen, Messung und gesonderte Abnahme: docs/maintenance/project-statistics-rollout-v010.md; Tracking home-baseline#302. / Add the verified preset, isolated measurements and native proof without replacing Profile 2. Imported package volume is not newly developed product logic. Human acceptance and delivery remain separate. |
+| 2026-10-29 | VM-Rücksprungrahmen gegen manipuliertes P-Code gehärtet / VM return frame hardened against tampered P-Code | Branch `codex/vm-return-frame-validation`; der gemeinsame Batch-/Step-Kernel prüft Rahmenzellen und dynamische Links vor Registermutation und liefert Diagnose 99 statt einer CLR-Indexausnahme. Root-Halt, gültige Divisionen, verschachtelte Prozeduren und die bestehende kontrollierte Rücksprungadress-Semantik bleiben kompatibel. Umfang vor diesem Ledger-Eintrag: Produktionscode und Ressourcen `+44 / -1`, Tests `+175 / -0`, Dokumentation und Evidence `+108 / -7`, insgesamt `319` Nettozeilen; IDE-Versionsmetadaten ohne Nettoeffekt. Die Nettozeilen entsprechen bei 80 Zeilen/Arbeitstag `4.0` Tagen beziehungsweise `31.1` Stunden und bei 125 Zeilen/Arbeitstag `2.6` Tagen beziehungsweise `19.9` Stunden, jeweils bei `7.8` Stunden pro Tag. Sichtbares Arbeitsfenster: eine Agentensitzung am 2026-10-29; keine Stoppuhrmessung. Lokale Evidence: reproduzierter Rotnachweis, anschließend 338/338 Tests, 72.05 % Gesamtlinien- und 96.87 % Kernel-Linienabdeckung, echter CLI-Exit 99, DocFX mit 0 Fehlern, vier axe- und vier Lynx-Seiten, Dokumentationsauswirkungsvalidator und unabhängiger Security-Review. / The shared kernel now rejects invalid non-root return frames before register mutation while preserving the compatible root halt and valid programs. Local evidence covers red/green regression, full tests and coverage, CLI, documentation, accessibility, and independent review. |
 
 ## Statistikprofil-1-Archiv / Statistics Profile 1 Archive
 - Stand 2026-05-05: `88` Produktionsdateien mit `6950` Zeilen, `22` Testdateien mit `3536` Zeilen und `562` Dokumentationsdateien mit `36625` Zeilen.
@@ -551,26 +552,26 @@ Profil 2 verwendet Git-getrackte Textdateien und sichtbare Git-Aktivitaet. Die W
 
 | Kennzahl / Metric | Wert / Value |
 |---|---:|
-| Textbasis / Text base | 294590 lines |
-| Textdateien / Text files | 2108 |
+| Textbasis / Text base | 294917 lines |
+| Textdateien / Text files | 2109 |
 | Beobachtbarer Zeitraum / Observable period | 2025-11-02..2026-10-29 |
 | Aktivtage / Active days | 100 |
-| Relevante Commits / Relevant commits | 401 |
-| Zeilen je Aktivtag / Lines per active day | 2945.9 |
+| Relevante Commits / Relevant commits | 402 |
+| Zeilen je Aktivtag / Lines per active day | 2949.2 |
 | Peak-Tag im Fenster / Peak day in window | 2026-02-14 / 177480 |
 | Peak-Woche im Fenster / Peak week in window | 2026-02-08 / 186065 |
 | Laengste Serie / Longest streak | 9 days |
-| Speedup vs. 80 lines/day | 36.8x |
+| Speedup vs. 80 lines/day | 36.9x |
 | Speedup vs. 125 lines/day | 23.6x |
-| Methodik / Methodology | v2; source `38804da523a5` |
+| Methodik / Methodology | v2; source `abc52d24dfa2` |
 
 ### Artefaktmix / Artifact Mix
 
 ```text
-Produktiv / Production          [#...................]   2.4% | 7086
-Tests                           [#...................]   5.0% | 14701
-Dokumentation / Documentation   [###########.........]  55.1% | 162443
-Skripte / Scripts               [##..................]   9.7% | 28434
+Produktiv / Production          [#...................]   2.4% | 7129
+Tests                           [#...................]   5.0% | 14876
+Dokumentation / Documentation   [###########.........]  55.1% | 162552
+Skripte / Scripts               [##..................]   9.6% | 28434
 Konfiguration / Configuration   [#####...............]  26.2% | 77194
 Daten und Medien / Data and media [....................]   0.0% | 0
 Sonstiger Text / Other text     [#...................]   1.6% | 4732
@@ -679,15 +680,15 @@ Slots 0..15
 ```
 
 ```text
-Slots 16..23
-    cap 5000 | . . . . . . . .
-        4167 | . . . . . . . .
-        3333 | . . # . . . . .
-        2500 | . . # . . . . .
-        1667 | . . # . . . . .
-         833 | # # # . . # . .
-           0 +-----------------
-             16 17 18 19 20 21 22 23
+Slots 16..24
+    cap 5000 | . . . . . . . . .
+        4167 | . . . . . . . . .
+        3333 | . . # . . . . . .
+        2500 | . . # . . . . . .
+        1667 | . . # . . . . . .
+         833 | # # # . . # . . .
+           0 +-------------------
+             16 17 18 19 20 21 22 23 24
 ```
 
 | Slot | Phase | Nettozeilen / Net lines |
@@ -716,6 +717,7 @@ Slots 16..23
 | 21 | Feature 032 verlinkte Intake-Evidence / Feature 032 linked intake evidence | 1323 |
 | 22 | Storage-Check-only-Make-Härtung / Storage check-only Make hardening | 187 |
 | 23 | VM-Ganzzahldivisions-Härtung / VM integer division hardening | 262 |
+| 24 | VM-Rücksprungrahmen-Härtung / VM return-frame hardening | 319 |
 
 Die festen Slots halten den Phasenvergleich auch bei fehlenden oder spaeter ergaenzten Werten stabil.
 
@@ -725,7 +727,7 @@ Die festen Slots halten den Phasenvergleich auch bei fehlenden oder spaeter erga
 
 ```text
 Scale: 0..50x
-80 lines/day       [###############.....] 36.8x
+80 lines/day       [###############.....] 36.9x
 125 lines/day      [#########...........] 23.6x
 ```
 
@@ -739,7 +741,7 @@ Die Faktoren vergleichen sichtbare Lieferdichte mit den dokumentierten manuellen
 Scale: 0..5000 lines/day
 Experienced manual [#...................] 80
 Thorsten solo      [#...................] 125
-Visible repository [############........] 2945.9
+Visible repository [############........] 2949.2
 ```
 
 Die gemeinsame Skala vergleicht Referenzen und sichtbare Lieferdichte. Sie schreibt die Git-Aktivitaet keiner Person oder KI pauschal zu.
@@ -765,6 +767,6 @@ DE: Das Fenster beginnt am 2025-11-02 und endet am 2026-10-29. Es enthaelt 100 a
 | 2026-07 | 78913 |
 | 2026-08 | 55167 |
 | 2026-09 | 52288 |
-| 2026-10 | 573 |
+| 2026-10 | 916 |
 
 <!-- project-statistics-v2:end -->

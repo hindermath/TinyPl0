@@ -75,6 +75,19 @@ public sealed class PCodeSerializerTests
     }
 
     [Theory]
+    [InlineData("cal 0 2\nopr 0 0\nlit 0 -100\nsto 0 1\nopr 0 0")]
+    [InlineData("4 0 2\n1 0 0\n0 0 -100\n3 0 1\n1 0 0")]
+    public void Parsed_PCode_With_Corrupted_Return_Frame_Returns_Controlled_Diagnostic(string text)
+    {
+        IReadOnlyList<Instruction> program = PCodeSerializer.Parse(text);
+
+        VmExecutionResult result = new VirtualMachine().Run(program);
+
+        Assert.Equal(VmCompletionReason.StackFault, result.Reason);
+        Assert.Equal(99, Assert.Single(result.Diagnostics).Code);
+    }
+
+    [Theory]
     [MemberData(nameof(CurrentIntMnemonics))]
     public void Parse_Current_Int_Mnemonics_Produces_Int_Instruction(string mnemonic)
     {

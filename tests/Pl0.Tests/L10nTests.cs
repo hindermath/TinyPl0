@@ -594,6 +594,26 @@ public sealed class L10nTests
         Assert.Contains(result.Diagnostics, d => d.Message.Contains("Invalid base pointer"));
     }
 
+    [Fact]
+    public void Vm_InvalidReturnFrame_En()
+    {
+        Instruction[] program =
+        [
+            new(Opcode.Cal, 0, 2),
+            new(Opcode.Opr, 0, 0),
+            new(Opcode.Lit, 0, -100),
+            new(Opcode.Sto, 0, 1),
+            new(Opcode.Opr, 0, 0)
+        ];
+
+        VmExecutionResult result = new VirtualMachine().Run(
+            program, options: new VirtualMachineOptions(Language: "en"));
+
+        Assert.Equal(VmCompletionReason.StackFault, result.Reason);
+        Assert.Contains("Invalid call frame during return", Assert.Single(result.Diagnostics).Message,
+            StringComparison.Ordinal);
+    }
+
     // ── T032: VM DE-Baseline ──────────────────────────────────────────────
 
     [Fact]

@@ -7,6 +7,7 @@
 - [x] Cancellation und Budget wirken vor dem nächsten Dispatch.
 - [x] I/O-Diagnosen enthalten weder fremde Exception-Texte noch Stacktraces.
 - [x] Nicht darstellbare Integer-Division endet vor Stack-Mutation mit Diagnose 212.
+- [x] Beschädigte Nicht-Root-Rücksprungrahmen enden vor Registermutation mit Diagnose 99.
 - [x] Pakete enthalten nur die erlaubte exakte Abhängigkeit.
 - [x] CI-Actions sind vollständig gepinnt und Jobs nutzen kleinste Rechte.
 - [x] OIDC ist der einzige autorisierte Publish-Credentialpfad.
@@ -15,7 +16,8 @@
 *English: Feature 006 validates options and P-Code before allocation, uses one
 decoder, applies cancellation and budget before dispatch, sanitises I/O
 failures, returns unrepresentable signed division as controlled diagnostic 212
-before stack mutation, restricts package dependencies, pins workflow actions,
+before stack mutation, contains corrupted non-root return frames as diagnostic
+99 before register mutation, restricts package dependencies, pins workflow actions,
 authorises OIDC only, and generates reproducible supply-chain evidence.*
 
 **Feature**: `004-secure-development-hardening`
