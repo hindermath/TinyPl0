@@ -521,6 +521,26 @@ passed. Documentation Impact: UpdateRequired; the man page documents the safe
 mode boundary. Statistics provide Git-based transparency, not measured AI
 productivity.
 
+### 2026-10-29 - VM-Ganzzahldivisions-Härtung / VM integer division hardening
+
+DE: Die gemeinsame VM-Ausführung fängt den nicht darstellbaren Quotienten
+`Int32.MinValue / -1` jetzt vor jeder Stack-Mutation als kontrollierten
+`ArithmeticFault` mit Diagnose 212 ab. Direkter, kompilierter, ASM-/COD-,
+Batch-/Step- sowie DE-/EN-/Fallback-Nachweis bestanden; ebenso 324 Release-
+Tests, 97,04 Prozent Zeilenabdeckung der VM-Session, DocFX, vier axe-/Lynx-
+Seiten, Secret-Scan und unabhängiges Sicherheitsreview. Documentation Impact:
+UpdateRequired. Die 262 Nettozeilen sind Git-basierte Transparenz, keine
+gemessene KI-Produktivität.
+
+EN: The shared VM execution now intercepts the unrepresentable
+`Int32.MinValue / -1` quotient before any stack mutation and returns controlled
+`ArithmeticFault` diagnostic 212. Direct, compiled, ASM/COD, batch/step, and
+German/English/fallback evidence passed, together with 324 Release tests,
+97.04 percent line coverage for the VM session, DocFX, four axe/Lynx pages, the
+secret scan, and an independent security review. Documentation Impact:
+UpdateRequired. The 262 net lines provide Git-based transparency, not measured
+AI productivity.
+
 ## Gesamtstatistik / Overall Statistics
 
 <!-- project-statistics-v2:begin -->
