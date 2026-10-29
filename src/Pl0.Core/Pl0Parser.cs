@@ -72,6 +72,18 @@ public sealed class Pl0Parser
     /// Diagnose-Code für Symboltabellen-Überlauf.
     /// </summary>
     private const int ErrorSymbolTableOverflow = 34;
+    /// <summary>
+    /// Diagnose-Code für eine überschrittene Syntaxverschachtelungsgrenze.
+    /// </summary>
+    private const int ErrorSyntaxNestingTooDeep = 36;
+    /// <summary>
+    /// Harte Obergrenze für lexikalisch verschachtelte Prozedurblöcke.
+    /// </summary>
+    private const int MaximumLexicalNesting = 10;
+    /// <summary>
+    /// Harte Obergrenze für gleichzeitig aktive rekursive Syntaxkonstrukte.
+    /// </summary>
+    private const int MaximumSyntaxNesting = 10;
 
     /// <summary>
     /// Zu parsende Token.
@@ -97,6 +109,14 @@ public sealed class Pl0Parser
     /// Verfolgt ob unerwartetes EOF bereits gemeldet wurde.
     /// </summary>
     private bool _reportedUnexpectedEof;
+    /// <summary>
+    /// Verhindert nach einer Sicherheitsgrenzenverletzung weitere Parserarbeit.
+    /// </summary>
+    private bool _parsingStopped;
+    /// <summary>
+    /// Anzahl gleichzeitig aktiver rekursiver Anweisungs- und Ausdruckskonstrukte.
+    /// </summary>
+    private int _syntaxNesting;
     /// <summary>
     /// Aktuelle Token-Position in der Token-Liste.
     /// </summary>
@@ -192,6 +212,11 @@ public sealed class Pl0Parser
     public CompilationResult Parse()
     {
         ParseBlock(level: 0, owner: null);
+        if (_parsingStopped)
+        {
+            return new CompilationResult(_code, _diagnostics);
+        }
+
         if (!TryMatch(TokenKind.Period))
         {
             Report(9, Msg("Parser_E09_PeriodExpected"));
@@ -212,61 +237,81 @@ public sealed class Pl0Parser
     /// <param name="owner">Prozedur-Symbol, das diesen Block besitzt, wenn vorhanden.</param>
     private void ParseBlock(int level, SymbolEntry? owner)
     {
-        if (level > _options.MaxLevel)
+        if (_parsingStopped)
+        {
+            return;
+        }
+
+        if (level > _options.MaxLevel || level > MaximumLexicalNesting)
         {
             Report(32, Msg("Parser_E32_NestingTooDeep"));
+            _parsingStopped = true;
+            return;
         }
 
         _symbols.EnterScope();
-        var dataIndex = 3;
-
-        var jumpToBody = Emit(Opcode.Jmp, 0, 0);
-
-        if (TryMatch(TokenKind.Const))
+        try
         {
-            ParseConstDeclaration(level);
-            while (TryMatch(TokenKind.Comma))
+            var dataIndex = 3;
+
+            var jumpToBody = Emit(Opcode.Jmp, 0, 0);
+
+            if (TryMatch(TokenKind.Const))
             {
                 ParseConstDeclaration(level);
+                while (TryMatch(TokenKind.Comma))
+                {
+                    ParseConstDeclaration(level);
+                }
+
+                ExpectOrSync(TokenKind.Semicolon, 5, Msg("Parser_E05_SemiOrComma"), BlockContinuationTokens);
             }
 
-            ExpectOrSync(TokenKind.Semicolon, 5, Msg("Parser_E05_SemiOrComma"), BlockContinuationTokens);
-        }
-
-        if (TryMatch(TokenKind.Var))
-        {
-            ParseVarDeclaration(level, ref dataIndex);
-            while (TryMatch(TokenKind.Comma))
+            if (TryMatch(TokenKind.Var))
             {
                 ParseVarDeclaration(level, ref dataIndex);
+                while (TryMatch(TokenKind.Comma))
+                {
+                    ParseVarDeclaration(level, ref dataIndex);
+                }
+
+                ExpectOrSync(TokenKind.Semicolon, 5, Msg("Parser_E05_SemiOrComma"), BlockContinuationTokens);
             }
 
-            ExpectOrSync(TokenKind.Semicolon, 5, Msg("Parser_E05_SemiOrComma"), BlockContinuationTokens);
-        }
+            while (TryMatch(TokenKind.Procedure))
+            {
+                var name = Expect(TokenKind.Ident, 4, Msg("Parser_E04_IdentAfterProc"));
+                var procedure = new SymbolEntry(name.Lexeme, SymbolKind.Procedure, level, address: 0);
+                TryDeclare(procedure, 31, "Duplicate identifier in scope.");
 
-        while (TryMatch(TokenKind.Procedure))
+                ExpectOrSync(TokenKind.Semicolon, 5, Msg("Parser_E05_SemiOrComma"), BlockContinuationTokens);
+                ParseBlock(level + 1, procedure);
+                if (_parsingStopped)
+                {
+                    return;
+                }
+
+                ExpectOrSync(TokenKind.Semicolon, 5, Msg("Parser_E05_SemiOrComma"), BlockContinuationTokens);
+            }
+
+            var bodyStart = _code.Count;
+            PatchArgument(jumpToBody, bodyStart);
+            if (owner is not null)
+            {
+                owner.Address = bodyStart;
+            }
+
+            Emit(Opcode.Int, 0, dataIndex);
+            ParseStatement(level);
+            if (!_parsingStopped)
+            {
+                Emit(Opcode.Opr, 0, 0);
+            }
+        }
+        finally
         {
-            var name = Expect(TokenKind.Ident, 4, Msg("Parser_E04_IdentAfterProc"));
-            var procedure = new SymbolEntry(name.Lexeme, SymbolKind.Procedure, level, address: 0);
-            TryDeclare(procedure, 31, "Duplicate identifier in scope.");
-
-            ExpectOrSync(TokenKind.Semicolon, 5, Msg("Parser_E05_SemiOrComma"), BlockContinuationTokens);
-            ParseBlock(level + 1, procedure);
-            ExpectOrSync(TokenKind.Semicolon, 5, Msg("Parser_E05_SemiOrComma"), BlockContinuationTokens);
+            _symbols.ExitScope();
         }
-
-        var bodyStart = _code.Count;
-        PatchArgument(jumpToBody, bodyStart);
-        if (owner is not null)
-        {
-            owner.Address = bodyStart;
-        }
-
-        Emit(Opcode.Int, 0, dataIndex);
-        ParseStatement(level);
-        Emit(Opcode.Opr, 0, 0);
-
-        _symbols.ExitScope();
     }
 
     /// <summary>
@@ -324,13 +369,13 @@ public sealed class Pl0Parser
                 ParseCall(level);
                 return;
             case TokenKind.Begin:
-                ParseBeginEnd(level);
+                TryParseNestedSyntax(() => ParseBeginEnd(level));
                 return;
             case TokenKind.If:
-                ParseIf(level);
+                TryParseNestedSyntax(() => ParseIf(level));
                 return;
             case TokenKind.While:
-                ParseWhile(level);
+                TryParseNestedSyntax(() => ParseWhile(level));
                 return;
             case TokenKind.Question:
                 ParseInput(level);
@@ -360,7 +405,7 @@ public sealed class Pl0Parser
         Expect(TokenKind.Becomes, 13, Msg("Parser_E13_AssignOpExpected"));
         ParseExpression(level);
 
-        if (symbol is not null)
+        if (!_parsingStopped && symbol is not null)
         {
             Emit(Opcode.Sto, ComputeLevelDifference(level, symbol), symbol.Address);
         }
@@ -397,9 +442,18 @@ public sealed class Pl0Parser
     {
         Advance();
         ParseStatement(level);
+        if (_parsingStopped)
+        {
+            return;
+        }
+
         while (TryMatch(TokenKind.Semicolon))
         {
             ParseStatement(level);
+            if (_parsingStopped)
+            {
+                return;
+            }
         }
 
         ExpectOrSync(TokenKind.End, 17, Msg("Parser_E17_SemiOrEndExpected"), StatementFollowTokens);
@@ -413,10 +467,18 @@ public sealed class Pl0Parser
     {
         Advance();
         ParseCondition(level);
+        if (_parsingStopped)
+        {
+            return;
+        }
+
         ExpectOrSync(TokenKind.Then, 16, Msg("Parser_E16_ThenExpected"), StatementStartTokens);
         var jumpIfFalse = Emit(Opcode.Jpc, 0, 0);
         ParseStatement(level);
-        PatchArgument(jumpIfFalse, _code.Count);
+        if (!_parsingStopped)
+        {
+            PatchArgument(jumpIfFalse, _code.Count);
+        }
     }
 
     /// <summary>
@@ -428,9 +490,19 @@ public sealed class Pl0Parser
         Advance();
         var conditionStart = _code.Count;
         ParseCondition(level);
+        if (_parsingStopped)
+        {
+            return;
+        }
+
         var jumpIfFalse = Emit(Opcode.Jpc, 0, 0);
         ExpectOrSync(TokenKind.Do, 18, Msg("Parser_E18_DoExpected"), StatementStartTokens);
         ParseStatement(level);
+        if (_parsingStopped)
+        {
+            return;
+        }
+
         Emit(Opcode.Jmp, 0, conditionStart);
         PatchArgument(jumpIfFalse, _code.Count);
     }
@@ -473,6 +545,11 @@ public sealed class Pl0Parser
     {
         var bang = Expect(TokenKind.Bang, 19, Msg("Parser_E19_IncorrectSymbol"));
         ParseExpression(level);
+        if (_parsingStopped)
+        {
+            return;
+        }
+
         if (!_options.EnableIoStatements)
         {
             Report(19, Msg("Parser_E19_OutputNotInClassic"), bang.Position);
@@ -491,11 +568,20 @@ public sealed class Pl0Parser
         if (TryMatch(TokenKind.Odd))
         {
             ParseExpression(level);
-            Emit(Opcode.Opr, 0, OprOdd);
+            if (!_parsingStopped)
+            {
+                Emit(Opcode.Opr, 0, OprOdd);
+            }
+
             return;
         }
 
         ParseExpression(level);
+        if (_parsingStopped)
+        {
+            return;
+        }
+
         var relation = Current.Kind;
         if (!IsRelation(relation))
         {
@@ -505,6 +591,10 @@ public sealed class Pl0Parser
 
         Advance();
         ParseExpression(level);
+        if (_parsingStopped)
+        {
+            return;
+        }
 
         var oprCode = relation switch
         {
@@ -533,6 +623,11 @@ public sealed class Pl0Parser
         }
 
         ParseTerm(level);
+        if (_parsingStopped)
+        {
+            return;
+        }
+
         if (unaryMinus)
         {
             Emit(Opcode.Opr, 0, OprNegate);
@@ -543,6 +638,11 @@ public sealed class Pl0Parser
             var op = Current.Kind;
             Advance();
             ParseTerm(level);
+            if (_parsingStopped)
+            {
+                return;
+            }
+
             Emit(Opcode.Opr, 0, op == TokenKind.Plus ? OprAdd : OprSub);
         }
     }
@@ -554,11 +654,21 @@ public sealed class Pl0Parser
     private void ParseTerm(int level)
     {
         ParseFactor(level);
+        if (_parsingStopped)
+        {
+            return;
+        }
+
         while (Current.Kind is TokenKind.Times or TokenKind.Slash)
         {
             var op = Current.Kind;
             Advance();
             ParseFactor(level);
+            if (_parsingStopped)
+            {
+                return;
+            }
+
             Emit(Opcode.Opr, 0, op == TokenKind.Times ? OprMul : OprDiv);
         }
     }
@@ -610,7 +720,11 @@ public sealed class Pl0Parser
             }
             case TokenKind.LParen:
                 Advance();
-                ParseExpression(level);
+                if (!TryParseNestedSyntax(() => ParseExpression(level)))
+                {
+                    return;
+                }
+
                 ExpectOrSync(TokenKind.RParen, 22, Msg("Parser_E22_RightParenMissing"), ExpressionFollowTokens);
                 return;
             default:
@@ -690,6 +804,11 @@ public sealed class Pl0Parser
     /// <returns>Befehlsindex.</returns>
     private int Emit(Opcode opcode, int level, int argument)
     {
+        if (_parsingStopped)
+        {
+            return -1;
+        }
+
         if (_code.Count >= _options.MaxCodeLength)
         {
             Report(
@@ -729,6 +848,11 @@ public sealed class Pl0Parser
     /// <returns>True wenn gefunden und verbraucht.</returns>
     private bool TryMatch(TokenKind kind)
     {
+        if (_parsingStopped)
+        {
+            return false;
+        }
+
         if (Current.Kind != kind)
         {
             return false;
@@ -747,6 +871,11 @@ public sealed class Pl0Parser
     /// <returns>Das verbrauchte Token.</returns>
     private Pl0Token Expect(TokenKind kind, int code, string message)
     {
+        if (_parsingStopped)
+        {
+            return Current;
+        }
+
         if (Current.Kind == kind)
         {
             return Advance();
@@ -772,6 +901,11 @@ public sealed class Pl0Parser
     /// <returns>Das verbrauchte Token wenn gefunden.</returns>
     private Pl0Token ExpectOrSync(TokenKind kind, int code, string message, params TokenKind[] syncTokens)
     {
+        if (_parsingStopped)
+        {
+            return Current;
+        }
+
         if (Current.Kind == kind)
         {
             return Advance();
@@ -799,6 +933,11 @@ public sealed class Pl0Parser
     /// <param name="syncTokens">Synchronisations-Token.</param>
     private void Synchronize(IEnumerable<TokenKind> syncTokens)
     {
+        if (_parsingStopped)
+        {
+            return;
+        }
+
         var sync = new HashSet<TokenKind>(syncTokens)
         {
             TokenKind.EndOfFile,
@@ -816,6 +955,11 @@ public sealed class Pl0Parser
     /// <returns>Das verbrauchte Token.</returns>
     private Pl0Token Advance()
     {
+        if (_parsingStopped)
+        {
+            return Current;
+        }
+
         if (_position < _tokens.Count - 1)
         {
             return _tokens[_position++];
@@ -846,6 +990,38 @@ public sealed class Pl0Parser
             or TokenKind.LessOrEqual
             or TokenKind.Greater
             or TokenKind.GreaterOrEqual;
+
+    /// <summary>
+    /// Führt einen rekursiven Syntaxübergang innerhalb des festen Sicherheitsbudgets aus.
+    /// </summary>
+    /// <param name="parse">Parseraktion für das verschachtelte Konstrukt.</param>
+    /// <returns>True, wenn der Parsevorgang danach fortgesetzt werden darf.</returns>
+    private bool TryParseNestedSyntax(Action parse)
+    {
+        if (_parsingStopped)
+        {
+            return false;
+        }
+
+        if (_syntaxNesting >= MaximumSyntaxNesting)
+        {
+            Report(ErrorSyntaxNestingTooDeep, Msg("Parser_E36_SyntaxNestingTooDeep"));
+            _parsingStopped = true;
+            return false;
+        }
+
+        _syntaxNesting++;
+        try
+        {
+            parse();
+        }
+        finally
+        {
+            _syntaxNesting--;
+        }
+
+        return !_parsingStopped;
+    }
 
     /// <summary>
     /// Meldet eine Diagnose an der aktuellen Token-Position.

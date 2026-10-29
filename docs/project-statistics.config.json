@@ -188,6 +188,14 @@
       "labelEn": "VM return-frame hardening",
       "netLines": 319,
       "activeDays": 1
+    },
+    {
+      "slot": 25,
+      "id": "parser-nesting-budget",
+      "labelDe": "Parser-Verschachtelungsbudget",
+      "labelEn": "Parser nesting budget",
+      "netLines": 526,
+      "activeDays": 1
     }
   ],
   "excludedPaths": [

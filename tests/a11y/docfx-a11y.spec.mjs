@@ -11,6 +11,8 @@ import { promisify } from 'node:util';
 const baseUrl = process.env.DOCS_BASE_URL ?? 'http://127.0.0.1:8080';
 const pages = [
   ['Startseite', '/index.html'],
+  ['Pl0Parser API', '/api/Pl0.Core.Pl0Parser.html'],
+  ['Sprachgrenzen', '/docfx/curated/language-ebnf.html'],
   ['VirtualMachineOptions API', '/api/Pl0.Vm.VirtualMachineOptions.html'],
   ['VirtualMachine API', '/api/Pl0.Vm.VirtualMachine.html'],
   ['VmExecutionSession API', '/api/Pl0.Vm.VmExecutionSession.html'],
@@ -99,6 +101,8 @@ test.afterAll(async () => {
 
     if (manageServer) {
       const dumps = [
+        ['api/Pl0.Core.Pl0Parser.html', resolve(tmpdir(), 'tinypl0-parser-nesting-api.txt'), ['Pl0Parser', 'Parse', 'CompilerOptions']],
+        ['docfx/curated/language-ebnf.html', resolve(tmpdir(), 'tinypl0-parser-nesting-language.txt'), ['Implementierungsgrenzen', 'E36', '10']],
         ['api/Pl0.Vm.VirtualMachineOptions.html', resolve(tmpdir(), 'tinypl0-004-virtual-machine-options.txt'), ['VirtualMachineOptions', 'InstructionBudget', 'StackSize']],
         ['api/Pl0.Vm.VirtualMachine.html', resolve(tmpdir(), 'tinypl0-004-virtual-machine.txt'), ['VirtualMachine', 'Run', 'CultureNotFoundException']],
         ['api/Pl0.Vm.VmExecutionSession.html', resolve(tmpdir(), 'tinypl0-006-vm-execution-session.txt'), ['VmExecutionSession', 'ExecuteNext', 'CancellationToken']],

@@ -368,6 +368,7 @@ public sealed class L10nTests
     [InlineData("Parser_E32_NestingTooDeep", "Maximum nesting level exceeded.")]
     [InlineData("Parser_E34_SymbolTableOverflow", "Symbol table full (max {0}).")]
     [InlineData("Parser_E35_ProgramTooLong", "Program too long (max {0} instructions).")]
+    [InlineData("Parser_E36_SyntaxNestingTooDeep", "Maximum syntax nesting depth of 10 exceeded.")]
     [InlineData("Parser_E98_UnexpectedEndOfInput", "Program incomplete: unexpected end of input.")]
     [InlineData("Parser_E99_InvalidLexLevel", "Invalid lexical level reference.")]
     [InlineData("Parser_E99_UnexpectedTermination", "Unexpected end of program.")]

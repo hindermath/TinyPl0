@@ -20,6 +20,21 @@ Der Test validiert:
 2. Vollstaendigkeit aller geforderten VM-Regeln.
 3. Jede Regel verweist auf mindestens einen katalogisierten Pflichttestfall.
 
+## Compiler-Ressourcenhärtung / Compiler Resource Hardening
+
+| Vertrag / Contract | Positiv und Grenze / Positive and boundary | Missbrauch / Abuse proof |
+|---|---|---|
+| Strukturierte Anweisungen und Klammerausdrücke teilen ein festes Rekursionsbudget von 10; E36 stoppt fail-closed | `ParserNestingBoundaryTests.Enforces_*`, `Shares_Nesting_Budget_*` | direkter `Pl0Parser`, 10.000 Klammern, fehlende Schlussklammern, genau eine Diagnose |
+| Historisches `MaxLevel = 3`, konfigurierbar bis zur harten Obergrenze 10; E32 stoppt weiteren Blockabstieg | Ebenen 3/4 und 10/11 in `Enforces_Configured_And_Absolute_Lexical_Level_Boundaries` | `MaxLevel = int.MaxValue` umgeht die Obergrenze nicht |
+
+Deutsch: Das Budget zählt gleichzeitig aktive rekursive Grammatikkonstrukte,
+nicht iterative Operator- oder Anweisungsfolgen. Die EBNF bleibt rekursiv; die
+Grenze ist ein dokumentierter Implementierungs- und Verfügbarkeitsvertrag.
+
+*English: The budget counts simultaneously active recursive grammar constructs,
+not iterative operator or statement sequences. The EBNF remains recursive; the
+limit is a documented implementation and availability contract.*
+
 ## Secure-VM-Härtung / Secure VM Hardening
 
 | Vertrag / Contract | Batch-Beweis / Batch proof | Step-Beweis / Step proof | Ergänzende Evidence / Supporting evidence |

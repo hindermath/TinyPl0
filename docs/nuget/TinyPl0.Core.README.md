@@ -116,6 +116,13 @@ Wenn Eingaben nicht vertrauenswürdig sind, begrenze zusätzlich die Werte in
 Symboltabelle. Diese Compilergrenzen ersetzen nicht die Laufzeitgrenzen von
 `TinyPl0.Vm`.
 
+Der Parser besitzt außerdem nicht deaktivierbare Rekursionsgrenzen. Strukturierte
+Anweisungen (`begin`, `if`, `while`) und geklammerte Ausdrücke dürfen zusammen
+höchstens `10` gleichzeitig aktive Ebenen bilden. Tiefe `11` liefert E36. Die
+historische Blockgrenze `MaxLevel = 3` darf ein Host bis höchstens `10` anheben;
+darüber stoppt E32. Dadurch liefern auch direkte `Pl0Parser`-Aufrufe ein
+kontrolliertes `CompilationResult`, statt den Hoststack auszuschöpfen.
+
 ### Weiterführende Dokumentation
 
 - [TinyPl0-Architektur und Zuordnung zum Pascal-Original](https://github.com/hindermath/TinyPl0/blob/main/docs/ARCHITECTURE.md)
@@ -238,6 +245,13 @@ result with diagnostics is not an executable program. Set
 For untrusted input, also restrict the values in `CompilerOptions`, such as the
 maximum code length and symbol table size. These compiler limits do not replace
 the runtime limits provided by `TinyPl0.Vm`.
+
+The parser also enforces non-disableable recursion limits. Structured
+statements (`begin`, `if`, `while`) and parenthesized expressions may form at
+most `10` simultaneously active levels; depth `11` returns E36. A host may
+raise the historical `MaxLevel = 3` block limit only as far as `10`; E32 stops
+deeper descent. Direct `Pl0Parser` calls therefore return a controlled
+`CompilationResult` instead of exhausting the host stack.
 
 ### Further documentation
 

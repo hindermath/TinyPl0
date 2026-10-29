@@ -45,6 +45,7 @@ Links, paths, and status words carry the meaning without colour.
 ## Entscheidungen / Decisions
 
 - Allgemeine ADR: [../architecture/adr/0001-vm-resource-budget.md](../architecture/adr/0001-vm-resource-budget.md).
+- Parser-Ressourcen-ADR: [../architecture/adr/0003-parser-nesting-budget.md](../architecture/adr/0003-parser-nesting-budget.md).
 - Security ADR: [adr/0001-vm-resource-budget.md](adr/0001-vm-resource-budget.md).
 - Architektur: [../architecture/secure-development-hardening.md](../architecture/secure-development-hardening.md).
 - Assessment-Leseeinstieg: [secure-development/2026-08-30-tinypl0-hardening/README.md](secure-development/2026-08-30-tinypl0-hardening/README.md).

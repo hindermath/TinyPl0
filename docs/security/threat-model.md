@@ -68,7 +68,7 @@ component gains new network, secret, or administrative privilege.
 
 | ID | Boundary | STRIDE | Missbrauch / Abuse | Risiko | Mitigation / Status |
 |---|---|---|---|---|---|
-| TM-01 | TB1/TB3 | T,D | beschädigte oder große Eingabe stört Parser/VM | Medium | vorhandene Limits, Diagnosen, Negativtests |
+| TM-01 | TB1/TB3 | T,D | beschädigte, große oder tief verschachtelte Eingabe stört Parser/VM | Medium | Parser-Syntaxbudget 10 mit fail-closed E36, Blockobergrenze 10 mit E32, VM-Limits und Negativtests |
 | TM-02 | TB2 | D | Endlosschleife verbraucht unbegrenzt CPU | High | Budgetgrenze plus Pointer-/Stackprüfung implementiert und durch unverändertes Rot→Grün belegt |
 | TM-03 | TB2 | T,D | Stack `int.MaxValue` überläuft vor Allokation | High | Vorvalidierung `3..1_000_000` vor Addition/Allokation implementiert; CAPEC-100 |
 | TM-04 | TB4/TB5 | I | Exception legt interne Pfade/Stack offen | Medium | kontrollierte Diagnostics, keine Stack-Traces |
@@ -85,9 +85,10 @@ gilt für Build- und Review-Evidence, nicht für Benutzerkonten.
 ## Positive, Grenze, Negativ, Missbrauch / Test Classes
 
 - Positiv: haltendes Programm innerhalb Budget und gültigem Stack.
-- Grenze: genau `N` Instruktionen, Stack `3` und `1_000_000`.
+- Grenze: genau `N` Instruktionen, Stack `3` und `1_000_000`, Parser- und Blocktiefe genau `10`.
 - Negativ: Budget `0/-1`, Stack negativ, `0/1/2`, `1_000_001`, `int.MaxValue`.
-- Missbrauch: Endlosschleife, beschädigtes P-Code und Rücksprungrahmen,
+- Missbrauch: 10.000 Klammelebenen, Blockoption `int.MaxValue`, Endlosschleife,
+  beschädigtes P-Code und Rücksprungrahmen,
   `Int32.MinValue / -1`, Traversal/unerwartete HTTP-
   Methoden, manipuliertes Dependency-/Workflow-Artefakt.
 

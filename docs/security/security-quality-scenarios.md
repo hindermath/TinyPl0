@@ -35,6 +35,7 @@ publication, and clean three-platform consumption.*
 | QS-10 | geänderte API-Seite | DocFX | axe und Textbrowser bestehen | 0 Critical/Serious; verständliche lynx-Reihenfolge |
 | QS-11 | Build-/Testfehler | lokaler serialisierter Writer | sicher stoppen | kein falscher Pass, Version bleibt nachvollziehbar |
 | QS-12 | Recovery nach VM-Fehler | neuer Lauf | neuer isolierter Zustand | keine Diagnoseverdopplung im alten Step-State |
+| QS-13 | PL/0-Quelle überschreitet Syntax- oder Blocktiefe | Compiler, direkter Parser, CLI oder IDE | kontrollierter Abbruch vor weiterem rekursivem Abstieg | Tiefe 10 akzeptiert; Tiefe 11 genau einmal E36 beziehungsweise E32; 10.000 Klammern ohne Hostausbruch |
 
 ## Nicht anwendbar / Not applicable
 
