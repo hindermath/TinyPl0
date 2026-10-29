@@ -83,7 +83,7 @@ items:
       description: Selected language dialect.
     - id: MaxLevel
       type: System.Int32
-      description: Maximum block nesting depth.
+      description: Maximum block nesting depth, additionally capped at 10 by the parser.
     - id: MaxAddress
       type: System.Int32
       description: Maximum address/value for literals.
@@ -163,7 +163,7 @@ items:
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
-  summary: Maximum block nesting depth.
+  summary: Maximum block nesting depth, additionally capped at 10 by the parser.
   example: []
   syntax:
     content: public int MaxLevel { get; init; }

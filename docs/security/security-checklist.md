@@ -42,6 +42,8 @@ authorises OIDC only, and generates reproducible supply-chain evidence.*
 - [x] C# bleibt MSL; dies ersetzt keine I/O-, Ressourcen- oder API-Prüfung.
 - [x] Ganzzahlgrenzen schützen `StackSize + 1` vor Überlauf.
 - [x] Das Budget ist positiv und zählt Instruktionen statt Zeit.
+- [x] Parserrekursion endet bei Syntax- und Blocktiefe 11 kontrolliert mit E36
+  beziehungsweise E32; Hostoptionen können die harte Obergrenze 10 nicht umgehen.
 - [x] Batch/Step liefern kontrollierte Resultate statt Konfigurations-Exceptions.
 - [x] Öffentliche API erhält vollständige anwendbare XML-Dokumentation.
 - [x] SQL, Razor, Auth, CORS, Anti-Forgery und Produktkrypto sind in diesem

@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "1.1",
+  "feature": "parser-nesting-budget",
+  "entries": [
+    {
+      "changeId": "CHG214",
+      "scope": "Contain recursive parser nesting from untrusted PL/0 source",
+      "decision": "UpdateRequired",
+      "rationale": "The observable compiler contract now accepts syntax and lexical nesting through depth 10 and returns controlled diagnostics E36 or E32 at depth 11 instead of allowing host-stack exhaustion.",
+      "documents": [
+        "api/Pl0.Core.CompilerOptions.yml",
+        "docs/LANGUAGE_EBNF.md",
+        "docs/ARCHITECTURE.md",
+        "docs/nuget/TinyPl0.Core.README.md",
+        "docs/TRACEABILITY_MATRIX.md",
+        "docs/security/threat-model.md",
+        "docs/security/security-quality-scenarios.md",
+        "docs/security/security-checklist.md",
+        "docs/security/README.md",
+        "docs/architecture/adr/0003-parser-nesting-budget.md",
+        "tests/a11y/docfx-a11y.spec.mjs"
+      ],
+      "owner": "TinyPl0 repository maintainer",
+      "audiences": [
+        "Compiler host developers",
+        "CLI and IDE users",
+        "Security and release reviewers",
+        "Learners and teachers"
+      ],
+      "readerPaths": [
+        "Language EBNF to implementation limits and parser architecture",
+        "TinyPl0.Core package guidance to diagnostics and safe processing",
+        "Threat model to quality scenario, checklist, ADR, and executable regression evidence"
+      ],
+      "canonicalSource": "src/Pl0.Core/Pl0Parser.cs",
+      "navigationImpact": "ADR 0003 is added to the existing architecture path; language, package, traceability, and security pages are updated in place.",
+      "documentClass": "ActiveSemanticSecurityAndPackageGuidance",
+      "languageStrategy": "User-facing guidance remains German first and English second at CEFR B2; stable diagnostic and code identifiers remain language-neutral.",
+      "languagePartners": [],
+      "platformAndExampleProof": "Boundary tests cover expressions, begin, if, while, mixed nesting, direct parser use, lexical levels, malformed closure, German and English resources, and 10,000 hostile parentheses on .NET 10.",
+      "distributionClass": "sourceOnly",
+      "homeSyncRequired": false,
+      "evidence": "docs/documentation-impact/parser-nesting-budget.json",
+      "risk": "Low after focused and full regression gates; increasing the fixed ceiling would require cross-platform stack evidence.",
+      "criticality": "Security",
+      "reevaluationTrigger": "A change to recursive grammar productions, parser recovery, block-level semantics, public compiler options, diagnostics, localization, CLI/IDE presentation, or supported runtime architecture."
+    }
+  ]
+}

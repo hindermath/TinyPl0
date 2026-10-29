@@ -114,6 +114,9 @@
   <data name="Parser_E35_ProgramTooLong" xml:space="preserve">
     <value>Program too long (max {0} instructions).</value>
   </data>
+  <data name="Parser_E36_SyntaxNestingTooDeep" xml:space="preserve">
+    <value>Maximum syntax nesting depth of 10 exceeded.</value>
+  </data>
   <data name="Parser_E98_UnexpectedEndOfInput" xml:space="preserve">
     <value>Program incomplete: unexpected end of input.</value>
   </data>

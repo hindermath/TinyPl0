@@ -6,7 +6,7 @@ namespace Pl0.Core;
 /// Compiler configuration limits and language dialect selection.
 /// </summary>
 /// <param name="Dialect">Selected language dialect.</param>
-/// <param name="MaxLevel">Maximum block nesting depth.</param>
+/// <param name="MaxLevel">Maximum block nesting depth, additionally capped at 10 by the parser.</param>
 /// <param name="MaxAddress">Maximum address/value for literals.</param>
 /// <param name="MaxIdentifierLength">Maximum identifier length.</param>
 /// <param name="MaxNumberDigits">Maximum digits in numeric literals.</param>

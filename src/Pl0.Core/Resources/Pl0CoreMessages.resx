@@ -114,6 +114,9 @@
   <data name="Parser_E35_ProgramTooLong" xml:space="preserve">
     <value>Programm zu lang (max {0} Befehle).</value>
   </data>
+  <data name="Parser_E36_SyntaxNestingTooDeep" xml:space="preserve">
+    <value>Maximale Syntaxverschachtelungstiefe von 10 überschritten.</value>
+  </data>
   <data name="Parser_E98_UnexpectedEndOfInput" xml:space="preserve">
     <value>Programm unvollständig: unerwartetes Eingabeende.</value>
   </data>

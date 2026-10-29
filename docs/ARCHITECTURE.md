@@ -41,6 +41,26 @@ flowchart LR
 - `Classic`: ohne `?`/`!`, nahe am Pascal-Vorbild.
 - `Extended`: mit `? ident` und `! expression`.
 
+## Parser-Ressourcenvertrag / Parser Resource Contract
+
+Deutsch: `Pl0Parser` schützt alle öffentlichen Zugänge – direkte Parser-Nutzer,
+`Pl0Compiler`, CLI und IDE – an der eigentlichen rekursiven Grammatikgrenze.
+Gleichzeitig aktive strukturierte Anweisungen und Klammerausdrücke sind bis
+Tiefe `10` zulässig. Tiefe `11` stoppt fail-closed mit E36, ohne den CLR-
+Hoststack auszuschöpfen. Prozedurblöcke behalten `MaxLevel = 3` als historischen
+Standard und besitzen unabhängig von Hostoptionen die harte Obergrenze `10`;
+E32 stoppt den Blockabstieg. Partielle Instruktionen dürfen bei Diagnosen nicht
+ausgeführt werden.
+
+*English: `Pl0Parser` protects every public entry point—direct parser users,
+`Pl0Compiler`, the CLI, and the IDE—at the recursive grammar boundary itself.
+Simultaneously active structured statements and parenthesized expressions are
+accepted through depth `10`; depth `11` stops fail-closed with E36 before the
+CLR host stack can be exhausted. Procedure blocks retain historical
+`MaxLevel = 3` and have a hard ceiling of `10` regardless of host options; E32
+stops further block descent. Partial instructions must not be executed when a
+diagnostic is present.*
+
 ## VM-Ressourcenpolicy / VM Resource Policy
 
 Deutsch: Die VM validiert ein positives Instruktionsbudget und eine Stackgröße
