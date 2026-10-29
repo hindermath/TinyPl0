@@ -164,6 +164,14 @@
       "labelEn": "Feature 032 linked intake evidence",
       "netLines": 1323,
       "activeDays": 1
+    },
+    {
+      "slot": 22,
+      "id": "storage-checkonly-make-safety",
+      "labelDe": "Storage-Check-only-Make-Härtung",
+      "labelEn": "Storage check-only Make hardening",
+      "netLines": 187,
+      "activeDays": 1
     }
   ],
   "excludedPaths": [
