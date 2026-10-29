@@ -117,6 +117,38 @@ public sealed class SteppableVirtualMachineTests
     }
 
     [Fact]
+    public void Step_On_Corrupted_Return_Frame_Is_Terminal_And_Preserves_PreDispatch_State()
+    {
+        var vm = new SteppableVirtualMachine();
+        vm.Initialize(
+        [
+            new Instruction(Opcode.Cal, 0, 2),
+            new Instruction(Opcode.Opr, 0, 0),
+            new Instruction(Opcode.Lit, 0, -100),
+            new Instruction(Opcode.Sto, 0, 1),
+            new Instruction(Opcode.Opr, 0, 0)
+        ]);
+
+        _ = vm.Step();
+        _ = vm.Step();
+        _ = vm.Step();
+        VmState stateBeforeError = vm.State;
+        int[] stackBeforeError = stateBeforeError.Stack.ToArray();
+
+        VmStepResult errorStep = vm.Step();
+        VmStepResult repeated = vm.Step();
+
+        Assert.Equal(VmStepStatus.Error, errorStep.Status);
+        Assert.Equal(VmCompletionReason.StackFault, errorStep.Reason);
+        Assert.Equal(99, Assert.Single(errorStep.Diagnostics).Code);
+        Assert.Equal(stateBeforeError.P, errorStep.State.P);
+        Assert.Equal(stateBeforeError.B, errorStep.State.B);
+        Assert.Equal(stateBeforeError.T, errorStep.State.T);
+        Assert.Equal(stackBeforeError, errorStep.State.Stack);
+        Assert.Same(errorStep, repeated);
+    }
+
+    [Fact]
     public void Step_Executes_Compiled_Input_Procedure_Loop_And_Output_Program()
     {
         const string source = """

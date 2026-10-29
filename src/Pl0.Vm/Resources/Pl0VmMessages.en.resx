@@ -36,6 +36,9 @@
   <data name="Vm_E99_InvalidBasePointer" xml:space="preserve">
     <value>Invalid base pointer while resolving level: {0}.</value>
   </data>
+  <data name="Vm_E99_InvalidReturnFrame" xml:space="preserve">
+    <value>Invalid call frame during return: base pointer {0}.</value>
+  </data>
   <data name="Vm_E99_StackOverflow" xml:space="preserve">
     <value>Stack overflow.</value>
   </data>

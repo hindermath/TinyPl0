@@ -28,17 +28,19 @@ Der Test validiert:
 | Stack `3..1_000_000`, Budget `>0`, Prüfung vor Allokation | `VirtualMachineTests.Invalid_Options_*` | `SteppableVirtualMachineTests.Invalid_Options_*` | `VM-CONFIGURATION-GATE-001`, Diagnosen 207/208 |
 | Vier-Parameter-Quellkompatibilität und DE/EN | `L10nTests.VirtualMachineOptions_Four_Parameter_*` | gleicher öffentlicher Optionsvertrag / same public options contract | `L10nTests.Vm_Instruction_Budget_*` |
 | `Int32.MinValue / -1` bleibt innerhalb der VM-Grenze | `VirtualMachineTests.*Signed_Division_Overflow_*` | `SteppableVirtualMachineTests.Step_On_Signed_Division_Overflow_*` | Direkt-, Compiler-/I/O-, Paritäts-, Serializer-, Lokalisierungs- und Positivkontrolltests; Diagnose 212 |
+| Beschädigter Nicht-Root-Rücksprungrahmen bleibt innerhalb der VM-Grenze | `VmExecutionBoundaryTests.Corrupted_Return_Frames_*` | `SteppableVirtualMachineTests.Step_On_Corrupted_Return_Frame_*` | STO- und Push-Korruption, Parität, mnemonic/numerischer Serializer, DE/EN/Fallback, Root- und Rücksprungkontrollen; Diagnose 99 |
 
 Deutsch: Die Härtung ändert keine Opcode-, OPR- oder PL/0-Semantik und keine
-Golden-Datei. Die drei Testdateien bilden Budget, Optionsgrenzen, Batch-/Step-
-Parität, kontrollierte Ganzzahldivision, Diagnose und den bisherigen
-Vier-Parameter-Aufruf ab. Die vollständige
+Golden-Datei. Die sechs betroffenen Testdateien bilden Budget, Optionsgrenzen,
+Batch-/Step-Parität, kontrollierte Ganzzahldivision und Rücksprungrahmen,
+Diagnosen sowie den bisherigen Vier-Parameter-Aufruf ab. Die vollständige
 Katalog-, Golden- und Traceability-Suite bleibt dem späteren exakten
 Kandidaten-HEAD vorbehalten.
 
 English: The hardening changes no opcode, OPR, PL/0, or golden semantics. The
 six affected test files cover the budget, option limits, batch/step parity,
-controlled integer division, diagnostics, and the existing four-parameter call. The complete catalogue,
+controlled integer division and return-frame validation, diagnostics, and the
+existing four-parameter call. The complete catalogue,
 golden, and traceability suite remains reserved for the later exact candidate
 HEAD.
 

@@ -19,6 +19,11 @@ Stackkopie pro sichtbarem Step zugunsten eines einfachen, sicheren Lehr-API.
 Arithmetische Randfälle werden deshalb ebenfalls hier kontrolliert: Die
 nicht darstellbare Division `Int32.MinValue / -1` endet vor einer
 Stackänderung mit Diagnose 212 statt mit einer CLR-Ausnahme.
+Dieselbe Grenze schützt Rücksprünge: Bei Nicht-Root-Rücksprungen liest OPR 0
+Rahmenzellen erst nach Indexprüfung, validiert den dynamischen Link und ändert
+`P`, `B` und `T` erst atomar nach erfolgreicher Prüfung. Der Root-Halt über `B=1` und
+Rücksprungadresse `0` bleibt auch dann kompatibel, wenn historisches P-Code die
+danach ungenutzte Link-Zelle als Operand verwendet hat.
 
 ## English
 
@@ -35,3 +40,8 @@ favour of a simple and safe teaching API.
 Arithmetic edge cases are therefore controlled here as well: the
 unrepresentable `Int32.MinValue / -1` division terminates before stack mutation
 with diagnostic 212 instead of a CLR exception.
+The same boundary protects returns: on non-root returns, OPR 0 reads frame
+cells only after index validation, validates the dynamic link, and changes
+`P`, `B`, and `T` atomically only after the complete check. The root halt through `B=1` and return address
+`0` remains compatible even when historical P-Code used the subsequently
+unused link cell as an operand.

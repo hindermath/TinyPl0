@@ -10,10 +10,12 @@
 | SQS-006-4 | nur eine Paket-ID öffentlich | Veröffentlichung blockiert | kein Push und sichtbarer Fehler |
 | SQS-006-5 | saubere Consumer-Maschine | Restore, Run und Step | drei OS, gleiche SemVer |
 | SQS-006-6 | P-Code dividiert `Int32.MinValue` durch `-1` | kontrollierter Rechenfehler ohne Zustandsmutation | Diagnose 212, Batch-/Step-Parität, kein CLR-Ausbruch |
+| SQS-006-7 | P-Code beschädigt dynamischen Link im Nicht-Root-Aufrufrahmen | kontrollierter Stackfehler vor Registermutation | Diagnose 99, Batch-/Step-/Serializer-Parität, kein CLR-Ausbruch |
 
 *English: These scenarios cover malformed P-Code, boundary cancellation, host
 I/O disclosure, controlled signed-division overflow without state mutation,
-partial publication, and clean three-platform consumption.*
+controlled non-root return-frame corruption without state mutation, partial
+publication, and clean three-platform consumption.*
 
 **Feature**: `004-secure-development-hardening`
 **Methode / Method**: iSAQB CPSA-F quality scenarios, arc42

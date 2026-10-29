@@ -88,6 +88,25 @@ represent before mutating the stack. Both cases terminate as controlled
 `ArithmeticFault` results; no CLR exception escapes the VM boundary. All other
 quotients retain C# truncation-towards-zero semantics.*
 
+OPR 0 prüft vor einer Registeränderung den aktuellen Aufrufrahmen, die
+Rücksprungadresse und den wiederherzustellenden dynamischen Link. Die
+Root-Sentinel-Kombination `B=1` mit Rücksprungadresse `0` beendet regulär;
+der danach nicht mehr dereferenzierte Link bleibt mit historischem,
+handgeschriebenem P-Code kompatibel. Beschädigte Nicht-Root-Rahmen enden als
+`StackFault` mit Diagnose 99; Batch und Step geben keine CLR-Indexausnahme an
+den Host weiter. Eine außerhalb des Programms liegende, aber ansonsten
+lesbare Rücksprungadresse bleibt wie bisher ein kontrollierter `RuntimeFault`
+an der nächsten Instruktionsgrenze.
+
+*OPR 0 validates the current call frame, return address, and restored dynamic
+link before mutating registers. The root-sentinel combination `B=1` with
+return address `0` halts normally; its link is no longer dereferenced and
+remains compatible with historical handwritten P-Code. Corrupted non-root
+frames end as a controlled `StackFault` with diagnostic 99; neither batch nor
+step exposes a CLR index exception to the host. A readable return address
+outside the program continues to become a controlled `RuntimeFault` at the
+next instruction boundary.*
+
 ## Ressourcenbudget und Optionsgrenzen / Resource Budget and Option Limits
 
 Deutsch: `VirtualMachineOptions` besitzt als letzten, optionalen Parameter

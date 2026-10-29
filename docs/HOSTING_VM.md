@@ -26,6 +26,13 @@ Division durch null, Code 212 die nicht darstellbare Division
 `Int32.MinValue / -1`. Beide liefern `VmCompletionReason.ArithmeticFault`, ohne
 eine CLR-Ausnahme oder Operandenwerte an den Host weiterzugeben.
 
+Auch manipulierte Aufrufrahmen bleiben innerhalb der VM-Grenze. Bei einem
+Nicht-Root-Rücksprung prüft `OPR 0` Rahmenzellen und dynamischen Link vor jeder
+Registeränderung. Ein ungültiger Nicht-Root-Rahmen liefert
+`VmCompletionReason.StackFault` mit Diagnose 99; ein
+Step-Host erhält weiterhin den letzten gültigen Zustand und wiederholte Steps
+bleiben idempotent.
+
 ## English
 
 Install TinyPl0.Core and TinyPl0.Vm at the same stable version. Core compiles
@@ -46,3 +53,8 @@ Arithmetic failures are structured as well: code 206 identifies division by
 zero and code 212 identifies the unrepresentable `Int32.MinValue / -1`
 division. Both return `VmCompletionReason.ArithmeticFault` without exposing a
 CLR exception or operand values to the host.
+Tampered call frames remain inside the VM boundary as well. `OPR 0` validates
+frame cells and the dynamic link before changing any register on a non-root
+return. An invalid non-root frame produces `VmCompletionReason.StackFault`
+with diagnostic 99; a
+step host keeps the last valid state and repeated steps remain idempotent.
