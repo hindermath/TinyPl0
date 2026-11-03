@@ -197,3 +197,14 @@ aufgerufen. Funktions- und Abnahmegrenzen bleiben unveraendert.
 final branch commit count. The manual build counter remains 94; no local
 product build or test was invoked. Feature and acceptance boundaries are retained.*
 <!-- dependabot-pr-119-version:end -->
+
+<!-- dependabot-pr-120-version:start -->
+171. Agent (2026-11-03): Dependabot-PR #120 wird mit den IDE-Versionsfeldern
+`1.120.759.94` an seinen finalen Branch-Commitzaehler gebunden. Der manuelle
+Buildzaehler bleibt bei 94; es wurde kein lokaler Produkt-Build oder Test
+aufgerufen. Funktions- und Abnahmegrenzen bleiben unveraendert.
+
+*Dependabot PR #120 aligns the IDE version fields to `1.120.759.94` and the
+final branch commit count. The manual build counter remains 94; no local
+product build or test was invoked. Feature and acceptance boundaries are retained.*
+<!-- dependabot-pr-120-version:end -->

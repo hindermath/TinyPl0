@@ -27,7 +27,7 @@
       ],
       "reevaluationTrigger": "Changed dependency paths, manifest, runtime or update policy",
       "risk": "Dependency compatibility requires technical checks; generated statistics are not product acceptance",
-      "scope": "Dependency maintenance PR hindermath/TinyPl0#119"
+      "scope": "Dependency maintenance PR hindermath/TinyPl0#120"
     },
     {
       "audiences": [
@@ -97,6 +97,6 @@
       "scope": "Current installed statistics context: project-statistics"
     }
   ],
-  "feature": "dependabot-pr-119-repair",
+  "feature": "dependabot-pr-120-repair",
   "schemaVersion": "1.1"
 }
