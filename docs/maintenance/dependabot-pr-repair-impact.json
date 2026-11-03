@@ -5,15 +5,13 @@
         "Maintainers",
         "AI agents"
       ],
-      "canonicalSource": "src/Pl0.Ide/Pl0.Ide.csproj",
+      "canonicalSource": ".github/DEPENDENCY-MAINTENANCE.md",
       "changeId": "CHG001",
       "criticality": "Normal",
-      "decision": "UpdateRequired",
+      "decision": "NoUpdateRequired",
       "distributionClass": "sourceOnly",
       "documentClass": "ActiveSemantic",
-      "documents": [
-        "docs/ide-worklog.md"
-      ],
+      "documents": [],
       "evidence": ".github/DEPENDENCY-MAINTENANCE.md",
       "homeSyncRequired": false,
       "languagePartners": [],
@@ -21,13 +19,13 @@
       "navigationImpact": "Existing maintenance and statistics entry points remain valid",
       "owner": "Repository Maintainer",
       "platformAndExampleProof": "macOS Bash renderer preview/update/check; exact staged validation, secret scan and exact-head hosted platform checks",
-      "rationale": " DE: IDE-Versionsfelder und Worklog vor dem Push an die Wartungs-PR binden. EN: IDE version fields follow the current maintenance PR and final branch commit count; no local product build or test was invoked.",
+      "rationale": "DE: Bestehende Versionspflege; keine neue Bedienung oder API. EN: Existing dependency maintenance; no new user workflow or API.",
       "readerPaths": [
         ".github/DEPENDENCY-MAINTENANCE.md -> dependency PR -> technical checks"
       ],
       "reevaluationTrigger": "Changed dependency paths, manifest, runtime or update policy",
       "risk": "Dependency compatibility requires technical checks; generated statistics are not product acceptance",
-      "scope": "Dependency maintenance PR hindermath/TinyPl0#116"
+      "scope": "Dependency maintenance PR hindermath/TinyPl0#119"
     },
     {
       "audiences": [
@@ -97,6 +95,6 @@
       "scope": "Current installed statistics context: project-statistics"
     }
   ],
-  "feature": "dependabot-pr-116-repair",
+  "feature": "dependabot-pr-119-repair",
   "schemaVersion": "1.1"
 }
