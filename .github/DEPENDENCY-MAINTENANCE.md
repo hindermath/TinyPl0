@@ -82,3 +82,17 @@ EN: Technical macOS checks use macos-15 because GitHub retired macos-14 on
 2 November 2026. Test coverage, permissions and SHA pins are retained.
 
 Quelle / Source: https://github.blog/changelog/2026-10-01-github-actions-macos-14-runner-image-retirement/
+
+## Terminal.Gui einzeln pruefen / Review Terminal.Gui separately
+
+DE: Terminal.Gui wird auch bei Minor- und Patch-Versionsupdates einzeln angeboten.
+Version 2.5 aendert die IDE-API und benoetigt eine eigene Migration mit Funktions-,
+Tastatur- und Barrierefreiheitsnachweisen. Der kompatible IDE-Stand 2.0 bleibt bis
+dahin erhalten; die vier anderen Updates aus PR #114 werden separat geliefert.
+Es gibt kein Versions-Ignore. Die Sicherheitsgruppe bleibt unveraendert aktiv.
+
+EN: Terminal.Gui version updates are offered individually even for minor and
+patch releases. Version 2.5 changes the IDE API and needs its own migration with
+functional, keyboard and accessibility evidence. The compatible 2.0 IDE baseline
+is retained meanwhile; the four other updates from PR #114 are delivered
+separately. No version is ignored. The security group remains active unchanged.
