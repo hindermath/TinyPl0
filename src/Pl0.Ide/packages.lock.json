@@ -271,7 +271,7 @@
       "TinyPl0.Vm": {
         "type": "Project",
         "dependencies": {
-          "TinyPl0.Core": "[0.4.0, )"
+          "TinyPl0.Core": "[0.4.1, )"
         }
       }
     }

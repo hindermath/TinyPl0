@@ -1,100 +1,103 @@
 {
-  "schemaVersion": "1.1",
   "entries": [
     {
-      "distributionClass": "sourceOnly",
-      "readerPaths": [
-        ".github/DEPENDENCY-MAINTENANCE.md -> dependency PR -> technical checks"
-      ],
-      "rationale": "DE: Bestehende Versionspflege; keine neue Bedienung oder API. EN: Existing dependency maintenance; no new user workflow or API.",
-      "decision": "NoUpdateRequired",
-      "navigationImpact": "Existing maintenance and statistics entry points remain valid",
-      "scope": "Dependency maintenance PR hindermath/TinyPl0#113",
-      "documentClass": "ActiveSemantic",
-      "criticality": "Normal",
-      "changeId": "CHG001",
-      "platformAndExampleProof": "macOS Bash renderer preview/update/check; exact staged validation, secret scan and exact-head hosted platform checks",
-      "languageStrategy": "German first, equivalent English",
-      "languagePartners": [],
-      "canonicalSource": ".github/DEPENDENCY-MAINTENANCE.md",
-      "documents": [],
-      "owner": "Repository Maintainer",
-      "reevaluationTrigger": "Changed dependency paths, manifest, runtime or update policy",
-      "homeSyncRequired": false,
-      "evidence": ".github/DEPENDENCY-MAINTENANCE.md",
       "audiences": [
         "Maintainers",
         "AI agents"
       ],
-      "risk": "Dependency compatibility requires technical checks; generated statistics are not product acceptance"
-    },
-    {
+      "canonicalSource": ".github/dependabot.yml",
+      "changeId": "CHG001",
+      "criticality": "Usage",
+      "decision": "UpdateRequired",
       "distributionClass": "sourceOnly",
+      "documentClass": "ActiveSemantic",
+      "documents": [
+        ".github/DEPENDENCY-MAINTENANCE.md",
+        "docs/ide-worklog.md"
+      ],
+      "evidence": ".github/DEPENDENCY-MAINTENANCE.md",
+      "homeSyncRequired": false,
+      "languagePartners": [],
+      "languageStrategy": "German first, equivalent English",
+      "navigationImpact": "Existing maintenance and statistics entry points remain valid",
+      "owner": "Repository Maintainer",
+      "platformAndExampleProof": "macOS Bash renderer preview/update/check; exact staged validation, secret scan and exact-head hosted platform checks",
+      "rationale": "DE: Den API-brechenden Terminal.Gui-Wechsel aus der Minor/Patch-Gruppe herausloesen und separat nach dem bestehenden Terminal.Gui-Reviewauftrag behandeln; Versions- und Sicherheitsupdates bleiben aktiv. EN: Separate the API-breaking Terminal.Gui update from the minor/patch group under the existing separate Terminal.Gui review scope; version and security updates remain enabled. DE: IDE-Versionsfelder und Worklog vor dem Push an die Wartungs-PR binden. EN: IDE version fields follow the current maintenance PR and final branch commit count; no local product build or test was invoked.",
       "readerPaths": [
         ".github/DEPENDENCY-MAINTENANCE.md -> dependency PR -> technical checks"
       ],
-      "rationale": "DE: Nachweise aus dem aktuellen committen Quellstand neu erzeugen. EN: Regenerate evidence from the current committed source.",
-      "decision": "GeneratedUpdate",
-      "navigationImpact": "Existing maintenance and statistics entry points remain valid",
-      "scope": "Restore current Profile 2 statistics after the dependency change",
-      "documentClass": "Generated",
+      "reevaluationTrigger": "Changed dependency paths, manifest, runtime or update policy",
+      "risk": "Dependency compatibility requires technical checks; generated statistics are not product acceptance",
+      "scope": "Dependency maintenance PR hindermath/TinyPl0#114"
+    },
+    {
+      "audiences": [
+        "Maintainers",
+        "AI agents"
+      ],
+      "canonicalSource": "docs/project-statistics.config.json",
+      "changeId": "CHG002",
       "criticality": "Normal",
+      "decision": "GeneratedUpdate",
+      "distributionClass": "sourceOnly",
+      "documentClass": "Generated",
+      "documents": [
+        "docs/project-statistics.md"
+      ],
+      "evidence": "docs/project-statistics.md",
       "generatedSource": {
         "path": "docs/project-statistics.config.json",
         "renderer": "bash scripts/render-project-statistics.sh --repo ."
       },
-      "changeId": "CHG002",
-      "platformAndExampleProof": "macOS Bash renderer preview/update/check; exact staged validation, secret scan and exact-head hosted platform checks",
-      "languageStrategy": "German first, equivalent English",
-      "languagePartners": [],
-      "canonicalSource": "docs/project-statistics.config.json",
-      "documents": [
-        "docs/project-statistics.md"
-      ],
-      "owner": "Repository Maintainer",
-      "reevaluationTrigger": "Changed dependency paths, manifest, runtime or update policy",
       "homeSyncRequired": false,
-      "evidence": "docs/project-statistics.md",
+      "languagePartners": [],
+      "languageStrategy": "German first, equivalent English",
+      "navigationImpact": "Existing maintenance and statistics entry points remain valid",
+      "owner": "Repository Maintainer",
+      "platformAndExampleProof": "macOS Bash renderer preview/update/check; exact staged validation, secret scan and exact-head hosted platform checks",
+      "rationale": "DE: Nachweise aus dem aktuellen committen Quellstand neu erzeugen. EN: Regenerate evidence from the current committed source.",
+      "readerPaths": [
+        ".github/DEPENDENCY-MAINTENANCE.md -> dependency PR -> technical checks"
+      ],
+      "reevaluationTrigger": "Changed dependency paths, manifest, runtime or update policy",
+      "risk": "Dependency compatibility requires technical checks; generated statistics are not product acceptance",
+      "scope": "Restore current Profile 2 statistics after the dependency change"
+    },
+    {
       "audiences": [
         "Maintainers",
         "AI agents"
       ],
-      "risk": "Dependency compatibility requires technical checks; generated statistics are not product acceptance"
-    },
-    {
-      "distributionClass": "sourceOnly",
-      "readerPaths": [
-        ".github/DEPENDENCY-MAINTENANCE.md -> dependency PR -> technical checks"
-      ],
-      "rationale": "DE: Aktiven Messkontext aktuell und reproduzierbar halten; historische Receipts bleiben unveraendert. EN: Keep the active context current and reproducible; historical receipts are retained.",
-      "decision": "GeneratedUpdate",
-      "navigationImpact": "Existing maintenance and statistics entry points remain valid",
-      "scope": "Current installed statistics context: project-statistics",
-      "documentClass": "Generated",
-      "criticality": "Normal",
-      "generatedSource": {
-        "path": "docs/project-statistics/config.json",
-        "renderer": "bash .specify/presets/project-statistics-governance/scripts/project-statistics.sh update --repo . --config docs/project-statistics/config.json"
-      },
-      "changeId": "CHG003",
-      "platformAndExampleProof": "macOS Bash renderer preview/update/check; exact staged validation, secret scan and exact-head hosted platform checks",
-      "languageStrategy": "Bilingual report; language-neutral JSON snapshot",
-      "languagePartners": [],
       "canonicalSource": "docs/project-statistics/config.json",
+      "changeId": "CHG003",
+      "criticality": "Normal",
+      "decision": "GeneratedUpdate",
+      "distributionClass": "sourceOnly",
+      "documentClass": "Generated",
       "documents": [
         "docs/project-statistics/report.md",
         "docs/project-statistics/snapshot.json"
       ],
-      "owner": "Repository Maintainer",
-      "reevaluationTrigger": "Changed dependency paths, manifest, runtime or update policy",
-      "homeSyncRequired": false,
       "evidence": "docs/project-statistics/report.md",
-      "audiences": [
-        "Maintainers",
-        "AI agents"
+      "generatedSource": {
+        "path": "docs/project-statistics/config.json",
+        "renderer": "bash .specify/presets/project-statistics-governance/scripts/project-statistics.sh update --repo . --config docs/project-statistics/config.json"
+      },
+      "homeSyncRequired": false,
+      "languagePartners": [],
+      "languageStrategy": "Bilingual report; language-neutral JSON snapshot",
+      "navigationImpact": "Existing maintenance and statistics entry points remain valid",
+      "owner": "Repository Maintainer",
+      "platformAndExampleProof": "macOS Bash renderer preview/update/check; exact staged validation, secret scan and exact-head hosted platform checks",
+      "rationale": "DE: Aktiven Messkontext aktuell und reproduzierbar halten; historische Receipts bleiben unveraendert. EN: Keep the active context current and reproducible; historical receipts are retained.",
+      "readerPaths": [
+        ".github/DEPENDENCY-MAINTENANCE.md -> dependency PR -> technical checks"
       ],
-      "risk": "Dependency compatibility requires technical checks; generated statistics are not product acceptance"
+      "reevaluationTrigger": "Changed dependency paths, manifest, runtime or update policy",
+      "risk": "Dependency compatibility requires technical checks; generated statistics are not product acceptance",
+      "scope": "Current installed statistics context: project-statistics"
     }
   ],
-  "feature": "dependabot-pr-113-repair"
+  "feature": "dependabot-pr-114-repair",
+  "schemaVersion": "1.1"
 }
