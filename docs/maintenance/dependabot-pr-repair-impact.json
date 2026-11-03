@@ -5,14 +5,13 @@
         "Maintainers",
         "AI agents"
       ],
-      "canonicalSource": ".github/dependabot.yml",
+      "canonicalSource": "src/Pl0.Ide/Pl0.Ide.csproj",
       "changeId": "CHG001",
-      "criticality": "Usage",
+      "criticality": "Normal",
       "decision": "UpdateRequired",
       "distributionClass": "sourceOnly",
       "documentClass": "ActiveSemantic",
       "documents": [
-        ".github/DEPENDENCY-MAINTENANCE.md",
         "docs/ide-worklog.md"
       ],
       "evidence": ".github/DEPENDENCY-MAINTENANCE.md",
@@ -22,13 +21,13 @@
       "navigationImpact": "Existing maintenance and statistics entry points remain valid",
       "owner": "Repository Maintainer",
       "platformAndExampleProof": "macOS Bash renderer preview/update/check; exact staged validation, secret scan and exact-head hosted platform checks",
-      "rationale": "DE: Den API-brechenden Terminal.Gui-Wechsel aus der Minor/Patch-Gruppe herausloesen und separat nach dem bestehenden Terminal.Gui-Reviewauftrag behandeln; Versions- und Sicherheitsupdates bleiben aktiv. EN: Separate the API-breaking Terminal.Gui update from the minor/patch group under the existing separate Terminal.Gui review scope; version and security updates remain enabled. DE: IDE-Versionsfelder und Worklog vor dem Push an die Wartungs-PR binden. EN: IDE version fields follow the current maintenance PR and final branch commit count; no local product build or test was invoked.",
+      "rationale": " DE: IDE-Versionsfelder und Worklog vor dem Push an die Wartungs-PR binden. EN: IDE version fields follow the current maintenance PR and final branch commit count; no local product build or test was invoked.",
       "readerPaths": [
         ".github/DEPENDENCY-MAINTENANCE.md -> dependency PR -> technical checks"
       ],
       "reevaluationTrigger": "Changed dependency paths, manifest, runtime or update policy",
       "risk": "Dependency compatibility requires technical checks; generated statistics are not product acceptance",
-      "scope": "Dependency maintenance PR hindermath/TinyPl0#114"
+      "scope": "Dependency maintenance PR hindermath/TinyPl0#115"
     },
     {
       "audiences": [
@@ -98,6 +97,6 @@
       "scope": "Current installed statistics context: project-statistics"
     }
   ],
-  "feature": "dependabot-pr-114-repair",
+  "feature": "dependabot-pr-115-repair",
   "schemaVersion": "1.1"
 }
