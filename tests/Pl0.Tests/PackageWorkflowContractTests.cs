@@ -26,7 +26,7 @@ public sealed class PackageWorkflowContractTests
             "googleapis/release-please-action@45996ed1f6d02564a971a2fa1b5860e934307cf7",
             "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
             "actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68",
-            "actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+            "actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
             "actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333",
             "NuGet/login@8d196754b4036150537f80ac539e15c2f1028841",
             "actions/attest@1e69f48acb82d1966a394da916b4c1698aa569d6"
