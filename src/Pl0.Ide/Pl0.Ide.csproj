@@ -14,9 +14,9 @@
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Version>1.121.780.94</Version>
-    <AssemblyVersion>1.121.780.94</AssemblyVersion>
-    <FileVersion>1.121.780.94</FileVersion>
+    <Version>1.123.790.94</Version>
+    <AssemblyVersion>1.123.790.94</AssemblyVersion>
+    <FileVersion>1.123.790.94</FileVersion>
     <InformationalVersion>$(Version)</InformationalVersion>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
