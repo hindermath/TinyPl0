@@ -10,14 +10,14 @@ Git-bound inventory and activity; not a measure of quality, learning performance
 | Kennzahl / Metric | Wert / Value |
 | --- | --- |
 | Textdateien / Text files | 2115 |
-| Textzeilen / Text lines | 295735 |
+| Textzeilen / Text lines | 295746 |
 | Aktivtage / Active days | 98 |
 | Stichtag / As of | 2026-11-03 |
 | Fensterbeginn / Window start | 2025-11-09 |
 | Zeitzone / Time zone | UTC |
 
 Quellrevision / Source revision:
-422d77a364722a4826828e248159ab812813cf31
+66d3c9cd94d2dad56427a1dfe35c77844f3c105d
 
 ### Artefakte / Artifacts
 
@@ -25,7 +25,7 @@ Quellrevision / Source revision:
 | --- | ---: | ---: |
 | Production | 70 | 7311 |
 | Tests | 163 | 15028 |
-| Documentation | 1272 | 163014 |
+| Documentation | 1272 | 163025 |
 | Scripts | 124 | 28434 |
 | Configuration | 289 | 77211 |
 | DataMedia | 0 | 0 |
@@ -158,7 +158,7 @@ Sa/Sa  0 0 1 0 0 3 0 4 4 0 4 2 0 4 0 4 0 3 4 2 0 0 0 0 0 -
 | 2026-09-20 | 1374 | 31 |
 | 2026-09-26 | 103 | 14 |
 | 2026-10-29 | 1436 | 110 |
-| 2026-11-03 | 618 | 334 |
+| 2026-11-03 | 749 | 454 |
 
 ### Abdeckung / Coverage
 
