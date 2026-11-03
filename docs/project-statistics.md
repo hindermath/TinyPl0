@@ -602,25 +602,25 @@ Profil 2 verwendet Git-getrackte Textdateien und sichtbare Git-Aktivitaet. Die W
 
 | Kennzahl / Metric | Wert / Value |
 |---|---:|
-| Textbasis / Text base | 295650 lines |
-| Textdateien / Text files | 2114 |
+| Textbasis / Text base | 295735 lines |
+| Textdateien / Text files | 2115 |
 | Beobachtbarer Zeitraum / Observable period | 2025-11-09..2026-11-03 |
 | Aktivtage / Active days | 101 |
-| Relevante Commits / Relevant commits | 408 |
-| Zeilen je Aktivtag / Lines per active day | 2927.2 |
+| Relevante Commits / Relevant commits | 410 |
+| Zeilen je Aktivtag / Lines per active day | 2928.1 |
 | Peak-Tag im Fenster / Peak day in window | 2026-02-14 / 177480 |
 | Peak-Woche im Fenster / Peak week in window | 2026-02-08 / 186065 |
 | Laengste Serie / Longest streak | 9 days |
 | Speedup vs. 80 lines/day | 36.6x |
 | Speedup vs. 125 lines/day | 23.4x |
-| Methodik / Methodology | v2; source `71ad129f93a5` |
+| Methodik / Methodology | v2; source `86a2b2a91b38` |
 
 ### Artefaktmix / Artifact Mix
 
 ```text
 Produktiv / Production          [#...................]   2.5% | 7311
-Tests                           [#...................]   5.1% | 15043
-Dokumentation / Documentation   [###########.........]  55.1% | 162914
+Tests                           [#...................]   5.1% | 15028
+Dokumentation / Documentation   [###########.........]  55.1% | 163014
 Skripte / Scripts               [##..................]   9.6% | 28434
 Konfiguration / Configuration   [#####...............]  26.1% | 77211
 Daten und Medien / Data and media [....................]   0.0% | 0
@@ -792,7 +792,7 @@ Die Faktoren vergleichen sichtbare Lieferdichte mit den dokumentierten manuellen
 Scale: 0..5000 lines/day
 Experienced manual [#...................] 80
 Thorsten solo      [#...................] 125
-Visible repository [############........] 2927.2
+Visible repository [############........] 2928.1
 ```
 
 Die gemeinsame Skala vergleicht Referenzen und sichtbare Lieferdichte. Sie schreibt die Git-Aktivitaet keiner Person oder KI pauschal zu.
@@ -818,6 +818,6 @@ DE: Das Fenster beginnt am 2025-11-09 und endet am 2026-11-03. Es enthaelt 101 a
 | 2026-08 | 55167 |
 | 2026-09 | 52288 |
 | 2026-10 | 1546 |
-| 2026-11 | 427 |
+| 2026-11 | 592 |
 
 <!-- project-statistics-v2:end -->
