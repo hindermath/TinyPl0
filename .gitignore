@@ -1278,3 +1278,8 @@ _site/
 .agents/*
 !.agents/skills/
 !.agents/skills/**
+
+# Versioned dependency maintenance configuration and documentation
+!/.github/dependabot.yml
+!/.github/DEPENDENCY-MAINTENANCE.md
+!/.github/dependency-maintenance-impact.json
