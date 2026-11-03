@@ -60,7 +60,7 @@ jobs:
             artifacts/packages/*.nupkg
             artifacts/packages/*.snupkg
       - name: Upload immutable release set
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
           name: nuget-release-${{ needs.release-please.outputs.version }}
           path: |
@@ -297,7 +297,7 @@ jobs:
           dotnet restore (Join-Path $root 'public-consumer.csproj') --source https://api.nuget.org/v3/index.json --packages $packages --no-cache
           dotnet run --project (Join-Path $root 'public-consumer.csproj') --configuration Release
       - name: Upload final evidence
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
           name: nuget-public-evidence-${{ inputs.verify_version || needs.release-please.outputs.version }}
           path: artifacts
