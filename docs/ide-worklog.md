@@ -298,5 +298,5 @@ when the repository root cannot be resolved. Delegated Git fetches are bound
 explicitly to `origin`. `CompilerOptions` retains its published nine-parameter
 constructor and nine-value deconstruction while keeping resource limits as init
 properties. The editor binary-searches sorted highlight spans, and the test
-project pins `Microsoft.Build.Tasks.Git` 10.0.303. Version `1.124.802.101`
+project pins `Microsoft.Build.Tasks.Git` 10.0.303. Version `1.124.805.101`
 records two further test runs; no release was created.*
