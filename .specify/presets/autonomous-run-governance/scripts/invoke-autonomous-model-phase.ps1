@@ -102,6 +102,14 @@ function Assert-AMRCondition {
     }
 }
 
+function Test-AMRSafePathSegment {
+    param([Parameter(Mandatory)][string] $Value)
+
+    # Phasen-IDs werden als Dateinamen verwendet und duerfen kein Verzeichnis waehlen.
+    # Phase IDs become file names and must not select a directory.
+    return $Value -match '^[A-Za-z0-9][A-Za-z0-9._-]*$'
+}
+
 function Read-AMRJson {
     param([Parameter(Mandatory)][string] $Path)
 
@@ -198,7 +206,8 @@ function Get-AMRPhase {
     foreach ($phase in @($StateData.routing.phases)) {
         Assert-AMRCondition ($phase -is [hashtable]) 'Jede Routing-Phase muss ein Objekt sein.'
         $currentId = [string] $phase.phaseId
-        Assert-AMRCondition (-not [string]::IsNullOrWhiteSpace($currentId)) 'Routing phaseId fehlt.'
+        Assert-AMRCondition (Test-AMRSafePathSegment $currentId) `
+            'Routing phaseId muss ein einzelnes sicheres Pfadsegment sein.'
         Assert-AMRCondition ($phaseIds.Add($currentId)) "Doppelte routing phaseId: $currentId"
         Assert-AMRCondition (-not [string]::IsNullOrWhiteSpace([string] $phase.command)) "Routing command fehlt: $currentId"
         Assert-AMRCondition ($script:AllowedRoles -contains [string] $phase.routingRole) "Ungueltige routingRole: $currentId"
@@ -364,6 +373,9 @@ function Write-AMRStatus {
 
 $statePath = [IO.Path]::GetFullPath($State)
 $stateData = Read-AMRJson $statePath
+$parsedRunId = [guid]::Empty
+Assert-AMRCondition ([guid]::TryParseExact([string] $stateData.runId, 'D', [ref] $parsedRunId) -and
+    $parsedRunId -ne [guid]::Empty) 'State.runId muss eine nichtleere UUID im kanonischen Format sein.'
 $repositoryRoot = Get-AMRRepositoryRoot $statePath
 if ([string]::IsNullOrWhiteSpace($RoutingRoot)) {
     $RoutingRoot = Join-Path $repositoryRoot '.specify/presets'

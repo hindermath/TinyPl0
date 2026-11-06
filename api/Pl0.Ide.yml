@@ -25,6 +25,7 @@ items:
   - Pl0.Ide.PhysicalIdeFileStorage
   - Pl0.Ide.Pl0HighlightKind
   - Pl0.Ide.Pl0SourceEditorView
+  - Pl0.Ide.Pl0SourceEditorView.HighlightSpan
   - Pl0.Ide.Pl0SourceFormatter
   - Pl0.Ide.Pl0SourceFormatter.ProcedureFrame
   - Pl0.Ide.Program
@@ -229,6 +230,28 @@ references:
   name: Pl0SourceEditorView
   nameWithType: Pl0SourceEditorView
   fullName: Pl0.Ide.Pl0SourceEditorView
+- uid: Pl0.Ide.Pl0SourceEditorView.HighlightSpan
+  commentId: T:Pl0.Ide.Pl0SourceEditorView.HighlightSpan
+  href: Pl0.Ide.Pl0SourceEditorView.html
+  name: Pl0SourceEditorView.HighlightSpan
+  nameWithType: Pl0SourceEditorView.HighlightSpan
+  fullName: Pl0.Ide.Pl0SourceEditorView.HighlightSpan
+  spec.csharp:
+  - uid: Pl0.Ide.Pl0SourceEditorView
+    name: Pl0SourceEditorView
+    href: Pl0.Ide.Pl0SourceEditorView.html
+  - name: .
+  - uid: Pl0.Ide.Pl0SourceEditorView.HighlightSpan
+    name: HighlightSpan
+    href: Pl0.Ide.Pl0SourceEditorView.HighlightSpan.html
+  spec.vb:
+  - uid: Pl0.Ide.Pl0SourceEditorView
+    name: Pl0SourceEditorView
+    href: Pl0.Ide.Pl0SourceEditorView.html
+  - name: .
+  - uid: Pl0.Ide.Pl0SourceEditorView.HighlightSpan
+    name: HighlightSpan
+    href: Pl0.Ide.Pl0SourceEditorView.HighlightSpan.html
 - uid: Pl0.Ide.Pl0SourceFormatter
   commentId: T:Pl0.Ide.Pl0SourceFormatter
   href: Pl0.Ide.Pl0SourceFormatter.html

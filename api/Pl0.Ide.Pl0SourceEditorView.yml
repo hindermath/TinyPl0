@@ -8,6 +8,7 @@ items:
   - Pl0.Ide.Pl0SourceEditorView.#ctor(Pl0.Core.CompilerOptions)
   - Pl0.Ide.Pl0SourceEditorView.ClassifyToken(Pl0.Core.TokenKind)
   - Pl0.Ide.Pl0SourceEditorView.GetHighlightKindAt(System.Int32,System.Int32)
+  - Pl0.Ide.Pl0SourceEditorView.MaximumHighlightedSourceLength
   - Pl0.Ide.Pl0SourceEditorView.OnDrawNormalColor(System.Collections.Generic.List{Terminal.Gui.Cell},System.Int32,System.Int32)
   - Pl0.Ide.Pl0SourceEditorView.RebuildHighlightMap
   - Pl0.Ide.Pl0SourceEditorView.compilerOptions
@@ -22,7 +23,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/Pl0SourceEditorView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: Pl0SourceEditorView
     path: src/Pl0.Ide/Pl0SourceEditorView.cs
@@ -286,6 +287,33 @@ items:
   - System.Object.GetHashCode
   - System.Object.GetType
   - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: Pl0.Ide.Pl0SourceEditorView.MaximumHighlightedSourceLength
+  commentId: F:Pl0.Ide.Pl0SourceEditorView.MaximumHighlightedSourceLength
+  id: MaximumHighlightedSourceLength
+  parent: Pl0.Ide.Pl0SourceEditorView
+  langs:
+  - csharp
+  - vb
+  name: MaximumHighlightedSourceLength
+  nameWithType: Pl0SourceEditorView.MaximumHighlightedSourceLength
+  fullName: Pl0.Ide.Pl0SourceEditorView.MaximumHighlightedSourceLength
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Ide/Pl0SourceEditorView.cs
+      branch: codex/security-scan-remediation-23
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: MaximumHighlightedSourceLength
+    path: src/Pl0.Ide/Pl0SourceEditorView.cs
+    startLine: 15
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: private const int MaximumHighlightedSourceLength = 200000
+    return:
+      type: System.Int32
+    content.vb: Private Const MaximumHighlightedSourceLength As Integer = 200000
 - uid: Pl0.Ide.Pl0SourceEditorView.compilerOptions
   commentId: F:Pl0.Ide.Pl0SourceEditorView.compilerOptions
   id: compilerOptions
@@ -300,11 +328,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/Pl0SourceEditorView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: compilerOptions
     path: src/Pl0.Ide/Pl0SourceEditorView.cs
-    startLine: 15
+    startLine: 16
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -327,19 +355,19 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/Pl0SourceEditorView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: highlightMap
     path: src/Pl0.Ide/Pl0SourceEditorView.cs
-    startLine: 16
+    startLine: 17
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
   syntax:
-    content: private Dictionary<int, Dictionary<int, Pl0HighlightKind>> highlightMap
+    content: private Dictionary<int, List<Pl0SourceEditorView.HighlightSpan>> highlightMap
     return:
-      type: System.Collections.Generic.Dictionary{System.Int32,System.Collections.Generic.Dictionary{System.Int32,Pl0.Ide.Pl0HighlightKind}}
-    content.vb: Private highlightMap As Dictionary(Of Integer, Dictionary(Of Integer, Pl0HighlightKind))
+      type: System.Collections.Generic.Dictionary{System.Int32,System.Collections.Generic.List{Pl0.Ide.Pl0SourceEditorView.HighlightSpan}}
+    content.vb: Private highlightMap As Dictionary(Of Integer, List(Of Pl0SourceEditorView.HighlightSpan))
 - uid: Pl0.Ide.Pl0SourceEditorView.#ctor(Pl0.Core.CompilerOptions)
   commentId: M:Pl0.Ide.Pl0SourceEditorView.#ctor(Pl0.Core.CompilerOptions)
   id: '#ctor(Pl0.Core.CompilerOptions)'
@@ -354,11 +382,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/Pl0SourceEditorView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: .ctor
     path: src/Pl0.Ide/Pl0SourceEditorView.cs
-    startLine: 18
+    startLine: 19
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -386,11 +414,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/Pl0SourceEditorView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: GetHighlightKindAt
     path: src/Pl0.Ide/Pl0SourceEditorView.cs
-    startLine: 32
+    startLine: 33
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -422,11 +450,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/Pl0SourceEditorView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: OnDrawNormalColor
     path: src/Pl0.Ide/Pl0SourceEditorView.cs
-    startLine: 44
+    startLine: 64
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -469,11 +497,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/Pl0SourceEditorView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: RebuildHighlightMap
     path: src/Pl0.Ide/Pl0SourceEditorView.cs
-    startLine: 65
+    startLine: 85
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -495,11 +523,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/Pl0SourceEditorView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: ClassifyToken
     path: src/Pl0.Ide/Pl0SourceEditorView.cs
-    startLine: 99
+    startLine: 132
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -4950,6 +4978,17 @@ references:
   - name: " "
   - name: TBindingType
   - name: )
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
 - uid: Pl0.Core.CompilerOptions
   commentId: T:Pl0.Core.CompilerOptions
   parent: Pl0.Core
@@ -4979,17 +5018,17 @@ references:
   - uid: Pl0.Core
     name: Core
     href: Pl0.Core.html
-- uid: System.Collections.Generic.Dictionary{System.Int32,System.Collections.Generic.Dictionary{System.Int32,Pl0.Ide.Pl0HighlightKind}}
-  commentId: T:System.Collections.Generic.Dictionary{System.Int32,System.Collections.Generic.Dictionary{System.Int32,Pl0.Ide.Pl0HighlightKind}}
+- uid: System.Collections.Generic.Dictionary{System.Int32,System.Collections.Generic.List{Pl0.Ide.Pl0SourceEditorView.HighlightSpan}}
+  commentId: T:System.Collections.Generic.Dictionary{System.Int32,System.Collections.Generic.List{Pl0.Ide.Pl0SourceEditorView.HighlightSpan}}
   parent: System.Collections.Generic
   definition: System.Collections.Generic.Dictionary`2
   href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
-  name: Dictionary<int, Dictionary<int, Pl0HighlightKind>>
-  nameWithType: Dictionary<int, Dictionary<int, Pl0HighlightKind>>
-  fullName: System.Collections.Generic.Dictionary<int, System.Collections.Generic.Dictionary<int, Pl0.Ide.Pl0HighlightKind>>
-  nameWithType.vb: Dictionary(Of Integer, Dictionary(Of Integer, Pl0HighlightKind))
-  fullName.vb: System.Collections.Generic.Dictionary(Of Integer, System.Collections.Generic.Dictionary(Of Integer, Pl0.Ide.Pl0HighlightKind))
-  name.vb: Dictionary(Of Integer, Dictionary(Of Integer, Pl0HighlightKind))
+  name: Dictionary<int, List<Pl0SourceEditorView.HighlightSpan>>
+  nameWithType: Dictionary<int, List<Pl0SourceEditorView.HighlightSpan>>
+  fullName: System.Collections.Generic.Dictionary<int, System.Collections.Generic.List<Pl0.Ide.Pl0SourceEditorView.HighlightSpan>>
+  nameWithType.vb: Dictionary(Of Integer, List(Of Pl0SourceEditorView.HighlightSpan))
+  fullName.vb: System.Collections.Generic.Dictionary(Of Integer, System.Collections.Generic.List(Of Pl0.Ide.Pl0SourceEditorView.HighlightSpan))
+  name.vb: Dictionary(Of Integer, List(Of Pl0SourceEditorView.HighlightSpan))
   spec.csharp:
   - uid: System.Collections.Generic.Dictionary`2
     name: Dictionary
@@ -5002,20 +5041,18 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.int32
   - name: ','
   - name: " "
-  - uid: System.Collections.Generic.Dictionary`2
-    name: Dictionary
+  - uid: System.Collections.Generic.List`1
+    name: List
     isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
   - name: <
-  - uid: System.Int32
-    name: int
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.int32
-  - name: ','
-  - name: " "
-  - uid: Pl0.Ide.Pl0HighlightKind
-    name: Pl0HighlightKind
-    href: Pl0.Ide.Pl0HighlightKind.html
+  - uid: Pl0.Ide.Pl0SourceEditorView
+    name: Pl0SourceEditorView
+    href: Pl0.Ide.Pl0SourceEditorView.html
+  - name: .
+  - uid: Pl0.Ide.Pl0SourceEditorView.HighlightSpan
+    name: HighlightSpan
+    href: Pl0.Ide.Pl0SourceEditorView.HighlightSpan.html
   - name: '>'
   - name: '>'
   spec.vb:
@@ -5032,22 +5069,20 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.int32
   - name: ','
   - name: " "
-  - uid: System.Collections.Generic.Dictionary`2
-    name: Dictionary
+  - uid: System.Collections.Generic.List`1
+    name: List
     isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
   - name: (
   - name: Of
   - name: " "
-  - uid: System.Int32
-    name: Integer
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.int32
-  - name: ','
-  - name: " "
-  - uid: Pl0.Ide.Pl0HighlightKind
-    name: Pl0HighlightKind
-    href: Pl0.Ide.Pl0HighlightKind.html
+  - uid: Pl0.Ide.Pl0SourceEditorView
+    name: Pl0SourceEditorView
+    href: Pl0.Ide.Pl0SourceEditorView.html
+  - name: .
+  - uid: Pl0.Ide.Pl0SourceEditorView.HighlightSpan
+    name: HighlightSpan
+    href: Pl0.Ide.Pl0SourceEditorView.HighlightSpan.html
   - name: )
   - name: )
 - uid: System.Collections.Generic.Dictionary`2
@@ -5136,17 +5171,6 @@ references:
   name: GetHighlightKindAt
   nameWithType: Pl0SourceEditorView.GetHighlightKindAt
   fullName: Pl0.Ide.Pl0SourceEditorView.GetHighlightKindAt
-- uid: System.Int32
-  commentId: T:System.Int32
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.int32
-  name: int
-  nameWithType: int
-  fullName: int
-  nameWithType.vb: Integer
-  fullName.vb: Integer
-  name.vb: Integer
 - uid: Pl0.Ide.Pl0HighlightKind
   commentId: T:Pl0.Ide.Pl0HighlightKind
   parent: Pl0.Ide

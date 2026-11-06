@@ -150,6 +150,22 @@ try {
         -RunnerConfig $runnerConfig -RoutingRoot $allPresetRoot *> $null
     Assert-RoutingTest ($LASTEXITCODE -ne 0) 'Role drift was accepted'
 
+    $unsafeRunIdPath = Join-Path $featureDirectory 'unsafe-run-id-state.json'
+    $unsafeRunIdState = Get-Content -LiteralPath $statePath -Raw | ConvertFrom-Json -AsHashtable
+    $unsafeRunIdState.runId = '../../outside'
+    Write-RoutingJson $unsafeRunIdPath $unsafeRunIdState
+    & pwsh -NoProfile -File $runner -Action Validate -State $unsafeRunIdPath `
+        -RunnerConfig $runnerConfig -RoutingRoot $allPresetRoot *> $null
+    Assert-RoutingTest ($LASTEXITCODE -ne 0) 'Traversing runId was accepted'
+
+    $unsafePhaseIdPath = Join-Path $featureDirectory 'unsafe-phase-id-state.json'
+    $unsafePhaseIdState = Get-Content -LiteralPath $statePath -Raw | ConvertFrom-Json -AsHashtable
+    $unsafePhaseIdState.routing.phases[0].phaseId = '../outside'
+    Write-RoutingJson $unsafePhaseIdPath $unsafePhaseIdState
+    & pwsh -NoProfile -File $runner -Action Validate -State $unsafePhaseIdPath `
+        -RunnerConfig $runnerConfig -RoutingRoot $allPresetRoot *> $null
+    Assert-RoutingTest ($LASTEXITCODE -ne 0) 'Traversing phaseId was accepted'
+
     $scriptOnlyStatePath = Join-Path $featureDirectory 'script-only-state.json'
     $scriptOnlyState = Get-Content -LiteralPath $statePath -Raw | ConvertFrom-Json -AsHashtable
     $scriptOnlyState.routing.phases = @(
@@ -168,7 +184,7 @@ try {
     Assert-RoutingTest ($LASTEXITCODE -ne 0) 'script-only command was started through a model runner'
 
     $routingFiles = @(Get-ChildItem -LiteralPath $allPresetRoot -Filter 'model-routing.json' -File -Recurse)
-    Assert-RoutingTest ($routingFiles.Count -eq 12) 'The active managed profile must provide exactly twelve routing files'
+    Assert-RoutingTest ($routingFiles.Count -eq 13) 'The active managed profile must provide exactly thirteen routing files'
     $roleRank = @{
         'script-only' = 0
         'fast-mechanical' = 10

@@ -78,13 +78,6 @@ $OPT_JSON && OPT_VERBOSE=false
 TARGET_DIR="${TARGET_DIR/#\~/$HOME}"
 TARGET_DIR="${TARGET_DIR%/}"
 
-# ─── Prerequisites Check ─────────────────────────────────────────────────────
-
-if ! command -v rg >/dev/null 2>&1; then
-  echo "FATAL: ripgrep (rg) not found — install with: brew install ripgrep / apt install ripgrep" >&2
-  exit 2
-fi
-
 # ─── Apply-Patch Mode ────────────────────────────────────────────────────────
 
 if [ -n "$OPT_APPLY_PATCH" ]; then
@@ -110,11 +103,36 @@ if [ -n "$OPT_APPLY_PATCH" ]; then
   if echo "$answer" | grep -qiE '^[jy]'; then
     patch_count=0
     target_file=""
+    resolved_target_root="$(cd "$TARGET_DIR" 2>/dev/null && pwd -P)" || {
+      echo "FATAL: selected repository is unavailable: $TARGET_DIR" >&2
+      exit 2
+    }
+    [ -n "$resolved_target_root" ] || {
+      echo "FATAL: selected repository could not be resolved: $TARGET_DIR" >&2
+      exit 2
+    }
     while IFS= read -r pline; do
       case "$pline" in
         "### Target: "*)
-          target_file="${pline#### Target: }"
-          target_file="${target_file/#\~/$HOME}" ;;
+          target_file="${pline#"### Target: "}"
+          target_file="${target_file/#\~/$HOME}"
+          case "$target_file" in
+            /*) ;;
+            *) target_file="$resolved_target_root/$target_file" ;;
+          esac
+          target_parent="$(cd "$(dirname "$target_file")" 2>/dev/null && pwd -P)" || {
+            echo "FATAL: patch target parent is unavailable: $target_file" >&2
+            exit 2
+          }
+          target_file="$target_parent/$(basename "$target_file")"
+          case "$target_file" in
+            "$resolved_target_root"/*) ;;
+            *) echo "FATAL: patch target escapes selected repository: $target_file" >&2; exit 2 ;;
+          esac
+          [ ! -L "$target_file" ] || {
+            echo "FATAL: patch target must not be a symlink: $target_file" >&2
+            exit 2
+          } ;;
         "+++ "*)
           content_to_append="${pline#+++ }"
           if [ -n "$target_file" ]; then
@@ -130,6 +148,15 @@ if [ -n "$OPT_APPLY_PATCH" ]; then
     echo "Patch abgebrochen."
   fi
   exit 0
+fi
+
+# ─── Prerequisites Check ─────────────────────────────────────────────────────
+
+# Patch application parses only the bounded patch document and does not scan
+# repository content, so ripgrep is required only for the regular scan path.
+if ! command -v rg >/dev/null 2>&1; then
+  echo "FATAL: ripgrep (rg) not found — install with: brew install ripgrep / apt install ripgrep" >&2
+  exit 2
 fi
 
 # ─── Scan State (Bash 3.x-compatible, no associative arrays) ─────────────────

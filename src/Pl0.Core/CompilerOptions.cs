@@ -26,6 +26,21 @@ public sealed record CompilerOptions(
     ResourceManager? Messages = null)
 {
     /// <summary>
+    /// Maximale Quelltextlänge. / Maximum source length.
+    /// </summary>
+    public int MaxSourceLength { get; init; } = 1_048_576;
+
+    /// <summary>
+    /// Maximale Tokenanzahl. / Maximum token count.
+    /// </summary>
+    public int MaxTokenCount { get; init; } = 100_000;
+
+    /// <summary>
+    /// Maximale Diagnoseanzahl. / Maximum diagnostic count.
+    /// </summary>
+    public int MaxDiagnosticCount { get; init; } = 100;
+
+    /// <summary>
     /// Default compiler options using the extended dialect.
     /// </summary>
     public static CompilerOptions Default { get; } = new(Pl0Dialect.Extended);

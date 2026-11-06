@@ -163,6 +163,9 @@ items:
   - uid: Pl0.Ide.Pl0SourceEditorView
     name: Pl0SourceEditorView
     type: Class
+  - uid: Pl0.Ide.Pl0SourceEditorView.HighlightSpan
+    name: Pl0SourceEditorView.HighlightSpan
+    type: Struct
   - uid: Pl0.Ide.Pl0SourceFormatter
     name: Pl0SourceFormatter
     type: Class

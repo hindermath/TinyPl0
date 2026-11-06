@@ -5,9 +5,16 @@ items:
   id: PCodeSerializer
   parent: Pl0.Core
   children:
+  - Pl0.Core.PCodeSerializer.DefaultMaximumInstructionCount
+  - Pl0.Core.PCodeSerializer.MaximumAcceptedInstructionCount
+  - Pl0.Core.PCodeSerializer.MaximumLineLength
+  - Pl0.Core.PCodeSerializer.MaximumTextLength
+  - Pl0.Core.PCodeSerializer.Parse(System.IO.TextReader,System.Int32)
   - Pl0.Core.PCodeSerializer.Parse(System.String)
   - Pl0.Core.PCodeSerializer.ParseInt(System.String,System.Int32,System.String)
   - Pl0.Core.PCodeSerializer.ParseOpcode(System.String,System.Int32)
+  - Pl0.Core.PCodeSerializer.ReadBoundedLine(System.IO.TextReader,System.Int32,System.Int32@)
+  - Pl0.Core.PCodeSerializer.SafeDiagnosticValue(System.String)
   - Pl0.Core.PCodeSerializer.StripComment(System.String)
   - Pl0.Core.PCodeSerializer.ToAsm(System.Collections.Generic.IReadOnlyList{Pl0.Core.Instruction})
   - Pl0.Core.PCodeSerializer.ToCod(System.Collections.Generic.IReadOnlyList{Pl0.Core.Instruction})
@@ -22,7 +29,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/PCodeSerializer.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: PCodeSerializer
     path: src/Pl0.Core/PCodeSerializer.cs
@@ -45,6 +52,114 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
+- uid: Pl0.Core.PCodeSerializer.DefaultMaximumInstructionCount
+  commentId: F:Pl0.Core.PCodeSerializer.DefaultMaximumInstructionCount
+  id: DefaultMaximumInstructionCount
+  parent: Pl0.Core.PCodeSerializer
+  langs:
+  - csharp
+  - vb
+  name: DefaultMaximumInstructionCount
+  nameWithType: PCodeSerializer.DefaultMaximumInstructionCount
+  fullName: Pl0.Core.PCodeSerializer.DefaultMaximumInstructionCount
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Core/PCodeSerializer.cs
+      branch: codex/security-scan-remediation-23
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: DefaultMaximumInstructionCount
+    path: src/Pl0.Core/PCodeSerializer.cs
+    startLine: 9
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  syntax:
+    content: private const int DefaultMaximumInstructionCount = 10000
+    return:
+      type: System.Int32
+    content.vb: Private Const DefaultMaximumInstructionCount As Integer = 10000
+- uid: Pl0.Core.PCodeSerializer.MaximumAcceptedInstructionCount
+  commentId: F:Pl0.Core.PCodeSerializer.MaximumAcceptedInstructionCount
+  id: MaximumAcceptedInstructionCount
+  parent: Pl0.Core.PCodeSerializer
+  langs:
+  - csharp
+  - vb
+  name: MaximumAcceptedInstructionCount
+  nameWithType: PCodeSerializer.MaximumAcceptedInstructionCount
+  fullName: Pl0.Core.PCodeSerializer.MaximumAcceptedInstructionCount
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Core/PCodeSerializer.cs
+      branch: codex/security-scan-remediation-23
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: MaximumAcceptedInstructionCount
+    path: src/Pl0.Core/PCodeSerializer.cs
+    startLine: 10
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  syntax:
+    content: private const int MaximumAcceptedInstructionCount = 100000
+    return:
+      type: System.Int32
+    content.vb: Private Const MaximumAcceptedInstructionCount As Integer = 100000
+- uid: Pl0.Core.PCodeSerializer.MaximumLineLength
+  commentId: F:Pl0.Core.PCodeSerializer.MaximumLineLength
+  id: MaximumLineLength
+  parent: Pl0.Core.PCodeSerializer
+  langs:
+  - csharp
+  - vb
+  name: MaximumLineLength
+  nameWithType: PCodeSerializer.MaximumLineLength
+  fullName: Pl0.Core.PCodeSerializer.MaximumLineLength
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Core/PCodeSerializer.cs
+      branch: codex/security-scan-remediation-23
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: MaximumLineLength
+    path: src/Pl0.Core/PCodeSerializer.cs
+    startLine: 11
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  syntax:
+    content: private const int MaximumLineLength = 4096
+    return:
+      type: System.Int32
+    content.vb: Private Const MaximumLineLength As Integer = 4096
+- uid: Pl0.Core.PCodeSerializer.MaximumTextLength
+  commentId: F:Pl0.Core.PCodeSerializer.MaximumTextLength
+  id: MaximumTextLength
+  parent: Pl0.Core.PCodeSerializer
+  langs:
+  - csharp
+  - vb
+  name: MaximumTextLength
+  nameWithType: PCodeSerializer.MaximumTextLength
+  fullName: Pl0.Core.PCodeSerializer.MaximumTextLength
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Core/PCodeSerializer.cs
+      branch: codex/security-scan-remediation-23
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: MaximumTextLength
+    path: src/Pl0.Core/PCodeSerializer.cs
+    startLine: 12
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  syntax:
+    content: private const int MaximumTextLength = 1048576
+    return:
+      type: System.Int32
+    content.vb: Private Const MaximumTextLength As Integer = 1048576
 - uid: Pl0.Core.PCodeSerializer.ToAsm(System.Collections.Generic.IReadOnlyList{Pl0.Core.Instruction})
   commentId: M:Pl0.Core.PCodeSerializer.ToAsm(System.Collections.Generic.IReadOnlyList{Pl0.Core.Instruction})
   id: ToAsm(System.Collections.Generic.IReadOnlyList{Pl0.Core.Instruction})
@@ -59,11 +174,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/PCodeSerializer.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: ToAsm
     path: src/Pl0.Core/PCodeSerializer.cs
-    startLine: 17
+    startLine: 21
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -105,11 +220,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/PCodeSerializer.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: ToCod
     path: src/Pl0.Core/PCodeSerializer.cs
-    startLine: 25
+    startLine: 29
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -143,11 +258,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/PCodeSerializer.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: Parse
     path: src/Pl0.Core/PCodeSerializer.cs
-    startLine: 36
+    startLine: 40
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -175,6 +290,95 @@ items:
   nameWithType.vb: PCodeSerializer.Parse(String)
   fullName.vb: Pl0.Core.PCodeSerializer.Parse(String)
   name.vb: Parse(String)
+- uid: Pl0.Core.PCodeSerializer.Parse(System.IO.TextReader,System.Int32)
+  commentId: M:Pl0.Core.PCodeSerializer.Parse(System.IO.TextReader,System.Int32)
+  id: Parse(System.IO.TextReader,System.Int32)
+  parent: Pl0.Core.PCodeSerializer
+  langs:
+  - csharp
+  - vb
+  name: Parse(TextReader, int)
+  nameWithType: PCodeSerializer.Parse(TextReader, int)
+  fullName: Pl0.Core.PCodeSerializer.Parse(System.IO.TextReader, int)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Core/PCodeSerializer.cs
+      branch: codex/security-scan-remediation-23
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: Parse
+    path: src/Pl0.Core/PCodeSerializer.cs
+    startLine: 60
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  summary: >-
+    Liest P-Code zeilenweise mit einer festen Befehlsgrenze ein.
+
+    Parses P-Code line by line with a fixed instruction limit.
+  example: []
+  syntax:
+    content: public static IReadOnlyList<Instruction> Parse(TextReader reader, int maximumInstructionCount = 10000)
+    parameters:
+    - id: reader
+      type: System.IO.TextReader
+      description: Textquelle. / Text source.
+    - id: maximumInstructionCount
+      type: System.Int32
+      description: Maximale Befehlsanzahl. / Maximum instruction count.
+    return:
+      type: System.Collections.Generic.IReadOnlyList{Pl0.Core.Instruction}
+      description: Die eingelesene Befehlsliste. / The parsed instruction list.
+    content.vb: Public Shared Function Parse(reader As TextReader, maximumInstructionCount As Integer = 10000) As IReadOnlyList(Of Instruction)
+  overload: Pl0.Core.PCodeSerializer.Parse*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: Die Grenze liegt außerhalb des unterstützten Bereichs. / The limit is outside the supported range.
+  - type: System.FormatException
+    commentId: T:System.FormatException
+    description: Der Text ist ungültig oder überschreitet eine Grenze. / The text is invalid or exceeds a limit.
+  nameWithType.vb: PCodeSerializer.Parse(TextReader, Integer)
+  fullName.vb: Pl0.Core.PCodeSerializer.Parse(System.IO.TextReader, Integer)
+  name.vb: Parse(TextReader, Integer)
+- uid: Pl0.Core.PCodeSerializer.ReadBoundedLine(System.IO.TextReader,System.Int32,System.Int32@)
+  commentId: M:Pl0.Core.PCodeSerializer.ReadBoundedLine(System.IO.TextReader,System.Int32,System.Int32@)
+  id: ReadBoundedLine(System.IO.TextReader,System.Int32,System.Int32@)
+  parent: Pl0.Core.PCodeSerializer
+  langs:
+  - csharp
+  - vb
+  name: ReadBoundedLine(TextReader, int, ref int)
+  nameWithType: PCodeSerializer.ReadBoundedLine(TextReader, int, ref int)
+  fullName: Pl0.Core.PCodeSerializer.ReadBoundedLine(System.IO.TextReader, int, ref int)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Core/PCodeSerializer.cs
+      branch: codex/security-scan-remediation-23
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: ReadBoundedLine
+    path: src/Pl0.Core/PCodeSerializer.cs
+    startLine: 101
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  syntax:
+    content: private static string? ReadBoundedLine(TextReader reader, int maximumLength, ref int charactersRead)
+    parameters:
+    - id: reader
+      type: System.IO.TextReader
+    - id: maximumLength
+      type: System.Int32
+    - id: charactersRead
+      type: System.Int32
+    return:
+      type: System.String
+    content.vb: Private Shared Function ReadBoundedLine(reader As TextReader, maximumLength As Integer, charactersRead As Integer) As String
+  overload: Pl0.Core.PCodeSerializer.ReadBoundedLine*
+  nameWithType.vb: PCodeSerializer.ReadBoundedLine(TextReader, Integer, Integer)
+  fullName.vb: Pl0.Core.PCodeSerializer.ReadBoundedLine(System.IO.TextReader, Integer, Integer)
+  name.vb: ReadBoundedLine(TextReader, Integer, Integer)
 - uid: Pl0.Core.PCodeSerializer.StripComment(System.String)
   commentId: M:Pl0.Core.PCodeSerializer.StripComment(System.String)
   id: StripComment(System.String)
@@ -189,11 +393,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/PCodeSerializer.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: StripComment
     path: src/Pl0.Core/PCodeSerializer.cs
-    startLine: 69
+    startLine: 148
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -227,11 +431,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/PCodeSerializer.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: ParseInt
     path: src/Pl0.Core/PCodeSerializer.cs
-    startLine: 82
+    startLine: 161
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -271,11 +475,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/PCodeSerializer.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: ParseOpcode
     path: src/Pl0.Core/PCodeSerializer.cs
-    startLine: 98
+    startLine: 178
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -298,6 +502,40 @@ items:
   nameWithType.vb: PCodeSerializer.ParseOpcode(String, Integer)
   fullName.vb: Pl0.Core.PCodeSerializer.ParseOpcode(String, Integer)
   name.vb: ParseOpcode(String, Integer)
+- uid: Pl0.Core.PCodeSerializer.SafeDiagnosticValue(System.String)
+  commentId: M:Pl0.Core.PCodeSerializer.SafeDiagnosticValue(System.String)
+  id: SafeDiagnosticValue(System.String)
+  parent: Pl0.Core.PCodeSerializer
+  langs:
+  - csharp
+  - vb
+  name: SafeDiagnosticValue(string)
+  nameWithType: PCodeSerializer.SafeDiagnosticValue(string)
+  fullName: Pl0.Core.PCodeSerializer.SafeDiagnosticValue(string)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Core/PCodeSerializer.cs
+      branch: codex/security-scan-remediation-23
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: SafeDiagnosticValue
+    path: src/Pl0.Core/PCodeSerializer.cs
+    startLine: 210
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  syntax:
+    content: private static string SafeDiagnosticValue(string value)
+    parameters:
+    - id: value
+      type: System.String
+    return:
+      type: System.String
+    content.vb: Private Shared Function SafeDiagnosticValue(value As String) As String
+  overload: Pl0.Core.PCodeSerializer.SafeDiagnosticValue*
+  nameWithType.vb: PCodeSerializer.SafeDiagnosticValue(String)
+  fullName.vb: Pl0.Core.PCodeSerializer.SafeDiagnosticValue(String)
+  name.vb: SafeDiagnosticValue(String)
 - uid: Pl0.Core.PCodeSerializer.ToMnemonic(Pl0.Core.Opcode)
   commentId: M:Pl0.Core.PCodeSerializer.ToMnemonic(Pl0.Core.Opcode)
   id: ToMnemonic(Pl0.Core.Opcode)
@@ -312,11 +550,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/PCodeSerializer.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: ToMnemonic
     path: src/Pl0.Core/PCodeSerializer.cs
-    startLine: 133
+    startLine: 236
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -593,6 +831,17 @@ references:
   name: System
   nameWithType: System
   fullName: System
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
 - uid: System.ArgumentOutOfRangeException
   commentId: T:System.ArgumentOutOfRangeException
   isExternal: true
@@ -734,6 +983,47 @@ references:
   name: Parse
   nameWithType: PCodeSerializer.Parse
   fullName: Pl0.Core.PCodeSerializer.Parse
+- uid: System.IO.TextReader
+  commentId: T:System.IO.TextReader
+  parent: System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.textreader
+  name: TextReader
+  nameWithType: TextReader
+  fullName: System.IO.TextReader
+- uid: System.IO
+  commentId: N:System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.IO
+  nameWithType: System.IO
+  fullName: System.IO
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+- uid: Pl0.Core.PCodeSerializer.ReadBoundedLine*
+  commentId: Overload:Pl0.Core.PCodeSerializer.ReadBoundedLine
+  href: Pl0.Core.PCodeSerializer.html#Pl0_Core_PCodeSerializer_ReadBoundedLine_System_IO_TextReader_System_Int32_System_Int32__
+  name: ReadBoundedLine
+  nameWithType: PCodeSerializer.ReadBoundedLine
+  fullName: Pl0.Core.PCodeSerializer.ReadBoundedLine
 - uid: Pl0.Core.PCodeSerializer.StripComment*
   commentId: Overload:Pl0.Core.PCodeSerializer.StripComment
   href: Pl0.Core.PCodeSerializer.html#Pl0_Core_PCodeSerializer_StripComment_System_String_
@@ -746,17 +1036,6 @@ references:
   name: ParseInt
   nameWithType: PCodeSerializer.ParseInt
   fullName: Pl0.Core.PCodeSerializer.ParseInt
-- uid: System.Int32
-  commentId: T:System.Int32
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.int32
-  name: int
-  nameWithType: int
-  fullName: int
-  nameWithType.vb: Integer
-  fullName.vb: Integer
-  name.vb: Integer
 - uid: Pl0.Core.PCodeSerializer.ParseOpcode*
   commentId: Overload:Pl0.Core.PCodeSerializer.ParseOpcode
   href: Pl0.Core.PCodeSerializer.html#Pl0_Core_PCodeSerializer_ParseOpcode_System_String_System_Int32_
@@ -770,6 +1049,12 @@ references:
   name: Opcode
   nameWithType: Opcode
   fullName: Pl0.Core.Opcode
+- uid: Pl0.Core.PCodeSerializer.SafeDiagnosticValue*
+  commentId: Overload:Pl0.Core.PCodeSerializer.SafeDiagnosticValue
+  href: Pl0.Core.PCodeSerializer.html#Pl0_Core_PCodeSerializer_SafeDiagnosticValue_System_String_
+  name: SafeDiagnosticValue
+  nameWithType: PCodeSerializer.SafeDiagnosticValue
+  fullName: Pl0.Core.PCodeSerializer.SafeDiagnosticValue
 - uid: Pl0.Core.PCodeSerializer.ToMnemonic*
   commentId: Overload:Pl0.Core.PCodeSerializer.ToMnemonic
   href: Pl0.Core.PCodeSerializer.html#Pl0_Core_PCodeSerializer_ToMnemonic_Pl0_Core_Opcode_

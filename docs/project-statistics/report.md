@@ -9,27 +9,27 @@ Git-bound inventory and activity; not a measure of quality, learning performance
 
 | Kennzahl / Metric | Wert / Value |
 | --- | --- |
-| Textdateien / Text files | 2115 |
-| Textzeilen / Text lines | 295844 |
-| Aktivtage / Active days | 98 |
-| Stichtag / As of | 2026-11-03 |
+| Textdateien / Text files | 2123 |
+| Textzeilen / Text lines | 299349 |
+| Aktivtage / Active days | 99 |
+| Stichtag / As of | 2026-11-06 |
 | Fensterbeginn / Window start | 2025-11-09 |
 | Zeitzone / Time zone | UTC |
 
 Quellrevision / Source revision:
-a7266251a7ecc0bffb8237f5721ea7495ec35dcc
+a451fe2f6b46530b9e076c928787b5eee9e7b78b
 
 ### Artefakte / Artifacts
 
 | Kategorie / Category | Dateien / Files | Zeilen / Lines |
 | --- | ---: | ---: |
-| Production | 70 | 7311 |
-| Tests | 163 | 15022 |
-| Documentation | 1272 | 163127 |
-| Scripts | 124 | 28434 |
-| Configuration | 289 | 77213 |
+| Production | 70 | 7649 |
+| Tests | 170 | 15878 |
+| Documentation | 1272 | 163280 |
+| Scripts | 124 | 28615 |
+| Configuration | 290 | 79147 |
 | DataMedia | 0 | 0 |
-| Other | 197 | 4737 |
+| Other | 197 | 4780 |
 
 ### Aktivitaet / Activity
 
@@ -53,9 +53,9 @@ Wochen / Weeks 27..52 | 2026-05-10..2026-11-07
 So/Su  0 0 0 0 0 4 0 0 0 1 4 4 0 4 0 0 4 4 4 3 0 0 0 0 0 0
 Mo/Mo  0 0 0 0 0 0 0 3 1 4 0 0 0 0 2 0 0 4 0 0 0 0 0 0 0 0
 Di/Tu  0 0 3 0 0 0 0 2 0 3 4 4 0 0 0 0 2 4 0 0 0 0 0 0 0 4
-Mi/We  0 0 0 2 0 4 0 2 0 0 2 4 0 0 0 0 4 0 0 0 0 0 0 0 0 -
-Do/Th  0 0 1 1 4 1 0 0 0 1 4 0 0 4 0 0 3 0 0 0 0 0 0 0 3 -
-Fr/Fr  0 4 2 2 0 4 2 3 4 4 4 1 0 0 0 0 0 3 0 0 0 0 0 0 0 -
+Mi/We  0 0 0 2 0 4 0 2 0 0 2 4 0 0 0 0 4 0 0 0 0 0 0 0 0 0
+Do/Th  0 0 1 1 4 1 0 0 0 1 4 0 0 4 0 0 3 0 0 0 0 0 0 0 3 0
+Fr/Fr  0 4 2 2 0 4 2 3 4 4 4 1 0 0 0 0 0 3 0 0 0 0 0 0 0 4
 Sa/Sa  0 0 1 0 0 3 0 4 4 0 4 2 0 4 0 4 0 3 4 2 0 0 0 0 0 -
 ```
 
@@ -159,6 +159,7 @@ Sa/Sa  0 0 1 0 0 3 0 4 4 0 4 2 0 4 0 4 0 3 4 2 0 0 0 0 0 -
 | 2026-09-26 | 103 | 14 |
 | 2026-10-29 | 1436 | 110 |
 | 2026-11-03 | 1725 | 1332 |
+| 2026-11-06 | 4831 | 1326 |
 
 ### Abdeckung / Coverage
 

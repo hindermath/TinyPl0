@@ -22,8 +22,15 @@ public sealed record VmState
     /// <param name="CurrentInstruction">Nächste Instruktion. / Next instruction.</param>
     /// <param name="ExecutedInstructions">Begonnene Instruktionen. / Started instructions.</param>
     public VmState(int P, int B, int T, int[] Stack, Instruction? CurrentInstruction, int ExecutedInstructions)
+        : this(P, B, T, Stack, CurrentInstruction, ExecutedInstructions, cloneStack: true)
     {
-        this.P = P; this.B = B; this.T = T; stack = (int[])Stack.Clone();
+    }
+
+    internal VmState(int P, int B, int T, int[] Stack, Instruction? CurrentInstruction,
+        int ExecutedInstructions, bool cloneStack)
+    {
+        this.P = P; this.B = B; this.T = T;
+        stack = cloneStack ? (int[])Stack.Clone() : Stack;
         this.CurrentInstruction = CurrentInstruction; this.ExecutedInstructions = ExecutedInstructions;
     }
     /// <summary>Ruft P ab. / Gets P.</summary>

@@ -129,13 +129,17 @@ def run_git_network(
     started = time.monotonic()
     for attempt in range(1, attempts + 1):
         try:
-            result = subprocess.run(
-                command,
-                text=True,
-                capture_output=True,
-                check=False,
-                timeout=timeout,
-            )
+            if (EXECUTION_CONTEXTS is not None and repository is not None and
+                    EXECUTION_CONTEXTS.mapping(repository)):
+                result = EXECUTION_CONTEXTS.git(repository, arguments)
+            else:
+                result = subprocess.run(
+                    command,
+                    text=True,
+                    capture_output=True,
+                    check=False,
+                    timeout=timeout,
+                )
         except subprocess.TimeoutExpired:
             result = subprocess.CompletedProcess(
                 command, 124, stdout="", stderr=f"operation timed out after {timeout}s"
@@ -208,6 +212,24 @@ def validate_relative_path(raw: object) -> pathlib.PurePosixPath:
     if any(part in {"", ".", ".."} for part in value.parts):
         raise ContractError(f"unsafe HOME-relative path: {raw!r}")
     return value
+
+
+def resolve_home_target(home: pathlib.Path, relative: pathlib.PurePosixPath) -> pathlib.Path:
+    """Reject filesystem aliases before fleet routing or mutation."""
+    target = home.joinpath(*relative.parts)
+    revalidate_home_target(home, target)
+    return target
+
+
+def revalidate_home_target(home: pathlib.Path, target: pathlib.Path) -> None:
+    """Recheck canonical containment immediately before a filesystem sink."""
+    resolved = target.resolve(strict=False)
+    try:
+        resolved.relative_to(home)
+    except ValueError as exc:
+        raise ContractError(f"target resolves outside HOME: {target}") from exc
+    if resolved != target:
+        raise ContractError(f"target uses a symlinked path component: {target}")
 
 
 # CI budget governance deliberately uses a small, dependency-free validator.
@@ -2900,8 +2922,11 @@ def resolve_default_branch_evidence(
 
 
 def classify_repository(
-    target: dict, path: pathlib.Path, mode: str, allowed_dirty_paths: set[str] | None = None
+    target: dict, path: pathlib.Path, mode: str, allowed_dirty_paths: set[str] | None = None,
+    trusted_home: pathlib.Path | None = None,
 ) -> dict:
+    if trusted_home is not None:
+        revalidate_home_target(trusted_home, path)
     delegated = EXECUTION_CONTEXTS is not None and EXECUTION_CONTEXTS.mapping(path)
     probe = EXECUTION_CONTEXTS.request(path, "probe") if delegated else None
     exists = probe["exists"] if probe is not None else path.exists()
@@ -2920,7 +2945,7 @@ def classify_repository(
         if mode == "dry-run":
             return target_result(target, status="MISSING", action="WOULD_CLONE", result="Warning",
                                  findingCode="MissingTarget", nextAction="Update-Modus zum Klonen ausführen / run update to clone this target.")
-        return clone_repository(target, path)
+        return clone_repository(target, path, trusted_home)
     if not git_directory:
         return target_result(target, status="PATH_CONFLICT", result="Blocked", findingCode="PathConflict",
                              nextAction="Nicht-Git-Verzeichnis prüfen; es wird nie automatisch entfernt / review the directory; it is never removed.")
@@ -2934,7 +2959,9 @@ def classify_repository(
         path, "symbolic-ref", "--quiet", "refs/remotes/origin/HEAD", check=False
     )
     local_symbolic_ref = local_symbolic.stdout.strip() if local_symbolic.returncode == 0 else ""
-    fetch, fetch_attempts, fetch_duration = run_git_network(path, "fetch", "--prune")
+    if trusted_home is not None:
+        revalidate_home_target(trusted_home, path)
+    fetch, fetch_attempts, fetch_duration = run_git_network(path, "fetch", "--prune", "origin")
     freshness = network_attempt("fetch", fetch, fetch_attempts, fetch_duration)
     if fetch.returncode != 0:
         finding = "FetchTimedOut" if fetch.returncode == 124 else "FetchFailed"
@@ -3074,6 +3101,8 @@ def classify_repository(
                 defaultBranchEvidence=default_evidence,
                 nextAction="Update-Modus zum Fast-forward ausführen / run update to fast-forward."
             )
+        if trusted_home is not None:
+            revalidate_home_target(trusted_home, path)
         pull, pull_attempts, pull_duration = run_git_network(path, "pull", "--ff-only")
         pull_evidence = network_attempt("pull", pull, pull_attempts, pull_duration)
         if pull.returncode != 0:
@@ -3100,7 +3129,13 @@ def classify_repository(
     )
 
 
-def clone_repository(target: dict, path: pathlib.Path) -> dict:
+def clone_repository(
+    target: dict,
+    path: pathlib.Path,
+    trusted_home: pathlib.Path | None = None,
+) -> dict:
+    if trusted_home is not None:
+        revalidate_home_target(trusted_home, path)
     path.parent.mkdir(parents=True, exist_ok=True)
     # Erst der geprüfte Geschwisterklon wird atomar sichtbar; Teilklone bleiben nie Sollzustand.
     # Only a verified sibling becomes visible; partial clones never become desired state.
@@ -3125,6 +3160,8 @@ def clone_repository(target: dict, path: pathlib.Path) -> dict:
             return target_result(target, status="UNAVAILABLE", action="CLONE", result="Failed",
                                  findingCode="CloneVerificationFailed",
                                  nextAction="Temporäre Clone-Evidence prüfen; Ziel nicht akzeptiert / inspect clone evidence; target not accepted.")
+        if trusted_home is not None:
+            revalidate_home_target(trusted_home, path)
         os.replace(temporary, path)
         return target_result(
             target, status="CREATED", action="CLONE", branch=branch,
@@ -3486,19 +3523,28 @@ def execute_fleet(args: argparse.Namespace) -> int:
             continue
         relative = validate_relative_path(target["path"])
         target_path = home.joinpath(*relative.parts)
+        execution_context = "host"
         evaluation_mode = "dry-run" if EXECUTION_CONTEXTS and args.mode == "update" else args.mode
         try:
+            target_path = resolve_home_target(home, relative)
             result = (collection_result(target, target_path, evaluation_mode)
                       if target["kind"] == "collection"
-                      else classify_repository(target, target_path, evaluation_mode, allowed_dirty_paths))
+                      else classify_repository(
+                          target, target_path, evaluation_mode, allowed_dirty_paths, home))
+            if (target["kind"] == "git-repository" and EXECUTION_CONTEXTS and
+                    EXECUTION_CONTEXTS.mapping(target_path)):
+                execution_context = "container"
+        except ContractError as exc:
+            result = target_result(target, status="PATH_CONFLICT", result="Blocked",
+                                   findingCode="PathConflict", mutationAllowed=False,
+                                   nextAction=str(exc))
         except (ValueError, RuntimeError, OSError, subprocess.SubprocessError) as exc:
             if not EXECUTION_CONTEXTS:
                 raise
             result = target_result(target, status="UNAVAILABLE", result="Failed",
                                    findingCode="ExecutionContextLost", mutationAllowed=False,
                                    nextAction="Sandbox prüfen; kein Host-Fallback / inspect sandbox; no host fallback.")
-        result["executionContext"] = "container" if (target["kind"] == "git-repository" and
-            EXECUTION_CONTEXTS and EXECUTION_CONTEXTS.mapping(target_path)) else "host"
+        result["executionContext"] = execution_context
         results.append(result)
         print(f"TARGET\t{target['id']}\t{result['status']}\t{result['action']}\t{result['nextAction']}")
 
@@ -3512,12 +3558,16 @@ def execute_fleet(args: argparse.Namespace) -> int:
                     continue
                 repository = args.level0_dir if item["targetId"] == "level0" else home / item["path"]
                 try:
+                    if item["targetId"] != "level0":
+                        revalidate_home_target(home, repository)
                     dirty = run_git(repository, "status", "--porcelain=v1", "--untracked-files=all").stdout
                     branch = run_git(repository, "symbolic-ref", "--quiet", "--short", "HEAD").stdout.strip()
                     expected = item["defaultBranchEvidence"]["trackingCommit"]
                     current = run_git(repository, "rev-parse", item["upstream"]).stdout.strip()
                     result = None
                     if not dirty and branch == item["branch"] and current == expected:
+                        if item["targetId"] != "level0":
+                            revalidate_home_target(home, repository)
                         result = run_git(repository, "merge", "--ff-only", expected, check=False)
                         if result.returncode == 0 and run_git(repository, "rev-parse", "HEAD").stdout.strip() != expected:
                             result = None

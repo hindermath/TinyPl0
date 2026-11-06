@@ -91,6 +91,20 @@ public sealed class IdeBootstrapTests
     }
 
     [Fact]
+    public void SourceEditor_Finds_Highlight_Near_End_Of_Many_Sorted_Spans()
+    {
+        string source = string.Concat(Enumerable.Repeat("1+", 20_000));
+        var editor = new Pl0SourceEditorView
+        {
+            Text = source
+        };
+
+        Assert.Equal(Pl0HighlightKind.Number, editor.GetHighlightKindAt(0, source.Length - 2));
+        Assert.Equal(Pl0HighlightKind.Operator, editor.GetHighlightKindAt(0, source.Length - 1));
+        Assert.Equal(Pl0HighlightKind.None, editor.GetHighlightKindAt(0, source.Length));
+    }
+
+    [Fact]
     public void RainbowAsciiArtView_Assigns_Repeating_Rainbow_Colors_To_NonWhitespace_Characters()
     {
         var view = new IdeRainbowAsciiArtView();
@@ -118,6 +132,18 @@ public sealed class IdeBootstrapTests
         Assert.Equal(Pl0HighlightKind.None, editor.GetHighlightKindAt(0, 0)); // f in foo
         Assert.Equal(Pl0HighlightKind.Operator, editor.GetHighlightKindAt(0, 4)); // :
         Assert.Equal(Pl0HighlightKind.Number, editor.GetHighlightKindAt(0, 7)); // 4
+    }
+
+    [Fact]
+    public void SourceEditor_Skips_Highlighting_For_Oversized_Source()
+    {
+        var editor = new Pl0SourceEditorView
+        {
+            Text = new string('9', 200_001)
+        };
+
+        Assert.Equal(Pl0HighlightKind.None, editor.GetHighlightKindAt(0, 0));
+        Assert.Equal(Pl0HighlightKind.None, editor.GetHighlightKindAt(0, 200_000));
     }
 
     [Fact]
@@ -396,6 +422,22 @@ public sealed class IdeBootstrapTests
         Assert.True(mainView.LastCompilationResult!.Success);
         Assert.Equal("9", mainView.RuntimeOutput.Text?.ToString());
         Assert.Contains("Ausfuehrung erfolgreich", mainView.MessagesOutput.Text?.ToString());
+    }
+
+    [Fact]
+    public void RunCompiledCode_Bounds_Runtime_Output()
+    {
+        var mainView = new IdeMainView();
+        mainView.SourceEditor.Text = "var x, y; begin x := 0; while x < 11 do begin y := 0; while y < 1000 do begin ! y; y := y + 1 end; x := x + 1 end end.";
+
+        bool compiled = mainView.CompileSource().Success;
+        bool executed = mainView.RunCompiledCode();
+        string output = mainView.RuntimeOutput.Text?.ToString() ?? string.Empty;
+
+        Assert.True(compiled);
+        Assert.True(executed);
+        Assert.Contains("output truncated after 10000 values", output);
+        Assert.DoesNotContain("10000", output.Split(Environment.NewLine)[^2]);
     }
 
     [Fact]
@@ -878,6 +920,21 @@ public sealed class IdeBootstrapTests
         Assert.True(formatted);
         Assert.Equal(expected, formattedText);
         Assert.Equal("Quelltext formatiert.", mainView.MessagesOutput.Text?.ToString());
+    }
+
+    [Fact]
+    public void FormatSource_Rejects_Nesting_Above_The_Formatting_Budget()
+    {
+        var mainView = new IdeMainView();
+        string source = string.Concat(Enumerable.Repeat("begin ", 11))
+            + string.Concat(Enumerable.Repeat("end ", 11))
+            + ".";
+        mainView.SourceEditor.Text = source;
+
+        bool formatted = mainView.FormatSource();
+
+        Assert.False(formatted);
+        Assert.Equal(source, mainView.SourceEditor.Text?.ToString());
     }
 
     [Fact]

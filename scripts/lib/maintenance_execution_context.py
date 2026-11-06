@@ -93,7 +93,7 @@ elif p["action"] == "git":
     if not (repo / ".git").is_dir():
         raise SystemExit("Missing declared Git repository")
     args = p["arguments"]
-    allowed = {"remote", "symbolic-ref", "rev-parse", "rev-list", "status", "cat-file", "merge", "diff", "log"}
+    allowed = {"remote", "symbolic-ref", "rev-parse", "rev-list", "status", "cat-file", "merge", "diff", "log", "fetch", "ls-remote"}
     effective = args[2:] if args[:2] == ["-c", "core.quotePath=false"] else args
     if not effective or effective[0] not in allowed:
         raise SystemExit("Git operation outside local maintenance contract")
@@ -105,9 +105,15 @@ elif p["action"] == "git":
         raise SystemExit("Symbolic-ref mutation is not allowed")
     if effective[0] == "merge" and (len(effective) != 3 or effective[1] != "--ff-only" or not re.fullmatch(r"[0-9a-f]{40,64}", effective[2])):
         raise SystemExit("Only bounded fast-forward merge is allowed")
+    if effective[0] == "fetch" and effective != ["fetch", "--prune", "origin"]:
+        raise SystemExit("Only the bounded origin fetch is allowed")
+    if effective[0] == "ls-remote" and effective != ["ls-remote", "--symref", "origin", "HEAD"]:
+        raise SystemExit("Only the bounded origin HEAD query is allowed")
     # Reset inherited trust (including '*') and trust only this validated repo.
     # Command-scope configuration survives recreation without writing .gitconfig.
     result = subprocess.run(["git", "-c", "safe.directory=", "-c", "safe.directory=" + str(repo),
+                             "-c", "core.hooksPath=/dev/null", "-c", "core.sshCommand=ssh",
+                             "-c", "credential.helper=", "-c", "protocol.ext.allow=never",
                              "-C", str(repo), *args], capture_output=True, text=True)
     print(json.dumps({"returncode":result.returncode,"stdout":result.stdout,"stderr":result.stderr}))
 else:

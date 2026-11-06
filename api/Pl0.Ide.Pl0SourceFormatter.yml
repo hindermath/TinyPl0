@@ -12,6 +12,9 @@ items:
   - Pl0.Ide.Pl0SourceFormatter.IndentSize
   - Pl0.Ide.Pl0SourceFormatter.IsStatementStartToken(Pl0.Core.TokenKind,Pl0.Core.TokenKind)
   - Pl0.Ide.Pl0SourceFormatter.MarkProcedureStatementStart(Pl0.Core.TokenKind,Pl0.Core.TokenKind,System.Collections.Generic.Stack{Pl0.Ide.Pl0SourceFormatter.ProcedureFrame})
+  - Pl0.Ide.Pl0SourceFormatter.MaximumFormattedLength
+  - Pl0.Ide.Pl0SourceFormatter.MaximumFormattingDepth
+  - Pl0.Ide.Pl0SourceFormatter.MaximumSourceLength
   - Pl0.Ide.Pl0SourceFormatter.TrimTrailingSpaces(System.Text.StringBuilder)
   - Pl0.Ide.Pl0SourceFormatter.TryFormat(System.String,System.String@,Pl0.Core.CompilerOptions)
   langs:
@@ -24,7 +27,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/Pl0SourceFormatter.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: Pl0SourceFormatter
     path: src/Pl0.Ide/Pl0SourceFormatter.cs
@@ -59,7 +62,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/Pl0SourceFormatter.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: IndentSize
     path: src/Pl0.Ide/Pl0SourceFormatter.cs
@@ -72,6 +75,87 @@ items:
     return:
       type: System.Int32
     content.vb: Private Const IndentSize As Integer = 2
+- uid: Pl0.Ide.Pl0SourceFormatter.MaximumFormattingDepth
+  commentId: F:Pl0.Ide.Pl0SourceFormatter.MaximumFormattingDepth
+  id: MaximumFormattingDepth
+  parent: Pl0.Ide.Pl0SourceFormatter
+  langs:
+  - csharp
+  - vb
+  name: MaximumFormattingDepth
+  nameWithType: Pl0SourceFormatter.MaximumFormattingDepth
+  fullName: Pl0.Ide.Pl0SourceFormatter.MaximumFormattingDepth
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Ide/Pl0SourceFormatter.cs
+      branch: codex/security-scan-remediation-23
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: MaximumFormattingDepth
+    path: src/Pl0.Ide/Pl0SourceFormatter.cs
+    startLine: 8
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: private const int MaximumFormattingDepth = 10
+    return:
+      type: System.Int32
+    content.vb: Private Const MaximumFormattingDepth As Integer = 10
+- uid: Pl0.Ide.Pl0SourceFormatter.MaximumSourceLength
+  commentId: F:Pl0.Ide.Pl0SourceFormatter.MaximumSourceLength
+  id: MaximumSourceLength
+  parent: Pl0.Ide.Pl0SourceFormatter
+  langs:
+  - csharp
+  - vb
+  name: MaximumSourceLength
+  nameWithType: Pl0SourceFormatter.MaximumSourceLength
+  fullName: Pl0.Ide.Pl0SourceFormatter.MaximumSourceLength
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Ide/Pl0SourceFormatter.cs
+      branch: codex/security-scan-remediation-23
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: MaximumSourceLength
+    path: src/Pl0.Ide/Pl0SourceFormatter.cs
+    startLine: 9
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: private const int MaximumSourceLength = 200000
+    return:
+      type: System.Int32
+    content.vb: Private Const MaximumSourceLength As Integer = 200000
+- uid: Pl0.Ide.Pl0SourceFormatter.MaximumFormattedLength
+  commentId: F:Pl0.Ide.Pl0SourceFormatter.MaximumFormattedLength
+  id: MaximumFormattedLength
+  parent: Pl0.Ide.Pl0SourceFormatter
+  langs:
+  - csharp
+  - vb
+  name: MaximumFormattedLength
+  nameWithType: Pl0SourceFormatter.MaximumFormattedLength
+  fullName: Pl0.Ide.Pl0SourceFormatter.MaximumFormattedLength
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Ide/Pl0SourceFormatter.cs
+      branch: codex/security-scan-remediation-23
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: MaximumFormattedLength
+    path: src/Pl0.Ide/Pl0SourceFormatter.cs
+    startLine: 10
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: private const int MaximumFormattedLength = 1000000
+    return:
+      type: System.Int32
+    content.vb: Private Const MaximumFormattedLength As Integer = 1000000
 - uid: Pl0.Ide.Pl0SourceFormatter.TryFormat(System.String,System.String@,Pl0.Core.CompilerOptions)
   commentId: M:Pl0.Ide.Pl0SourceFormatter.TryFormat(System.String,System.String@,Pl0.Core.CompilerOptions)
   id: TryFormat(System.String,System.String@,Pl0.Core.CompilerOptions)
@@ -86,11 +170,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/Pl0SourceFormatter.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: TryFormat
     path: src/Pl0.Ide/Pl0SourceFormatter.cs
-    startLine: 9
+    startLine: 12
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -124,16 +208,16 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/Pl0SourceFormatter.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: FormatTokens
     path: src/Pl0.Ide/Pl0SourceFormatter.cs
-    startLine: 27
+    startLine: 36
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
   syntax:
-    content: private static string FormatTokens(IReadOnlyList<Pl0Token> tokens)
+    content: private static string? FormatTokens(IReadOnlyList<Pl0Token> tokens)
     parameters:
     - id: tokens
       type: System.Collections.Generic.IReadOnlyList{Pl0.Core.Pl0Token}
@@ -158,11 +242,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/Pl0SourceFormatter.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: MarkProcedureStatementStart
     path: src/Pl0.Ide/Pl0SourceFormatter.cs
-    startLine: 159
+    startLine: 188
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -194,11 +278,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/Pl0SourceFormatter.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: IsStatementStartToken
     path: src/Pl0.Ide/Pl0SourceFormatter.cs
-    startLine: 183
+    startLine: 212
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -227,11 +311,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/Pl0SourceFormatter.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: EnsureSpaceBeforeToken
     path: src/Pl0.Ide/Pl0SourceFormatter.cs
-    startLine: 203
+    startLine: 232
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -261,11 +345,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/Pl0SourceFormatter.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: AppendIndent
     path: src/Pl0.Ide/Pl0SourceFormatter.cs
-    startLine: 219
+    startLine: 248
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -295,11 +379,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/Pl0SourceFormatter.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: AppendNewLine
     path: src/Pl0.Ide/Pl0SourceFormatter.cs
-    startLine: 229
+    startLine: 258
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -329,11 +413,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/Pl0SourceFormatter.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: TrimTrailingSpaces
     path: src/Pl0.Ide/Pl0SourceFormatter.cs
-    startLine: 242
+    startLine: 271
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide

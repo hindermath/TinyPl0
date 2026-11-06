@@ -5,22 +5,26 @@ items:
   id: VmExecutionSession
   parent: Pl0.Vm
   children:
-  - Pl0.Vm.VmExecutionSession.#ctor(Pl0.Core.Instruction[],Pl0.Vm.IPl0Io,Pl0.Vm.VirtualMachineOptions,System.Resources.ResourceManager,System.Globalization.CultureInfo,System.Threading.CancellationToken)
+  - Pl0.Vm.VmExecutionSession.#ctor(Pl0.Core.Instruction[],Pl0.Vm.IPl0Io,Pl0.Vm.VirtualMachineOptions,System.Resources.ResourceManager,System.Globalization.CultureInfo,System.Threading.CancellationToken,System.Boolean)
   - Pl0.Vm.VmExecutionSession.AllowedOprCodes
   - Pl0.Vm.VmExecutionSession.Binary(System.Func{System.Int32,System.Int32,System.Int32})
-  - Pl0.Vm.VmExecutionSession.CaptureState
+  - Pl0.Vm.VmExecutionSession.CaptureState(System.Boolean)
   - Pl0.Vm.VmExecutionSession.Complete(Pl0.Vm.VmCompletionReason,System.Collections.Generic.IEnumerable{Pl0.Vm.VmDiagnostic},Pl0.Vm.VmState)
-  - Pl0.Vm.VmExecutionSession.Create(System.Collections.Generic.IReadOnlyList{Pl0.Core.Instruction},Pl0.Vm.IPl0Io,Pl0.Vm.VirtualMachineOptions,System.Threading.CancellationToken)
+  - Pl0.Vm.VmExecutionSession.Create(System.Collections.Generic.IReadOnlyList{Pl0.Core.Instruction},Pl0.Vm.IPl0Io,Pl0.Vm.VirtualMachineOptions,System.Threading.CancellationToken,System.Boolean)
   - Pl0.Vm.VmExecutionSession.Dispatch(Pl0.Core.Instruction)
   - Pl0.Vm.VmExecutionSession.DivisionCode
   - Pl0.Vm.VmExecutionSession.ExecuteNext(System.Threading.CancellationToken)
   - Pl0.Vm.VmExecutionSession.ExecuteOpr(System.Int32)
+  - Pl0.Vm.VmExecutionSession.ExecuteReturn
   - Pl0.Vm.VmExecutionSession.InputEofCode
   - Pl0.Vm.VmExecutionSession.InputFormatCode
+  - Pl0.Vm.VmExecutionSession.IntegerDivisionOverflowCode
+  - Pl0.Vm.VmExecutionSession.InvalidReturnFrame
   - Pl0.Vm.VmExecutionSession.IsRecoverableHostException(System.Exception)
   - Pl0.Vm.VmExecutionSession.IsRunning
   - Pl0.Vm.VmExecutionSession.IsValidStackIndex(System.Int64)
   - Pl0.Vm.VmExecutionSession.LocalizedDiagnostic(System.Int32,System.String,System.String,System.String,System.Object[])
+  - Pl0.Vm.VmExecutionSession.RequiresPreDispatchSnapshot(Pl0.Core.Instruction)
   - Pl0.Vm.VmExecutionSession.ResolveBase(System.Int32)
   - Pl0.Vm.VmExecutionSession.RuntimeCode
   - Pl0.Vm.VmExecutionSession.RuntimeFault(System.String,Pl0.Vm.VmState)
@@ -33,6 +37,7 @@ items:
   - Pl0.Vm.VmExecutionSession.TryWrite(System.Int32)
   - Pl0.Vm.VmExecutionSession.ValidateProgram(System.Collections.Generic.IReadOnlyList{Pl0.Core.Instruction},Pl0.Vm.VirtualMachineOptions,System.Resources.ResourceManager,System.Globalization.CultureInfo)
   - Pl0.Vm.VmExecutionSession.b
+  - Pl0.Vm.VmExecutionSession.captureStepSnapshots
   - Pl0.Vm.VmExecutionSession.culture
   - Pl0.Vm.VmExecutionSession.diagnostics
   - Pl0.Vm.VmExecutionSession.executedInstructions
@@ -55,7 +60,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: VmExecutionSession
     path: src/Pl0.Vm/VmExecutionSession.cs
@@ -89,7 +94,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: RuntimeCode
     path: src/Pl0.Vm/VmExecutionSession.cs
@@ -116,7 +121,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: InputEofCode
     path: src/Pl0.Vm/VmExecutionSession.cs
@@ -143,7 +148,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: InputFormatCode
     path: src/Pl0.Vm/VmExecutionSession.cs
@@ -170,7 +175,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: DivisionCode
     path: src/Pl0.Vm/VmExecutionSession.cs
@@ -183,6 +188,33 @@ items:
     return:
       type: System.Int32
     content.vb: Private Const DivisionCode As Integer = 206
+- uid: Pl0.Vm.VmExecutionSession.IntegerDivisionOverflowCode
+  commentId: F:Pl0.Vm.VmExecutionSession.IntegerDivisionOverflowCode
+  id: IntegerDivisionOverflowCode
+  parent: Pl0.Vm.VmExecutionSession
+  langs:
+  - csharp
+  - vb
+  name: IntegerDivisionOverflowCode
+  nameWithType: VmExecutionSession.IntegerDivisionOverflowCode
+  fullName: Pl0.Vm.VmExecutionSession.IntegerDivisionOverflowCode
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/VmExecutionSession.cs
+      branch: codex/security-scan-remediation-23
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: IntegerDivisionOverflowCode
+    path: src/Pl0.Vm/VmExecutionSession.cs
+    startLine: 14
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private const int IntegerDivisionOverflowCode = 212
+    return:
+      type: System.Int32
+    content.vb: Private Const IntegerDivisionOverflowCode As Integer = 212
 - uid: Pl0.Vm.VmExecutionSession.AllowedOprCodes
   commentId: F:Pl0.Vm.VmExecutionSession.AllowedOprCodes
   id: AllowedOprCodes
@@ -197,11 +229,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: AllowedOprCodes
     path: src/Pl0.Vm/VmExecutionSession.cs
-    startLine: 14
+    startLine: 15
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -224,11 +256,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: program
     path: src/Pl0.Vm/VmExecutionSession.cs
-    startLine: 16
+    startLine: 17
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -251,11 +283,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: io
     path: src/Pl0.Vm/VmExecutionSession.cs
-    startLine: 17
+    startLine: 18
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -278,11 +310,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: options
     path: src/Pl0.Vm/VmExecutionSession.cs
-    startLine: 18
+    startLine: 19
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -305,11 +337,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: messages
     path: src/Pl0.Vm/VmExecutionSession.cs
-    startLine: 19
+    startLine: 20
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -332,11 +364,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: culture
     path: src/Pl0.Vm/VmExecutionSession.cs
-    startLine: 20
+    startLine: 21
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -359,11 +391,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: initializationToken
     path: src/Pl0.Vm/VmExecutionSession.cs
-    startLine: 21
+    startLine: 22
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -372,6 +404,33 @@ items:
     return:
       type: System.Threading.CancellationToken
     content.vb: Private ReadOnly initializationToken As CancellationToken
+- uid: Pl0.Vm.VmExecutionSession.captureStepSnapshots
+  commentId: F:Pl0.Vm.VmExecutionSession.captureStepSnapshots
+  id: captureStepSnapshots
+  parent: Pl0.Vm.VmExecutionSession
+  langs:
+  - csharp
+  - vb
+  name: captureStepSnapshots
+  nameWithType: VmExecutionSession.captureStepSnapshots
+  fullName: Pl0.Vm.VmExecutionSession.captureStepSnapshots
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Vm/VmExecutionSession.cs
+      branch: codex/security-scan-remediation-23
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: captureStepSnapshots
+    path: src/Pl0.Vm/VmExecutionSession.cs
+    startLine: 23
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private readonly bool captureStepSnapshots
+    return:
+      type: System.Boolean
+    content.vb: Private ReadOnly captureStepSnapshots As Boolean
 - uid: Pl0.Vm.VmExecutionSession.diagnostics
   commentId: F:Pl0.Vm.VmExecutionSession.diagnostics
   id: diagnostics
@@ -386,11 +445,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: diagnostics
     path: src/Pl0.Vm/VmExecutionSession.cs
-    startLine: 22
+    startLine: 24
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -413,11 +472,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: stack
     path: src/Pl0.Vm/VmExecutionSession.cs
-    startLine: 23
+    startLine: 25
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -440,11 +499,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: p
     path: src/Pl0.Vm/VmExecutionSession.cs
-    startLine: 24
+    startLine: 26
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -467,11 +526,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: b
     path: src/Pl0.Vm/VmExecutionSession.cs
-    startLine: 25
+    startLine: 27
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -494,11 +553,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: t
     path: src/Pl0.Vm/VmExecutionSession.cs
-    startLine: 26
+    startLine: 28
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -521,11 +580,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: executedInstructions
     path: src/Pl0.Vm/VmExecutionSession.cs
-    startLine: 27
+    startLine: 29
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -548,11 +607,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: terminalResult
     path: src/Pl0.Vm/VmExecutionSession.cs
-    startLine: 28
+    startLine: 30
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -561,30 +620,30 @@ items:
     return:
       type: Pl0.Vm.VmStepResult
     content.vb: Private terminalResult As VmStepResult
-- uid: Pl0.Vm.VmExecutionSession.#ctor(Pl0.Core.Instruction[],Pl0.Vm.IPl0Io,Pl0.Vm.VirtualMachineOptions,System.Resources.ResourceManager,System.Globalization.CultureInfo,System.Threading.CancellationToken)
-  commentId: M:Pl0.Vm.VmExecutionSession.#ctor(Pl0.Core.Instruction[],Pl0.Vm.IPl0Io,Pl0.Vm.VirtualMachineOptions,System.Resources.ResourceManager,System.Globalization.CultureInfo,System.Threading.CancellationToken)
-  id: '#ctor(Pl0.Core.Instruction[],Pl0.Vm.IPl0Io,Pl0.Vm.VirtualMachineOptions,System.Resources.ResourceManager,System.Globalization.CultureInfo,System.Threading.CancellationToken)'
+- uid: Pl0.Vm.VmExecutionSession.#ctor(Pl0.Core.Instruction[],Pl0.Vm.IPl0Io,Pl0.Vm.VirtualMachineOptions,System.Resources.ResourceManager,System.Globalization.CultureInfo,System.Threading.CancellationToken,System.Boolean)
+  commentId: M:Pl0.Vm.VmExecutionSession.#ctor(Pl0.Core.Instruction[],Pl0.Vm.IPl0Io,Pl0.Vm.VirtualMachineOptions,System.Resources.ResourceManager,System.Globalization.CultureInfo,System.Threading.CancellationToken,System.Boolean)
+  id: '#ctor(Pl0.Core.Instruction[],Pl0.Vm.IPl0Io,Pl0.Vm.VirtualMachineOptions,System.Resources.ResourceManager,System.Globalization.CultureInfo,System.Threading.CancellationToken,System.Boolean)'
   parent: Pl0.Vm.VmExecutionSession
   langs:
   - csharp
   - vb
-  name: VmExecutionSession(Instruction[], IPl0Io, VirtualMachineOptions, ResourceManager, CultureInfo, CancellationToken)
-  nameWithType: VmExecutionSession.VmExecutionSession(Instruction[], IPl0Io, VirtualMachineOptions, ResourceManager, CultureInfo, CancellationToken)
-  fullName: Pl0.Vm.VmExecutionSession.VmExecutionSession(Pl0.Core.Instruction[], Pl0.Vm.IPl0Io, Pl0.Vm.VirtualMachineOptions, System.Resources.ResourceManager, System.Globalization.CultureInfo, System.Threading.CancellationToken)
+  name: VmExecutionSession(Instruction[], IPl0Io, VirtualMachineOptions, ResourceManager, CultureInfo, CancellationToken, bool)
+  nameWithType: VmExecutionSession.VmExecutionSession(Instruction[], IPl0Io, VirtualMachineOptions, ResourceManager, CultureInfo, CancellationToken, bool)
+  fullName: Pl0.Vm.VmExecutionSession.VmExecutionSession(Pl0.Core.Instruction[], Pl0.Vm.IPl0Io, Pl0.Vm.VirtualMachineOptions, System.Resources.ResourceManager, System.Globalization.CultureInfo, System.Threading.CancellationToken, bool)
   type: Constructor
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: .ctor
     path: src/Pl0.Vm/VmExecutionSession.cs
-    startLine: 30
+    startLine: 32
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
   syntax:
-    content: private VmExecutionSession(Instruction[] program, IPl0Io io, VirtualMachineOptions options, ResourceManager messages, CultureInfo culture, CancellationToken initializationToken)
+    content: private VmExecutionSession(Instruction[] program, IPl0Io io, VirtualMachineOptions options, ResourceManager messages, CultureInfo culture, CancellationToken initializationToken, bool captureStepSnapshots)
     parameters:
     - id: program
       type: Pl0.Core.Instruction[]
@@ -598,11 +657,13 @@ items:
       type: System.Globalization.CultureInfo
     - id: initializationToken
       type: System.Threading.CancellationToken
-    content.vb: Private Sub New(program As Instruction(), io As IPl0Io, options As VirtualMachineOptions, messages As ResourceManager, culture As CultureInfo, initializationToken As CancellationToken)
+    - id: captureStepSnapshots
+      type: System.Boolean
+    content.vb: Private Sub New(program As Instruction(), io As IPl0Io, options As VirtualMachineOptions, messages As ResourceManager, culture As CultureInfo, initializationToken As CancellationToken, captureStepSnapshots As Boolean)
   overload: Pl0.Vm.VmExecutionSession.#ctor*
-  nameWithType.vb: VmExecutionSession.New(Instruction(), IPl0Io, VirtualMachineOptions, ResourceManager, CultureInfo, CancellationToken)
-  fullName.vb: Pl0.Vm.VmExecutionSession.New(Pl0.Core.Instruction(), Pl0.Vm.IPl0Io, Pl0.Vm.VirtualMachineOptions, System.Resources.ResourceManager, System.Globalization.CultureInfo, System.Threading.CancellationToken)
-  name.vb: New(Instruction(), IPl0Io, VirtualMachineOptions, ResourceManager, CultureInfo, CancellationToken)
+  nameWithType.vb: VmExecutionSession.New(Instruction(), IPl0Io, VirtualMachineOptions, ResourceManager, CultureInfo, CancellationToken, Boolean)
+  fullName.vb: Pl0.Vm.VmExecutionSession.New(Pl0.Core.Instruction(), Pl0.Vm.IPl0Io, Pl0.Vm.VirtualMachineOptions, System.Resources.ResourceManager, System.Globalization.CultureInfo, System.Threading.CancellationToken, Boolean)
+  name.vb: New(Instruction(), IPl0Io, VirtualMachineOptions, ResourceManager, CultureInfo, CancellationToken, Boolean)
 - uid: Pl0.Vm.VmExecutionSession.State
   commentId: P:Pl0.Vm.VmExecutionSession.State
   id: State
@@ -617,11 +678,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: State
     path: src/Pl0.Vm/VmExecutionSession.cs
-    startLine: 41
+    startLine: 45
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -646,11 +707,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: IsRunning
     path: src/Pl0.Vm/VmExecutionSession.cs
-    startLine: 42
+    startLine: 46
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -661,30 +722,30 @@ items:
       type: System.Boolean
     content.vb: Friend ReadOnly Property IsRunning As Boolean
   overload: Pl0.Vm.VmExecutionSession.IsRunning*
-- uid: Pl0.Vm.VmExecutionSession.Create(System.Collections.Generic.IReadOnlyList{Pl0.Core.Instruction},Pl0.Vm.IPl0Io,Pl0.Vm.VirtualMachineOptions,System.Threading.CancellationToken)
-  commentId: M:Pl0.Vm.VmExecutionSession.Create(System.Collections.Generic.IReadOnlyList{Pl0.Core.Instruction},Pl0.Vm.IPl0Io,Pl0.Vm.VirtualMachineOptions,System.Threading.CancellationToken)
-  id: Create(System.Collections.Generic.IReadOnlyList{Pl0.Core.Instruction},Pl0.Vm.IPl0Io,Pl0.Vm.VirtualMachineOptions,System.Threading.CancellationToken)
+- uid: Pl0.Vm.VmExecutionSession.Create(System.Collections.Generic.IReadOnlyList{Pl0.Core.Instruction},Pl0.Vm.IPl0Io,Pl0.Vm.VirtualMachineOptions,System.Threading.CancellationToken,System.Boolean)
+  commentId: M:Pl0.Vm.VmExecutionSession.Create(System.Collections.Generic.IReadOnlyList{Pl0.Core.Instruction},Pl0.Vm.IPl0Io,Pl0.Vm.VirtualMachineOptions,System.Threading.CancellationToken,System.Boolean)
+  id: Create(System.Collections.Generic.IReadOnlyList{Pl0.Core.Instruction},Pl0.Vm.IPl0Io,Pl0.Vm.VirtualMachineOptions,System.Threading.CancellationToken,System.Boolean)
   parent: Pl0.Vm.VmExecutionSession
   langs:
   - csharp
   - vb
-  name: Create(IReadOnlyList<Instruction>?, IPl0Io, VirtualMachineOptions, CancellationToken)
-  nameWithType: VmExecutionSession.Create(IReadOnlyList<Instruction>?, IPl0Io, VirtualMachineOptions, CancellationToken)
-  fullName: Pl0.Vm.VmExecutionSession.Create(System.Collections.Generic.IReadOnlyList<Pl0.Core.Instruction>?, Pl0.Vm.IPl0Io, Pl0.Vm.VirtualMachineOptions, System.Threading.CancellationToken)
+  name: Create(IReadOnlyList<Instruction>?, IPl0Io, VirtualMachineOptions, CancellationToken, bool)
+  nameWithType: VmExecutionSession.Create(IReadOnlyList<Instruction>?, IPl0Io, VirtualMachineOptions, CancellationToken, bool)
+  fullName: Pl0.Vm.VmExecutionSession.Create(System.Collections.Generic.IReadOnlyList<Pl0.Core.Instruction>?, Pl0.Vm.IPl0Io, Pl0.Vm.VirtualMachineOptions, System.Threading.CancellationToken, bool)
   type: Method
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: Create
     path: src/Pl0.Vm/VmExecutionSession.cs
-    startLine: 44
+    startLine: 48
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
   syntax:
-    content: internal static VmExecutionSession Create(IReadOnlyList<Instruction>? source, IPl0Io io, VirtualMachineOptions options, CancellationToken cancellationToken)
+    content: internal static VmExecutionSession Create(IReadOnlyList<Instruction>? source, IPl0Io io, VirtualMachineOptions options, CancellationToken cancellationToken, bool captureStepSnapshots = true)
     parameters:
     - id: source
       type: System.Collections.Generic.IReadOnlyList{Pl0.Core.Instruction}
@@ -694,13 +755,15 @@ items:
       type: Pl0.Vm.VirtualMachineOptions
     - id: cancellationToken
       type: System.Threading.CancellationToken
+    - id: captureStepSnapshots
+      type: System.Boolean
     return:
       type: Pl0.Vm.VmExecutionSession
-    content.vb: Friend Shared Function Create(source As IReadOnlyList(Of Instruction), io As IPl0Io, options As VirtualMachineOptions, cancellationToken As CancellationToken) As VmExecutionSession
+    content.vb: Friend Shared Function Create(source As IReadOnlyList(Of Instruction), io As IPl0Io, options As VirtualMachineOptions, cancellationToken As CancellationToken, captureStepSnapshots As Boolean = True) As VmExecutionSession
   overload: Pl0.Vm.VmExecutionSession.Create*
-  nameWithType.vb: VmExecutionSession.Create(IReadOnlyList(Of Instruction), IPl0Io, VirtualMachineOptions, CancellationToken)
-  fullName.vb: Pl0.Vm.VmExecutionSession.Create(System.Collections.Generic.IReadOnlyList(Of Pl0.Core.Instruction), Pl0.Vm.IPl0Io, Pl0.Vm.VirtualMachineOptions, System.Threading.CancellationToken)
-  name.vb: Create(IReadOnlyList(Of Instruction), IPl0Io, VirtualMachineOptions, CancellationToken)
+  nameWithType.vb: VmExecutionSession.Create(IReadOnlyList(Of Instruction), IPl0Io, VirtualMachineOptions, CancellationToken, Boolean)
+  fullName.vb: Pl0.Vm.VmExecutionSession.Create(System.Collections.Generic.IReadOnlyList(Of Pl0.Core.Instruction), Pl0.Vm.IPl0Io, Pl0.Vm.VirtualMachineOptions, System.Threading.CancellationToken, Boolean)
+  name.vb: Create(IReadOnlyList(Of Instruction), IPl0Io, VirtualMachineOptions, CancellationToken, Boolean)
 - uid: Pl0.Vm.VmExecutionSession.ExecuteNext(System.Threading.CancellationToken)
   commentId: M:Pl0.Vm.VmExecutionSession.ExecuteNext(System.Threading.CancellationToken)
   id: ExecuteNext(System.Threading.CancellationToken)
@@ -715,11 +778,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: ExecuteNext
     path: src/Pl0.Vm/VmExecutionSession.cs
-    startLine: 78
+    startLine: 84
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -746,11 +809,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: ToExecutionResult
     path: src/Pl0.Vm/VmExecutionSession.cs
-    startLine: 113
+    startLine: 122
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -774,11 +837,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: ValidateProgram
     path: src/Pl0.Vm/VmExecutionSession.cs
-    startLine: 123
+    startLine: 132
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -814,11 +877,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: Dispatch
     path: src/Pl0.Vm/VmExecutionSession.cs
-    startLine: 183
+    startLine: 192
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -845,11 +908,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: ExecuteOpr
     path: src/Pl0.Vm/VmExecutionSession.cs
-    startLine: 250
+    startLine: 259
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -865,6 +928,62 @@ items:
   nameWithType.vb: VmExecutionSession.ExecuteOpr(Integer)
   fullName.vb: Pl0.Vm.VmExecutionSession.ExecuteOpr(Integer)
   name.vb: ExecuteOpr(Integer)
+- uid: Pl0.Vm.VmExecutionSession.ExecuteReturn
+  commentId: M:Pl0.Vm.VmExecutionSession.ExecuteReturn
+  id: ExecuteReturn
+  parent: Pl0.Vm.VmExecutionSession
+  langs:
+  - csharp
+  - vb
+  name: ExecuteReturn()
+  nameWithType: VmExecutionSession.ExecuteReturn()
+  fullName: Pl0.Vm.VmExecutionSession.ExecuteReturn()
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Vm/VmExecutionSession.cs
+      branch: codex/security-scan-remediation-23
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: ExecuteReturn
+    path: src/Pl0.Vm/VmExecutionSession.cs
+    startLine: 324
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private VmCompletionReason? ExecuteReturn()
+    return:
+      type: System.Nullable{Pl0.Vm.VmCompletionReason}
+    content.vb: Private Function ExecuteReturn() As VmCompletionReason?
+  overload: Pl0.Vm.VmExecutionSession.ExecuteReturn*
+- uid: Pl0.Vm.VmExecutionSession.InvalidReturnFrame
+  commentId: M:Pl0.Vm.VmExecutionSession.InvalidReturnFrame
+  id: InvalidReturnFrame
+  parent: Pl0.Vm.VmExecutionSession
+  langs:
+  - csharp
+  - vb
+  name: InvalidReturnFrame()
+  nameWithType: VmExecutionSession.InvalidReturnFrame()
+  fullName: Pl0.Vm.VmExecutionSession.InvalidReturnFrame()
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Vm/VmExecutionSession.cs
+      branch: codex/security-scan-remediation-23
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: InvalidReturnFrame
+    path: src/Pl0.Vm/VmExecutionSession.cs
+    startLine: 356
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private VmCompletionReason InvalidReturnFrame()
+    return:
+      type: Pl0.Vm.VmCompletionReason
+    content.vb: Private Function InvalidReturnFrame() As VmCompletionReason
+  overload: Pl0.Vm.VmExecutionSession.InvalidReturnFrame*
 - uid: Pl0.Vm.VmExecutionSession.Binary(System.Func{System.Int32,System.Int32,System.Int32})
   commentId: M:Pl0.Vm.VmExecutionSession.Binary(System.Func{System.Int32,System.Int32,System.Int32})
   id: Binary(System.Func{System.Int32,System.Int32,System.Int32})
@@ -879,11 +998,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: Binary
     path: src/Pl0.Vm/VmExecutionSession.cs
-    startLine: 298
+    startLine: 361
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -913,11 +1032,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: ResolveBase
     path: src/Pl0.Vm/VmExecutionSession.cs
-    startLine: 304
+    startLine: 367
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -947,11 +1066,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: TryPush
     path: src/Pl0.Vm/VmExecutionSession.cs
-    startLine: 321
+    startLine: 384
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -975,11 +1094,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: TryPeek
     path: src/Pl0.Vm/VmExecutionSession.cs
-    startLine: 331
+    startLine: 394
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -1009,11 +1128,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: TryWrite
     path: src/Pl0.Vm/VmExecutionSession.cs
-    startLine: 338
+    startLine: 401
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -1043,11 +1162,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: IsRecoverableHostException
     path: src/Pl0.Vm/VmExecutionSession.cs
-    startLine: 345
+    startLine: 408
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -1074,11 +1193,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: IsValidStackIndex
     path: src/Pl0.Vm/VmExecutionSession.cs
-    startLine: 347
+    startLine: 410
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -1108,11 +1227,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: StackFault
     path: src/Pl0.Vm/VmExecutionSession.cs
-    startLine: 349
+    startLine: 412
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -1148,11 +1267,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: LocalizedDiagnostic
     path: src/Pl0.Vm/VmExecutionSession.cs
-    startLine: 361
+    startLine: 424
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -1190,11 +1309,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: RuntimeFaultReason
     path: src/Pl0.Vm/VmExecutionSession.cs
-    startLine: 373
+    startLine: 436
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -1224,11 +1343,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: RuntimeFault
     path: src/Pl0.Vm/VmExecutionSession.cs
-    startLine: 380
+    startLine: 443
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -1260,11 +1379,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: Complete
     path: src/Pl0.Vm/VmExecutionSession.cs
-    startLine: 383
+    startLine: 446
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -1284,34 +1403,71 @@ items:
   nameWithType.vb: VmExecutionSession.Complete(VmCompletionReason, IEnumerable(Of VmDiagnostic), VmState)
   fullName.vb: Pl0.Vm.VmExecutionSession.Complete(Pl0.Vm.VmCompletionReason, System.Collections.Generic.IEnumerable(Of Pl0.Vm.VmDiagnostic), Pl0.Vm.VmState)
   name.vb: Complete(VmCompletionReason, IEnumerable(Of VmDiagnostic), VmState)
-- uid: Pl0.Vm.VmExecutionSession.CaptureState
-  commentId: M:Pl0.Vm.VmExecutionSession.CaptureState
-  id: CaptureState
+- uid: Pl0.Vm.VmExecutionSession.RequiresPreDispatchSnapshot(Pl0.Core.Instruction)
+  commentId: M:Pl0.Vm.VmExecutionSession.RequiresPreDispatchSnapshot(Pl0.Core.Instruction)
+  id: RequiresPreDispatchSnapshot(Pl0.Core.Instruction)
   parent: Pl0.Vm.VmExecutionSession
   langs:
   - csharp
   - vb
-  name: CaptureState()
-  nameWithType: VmExecutionSession.CaptureState()
-  fullName: Pl0.Vm.VmExecutionSession.CaptureState()
+  name: RequiresPreDispatchSnapshot(Instruction)
+  nameWithType: VmExecutionSession.RequiresPreDispatchSnapshot(Instruction)
+  fullName: Pl0.Vm.VmExecutionSession.RequiresPreDispatchSnapshot(Pl0.Core.Instruction)
   type: Method
   source:
     remote:
       path: src/Pl0.Vm/VmExecutionSession.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
-    id: CaptureState
+    id: RequiresPreDispatchSnapshot
     path: src/Pl0.Vm/VmExecutionSession.cs
-    startLine: 393
+    startLine: 456
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
   syntax:
-    content: private VmState CaptureState()
+    content: private bool RequiresPreDispatchSnapshot(Instruction instruction)
+    parameters:
+    - id: instruction
+      type: Pl0.Core.Instruction
+    return:
+      type: System.Boolean
+    content.vb: Private Function RequiresPreDispatchSnapshot(instruction As Instruction) As Boolean
+  overload: Pl0.Vm.VmExecutionSession.RequiresPreDispatchSnapshot*
+- uid: Pl0.Vm.VmExecutionSession.CaptureState(System.Boolean)
+  commentId: M:Pl0.Vm.VmExecutionSession.CaptureState(System.Boolean)
+  id: CaptureState(System.Boolean)
+  parent: Pl0.Vm.VmExecutionSession
+  langs:
+  - csharp
+  - vb
+  name: CaptureState(bool)
+  nameWithType: VmExecutionSession.CaptureState(bool)
+  fullName: Pl0.Vm.VmExecutionSession.CaptureState(bool)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Vm/VmExecutionSession.cs
+      branch: codex/security-scan-remediation-23
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: CaptureState
+    path: src/Pl0.Vm/VmExecutionSession.cs
+    startLine: 461
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: private VmState CaptureState(bool forceClone = false)
+    parameters:
+    - id: forceClone
+      type: System.Boolean
     return:
       type: Pl0.Vm.VmState
-    content.vb: Private Function CaptureState() As VmState
+    content.vb: Private Function CaptureState(forceClone As Boolean = False) As VmState
   overload: Pl0.Vm.VmExecutionSession.CaptureState*
+  nameWithType.vb: VmExecutionSession.CaptureState(Boolean)
+  fullName.vb: Pl0.Vm.VmExecutionSession.CaptureState(Boolean)
+  name.vb: CaptureState(Boolean)
 references:
 - uid: Pl0.Vm
   commentId: N:Pl0.Vm
@@ -1722,6 +1878,17 @@ references:
     name: Threading
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
 - uid: System.Collections.Generic.List{Pl0.Vm.VmDiagnostic}
   commentId: T:System.Collections.Generic.List{Pl0.Vm.VmDiagnostic}
   parent: System.Collections.Generic
@@ -1829,7 +1996,7 @@ references:
   fullName: Pl0.Vm.VmStepResult
 - uid: Pl0.Vm.VmExecutionSession.#ctor*
   commentId: Overload:Pl0.Vm.VmExecutionSession.#ctor
-  href: Pl0.Vm.VmExecutionSession.html#Pl0_Vm_VmExecutionSession__ctor_Pl0_Core_Instruction___Pl0_Vm_IPl0Io_Pl0_Vm_VirtualMachineOptions_System_Resources_ResourceManager_System_Globalization_CultureInfo_System_Threading_CancellationToken_
+  href: Pl0.Vm.VmExecutionSession.html#Pl0_Vm_VmExecutionSession__ctor_Pl0_Core_Instruction___Pl0_Vm_IPl0Io_Pl0_Vm_VirtualMachineOptions_System_Resources_ResourceManager_System_Globalization_CultureInfo_System_Threading_CancellationToken_System_Boolean_
   name: VmExecutionSession
   nameWithType: VmExecutionSession.VmExecutionSession
   fullName: Pl0.Vm.VmExecutionSession.VmExecutionSession
@@ -1855,20 +2022,9 @@ references:
   name: IsRunning
   nameWithType: VmExecutionSession.IsRunning
   fullName: Pl0.Vm.VmExecutionSession.IsRunning
-- uid: System.Boolean
-  commentId: T:System.Boolean
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.boolean
-  name: bool
-  nameWithType: bool
-  fullName: bool
-  nameWithType.vb: Boolean
-  fullName.vb: Boolean
-  name.vb: Boolean
 - uid: Pl0.Vm.VmExecutionSession.Create*
   commentId: Overload:Pl0.Vm.VmExecutionSession.Create
-  href: Pl0.Vm.VmExecutionSession.html#Pl0_Vm_VmExecutionSession_Create_System_Collections_Generic_IReadOnlyList_Pl0_Core_Instruction__Pl0_Vm_IPl0Io_Pl0_Vm_VirtualMachineOptions_System_Threading_CancellationToken_
+  href: Pl0.Vm.VmExecutionSession.html#Pl0_Vm_VmExecutionSession_Create_System_Collections_Generic_IReadOnlyList_Pl0_Core_Instruction__Pl0_Vm_IPl0Io_Pl0_Vm_VirtualMachineOptions_System_Threading_CancellationToken_System_Boolean_
   name: Create
   nameWithType: VmExecutionSession.Create
   fullName: Pl0.Vm.VmExecutionSession.Create
@@ -2085,6 +2241,25 @@ references:
   name: ExecuteOpr
   nameWithType: VmExecutionSession.ExecuteOpr
   fullName: Pl0.Vm.VmExecutionSession.ExecuteOpr
+- uid: Pl0.Vm.VmExecutionSession.ExecuteReturn*
+  commentId: Overload:Pl0.Vm.VmExecutionSession.ExecuteReturn
+  href: Pl0.Vm.VmExecutionSession.html#Pl0_Vm_VmExecutionSession_ExecuteReturn
+  name: ExecuteReturn
+  nameWithType: VmExecutionSession.ExecuteReturn
+  fullName: Pl0.Vm.VmExecutionSession.ExecuteReturn
+- uid: Pl0.Vm.VmExecutionSession.InvalidReturnFrame*
+  commentId: Overload:Pl0.Vm.VmExecutionSession.InvalidReturnFrame
+  href: Pl0.Vm.VmExecutionSession.html#Pl0_Vm_VmExecutionSession_InvalidReturnFrame
+  name: InvalidReturnFrame
+  nameWithType: VmExecutionSession.InvalidReturnFrame
+  fullName: Pl0.Vm.VmExecutionSession.InvalidReturnFrame
+- uid: Pl0.Vm.VmCompletionReason
+  commentId: T:Pl0.Vm.VmCompletionReason
+  parent: Pl0.Vm
+  href: Pl0.Vm.VmCompletionReason.html
+  name: VmCompletionReason
+  nameWithType: VmCompletionReason
+  fullName: Pl0.Vm.VmCompletionReason
 - uid: Pl0.Vm.VmExecutionSession.Binary*
   commentId: Overload:Pl0.Vm.VmExecutionSession.Binary
   href: Pl0.Vm.VmExecutionSession.html#Pl0_Vm_VmExecutionSession_Binary_System_Func_System_Int32_System_Int32_System_Int32__
@@ -2285,13 +2460,6 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.object
   - name: (
   - name: )
-- uid: Pl0.Vm.VmCompletionReason
-  commentId: T:Pl0.Vm.VmCompletionReason
-  parent: Pl0.Vm
-  href: Pl0.Vm.VmCompletionReason.html
-  name: VmCompletionReason
-  nameWithType: VmCompletionReason
-  fullName: Pl0.Vm.VmCompletionReason
 - uid: Pl0.Vm.VmExecutionSession.LocalizedDiagnostic*
   commentId: Overload:Pl0.Vm.VmExecutionSession.LocalizedDiagnostic
   href: Pl0.Vm.VmExecutionSession.html#Pl0_Vm_VmExecutionSession_LocalizedDiagnostic_System_Int32_System_String_System_String_System_String_System_Object___
@@ -2384,9 +2552,15 @@ references:
   - name: " "
   - name: T
   - name: )
+- uid: Pl0.Vm.VmExecutionSession.RequiresPreDispatchSnapshot*
+  commentId: Overload:Pl0.Vm.VmExecutionSession.RequiresPreDispatchSnapshot
+  href: Pl0.Vm.VmExecutionSession.html#Pl0_Vm_VmExecutionSession_RequiresPreDispatchSnapshot_Pl0_Core_Instruction_
+  name: RequiresPreDispatchSnapshot
+  nameWithType: VmExecutionSession.RequiresPreDispatchSnapshot
+  fullName: Pl0.Vm.VmExecutionSession.RequiresPreDispatchSnapshot
 - uid: Pl0.Vm.VmExecutionSession.CaptureState*
   commentId: Overload:Pl0.Vm.VmExecutionSession.CaptureState
-  href: Pl0.Vm.VmExecutionSession.html#Pl0_Vm_VmExecutionSession_CaptureState
+  href: Pl0.Vm.VmExecutionSession.html#Pl0_Vm_VmExecutionSession_CaptureState_System_Boolean_
   name: CaptureState
   nameWithType: VmExecutionSession.CaptureState
   fullName: Pl0.Vm.VmExecutionSession.CaptureState

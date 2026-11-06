@@ -176,6 +176,45 @@ class WorkspaceStorageMaintenanceTests(unittest.TestCase):
             self.assertEqual(["build"], [item["path"] for item in candidates])
             self.assertEqual("cmake-out-of-source", candidates[0]["adapter"])
 
+    def test_cmake_cleanup_removes_tree_without_executing_generated_rules(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            repository = pathlib.Path(temporary) / "repo"
+            initialize_repository(repository)
+            (repository / ".gitignore").write_text("build/\n", encoding="utf-8")
+            (repository / "CMakeLists.txt").write_text(
+                "cmake_minimum_required(VERSION 3.20)\n",
+                encoding="utf-8",
+            )
+            run("git", "add", ".gitignore", "CMakeLists.txt", cwd=repository)
+            run("git", "commit", "-qm", "fixture", cwd=repository)
+            build = repository / "build"
+            build.mkdir()
+            (build / "CMakeCache.txt").write_text(
+                f"CMAKE_HOME_DIRECTORY:INTERNAL={repository}\n",
+                encoding="utf-8",
+            )
+            marker = repository / "executed-marker"
+            (build / "build.ninja").write_text(
+                f"rule unsafe\n  command = touch {marker}\n"
+                "build clean: unsafe\n",
+                encoding="utf-8",
+            )
+
+            candidates, _, status = storage.handle_cmake(
+                repository,
+                {"buildDirectoryPatterns": ["build"]},
+                mode="update",
+                retention_days=7,
+                pressure_mode=True,
+                dirty=False,
+                busy=False,
+            )
+
+            self.assertEqual("Passed", status)
+            self.assertEqual("Removed", candidates[0]["status"])
+            self.assertFalse(build.exists())
+            self.assertFalse(marker.exists())
+
     def test_cc65_make_preview_rejects_protected_or_unbounded_deletion(self) -> None:
         storage.validate_cc65_make_preview(
             "rm -rf ../wrk ../bin\n",
@@ -205,12 +244,12 @@ class WorkspaceStorageMaintenanceTests(unittest.TestCase):
     @unittest.skipUnless(os.name != "nt" and shutil.which("make"), "GNU Make fixture requires a POSIX runner")
     def test_cc65_inventory_and_blocked_update_modes_never_evaluate_makefiles(self) -> None:
         cases = (
-            ("safe", "check-only", False, False, "NativeMakeClean", "Planned"),
-            ("safe", "dry-run", False, False, "NativeMakeClean", "Planned"),
-            ("deep", "check-only", False, False, "RootMakeClean", "Planned"),
-            ("deep", "dry-run", False, False, "RootMakeClean", "Planned"),
-            ("safe", "update", True, False, "NativeMakeClean", "SkippedDirtyOrBusy"),
-            ("deep", "update", False, True, "RootMakeClean", "SkippedDirtyOrBusy"),
+            ("safe", "check-only", False, False, "RemoveVerifiedCc65Output", "Planned"),
+            ("safe", "dry-run", False, False, "RemoveVerifiedCc65Output", "Planned"),
+            ("deep", "check-only", False, False, "RemoveVerifiedCc65Output", "Planned"),
+            ("deep", "dry-run", False, False, "RemoveVerifiedCc65Output", "Planned"),
+            ("safe", "update", True, False, "RemoveVerifiedCc65Output", "SkippedDirtyOrBusy"),
+            ("deep", "update", False, True, "RemoveVerifiedCc65Output", "SkippedDirtyOrBusy"),
         )
         for profile, mode, dirty, busy, action, expected_status in cases:
             with self.subTest(profile=profile, mode=mode, dirty=dirty, busy=busy), \
@@ -265,8 +304,8 @@ class WorkspaceStorageMaintenanceTests(unittest.TestCase):
     @unittest.skipUnless(os.name != "nt" and shutil.which("make"), "GNU Make fixture requires a POSIX runner")
     def test_cc65_authorized_update_preserves_preview_and_clean(self) -> None:
         for profile, make_directory, recipe, action in (
-            ("safe", "src", "rm -rf ../wrk", "NativeMakeClean"),
-            ("deep", ".", "rm -rf wrk", "RootMakeClean"),
+            ("safe", "src", "rm -rf ../wrk", "RemoveVerifiedCc65Output"),
+            ("deep", ".", "rm -rf wrk", "RemoveVerifiedCc65Output"),
         ):
             with self.subTest(profile=profile), tempfile.TemporaryDirectory() as temporary:
                 repository = pathlib.Path(temporary) / "cc65"
@@ -358,17 +397,12 @@ class WorkspaceStorageMaintenanceTests(unittest.TestCase):
                     busy=False,
                 )
 
-            self.assertEqual([
-                ["make", "-n", "clean"],
-                ["make", "-C", "src", "-n", "clean"],
-                ["make", "-C", "src", "clean"],
-            ], make_commands)
-            self.assertNotIn(["make", "clean"], make_commands)
+            self.assertEqual([], make_commands)
             self.assertFalse(repository.joinpath("wrk").exists())
             self.assertGreater(freed, 0)
-            self.assertEqual("Warning", status)
-            self.assertTrue(any(item.startswith("DeepRootCleanFallback:") for item in warnings))
-            self.assertEqual("NativeMakeClean", candidates[0]["action"])
+            self.assertEqual("Passed", status)
+            self.assertEqual([], warnings)
+            self.assertEqual("RemoveVerifiedCc65Output", candidates[0]["action"])
             self.assertEqual("Removed", candidates[0]["status"])
 
     def test_container_contract_prunes_only_dangling_images(self) -> None:

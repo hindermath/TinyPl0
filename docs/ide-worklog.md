@@ -241,3 +241,62 @@ aufgerufen. Funktions- und Abnahmegrenzen bleiben unveraendert.
 final branch commit count. The manual build counter remains 94; no local
 product build or test was invoked. Feature and acceptance boundaries are retained.*
 <!-- dependabot-pr-123-version:end -->
+
+175. Agent (2026-11-06): Die 23 Befunde des vollständigen Codex-Security-Scans
+wurden in der Reihenfolge der Triage geprüft und behoben. Die IDE begrenzt nun
+Syntaxhervorhebung, Formatierung und Laufzeitausgabe; Compiler, Parser,
+P-Code-Leser und VM besitzen feste Ressourcen- und Zustandsgrenzen. Weitere
+Korrekturen härten Dateipfade, Git-/Registry-Aufrufe, Release-Eingaben,
+Cleanup-Aktionen und den Pre-Push-Scan. Ein unabhängiger Patch-Review fand
+sieben zusätzliche Grenzfälle, die vor Abschluss ebenfalls korrigiert wurden.
+Die lokale Regression umfasst 374/374 .NET-Tests, 98 Python-Tests mit elf
+plattformbedingten Überspringungen, beide PowerShell-Governance-Suiten,
+DocFX, sechs axe-Seiten und Lynx-Dumps. Der NuGet-Audit meldet keine bekannte
+verwundbare Abhängigkeit mehr. Die jeweils wirksame IDE-Version steht
+verbindlich in `src/Pl0.Ide/Pl0.Ide.csproj`; ein Release wurde nicht erstellt.
+
+*The 23 findings from the complete Codex Security scan were reviewed and fixed
+in triage order. The IDE now bounds highlighting, formatting, and runtime
+output, while compiler, parser, P-Code loading, and VM execution enforce
+resource and state limits. Additional fixes harden paths, Git and registry
+execution, release inputs, cleanup actions, and pre-push scanning. An
+independent patch review found seven further boundary cases, all corrected
+before closeout. Local evidence covers 374/374 .NET tests, 98 Python tests with
+eleven platform skips, both PowerShell governance suites, DocFX, six axe pages,
+and Lynx dumps. The NuGet audit now reports no known vulnerable dependency.
+The authoritative IDE version remains in `src/Pl0.Ide/Pl0.Ide.csproj`; no
+release was created.*
+
+176. Agent (2026-11-06): Der erste PR-#124-Lauf zeigte ausschließlich im
+Ubuntu-Maintenance-TUI-Gate zwei fehlgeschlagene Grenztests, weil dort
+`ripgrep` nicht installiert ist. Der isolierte `--apply-patch`-Pfad benötigt
+keinen Repository-Scan; deshalb prüfen Bash und PowerShell `rg` nun erst vor
+dem regulären Scan. Fünf Pfadgrenztests und beide Syntaxprüfungen bestehen
+lokal. Produkt- und IDE-Laufzeitverhalten bleiben unverändert.
+
+*The first PR #124 run failed only two boundary tests in the Ubuntu Maintenance
+TUI gate because that image has no ripgrep. The isolated `--apply-patch` path
+does not scan repository content, so Bash and PowerShell now require `rg` only
+before the normal scan. Five path-boundary tests and both syntax checks pass
+locally. Product and IDE runtime behavior are unchanged.*
+
+177. Agent (2026-11-07): Sieben konkrete Review-Kommentare zu PR #124 wurden
+umgesetzt. Die PowerShell-Patchgrenze vergleicht jetzt physisch aufgeloeste
+Repository- und Zielpfade und deckt Verzeichnis-Symlinks sowie Windows-Junctions
+ab; Bash bricht bei nicht aufloesbarer Repository-Wurzel sofort ab. Delegierte
+Git-Fetches sind explizit an `origin` gebunden. `CompilerOptions` behaelt seinen
+veroeffentlichten Neun-Parameter-Konstruktor und die Neun-Werte-Dekonstruktion,
+waehrend die Ressourcenlimits als Init-Eigenschaften erhalten bleiben. Der
+Editor sucht sortierte Highlight-Spans binaer, und das Testprojekt erzwingt
+`Microsoft.Build.Tasks.Git` 10.0.303. Die Version `1.124.797.101` dokumentiert
+zwei weitere Testlaeufe; ein Release wurde nicht erstellt.
+
+*Seven actionable PR #124 review comments were implemented. The PowerShell
+patch boundary now compares physically resolved repository and target paths,
+with directory-symlink and Windows-junction regressions; Bash exits immediately
+when the repository root cannot be resolved. Delegated Git fetches are bound
+explicitly to `origin`. `CompilerOptions` retains its published nine-parameter
+constructor and nine-value deconstruction while keeping resource limits as init
+properties. The editor binary-searches sorted highlight spans, and the test
+project pins `Microsoft.Build.Tasks.Git` 10.0.303. Version `1.124.805.101`
+records two further test runs; no release was created.*

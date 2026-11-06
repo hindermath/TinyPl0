@@ -510,41 +510,19 @@ def handle_cc65(
         if not existing:
             return candidates, protected, 0, status, warnings
         for candidate in candidates:
-            candidate["action"] = "RootMakeClean"
+            candidate["action"] = "RemoveVerifiedCc65Output"
         if mode != "update":
             return candidates, protected, 0, status, warnings
         if dirty or busy:
             for candidate in candidates:
                 candidate["status"] = "SkippedDirtyOrBusy"
             return candidates, protected, 0, "Warning", warnings
-        try:
-            # GNU Make evaluates functions such as $(shell ...) even with -n.
-            # Run the scope preview only after explicit update authority and
-            # the dirty/busy gates, never during inventory-only modes.
-            preview = run_command(["make", "-n", "clean"], cwd=repository, timeout=180)
-            if preview.returncode != 0:
-                raise StorageContractError("cc65 root make clean preview failed")
-            validate_cc65_make_preview(
-                preview.stdout + "\n" + preview.stderr,
-                all_paths,
-                adapter.get("protectedEvidencePatterns", []),
-            )
-            before = sum(item["sizeBytes"] for item in candidates)
-            result = run_command(["make", "clean"], cwd=repository, timeout=900)
-            if result.returncode != 0:
-                raise StorageContractError("cc65 root make clean failed")
-            freed = before
-            for candidate in candidates:
-                candidate["status"] = "Removed"
-                candidate["freedBytes"] = candidate["sizeBytes"]
-            return candidates, protected, freed, status, warnings
-        except StorageContractError as exc:
-            # The upstream root clean currently reaches additional tool and
-            # sample paths. Preserve those paths and retain useful cleanup by
-            # falling back to the separately proven safe groups.
-            warnings.append(f"DeepRootCleanFallback: {exc}")
-            candidates.clear()
-            status = "Warning"
+        # Makefiles sind ausführbarer Quelltext und werden bei sicherer
+        # Speicherbereinigung niemals ausgewertet. / Makefiles are executable
+        # source and are never evaluated by safe storage cleanup.
+        for candidate in candidates:
+            freed += remove_candidate(repository, candidate)
+        return candidates, protected, freed, status, warnings
 
     effective_pressure = pressure_mode or profile == "deep"
     for group in adapter.get("safeGroups", []):
@@ -563,7 +541,7 @@ def handle_cc65(
             continue
         for candidate in group_candidates:
             if candidate["eligible"]:
-                candidate["action"] = "NativeMakeClean"
+                candidate["action"] = "RemoveVerifiedCc65Output"
         if mode != "update":
             continue
         if dirty or busy:
@@ -572,27 +550,9 @@ def handle_cc65(
                 if candidate["eligible"]:
                     candidate["status"] = "SkippedDirtyOrBusy"
             continue
-        preview = make_preview(repository, str(group["makeDirectory"]), str(group["target"]))
-        if preview.returncode != 0:
-            raise StorageContractError(f"cc65 make preview failed for {group['id']}")
-        validate_cc65_make_preview(
-            preview.stdout + "\n" + preview.stderr,
-            group["paths"],
-            adapter.get("protectedEvidencePatterns", []),
-        )
-        before = sum(item["sizeBytes"] for item in group_candidates if item["eligible"])
-        result = run_command(
-            ["make", "-C", str(group["makeDirectory"]), str(group["target"])],
-            cwd=repository,
-            timeout=900,
-        )
-        if result.returncode != 0:
-            raise StorageContractError(f"cc65 make clean failed for {group['id']}")
-        freed += before
         for candidate in group_candidates:
             if candidate["eligible"]:
-                candidate["status"] = "Removed"
-                candidate["freedBytes"] = candidate["sizeBytes"]
+                freed += remove_candidate(repository, candidate)
     return candidates, protected, freed, status, warnings
 
 
@@ -660,7 +620,7 @@ def handle_cmake(
     for candidate in candidates:
         if not candidate["eligible"]:
             continue
-        candidate["action"] = "CMakeCleanAndRemoveTree"
+        candidate["action"] = "RemoveVerifiedCMakeBuildTree"
         if mode != "update":
             continue
         if dirty or busy:
@@ -668,16 +628,12 @@ def handle_cmake(
             status = "Warning"
             continue
         build = contained_path(repository / candidate["path"], repository, "CMake build tree")
-        if shutil.which("cmake") is None:
-            candidate["status"] = "ProviderUnavailable"
-            status = "Warning"
-            continue
-        result = run_command(["cmake", "--build", str(build), "--target", "clean"], timeout=900)
-        if result.returncode != 0:
-            candidate["status"] = "NativeCleanFailed"
-            candidate["providerExitCode"] = result.returncode
-            status = "Warning"
-            continue
+        # Ignorierte Build-Regeln sind nicht Teil des geprüften Quellstands.
+        # Ignored build rules are not part of the reviewed source revision.
+        # Der verifizierte, wiederherstellbare Build-Baum wird direkt entfernt,
+        # damit eine Wartungsaktion keine darin eingebetteten Befehle ausführt.
+        # Remove the verified, reproducible build tree directly so maintenance
+        # never executes commands embedded in it.
         freed += remove_candidate(repository, candidate)
     return candidates, freed, status
 

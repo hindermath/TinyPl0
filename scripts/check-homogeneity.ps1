@@ -13,6 +13,39 @@ param(
     [switch]$Yes
 )
 
+function Resolve-PhysicalExistingPath {
+    param(
+        [Parameter(Mandatory)]
+        [string]$Path
+    )
+
+    $fullPath = [IO.Path]::GetFullPath($Path)
+    $pathRoot = [IO.Path]::GetPathRoot($fullPath)
+    $current = $pathRoot
+    $relativePath = $fullPath.Substring($pathRoot.Length)
+    $components = $relativePath.Split(
+        [char[]]@([IO.Path]::DirectorySeparatorChar, [IO.Path]::AltDirectorySeparatorChar),
+        [StringSplitOptions]::RemoveEmptyEntries
+    )
+
+    foreach ($component in $components) {
+        $current = Join-Path $current $component
+        $item = Get-Item -LiteralPath $current -Force -ErrorAction Stop
+        if (($item.Attributes -band [IO.FileAttributes]::ReparsePoint) -ne 0) {
+            $resolvedItem = $item.ResolveLinkTarget($true)
+            if ($null -eq $resolvedItem) {
+                throw "Path link could not be resolved: $current"
+            }
+            $current = $resolvedItem.FullName
+        }
+        else {
+            $current = $item.FullName
+        }
+    }
+
+    return [IO.Path]::GetFullPath($current)
+}
+
 $ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 $LibDir    = Join-Path $ScriptDir 'lib'
 
@@ -68,13 +101,7 @@ if (-not (Test-Path -LiteralPath $TargetDir -PathType Container)) {
     Write-Error "FATAL: target directory not found: $TargetDir"
     exit 2
 }
-$TargetDir = (Resolve-Path -LiteralPath $TargetDir).Path
-
-# Check ripgrep availability
-if (-not (Get-Command rg -ErrorAction SilentlyContinue)) {
-    Write-Error "FATAL: ripgrep (rg) not found"
-    exit 2
-}
+$TargetDir = Resolve-PhysicalExistingPath -Path $TargetDir
 
 # ─── Apply-Patch Mode ────────────────────────────────────────────────────────
 if ($ApplyPatch) {
@@ -93,8 +120,34 @@ if ($ApplyPatch) {
     if ($answer -match '^[jJyY]') {
         $patchCount = 0
         $targetFile = ''
+        $targetPrefix = $TargetDir.TrimEnd(
+            [IO.Path]::DirectorySeparatorChar,
+            [IO.Path]::AltDirectorySeparatorChar
+        ) + [IO.Path]::DirectorySeparatorChar
         foreach ($line in $content) {
-            if ($line -match '### Target: (.+)') { $targetFile = $Matches[1] }
+            if ($line -match '### Target: (.+)') {
+                $declaredTarget = $Matches[1]
+                $candidate = if ([IO.Path]::IsPathRooted($declaredTarget)) {
+                    [IO.Path]::GetFullPath($declaredTarget)
+                } else {
+                    [IO.Path]::GetFullPath((Join-Path $TargetDir $declaredTarget))
+                }
+                $parent = Split-Path -Parent $candidate
+                if (-not (Test-Path -LiteralPath $parent -PathType Container)) {
+                    throw "Patch target parent is unavailable: $candidate"
+                }
+                $resolvedParent = Resolve-PhysicalExistingPath -Path $parent
+                $targetFile = Join-Path $resolvedParent (Split-Path -Leaf $candidate)
+                if (-not $targetFile.StartsWith($targetPrefix, [StringComparison]::Ordinal)) {
+                    throw "Patch target escapes selected repository: $targetFile"
+                }
+                if (Test-Path -LiteralPath $targetFile) {
+                    $targetItem = Get-Item -LiteralPath $targetFile -Force
+                    if (($targetItem.Attributes -band [IO.FileAttributes]::ReparsePoint) -ne 0) {
+                        throw "Patch target must not be a symlink or junction: $targetFile"
+                    }
+                }
+            }
             if ($line -match '^\+\+\+ (.+)' -and $targetFile) {
                 Add-Content -Path $targetFile -Value $Matches[1]
                 $patchCount++
@@ -107,6 +160,13 @@ if ($ApplyPatch) {
         Write-Host "Patch abgebrochen."
     }
     exit 0
+}
+
+# Patch application parses only the bounded patch document and does not scan
+# repository content, so ripgrep is required only for the regular scan path.
+if (-not (Get-Command rg -ErrorAction SilentlyContinue)) {
+    Write-Error "FATAL: ripgrep (rg) not found"
+    exit 2
 }
 
 # ─── Scan State ──────────────────────────────────────────────────────────────

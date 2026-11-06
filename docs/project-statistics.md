@@ -394,6 +394,8 @@ rekonstruiert.
 | 2026-09-19 | Statistik-Preset-Rollout / Statistics preset rollout | Branch `codex/project-statistics-rollout-v010`; Installation von v0.1.0 bei Prioritaet 90, 13 bestehende Presets erhalten. Separater UTC-Kontext ohne Referenzmodelle, native Pruefautomation, fuenf Agentenflaechen und Navigation. Keine Produktlogik, nur vorgeschriebene IDE-Versionsmetadaten. Installation: +2611/-3 Zeilen einschliesslich uebernommenem Paket, nicht eigene Produktentwicklung; Pruef-/Dokumentationsumfang im PR-Diff. Sichtbares Arbeitsfenster: 2026-09-19, keine gemessene Personenzeit. Bestehende Referenzen 80/125 bleiben Modellannahmen. Quellen, Messung und gesonderte Abnahme: docs/maintenance/project-statistics-rollout-v010.md; Tracking home-baseline#302. / Add the verified preset, isolated measurements and native proof without replacing Profile 2. Imported package volume is not newly developed product logic. Human acceptance and delivery remain separate. |
 | 2026-10-29 | VM-Rücksprungrahmen gegen manipuliertes P-Code gehärtet / VM return frame hardened against tampered P-Code | Branch `codex/vm-return-frame-validation`; der gemeinsame Batch-/Step-Kernel prüft Rahmenzellen und dynamische Links vor Registermutation und liefert Diagnose 99 statt einer CLR-Indexausnahme. Root-Halt, gültige Divisionen, verschachtelte Prozeduren und die bestehende kontrollierte Rücksprungadress-Semantik bleiben kompatibel. Umfang vor diesem Ledger-Eintrag: Produktionscode und Ressourcen `+44 / -1`, Tests `+175 / -0`, Dokumentation und Evidence `+108 / -7`, insgesamt `319` Nettozeilen; IDE-Versionsmetadaten ohne Nettoeffekt. Die Nettozeilen entsprechen bei 80 Zeilen/Arbeitstag `4.0` Tagen beziehungsweise `31.1` Stunden und bei 125 Zeilen/Arbeitstag `2.6` Tagen beziehungsweise `19.9` Stunden, jeweils bei `7.8` Stunden pro Tag. Sichtbares Arbeitsfenster: eine Agentensitzung am 2026-10-29; keine Stoppuhrmessung. Lokale Evidence: reproduzierter Rotnachweis, anschließend 338/338 Tests, 72.05 % Gesamtlinien- und 96.87 % Kernel-Linienabdeckung, echter CLI-Exit 99, DocFX mit 0 Fehlern, vier axe- und vier Lynx-Seiten, Dokumentationsauswirkungsvalidator und unabhängiger Security-Review. / The shared kernel now rejects invalid non-root return frames before register mutation while preserving the compatible root halt and valid programs. Local evidence covers red/green regression, full tests and coverage, CLI, documentation, accessibility, and independent review. |
 | 2026-10-29 | Parser-Verschachtelung gegen Host-Stacküberlauf begrenzt / Parser nesting bounded against host-stack exhaustion | Branch `codex/parser-nesting-limit`; strukturierte Anweisungen und Klammerausdrücke teilen ein festes aktives Budget von 10, während Prozedurblöcke den historischen Standard 3 und eine harte Obergrenze 10 behalten. Tiefe 11 stoppt fail-closed mit E36 beziehungsweise E32. Umfang vor diesem Ledger-Eintrag: Produktcode und Ressourcen, Tests, Dokumentation, A11Y-Vertrag und Evidence insgesamt `526` Nettozeilen; IDE-Versionsmetadaten ohne Nettoeffekt. Die Nettozeilen entsprechen bei 80 Zeilen/Arbeitstag `6.6` Tagen beziehungsweise `51.3` Stunden und bei 125 Zeilen/Arbeitstag `4.2` Tagen beziehungsweise `32.8` Stunden, jeweils bei `7.8` Stunden pro Tag. Sichtbares Arbeitsfenster: eine Agentensitzung am 2026-10-29; keine Stoppuhrmessung. Lokale Evidence: reproduzierter Rotnachweis, 358/358 Tests, 89,33 Prozent Parser-Zeilenabdeckung, echter CLI-Missbrauchstest mit 10.000 Klammern, DocFX mit 0 Fehlern, sechs axe-/Lynx-Seiten, Secret-Scan, Dokumentationsauswirkungsvalidator und unabhängiger Security-Review. / The parser now rejects recursive syntax and block depth 11 in a controlled way while preserving depth 10, historical defaults, valid programs, direct parser use, and the public constructor contract. Evidence covers red/green regression, full tests and coverage, CLI abuse, documentation, accessibility, and independent review. |
+| 2026-11-06 | 23 Deep-Scan-Befunde behoben / 23 deep-scan findings remediated | Branch `codex/security-scan-remediation-23`; sichtbares Arbeitsfenster eine Agentensitzung am 2026-11-06. Die Remediation begrenzt Compiler-, Parser-, P-Code-, VM- und IDE-Ressourcen, schützt Datei- und Git-Grenzen, bindet Registry-Inhalte, vermeidet Workflow-Injektion und ersetzt ausführbare Cleanup-Auswertung durch verifizierte Löschung. Ein unabhängiger Patch-Review ergänzte sieben Grenzfallkorrekturen. Umfang des fachlichen Commits: Produktcode und Projektmetadaten `+369 / -56`, Tests `+685 / -19`, Dokumentation `+25 / -0` sowie Automation und Governance `+333 / -123`; generierte API-YAML `+3016 / -1046` bleibt aus der Handarbeitsbasis ausgeschlossen. Die manuell zugeordnete Nettobasis von `1214` Zeilen entspricht bei 80 Zeilen/Arbeitstag `15.2` Tagen, `118.4` Stunden oder `0.71` Monaten und bei 125 Zeilen/Arbeitstag `9.7` Tagen, `75.8` Stunden oder `0.45` Monaten; Monatsannahme `21.5` Arbeitstage, Stundenbasis `7.8` Stunden, für 2026 gelten 30 Urlaubstage. Gegen einen sichtbaren Aktivtag ergibt sich ein blended repository speedup von `15.2x` beziehungsweise `9.7x`, keine Stoppuhrmessung. Validierung: 374/374 .NET-Tests, 98 Python-Tests mit 11 Plattform-Skips, beide PowerShell-Governance-Suiten, Bash-/PowerShell-Syntax, DocFX mit 0 Fehlern und 51 vorbestehenden Linkwarnungen, sechs axe-Seiten, fünf Lynx-Dumps, Secret-Scan sowie NuGet-Audit ohne bekannte verwundbare Pakete. Der erste PR-Lauf deckte zusätzlich die fehlende `rg`-Installation des Ubuntu-Maintenance-Runners auf; der nicht scannende Patch-Pfad prüft diese Scan-Voraussetzung nun erst danach, ohne Sicherheitsgrenzen zu lockern. / The remediation closes the 23 scan findings plus seven review boundary cases. Exact product, test, documentation, automation, generated-API, manual-reference, and validation evidence is recorded above; the Ubuntu follow-up keeps the patch boundary independent of an unused scan prerequisite, and delivery density is not a stopwatch measurement. |
+| 2026-11-07 | PR-#124-Reviewkorrekturen / PR #124 review repairs | Branch `codex/security-scan-remediation-23`; sieben umsetzbare Reviewhinweise wurden mit physischen PowerShell-Pfadgrenzen, fail-closed Bash-Wurzelauflösung, explizitem `origin`-Fetch, wiederhergestelltem Neun-Parameter-ABI fuer `CompilerOptions`, portablem PowerShell-Test-Skip, direktem Testprojekt-Pin auf `Microsoft.Build.Tasks.Git` 10.0.303 und binaerer Highlight-Suche korrigiert. Umfang vor Statistik-Neugenerierung: Produktcode und Metadaten `+48 / -13`, Tests und Testkonfiguration `+223 / -6`, Automation `+48 / -6`, Dokumentation `+22 / -0`; regenerierte API-YAML `+38 / -47` bleibt aus der Handarbeitsbasis ausgeschlossen. Die manuell zugeordnete Nettobasis von `316` Zeilen entspricht bei 80 Zeilen/Arbeitstag `4.0` Tagen beziehungsweise `31.2` Stunden und bei der Thorsten-Solo-Basis von 125 Zeilen/Arbeitstag `2.5` Tagen beziehungsweise `19.7` Stunden, jeweils mit 7.8 Stunden pro Tag. Monatsannahme: 21.5 Arbeitstage, fuer 2026 gelten 30 Urlaubstage; gegen einen sichtbaren Aktivtag ist dies ein blended repository speedup von `4.0x` beziehungsweise `2.5x`, keine Stoppuhrmessung. Validierung: 376/376 .NET-Tests, 104 Python-Tests mit 12 Plattform-Skips, gezielte Pfad-/Fetch-/ABI-/Editor-Regressionen, NuGet-Audit ohne bekannte verwundbare Pakete, DocFX mit 0 Fehlern und 51 vorbestehenden Linkwarnungen sowie sechs Playwright/axe-Seiten und fuenf Lynx-Dumps. / All seven actionable PR comments are covered by focused regressions, the full test suites, dependency audit, regenerated API documentation, and accessibility evidence; generated API files remain outside the manual-effort basis. |
 
 ## Statistikprofil-1-Archiv / Statistics Profile 1 Archive
 - Stand 2026-05-05: `88` Produktionsdateien mit `6950` Zeilen, `22` Testdateien mit `3536` Zeilen und `562` Dokumentationsdateien mit `36625` Zeilen.
@@ -602,29 +604,29 @@ Profil 2 verwendet Git-getrackte Textdateien und sichtbare Git-Aktivitaet. Die W
 
 | Kennzahl / Metric | Wert / Value |
 |---|---:|
-| Textbasis / Text base | 295844 lines |
-| Textdateien / Text files | 2115 |
-| Beobachtbarer Zeitraum / Observable period | 2025-11-09..2026-11-03 |
-| Aktivtage / Active days | 101 |
-| Relevante Commits / Relevant commits | 462 |
-| Zeilen je Aktivtag / Lines per active day | 2929.1 |
+| Textbasis / Text base | 299349 lines |
+| Textdateien / Text files | 2123 |
+| Beobachtbarer Zeitraum / Observable period | 2025-11-09..2026-11-07 |
+| Aktivtage / Active days | 103 |
+| Relevante Commits / Relevant commits | 468 |
+| Zeilen je Aktivtag / Lines per active day | 2906.3 |
 | Peak-Tag im Fenster / Peak day in window | 2026-02-14 / 177480 |
 | Peak-Woche im Fenster / Peak week in window | 2026-02-08 / 186065 |
 | Laengste Serie / Longest streak | 9 days |
-| Speedup vs. 80 lines/day | 36.6x |
-| Speedup vs. 125 lines/day | 23.4x |
-| Methodik / Methodology | v2; source `52edba672f86` |
+| Speedup vs. 80 lines/day | 36.3x |
+| Speedup vs. 125 lines/day | 23.3x |
+| Methodik / Methodology | v2; source `e6a366035aab` |
 
 ### Artefaktmix / Artifact Mix
 
 ```text
-Produktiv / Production          [#...................]   2.5% | 7311
-Tests                           [#...................]   5.1% | 15022
-Dokumentation / Documentation   [###########.........]  55.1% | 163127
-Skripte / Scripts               [##..................]   9.6% | 28434
-Konfiguration / Configuration   [#####...............]  26.1% | 77213
+Produktiv / Production          [#...................]   2.6% | 7649
+Tests                           [#...................]   5.3% | 15878
+Dokumentation / Documentation   [###########.........]  54.5% | 163280
+Skripte / Scripts               [##..................]   9.6% | 28615
+Konfiguration / Configuration   [#####...............]  26.4% | 79147
 Daten und Medien / Data and media [....................]   0.0% | 0
-Sonstiger Text / Other text     [#...................]   1.6% | 4737
+Sonstiger Text / Other text     [#...................]   1.6% | 4780
 ```
 
 Die Balken teilen die aktuelle getrackte Textbasis in stabile Kategorien. Prozent und Zeilenwert sind die genaue, textorientierte Aussage.
@@ -649,10 +651,10 @@ Wochen / Weeks 27..52 | 2026-05-10..2026-11-07
 So/Su  0 0 0 1 0 4 0 0 0 1 4 4 1 4 4 0 4 4 4 4 0 0 0 0 0 0
 Mo/Mo  0 0 0 0 0 0 0 3 1 4 4 0 0 0 2 0 0 4 0 0 0 0 0 0 0 0
 Di/Tu  0 0 3 0 0 0 0 2 0 3 4 4 0 0 0 0 2 4 0 0 0 0 0 0 0 4
-Mi/We  0 0 0 2 0 4 0 2 0 0 2 4 0 0 0 0 4 0 0 0 0 0 0 0 0 -
-Do/Th  0 0 1 1 4 1 0 0 0 1 4 0 0 4 0 0 4 0 0 0 0 0 0 0 3 -
-Fr/Fr  0 4 2 2 0 3 2 3 4 4 4 1 0 0 0 0 0 3 0 0 0 0 0 0 0 -
-Sa/Sa  0 0 0 0 0 4 0 4 4 0 4 2 0 2 0 4 0 3 4 2 0 0 0 0 0 -
+Mi/We  0 0 0 2 0 4 0 2 0 0 2 4 0 0 0 0 4 0 0 0 0 0 0 0 0 0
+Do/Th  0 0 1 1 4 1 0 0 0 1 4 0 0 4 0 0 4 0 0 0 0 0 0 0 3 0
+Fr/Fr  0 4 2 2 0 3 2 3 4 4 4 1 0 0 0 0 0 3 0 0 0 0 0 0 0 4
+Sa/Sa  0 0 0 0 0 4 0 4 4 0 4 2 0 2 0 4 0 3 4 2 0 0 0 0 0 3
 ```
 
 DE: 0 = keine Aenderung; 1 = 1..79; 2 = 80..399; 3 = 400..1599; 4 = 1600+ geaenderte Textzeilen; - = noch nicht abgelaufen.
@@ -778,8 +780,8 @@ Die festen Slots halten den Phasenvergleich auch bei fehlenden oder spaeter erga
 
 ```text
 Scale: 0..50x
-80 lines/day       [###############.....] 36.6x
-125 lines/day      [#########...........] 23.4x
+80 lines/day       [###############.....] 36.3x
+125 lines/day      [#########...........] 23.3x
 ```
 
 Die Faktoren vergleichen sichtbare Lieferdichte mit den dokumentierten manuellen Referenzen. Sie messen keine Arbeitszeit.
@@ -792,7 +794,7 @@ Die Faktoren vergleichen sichtbare Lieferdichte mit den dokumentierten manuellen
 Scale: 0..5000 lines/day
 Experienced manual [#...................] 80
 Thorsten solo      [#...................] 125
-Visible repository [############........] 2929.1
+Visible repository [############........] 2906.3
 ```
 
 Die gemeinsame Skala vergleicht Referenzen und sichtbare Lieferdichte. Sie schreibt die Git-Aktivitaet keiner Person oder KI pauschal zu.
@@ -801,9 +803,9 @@ Die gemeinsame Skala vergleicht Referenzen und sichtbare Lieferdichte. Sie schre
 
 ### Textalternative / Text Alternative
 
-DE: Das Fenster beginnt am 2025-11-09 und endet am 2026-11-03. Es enthaelt 101 aktive und 259 inaktive vergangene Tage. Peak-Tag: 2026-02-14 / 177480. Peak-Woche: 2026-02-08 / 186065. Laengste Serie: 9 Tage (2026-02-14..2026-02-22).
+DE: Das Fenster beginnt am 2025-11-09 und endet am 2026-11-07. Es enthaelt 103 aktive und 261 inaktive vergangene Tage. Peak-Tag: 2026-02-14 / 177480. Peak-Woche: 2026-02-08 / 186065. Laengste Serie: 9 Tage (2026-02-14..2026-02-22).
 
-*EN: The window starts on 2025-11-09 and ends on 2026-11-03. It contains 101 active and 259 inactive elapsed days. Peak day: 2026-02-14 / 177480. Peak week: 2026-02-08 / 186065. Longest streak: 9 days (2026-02-14..2026-02-22).*
+*EN: The window starts on 2025-11-09 and ends on 2026-11-07. It contains 103 active and 261 inactive elapsed days. Peak day: 2026-02-14 / 177480. Peak week: 2026-02-08 / 186065. Longest streak: 9 days (2026-02-14..2026-02-22).*
 
 | Monat / Month | Geaenderte Textzeilen / Changed text lines |
 |---|---:|
@@ -818,6 +820,6 @@ DE: Das Fenster beginnt am 2025-11-09 und endet am 2026-11-03. Es enthaelt 101 a
 | 2026-08 | 55167 |
 | 2026-09 | 52288 |
 | 2026-10 | 1546 |
-| 2026-11 | 3057 |
+| 2026-11 | 9214 |
 
 <!-- project-statistics-v2:end -->

@@ -194,15 +194,41 @@ public sealed class Pl0Parser
 
     /// <summary>
     /// Erstellt einen Parser für den gegebenen Token-Strom und Optionen.
+    /// Ein fehlendes Abschluss-Token wird defensiv ergänzt, damit fehlerhafte
+    /// öffentliche Aufrufe immer mit Diagnosen statt mit einer Endlosschleife enden.
+    ///
+    /// Creates a parser for the supplied token stream and options.
+    /// A missing end token is added defensively so malformed public calls always
+    /// finish with diagnostics instead of entering an infinite loop.
     /// </summary>
-    /// <param name="tokens">Vom Lexer erzeugte Token.</param>
-    /// <param name="options">Compiler-Optionen.</param>
+    /// <param name="tokens">Vom Lexer erzeugte Token. / Tokens produced by the lexer.</param>
+    /// <param name="options">Compiler-Optionen. / Compiler options.</param>
     public Pl0Parser(IReadOnlyList<Pl0Token> tokens, CompilerOptions options)
     {
-        _tokens = tokens;
+        _tokens = EnsureEndOfFile(tokens);
         _options = options;
         _rm = options.Messages ?? Pl0CoreMessages.ResourceManager;
         _culture = CultureInfo.GetCultureInfo(options.Language);
+    }
+
+    /// <summary>
+    /// Stellt die Cursor-Invariante her, dass jeder öffentliche Token-Strom mit EOF endet.
+    /// Ensures the cursor invariant that every public token stream ends with EOF.
+    /// </summary>
+    private static IReadOnlyList<Pl0Token> EnsureEndOfFile(IReadOnlyList<Pl0Token> tokens)
+    {
+        if (tokens.Count > 0 && tokens[^1].Kind == TokenKind.EndOfFile)
+        {
+            return tokens;
+        }
+
+        var normalized = new List<Pl0Token>(tokens.Count + 1);
+        normalized.AddRange(tokens);
+        var position = tokens.Count == 0
+            ? new TextPosition(1, 1, 0)
+            : tokens[^1].Position;
+        normalized.Add(new Pl0Token(TokenKind.EndOfFile, string.Empty, position));
+        return normalized;
     }
 
     /// <summary>
@@ -1030,7 +1056,7 @@ public sealed class Pl0Parser
     /// <param name="message">Diagnose-Meldung.</param>
     private void Report(int code, string message)
     {
-        _diagnostics.Add(new CompilerDiagnostic(code, message, Current.Position));
+        AddDiagnostic(code, message, Current.Position);
     }
 
     /// <summary>
@@ -1041,6 +1067,25 @@ public sealed class Pl0Parser
     /// <param name="position">Quellposition.</param>
     private void Report(int code, string message, TextPosition position)
     {
+        AddDiagnostic(code, message, position);
+    }
+
+    private void AddDiagnostic(int code, string message, TextPosition position)
+    {
+        var limit = Math.Clamp(_options.MaxDiagnosticCount, 1, 100);
+        if (_diagnostics.Count >= limit)
+        {
+            if (!_parsingStopped)
+            {
+                var limitMessage = _culture.TwoLetterISOLanguageName == "de"
+                    ? $"Parser-Sicherheitsgrenze von {limit} Diagnosen erreicht."
+                    : $"Parser safety limit of {limit} diagnostics reached.";
+                _diagnostics.Add(new CompilerDiagnostic(37, limitMessage, position));
+            }
+            _parsingStopped = true;
+            return;
+        }
+
         _diagnostics.Add(new CompilerDiagnostic(code, message, position));
     }
 

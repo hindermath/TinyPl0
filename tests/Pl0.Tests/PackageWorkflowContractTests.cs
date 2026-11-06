@@ -39,6 +39,11 @@ public sealed class PackageWorkflowContractTests
         Assert.Contains("TinyPl0.Vm", workflow);
         Assert.DoesNotContain("--skip-duplicate", workflow);
         Assert.DoesNotContain("NUGET_API_KEY:", workflow.Replace("NUGET_API_KEY: ${{ steps.nuget-login.outputs.NUGET_API_KEY }}", string.Empty));
+        Assert.DoesNotContain("'${{ inputs.", workflow);
+        Assert.Contains("VERIFY_VERSION: ${{ inputs.verify_version }}", workflow);
+        Assert.Contains("RELEASE_RUN_ID: ${{ inputs.release_run_id }}", workflow);
+        Assert.Contains("$env:VERIFY_VERSION", workflow);
+        Assert.Contains("$env:RELEASE_RUN_ID", workflow);
     }
 
     [Fact]

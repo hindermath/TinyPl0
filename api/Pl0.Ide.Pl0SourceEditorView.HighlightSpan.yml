@@ -1,0 +1,518 @@
+### YamlMime:ManagedReference
+items:
+- uid: Pl0.Ide.Pl0SourceEditorView.HighlightSpan
+  commentId: T:Pl0.Ide.Pl0SourceEditorView.HighlightSpan
+  id: Pl0SourceEditorView.HighlightSpan
+  parent: Pl0.Ide
+  children:
+  - Pl0.Ide.Pl0SourceEditorView.HighlightSpan.#ctor(System.Int32,System.Int32,Pl0.Ide.Pl0HighlightKind)
+  - Pl0.Ide.Pl0SourceEditorView.HighlightSpan.End
+  - Pl0.Ide.Pl0SourceEditorView.HighlightSpan.Kind
+  - Pl0.Ide.Pl0SourceEditorView.HighlightSpan.Start
+  langs:
+  - csharp
+  - vb
+  name: Pl0SourceEditorView.HighlightSpan
+  nameWithType: Pl0SourceEditorView.HighlightSpan
+  fullName: Pl0.Ide.Pl0SourceEditorView.HighlightSpan
+  type: Struct
+  source:
+    remote:
+      path: src/Pl0.Ide/Pl0SourceEditorView.cs
+      branch: codex/security-scan-remediation-23
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: HighlightSpan
+    path: src/Pl0.Ide/Pl0SourceEditorView.cs
+    startLine: 173
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: 'private readonly record struct Pl0SourceEditorView.HighlightSpan : IEquatable<Pl0SourceEditorView.HighlightSpan>'
+    content.vb: Private Structure Pl0SourceEditorView.HighlightSpan Implements IEquatable(Of Pl0SourceEditorView.HighlightSpan)
+  implements:
+  - System.IEquatable{Pl0.Ide.Pl0SourceEditorView.HighlightSpan}
+  inheritedMembers:
+  - System.ValueType.Equals(System.Object)
+  - System.ValueType.GetHashCode
+  - System.ValueType.ToString
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: Pl0.Ide.Pl0SourceEditorView.HighlightSpan.#ctor(System.Int32,System.Int32,Pl0.Ide.Pl0HighlightKind)
+  commentId: M:Pl0.Ide.Pl0SourceEditorView.HighlightSpan.#ctor(System.Int32,System.Int32,Pl0.Ide.Pl0HighlightKind)
+  id: '#ctor(System.Int32,System.Int32,Pl0.Ide.Pl0HighlightKind)'
+  parent: Pl0.Ide.Pl0SourceEditorView.HighlightSpan
+  langs:
+  - csharp
+  - vb
+  name: HighlightSpan(int, int, Pl0HighlightKind)
+  nameWithType: Pl0SourceEditorView.HighlightSpan.HighlightSpan(int, int, Pl0HighlightKind)
+  fullName: Pl0.Ide.Pl0SourceEditorView.HighlightSpan.HighlightSpan(int, int, Pl0.Ide.Pl0HighlightKind)
+  type: Constructor
+  source:
+    remote:
+      path: src/Pl0.Ide/Pl0SourceEditorView.cs
+      branch: codex/security-scan-remediation-23
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: .ctor
+    path: src/Pl0.Ide/Pl0SourceEditorView.cs
+    startLine: 173
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: public HighlightSpan(int Start, int End, Pl0HighlightKind Kind)
+    parameters:
+    - id: Start
+      type: System.Int32
+    - id: End
+      type: System.Int32
+    - id: Kind
+      type: Pl0.Ide.Pl0HighlightKind
+    content.vb: Public Sub New(Start As Integer, [End] As Integer, Kind As Pl0HighlightKind)
+  overload: Pl0.Ide.Pl0SourceEditorView.HighlightSpan.#ctor*
+  nameWithType.vb: Pl0SourceEditorView.HighlightSpan.New(Integer, Integer, Pl0HighlightKind)
+  fullName.vb: Pl0.Ide.Pl0SourceEditorView.HighlightSpan.New(Integer, Integer, Pl0.Ide.Pl0HighlightKind)
+  name.vb: New(Integer, Integer, Pl0HighlightKind)
+- uid: Pl0.Ide.Pl0SourceEditorView.HighlightSpan.Start
+  commentId: P:Pl0.Ide.Pl0SourceEditorView.HighlightSpan.Start
+  id: Start
+  parent: Pl0.Ide.Pl0SourceEditorView.HighlightSpan
+  langs:
+  - csharp
+  - vb
+  name: Start
+  nameWithType: Pl0SourceEditorView.HighlightSpan.Start
+  fullName: Pl0.Ide.Pl0SourceEditorView.HighlightSpan.Start
+  type: Property
+  source:
+    remote:
+      path: src/Pl0.Ide/Pl0SourceEditorView.cs
+      branch: codex/security-scan-remediation-23
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: Start
+    path: src/Pl0.Ide/Pl0SourceEditorView.cs
+    startLine: 173
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: public int Start { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Start As Integer
+  overload: Pl0.Ide.Pl0SourceEditorView.HighlightSpan.Start*
+- uid: Pl0.Ide.Pl0SourceEditorView.HighlightSpan.End
+  commentId: P:Pl0.Ide.Pl0SourceEditorView.HighlightSpan.End
+  id: End
+  parent: Pl0.Ide.Pl0SourceEditorView.HighlightSpan
+  langs:
+  - csharp
+  - vb
+  name: End
+  nameWithType: Pl0SourceEditorView.HighlightSpan.End
+  fullName: Pl0.Ide.Pl0SourceEditorView.HighlightSpan.End
+  type: Property
+  source:
+    remote:
+      path: src/Pl0.Ide/Pl0SourceEditorView.cs
+      branch: codex/security-scan-remediation-23
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: End
+    path: src/Pl0.Ide/Pl0SourceEditorView.cs
+    startLine: 173
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: public int End { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property [End] As Integer
+  overload: Pl0.Ide.Pl0SourceEditorView.HighlightSpan.End*
+- uid: Pl0.Ide.Pl0SourceEditorView.HighlightSpan.Kind
+  commentId: P:Pl0.Ide.Pl0SourceEditorView.HighlightSpan.Kind
+  id: Kind
+  parent: Pl0.Ide.Pl0SourceEditorView.HighlightSpan
+  langs:
+  - csharp
+  - vb
+  name: Kind
+  nameWithType: Pl0SourceEditorView.HighlightSpan.Kind
+  fullName: Pl0.Ide.Pl0SourceEditorView.HighlightSpan.Kind
+  type: Property
+  source:
+    remote:
+      path: src/Pl0.Ide/Pl0SourceEditorView.cs
+      branch: codex/security-scan-remediation-23
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: Kind
+    path: src/Pl0.Ide/Pl0SourceEditorView.cs
+    startLine: 173
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: public Pl0HighlightKind Kind { get; init; }
+    parameters: []
+    return:
+      type: Pl0.Ide.Pl0HighlightKind
+    content.vb: Public Property Kind As Pl0HighlightKind
+  overload: Pl0.Ide.Pl0SourceEditorView.HighlightSpan.Kind*
+references:
+- uid: Pl0.Ide
+  commentId: N:Pl0.Ide
+  href: Pl0.html
+  name: Pl0.Ide
+  nameWithType: Pl0.Ide
+  fullName: Pl0.Ide
+  spec.csharp:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Ide
+    name: Ide
+    href: Pl0.Ide.html
+  spec.vb:
+  - uid: Pl0
+    name: Pl0
+    href: Pl0.html
+  - name: .
+  - uid: Pl0.Ide
+    name: Ide
+    href: Pl0.Ide.html
+- uid: System.IEquatable{Pl0.Ide.Pl0SourceEditorView.HighlightSpan}
+  commentId: T:System.IEquatable{Pl0.Ide.Pl0SourceEditorView.HighlightSpan}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<Pl0SourceEditorView.HighlightSpan>
+  nameWithType: IEquatable<Pl0SourceEditorView.HighlightSpan>
+  fullName: System.IEquatable<Pl0.Ide.Pl0SourceEditorView.HighlightSpan>
+  nameWithType.vb: IEquatable(Of Pl0SourceEditorView.HighlightSpan)
+  fullName.vb: System.IEquatable(Of Pl0.Ide.Pl0SourceEditorView.HighlightSpan)
+  name.vb: IEquatable(Of Pl0SourceEditorView.HighlightSpan)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: Pl0.Ide.Pl0SourceEditorView
+    name: Pl0SourceEditorView
+    href: Pl0.Ide.Pl0SourceEditorView.html
+  - name: .
+  - uid: Pl0.Ide.Pl0SourceEditorView.HighlightSpan
+    name: HighlightSpan
+    href: Pl0.Ide.Pl0SourceEditorView.HighlightSpan.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Pl0.Ide.Pl0SourceEditorView
+    name: Pl0SourceEditorView
+    href: Pl0.Ide.Pl0SourceEditorView.html
+  - name: .
+  - uid: Pl0.Ide.Pl0SourceEditorView.HighlightSpan
+    name: HighlightSpan
+    href: Pl0.Ide.Pl0SourceEditorView.HighlightSpan.html
+  - name: )
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Pl0.Ide.Pl0SourceEditorView.HighlightSpan.#ctor*
+  commentId: Overload:Pl0.Ide.Pl0SourceEditorView.HighlightSpan.#ctor
+  href: Pl0.Ide.Pl0SourceEditorView.HighlightSpan.html#Pl0_Ide_Pl0SourceEditorView_HighlightSpan__ctor_System_Int32_System_Int32_Pl0_Ide_Pl0HighlightKind_
+  name: HighlightSpan
+  nameWithType: Pl0SourceEditorView.HighlightSpan.HighlightSpan
+  fullName: Pl0.Ide.Pl0SourceEditorView.HighlightSpan.HighlightSpan
+  nameWithType.vb: Pl0SourceEditorView.HighlightSpan.New
+  fullName.vb: Pl0.Ide.Pl0SourceEditorView.HighlightSpan.New
+  name.vb: New
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Pl0.Ide.Pl0HighlightKind
+  commentId: T:Pl0.Ide.Pl0HighlightKind
+  parent: Pl0.Ide
+  href: Pl0.Ide.Pl0HighlightKind.html
+  name: Pl0HighlightKind
+  nameWithType: Pl0HighlightKind
+  fullName: Pl0.Ide.Pl0HighlightKind
+- uid: Pl0.Ide.Pl0SourceEditorView.HighlightSpan.Start*
+  commentId: Overload:Pl0.Ide.Pl0SourceEditorView.HighlightSpan.Start
+  href: Pl0.Ide.Pl0SourceEditorView.HighlightSpan.html#Pl0_Ide_Pl0SourceEditorView_HighlightSpan_Start
+  name: Start
+  nameWithType: Pl0SourceEditorView.HighlightSpan.Start
+  fullName: Pl0.Ide.Pl0SourceEditorView.HighlightSpan.Start
+- uid: Pl0.Ide.Pl0SourceEditorView.HighlightSpan.End*
+  commentId: Overload:Pl0.Ide.Pl0SourceEditorView.HighlightSpan.End
+  href: Pl0.Ide.Pl0SourceEditorView.HighlightSpan.html#Pl0_Ide_Pl0SourceEditorView_HighlightSpan_End
+  name: End
+  nameWithType: Pl0SourceEditorView.HighlightSpan.End
+  fullName: Pl0.Ide.Pl0SourceEditorView.HighlightSpan.End
+- uid: Pl0.Ide.Pl0SourceEditorView.HighlightSpan.Kind*
+  commentId: Overload:Pl0.Ide.Pl0SourceEditorView.HighlightSpan.Kind
+  href: Pl0.Ide.Pl0SourceEditorView.HighlightSpan.html#Pl0_Ide_Pl0SourceEditorView_HighlightSpan_Kind
+  name: Kind
+  nameWithType: Pl0SourceEditorView.HighlightSpan.Kind
+  fullName: Pl0.Ide.Pl0SourceEditorView.HighlightSpan.Kind

@@ -6,6 +6,10 @@ items:
   parent: Pl0.Core
   children:
   - Pl0.Core.Pl0Lexer.#ctor(System.String,Pl0.Core.CompilerOptions)
+  - Pl0.Core.Pl0Lexer.AbsoluteMaximumDiagnosticCount
+  - Pl0.Core.Pl0Lexer.AbsoluteMaximumSourceLength
+  - Pl0.Core.Pl0Lexer.AbsoluteMaximumTokenCount
+  - Pl0.Core.Pl0Lexer.AddLimitDiagnostic(System.String)
   - Pl0.Core.Pl0Lexer.AddSingleCharToken(Pl0.Core.TokenKind)
   - Pl0.Core.Pl0Lexer.Advance
   - Pl0.Core.Pl0Lexer.Current
@@ -39,7 +43,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: Pl0Lexer
     path: src/Pl0.Core/Pl0Lexer.cs
@@ -61,6 +65,87 @@ items:
   - System.Object.GetType
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
+- uid: Pl0.Core.Pl0Lexer.AbsoluteMaximumSourceLength
+  commentId: F:Pl0.Core.Pl0Lexer.AbsoluteMaximumSourceLength
+  id: AbsoluteMaximumSourceLength
+  parent: Pl0.Core.Pl0Lexer
+  langs:
+  - csharp
+  - vb
+  name: AbsoluteMaximumSourceLength
+  nameWithType: Pl0Lexer.AbsoluteMaximumSourceLength
+  fullName: Pl0.Core.Pl0Lexer.AbsoluteMaximumSourceLength
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Core/Pl0Lexer.cs
+      branch: codex/security-scan-remediation-23
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: AbsoluteMaximumSourceLength
+    path: src/Pl0.Core/Pl0Lexer.cs
+    startLine: 10
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  syntax:
+    content: private const int AbsoluteMaximumSourceLength = 1048576
+    return:
+      type: System.Int32
+    content.vb: Private Const AbsoluteMaximumSourceLength As Integer = 1048576
+- uid: Pl0.Core.Pl0Lexer.AbsoluteMaximumTokenCount
+  commentId: F:Pl0.Core.Pl0Lexer.AbsoluteMaximumTokenCount
+  id: AbsoluteMaximumTokenCount
+  parent: Pl0.Core.Pl0Lexer
+  langs:
+  - csharp
+  - vb
+  name: AbsoluteMaximumTokenCount
+  nameWithType: Pl0Lexer.AbsoluteMaximumTokenCount
+  fullName: Pl0.Core.Pl0Lexer.AbsoluteMaximumTokenCount
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Core/Pl0Lexer.cs
+      branch: codex/security-scan-remediation-23
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: AbsoluteMaximumTokenCount
+    path: src/Pl0.Core/Pl0Lexer.cs
+    startLine: 11
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  syntax:
+    content: private const int AbsoluteMaximumTokenCount = 100000
+    return:
+      type: System.Int32
+    content.vb: Private Const AbsoluteMaximumTokenCount As Integer = 100000
+- uid: Pl0.Core.Pl0Lexer.AbsoluteMaximumDiagnosticCount
+  commentId: F:Pl0.Core.Pl0Lexer.AbsoluteMaximumDiagnosticCount
+  id: AbsoluteMaximumDiagnosticCount
+  parent: Pl0.Core.Pl0Lexer
+  langs:
+  - csharp
+  - vb
+  name: AbsoluteMaximumDiagnosticCount
+  nameWithType: Pl0Lexer.AbsoluteMaximumDiagnosticCount
+  fullName: Pl0.Core.Pl0Lexer.AbsoluteMaximumDiagnosticCount
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Core/Pl0Lexer.cs
+      branch: codex/security-scan-remediation-23
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: AbsoluteMaximumDiagnosticCount
+    path: src/Pl0.Core/Pl0Lexer.cs
+    startLine: 12
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  syntax:
+    content: private const int AbsoluteMaximumDiagnosticCount = 100
+    return:
+      type: System.Int32
+    content.vb: Private Const AbsoluteMaximumDiagnosticCount As Integer = 100
 - uid: Pl0.Core.Pl0Lexer._options
   commentId: F:Pl0.Core.Pl0Lexer._options
   id: _options
@@ -75,11 +160,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: _options
     path: src/Pl0.Core/Pl0Lexer.cs
-    startLine: 13
+    startLine: 16
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -104,11 +189,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: _text
     path: src/Pl0.Core/Pl0Lexer.cs
-    startLine: 17
+    startLine: 20
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -133,11 +218,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: _tokens
     path: src/Pl0.Core/Pl0Lexer.cs
-    startLine: 21
+    startLine: 24
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -162,11 +247,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: _diagnostics
     path: src/Pl0.Core/Pl0Lexer.cs
-    startLine: 25
+    startLine: 28
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -191,11 +276,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: _index
     path: src/Pl0.Core/Pl0Lexer.cs
-    startLine: 29
+    startLine: 32
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -220,11 +305,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: _line
     path: src/Pl0.Core/Pl0Lexer.cs
-    startLine: 33
+    startLine: 36
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -249,11 +334,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: _column
     path: src/Pl0.Core/Pl0Lexer.cs
-    startLine: 37
+    startLine: 40
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -278,11 +363,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: _rm
     path: src/Pl0.Core/Pl0Lexer.cs
-    startLine: 41
+    startLine: 44
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -307,11 +392,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: _culture
     path: src/Pl0.Core/Pl0Lexer.cs
-    startLine: 45
+    startLine: 48
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -336,11 +421,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: .ctor
     path: src/Pl0.Core/Pl0Lexer.cs
-    startLine: 52
+    startLine: 55
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -374,11 +459,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: Lex
     path: src/Pl0.Core/Pl0Lexer.cs
-    startLine: 64
+    startLine: 67
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -391,6 +476,38 @@ items:
       description: Das Lexer-Ergebnis mit Token und Diagnosen.
     content.vb: Public Function Lex() As LexerResult
   overload: Pl0.Core.Pl0Lexer.Lex*
+- uid: Pl0.Core.Pl0Lexer.AddLimitDiagnostic(System.String)
+  commentId: M:Pl0.Core.Pl0Lexer.AddLimitDiagnostic(System.String)
+  id: AddLimitDiagnostic(System.String)
+  parent: Pl0.Core.Pl0Lexer
+  langs:
+  - csharp
+  - vb
+  name: AddLimitDiagnostic(string)
+  nameWithType: Pl0Lexer.AddLimitDiagnostic(string)
+  fullName: Pl0.Core.Pl0Lexer.AddLimitDiagnostic(string)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Core/Pl0Lexer.cs
+      branch: codex/security-scan-remediation-23
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: AddLimitDiagnostic
+    path: src/Pl0.Core/Pl0Lexer.cs
+    startLine: 184
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  syntax:
+    content: private void AddLimitDiagnostic(string detail)
+    parameters:
+    - id: detail
+      type: System.String
+    content.vb: Private Sub AddLimitDiagnostic(detail As String)
+  overload: Pl0.Core.Pl0Lexer.AddLimitDiagnostic*
+  nameWithType.vb: Pl0Lexer.AddLimitDiagnostic(String)
+  fullName.vb: Pl0.Core.Pl0Lexer.AddLimitDiagnostic(String)
+  name.vb: AddLimitDiagnostic(String)
 - uid: Pl0.Core.Pl0Lexer.Current
   commentId: P:Pl0.Core.Pl0Lexer.Current
   id: Current
@@ -405,11 +522,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: Current
     path: src/Pl0.Core/Pl0Lexer.cs
-    startLine: 159
+    startLine: 195
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -436,11 +553,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: Peek
     path: src/Pl0.Core/Pl0Lexer.cs
-    startLine: 166
+    startLine: 202
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -474,11 +591,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: CurrentPosition
     path: src/Pl0.Core/Pl0Lexer.cs
-    startLine: 175
+    startLine: 211
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -505,11 +622,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: Advance
     path: src/Pl0.Core/Pl0Lexer.cs
-    startLine: 180
+    startLine: 216
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -533,11 +650,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: SkipWhiteSpace
     path: src/Pl0.Core/Pl0Lexer.cs
-    startLine: 202
+    startLine: 238
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -561,11 +678,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: AddSingleCharToken
     path: src/Pl0.Core/Pl0Lexer.cs
-    startLine: 214
+    startLine: 250
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -593,11 +710,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: LexIdentifierOrKeyword
     path: src/Pl0.Core/Pl0Lexer.cs
-    startLine: 225
+    startLine: 261
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -621,11 +738,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: LexNumber
     path: src/Pl0.Core/Pl0Lexer.cs
-    startLine: 252
+    startLine: 288
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -649,11 +766,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: LexLessOrLessEqual
     path: src/Pl0.Core/Pl0Lexer.cs
-    startLine: 294
+    startLine: 330
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -677,11 +794,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: LexGreaterOrGreaterEqual
     path: src/Pl0.Core/Pl0Lexer.cs
-    startLine: 312
+    startLine: 348
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -705,11 +822,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: LexBecomesOrDiagnostic
     path: src/Pl0.Core/Pl0Lexer.cs
-    startLine: 330
+    startLine: 366
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -733,11 +850,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: ReportUnexpectedCharacter
     path: src/Pl0.Core/Pl0Lexer.cs
-    startLine: 355
+    startLine: 391
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -768,11 +885,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Lexer.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: MapIdentifierKind
     path: src/Pl0.Core/Pl0Lexer.cs
-    startLine: 371
+    startLine: 407
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -1028,6 +1145,17 @@ references:
   name: System
   nameWithType: System
   fullName: System
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
 - uid: Pl0.Core.CompilerOptions
   commentId: T:Pl0.Core.CompilerOptions
   parent: Pl0.Core
@@ -1177,17 +1305,6 @@ references:
     name: LexerDiagnostic
     href: Pl0.Core.LexerDiagnostic.html
   - name: )
-- uid: System.Int32
-  commentId: T:System.Int32
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.int32
-  name: int
-  nameWithType: int
-  fullName: int
-  nameWithType.vb: Integer
-  fullName.vb: Integer
-  name.vb: Integer
 - uid: System.Resources.ResourceManager
   commentId: T:System.Resources.ResourceManager
   parent: System.Resources
@@ -1280,6 +1397,12 @@ references:
   name: LexerResult
   nameWithType: LexerResult
   fullName: Pl0.Core.LexerResult
+- uid: Pl0.Core.Pl0Lexer.AddLimitDiagnostic*
+  commentId: Overload:Pl0.Core.Pl0Lexer.AddLimitDiagnostic
+  href: Pl0.Core.Pl0Lexer.html#Pl0_Core_Pl0Lexer_AddLimitDiagnostic_System_String_
+  name: AddLimitDiagnostic
+  nameWithType: Pl0Lexer.AddLimitDiagnostic
+  fullName: Pl0.Core.Pl0Lexer.AddLimitDiagnostic
 - uid: Pl0.Core.Pl0Lexer.Current*
   commentId: Overload:Pl0.Core.Pl0Lexer.Current
   href: Pl0.Core.Pl0Lexer.html#Pl0_Core_Pl0Lexer_Current

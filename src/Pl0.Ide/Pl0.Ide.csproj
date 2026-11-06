@@ -6,6 +6,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Build.Tasks.Git" Version="10.0.303" PrivateAssets="all" />
     <PackageReference Include="Terminal.Gui" Version="2.0.0" />
   </ItemGroup>
 
@@ -14,9 +15,9 @@
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Version>1.123.790.94</Version>
-    <AssemblyVersion>1.123.790.94</AssemblyVersion>
-    <FileVersion>1.123.790.94</FileVersion>
+    <Version>1.124.805.101</Version>
+    <AssemblyVersion>1.124.805.101</AssemblyVersion>
+    <FileVersion>1.124.805.101</FileVersion>
     <InformationalVersion>$(Version)</InformationalVersion>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>

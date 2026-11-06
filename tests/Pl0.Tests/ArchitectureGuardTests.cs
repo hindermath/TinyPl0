@@ -40,7 +40,11 @@ public sealed class ArchitectureGuardTests
     {
         var projectFiles = FindProjectFiles();
         var packageReferences = ReadPackageReferences(projectFiles["Pl0.Ide.csproj"]);
-        Assert.Equal(["Terminal.Gui"], packageReferences);
+        // DE: Das private Build-Paket überschreibt eine verwundbare transitive
+        // SourceLink-Version; es wird nicht als Laufzeitabhängigkeit ausgeliefert.
+        // EN: The private build package overrides a vulnerable transitive
+        // SourceLink version; it is not shipped as a runtime dependency.
+        Assert.Equal(["Microsoft.Build.Tasks.Git", "Terminal.Gui"], packageReferences);
     }
 
     [Fact]

@@ -13,8 +13,9 @@ internal enum Pl0HighlightKind
 
 internal sealed class Pl0SourceEditorView : TextView
 {
+    private const int MaximumHighlightedSourceLength = 200_000;
     private readonly CompilerOptions compilerOptions;
-    private Dictionary<int, Dictionary<int, Pl0HighlightKind>> highlightMap = [];
+    private Dictionary<int, List<HighlightSpan>> highlightMap = [];
 
     public Pl0SourceEditorView(CompilerOptions? compilerOptions = null)
     {
@@ -37,9 +38,28 @@ internal sealed class Pl0SourceEditorView : TextView
             return Pl0HighlightKind.None;
         }
 
-        return lineHighlights.TryGetValue(columnIndex, out var kind)
-            ? kind
-            : Pl0HighlightKind.None;
+        var lowerBound = 0;
+        var upperBound = lineHighlights.Count - 1;
+
+        while (lowerBound <= upperBound)
+        {
+            var middle = lowerBound + ((upperBound - lowerBound) / 2);
+            var candidate = lineHighlights[middle];
+            if (columnIndex < candidate.Start)
+            {
+                upperBound = middle - 1;
+            }
+            else if (columnIndex >= candidate.End)
+            {
+                lowerBound = middle + 1;
+            }
+            else
+            {
+                return candidate.Kind;
+            }
+        }
+
+        return Pl0HighlightKind.None;
     }
 
     protected override void OnDrawNormalColor(List<Cell> line, int idxCol, int idxRow)
@@ -66,10 +86,16 @@ internal sealed class Pl0SourceEditorView : TextView
     private void RebuildHighlightMap()
     {
         var text = Text?.ToString() ?? string.Empty;
+        if (text.Length > MaximumHighlightedSourceLength)
+        {
+            highlightMap = [];
+            return;
+        }
+
         var lexer = new Pl0Lexer(text, compilerOptions);
         var lexerResult = lexer.Lex();
 
-        var newMap = new Dictionary<int, Dictionary<int, Pl0HighlightKind>>();
+        var newMap = new Dictionary<int, List<HighlightSpan>>();
 
         foreach (var token in lexerResult.Tokens)
         {
@@ -88,10 +114,17 @@ internal sealed class Pl0SourceEditorView : TextView
                 newMap[rowIndex] = lineHighlights;
             }
 
-            for (var i = 0; i < token.Lexeme.Length; i++)
-            {
-                lineHighlights[columnStart + i] = highlightKind;
-            }
+            lineHighlights.Add(new HighlightSpan(
+                columnStart,
+                checked(columnStart + token.Lexeme.Length),
+                highlightKind));
+        }
+
+        // Die Binärsuche benötigt sortierte Bereiche; die einmalige Sortierung hält das Zeichnen schnell.
+        // Binary search requires sorted spans; sorting once keeps per-cell drawing fast.
+        foreach (var lineHighlights in newMap.Values)
+        {
+            lineHighlights.Sort(static (left, right) => left.Start.CompareTo(right.Start));
         }
 
         highlightMap = newMap;
@@ -137,4 +170,6 @@ internal sealed class Pl0SourceEditorView : TextView
             _ => Pl0HighlightKind.None
         };
     }
+
+    private readonly record struct HighlightSpan(int Start, int End, Pl0HighlightKind Kind);
 }

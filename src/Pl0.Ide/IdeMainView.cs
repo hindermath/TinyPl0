@@ -51,6 +51,10 @@ internal sealed class IdeMainView : Toplevel
     private bool isDebugSessionActive;
     private string lastPersistedSourceText = string.Empty;
     private bool isSourceDirty;
+    private readonly StringBuilder runtimeOutputBuffer = new();
+    private const int MaximumRuntimeOutputValues = 10_000;
+    private int runtimeOutputValueCount;
+    private bool runtimeOutputTruncated;
 
     public IdeMainView() : this(
         new TerminalGuiIdeFileDialogService(),
@@ -182,7 +186,7 @@ internal sealed class IdeMainView : Toplevel
         currentSourcePath = null;
         lastPersistedSourceText = string.Empty;
         pCodeOutput.Text = string.Empty;
-        runtimeOutput.Text = string.Empty;
+        ResetRuntimeOutput();
         debugOutput.Text = string.Empty;
         isDebugSessionActive = false;
         lastDebugStepResult = null;
@@ -523,12 +527,13 @@ internal sealed class IdeMainView : Toplevel
             return false;
         }
 
-        runtimeOutput.Text = string.Empty;
+        ResetRuntimeOutput();
         var io = new IdeRuntimeIo(
             () => runtimeDialogService.ReadInt("Bitte Ganzzahl fuer die Laufzeiteingabe eingeben:"),
             AppendRuntimeOutputValue);
 
         var vmResult = virtualMachine.Run(lastCompilationResult.Instructions, io);
+        FlushRuntimeOutput();
         if (vmResult.Success)
         {
             messagesOutput.Text = "Ausfuehrung erfolgreich.";
@@ -555,7 +560,7 @@ internal sealed class IdeMainView : Toplevel
 
         if (!isDebugSessionActive)
         {
-            runtimeOutput.Text = string.Empty;
+            ResetRuntimeOutput();
             var io = new IdeRuntimeIo(
                 () => runtimeDialogService.ReadInt("Bitte Ganzzahl fuer die Laufzeiteingabe eingeben:"),
                 AppendRuntimeOutputValue);
@@ -568,6 +573,7 @@ internal sealed class IdeMainView : Toplevel
         }
 
         var stepResult = steppableVirtualMachine.Step();
+        FlushRuntimeOutput();
         lastDebugStepResult = stepResult;
         RenderDebugState(stepResult);
         RenderCodeOutput(lastCompilationResult.Instructions, stepResult.State.P);
@@ -918,10 +924,32 @@ internal sealed class IdeMainView : Toplevel
 
     private void AppendRuntimeOutputValue(int value)
     {
-        var line = value.ToString(System.Globalization.CultureInfo.InvariantCulture);
-        var current = runtimeOutput.Text?.ToString() ?? string.Empty;
-        runtimeOutput.Text = string.IsNullOrEmpty(current)
-            ? line
-            : $"{current}{Environment.NewLine}{line}";
+        if (runtimeOutputValueCount >= MaximumRuntimeOutputValues)
+        {
+            if (!runtimeOutputTruncated)
+            {
+                runtimeOutputBuffer.AppendLine();
+                runtimeOutputBuffer.Append("[Ausgabe nach 10000 Werten gekürzt / output truncated after 10000 values]");
+                runtimeOutputTruncated = true;
+            }
+            return;
+        }
+
+        if (runtimeOutputBuffer.Length > 0)
+        {
+            runtimeOutputBuffer.AppendLine();
+        }
+        runtimeOutputBuffer.Append(value.ToString(CultureInfo.InvariantCulture));
+        runtimeOutputValueCount++;
     }
+
+    private void ResetRuntimeOutput()
+    {
+        runtimeOutputBuffer.Clear();
+        runtimeOutputValueCount = 0;
+        runtimeOutputTruncated = false;
+        runtimeOutput.Text = string.Empty;
+    }
+
+    private void FlushRuntimeOutput() => runtimeOutput.Text = runtimeOutputBuffer.ToString();
 }
