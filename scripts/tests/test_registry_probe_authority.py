@@ -1,5 +1,6 @@
 import json
 import pathlib
+import shutil
 import subprocess
 import tempfile
 import unittest
@@ -31,6 +32,7 @@ class RegistryProbeAuthorityTests(unittest.TestCase):
             self.assertEqual(2, result.returncode)
             self.assertIn("--allow-external-registry-probes", result.stderr)
 
+    @unittest.skipUnless(shutil.which("pwsh"), "PowerShell 7 is required.")
     def test_powershell_rejects_alternate_executable_registry_without_authority(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             registry = pathlib.Path(temporary) / "npm-tools.json"

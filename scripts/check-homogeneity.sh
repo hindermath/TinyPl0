@@ -103,7 +103,14 @@ if [ -n "$OPT_APPLY_PATCH" ]; then
   if echo "$answer" | grep -qiE '^[jy]'; then
     patch_count=0
     target_file=""
-    resolved_target_root="$(cd "$TARGET_DIR" && pwd -P)"
+    resolved_target_root="$(cd "$TARGET_DIR" 2>/dev/null && pwd -P)" || {
+      echo "FATAL: selected repository is unavailable: $TARGET_DIR" >&2
+      exit 2
+    }
+    [ -n "$resolved_target_root" ] || {
+      echo "FATAL: selected repository could not be resolved: $TARGET_DIR" >&2
+      exit 2
+    }
     while IFS= read -r pline; do
       case "$pline" in
         "### Target: "*)

@@ -38,9 +38,28 @@ internal sealed class Pl0SourceEditorView : TextView
             return Pl0HighlightKind.None;
         }
 
-        var span = lineHighlights.FirstOrDefault(
-            candidate => columnIndex >= candidate.Start && columnIndex < candidate.End);
-        return span.Kind;
+        var lowerBound = 0;
+        var upperBound = lineHighlights.Count - 1;
+
+        while (lowerBound <= upperBound)
+        {
+            var middle = lowerBound + ((upperBound - lowerBound) / 2);
+            var candidate = lineHighlights[middle];
+            if (columnIndex < candidate.Start)
+            {
+                upperBound = middle - 1;
+            }
+            else if (columnIndex >= candidate.End)
+            {
+                lowerBound = middle + 1;
+            }
+            else
+            {
+                return candidate.Kind;
+            }
+        }
+
+        return Pl0HighlightKind.None;
     }
 
     protected override void OnDrawNormalColor(List<Cell> line, int idxCol, int idxRow)
@@ -99,6 +118,13 @@ internal sealed class Pl0SourceEditorView : TextView
                 columnStart,
                 checked(columnStart + token.Lexeme.Length),
                 highlightKind));
+        }
+
+        // Die Binärsuche benötigt sortierte Bereiche; die einmalige Sortierung hält das Zeichnen schnell.
+        // Binary search requires sorted spans; sorting once keeps per-cell drawing fast.
+        foreach (var lineHighlights in newMap.Values)
+        {
+            lineHighlights.Sort(static (left, right) => left.Start.CompareTo(right.Start));
         }
 
         highlightMap = newMap;

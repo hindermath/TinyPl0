@@ -76,7 +76,7 @@
   "Pl0.Core.CompilerDiagnostic.Message": "Pl0.Core.CompilerDiagnostic.yml",
   "Pl0.Core.CompilerDiagnostic.Position": "Pl0.Core.CompilerDiagnostic.yml",
   "Pl0.Core.CompilerOptions": "Pl0.Core.CompilerOptions.yml",
-  "Pl0.Core.CompilerOptions.#ctor(Pl0.Core.Pl0Dialect,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.Resources.ResourceManager,System.Int32,System.Int32,System.Int32)": "Pl0.Core.CompilerOptions.yml",
+  "Pl0.Core.CompilerOptions.#ctor(Pl0.Core.Pl0Dialect,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.Resources.ResourceManager)": "Pl0.Core.CompilerOptions.yml",
   "Pl0.Core.CompilerOptions.Default": "Pl0.Core.CompilerOptions.yml",
   "Pl0.Core.CompilerOptions.Dialect": "Pl0.Core.CompilerOptions.yml",
   "Pl0.Core.CompilerOptions.EnableIoStatements": "Pl0.Core.CompilerOptions.yml",

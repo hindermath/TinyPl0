@@ -279,3 +279,24 @@ TUI gate because that image has no ripgrep. The isolated `--apply-patch` path
 does not scan repository content, so Bash and PowerShell now require `rg` only
 before the normal scan. Five path-boundary tests and both syntax checks pass
 locally. Product and IDE runtime behavior are unchanged.*
+
+177. Agent (2026-11-07): Sieben konkrete Review-Kommentare zu PR #124 wurden
+umgesetzt. Die PowerShell-Patchgrenze vergleicht jetzt physisch aufgeloeste
+Repository- und Zielpfade und deckt Verzeichnis-Symlinks sowie Windows-Junctions
+ab; Bash bricht bei nicht aufloesbarer Repository-Wurzel sofort ab. Delegierte
+Git-Fetches sind explizit an `origin` gebunden. `CompilerOptions` behaelt seinen
+veroeffentlichten Neun-Parameter-Konstruktor und die Neun-Werte-Dekonstruktion,
+waehrend die Ressourcenlimits als Init-Eigenschaften erhalten bleiben. Der
+Editor sucht sortierte Highlight-Spans binaer, und das Testprojekt erzwingt
+`Microsoft.Build.Tasks.Git` 10.0.303. Die Version `1.124.797.101` dokumentiert
+zwei weitere Testlaeufe; ein Release wurde nicht erstellt.
+
+*Seven actionable PR #124 review comments were implemented. The PowerShell
+patch boundary now compares physically resolved repository and target paths,
+with directory-symlink and Windows-junction regressions; Bash exits immediately
+when the repository root cannot be resolved. Delegated Git fetches are bound
+explicitly to `origin`. `CompilerOptions` retains its published nine-parameter
+constructor and nine-value deconstruction while keeping resource limits as init
+properties. The editor binary-searches sorted highlight spans, and the test
+project pins `Microsoft.Build.Tasks.Git` 10.0.303. Version `1.124.798.101`
+records two further test runs; no release was created.*

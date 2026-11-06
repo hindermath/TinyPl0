@@ -1,4 +1,6 @@
+import os
 import pathlib
+import shutil
 import subprocess
 import tempfile
 import unittest
@@ -8,17 +10,72 @@ REPOSITORY = pathlib.Path(__file__).parents[2]
 
 
 class PathWriteBoundaryTests(unittest.TestCase):
+    def test_bash_homogeneity_patch_allows_target_inside_repository(self) -> None:
+        self._assert_homogeneity_allows_inside_target(
+            ["bash", str(REPOSITORY / "scripts/check-homogeneity.sh")],
+            ["--apply-patch", "{patch}", "--yes", "{target}"],
+        )
+
+    @unittest.skipUnless(shutil.which("pwsh"), "PowerShell 7 is required.")
+    def test_powershell_homogeneity_patch_allows_target_inside_repository(self) -> None:
+        self._assert_homogeneity_allows_inside_target(
+            ["pwsh", "-NoProfile", "-File", str(REPOSITORY / "scripts/check-homogeneity.ps1")],
+            ["-ApplyPatch", "{patch}", "-Yes", "-TargetDir", "{target}"],
+        )
+
     def test_bash_homogeneity_patch_rejects_target_outside_repository(self) -> None:
         self._assert_homogeneity_rejects_outside_target(
             ["bash", str(REPOSITORY / "scripts/check-homogeneity.sh")],
             ["--apply-patch", "{patch}", "--yes", "{target}"],
         )
 
+    @unittest.skipUnless(shutil.which("pwsh"), "PowerShell 7 is required.")
     def test_powershell_homogeneity_patch_rejects_target_outside_repository(self) -> None:
         self._assert_homogeneity_rejects_outside_target(
             ["pwsh", "-NoProfile", "-File", str(REPOSITORY / "scripts/check-homogeneity.ps1")],
             ["-ApplyPatch", "{patch}", "-Yes", "-TargetDir", "{target}"],
         )
+
+    @unittest.skipUnless(shutil.which("pwsh"), "PowerShell 7 is required.")
+    @unittest.skipIf(os.name == "nt", "Directory symlink fixture is covered by the junction test on Windows.")
+    def test_powershell_homogeneity_patch_rejects_symlinked_directory_ancestor(self) -> None:
+        self._assert_powershell_homogeneity_rejects_linked_ancestor(use_junction=False)
+
+    @unittest.skipUnless(shutil.which("pwsh"), "PowerShell 7 is required.")
+    @unittest.skipUnless(os.name == "nt", "Windows junction regression case.")
+    def test_powershell_homogeneity_patch_rejects_junction_ancestor(self) -> None:
+        self._assert_powershell_homogeneity_rejects_linked_ancestor(use_junction=True)
+
+    def test_bash_homogeneity_patch_exits_when_repository_resolution_fails(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = pathlib.Path(temporary)
+            missing_target = root / "missing-repository"
+            outside = root / "outside.txt"
+            outside.write_text("original\n", encoding="utf-8")
+            patch = root / "memory-patch.md"
+            patch.write_text(
+                f"### Target: {outside}\n+++ injected\n",
+                encoding="utf-8",
+            )
+
+            result = subprocess.run(
+                [
+                    "bash",
+                    str(REPOSITORY / "scripts/check-homogeneity.sh"),
+                    "--apply-patch",
+                    str(patch),
+                    "--yes",
+                    str(missing_target),
+                ],
+                cwd=REPOSITORY,
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+
+            self.assertNotEqual(0, result.returncode)
+            self.assertEqual("original\n", outside.read_text(encoding="utf-8"))
+            self.assertIn("selected repository is unavailable", result.stderr)
 
     def test_feature_metadata_cannot_escape_repository_specs_tree(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
@@ -121,6 +178,84 @@ class PathWriteBoundaryTests(unittest.TestCase):
 
             self.assertNotEqual(0, result.returncode)
             self.assertEqual("original\n", outside.read_text(encoding="utf-8"))
+            self.assertIn("escapes selected repository", result.stderr)
+
+    def _assert_homogeneity_allows_inside_target(
+        self,
+        command: list[str],
+        arguments: list[str],
+    ) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            target = pathlib.Path(temporary) / "repository"
+            target.mkdir()
+            evidence = target / "evidence.txt"
+            evidence.write_text("original\n", encoding="utf-8")
+            patch = pathlib.Path(temporary) / "memory-patch.md"
+            patch.write_text(
+                "### Target: evidence.txt\n+++ accepted\n",
+                encoding="utf-8",
+            )
+            resolved_arguments = [
+                value.format(patch=patch, target=target)
+                for value in arguments
+            ]
+
+            result = subprocess.run(
+                [*command, *resolved_arguments],
+                cwd=REPOSITORY,
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+
+            self.assertEqual(0, result.returncode, result.stderr)
+            self.assertEqual("original\naccepted\n", evidence.read_text(encoding="utf-8"))
+
+    def _assert_powershell_homogeneity_rejects_linked_ancestor(self, *, use_junction: bool) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = pathlib.Path(temporary)
+            target = root / "repository"
+            target.mkdir()
+            outside = root / "outside"
+            outside.mkdir()
+            evidence = outside / "evidence.txt"
+            evidence.write_text("original\n", encoding="utf-8")
+            linked = target / "linked"
+            if use_junction:
+                subprocess.run(
+                    ["cmd", "/c", "mklink", "/J", str(linked), str(outside)],
+                    check=True,
+                    capture_output=True,
+                    text=True,
+                )
+            else:
+                linked.symlink_to(outside, target_is_directory=True)
+            patch = root / "memory-patch.md"
+            patch.write_text(
+                "### Target: linked/evidence.txt\n+++ injected\n",
+                encoding="utf-8",
+            )
+
+            result = subprocess.run(
+                [
+                    "pwsh",
+                    "-NoProfile",
+                    "-File",
+                    str(REPOSITORY / "scripts/check-homogeneity.ps1"),
+                    "-ApplyPatch",
+                    str(patch),
+                    "-Yes",
+                    "-TargetDir",
+                    str(target),
+                ],
+                cwd=REPOSITORY,
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+
+            self.assertNotEqual(0, result.returncode)
+            self.assertEqual("original\n", evidence.read_text(encoding="utf-8"))
             self.assertIn("escapes selected repository", result.stderr)
 
 

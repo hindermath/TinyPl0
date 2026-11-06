@@ -5,7 +5,7 @@ items:
   id: CompilerOptions
   parent: Pl0.Core
   children:
-  - Pl0.Core.CompilerOptions.#ctor(Pl0.Core.Pl0Dialect,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.Resources.ResourceManager,System.Int32,System.Int32,System.Int32)
+  - Pl0.Core.CompilerOptions.#ctor(Pl0.Core.Pl0Dialect,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.Resources.ResourceManager)
   - Pl0.Core.CompilerOptions.Default
   - Pl0.Core.CompilerOptions.Dialect
   - Pl0.Core.CompilerOptions.EnableIoStatements
@@ -34,7 +34,7 @@ items:
       repo: https://github.com/hindermath/TinyPl0.git
     id: CompilerOptions
     path: src/Pl0.Core/CompilerOptions.cs
-    startLine: 19
+    startLine: 16
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -54,16 +54,16 @@ items:
   - System.Object.GetType
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-- uid: Pl0.Core.CompilerOptions.#ctor(Pl0.Core.Pl0Dialect,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.Resources.ResourceManager,System.Int32,System.Int32,System.Int32)
-  commentId: M:Pl0.Core.CompilerOptions.#ctor(Pl0.Core.Pl0Dialect,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.Resources.ResourceManager,System.Int32,System.Int32,System.Int32)
-  id: '#ctor(Pl0.Core.Pl0Dialect,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.Resources.ResourceManager,System.Int32,System.Int32,System.Int32)'
+- uid: Pl0.Core.CompilerOptions.#ctor(Pl0.Core.Pl0Dialect,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.Resources.ResourceManager)
+  commentId: M:Pl0.Core.CompilerOptions.#ctor(Pl0.Core.Pl0Dialect,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.Resources.ResourceManager)
+  id: '#ctor(Pl0.Core.Pl0Dialect,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.Resources.ResourceManager)'
   parent: Pl0.Core.CompilerOptions
   langs:
   - csharp
   - vb
-  name: CompilerOptions(Pl0Dialect, int, int, int, int, int, int, string, ResourceManager?, int, int, int)
-  nameWithType: CompilerOptions.CompilerOptions(Pl0Dialect, int, int, int, int, int, int, string, ResourceManager?, int, int, int)
-  fullName: Pl0.Core.CompilerOptions.CompilerOptions(Pl0.Core.Pl0Dialect, int, int, int, int, int, int, string, System.Resources.ResourceManager?, int, int, int)
+  name: CompilerOptions(Pl0Dialect, int, int, int, int, int, int, string, ResourceManager?)
+  nameWithType: CompilerOptions.CompilerOptions(Pl0Dialect, int, int, int, int, int, int, string, ResourceManager?)
+  fullName: Pl0.Core.CompilerOptions.CompilerOptions(Pl0.Core.Pl0Dialect, int, int, int, int, int, int, string, System.Resources.ResourceManager?)
   type: Constructor
   source:
     remote:
@@ -72,14 +72,14 @@ items:
       repo: https://github.com/hindermath/TinyPl0.git
     id: .ctor
     path: src/Pl0.Core/CompilerOptions.cs
-    startLine: 19
+    startLine: 16
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
   summary: Compiler configuration limits and language dialect selection.
   example: []
   syntax:
-    content: public CompilerOptions(Pl0Dialect Dialect, int MaxLevel = 3, int MaxAddress = 2047, int MaxIdentifierLength = 10, int MaxNumberDigits = 14, int MaxSymbolCount = 100, int MaxCodeLength = 200, string Language = "de", ResourceManager? Messages = null, int MaxSourceLength = 1048576, int MaxTokenCount = 100000, int MaxDiagnosticCount = 100)
+    content: public CompilerOptions(Pl0Dialect Dialect, int MaxLevel = 3, int MaxAddress = 2047, int MaxIdentifierLength = 10, int MaxNumberDigits = 14, int MaxSymbolCount = 100, int MaxCodeLength = 200, string Language = "de", ResourceManager? Messages = null)
     parameters:
     - id: Dialect
       type: Pl0.Core.Pl0Dialect
@@ -108,20 +108,11 @@ items:
     - id: Messages
       type: System.Resources.ResourceManager
       description: 'Optionaler ResourceManager für Dependency Injection (z. B. in Tests); Standard: Pl0CoreMessages.ResourceManager.'
-    - id: MaxSourceLength
-      type: System.Int32
-      description: Maximale Quelltextlänge. / Maximum source length.
-    - id: MaxTokenCount
-      type: System.Int32
-      description: Maximale Tokenanzahl. / Maximum token count.
-    - id: MaxDiagnosticCount
-      type: System.Int32
-      description: Maximale Diagnoseanzahl. / Maximum diagnostic count.
-    content.vb: Public Sub New(Dialect As Pl0Dialect, MaxLevel As Integer = 3, MaxAddress As Integer = 2047, MaxIdentifierLength As Integer = 10, MaxNumberDigits As Integer = 14, MaxSymbolCount As Integer = 100, MaxCodeLength As Integer = 200, Language As String = "de", Messages As ResourceManager = Nothing, MaxSourceLength As Integer = 1048576, MaxTokenCount As Integer = 100000, MaxDiagnosticCount As Integer = 100)
+    content.vb: Public Sub New(Dialect As Pl0Dialect, MaxLevel As Integer = 3, MaxAddress As Integer = 2047, MaxIdentifierLength As Integer = 10, MaxNumberDigits As Integer = 14, MaxSymbolCount As Integer = 100, MaxCodeLength As Integer = 200, Language As String = "de", Messages As ResourceManager = Nothing)
   overload: Pl0.Core.CompilerOptions.#ctor*
-  nameWithType.vb: CompilerOptions.New(Pl0Dialect, Integer, Integer, Integer, Integer, Integer, Integer, String, ResourceManager, Integer, Integer, Integer)
-  fullName.vb: Pl0.Core.CompilerOptions.New(Pl0.Core.Pl0Dialect, Integer, Integer, Integer, Integer, Integer, Integer, String, System.Resources.ResourceManager, Integer, Integer, Integer)
-  name.vb: New(Pl0Dialect, Integer, Integer, Integer, Integer, Integer, Integer, String, ResourceManager, Integer, Integer, Integer)
+  nameWithType.vb: CompilerOptions.New(Pl0Dialect, Integer, Integer, Integer, Integer, Integer, Integer, String, ResourceManager)
+  fullName.vb: Pl0.Core.CompilerOptions.New(Pl0.Core.Pl0Dialect, Integer, Integer, Integer, Integer, Integer, Integer, String, System.Resources.ResourceManager)
+  name.vb: New(Pl0Dialect, Integer, Integer, Integer, Integer, Integer, Integer, String, ResourceManager)
 - uid: Pl0.Core.CompilerOptions.Dialect
   commentId: P:Pl0.Core.CompilerOptions.Dialect
   id: Dialect
@@ -140,7 +131,7 @@ items:
       repo: https://github.com/hindermath/TinyPl0.git
     id: Dialect
     path: src/Pl0.Core/CompilerOptions.cs
-    startLine: 20
+    startLine: 17
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -171,7 +162,7 @@ items:
       repo: https://github.com/hindermath/TinyPl0.git
     id: MaxLevel
     path: src/Pl0.Core/CompilerOptions.cs
-    startLine: 21
+    startLine: 18
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -202,7 +193,7 @@ items:
       repo: https://github.com/hindermath/TinyPl0.git
     id: MaxAddress
     path: src/Pl0.Core/CompilerOptions.cs
-    startLine: 22
+    startLine: 19
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -233,7 +224,7 @@ items:
       repo: https://github.com/hindermath/TinyPl0.git
     id: MaxIdentifierLength
     path: src/Pl0.Core/CompilerOptions.cs
-    startLine: 23
+    startLine: 20
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -264,7 +255,7 @@ items:
       repo: https://github.com/hindermath/TinyPl0.git
     id: MaxNumberDigits
     path: src/Pl0.Core/CompilerOptions.cs
-    startLine: 24
+    startLine: 21
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -295,7 +286,7 @@ items:
       repo: https://github.com/hindermath/TinyPl0.git
     id: MaxSymbolCount
     path: src/Pl0.Core/CompilerOptions.cs
-    startLine: 25
+    startLine: 22
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -326,7 +317,7 @@ items:
       repo: https://github.com/hindermath/TinyPl0.git
     id: MaxCodeLength
     path: src/Pl0.Core/CompilerOptions.cs
-    startLine: 26
+    startLine: 23
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -357,7 +348,7 @@ items:
       repo: https://github.com/hindermath/TinyPl0.git
     id: Language
     path: src/Pl0.Core/CompilerOptions.cs
-    startLine: 27
+    startLine: 24
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -388,7 +379,7 @@ items:
       repo: https://github.com/hindermath/TinyPl0.git
     id: Messages
     path: src/Pl0.Core/CompilerOptions.cs
-    startLine: 28
+    startLine: 25
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -419,7 +410,7 @@ items:
       repo: https://github.com/hindermath/TinyPl0.git
     id: MaxSourceLength
     path: src/Pl0.Core/CompilerOptions.cs
-    startLine: 29
+    startLine: 30
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -450,7 +441,7 @@ items:
       repo: https://github.com/hindermath/TinyPl0.git
     id: MaxTokenCount
     path: src/Pl0.Core/CompilerOptions.cs
-    startLine: 30
+    startLine: 35
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -481,7 +472,7 @@ items:
       repo: https://github.com/hindermath/TinyPl0.git
     id: MaxDiagnosticCount
     path: src/Pl0.Core/CompilerOptions.cs
-    startLine: 31
+    startLine: 40
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -512,7 +503,7 @@ items:
       repo: https://github.com/hindermath/TinyPl0.git
     id: Default
     path: src/Pl0.Core/CompilerOptions.cs
-    startLine: 36
+    startLine: 45
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -543,7 +534,7 @@ items:
       repo: https://github.com/hindermath/TinyPl0.git
     id: EnableIoStatements
     path: src/Pl0.Core/CompilerOptions.cs
-    startLine: 41
+    startLine: 50
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -855,7 +846,7 @@ references:
   - name: )
 - uid: Pl0.Core.CompilerOptions.#ctor*
   commentId: Overload:Pl0.Core.CompilerOptions.#ctor
-  href: Pl0.Core.CompilerOptions.html#Pl0_Core_CompilerOptions__ctor_Pl0_Core_Pl0Dialect_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_String_System_Resources_ResourceManager_System_Int32_System_Int32_System_Int32_
+  href: Pl0.Core.CompilerOptions.html#Pl0_Core_CompilerOptions__ctor_Pl0_Core_Pl0Dialect_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_String_System_Resources_ResourceManager_
   name: CompilerOptions
   nameWithType: CompilerOptions.CompilerOptions
   fullName: Pl0.Core.CompilerOptions.CompilerOptions

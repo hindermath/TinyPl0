@@ -68,6 +68,7 @@ class AgenticWorkspaceFleetSecurityTests(unittest.TestCase):
                 pathlib.Path("/delegated/repository"),
                 "fetch",
                 "--prune",
+                "origin",
             )
         finally:
             fleet.EXECUTION_CONTEXTS = previous
@@ -75,7 +76,7 @@ class AgenticWorkspaceFleetSecurityTests(unittest.TestCase):
         self.assertEqual(0, result.returncode)
         self.assertEqual(1, attempts)
         self.assertEqual(
-            [(pathlib.Path("/delegated/repository"), ("fetch", "--prune"))],
+            [(pathlib.Path("/delegated/repository"), ("fetch", "--prune", "origin"))],
             contexts.calls,
         )
 

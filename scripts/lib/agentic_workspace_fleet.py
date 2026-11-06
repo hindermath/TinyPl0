@@ -2961,7 +2961,7 @@ def classify_repository(
     local_symbolic_ref = local_symbolic.stdout.strip() if local_symbolic.returncode == 0 else ""
     if trusted_home is not None:
         revalidate_home_target(trusted_home, path)
-    fetch, fetch_attempts, fetch_duration = run_git_network(path, "fetch", "--prune")
+    fetch, fetch_attempts, fetch_duration = run_git_network(path, "fetch", "--prune", "origin")
     freshness = network_attempt("fetch", fetch, fetch_attempts, fetch_duration)
     if fetch.returncode != 0:
         finding = "FetchTimedOut" if fetch.returncode == 124 else "FetchFailed"

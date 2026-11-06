@@ -91,6 +91,20 @@ public sealed class IdeBootstrapTests
     }
 
     [Fact]
+    public void SourceEditor_Finds_Highlight_Near_End_Of_Many_Sorted_Spans()
+    {
+        string source = string.Concat(Enumerable.Repeat("1+", 20_000));
+        var editor = new Pl0SourceEditorView
+        {
+            Text = source
+        };
+
+        Assert.Equal(Pl0HighlightKind.Number, editor.GetHighlightKindAt(0, source.Length - 2));
+        Assert.Equal(Pl0HighlightKind.Operator, editor.GetHighlightKindAt(0, source.Length - 1));
+        Assert.Equal(Pl0HighlightKind.None, editor.GetHighlightKindAt(0, source.Length));
+    }
+
+    [Fact]
     public void RainbowAsciiArtView_Assigns_Repeating_Rainbow_Colors_To_NonWhitespace_Characters()
     {
         var view = new IdeRainbowAsciiArtView();

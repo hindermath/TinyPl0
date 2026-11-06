@@ -162,6 +162,39 @@ class ExecutionContextTests(unittest.TestCase):
             result = subprocess.run(["python3", "-c", context.REMOTE_PROGRAM], input=json.dumps(payload), text=True, capture_output=True)
             self.assertNotEqual(result.returncode, 0)
 
+    def test_remote_fetch_requires_explicit_origin(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory).resolve()
+            repo = root / "repo"
+            subprocess.run(["git", "init", "-q", str(repo)], check=True)
+            payload = {
+                "root": str(root),
+                "repository": str(repo),
+                "action": "git",
+                "arguments": ["fetch", "--prune"],
+            }
+
+            unbound = subprocess.run(
+                [sys.executable, "-c", context.REMOTE_PROGRAM],
+                input=json.dumps(payload),
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+            self.assertNotEqual(0, unbound.returncode)
+            self.assertIn("bounded origin fetch", unbound.stderr)
+
+            payload["arguments"] = ["fetch", "--prune", "origin"]
+            bound = subprocess.run(
+                [sys.executable, "-c", context.REMOTE_PROGRAM],
+                input=json.dumps(payload),
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+            self.assertEqual(0, bound.returncode, bound.stderr)
+            self.assertNotEqual(0, json.loads(bound.stdout)["returncode"])
+
     def test_binding_rejects_missing_or_symlinked_package_files(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory).resolve()

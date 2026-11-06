@@ -105,7 +105,7 @@ elif p["action"] == "git":
         raise SystemExit("Symbolic-ref mutation is not allowed")
     if effective[0] == "merge" and (len(effective) != 3 or effective[1] != "--ff-only" or not re.fullmatch(r"[0-9a-f]{40,64}", effective[2])):
         raise SystemExit("Only bounded fast-forward merge is allowed")
-    if effective[0] == "fetch" and effective != ["fetch", "--prune"]:
+    if effective[0] == "fetch" and effective != ["fetch", "--prune", "origin"]:
         raise SystemExit("Only the bounded origin fetch is allowed")
     if effective[0] == "ls-remote" and effective != ["ls-remote", "--symref", "origin", "HEAD"]:
         raise SystemExit("Only the bounded origin HEAD query is allowed")
