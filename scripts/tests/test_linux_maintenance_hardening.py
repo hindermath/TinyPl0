@@ -152,6 +152,7 @@ def run_brew_maintainer(
             str(paths["npm"]),
             "--powershell-module-registry",
             str(paths["powershell"]),
+            "--allow-external-registry-probes",
             "--skip-upgrade",
             "--skip-vscode-extensions",
             "--result-file",

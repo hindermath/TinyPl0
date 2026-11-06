@@ -25,9 +25,13 @@ public sealed class VirtualMachine
     public VmExecutionResult Run(IReadOnlyList<Instruction> program, IPl0Io? io,
         VirtualMachineOptions? options, CancellationToken cancellationToken)
     {
-        var vm = new SteppableVirtualMachine();
-        vm.Initialize(program, io, options, cancellationToken);
-        while (vm.IsRunning) _ = vm.Step();
-        return vm.ToExecutionResult();
+        var session = VmExecutionSession.Create(
+            program,
+            io ?? new ConsolePl0Io(),
+            options ?? VirtualMachineOptions.Default,
+            cancellationToken,
+            captureStepSnapshots: false);
+        while (session.IsRunning) _ = session.ExecuteNext();
+        return session.ToExecutionResult();
     }
 }

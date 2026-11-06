@@ -93,8 +93,32 @@ if ($ApplyPatch) {
     if ($answer -match '^[jJyY]') {
         $patchCount = 0
         $targetFile = ''
+        $targetPrefix = $TargetDir.TrimEnd(
+            [IO.Path]::DirectorySeparatorChar,
+            [IO.Path]::AltDirectorySeparatorChar
+        ) + [IO.Path]::DirectorySeparatorChar
         foreach ($line in $content) {
-            if ($line -match '### Target: (.+)') { $targetFile = $Matches[1] }
+            if ($line -match '### Target: (.+)') {
+                $declaredTarget = $Matches[1]
+                $candidate = if ([IO.Path]::IsPathRooted($declaredTarget)) {
+                    [IO.Path]::GetFullPath($declaredTarget)
+                } else {
+                    [IO.Path]::GetFullPath((Join-Path $TargetDir $declaredTarget))
+                }
+                $parent = Split-Path -Parent $candidate
+                if (-not (Test-Path -LiteralPath $parent -PathType Container)) {
+                    throw "Patch target parent is unavailable: $candidate"
+                }
+                $resolvedParent = (Resolve-Path -LiteralPath $parent).Path
+                $targetFile = Join-Path $resolvedParent (Split-Path -Leaf $candidate)
+                if (-not $targetFile.StartsWith($targetPrefix, [StringComparison]::Ordinal)) {
+                    throw "Patch target escapes selected repository: $targetFile"
+                }
+                if (Test-Path -LiteralPath $targetFile) {
+                    $targetItem = Get-Item -LiteralPath $targetFile -Force
+                    if ($targetItem.LinkType) { throw "Patch target must not be a symlink: $targetFile" }
+                }
+            }
             if ($line -match '^\+\+\+ (.+)' -and $targetFile) {
                 Add-Content -Path $targetFile -Value $Matches[1]
                 $patchCount++

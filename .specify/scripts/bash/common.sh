@@ -265,7 +265,9 @@ get_feature_paths() {
     #   2. .specify/feature.json "feature_directory" key (persisted by /speckit.specify)
     #   3. Branch-name-based prefix lookup (legacy fallback)
     local feature_dir
+    local feature_dir_is_explicit="false"
     if [[ -n "${SPECIFY_FEATURE_DIRECTORY:-}" ]]; then
+        feature_dir_is_explicit="true"
         feature_dir="$SPECIFY_FEATURE_DIRECTORY"
         # Normalize relative paths to absolute under repo root
         [[ "$feature_dir" != /* ]] && feature_dir="$repo_root/$feature_dir"
@@ -284,6 +286,36 @@ get_feature_paths() {
         fi
     elif ! feature_dir=$(find_feature_dir_by_prefix "$repo_root" "$current_branch"); then
         echo "ERROR: Failed to resolve feature directory" >&2
+        return 1
+    fi
+
+    # Persistierte Feature-Metadaten bestimmen Schreibziele und bleiben daher immer im
+    # versionierten specs-Baum. / Feature metadata selects write destinations
+    # and therefore always remains inside the versioned specs tree.
+    if [[ "$feature_dir_is_explicit" != "true" ]] && ! command -v python3 >/dev/null 2>&1; then
+        echo "ERROR: python3 is required to validate the feature directory" >&2
+        return 1
+    fi
+    if [[ "$feature_dir_is_explicit" != "true" ]] && ! feature_dir=$(python3 - "$repo_root" "$feature_dir" <<'PY'
+import pathlib
+import sys
+
+repository = pathlib.Path(sys.argv[1]).resolve()
+specs_entry = repository / "specs"
+if specs_entry.is_symlink() or specs_entry.resolve(strict=False) != specs_entry:
+    raise SystemExit("ERROR: repository specs/ must not be a filesystem alias")
+specs = specs_entry
+feature = pathlib.Path(sys.argv[2]).resolve(strict=False)
+try:
+    feature.relative_to(specs)
+except ValueError:
+    raise SystemExit("ERROR: feature directory must stay below repository specs/")
+if feature == specs:
+    raise SystemExit("ERROR: feature directory must name a child below repository specs/")
+print(feature)
+PY
+    ); then
+        echo "ERROR: Unsafe feature directory" >&2
         return 1
     fi
 

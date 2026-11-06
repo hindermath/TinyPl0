@@ -44,6 +44,7 @@ items:
   - Pl0.Ide.IdeMainView.ExportAsmFromMenu
   - Pl0.Ide.IdeMainView.ExportCodFromMenu
   - Pl0.Ide.IdeMainView.ExportCompiledCode(Pl0.Ide.IdeEmitMode)
+  - Pl0.Ide.IdeMainView.FlushRuntimeOutput
   - Pl0.Ide.IdeMainView.FormatCurrentInstruction(System.Nullable{Pl0.Core.Instruction},Pl0.Ide.IdeCodeDisplayMode)
   - Pl0.Ide.IdeMainView.FormatDebugStepRegisters(Pl0.Vm.VmState)
   - Pl0.Ide.IdeMainView.FormatDiagnostics(System.Collections.Generic.IReadOnlyList{Pl0.Core.CompilerDiagnostic})
@@ -55,6 +56,7 @@ items:
   - Pl0.Ide.IdeMainView.HasPl0Extension(System.String)
   - Pl0.Ide.IdeMainView.IsDebugSessionActive
   - Pl0.Ide.IdeMainView.LastCompilationResult
+  - Pl0.Ide.IdeMainView.MaximumRuntimeOutputValues
   - Pl0.Ide.IdeMainView.MessagesOutput
   - Pl0.Ide.IdeMainView.NoOp
   - Pl0.Ide.IdeMainView.NormalizeExportPath(System.String,Pl0.Ide.IdeEmitMode)
@@ -71,6 +73,7 @@ items:
   - Pl0.Ide.IdeMainView.RenderCodeOutput(System.Collections.Generic.IReadOnlyList{Pl0.Core.Instruction},System.Nullable{System.Int32})
   - Pl0.Ide.IdeMainView.RenderCompilationResult(Pl0.Core.CompilationResult)
   - Pl0.Ide.IdeMainView.RenderDebugState(Pl0.Vm.VmStepResult,System.String)
+  - Pl0.Ide.IdeMainView.ResetRuntimeOutput
   - Pl0.Ide.IdeMainView.RunCompiledCode
   - Pl0.Ide.IdeMainView.RunCompiledCodeFromMenu
   - Pl0.Ide.IdeMainView.RuntimeOutput
@@ -108,6 +111,9 @@ items:
   - Pl0.Ide.IdeMainView.pCodeWindow
   - Pl0.Ide.IdeMainView.runtimeDialogService
   - Pl0.Ide.IdeMainView.runtimeOutput
+  - Pl0.Ide.IdeMainView.runtimeOutputBuffer
+  - Pl0.Ide.IdeMainView.runtimeOutputTruncated
+  - Pl0.Ide.IdeMainView.runtimeOutputValueCount
   - Pl0.Ide.IdeMainView.sourceEditor
   - Pl0.Ide.IdeMainView.sourceStatusLine
   - Pl0.Ide.IdeMainView.sourceWindow
@@ -123,7 +129,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: IdeMainView
     path: src/Pl0.Ide/IdeMainView.cs
@@ -356,7 +362,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: NoOp
     path: src/Pl0.Ide/IdeMainView.cs
@@ -383,7 +389,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: SuccessfulExitCode
     path: src/Pl0.Ide/IdeMainView.cs
@@ -410,7 +416,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: SourceWindowBaseTitle
     path: src/Pl0.Ide/IdeMainView.cs
@@ -437,7 +443,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: PCodeWindowBaseTitle
     path: src/Pl0.Ide/IdeMainView.cs
@@ -464,7 +470,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: AssemblerWindowBaseTitle
     path: src/Pl0.Ide/IdeMainView.cs
@@ -491,7 +497,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: RuntimeOutputWindowBaseTitle
     path: src/Pl0.Ide/IdeMainView.cs
@@ -518,7 +524,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: DebugWindowBaseTitle
     path: src/Pl0.Ide/IdeMainView.cs
@@ -545,7 +551,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: AboutAsciiArt
     path: src/Pl0.Ide/IdeMainView.cs
@@ -572,7 +578,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: compiler
     path: src/Pl0.Ide/IdeMainView.cs
@@ -599,7 +605,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: virtualMachine
     path: src/Pl0.Ide/IdeMainView.cs
@@ -626,7 +632,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: steppableVirtualMachine
     path: src/Pl0.Ide/IdeMainView.cs
@@ -653,7 +659,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: fileDialogs
     path: src/Pl0.Ide/IdeMainView.cs
@@ -680,7 +686,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: fileStorage
     path: src/Pl0.Ide/IdeMainView.cs
@@ -707,7 +713,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: compilerSettingsDialog
     path: src/Pl0.Ide/IdeMainView.cs
@@ -734,7 +740,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: runtimeDialogService
     path: src/Pl0.Ide/IdeMainView.cs
@@ -761,7 +767,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: messageDialogService
     path: src/Pl0.Ide/IdeMainView.cs
@@ -788,7 +794,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: sourceWindow
     path: src/Pl0.Ide/IdeMainView.cs
@@ -815,7 +821,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: pCodeWindow
     path: src/Pl0.Ide/IdeMainView.cs
@@ -842,7 +848,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: sourceEditor
     path: src/Pl0.Ide/IdeMainView.cs
@@ -869,7 +875,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: sourceStatusLine
     path: src/Pl0.Ide/IdeMainView.cs
@@ -896,7 +902,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: pCodeOutput
     path: src/Pl0.Ide/IdeMainView.cs
@@ -923,7 +929,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: messagesOutput
     path: src/Pl0.Ide/IdeMainView.cs
@@ -950,7 +956,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: runtimeOutput
     path: src/Pl0.Ide/IdeMainView.cs
@@ -977,7 +983,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: debugOutput
     path: src/Pl0.Ide/IdeMainView.cs
@@ -1004,7 +1010,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: lastCompilationResult
     path: src/Pl0.Ide/IdeMainView.cs
@@ -1031,7 +1037,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: lastDebugStepResult
     path: src/Pl0.Ide/IdeMainView.cs
@@ -1058,7 +1064,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: currentSourcePath
     path: src/Pl0.Ide/IdeMainView.cs
@@ -1085,7 +1091,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: currentCompilerOptions
     path: src/Pl0.Ide/IdeMainView.cs
@@ -1112,7 +1118,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: currentCodeDisplayMode
     path: src/Pl0.Ide/IdeMainView.cs
@@ -1139,7 +1145,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: isDebugSessionActive
     path: src/Pl0.Ide/IdeMainView.cs
@@ -1166,7 +1172,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: lastPersistedSourceText
     path: src/Pl0.Ide/IdeMainView.cs
@@ -1193,7 +1199,7 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: isSourceDirty
     path: src/Pl0.Ide/IdeMainView.cs
@@ -1206,6 +1212,114 @@ items:
     return:
       type: System.Boolean
     content.vb: Private isSourceDirty As Boolean
+- uid: Pl0.Ide.IdeMainView.runtimeOutputBuffer
+  commentId: F:Pl0.Ide.IdeMainView.runtimeOutputBuffer
+  id: runtimeOutputBuffer
+  parent: Pl0.Ide.IdeMainView
+  langs:
+  - csharp
+  - vb
+  name: runtimeOutputBuffer
+  nameWithType: IdeMainView.runtimeOutputBuffer
+  fullName: Pl0.Ide.IdeMainView.runtimeOutputBuffer
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeMainView.cs
+      branch: codex/security-scan-remediation-23
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: runtimeOutputBuffer
+    path: src/Pl0.Ide/IdeMainView.cs
+    startLine: 53
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: private readonly StringBuilder runtimeOutputBuffer
+    return:
+      type: System.Text.StringBuilder
+    content.vb: Private ReadOnly runtimeOutputBuffer As StringBuilder
+- uid: Pl0.Ide.IdeMainView.MaximumRuntimeOutputValues
+  commentId: F:Pl0.Ide.IdeMainView.MaximumRuntimeOutputValues
+  id: MaximumRuntimeOutputValues
+  parent: Pl0.Ide.IdeMainView
+  langs:
+  - csharp
+  - vb
+  name: MaximumRuntimeOutputValues
+  nameWithType: IdeMainView.MaximumRuntimeOutputValues
+  fullName: Pl0.Ide.IdeMainView.MaximumRuntimeOutputValues
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeMainView.cs
+      branch: codex/security-scan-remediation-23
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: MaximumRuntimeOutputValues
+    path: src/Pl0.Ide/IdeMainView.cs
+    startLine: 54
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: private const int MaximumRuntimeOutputValues = 10000
+    return:
+      type: System.Int32
+    content.vb: Private Const MaximumRuntimeOutputValues As Integer = 10000
+- uid: Pl0.Ide.IdeMainView.runtimeOutputValueCount
+  commentId: F:Pl0.Ide.IdeMainView.runtimeOutputValueCount
+  id: runtimeOutputValueCount
+  parent: Pl0.Ide.IdeMainView
+  langs:
+  - csharp
+  - vb
+  name: runtimeOutputValueCount
+  nameWithType: IdeMainView.runtimeOutputValueCount
+  fullName: Pl0.Ide.IdeMainView.runtimeOutputValueCount
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeMainView.cs
+      branch: codex/security-scan-remediation-23
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: runtimeOutputValueCount
+    path: src/Pl0.Ide/IdeMainView.cs
+    startLine: 55
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: private int runtimeOutputValueCount
+    return:
+      type: System.Int32
+    content.vb: Private runtimeOutputValueCount As Integer
+- uid: Pl0.Ide.IdeMainView.runtimeOutputTruncated
+  commentId: F:Pl0.Ide.IdeMainView.runtimeOutputTruncated
+  id: runtimeOutputTruncated
+  parent: Pl0.Ide.IdeMainView
+  langs:
+  - csharp
+  - vb
+  name: runtimeOutputTruncated
+  nameWithType: IdeMainView.runtimeOutputTruncated
+  fullName: Pl0.Ide.IdeMainView.runtimeOutputTruncated
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeMainView.cs
+      branch: codex/security-scan-remediation-23
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: runtimeOutputTruncated
+    path: src/Pl0.Ide/IdeMainView.cs
+    startLine: 56
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: private bool runtimeOutputTruncated
+    return:
+      type: System.Boolean
+    content.vb: Private runtimeOutputTruncated As Boolean
 - uid: Pl0.Ide.IdeMainView.#ctor
   commentId: M:Pl0.Ide.IdeMainView.#ctor
   id: '#ctor'
@@ -1220,11 +1334,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: .ctor
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 54
+    startLine: 58
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -1249,11 +1363,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: .ctor
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 63
+    startLine: 67
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -1283,11 +1397,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: .ctor
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 68
+    startLine: 72
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -1319,11 +1433,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: .ctor
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 73
+    startLine: 77
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -1357,11 +1471,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: .ctor
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 82
+    startLine: 86
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -1397,11 +1511,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: SourceEditor
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 163
+    startLine: 167
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -1426,11 +1540,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: PCodeOutput
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 164
+    startLine: 168
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -1455,11 +1569,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: MessagesOutput
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 165
+    startLine: 169
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -1484,11 +1598,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: RuntimeOutput
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 166
+    startLine: 170
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -1513,11 +1627,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: DebugOutput
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 167
+    startLine: 171
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -1542,11 +1656,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: LastCompilationResult
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 168
+    startLine: 172
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -1571,11 +1685,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: CurrentSourcePath
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 169
+    startLine: 173
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -1600,11 +1714,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: SourceWindowTitle
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 170
+    startLine: 174
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -1629,11 +1743,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: SourceStatusLineText
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 171
+    startLine: 175
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -1658,11 +1772,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: PCodeWindowTitle
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 172
+    startLine: 176
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -1687,11 +1801,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: CurrentCompilerOptions
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 173
+    startLine: 177
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -1716,11 +1830,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: CurrentCodeDisplayMode
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 174
+    startLine: 178
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -1745,11 +1859,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: IsDebugSessionActive
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 175
+    startLine: 179
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -1774,11 +1888,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: ExitCode
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 176
+    startLine: 180
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -1803,11 +1917,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: CreateNewSourceFile
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 178
+    startLine: 182
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -1829,11 +1943,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: OpenSourceFile
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 192
+    startLine: 196
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -1857,11 +1971,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: SaveSourceFile
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 226
+    startLine: 230
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -1885,11 +1999,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: FormatSource
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 252
+    startLine: 256
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -1913,11 +2027,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: CompileSource
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 266
+    startLine: 270
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -1941,11 +2055,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: OpenCompilerSettingsDialog
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 279
+    startLine: 283
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -1969,11 +2083,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: CreateMenuBar
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 309
+    startLine: 313
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -1997,11 +2111,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: CompileSourceFromMenu
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 353
+    startLine: 357
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -2023,11 +2137,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: OpenCompilerSettingsDialogFromMenu
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 358
+    startLine: 362
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -2049,11 +2163,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: ExportAsmFromMenu
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 363
+    startLine: 367
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -2075,11 +2189,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: ExportCodFromMenu
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 368
+    startLine: 372
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -2101,11 +2215,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: RunCompiledCodeFromMenu
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 373
+    startLine: 377
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -2127,11 +2241,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: CompileAndRunFromMenu
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 378
+    startLine: 382
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -2153,11 +2267,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: StepDebugFromMenu
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 383
+    startLine: 387
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -2179,11 +2293,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: AbortDebugFromMenu
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 388
+    startLine: 392
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -2205,11 +2319,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: CreateNewSourceFileFromMenu
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 393
+    startLine: 397
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -2231,11 +2345,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: OpenSourceFileFromMenu
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 398
+    startLine: 402
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -2257,11 +2371,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: SaveSourceFileFromMenu
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 403
+    startLine: 407
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -2283,11 +2397,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: FormatSourceFromMenu
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 408
+    startLine: 412
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -2309,11 +2423,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: ExitApplicationFromMenu
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 413
+    startLine: 417
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -2335,11 +2449,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: ShowAboutDialogFromMenu
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 418
+    startLine: 422
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -2361,11 +2475,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: ExitApplication
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 423
+    startLine: 427
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -2393,11 +2507,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: ShowAboutDialog
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 432
+    startLine: 436
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -2419,11 +2533,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: CreateAboutDialogText
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 448
+    startLine: 452
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -2447,11 +2561,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: BuildAboutDialogText
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 457
+    startLine: 461
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -2483,11 +2597,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: FormatVersion
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 464
+    startLine: 468
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -2514,11 +2628,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: NormalizeVersionComponent
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 469
+    startLine: 473
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -2548,11 +2662,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: HasPl0Extension
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 474
+    startLine: 478
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -2582,11 +2696,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: EnsurePl0Extension
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 479
+    startLine: 483
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -2616,11 +2730,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: ExportCompiledCode
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 484
+    startLine: 488
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -2647,11 +2761,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: RunCompiledCode
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 517
+    startLine: 521
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -2675,11 +2789,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: CompileAndRun
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 541
+    startLine: 546
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -2703,11 +2817,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: StepDebug
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 547
+    startLine: 552
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -2731,11 +2845,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: AbortDebug
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 596
+    startLine: 602
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -2759,11 +2873,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: CreateSourceEditor
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 614
+    startLine: 620
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -2787,11 +2901,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: CreateReadOnlyOutputView
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 625
+    startLine: 631
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -2815,11 +2929,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: CreateDebugOutputView
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 639
+    startLine: 645
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -2843,11 +2957,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: CreateSourceStatusLine
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 650
+    startLine: 656
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -2871,11 +2985,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: RefreshSourceEditorState
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 663
+    startLine: 669
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -2897,11 +3011,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: UpdateSourceDirtyFlag
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 670
+    startLine: 676
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -2923,11 +3037,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: RefreshSourceCursorStatus
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 682
+    startLine: 688
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -2949,11 +3063,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: UpdateDocumentTitles
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 689
+    startLine: 695
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -2975,11 +3089,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: RenderCompilationResult
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 705
+    startLine: 711
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -3004,11 +3118,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: RenderCodeOutput
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 718
+    startLine: 724
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -3038,11 +3152,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: RenderDebugState
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 726
+    startLine: 732
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -3072,11 +3186,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: BuildRegisterLine
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 767
+    startLine: 773
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -3110,11 +3224,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: FormatDebugStepRegisters
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 790
+    startLine: 796
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -3141,11 +3255,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: ToDisplayStackIndex
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 797
+    startLine: 803
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -3175,11 +3289,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: BuildStackLine
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 802
+    startLine: 808
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -3215,11 +3329,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: FormatCurrentInstruction
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 832
+    startLine: 838
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -3248,11 +3362,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: FormatDiagnostics
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 848
+    startLine: 854
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -3282,11 +3396,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: FormatVmDiagnostics
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 861
+    startLine: 867
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -3316,11 +3430,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: GetCodeWindowBaseTitle
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 873
+    startLine: 879
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -3344,11 +3458,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: AddLineNumbers
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 878
+    startLine: 884
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -3380,11 +3494,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: BuildSuggestedExportPath
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 895
+    startLine: 901
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -3411,11 +3525,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: NormalizeExportPath
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 906
+    startLine: 912
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -3447,11 +3561,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/IdeMainView.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: AppendRuntimeOutputValue
     path: src/Pl0.Ide/IdeMainView.cs
-    startLine: 918
+    startLine: 924
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -3465,6 +3579,58 @@ items:
   nameWithType.vb: IdeMainView.AppendRuntimeOutputValue(Integer)
   fullName.vb: Pl0.Ide.IdeMainView.AppendRuntimeOutputValue(Integer)
   name.vb: AppendRuntimeOutputValue(Integer)
+- uid: Pl0.Ide.IdeMainView.ResetRuntimeOutput
+  commentId: M:Pl0.Ide.IdeMainView.ResetRuntimeOutput
+  id: ResetRuntimeOutput
+  parent: Pl0.Ide.IdeMainView
+  langs:
+  - csharp
+  - vb
+  name: ResetRuntimeOutput()
+  nameWithType: IdeMainView.ResetRuntimeOutput()
+  fullName: Pl0.Ide.IdeMainView.ResetRuntimeOutput()
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeMainView.cs
+      branch: codex/security-scan-remediation-23
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: ResetRuntimeOutput
+    path: src/Pl0.Ide/IdeMainView.cs
+    startLine: 945
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: private void ResetRuntimeOutput()
+    content.vb: Private Sub ResetRuntimeOutput()
+  overload: Pl0.Ide.IdeMainView.ResetRuntimeOutput*
+- uid: Pl0.Ide.IdeMainView.FlushRuntimeOutput
+  commentId: M:Pl0.Ide.IdeMainView.FlushRuntimeOutput
+  id: FlushRuntimeOutput
+  parent: Pl0.Ide.IdeMainView
+  langs:
+  - csharp
+  - vb
+  name: FlushRuntimeOutput()
+  nameWithType: IdeMainView.FlushRuntimeOutput()
+  fullName: Pl0.Ide.IdeMainView.FlushRuntimeOutput()
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Ide/IdeMainView.cs
+      branch: codex/security-scan-remediation-23
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: FlushRuntimeOutput
+    path: src/Pl0.Ide/IdeMainView.cs
+    startLine: 953
+  assemblies:
+  - Pl0.Ide
+  namespace: Pl0.Ide
+  syntax:
+    content: private void FlushRuntimeOutput()
+    content.vb: Private Sub FlushRuntimeOutput()
+  overload: Pl0.Ide.IdeMainView.FlushRuntimeOutput*
 references:
 - uid: Pl0.Ide
   commentId: N:Pl0.Ide
@@ -7154,6 +7320,41 @@ references:
   nameWithType.vb: Boolean
   fullName.vb: Boolean
   name.vb: Boolean
+- uid: System.Text.StringBuilder
+  commentId: T:System.Text.StringBuilder
+  parent: System.Text
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.text.stringbuilder
+  name: StringBuilder
+  nameWithType: StringBuilder
+  fullName: System.Text.StringBuilder
+- uid: System.Text
+  commentId: N:System.Text
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Text
+  nameWithType: System.Text
+  fullName: System.Text
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Text
+    name: Text
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Text
+    name: Text
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text
 - uid: Pl0.Ide.IdeMainView.#ctor*
   commentId: Overload:Pl0.Ide.IdeMainView.#ctor
   href: Pl0.Ide.IdeMainView.html#Pl0_Ide_IdeMainView__ctor
@@ -7912,3 +8113,15 @@ references:
   name: AppendRuntimeOutputValue
   nameWithType: IdeMainView.AppendRuntimeOutputValue
   fullName: Pl0.Ide.IdeMainView.AppendRuntimeOutputValue
+- uid: Pl0.Ide.IdeMainView.ResetRuntimeOutput*
+  commentId: Overload:Pl0.Ide.IdeMainView.ResetRuntimeOutput
+  href: Pl0.Ide.IdeMainView.html#Pl0_Ide_IdeMainView_ResetRuntimeOutput
+  name: ResetRuntimeOutput
+  nameWithType: IdeMainView.ResetRuntimeOutput
+  fullName: Pl0.Ide.IdeMainView.ResetRuntimeOutput
+- uid: Pl0.Ide.IdeMainView.FlushRuntimeOutput*
+  commentId: Overload:Pl0.Ide.IdeMainView.FlushRuntimeOutput
+  href: Pl0.Ide.IdeMainView.html#Pl0_Ide_IdeMainView_FlushRuntimeOutput
+  name: FlushRuntimeOutput
+  nameWithType: IdeMainView.FlushRuntimeOutput
+  fullName: Pl0.Ide.IdeMainView.FlushRuntimeOutput

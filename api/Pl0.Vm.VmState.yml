@@ -7,6 +7,7 @@ items:
   children:
   - Pl0.Vm.VmState.#ctor(System.Int32,System.Int32,System.Int32,System.Int32[],System.Nullable{Pl0.Core.Instruction})
   - Pl0.Vm.VmState.#ctor(System.Int32,System.Int32,System.Int32,System.Int32[],System.Nullable{Pl0.Core.Instruction},System.Int32)
+  - Pl0.Vm.VmState.#ctor(System.Int32,System.Int32,System.Int32,System.Int32[],System.Nullable{Pl0.Core.Instruction},System.Int32,System.Boolean)
   - Pl0.Vm.VmState.B
   - Pl0.Vm.VmState.BasePointer
   - Pl0.Vm.VmState.CurrentInstruction
@@ -28,7 +29,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmState.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: VmState
     path: src/Pl0.Vm/VmState.cs
@@ -66,7 +67,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmState.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: stack
     path: src/Pl0.Vm/VmState.cs
@@ -93,7 +94,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmState.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: .ctor
     path: src/Pl0.Vm/VmState.cs
@@ -140,7 +141,7 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmState.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: .ctor
     path: src/Pl0.Vm/VmState.cs
@@ -176,6 +177,50 @@ items:
   nameWithType.vb: VmState.New(Integer, Integer, Integer, Integer(), Instruction?, Integer)
   fullName.vb: Pl0.Vm.VmState.New(Integer, Integer, Integer, Integer(), Pl0.Core.Instruction?, Integer)
   name.vb: New(Integer, Integer, Integer, Integer(), Instruction?, Integer)
+- uid: Pl0.Vm.VmState.#ctor(System.Int32,System.Int32,System.Int32,System.Int32[],System.Nullable{Pl0.Core.Instruction},System.Int32,System.Boolean)
+  commentId: M:Pl0.Vm.VmState.#ctor(System.Int32,System.Int32,System.Int32,System.Int32[],System.Nullable{Pl0.Core.Instruction},System.Int32,System.Boolean)
+  id: '#ctor(System.Int32,System.Int32,System.Int32,System.Int32[],System.Nullable{Pl0.Core.Instruction},System.Int32,System.Boolean)'
+  parent: Pl0.Vm.VmState
+  langs:
+  - csharp
+  - vb
+  name: VmState(int, int, int, int[], Instruction?, int, bool)
+  nameWithType: VmState.VmState(int, int, int, int[], Instruction?, int, bool)
+  fullName: Pl0.Vm.VmState.VmState(int, int, int, int[], Pl0.Core.Instruction?, int, bool)
+  type: Constructor
+  source:
+    remote:
+      path: src/Pl0.Vm/VmState.cs
+      branch: codex/security-scan-remediation-23
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: .ctor
+    path: src/Pl0.Vm/VmState.cs
+    startLine: 28
+  assemblies:
+  - Pl0.Vm
+  namespace: Pl0.Vm
+  syntax:
+    content: internal VmState(int P, int B, int T, int[] Stack, Instruction? CurrentInstruction, int ExecutedInstructions, bool cloneStack)
+    parameters:
+    - id: P
+      type: System.Int32
+    - id: B
+      type: System.Int32
+    - id: T
+      type: System.Int32
+    - id: Stack
+      type: System.Int32[]
+    - id: CurrentInstruction
+      type: System.Nullable{Pl0.Core.Instruction}
+    - id: ExecutedInstructions
+      type: System.Int32
+    - id: cloneStack
+      type: System.Boolean
+    content.vb: Friend Sub New(P As Integer, B As Integer, T As Integer, Stack As Integer(), CurrentInstruction As Instruction?, ExecutedInstructions As Integer, cloneStack As Boolean)
+  overload: Pl0.Vm.VmState.#ctor*
+  nameWithType.vb: VmState.New(Integer, Integer, Integer, Integer(), Instruction?, Integer, Boolean)
+  fullName.vb: Pl0.Vm.VmState.New(Integer, Integer, Integer, Integer(), Pl0.Core.Instruction?, Integer, Boolean)
+  name.vb: New(Integer, Integer, Integer, Integer(), Instruction?, Integer, Boolean)
 - uid: Pl0.Vm.VmState.P
   commentId: P:Pl0.Vm.VmState.P
   id: P
@@ -190,11 +235,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmState.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: P
     path: src/Pl0.Vm/VmState.cs
-    startLine: 29
+    startLine: 36
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -221,11 +266,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmState.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: B
     path: src/Pl0.Vm/VmState.cs
-    startLine: 31
+    startLine: 38
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -252,11 +297,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmState.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: T
     path: src/Pl0.Vm/VmState.cs
-    startLine: 33
+    startLine: 40
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -283,11 +328,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmState.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: Stack
     path: src/Pl0.Vm/VmState.cs
-    startLine: 35
+    startLine: 42
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -314,11 +359,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmState.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: CurrentInstruction
     path: src/Pl0.Vm/VmState.cs
-    startLine: 37
+    startLine: 44
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -345,11 +390,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmState.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: ExecutedInstructions
     path: src/Pl0.Vm/VmState.cs
-    startLine: 39
+    startLine: 46
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -376,11 +421,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmState.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: ProgramCounter
     path: src/Pl0.Vm/VmState.cs
-    startLine: 41
+    startLine: 48
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -407,11 +452,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmState.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: BasePointer
     path: src/Pl0.Vm/VmState.cs
-    startLine: 43
+    startLine: 50
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -438,11 +483,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmState.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: StackTop
     path: src/Pl0.Vm/VmState.cs
-    startLine: 45
+    startLine: 52
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -469,11 +514,11 @@ items:
   source:
     remote:
       path: src/Pl0.Vm/VmState.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: Deconstruct
     path: src/Pl0.Vm/VmState.cs
-    startLine: 52
+    startLine: 59
   assemblies:
   - Pl0.Vm
   namespace: Pl0.Vm
@@ -888,6 +933,17 @@ references:
   - name: " "
   - name: T
   - name: )
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
 - uid: Pl0.Vm.VmState.P*
   commentId: Overload:Pl0.Vm.VmState.P
   href: Pl0.Vm.VmState.html#Pl0_Vm_VmState_P

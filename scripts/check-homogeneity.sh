@@ -110,11 +110,29 @@ if [ -n "$OPT_APPLY_PATCH" ]; then
   if echo "$answer" | grep -qiE '^[jy]'; then
     patch_count=0
     target_file=""
+    resolved_target_root="$(cd "$TARGET_DIR" && pwd -P)"
     while IFS= read -r pline; do
       case "$pline" in
         "### Target: "*)
-          target_file="${pline#### Target: }"
-          target_file="${target_file/#\~/$HOME}" ;;
+          target_file="${pline#"### Target: "}"
+          target_file="${target_file/#\~/$HOME}"
+          case "$target_file" in
+            /*) ;;
+            *) target_file="$resolved_target_root/$target_file" ;;
+          esac
+          target_parent="$(cd "$(dirname "$target_file")" 2>/dev/null && pwd -P)" || {
+            echo "FATAL: patch target parent is unavailable: $target_file" >&2
+            exit 2
+          }
+          target_file="$target_parent/$(basename "$target_file")"
+          case "$target_file" in
+            "$resolved_target_root"/*) ;;
+            *) echo "FATAL: patch target escapes selected repository: $target_file" >&2; exit 2 ;;
+          esac
+          [ ! -L "$target_file" ] || {
+            echo "FATAL: patch target must not be a symlink: $target_file" >&2
+            exit 2
+          } ;;
         "+++ "*)
           content_to_append="${pline#+++ }"
           if [ -n "$target_file" ]; then

@@ -6,8 +6,12 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 REGISTRY="$REPO_ROOT/scripts/config/brew-apps-registry.json"
 VSCODE_REGISTRY="$REPO_ROOT/scripts/config/vscode-extensions-registry.json"
-CLI_REGISTRY="$REPO_ROOT/scripts/config/required-cli-tools-registry.json"
-NPM_AGENT_REGISTRY="$REPO_ROOT/scripts/config/npm-agent-cli-registry.json"
+DEFAULT_CLI_REGISTRY="$REPO_ROOT/scripts/config/required-cli-tools-registry.json"
+DEFAULT_NPM_AGENT_REGISTRY="$REPO_ROOT/scripts/config/npm-agent-cli-registry.json"
+EXPECTED_CLI_REGISTRY_SHA256="75deeed8ebff37333f0c43e3ab12abb09ea2c8eed62a0ed892ca4a8385ac7880"
+EXPECTED_NPM_AGENT_REGISTRY_SHA256="d690ac4c0118f1fd785a041faeee23a3cf27082ba5dac2e57905e7ca6dd7312c"
+CLI_REGISTRY="$DEFAULT_CLI_REGISTRY"
+NPM_AGENT_REGISTRY="$DEFAULT_NPM_AGENT_REGISTRY"
 POWERSHELL_MODULE_REGISTRY="$REPO_ROOT/scripts/config/powershell-modules-registry.json"
 LINUX_HARDENING="$REPO_ROOT/scripts/lib/linux-maintenance-hardening.py"
 DRY_RUN=0
@@ -16,6 +20,7 @@ SKIP_UPGRADE=0
 INCLUDE_OPTIONAL=0
 SKIP_VSCODE_EXTENSIONS=0
 ALLOW_ADMIN_PROMPTS=0
+ALLOW_EXTERNAL_REGISTRY_PROBES=0
 RESULT_FILE=""
 WORK_DIR=""
 RESULT_ROWS=""
@@ -50,6 +55,9 @@ Optionen / Options:
   --allow-admin-prompts
                         Sichtbare Admin-Prompts nur fuer diesen Lauf erlauben
                         Allow visible administrator prompts for this run only
+  --allow-external-registry-probes
+                        Ausdruecklich Befehle aus alternativen CLI-Registries ausfuehren
+                        Explicitly execute commands from alternate CLI registries
   --result-file PATH    Atomaren JSON-Abschluss schreiben / write atomic result
   -h, --help            Hilfe anzeigen / show this help
 
@@ -125,6 +133,9 @@ while [ "$#" -gt 0 ]; do
     --allow-admin-prompts)
       ALLOW_ADMIN_PROMPTS=1
       ;;
+    --allow-external-registry-probes)
+      ALLOW_EXTERNAL_REGISTRY_PROBES=1
+      ;;
     --result-file)
       if [ "$#" -lt 2 ] || [ -z "${2:-}" ]; then
         echo "Fehler: --result-file benoetigt einen Pfad." >&2
@@ -167,6 +178,13 @@ if [ ! -f "$NPM_AGENT_REGISTRY" ]; then
   exit 1
 fi
 
+if { [ "$CLI_REGISTRY" != "$DEFAULT_CLI_REGISTRY" ] ||
+     [ "$NPM_AGENT_REGISTRY" != "$DEFAULT_NPM_AGENT_REGISTRY" ]; } &&
+   [ "$ALLOW_EXTERNAL_REGISTRY_PROBES" -ne 1 ]; then
+  echo "Fehler: Alternative CLI-Registries benoetigen --allow-external-registry-probes." >&2
+  exit 2
+fi
+
 if [ ! -f "$POWERSHELL_MODULE_REGISTRY" ]; then
   echo "Fehler: PowerShell-Modul-Registry nicht gefunden: $POWERSHELL_MODULE_REGISTRY" >&2
   exit 1
@@ -175,6 +193,28 @@ fi
 if ! command -v python3 >/dev/null 2>&1; then
   echo "Fehler: python3 wird fuer die JSON-Registry benoetigt." >&2
   exit 1
+fi
+
+normalized_sha256() {
+  python3 - "$1" <<'PY'
+import hashlib
+import pathlib
+import sys
+
+content = pathlib.Path(sys.argv[1]).read_bytes().replace(b"\r\n", b"\n")
+print(hashlib.sha256(content).hexdigest())
+PY
+}
+
+if [ "$CLI_REGISTRY" = "$DEFAULT_CLI_REGISTRY" ] &&
+   [ "$(normalized_sha256 "$CLI_REGISTRY")" != "$EXPECTED_CLI_REGISTRY_SHA256" ]; then
+  echo "Fehler: Die Standard-CLI-Registry stimmt nicht mit dem geprueften Probevertrag ueberein." >&2
+  exit 2
+fi
+if [ "$NPM_AGENT_REGISTRY" = "$DEFAULT_NPM_AGENT_REGISTRY" ] &&
+   [ "$(normalized_sha256 "$NPM_AGENT_REGISTRY")" != "$EXPECTED_NPM_AGENT_REGISTRY_SHA256" ]; then
+  echo "Fehler: Die Standard-npm-Registry stimmt nicht mit dem geprueften Probevertrag ueberein." >&2
+  exit 2
 fi
 
 [ -f "$LINUX_HARDENING" ] || {

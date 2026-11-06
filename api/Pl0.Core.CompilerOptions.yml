@@ -5,17 +5,20 @@ items:
   id: CompilerOptions
   parent: Pl0.Core
   children:
-  - Pl0.Core.CompilerOptions.#ctor(Pl0.Core.Pl0Dialect,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.Resources.ResourceManager)
+  - Pl0.Core.CompilerOptions.#ctor(Pl0.Core.Pl0Dialect,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.Resources.ResourceManager,System.Int32,System.Int32,System.Int32)
   - Pl0.Core.CompilerOptions.Default
   - Pl0.Core.CompilerOptions.Dialect
   - Pl0.Core.CompilerOptions.EnableIoStatements
   - Pl0.Core.CompilerOptions.Language
   - Pl0.Core.CompilerOptions.MaxAddress
   - Pl0.Core.CompilerOptions.MaxCodeLength
+  - Pl0.Core.CompilerOptions.MaxDiagnosticCount
   - Pl0.Core.CompilerOptions.MaxIdentifierLength
   - Pl0.Core.CompilerOptions.MaxLevel
   - Pl0.Core.CompilerOptions.MaxNumberDigits
+  - Pl0.Core.CompilerOptions.MaxSourceLength
   - Pl0.Core.CompilerOptions.MaxSymbolCount
+  - Pl0.Core.CompilerOptions.MaxTokenCount
   - Pl0.Core.CompilerOptions.Messages
   langs:
   - csharp
@@ -27,11 +30,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/CompilerOptions.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: CompilerOptions
     path: src/Pl0.Core/CompilerOptions.cs
-    startLine: 16
+    startLine: 19
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -51,32 +54,32 @@ items:
   - System.Object.GetType
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-- uid: Pl0.Core.CompilerOptions.#ctor(Pl0.Core.Pl0Dialect,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.Resources.ResourceManager)
-  commentId: M:Pl0.Core.CompilerOptions.#ctor(Pl0.Core.Pl0Dialect,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.Resources.ResourceManager)
-  id: '#ctor(Pl0.Core.Pl0Dialect,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.Resources.ResourceManager)'
+- uid: Pl0.Core.CompilerOptions.#ctor(Pl0.Core.Pl0Dialect,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.Resources.ResourceManager,System.Int32,System.Int32,System.Int32)
+  commentId: M:Pl0.Core.CompilerOptions.#ctor(Pl0.Core.Pl0Dialect,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.Resources.ResourceManager,System.Int32,System.Int32,System.Int32)
+  id: '#ctor(Pl0.Core.Pl0Dialect,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.Resources.ResourceManager,System.Int32,System.Int32,System.Int32)'
   parent: Pl0.Core.CompilerOptions
   langs:
   - csharp
   - vb
-  name: CompilerOptions(Pl0Dialect, int, int, int, int, int, int, string, ResourceManager?)
-  nameWithType: CompilerOptions.CompilerOptions(Pl0Dialect, int, int, int, int, int, int, string, ResourceManager?)
-  fullName: Pl0.Core.CompilerOptions.CompilerOptions(Pl0.Core.Pl0Dialect, int, int, int, int, int, int, string, System.Resources.ResourceManager?)
+  name: CompilerOptions(Pl0Dialect, int, int, int, int, int, int, string, ResourceManager?, int, int, int)
+  nameWithType: CompilerOptions.CompilerOptions(Pl0Dialect, int, int, int, int, int, int, string, ResourceManager?, int, int, int)
+  fullName: Pl0.Core.CompilerOptions.CompilerOptions(Pl0.Core.Pl0Dialect, int, int, int, int, int, int, string, System.Resources.ResourceManager?, int, int, int)
   type: Constructor
   source:
     remote:
       path: src/Pl0.Core/CompilerOptions.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: .ctor
     path: src/Pl0.Core/CompilerOptions.cs
-    startLine: 16
+    startLine: 19
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
   summary: Compiler configuration limits and language dialect selection.
   example: []
   syntax:
-    content: public CompilerOptions(Pl0Dialect Dialect, int MaxLevel = 3, int MaxAddress = 2047, int MaxIdentifierLength = 10, int MaxNumberDigits = 14, int MaxSymbolCount = 100, int MaxCodeLength = 200, string Language = "de", ResourceManager? Messages = null)
+    content: public CompilerOptions(Pl0Dialect Dialect, int MaxLevel = 3, int MaxAddress = 2047, int MaxIdentifierLength = 10, int MaxNumberDigits = 14, int MaxSymbolCount = 100, int MaxCodeLength = 200, string Language = "de", ResourceManager? Messages = null, int MaxSourceLength = 1048576, int MaxTokenCount = 100000, int MaxDiagnosticCount = 100)
     parameters:
     - id: Dialect
       type: Pl0.Core.Pl0Dialect
@@ -105,11 +108,20 @@ items:
     - id: Messages
       type: System.Resources.ResourceManager
       description: 'Optionaler ResourceManager für Dependency Injection (z. B. in Tests); Standard: Pl0CoreMessages.ResourceManager.'
-    content.vb: Public Sub New(Dialect As Pl0Dialect, MaxLevel As Integer = 3, MaxAddress As Integer = 2047, MaxIdentifierLength As Integer = 10, MaxNumberDigits As Integer = 14, MaxSymbolCount As Integer = 100, MaxCodeLength As Integer = 200, Language As String = "de", Messages As ResourceManager = Nothing)
+    - id: MaxSourceLength
+      type: System.Int32
+      description: Maximale Quelltextlänge. / Maximum source length.
+    - id: MaxTokenCount
+      type: System.Int32
+      description: Maximale Tokenanzahl. / Maximum token count.
+    - id: MaxDiagnosticCount
+      type: System.Int32
+      description: Maximale Diagnoseanzahl. / Maximum diagnostic count.
+    content.vb: Public Sub New(Dialect As Pl0Dialect, MaxLevel As Integer = 3, MaxAddress As Integer = 2047, MaxIdentifierLength As Integer = 10, MaxNumberDigits As Integer = 14, MaxSymbolCount As Integer = 100, MaxCodeLength As Integer = 200, Language As String = "de", Messages As ResourceManager = Nothing, MaxSourceLength As Integer = 1048576, MaxTokenCount As Integer = 100000, MaxDiagnosticCount As Integer = 100)
   overload: Pl0.Core.CompilerOptions.#ctor*
-  nameWithType.vb: CompilerOptions.New(Pl0Dialect, Integer, Integer, Integer, Integer, Integer, Integer, String, ResourceManager)
-  fullName.vb: Pl0.Core.CompilerOptions.New(Pl0.Core.Pl0Dialect, Integer, Integer, Integer, Integer, Integer, Integer, String, System.Resources.ResourceManager)
-  name.vb: New(Pl0Dialect, Integer, Integer, Integer, Integer, Integer, Integer, String, ResourceManager)
+  nameWithType.vb: CompilerOptions.New(Pl0Dialect, Integer, Integer, Integer, Integer, Integer, Integer, String, ResourceManager, Integer, Integer, Integer)
+  fullName.vb: Pl0.Core.CompilerOptions.New(Pl0.Core.Pl0Dialect, Integer, Integer, Integer, Integer, Integer, Integer, String, System.Resources.ResourceManager, Integer, Integer, Integer)
+  name.vb: New(Pl0Dialect, Integer, Integer, Integer, Integer, Integer, Integer, String, ResourceManager, Integer, Integer, Integer)
 - uid: Pl0.Core.CompilerOptions.Dialect
   commentId: P:Pl0.Core.CompilerOptions.Dialect
   id: Dialect
@@ -124,11 +136,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/CompilerOptions.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: Dialect
     path: src/Pl0.Core/CompilerOptions.cs
-    startLine: 17
+    startLine: 20
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -155,11 +167,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/CompilerOptions.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: MaxLevel
     path: src/Pl0.Core/CompilerOptions.cs
-    startLine: 18
+    startLine: 21
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -186,11 +198,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/CompilerOptions.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: MaxAddress
     path: src/Pl0.Core/CompilerOptions.cs
-    startLine: 19
+    startLine: 22
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -217,11 +229,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/CompilerOptions.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: MaxIdentifierLength
     path: src/Pl0.Core/CompilerOptions.cs
-    startLine: 20
+    startLine: 23
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -248,11 +260,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/CompilerOptions.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: MaxNumberDigits
     path: src/Pl0.Core/CompilerOptions.cs
-    startLine: 21
+    startLine: 24
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -279,11 +291,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/CompilerOptions.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: MaxSymbolCount
     path: src/Pl0.Core/CompilerOptions.cs
-    startLine: 22
+    startLine: 25
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -310,11 +322,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/CompilerOptions.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: MaxCodeLength
     path: src/Pl0.Core/CompilerOptions.cs
-    startLine: 23
+    startLine: 26
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -341,11 +353,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/CompilerOptions.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: Language
     path: src/Pl0.Core/CompilerOptions.cs
-    startLine: 24
+    startLine: 27
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -372,11 +384,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/CompilerOptions.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: Messages
     path: src/Pl0.Core/CompilerOptions.cs
-    startLine: 25
+    startLine: 28
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -389,6 +401,99 @@ items:
       type: System.Resources.ResourceManager
     content.vb: Public Property Messages As ResourceManager
   overload: Pl0.Core.CompilerOptions.Messages*
+- uid: Pl0.Core.CompilerOptions.MaxSourceLength
+  commentId: P:Pl0.Core.CompilerOptions.MaxSourceLength
+  id: MaxSourceLength
+  parent: Pl0.Core.CompilerOptions
+  langs:
+  - csharp
+  - vb
+  name: MaxSourceLength
+  nameWithType: CompilerOptions.MaxSourceLength
+  fullName: Pl0.Core.CompilerOptions.MaxSourceLength
+  type: Property
+  source:
+    remote:
+      path: src/Pl0.Core/CompilerOptions.cs
+      branch: codex/security-scan-remediation-23
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: MaxSourceLength
+    path: src/Pl0.Core/CompilerOptions.cs
+    startLine: 29
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  summary: Maximale Quelltextlänge. / Maximum source length.
+  example: []
+  syntax:
+    content: public int MaxSourceLength { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property MaxSourceLength As Integer
+  overload: Pl0.Core.CompilerOptions.MaxSourceLength*
+- uid: Pl0.Core.CompilerOptions.MaxTokenCount
+  commentId: P:Pl0.Core.CompilerOptions.MaxTokenCount
+  id: MaxTokenCount
+  parent: Pl0.Core.CompilerOptions
+  langs:
+  - csharp
+  - vb
+  name: MaxTokenCount
+  nameWithType: CompilerOptions.MaxTokenCount
+  fullName: Pl0.Core.CompilerOptions.MaxTokenCount
+  type: Property
+  source:
+    remote:
+      path: src/Pl0.Core/CompilerOptions.cs
+      branch: codex/security-scan-remediation-23
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: MaxTokenCount
+    path: src/Pl0.Core/CompilerOptions.cs
+    startLine: 30
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  summary: Maximale Tokenanzahl. / Maximum token count.
+  example: []
+  syntax:
+    content: public int MaxTokenCount { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property MaxTokenCount As Integer
+  overload: Pl0.Core.CompilerOptions.MaxTokenCount*
+- uid: Pl0.Core.CompilerOptions.MaxDiagnosticCount
+  commentId: P:Pl0.Core.CompilerOptions.MaxDiagnosticCount
+  id: MaxDiagnosticCount
+  parent: Pl0.Core.CompilerOptions
+  langs:
+  - csharp
+  - vb
+  name: MaxDiagnosticCount
+  nameWithType: CompilerOptions.MaxDiagnosticCount
+  fullName: Pl0.Core.CompilerOptions.MaxDiagnosticCount
+  type: Property
+  source:
+    remote:
+      path: src/Pl0.Core/CompilerOptions.cs
+      branch: codex/security-scan-remediation-23
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: MaxDiagnosticCount
+    path: src/Pl0.Core/CompilerOptions.cs
+    startLine: 31
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  summary: Maximale Diagnoseanzahl. / Maximum diagnostic count.
+  example: []
+  syntax:
+    content: public int MaxDiagnosticCount { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property MaxDiagnosticCount As Integer
+  overload: Pl0.Core.CompilerOptions.MaxDiagnosticCount*
 - uid: Pl0.Core.CompilerOptions.Default
   commentId: P:Pl0.Core.CompilerOptions.Default
   id: Default
@@ -403,11 +508,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/CompilerOptions.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: Default
     path: src/Pl0.Core/CompilerOptions.cs
-    startLine: 30
+    startLine: 36
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -434,11 +539,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/CompilerOptions.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: EnableIoStatements
     path: src/Pl0.Core/CompilerOptions.cs
-    startLine: 35
+    startLine: 41
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -750,7 +855,7 @@ references:
   - name: )
 - uid: Pl0.Core.CompilerOptions.#ctor*
   commentId: Overload:Pl0.Core.CompilerOptions.#ctor
-  href: Pl0.Core.CompilerOptions.html#Pl0_Core_CompilerOptions__ctor_Pl0_Core_Pl0Dialect_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_String_System_Resources_ResourceManager_
+  href: Pl0.Core.CompilerOptions.html#Pl0_Core_CompilerOptions__ctor_Pl0_Core_Pl0Dialect_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_String_System_Resources_ResourceManager_System_Int32_System_Int32_System_Int32_
   name: CompilerOptions
   nameWithType: CompilerOptions.CompilerOptions
   fullName: Pl0.Core.CompilerOptions.CompilerOptions
@@ -875,6 +980,24 @@ references:
   name: Messages
   nameWithType: CompilerOptions.Messages
   fullName: Pl0.Core.CompilerOptions.Messages
+- uid: Pl0.Core.CompilerOptions.MaxSourceLength*
+  commentId: Overload:Pl0.Core.CompilerOptions.MaxSourceLength
+  href: Pl0.Core.CompilerOptions.html#Pl0_Core_CompilerOptions_MaxSourceLength
+  name: MaxSourceLength
+  nameWithType: CompilerOptions.MaxSourceLength
+  fullName: Pl0.Core.CompilerOptions.MaxSourceLength
+- uid: Pl0.Core.CompilerOptions.MaxTokenCount*
+  commentId: Overload:Pl0.Core.CompilerOptions.MaxTokenCount
+  href: Pl0.Core.CompilerOptions.html#Pl0_Core_CompilerOptions_MaxTokenCount
+  name: MaxTokenCount
+  nameWithType: CompilerOptions.MaxTokenCount
+  fullName: Pl0.Core.CompilerOptions.MaxTokenCount
+- uid: Pl0.Core.CompilerOptions.MaxDiagnosticCount*
+  commentId: Overload:Pl0.Core.CompilerOptions.MaxDiagnosticCount
+  href: Pl0.Core.CompilerOptions.html#Pl0_Core_CompilerOptions_MaxDiagnosticCount
+  name: MaxDiagnosticCount
+  nameWithType: CompilerOptions.MaxDiagnosticCount
+  fullName: Pl0.Core.CompilerOptions.MaxDiagnosticCount
 - uid: Pl0.Core.CompilerOptions.Default*
   commentId: Overload:Pl0.Core.CompilerOptions.Default
   href: Pl0.Core.CompilerOptions.html#Pl0_Core_CompilerOptions_Default

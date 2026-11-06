@@ -18,11 +18,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/Pl0SourceFormatter.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: ProcedureFrame
     path: src/Pl0.Ide/Pl0SourceFormatter.cs
-    startLine: 250
+    startLine: 279
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -52,11 +52,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/Pl0SourceFormatter.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: .ctor
     path: src/Pl0.Ide/Pl0SourceFormatter.cs
-    startLine: 250
+    startLine: 279
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -84,11 +84,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/Pl0SourceFormatter.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: BeginDepthAtOpen
     path: src/Pl0.Ide/Pl0SourceFormatter.cs
-    startLine: 252
+    startLine: 281
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide
@@ -113,11 +113,11 @@ items:
   source:
     remote:
       path: src/Pl0.Ide/Pl0SourceFormatter.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: InStatementPart
     path: src/Pl0.Ide/Pl0SourceFormatter.cs
-    startLine: 253
+    startLine: 282
   assemblies:
   - Pl0.Ide
   namespace: Pl0.Ide

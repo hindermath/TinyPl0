@@ -5,6 +5,42 @@ namespace Pl0.Tests;
 
 public sealed class PCodeSerializerTests
 {
+    [Fact]
+    public void Parse_Stops_At_The_Configured_Instruction_Limit()
+    {
+        using var reader = new StringReader("lit 0 1\nlit 0 2\n");
+
+        FormatException exception = Assert.Throws<FormatException>(
+            () => PCodeSerializer.Parse(reader, maximumInstructionCount: 1));
+
+        Assert.Contains("exceeds 1 instructions", exception.Message);
+    }
+
+    [Fact]
+    public void Parse_Does_Not_Reflect_Control_Characters_In_Errors()
+    {
+        const string payload = "invalid\u001b]0;changed\u0007 0 1";
+
+        FormatException exception = Assert.Throws<FormatException>(
+            () => PCodeSerializer.Parse(payload));
+
+        Assert.DoesNotContain('\u001b', exception.Message);
+        Assert.DoesNotContain('\u0007', exception.Message);
+        Assert.Contains("\\u001B", exception.Message);
+        Assert.Contains("\\u0007", exception.Message);
+    }
+
+    [Fact]
+    public void Parse_Stops_Reading_An_Unbounded_Text_Source()
+    {
+        using var reader = new EndlessNewlineReader();
+
+        FormatException exception = Assert.Throws<FormatException>(
+            () => PCodeSerializer.Parse(reader));
+
+        Assert.Contains("exceeds 1048576 characters", exception.Message);
+    }
+
     public static TheoryData<string> CurrentIntMnemonics => new() { "int", "Int", "INT" };
 
     public static TheoryData<string> HistoricalIncMnemonics => new() { "Inc", "inc", "iNc" };
@@ -189,5 +225,10 @@ public sealed class PCodeSerializerTests
         }
 
         throw new InvalidOperationException("Could not locate repository root from test context.");
+    }
+
+    private sealed class EndlessNewlineReader : TextReader
+    {
+        public override int Read() => '\n';
     }
 }

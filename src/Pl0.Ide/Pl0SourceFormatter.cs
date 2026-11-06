@@ -6,10 +6,18 @@ namespace Pl0.Ide;
 internal static class Pl0SourceFormatter
 {
     private const int IndentSize = 2;
+    private const int MaximumFormattingDepth = 10;
+    private const int MaximumSourceLength = 200_000;
+    private const int MaximumFormattedLength = 1_000_000;
 
     public static bool TryFormat(string source, out string formattedSource, CompilerOptions? options = null)
     {
         var text = source ?? string.Empty;
+        if (text.Length > MaximumSourceLength)
+        {
+            formattedSource = text;
+            return false;
+        }
         var lexerResult = new Pl0Lexer(text, options ?? CompilerOptions.Default).Lex();
         if (lexerResult.Diagnostics.Count > 0)
         {
@@ -21,11 +29,12 @@ internal static class Pl0SourceFormatter
             .Where(t => t.Kind is not TokenKind.EndOfFile and not TokenKind.Nul)
             .ToList();
 
-        formattedSource = FormatTokens(tokens);
-        return true;
+        var formatted = FormatTokens(tokens);
+        formattedSource = formatted ?? text;
+        return formatted is not null;
     }
 
-    private static string FormatTokens(IReadOnlyList<Pl0Token> tokens)
+    private static string? FormatTokens(IReadOnlyList<Pl0Token> tokens)
     {
         if (tokens.Count == 0)
         {
@@ -55,6 +64,11 @@ internal static class Pl0SourceFormatter
                     effectiveIndent--;
                 }
 
+                if (effectiveIndent > MaximumFormattingDepth)
+                {
+                    return null;
+                }
+
                 AppendIndent(builder, effectiveIndent);
                 lineStart = false;
             }
@@ -67,6 +81,11 @@ internal static class Pl0SourceFormatter
 
                     if (pendingProcedureHeader)
                     {
+                        if (indentationLevel >= MaximumFormattingDepth)
+                        {
+                            return null;
+                        }
+
                         pendingProcedureHeader = false;
                         procedureFrames.Push(new ProcedureFrame(beginDepth));
                         indentationLevel++;
@@ -138,6 +157,11 @@ internal static class Pl0SourceFormatter
                     }
                     else if (token.Kind == TokenKind.Begin)
                     {
+                        if (indentationLevel >= MaximumFormattingDepth)
+                        {
+                            return null;
+                        }
+
                         beginDepth++;
                         indentationLevel++;
                         AppendNewLine(builder, ref lineStart);
@@ -149,6 +173,11 @@ internal static class Pl0SourceFormatter
                     }
 
                     break;
+            }
+
+            if (builder.Length > MaximumFormattedLength)
+            {
+                return null;
             }
 
             previousKind = token.Kind;

@@ -46,6 +46,12 @@
 .PARAMETER IncludeOptional
     Also install optional registry entries.
 
+.PARAMETER AllowExternalRegistryProbes
+    Autorisiert ausdrücklich die Ausführung von Prüfkommandos aus einer
+    alternativen npm-CLI-Registry.
+
+    Explicitly authorizes probe commands from an alternate npm CLI registry.
+
 .EXAMPLE
     pwsh -NoProfile -File scripts/maintain-agentic-winget-apps.ps1 -WhatIf
     pwsh -NoProfile -File scripts/maintain-agentic-winget-apps.ps1 -CompareOnly
@@ -65,6 +71,7 @@ param(
     [switch] $SkipUpgrade,
     [switch] $SkipVSCodeExtensions,
     [switch] $IncludeOptional,
+    [switch] $AllowExternalRegistryProbes,
     [ValidateRange(5, 86400)][int] $ProcessTimeoutSeconds = 1800,
     [ValidateRange(1, 60)][int] $ProcessCleanupSeconds = 10
 )
@@ -85,9 +92,8 @@ if (-not $VSCodeRegistry) {
     $VSCodeRegistry = Join-Path $repoRoot 'scripts/config/vscode-extensions-registry.json'
 }
 $cliRegistry = Join-Path $repoRoot 'scripts/config/required-cli-tools-registry.json'
-if (-not $NpmAgentRegistry) {
-    $NpmAgentRegistry = Join-Path $repoRoot 'scripts/config/npm-agent-cli-registry.json'
-}
+$defaultNpmAgentRegistry = Join-Path $repoRoot 'scripts/config/npm-agent-cli-registry.json'
+if (-not $NpmAgentRegistry) { $NpmAgentRegistry = $defaultNpmAgentRegistry }
 if (-not $PowerShellModuleRegistry) {
     $PowerShellModuleRegistry = Join-Path $repoRoot 'scripts/config/powershell-modules-registry.json'
 }
@@ -106,6 +112,30 @@ if (-not (Test-Path -Path $NpmAgentRegistry -PathType Leaf)) {
 }
 if (-not (Test-Path -Path $PowerShellModuleRegistry -PathType Leaf)) {
     Write-Error "PowerShell-Modul-Registry nicht gefunden: $PowerShellModuleRegistry"
+}
+
+$resolvedNpmRegistry = [IO.Path]::GetFullPath($NpmAgentRegistry)
+$resolvedDefaultNpmRegistry = [IO.Path]::GetFullPath($defaultNpmAgentRegistry)
+if ($resolvedNpmRegistry -ne $resolvedDefaultNpmRegistry -and -not $AllowExternalRegistryProbes) {
+    throw 'Alternative npm CLI registries require -AllowExternalRegistryProbes because their commands are executable configuration.'
+}
+
+function Get-HBNormalizedSha256 {
+    param([Parameter(Mandatory)][string] $Path)
+
+    $text = [IO.File]::ReadAllText($Path, [Text.UTF8Encoding]::new($false, $true)).Replace("`r`n", "`n")
+    $hash = [Security.Cryptography.SHA256]::HashData([Text.UTF8Encoding]::new($false).GetBytes($text))
+    return [Convert]::ToHexString($hash).ToLowerInvariant()
+}
+
+$expectedCliRegistrySha256 = '75deeed8ebff37333f0c43e3ab12abb09ea2c8eed62a0ed892ca4a8385ac7880'
+$expectedNpmRegistrySha256 = 'd690ac4c0118f1fd785a041faeee23a3cf27082ba5dac2e57905e7ca6dd7312c'
+if ((Get-HBNormalizedSha256 $cliRegistry) -ne $expectedCliRegistrySha256) {
+    throw 'The default CLI registry differs from the reviewed probe contract.'
+}
+if ($resolvedNpmRegistry -eq $resolvedDefaultNpmRegistry -and
+    (Get-HBNormalizedSha256 $NpmAgentRegistry) -ne $expectedNpmRegistrySha256) {
+    throw 'The default npm CLI registry differs from the reviewed probe contract.'
 }
 
 $wingetCommand = Get-Command winget -ErrorAction SilentlyContinue

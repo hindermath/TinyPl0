@@ -13,8 +13,9 @@ internal enum Pl0HighlightKind
 
 internal sealed class Pl0SourceEditorView : TextView
 {
+    private const int MaximumHighlightedSourceLength = 200_000;
     private readonly CompilerOptions compilerOptions;
-    private Dictionary<int, Dictionary<int, Pl0HighlightKind>> highlightMap = [];
+    private Dictionary<int, List<HighlightSpan>> highlightMap = [];
 
     public Pl0SourceEditorView(CompilerOptions? compilerOptions = null)
     {
@@ -37,9 +38,9 @@ internal sealed class Pl0SourceEditorView : TextView
             return Pl0HighlightKind.None;
         }
 
-        return lineHighlights.TryGetValue(columnIndex, out var kind)
-            ? kind
-            : Pl0HighlightKind.None;
+        var span = lineHighlights.FirstOrDefault(
+            candidate => columnIndex >= candidate.Start && columnIndex < candidate.End);
+        return span.Kind;
     }
 
     protected override void OnDrawNormalColor(List<Cell> line, int idxCol, int idxRow)
@@ -66,10 +67,16 @@ internal sealed class Pl0SourceEditorView : TextView
     private void RebuildHighlightMap()
     {
         var text = Text?.ToString() ?? string.Empty;
+        if (text.Length > MaximumHighlightedSourceLength)
+        {
+            highlightMap = [];
+            return;
+        }
+
         var lexer = new Pl0Lexer(text, compilerOptions);
         var lexerResult = lexer.Lex();
 
-        var newMap = new Dictionary<int, Dictionary<int, Pl0HighlightKind>>();
+        var newMap = new Dictionary<int, List<HighlightSpan>>();
 
         foreach (var token in lexerResult.Tokens)
         {
@@ -88,10 +95,10 @@ internal sealed class Pl0SourceEditorView : TextView
                 newMap[rowIndex] = lineHighlights;
             }
 
-            for (var i = 0; i < token.Lexeme.Length; i++)
-            {
-                lineHighlights[columnStart + i] = highlightKind;
-            }
+            lineHighlights.Add(new HighlightSpan(
+                columnStart,
+                checked(columnStart + token.Lexeme.Length),
+                highlightKind));
         }
 
         highlightMap = newMap;
@@ -137,4 +144,6 @@ internal sealed class Pl0SourceEditorView : TextView
             _ => Pl0HighlightKind.None
         };
     }
+
+    private readonly record struct HighlightSpan(int Start, int End, Pl0HighlightKind Kind);
 }

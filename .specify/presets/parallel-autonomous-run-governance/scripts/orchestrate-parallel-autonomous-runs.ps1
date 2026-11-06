@@ -33,6 +33,13 @@
 .PARAMETER Merge
     Fuehrt bei Consolidate die konfigurierte Merge-Command aus.
 
+.PARAMETER AcceptIntakeReviewRisk
+    Bestaetigt fuer diesen Lauf menschlich die im getrennten Review-Dokument
+    aufgefuehrten akzeptierten Risiken und Operator-Ausnahmen.
+
+    Confirms for this run, by a human operator, the accepted risks and operator
+    exceptions listed in the separate review document.
+
 .PARAMETER OutputFormat
     Ausgabeformat fuer Status: Json oder barrierearmer Text.
 
@@ -56,6 +63,7 @@ param(
     [string] $RuntimeRoot = '',
     [string] $SelectedWorker = '',
     [switch] $Merge,
+    [switch] $AcceptIntakeReviewRisk,
     [ValidateSet('Json', 'Text')]
     [string] $OutputFormat = 'Json'
 )
@@ -236,6 +244,14 @@ function Test-PARUuid {
     param([Parameter(Mandatory)][string] $Value)
     $parsed = [guid]::Empty
     return [guid]::TryParse($Value, [ref] $parsed) -and $parsed -ne [guid]::Empty
+}
+
+function Test-PARSafePathSegment {
+    param([Parameter(Mandatory)][string] $Value)
+
+    # Worker-IDs werden in mehreren Dateinamen und Verzeichnissen wiederverwendet.
+    # Worker IDs are reused in several file names and directories.
+    return $Value -match '^[A-Za-z0-9][A-Za-z0-9._-]*$'
 }
 
 function Invoke-PARGit {
@@ -522,6 +538,8 @@ function Test-PARIntakeReview {
     Assert-PARCondition (@($result.findings | Where-Object severity -in @('Critical', 'High')).Count -eq 0) `
         'Critical/High Intake-Findings blockieren die Kampagne.'
     if ([string] $result.status -eq 'ReadyWithAcceptedRisks') {
+        Assert-PARCondition $AcceptIntakeReviewRisk `
+            'ReadyWithAcceptedRisks benoetigt die aktuelle Operatorbestaetigung -AcceptIntakeReviewRisk.'
         Assert-PARCondition (@($result.acceptedRisks).Count -gt 0) `
             'ReadyWithAcceptedRisks benoetigt akzeptierte Risiken.'
         foreach ($risk in @($result.acceptedRisks)) {
@@ -578,6 +596,10 @@ function Test-PARIntakeReview {
         'Review-Series-Coverage stimmt nicht mit dem Manifest-DAG ueberein.'
 
     $exceptionWorkers = [Collections.Generic.HashSet[string]]::new([StringComparer]::Ordinal)
+    if (@($result.operatorExceptions).Count -gt 0) {
+        Assert-PARCondition $AcceptIntakeReviewRisk `
+            'Operator-Ausnahmen benoetigen die aktuelle Operatorbestaetigung -AcceptIntakeReviewRisk.'
+    }
     foreach ($exception in @($result.operatorExceptions)) {
         foreach ($field in @('author', 'reason', 'date', 'expiry')) {
             Assert-PARCondition (-not [string]::IsNullOrWhiteSpace([string] $exception[$field])) `
@@ -654,7 +676,8 @@ function Test-PARCampaign {
     Assert-PARCondition (@($branches | Sort-Object -Unique).Count -eq $branches.Count) 'branch muss campaignweit eindeutig sein.'
 
     foreach ($worker in $Campaign.workers) {
-        Assert-PARCondition (-not [string]::IsNullOrWhiteSpace([string] $worker.workerId)) 'workerId darf nicht leer sein.'
+        Assert-PARCondition (Test-PARSafePathSegment ([string] $worker.workerId)) `
+            'workerId muss ein einzelnes sicheres Pfadsegment aus Buchstaben, Ziffern, Punkt, Unterstrich oder Bindestrich sein.'
         Assert-PARCondition (Test-PARUuid ([string] $worker.runId)) "runId von '$($worker.workerId)' ist keine UUID."
         Assert-PARCondition (-not [string]::IsNullOrWhiteSpace([string] $worker.branch)) "branch von '$($worker.workerId)' fehlt."
         $runnerProfileName = Get-PARRunnerProfileName $Campaign $worker

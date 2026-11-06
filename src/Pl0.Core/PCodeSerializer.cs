@@ -7,6 +7,10 @@ namespace Pl0.Core;
 /// </summary>
 public static class PCodeSerializer
 {
+    private const int DefaultMaximumInstructionCount = 10_000;
+    private const int MaximumAcceptedInstructionCount = 100_000;
+    private const int MaximumLineLength = 4_096;
+    private const int MaximumTextLength = 1_048_576;
     /// <summary>
     /// Wandelt Befehle in das mnemonische Assemblerformat um.
     ///
@@ -36,11 +40,39 @@ public static class PCodeSerializer
     /// <exception cref="FormatException">Eine nicht leere Zeile besitzt kein gültiges Opcode-, Ebenen- oder Argumentformat. / A non-empty line has no valid opcode, level, or argument format.</exception>
     public static IReadOnlyList<Instruction> Parse(string text)
     {
-        var result = new List<Instruction>();
-        var lines = text.Replace("\r\n", "\n", StringComparison.Ordinal).Split('\n');
-        for (var lineNo = 1; lineNo <= lines.Length; lineNo++)
+        if (text.Length > MaximumTextLength)
         {
-            var line = lines[lineNo - 1];
+            throw new FormatException($"P-code input exceeds {MaximumTextLength} characters.");
+        }
+
+        using var reader = new StringReader(text);
+        return Parse(reader);
+    }
+
+    /// <summary>
+    /// Liest P-Code zeilenweise mit einer festen Befehlsgrenze ein.
+    /// Parses P-Code line by line with a fixed instruction limit.
+    /// </summary>
+    /// <param name="reader">Textquelle. / Text source.</param>
+    /// <param name="maximumInstructionCount">Maximale Befehlsanzahl. / Maximum instruction count.</param>
+    /// <returns>Die eingelesene Befehlsliste. / The parsed instruction list.</returns>
+    /// <exception cref="ArgumentOutOfRangeException">Die Grenze liegt außerhalb des unterstützten Bereichs. / The limit is outside the supported range.</exception>
+    /// <exception cref="FormatException">Der Text ist ungültig oder überschreitet eine Grenze. / The text is invalid or exceeds a limit.</exception>
+    public static IReadOnlyList<Instruction> Parse(
+        TextReader reader,
+        int maximumInstructionCount = DefaultMaximumInstructionCount)
+    {
+        if (maximumInstructionCount is < 1 or > MaximumAcceptedInstructionCount)
+        {
+            throw new ArgumentOutOfRangeException(nameof(maximumInstructionCount));
+        }
+
+        var result = new List<Instruction>();
+        var lineNo = 0;
+        var charactersRead = 0;
+        while (ReadBoundedLine(reader, MaximumLineLength, ref charactersRead) is { } line)
+        {
+            lineNo++;
             var stripped = StripComment(line).Trim();
             if (string.IsNullOrWhiteSpace(stripped))
             {
@@ -50,16 +82,63 @@ public static class PCodeSerializer
             var parts = stripped.Split(' ', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
             if (parts.Length != 3)
             {
-                throw new FormatException($"Invalid p-code line {lineNo}: '{line}'.");
+                throw new FormatException($"Invalid p-code structure on line {lineNo}.");
             }
 
             var opcode = ParseOpcode(parts[0], lineNo);
             var level = ParseInt(parts[1], lineNo, "level");
             var argument = ParseInt(parts[2], lineNo, "argument");
             result.Add(new Instruction(opcode, level, argument));
+            if (result.Count > maximumInstructionCount)
+            {
+                throw new FormatException(
+                    $"P-code program exceeds {maximumInstructionCount} instructions.");
+            }
         }
 
         return result;
+    }
+
+    private static string? ReadBoundedLine(
+        TextReader reader,
+        int maximumLength,
+        ref int charactersRead)
+    {
+        var builder = new System.Text.StringBuilder(Math.Min(maximumLength, 256));
+        while (true)
+        {
+            var value = reader.Read();
+            if (value < 0)
+            {
+                return builder.Length == 0 ? null : builder.ToString();
+            }
+
+            charactersRead++;
+            if (charactersRead > MaximumTextLength)
+            {
+                throw new FormatException(
+                    $"P-code input exceeds {MaximumTextLength} characters.");
+            }
+
+            var character = (char)value;
+            if (character == '\n')
+            {
+                return builder.ToString();
+            }
+            if (character == '\r')
+            {
+                if (reader.Peek() == '\n')
+                {
+                    _ = reader.Read();
+                }
+                return builder.ToString();
+            }
+            if (builder.Length >= maximumLength)
+            {
+                throw new FormatException($"P-code line exceeds {maximumLength} characters.");
+            }
+            builder.Append(character);
+        }
     }
 
     /// <summary>
@@ -87,7 +166,8 @@ public static class PCodeSerializer
             return parsed;
         }
 
-        throw new FormatException($"Invalid {partName} on p-code line {lineNo}: '{value}'.");
+        throw new FormatException(
+            $"Invalid {partName} on p-code line {lineNo}: '{SafeDiagnosticValue(value)}'.");
     }
 
     /// <summary>
@@ -105,7 +185,8 @@ public static class PCodeSerializer
                 return (Opcode)numericOpcode;
             }
 
-            throw new FormatException($"Unknown numeric opcode on p-code line {lineNo}: '{value}'.");
+            throw new FormatException(
+                $"Unknown numeric opcode on p-code line {lineNo}: '{SafeDiagnosticValue(value)}'.");
         }
 
         return value.ToLowerInvariant() switch
@@ -122,8 +203,30 @@ public static class PCodeSerializer
             "int" or "inc" => Opcode.Int,
             "jmp" => Opcode.Jmp,
             "jpc" => Opcode.Jpc,
-            _ => throw new FormatException($"Unknown mnemonic opcode on p-code line {lineNo}: '{value}'."),
+            _ => throw new FormatException(
+                $"Unknown mnemonic opcode on p-code line {lineNo}: '{SafeDiagnosticValue(value)}'."),
         };
+    }
+
+    private static string SafeDiagnosticValue(string value)
+    {
+        var builder = new System.Text.StringBuilder(capacity: Math.Min(value.Length, 80));
+        foreach (var character in value.Take(80))
+        {
+            if (char.IsControl(character))
+            {
+                builder.Append("\\u").Append(((int)character).ToString("X4", CultureInfo.InvariantCulture));
+            }
+            else
+            {
+                builder.Append(character);
+            }
+        }
+        if (value.Length > 80)
+        {
+            builder.Append('…');
+        }
+        return builder.ToString();
     }
 
     /// <summary>

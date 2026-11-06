@@ -6,18 +6,23 @@ items:
   parent: Pl0.Core
   children:
   - Pl0.Core.Pl0Parser.#ctor(System.Collections.Generic.IReadOnlyList{Pl0.Core.Pl0Token},Pl0.Core.CompilerOptions)
+  - Pl0.Core.Pl0Parser.AddDiagnostic(System.Int32,System.String,Pl0.Core.TextPosition)
   - Pl0.Core.Pl0Parser.Advance
   - Pl0.Core.Pl0Parser.BlockContinuationTokens
   - Pl0.Core.Pl0Parser.ComputeLevelDifference(System.Int32,Pl0.Core.SymbolEntry)
   - Pl0.Core.Pl0Parser.Current
   - Pl0.Core.Pl0Parser.Emit(Pl0.Core.Opcode,System.Int32,System.Int32)
+  - Pl0.Core.Pl0Parser.EnsureEndOfFile(System.Collections.Generic.IReadOnlyList{Pl0.Core.Pl0Token})
   - Pl0.Core.Pl0Parser.ErrorProgramTooLong
   - Pl0.Core.Pl0Parser.ErrorSymbolTableOverflow
+  - Pl0.Core.Pl0Parser.ErrorSyntaxNestingTooDeep
   - Pl0.Core.Pl0Parser.Expect(Pl0.Core.TokenKind,System.Int32,System.String)
   - Pl0.Core.Pl0Parser.ExpectOrSync(Pl0.Core.TokenKind,System.Int32,System.String,Pl0.Core.TokenKind[])
   - Pl0.Core.Pl0Parser.ExpressionFollowTokens
   - Pl0.Core.Pl0Parser.IsRelation(Pl0.Core.TokenKind)
   - Pl0.Core.Pl0Parser.Lookup(System.String,Pl0.Core.TextPosition)
+  - Pl0.Core.Pl0Parser.MaximumLexicalNesting
+  - Pl0.Core.Pl0Parser.MaximumSyntaxNesting
   - Pl0.Core.Pl0Parser.Msg(System.String)
   - Pl0.Core.Pl0Parser.OprAdd
   - Pl0.Core.Pl0Parser.OprDiv
@@ -58,14 +63,17 @@ items:
   - Pl0.Core.Pl0Parser.Synchronize(System.Collections.Generic.IEnumerable{Pl0.Core.TokenKind})
   - Pl0.Core.Pl0Parser.TryDeclare(Pl0.Core.SymbolEntry,System.Int32,System.String)
   - Pl0.Core.Pl0Parser.TryMatch(Pl0.Core.TokenKind)
+  - Pl0.Core.Pl0Parser.TryParseNestedSyntax(System.Action)
   - Pl0.Core.Pl0Parser._code
   - Pl0.Core.Pl0Parser._culture
   - Pl0.Core.Pl0Parser._diagnostics
   - Pl0.Core.Pl0Parser._options
+  - Pl0.Core.Pl0Parser._parsingStopped
   - Pl0.Core.Pl0Parser._position
   - Pl0.Core.Pl0Parser._reportedUnexpectedEof
   - Pl0.Core.Pl0Parser._rm
   - Pl0.Core.Pl0Parser._symbols
+  - Pl0.Core.Pl0Parser._syntaxNesting
   - Pl0.Core.Pl0Parser._tokens
   langs:
   - csharp
@@ -77,7 +85,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: Pl0Parser
     path: src/Pl0.Core/Pl0Parser.cs
@@ -113,7 +121,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: OprNegate
     path: src/Pl0.Core/Pl0Parser.cs
@@ -142,7 +150,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: OprAdd
     path: src/Pl0.Core/Pl0Parser.cs
@@ -171,7 +179,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: OprSub
     path: src/Pl0.Core/Pl0Parser.cs
@@ -200,7 +208,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: OprMul
     path: src/Pl0.Core/Pl0Parser.cs
@@ -229,7 +237,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: OprDiv
     path: src/Pl0.Core/Pl0Parser.cs
@@ -258,7 +266,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: OprOdd
     path: src/Pl0.Core/Pl0Parser.cs
@@ -287,7 +295,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: OprEq
     path: src/Pl0.Core/Pl0Parser.cs
@@ -316,7 +324,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: OprNeq
     path: src/Pl0.Core/Pl0Parser.cs
@@ -345,7 +353,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: OprLt
     path: src/Pl0.Core/Pl0Parser.cs
@@ -374,7 +382,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: OprGeq
     path: src/Pl0.Core/Pl0Parser.cs
@@ -403,7 +411,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: OprGt
     path: src/Pl0.Core/Pl0Parser.cs
@@ -432,7 +440,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: OprLeq
     path: src/Pl0.Core/Pl0Parser.cs
@@ -461,7 +469,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: OprRead
     path: src/Pl0.Core/Pl0Parser.cs
@@ -490,7 +498,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: OprWrite
     path: src/Pl0.Core/Pl0Parser.cs
@@ -519,7 +527,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: ErrorProgramTooLong
     path: src/Pl0.Core/Pl0Parser.cs
@@ -548,7 +556,7 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: ErrorSymbolTableOverflow
     path: src/Pl0.Core/Pl0Parser.cs
@@ -563,6 +571,93 @@ items:
     return:
       type: System.Int32
     content.vb: Private Const ErrorSymbolTableOverflow As Integer = 34
+- uid: Pl0.Core.Pl0Parser.ErrorSyntaxNestingTooDeep
+  commentId: F:Pl0.Core.Pl0Parser.ErrorSyntaxNestingTooDeep
+  id: ErrorSyntaxNestingTooDeep
+  parent: Pl0.Core.Pl0Parser
+  langs:
+  - csharp
+  - vb
+  name: ErrorSyntaxNestingTooDeep
+  nameWithType: Pl0Parser.ErrorSyntaxNestingTooDeep
+  fullName: Pl0.Core.Pl0Parser.ErrorSyntaxNestingTooDeep
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Core/Pl0Parser.cs
+      branch: codex/security-scan-remediation-23
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: ErrorSyntaxNestingTooDeep
+    path: src/Pl0.Core/Pl0Parser.cs
+    startLine: 77
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  summary: Diagnose-Code für eine überschrittene Syntaxverschachtelungsgrenze.
+  example: []
+  syntax:
+    content: private const int ErrorSyntaxNestingTooDeep = 36
+    return:
+      type: System.Int32
+    content.vb: Private Const ErrorSyntaxNestingTooDeep As Integer = 36
+- uid: Pl0.Core.Pl0Parser.MaximumLexicalNesting
+  commentId: F:Pl0.Core.Pl0Parser.MaximumLexicalNesting
+  id: MaximumLexicalNesting
+  parent: Pl0.Core.Pl0Parser
+  langs:
+  - csharp
+  - vb
+  name: MaximumLexicalNesting
+  nameWithType: Pl0Parser.MaximumLexicalNesting
+  fullName: Pl0.Core.Pl0Parser.MaximumLexicalNesting
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Core/Pl0Parser.cs
+      branch: codex/security-scan-remediation-23
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: MaximumLexicalNesting
+    path: src/Pl0.Core/Pl0Parser.cs
+    startLine: 81
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  summary: Harte Obergrenze für lexikalisch verschachtelte Prozedurblöcke.
+  example: []
+  syntax:
+    content: private const int MaximumLexicalNesting = 10
+    return:
+      type: System.Int32
+    content.vb: Private Const MaximumLexicalNesting As Integer = 10
+- uid: Pl0.Core.Pl0Parser.MaximumSyntaxNesting
+  commentId: F:Pl0.Core.Pl0Parser.MaximumSyntaxNesting
+  id: MaximumSyntaxNesting
+  parent: Pl0.Core.Pl0Parser
+  langs:
+  - csharp
+  - vb
+  name: MaximumSyntaxNesting
+  nameWithType: Pl0Parser.MaximumSyntaxNesting
+  fullName: Pl0.Core.Pl0Parser.MaximumSyntaxNesting
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Core/Pl0Parser.cs
+      branch: codex/security-scan-remediation-23
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: MaximumSyntaxNesting
+    path: src/Pl0.Core/Pl0Parser.cs
+    startLine: 85
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  summary: Harte Obergrenze für gleichzeitig aktive rekursive Syntaxkonstrukte.
+  example: []
+  syntax:
+    content: private const int MaximumSyntaxNesting = 10
+    return:
+      type: System.Int32
+    content.vb: Private Const MaximumSyntaxNesting As Integer = 10
 - uid: Pl0.Core.Pl0Parser._tokens
   commentId: F:Pl0.Core.Pl0Parser._tokens
   id: _tokens
@@ -577,11 +672,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: _tokens
     path: src/Pl0.Core/Pl0Parser.cs
-    startLine: 78
+    startLine: 90
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -606,11 +701,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: _options
     path: src/Pl0.Core/Pl0Parser.cs
-    startLine: 82
+    startLine: 94
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -635,11 +730,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: _symbols
     path: src/Pl0.Core/Pl0Parser.cs
-    startLine: 86
+    startLine: 98
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -664,11 +759,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: _code
     path: src/Pl0.Core/Pl0Parser.cs
-    startLine: 90
+    startLine: 102
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -693,11 +788,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: _diagnostics
     path: src/Pl0.Core/Pl0Parser.cs
-    startLine: 94
+    startLine: 106
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -722,11 +817,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: _reportedUnexpectedEof
     path: src/Pl0.Core/Pl0Parser.cs
-    startLine: 98
+    startLine: 110
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -737,6 +832,64 @@ items:
     return:
       type: System.Boolean
     content.vb: Private _reportedUnexpectedEof As Boolean
+- uid: Pl0.Core.Pl0Parser._parsingStopped
+  commentId: F:Pl0.Core.Pl0Parser._parsingStopped
+  id: _parsingStopped
+  parent: Pl0.Core.Pl0Parser
+  langs:
+  - csharp
+  - vb
+  name: _parsingStopped
+  nameWithType: Pl0Parser._parsingStopped
+  fullName: Pl0.Core.Pl0Parser._parsingStopped
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Core/Pl0Parser.cs
+      branch: codex/security-scan-remediation-23
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: _parsingStopped
+    path: src/Pl0.Core/Pl0Parser.cs
+    startLine: 114
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  summary: Verhindert nach einer Sicherheitsgrenzenverletzung weitere Parserarbeit.
+  example: []
+  syntax:
+    content: private bool _parsingStopped
+    return:
+      type: System.Boolean
+    content.vb: Private _parsingStopped As Boolean
+- uid: Pl0.Core.Pl0Parser._syntaxNesting
+  commentId: F:Pl0.Core.Pl0Parser._syntaxNesting
+  id: _syntaxNesting
+  parent: Pl0.Core.Pl0Parser
+  langs:
+  - csharp
+  - vb
+  name: _syntaxNesting
+  nameWithType: Pl0Parser._syntaxNesting
+  fullName: Pl0.Core.Pl0Parser._syntaxNesting
+  type: Field
+  source:
+    remote:
+      path: src/Pl0.Core/Pl0Parser.cs
+      branch: codex/security-scan-remediation-23
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: _syntaxNesting
+    path: src/Pl0.Core/Pl0Parser.cs
+    startLine: 118
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  summary: Anzahl gleichzeitig aktiver rekursiver Anweisungs- und Ausdruckskonstrukte.
+  example: []
+  syntax:
+    content: private int _syntaxNesting
+    return:
+      type: System.Int32
+    content.vb: Private _syntaxNesting As Integer
 - uid: Pl0.Core.Pl0Parser._position
   commentId: F:Pl0.Core.Pl0Parser._position
   id: _position
@@ -751,11 +904,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: _position
     path: src/Pl0.Core/Pl0Parser.cs
-    startLine: 102
+    startLine: 122
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -780,11 +933,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: _rm
     path: src/Pl0.Core/Pl0Parser.cs
-    startLine: 106
+    startLine: 126
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -809,11 +962,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: _culture
     path: src/Pl0.Core/Pl0Parser.cs
-    startLine: 110
+    startLine: 130
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -838,11 +991,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: StatementStartTokens
     path: src/Pl0.Core/Pl0Parser.cs
-    startLine: 115
+    startLine: 135
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -867,11 +1020,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: BlockContinuationTokens
     path: src/Pl0.Core/Pl0Parser.cs
-    startLine: 129
+    startLine: 149
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -896,11 +1049,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: StatementFollowTokens
     path: src/Pl0.Core/Pl0Parser.cs
-    startLine: 148
+    startLine: 168
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -925,11 +1078,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: ExpressionFollowTokens
     path: src/Pl0.Core/Pl0Parser.cs
-    startLine: 158
+    startLine: 178
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -954,30 +1107,81 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: .ctor
     path: src/Pl0.Core/Pl0Parser.cs
-    startLine: 179
+    startLine: 205
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
-  summary: Erstellt einen Parser für den gegebenen Token-Strom und Optionen.
+  summary: >-
+    Erstellt einen Parser für den gegebenen Token-Strom und Optionen.
+
+    Ein fehlendes Abschluss-Token wird defensiv ergänzt, damit fehlerhafte
+
+    öffentliche Aufrufe immer mit Diagnosen statt mit einer Endlosschleife enden.
+
+
+    Creates a parser for the supplied token stream and options.
+
+    A missing end token is added defensively so malformed public calls always
+
+    finish with diagnostics instead of entering an infinite loop.
   example: []
   syntax:
     content: public Pl0Parser(IReadOnlyList<Pl0Token> tokens, CompilerOptions options)
     parameters:
     - id: tokens
       type: System.Collections.Generic.IReadOnlyList{Pl0.Core.Pl0Token}
-      description: Vom Lexer erzeugte Token.
+      description: Vom Lexer erzeugte Token. / Tokens produced by the lexer.
     - id: options
       type: Pl0.Core.CompilerOptions
-      description: Compiler-Optionen.
+      description: Compiler-Optionen. / Compiler options.
     content.vb: Public Sub New(tokens As IReadOnlyList(Of Pl0Token), options As CompilerOptions)
   overload: Pl0.Core.Pl0Parser.#ctor*
   nameWithType.vb: Pl0Parser.New(IReadOnlyList(Of Pl0Token), CompilerOptions)
   fullName.vb: Pl0.Core.Pl0Parser.New(System.Collections.Generic.IReadOnlyList(Of Pl0.Core.Pl0Token), Pl0.Core.CompilerOptions)
   name.vb: New(IReadOnlyList(Of Pl0Token), CompilerOptions)
+- uid: Pl0.Core.Pl0Parser.EnsureEndOfFile(System.Collections.Generic.IReadOnlyList{Pl0.Core.Pl0Token})
+  commentId: M:Pl0.Core.Pl0Parser.EnsureEndOfFile(System.Collections.Generic.IReadOnlyList{Pl0.Core.Pl0Token})
+  id: EnsureEndOfFile(System.Collections.Generic.IReadOnlyList{Pl0.Core.Pl0Token})
+  parent: Pl0.Core.Pl0Parser
+  langs:
+  - csharp
+  - vb
+  name: EnsureEndOfFile(IReadOnlyList<Pl0Token>)
+  nameWithType: Pl0Parser.EnsureEndOfFile(IReadOnlyList<Pl0Token>)
+  fullName: Pl0.Core.Pl0Parser.EnsureEndOfFile(System.Collections.Generic.IReadOnlyList<Pl0.Core.Pl0Token>)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Core/Pl0Parser.cs
+      branch: codex/security-scan-remediation-23
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: EnsureEndOfFile
+    path: src/Pl0.Core/Pl0Parser.cs
+    startLine: 217
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  summary: >-
+    Stellt die Cursor-Invariante her, dass jeder öffentliche Token-Strom mit EOF endet.
+
+    Ensures the cursor invariant that every public token stream ends with EOF.
+  example: []
+  syntax:
+    content: private static IReadOnlyList<Pl0Token> EnsureEndOfFile(IReadOnlyList<Pl0Token> tokens)
+    parameters:
+    - id: tokens
+      type: System.Collections.Generic.IReadOnlyList{Pl0.Core.Pl0Token}
+    return:
+      type: System.Collections.Generic.IReadOnlyList{Pl0.Core.Pl0Token}
+    content.vb: Private Shared Function EnsureEndOfFile(tokens As IReadOnlyList(Of Pl0Token)) As IReadOnlyList(Of Pl0Token)
+  overload: Pl0.Core.Pl0Parser.EnsureEndOfFile*
+  nameWithType.vb: Pl0Parser.EnsureEndOfFile(IReadOnlyList(Of Pl0Token))
+  fullName.vb: Pl0.Core.Pl0Parser.EnsureEndOfFile(System.Collections.Generic.IReadOnlyList(Of Pl0.Core.Pl0Token))
+  name.vb: EnsureEndOfFile(IReadOnlyList(Of Pl0Token))
 - uid: Pl0.Core.Pl0Parser.Parse
   commentId: M:Pl0.Core.Pl0Parser.Parse
   id: Parse
@@ -992,11 +1196,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: Parse
     path: src/Pl0.Core/Pl0Parser.cs
-    startLine: 191
+    startLine: 237
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -1023,11 +1227,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: ParseBlock
     path: src/Pl0.Core/Pl0Parser.cs
-    startLine: 212
+    startLine: 263
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -1061,11 +1265,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: ParseConstDeclaration
     path: src/Pl0.Core/Pl0Parser.cs
-    startLine: 275
+    startLine: 346
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -1096,11 +1300,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: ParseVarDeclaration
     path: src/Pl0.Core/Pl0Parser.cs
-    startLine: 304
+    startLine: 375
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -1134,11 +1338,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: ParseStatement
     path: src/Pl0.Core/Pl0Parser.cs
-    startLine: 315
+    startLine: 386
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -1169,11 +1373,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: ParseAssignment
     path: src/Pl0.Core/Pl0Parser.cs
-    startLine: 349
+    startLine: 420
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -1204,11 +1408,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: ParseCall
     path: src/Pl0.Core/Pl0Parser.cs
-    startLine: 372
+    startLine: 443
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -1239,11 +1443,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: ParseBeginEnd
     path: src/Pl0.Core/Pl0Parser.cs
-    startLine: 395
+    startLine: 466
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -1274,11 +1478,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: ParseIf
     path: src/Pl0.Core/Pl0Parser.cs
-    startLine: 411
+    startLine: 491
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -1309,11 +1513,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: ParseWhile
     path: src/Pl0.Core/Pl0Parser.cs
-    startLine: 425
+    startLine: 513
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -1344,11 +1548,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: ParseInput
     path: src/Pl0.Core/Pl0Parser.cs
-    startLine: 441
+    startLine: 539
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -1379,11 +1583,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: ParseOutput
     path: src/Pl0.Core/Pl0Parser.cs
-    startLine: 471
+    startLine: 569
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -1414,11 +1618,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: ParseCondition
     path: src/Pl0.Core/Pl0Parser.cs
-    startLine: 488
+    startLine: 591
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -1449,11 +1653,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: ParseExpression
     path: src/Pl0.Core/Pl0Parser.cs
-    startLine: 525
+    startLine: 641
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -1484,11 +1688,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: ParseTerm
     path: src/Pl0.Core/Pl0Parser.cs
-    startLine: 553
+    startLine: 679
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -1519,11 +1723,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: ParseFactor
     path: src/Pl0.Core/Pl0Parser.cs
-    startLine: 569
+    startLine: 705
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -1554,11 +1758,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: Lookup
     path: src/Pl0.Core/Pl0Parser.cs
-    startLine: 628
+    startLine: 768
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -1595,11 +1799,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: ComputeLevelDifference
     path: src/Pl0.Core/Pl0Parser.cs
-    startLine: 645
+    startLine: 785
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -1636,11 +1840,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: TryDeclare
     path: src/Pl0.Core/Pl0Parser.cs
-    startLine: 663
+    startLine: 803
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -1677,11 +1881,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: Emit
     path: src/Pl0.Core/Pl0Parser.cs
-    startLine: 690
+    startLine: 830
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -1721,11 +1925,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: PatchArgument
     path: src/Pl0.Core/Pl0Parser.cs
-    startLine: 713
+    startLine: 858
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -1759,11 +1963,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: TryMatch
     path: src/Pl0.Core/Pl0Parser.cs
-    startLine: 729
+    startLine: 874
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -1794,11 +1998,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: Expect
     path: src/Pl0.Core/Pl0Parser.cs
-    startLine: 747
+    startLine: 897
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -1838,11 +2042,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: ExpectOrSync
     path: src/Pl0.Core/Pl0Parser.cs
-    startLine: 772
+    startLine: 927
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -1885,11 +2089,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: Synchronize
     path: src/Pl0.Core/Pl0Parser.cs
-    startLine: 799
+    startLine: 959
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -1920,11 +2124,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: Advance
     path: src/Pl0.Core/Pl0Parser.cs
-    startLine: 816
+    startLine: 981
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -1951,11 +2155,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: Current
     path: src/Pl0.Core/Pl0Parser.cs
-    startLine: 834
+    startLine: 1004
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -1982,11 +2186,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: IsRelation
     path: src/Pl0.Core/Pl0Parser.cs
-    startLine: 841
+    startLine: 1011
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -2003,6 +2207,41 @@ items:
       description: True wenn das Token ein Vergleichsoperator ist.
     content.vb: Private Shared Function IsRelation(kind As TokenKind) As Boolean
   overload: Pl0.Core.Pl0Parser.IsRelation*
+- uid: Pl0.Core.Pl0Parser.TryParseNestedSyntax(System.Action)
+  commentId: M:Pl0.Core.Pl0Parser.TryParseNestedSyntax(System.Action)
+  id: TryParseNestedSyntax(System.Action)
+  parent: Pl0.Core.Pl0Parser
+  langs:
+  - csharp
+  - vb
+  name: TryParseNestedSyntax(Action)
+  nameWithType: Pl0Parser.TryParseNestedSyntax(Action)
+  fullName: Pl0.Core.Pl0Parser.TryParseNestedSyntax(System.Action)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Core/Pl0Parser.cs
+      branch: codex/security-scan-remediation-23
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: TryParseNestedSyntax
+    path: src/Pl0.Core/Pl0Parser.cs
+    startLine: 1024
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  summary: Führt einen rekursiven Syntaxübergang innerhalb des festen Sicherheitsbudgets aus.
+  example: []
+  syntax:
+    content: private bool TryParseNestedSyntax(Action parse)
+    parameters:
+    - id: parse
+      type: System.Action
+      description: Parseraktion für das verschachtelte Konstrukt.
+    return:
+      type: System.Boolean
+      description: True, wenn der Parsevorgang danach fortgesetzt werden darf.
+    content.vb: Private Function TryParseNestedSyntax(parse As Action) As Boolean
+  overload: Pl0.Core.Pl0Parser.TryParseNestedSyntax*
 - uid: Pl0.Core.Pl0Parser.Report(System.Int32,System.String)
   commentId: M:Pl0.Core.Pl0Parser.Report(System.Int32,System.String)
   id: Report(System.Int32,System.String)
@@ -2017,11 +2256,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: Report
     path: src/Pl0.Core/Pl0Parser.cs
-    startLine: 854
+    startLine: 1056
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -2055,11 +2294,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: Report
     path: src/Pl0.Core/Pl0Parser.cs
-    startLine: 865
+    startLine: 1067
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -2082,6 +2321,42 @@ items:
   nameWithType.vb: Pl0Parser.Report(Integer, String, TextPosition)
   fullName.vb: Pl0.Core.Pl0Parser.Report(Integer, String, Pl0.Core.TextPosition)
   name.vb: Report(Integer, String, TextPosition)
+- uid: Pl0.Core.Pl0Parser.AddDiagnostic(System.Int32,System.String,Pl0.Core.TextPosition)
+  commentId: M:Pl0.Core.Pl0Parser.AddDiagnostic(System.Int32,System.String,Pl0.Core.TextPosition)
+  id: AddDiagnostic(System.Int32,System.String,Pl0.Core.TextPosition)
+  parent: Pl0.Core.Pl0Parser
+  langs:
+  - csharp
+  - vb
+  name: AddDiagnostic(int, string, TextPosition)
+  nameWithType: Pl0Parser.AddDiagnostic(int, string, TextPosition)
+  fullName: Pl0.Core.Pl0Parser.AddDiagnostic(int, string, Pl0.Core.TextPosition)
+  type: Method
+  source:
+    remote:
+      path: src/Pl0.Core/Pl0Parser.cs
+      branch: codex/security-scan-remediation-23
+      repo: https://github.com/hindermath/TinyPl0.git
+    id: AddDiagnostic
+    path: src/Pl0.Core/Pl0Parser.cs
+    startLine: 1072
+  assemblies:
+  - Pl0.Core
+  namespace: Pl0.Core
+  syntax:
+    content: private void AddDiagnostic(int code, string message, TextPosition position)
+    parameters:
+    - id: code
+      type: System.Int32
+    - id: message
+      type: System.String
+    - id: position
+      type: Pl0.Core.TextPosition
+    content.vb: Private Sub AddDiagnostic(code As Integer, message As String, position As TextPosition)
+  overload: Pl0.Core.Pl0Parser.AddDiagnostic*
+  nameWithType.vb: Pl0Parser.AddDiagnostic(Integer, String, TextPosition)
+  fullName.vb: Pl0.Core.Pl0Parser.AddDiagnostic(Integer, String, Pl0.Core.TextPosition)
+  name.vb: AddDiagnostic(Integer, String, TextPosition)
 - uid: Pl0.Core.Pl0Parser.ReportUnexpectedEofOnce
   commentId: M:Pl0.Core.Pl0Parser.ReportUnexpectedEofOnce
   id: ReportUnexpectedEofOnce
@@ -2096,11 +2371,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: ReportUnexpectedEofOnce
     path: src/Pl0.Core/Pl0Parser.cs
-    startLine: 873
+    startLine: 1094
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -2124,11 +2399,11 @@ items:
   source:
     remote:
       path: src/Pl0.Core/Pl0Parser.cs
-      branch: main
+      branch: codex/security-scan-remediation-23
       repo: https://github.com/hindermath/TinyPl0.git
     id: Msg
     path: src/Pl0.Core/Pl0Parser.cs
-    startLine: 892
+    startLine: 1113
   assemblies:
   - Pl0.Core
   namespace: Pl0.Core
@@ -2712,6 +2987,12 @@ references:
   nameWithType.vb: Pl0Parser.New
   fullName.vb: Pl0.Core.Pl0Parser.New
   name.vb: New
+- uid: Pl0.Core.Pl0Parser.EnsureEndOfFile*
+  commentId: Overload:Pl0.Core.Pl0Parser.EnsureEndOfFile
+  href: Pl0.Core.Pl0Parser.html#Pl0_Core_Pl0Parser_EnsureEndOfFile_System_Collections_Generic_IReadOnlyList_Pl0_Core_Pl0Token__
+  name: EnsureEndOfFile
+  nameWithType: Pl0Parser.EnsureEndOfFile
+  fullName: Pl0.Core.Pl0Parser.EnsureEndOfFile
 - uid: Pl0.Core.Pl0Parser.Parse*
   commentId: Overload:Pl0.Core.Pl0Parser.Parse
   href: Pl0.Core.Pl0Parser.html#Pl0_Core_Pl0Parser_Parse
@@ -2994,12 +3275,32 @@ references:
   name: IsRelation
   nameWithType: Pl0Parser.IsRelation
   fullName: Pl0.Core.Pl0Parser.IsRelation
+- uid: Pl0.Core.Pl0Parser.TryParseNestedSyntax*
+  commentId: Overload:Pl0.Core.Pl0Parser.TryParseNestedSyntax
+  href: Pl0.Core.Pl0Parser.html#Pl0_Core_Pl0Parser_TryParseNestedSyntax_System_Action_
+  name: TryParseNestedSyntax
+  nameWithType: Pl0Parser.TryParseNestedSyntax
+  fullName: Pl0.Core.Pl0Parser.TryParseNestedSyntax
+- uid: System.Action
+  commentId: T:System.Action
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.action
+  name: Action
+  nameWithType: Action
+  fullName: System.Action
 - uid: Pl0.Core.Pl0Parser.Report*
   commentId: Overload:Pl0.Core.Pl0Parser.Report
   href: Pl0.Core.Pl0Parser.html#Pl0_Core_Pl0Parser_Report_System_Int32_System_String_
   name: Report
   nameWithType: Pl0Parser.Report
   fullName: Pl0.Core.Pl0Parser.Report
+- uid: Pl0.Core.Pl0Parser.AddDiagnostic*
+  commentId: Overload:Pl0.Core.Pl0Parser.AddDiagnostic
+  href: Pl0.Core.Pl0Parser.html#Pl0_Core_Pl0Parser_AddDiagnostic_System_Int32_System_String_Pl0_Core_TextPosition_
+  name: AddDiagnostic
+  nameWithType: Pl0Parser.AddDiagnostic
+  fullName: Pl0.Core.Pl0Parser.AddDiagnostic
 - uid: Pl0.Core.Pl0Parser.ReportUnexpectedEofOnce*
   commentId: Overload:Pl0.Core.Pl0Parser.ReportUnexpectedEofOnce
   href: Pl0.Core.Pl0Parser.html#Pl0_Core_Pl0Parser_ReportUnexpectedEofOnce

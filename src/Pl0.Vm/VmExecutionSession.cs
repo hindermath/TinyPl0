@@ -21,6 +21,7 @@ internal sealed class VmExecutionSession
     private readonly ResourceManager messages;
     private readonly CultureInfo culture;
     private readonly CancellationToken initializationToken;
+    private readonly bool captureStepSnapshots;
     private readonly List<VmDiagnostic> diagnostics = [];
     private int[] stack = [];
     private int p;
@@ -30,7 +31,8 @@ internal sealed class VmExecutionSession
     private VmStepResult? terminalResult;
 
     private VmExecutionSession(Instruction[] program, IPl0Io io, VirtualMachineOptions options,
-        ResourceManager messages, CultureInfo culture, CancellationToken initializationToken)
+        ResourceManager messages, CultureInfo culture, CancellationToken initializationToken,
+        bool captureStepSnapshots)
     {
         this.program = program;
         this.io = io;
@@ -38,18 +40,21 @@ internal sealed class VmExecutionSession
         this.messages = messages;
         this.culture = culture;
         this.initializationToken = initializationToken;
+        this.captureStepSnapshots = captureStepSnapshots;
     }
 
     internal VmState State { get; private set; } = new(0, 0, 0, [], null, 0);
     internal bool IsRunning => terminalResult is null;
 
     internal static VmExecutionSession Create(IReadOnlyList<Instruction>? source, IPl0Io io,
-        VirtualMachineOptions options, CancellationToken cancellationToken)
+        VirtualMachineOptions options, CancellationToken cancellationToken,
+        bool captureStepSnapshots = true)
     {
         ResourceManager messages = options.Messages ?? Pl0VmMessages.ResourceManager;
         CultureInfo culture = CultureInfo.GetCultureInfo(options.Language);
         IReadOnlyList<VmDiagnostic> optionDiagnostics = VirtualMachineOptionsValidator.Validate(options, messages, culture);
-        var session = new VmExecutionSession([], io, options, messages, culture, cancellationToken);
+        var session = new VmExecutionSession(
+            [], io, options, messages, culture, cancellationToken, captureStepSnapshots);
         if (optionDiagnostics.Count > 0)
         {
             session.Complete(VmCompletionReason.InvalidConfiguration, optionDiagnostics, session.State);
@@ -96,8 +101,11 @@ internal sealed class VmExecutionSession
                     "Befehlszeiger außerhalb des Bereichs: {0}.",
                     "Instruction pointer out of range: {0}.", p)], State);
 
-        VmState stateBeforeDispatch = State;
-        Instruction instruction = program[p++];
+        Instruction instruction = program[p];
+        VmState stateBeforeDispatch = !captureStepSnapshots && RequiresPreDispatchSnapshot(instruction)
+            ? CaptureState(forceClone: true)
+            : State;
+        p++;
         executedInstructions++;
 
         VmCompletionReason? fault = Dispatch(instruction);
@@ -446,9 +454,20 @@ internal sealed class VmExecutionSession
         return terminalResult;
     }
 
-    private VmState CaptureState()
+    private bool RequiresPreDispatchSnapshot(Instruction instruction) =>
+        instruction.Op == Opcode.Lod ||
+        instruction.Op == Opcode.Sto && options.EnableStoreTrace ||
+        instruction.Op == Opcode.Opr && instruction.Argument == 14;
+
+    private VmState CaptureState(bool forceClone = false)
     {
         Instruction? current = p >= 0 && p < program.Length ? program[p] : null;
-        return new VmState(p, b, t, stack, current, executedInstructions);
+        // Batch-Ausführung veröffentlicht keine Zwischenzustände und darf daher
+        // dieselbe interne Stack-Instanz bis zum terminalen Ergebnis betrachten.
+        // Batch execution exposes no intermediate states, so it may view the same
+        // internal stack instance until the terminal result is materialized.
+        return new VmState(
+            p, b, t, stack, current, executedInstructions,
+            cloneStack: captureStepSnapshots || forceClone);
     }
 }

@@ -241,3 +241,28 @@ aufgerufen. Funktions- und Abnahmegrenzen bleiben unveraendert.
 final branch commit count. The manual build counter remains 94; no local
 product build or test was invoked. Feature and acceptance boundaries are retained.*
 <!-- dependabot-pr-123-version:end -->
+
+175. Agent (2026-11-06): Die 23 Befunde des vollständigen Codex-Security-Scans
+wurden in der Reihenfolge der Triage geprüft und behoben. Die IDE begrenzt nun
+Syntaxhervorhebung, Formatierung und Laufzeitausgabe; Compiler, Parser,
+P-Code-Leser und VM besitzen feste Ressourcen- und Zustandsgrenzen. Weitere
+Korrekturen härten Dateipfade, Git-/Registry-Aufrufe, Release-Eingaben,
+Cleanup-Aktionen und den Pre-Push-Scan. Ein unabhängiger Patch-Review fand
+sieben zusätzliche Grenzfälle, die vor Abschluss ebenfalls korrigiert wurden.
+Die lokale Regression umfasst 374/374 .NET-Tests, 98 Python-Tests mit elf
+plattformbedingten Überspringungen, beide PowerShell-Governance-Suiten,
+DocFX, sechs axe-Seiten und Lynx-Dumps. Der NuGet-Audit meldet keine bekannte
+verwundbare Abhängigkeit mehr. Die jeweils wirksame IDE-Version steht
+verbindlich in `src/Pl0.Ide/Pl0.Ide.csproj`; ein Release wurde nicht erstellt.
+
+*The 23 findings from the complete Codex Security scan were reviewed and fixed
+in triage order. The IDE now bounds highlighting, formatting, and runtime
+output, while compiler, parser, P-Code loading, and VM execution enforce
+resource and state limits. Additional fixes harden paths, Git and registry
+execution, release inputs, cleanup actions, and pre-push scanning. An
+independent patch review found seven further boundary cases, all corrected
+before closeout. Local evidence covers 374/374 .NET tests, 98 Python tests with
+eleven platform skips, both PowerShell governance suites, DocFX, six axe pages,
+and Lynx dumps. The NuGet audit now reports no known vulnerable dependency.
+The authoritative IDE version remains in `src/Pl0.Ide/Pl0.Ide.csproj`; no
+release was created.*

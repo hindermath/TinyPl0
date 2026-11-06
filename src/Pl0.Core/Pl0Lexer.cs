@@ -8,6 +8,9 @@ namespace Pl0.Core;
 /// </summary>
 public sealed class Pl0Lexer
 {
+    private const int AbsoluteMaximumSourceLength = 1_048_576;
+    private const int AbsoluteMaximumTokenCount = 100_000;
+    private const int AbsoluteMaximumDiagnosticCount = 100;
     /// <summary>
     /// Compiler-Optionen für Grenzwerte und Dialekte.
     /// </summary>
@@ -64,6 +67,17 @@ public sealed class Pl0Lexer
     /// <returns>Das Lexer-Ergebnis mit Token und Diagnosen.</returns>
     public LexerResult Lex()
     {
+        var sourceLimit = Math.Clamp(_options.MaxSourceLength, 1, AbsoluteMaximumSourceLength);
+        var tokenLimit = Math.Clamp(_options.MaxTokenCount, 1, AbsoluteMaximumTokenCount);
+        var diagnosticLimit = Math.Clamp(
+            _options.MaxDiagnosticCount, 1, AbsoluteMaximumDiagnosticCount);
+        if (_text.Length > sourceLimit)
+        {
+            AddLimitDiagnostic($"source length {_text.Length}; allowed {sourceLimit}");
+            _tokens.Add(new Pl0Token(TokenKind.EndOfFile, string.Empty, CurrentPosition));
+            return new LexerResult(_tokens, _diagnostics);
+        }
+
         while (true)
         {
             SkipWhiteSpace();
@@ -72,6 +86,20 @@ public sealed class Pl0Lexer
             var ch = Current;
             if (ch == '\0')
             {
+                _tokens.Add(new Pl0Token(TokenKind.EndOfFile, string.Empty, start));
+                break;
+            }
+
+            if (_tokens.Count >= tokenLimit)
+            {
+                AddLimitDiagnostic($"token count exceeds {tokenLimit}");
+                _tokens.Add(new Pl0Token(TokenKind.EndOfFile, string.Empty, start));
+                break;
+            }
+
+            if (_diagnostics.Count >= diagnosticLimit)
+            {
+                AddLimitDiagnostic($"diagnostic count reached {diagnosticLimit}");
                 _tokens.Add(new Pl0Token(TokenKind.EndOfFile, string.Empty, start));
                 break;
             }
@@ -152,6 +180,14 @@ public sealed class Pl0Lexer
         }
 
         return new LexerResult(_tokens, _diagnostics);
+    }
+
+    private void AddLimitDiagnostic(string detail)
+    {
+        var message = _culture.TwoLetterISOLanguageName == "de"
+            ? $"Lexer-Sicherheitsgrenze erreicht: {detail}."
+            : $"Lexer safety limit reached: {detail}.";
+        _diagnostics.Add(new LexerDiagnostic(37, message, CurrentPosition));
     }
 
     /// <summary>

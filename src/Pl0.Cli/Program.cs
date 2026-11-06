@@ -9,6 +9,7 @@ using Microsoft.Extensions.Hosting;
 
 const int HelpExitCode = 99;
 const int UnexpectedTerminationExitCode = 99;
+const long MaximumInputFileBytes = 4 * 1024 * 1024;
 
 var parser = new CliOptionsParser();
 var result = parser.Parse(args);
@@ -105,13 +106,28 @@ if (!File.Exists(result.Options.SourcePath))
     return;
 }
 
+await using var inputStream = new FileStream(
+    result.Options.SourcePath,
+    FileMode.Open,
+    FileAccess.Read,
+    FileShare.Read,
+    bufferSize: 4096,
+    FileOptions.Asynchronous | FileOptions.SequentialScan);
+if (!inputStream.CanSeek || inputStream.Length > MaximumInputFileBytes)
+{
+    Console.Error.WriteLine(
+        $"Error {UnexpectedTerminationExitCode}: Input must be a seekable regular file no larger than {MaximumInputFileBytes} bytes.");
+    Environment.ExitCode = UnexpectedTerminationExitCode;
+    return;
+}
+
 IReadOnlyList<Instruction> instructions;
 if (result.Options.Command == CliCommand.RunPCode)
 {
     try
     {
-        var pcodeText = await File.ReadAllTextAsync(result.Options.SourcePath);
-        instructions = PCodeSerializer.Parse(pcodeText);
+        using var pcodeReader = new StreamReader(inputStream, leaveOpen: true);
+        instructions = PCodeSerializer.Parse(pcodeReader);
     }
     catch (FormatException ex)
     {
@@ -122,7 +138,8 @@ if (result.Options.Command == CliCommand.RunPCode)
 }
 else
 {
-    var source = await File.ReadAllTextAsync(result.Options.SourcePath);
+    using var sourceReader = new StreamReader(inputStream, leaveOpen: true);
+    var source = await sourceReader.ReadToEndAsync();
     var compiler = new Pl0Compiler();
     var compilation = compiler.Compile(source, new CompilerOptions(Pl0Dialect.Extended, Language: result.Options.Language));
 

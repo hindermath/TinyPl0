@@ -235,6 +235,17 @@ try {
     & pwsh -NoProfile -File $coordinator -Action Validate -Manifest $invalidPath -RunnerConfig $script:runnerConfig 2>$null
     Assert-Test ($LASTEXITCODE -ne 0) 'DAG cycle was accepted'
 
+    foreach ($unsafeWorkerId in @('../worker', 'worker/child', 'C:\worker', '\\server\worker')) {
+        $unsafeWorker = Get-TestCampaign 'unsafe-worker-id' 'ReplicatedTargets' @(
+            (Get-TestWorker $unsafeWorkerId $pipelineRepo)
+        )
+        $unsafeWorkerPath = Join-Path $tempRoot "unsafe-worker-$([guid]::NewGuid().ToString('N')).json"
+        Write-Data $unsafeWorkerPath $unsafeWorker
+        & pwsh -NoProfile -File $coordinator -Action Validate -Manifest $unsafeWorkerPath `
+            -RunnerConfig $script:runnerConfig 2>$null
+        Assert-Test ($LASTEXITCODE -ne 0) "Unsafe workerId was accepted: $unsafeWorkerId"
+    }
+
     $invalidBaseWorker = Get-TestCampaign 'invalid-base-worker' 'Pipeline' @(
         (Get-TestWorker 'base-a' $pipelineRepo),
         (Get-TestWorker 'base-b' $pipelineRepo)
