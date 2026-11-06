@@ -78,13 +78,6 @@ $OPT_JSON && OPT_VERBOSE=false
 TARGET_DIR="${TARGET_DIR/#\~/$HOME}"
 TARGET_DIR="${TARGET_DIR%/}"
 
-# ─── Prerequisites Check ─────────────────────────────────────────────────────
-
-if ! command -v rg >/dev/null 2>&1; then
-  echo "FATAL: ripgrep (rg) not found — install with: brew install ripgrep / apt install ripgrep" >&2
-  exit 2
-fi
-
 # ─── Apply-Patch Mode ────────────────────────────────────────────────────────
 
 if [ -n "$OPT_APPLY_PATCH" ]; then
@@ -148,6 +141,15 @@ if [ -n "$OPT_APPLY_PATCH" ]; then
     echo "Patch abgebrochen."
   fi
   exit 0
+fi
+
+# ─── Prerequisites Check ─────────────────────────────────────────────────────
+
+# Patch application parses only the bounded patch document and does not scan
+# repository content, so ripgrep is required only for the regular scan path.
+if ! command -v rg >/dev/null 2>&1; then
+  echo "FATAL: ripgrep (rg) not found — install with: brew install ripgrep / apt install ripgrep" >&2
+  exit 2
 fi
 
 # ─── Scan State (Bash 3.x-compatible, no associative arrays) ─────────────────

@@ -266,3 +266,16 @@ eleven platform skips, both PowerShell governance suites, DocFX, six axe pages,
 and Lynx dumps. The NuGet audit now reports no known vulnerable dependency.
 The authoritative IDE version remains in `src/Pl0.Ide/Pl0.Ide.csproj`; no
 release was created.*
+
+176. Agent (2026-11-06): Der erste PR-#124-Lauf zeigte ausschließlich im
+Ubuntu-Maintenance-TUI-Gate zwei fehlgeschlagene Grenztests, weil dort
+`ripgrep` nicht installiert ist. Der isolierte `--apply-patch`-Pfad benötigt
+keinen Repository-Scan; deshalb prüfen Bash und PowerShell `rg` nun erst vor
+dem regulären Scan. Fünf Pfadgrenztests und beide Syntaxprüfungen bestehen
+lokal. Produkt- und IDE-Laufzeitverhalten bleiben unverändert.
+
+*The first PR #124 run failed only two boundary tests in the Ubuntu Maintenance
+TUI gate because that image has no ripgrep. The isolated `--apply-patch` path
+does not scan repository content, so Bash and PowerShell now require `rg` only
+before the normal scan. Five path-boundary tests and both syntax checks pass
+locally. Product and IDE runtime behavior are unchanged.*

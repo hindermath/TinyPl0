@@ -70,12 +70,6 @@ if (-not (Test-Path -LiteralPath $TargetDir -PathType Container)) {
 }
 $TargetDir = (Resolve-Path -LiteralPath $TargetDir).Path
 
-# Check ripgrep availability
-if (-not (Get-Command rg -ErrorAction SilentlyContinue)) {
-    Write-Error "FATAL: ripgrep (rg) not found"
-    exit 2
-}
-
 # ─── Apply-Patch Mode ────────────────────────────────────────────────────────
 if ($ApplyPatch) {
     if (-not (Test-Path -LiteralPath $ApplyPatch -PathType Leaf)) {
@@ -131,6 +125,13 @@ if ($ApplyPatch) {
         Write-Host "Patch abgebrochen."
     }
     exit 0
+}
+
+# Patch application parses only the bounded patch document and does not scan
+# repository content, so ripgrep is required only for the regular scan path.
+if (-not (Get-Command rg -ErrorAction SilentlyContinue)) {
+    Write-Error "FATAL: ripgrep (rg) not found"
+    exit 2
 }
 
 # ─── Scan State ──────────────────────────────────────────────────────────────
