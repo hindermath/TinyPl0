@@ -642,6 +642,22 @@ the technical change; GeneratedUpdate for the existing statistics profiles.
 Existing references remain unchanged. Delivery volume is not a measurement
 of learning outcomes or AI time savings. Current head/platform checks are
 required before merge. Owner: repository maintainer; source-only, no Home sync.
+### 2026-11-09 - Dependabot PR #127 / Dependabot maintenance
+
+DE: Branch codex/dependabot-repair-20261109-tinypl0--127; sichtbares Wartungsfenster 09.11.2026, keine
+Stoppuhrmessung. Bump the nuget-minor-patch group with 1 update. Dokumentationsentscheidung: NoUpdateRequired
+fuer die technische Aenderung; GeneratedUpdate fuer beide vorhandenen
+Statistikprofile. Bestehende Referenzwerte bleiben erhalten. Die beobachtete
+Liefermenge ist keine Messung von Lernleistung oder KI-Zeitersparnis.
+Aktuelle Head-/Plattform-Pruefungen sind vor dem Merge erforderlich.
+Owner: Repository-Maintainer; Source-only, kein Home-Sync.
+
+EN: Branch codex/dependabot-repair-20261109-tinypl0--127; observable maintenance window 9 November 2026,
+not stopwatch time. Bump the nuget-minor-patch group with 1 update. Documentation impact: NoUpdateRequired for
+the technical change; GeneratedUpdate for the existing statistics profiles.
+Existing references remain unchanged. Delivery volume is not a measurement
+of learning outcomes or AI time savings. Current head/platform checks are
+required before merge. Owner: repository maintainer; source-only, no Home sync.
 ## Gesamtstatistik / Overall Statistics
 
 <!-- project-statistics-v2:begin -->
@@ -652,25 +668,25 @@ Profil 2 verwendet Git-getrackte Textdateien und sichtbare Git-Aktivitaet. Die W
 
 | Kennzahl / Metric | Wert / Value |
 |---|---:|
-| Textbasis / Text base | 299668 lines |
-| Textdateien / Text files | 2126 |
+| Textbasis / Text base | 299768 lines |
+| Textdateien / Text files | 2127 |
 | Beobachtbarer Zeitraum / Observable period | 2025-11-16..2026-11-09 |
 | Aktivtage / Active days | 104 |
-| Relevante Commits / Relevant commits | 474 |
-| Zeilen je Aktivtag / Lines per active day | 2881.4 |
+| Relevante Commits / Relevant commits | 476 |
+| Zeilen je Aktivtag / Lines per active day | 2882.4 |
 | Peak-Tag im Fenster / Peak day in window | 2026-02-14 / 177480 |
 | Peak-Woche im Fenster / Peak week in window | 2026-02-08 / 186065 |
 | Laengste Serie / Longest streak | 9 days |
 | Speedup vs. 80 lines/day | 36.0x |
 | Speedup vs. 125 lines/day | 23.1x |
-| Methodik / Methodology | v2; source `d5373c15dbe7` |
+| Methodik / Methodology | v2; source `e5f8c60fb5d2` |
 
 ### Artefaktmix / Artifact Mix
 
 ```text
 Produktiv / Production          [#...................]   2.6% | 7649
 Tests                           [#...................]   5.3% | 15880
-Dokumentation / Documentation   [###########.........]  54.6% | 163597
+Dokumentation / Documentation   [###########.........]  54.6% | 163697
 Skripte / Scripts               [##..................]   9.5% | 28615
 Konfiguration / Configuration   [#####...............]  26.4% | 79147
 Daten und Medien / Data and media [....................]   0.0% | 0
@@ -697,7 +713,7 @@ Sa/Sa  0 0 0 0 0 0 0 0 0 0 0 0 4 4 0 0 2 0 2 0 0 0 0 0 0 0
 ```text
 Wochen / Weeks 27..52 | 2026-05-17..2026-11-14
 So/Su  0 0 1 0 4 0 0 0 1 4 4 1 4 4 0 4 4 4 4 0 0 0 0 0 0 0
-Mo/Mo  0 0 0 0 0 0 3 1 4 4 0 0 0 2 0 0 4 0 0 0 0 0 0 0 0 2
+Mo/Mo  0 0 0 0 0 0 3 1 4 4 0 0 0 2 0 0 4 0 0 0 0 0 0 0 0 3
 Di/Tu  0 3 0 0 0 0 2 0 3 4 4 0 0 0 0 2 4 0 0 0 0 0 0 0 4 -
 Mi/We  0 0 2 0 4 0 2 0 0 2 4 0 0 0 0 4 0 0 0 0 0 0 0 0 0 -
 Do/Th  0 1 1 4 1 0 0 0 1 4 0 0 4 0 0 4 0 0 0 0 0 0 0 3 0 -
@@ -842,7 +858,7 @@ Die Faktoren vergleichen sichtbare Lieferdichte mit den dokumentierten manuellen
 Scale: 0..5000 lines/day
 Experienced manual [#...................] 80
 Thorsten solo      [#...................] 125
-Visible repository [############........] 2881.4
+Visible repository [############........] 2882.4
 ```
 
 Die gemeinsame Skala vergleicht Referenzen und sichtbare Lieferdichte. Sie schreibt die Git-Aktivitaet keiner Person oder KI pauschal zu.
@@ -868,6 +884,6 @@ DE: Das Fenster beginnt am 2025-11-16 und endet am 2026-11-09. Es enthaelt 104 a
 | 2026-08 | 55167 |
 | 2026-09 | 52288 |
 | 2026-10 | 1546 |
-| 2026-11 | 9571 |
+| 2026-11 | 9697 |
 
 <!-- project-statistics-v2:end -->

@@ -10,11 +10,11 @@
       },
       "Microsoft.Build.Tasks.Git": {
         "type": "Direct",
-        "requested": "[10.0.303, )",
-        "resolved": "10.0.303",
-        "contentHash": "tUblJMHhGAg4WKq3fzfJqXpV8o01WmQnWvgopNBnbhVQB6qwW2c8guCTCFMILD9Dekhe8MROBJ4lEk8AtXKisQ==",
+        "requested": "[10.0.403, )",
+        "resolved": "10.0.403",
+        "contentHash": "1furteBFeemMmZ4s+ORjQb7YtO+wG63NJahbQbRUi91FV6V87BdV0U3vX1jbMC6iKSELYYoXWssSzLu3mx0i2w==",
         "dependencies": {
-          "System.IO.Hashing": "10.0.11"
+          "System.IO.Hashing": "10.0.14"
         }
       },
       "Microsoft.NET.Test.Sdk": {
@@ -281,8 +281,8 @@
       },
       "System.IO.Hashing": {
         "type": "Transitive",
-        "resolved": "10.0.11",
-        "contentHash": "OzKDcIRkeNJeC8qAsbn8yJXnfTLP1dtkWILe+T56Gf/z+IkAASi7sMqLqJQat08j5z/mRN5xVtoAwbkMNMoBUQ=="
+        "resolved": "10.0.14",
+        "contentHash": "lVqovhCt3HlZe7ONG5ydaj6BYwYI004gldVfMMkJl/lR5ueeCtWNpW4nejOX75sPmzm8vXCxB69GqwHaYCnyUQ=="
       },
       "System.Text.Json": {
         "type": "Transitive",
