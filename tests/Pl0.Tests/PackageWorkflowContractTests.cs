@@ -25,7 +25,9 @@ public sealed class PackageWorkflowContractTests
         [
             "googleapis/release-please-action@45996ed1f6d02564a971a2fa1b5860e934307cf7",
             "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
-            "actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68",
+            // DE: Der neue Pin wurde gegen das offizielle v6.1.0-Tag geprueft.
+            // EN: The new pin was verified against the official v6.1.0 tag.
+            "actions/setup-dotnet@0f4a354dd5547a28c70b7853dbd95d5b67886e73",
             "actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
             "actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333",
             "NuGet/login@8d196754b4036150537f80ac539e15c2f1028841",
