@@ -610,6 +610,22 @@ the technical change; GeneratedUpdate for the existing statistics profiles.
 Existing references remain unchanged. Delivery volume is not a measurement
 of learning outcomes or AI time savings. Current head/platform checks are
 required before merge. Owner: repository maintainer; source-only, no Home sync.
+### 2026-11-09 - Dependabot PR #125 / Dependabot maintenance
+
+DE: Branch codex/dependabot-repair-20261109-tinypl0--125; sichtbares Wartungsfenster 09.11.2026, keine
+Stoppuhrmessung. chore(deps-dev): bump @playwright/test from 1.64.1 to 1.65.0 in /tests/a11y in the npm-minor-patch group. Dokumentationsentscheidung: NoUpdateRequired
+fuer die technische Aenderung; GeneratedUpdate fuer beide vorhandenen
+Statistikprofile. Bestehende Referenzwerte bleiben erhalten. Die beobachtete
+Liefermenge ist keine Messung von Lernleistung oder KI-Zeitersparnis.
+Aktuelle Head-/Plattform-Pruefungen sind vor dem Merge erforderlich.
+Owner: Repository-Maintainer; Source-only, kein Home-Sync.
+
+EN: Branch codex/dependabot-repair-20261109-tinypl0--125; observable maintenance window 9 November 2026,
+not stopwatch time. chore(deps-dev): bump @playwright/test from 1.64.1 to 1.65.0 in /tests/a11y in the npm-minor-patch group. Documentation impact: NoUpdateRequired for
+the technical change; GeneratedUpdate for the existing statistics profiles.
+Existing references remain unchanged. Delivery volume is not a measurement
+of learning outcomes or AI time savings. Current head/platform checks are
+required before merge. Owner: repository maintainer; source-only, no Home sync.
 ## Gesamtstatistik / Overall Statistics
 
 <!-- project-statistics-v2:begin -->
@@ -620,25 +636,25 @@ Profil 2 verwendet Git-getrackte Textdateien und sichtbare Git-Aktivitaet. Die W
 
 | Kennzahl / Metric | Wert / Value |
 |---|---:|
-| Textbasis / Text base | 299468 lines |
-| Textdateien / Text files | 2124 |
+| Textbasis / Text base | 299568 lines |
+| Textdateien / Text files | 2125 |
 | Beobachtbarer Zeitraum / Observable period | 2025-11-16..2026-11-09 |
 | Aktivtage / Active days | 104 |
-| Relevante Commits / Relevant commits | 470 |
-| Zeilen je Aktivtag / Lines per active day | 2879.5 |
+| Relevante Commits / Relevant commits | 472 |
+| Zeilen je Aktivtag / Lines per active day | 2880.5 |
 | Peak-Tag im Fenster / Peak day in window | 2026-02-14 / 177480 |
 | Peak-Woche im Fenster / Peak week in window | 2026-02-08 / 186065 |
 | Laengste Serie / Longest streak | 9 days |
 | Speedup vs. 80 lines/day | 36.0x |
 | Speedup vs. 125 lines/day | 23.0x |
-| Methodik / Methodology | v2; source `391fd34f734d` |
+| Methodik / Methodology | v2; source `5bdfa3609741` |
 
 ### Artefaktmix / Artifact Mix
 
 ```text
 Produktiv / Production          [#...................]   2.6% | 7649
 Tests                           [#...................]   5.3% | 15880
-Dokumentation / Documentation   [###########.........]  54.6% | 163397
+Dokumentation / Documentation   [###########.........]  54.6% | 163497
 Skripte / Scripts               [##..................]   9.6% | 28615
 Konfiguration / Configuration   [#####...............]  26.4% | 79147
 Daten und Medien / Data and media [....................]   0.0% | 0
@@ -810,7 +826,7 @@ Die Faktoren vergleichen sichtbare Lieferdichte mit den dokumentierten manuellen
 Scale: 0..5000 lines/day
 Experienced manual [#...................] 80
 Thorsten solo      [#...................] 125
-Visible repository [############........] 2879.5
+Visible repository [############........] 2880.5
 ```
 
 Die gemeinsame Skala vergleicht Referenzen und sichtbare Lieferdichte. Sie schreibt die Git-Aktivitaet keiner Person oder KI pauschal zu.
@@ -836,6 +852,6 @@ DE: Das Fenster beginnt am 2025-11-16 und endet am 2026-11-09. Es enthaelt 104 a
 | 2026-08 | 55167 |
 | 2026-09 | 52288 |
 | 2026-10 | 1546 |
-| 2026-11 | 9343 |
+| 2026-11 | 9469 |
 
 <!-- project-statistics-v2:end -->
