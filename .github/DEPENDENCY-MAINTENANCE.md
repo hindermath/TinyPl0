@@ -96,3 +96,18 @@ patch releases. Version 2.5 changes the IDE API and needs its own migration with
 functional, keyboard and accessibility evidence. The compatible 2.0 IDE baseline
 is retained meanwhile; the four other updates from PR #114 are delivered
 separately. No version is ignored. The security group remains active unchanged.
+
+## PR #128: technische Wartung / Technical maintenance
+
+DE: Die fuer diesen Abhaengigkeits-PR erforderlichen CI-/Test-Anpassungen
+erhalten Versionsbindung, Sicherheitspruefungen und Plattform-Gates. Die
+konkrete Reparatur und technische Evidence stehen im PR; keine Paketmigration
+aus einem anderen zurueckgestellten PR wird uebernommen. Owner: Repository-
+Maintainer. Source-only, kein Home-Sync. Bei Manifest-, Pin- oder Workflow-
+Aenderungen erneut pruefen.
+
+EN: CI/test repairs needed for this dependency PR retain version binding,
+security checks and platform gates. The PR records the specific repair and
+technical evidence; it does not adopt a migration from another deferred PR.
+Owner: repository maintainer. Source-only, no Home sync. Re-evaluate after
+manifest, pin or workflow changes.
