@@ -28,4 +28,20 @@
   <ItemGroup>
     <None Include="..\..\docs\nuget\TinyPl0.Vm.README.md" Pack="true" PackagePath="README.md" />
   </ItemGroup>
+  <!--
+    DE: NuGet kann die Core-Version aus einem vorherigen Build zwischenspeichern.
+    Die finale Pack-Grenze muss trotzdem exakt dieselbe Paketversion verlangen;
+    eine nackte Versionsnummer wuerde auch neuere Versionen erlauben.
+    EN: NuGet can reuse the Core version from an earlier build. At the final
+    pack boundary, require exactly the same version; a bare version also allows
+    newer versions. Keep the independent package-consumer gate unchanged.
+  -->
+  <Target Name="PinCorePackageDependency" BeforeTargets="GenerateNuspec">
+    <ItemGroup>
+      <_ProjectReferencesWithVersions Update="@(_ProjectReferencesWithVersions)"
+          Condition="'%(_ProjectReferencesWithVersions.Filename)' == 'Pl0.Core'">
+        <ProjectVersion>[$(TinyPl0PackageVersion)]</ProjectVersion>
+      </_ProjectReferencesWithVersions>
+    </ItemGroup>
+  </Target>
 </Project>

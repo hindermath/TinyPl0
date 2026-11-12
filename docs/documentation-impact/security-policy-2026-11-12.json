@@ -32,6 +32,36 @@
       "risk": "Reporting policy is no security certificate or new SLA. CodeQL configuration is separate and changes no AI Scan settings.",
       "criticality": "Security",
       "reevaluationTrigger": "Reporting route, project boundaries, supported branch, response process or GitHub rendering changes."
+    },
+    {
+      "homeSyncRequired": false,
+      "criticality": "Security",
+      "evidence": "docs/documentation-impact/security-policy-2026-11-12.json",
+      "audiences": [
+        "Vulnerability reporters",
+        "Repository users",
+        "Maintainers"
+      ],
+      "distributionClass": "sourceOnly",
+      "scope": "Deterministic exact-version TinyPl0.Vm to TinyPl0.Core NuGet package boundary",
+      "owner": "Thorsten Hindermann",
+      "documents": [
+        "docs/nuget/TinyPl0.Vm.README.md"
+      ],
+      "canonicalSource": "src/Pl0.Vm/Pl0.Vm.csproj and scripts/Test-NuGetPackages.ps1",
+      "risk": "The pack hook uses NuGet project-reference metadata; retain the strict generated-nuspec and independent-consumer gate when SDK/NuGet changes.",
+      "platformAndExampleProof": "Unchanged independent consumer gate passes locally with SDK 10.0.404. Linux, Windows and macOS CI must pass at the final exact head. No package release is performed.",
+      "languageStrategy": "Complete German first, equivalent English second; CEFR B2 and applicable WCAG 2.2 AA criteria.",
+      "readerPaths": [
+        "VM package README -> exact dependency contract -> independent package validation"
+      ],
+      "decision": "UpdateRequired",
+      "rationale": "CI intermittently emitted a minimum version 0.4.1 instead of the existing exact [0.4.1] contract. Pin the final pack metadata without weakening the independent consumer gate or changing runtime APIs.",
+      "languagePartners": [],
+      "navigationImpact": "Existing package README gains the matching validation explanation.",
+      "documentClass": "ActiveSemantic",
+      "changeId": "CHG002",
+      "reevaluationTrigger": "SDK, NuGet pack target, project-reference metadata or package version changes."
     }
   ]
 }
