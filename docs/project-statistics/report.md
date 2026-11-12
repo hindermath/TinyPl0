@@ -9,24 +9,24 @@ Git-bound inventory and activity; not a measure of quality, learning performance
 
 | Kennzahl / Metric | Wert / Value |
 | --- | --- |
-| Textdateien / Text files | 2127 |
-| Textzeilen / Text lines | 299768 |
-| Aktivtage / Active days | 100 |
-| Stichtag / As of | 2026-11-09 |
+| Textdateien / Text files | 2128 |
+| Textzeilen / Text lines | 299935 |
+| Aktivtage / Active days | 101 |
+| Stichtag / As of | 2026-11-12 |
 | Fensterbeginn / Window start | 2025-11-16 |
 | Zeitzone / Time zone | UTC |
 
 Quellrevision / Source revision:
-e5f8c60fb5d28297ccc96070f0e0b5e830966cc5
+5c7f4ffd4e10619422c41a3d752855b372187ce6
 
 ### Artefakte / Artifacts
 
 | Kategorie / Category | Dateien / Files | Zeilen / Lines |
 | --- | ---: | ---: |
-| Production | 70 | 7649 |
+| Production | 70 | 7665 |
 | Tests | 170 | 15880 |
-| Documentation | 1276 | 163697 |
-| Scripts | 124 | 28615 |
+| Documentation | 1277 | 163845 |
+| Scripts | 124 | 28618 |
 | Configuration | 290 | 79147 |
 | DataMedia | 0 | 0 |
 | Other | 197 | 4780 |
@@ -52,9 +52,9 @@ Sa/Sa  0 0 0 0 0 0 0 0 0 0 0 4 4 4 0 0 2 0 2 0 0 0 0 0 0 0
 Wochen / Weeks 27..52 | 2026-05-17..2026-11-14
 So/Su  0 0 0 0 4 0 0 0 1 4 4 0 4 0 0 4 4 4 3 0 0 0 0 0 0 0
 Mo/Mo  0 0 0 0 0 0 3 1 4 0 0 0 0 2 0 0 4 0 0 0 0 0 0 0 0 3
-Di/Tu  0 3 0 0 0 0 2 0 3 4 4 0 0 0 0 2 4 0 0 0 0 0 0 0 4 -
-Mi/We  0 0 2 0 4 0 2 0 0 2 4 0 0 0 0 4 0 0 0 0 0 0 0 0 0 -
-Do/Th  0 1 1 4 1 0 0 0 1 4 0 0 4 0 0 3 0 0 0 0 0 0 0 3 0 -
+Di/Tu  0 3 0 0 0 0 2 0 3 4 4 0 0 0 0 2 4 0 0 0 0 0 0 0 4 0
+Mi/We  0 0 2 0 4 0 2 0 0 2 4 0 0 0 0 4 0 0 0 0 0 0 0 0 0 0
+Do/Th  0 1 1 4 1 0 0 0 1 4 0 0 4 0 0 3 0 0 0 0 0 0 0 3 0 2
 Fr/Fr  4 2 2 0 4 2 3 4 4 4 1 0 0 0 0 0 3 0 0 0 0 0 0 0 4 -
 Sa/Sa  0 1 0 0 3 0 4 4 0 4 2 0 4 0 4 0 3 4 2 0 0 0 0 0 0 -
 ```
@@ -161,6 +161,7 @@ Sa/Sa  0 1 0 0 3 0 4 4 0 4 2 0 4 0 4 0 3 4 2 0 0 0 0 0 0 -
 | 2026-11-03 | 1725 | 1332 |
 | 2026-11-06 | 4831 | 1326 |
 | 2026-11-09 | 451 | 32 |
+| 2026-11-12 | 203 | 36 |
 
 ### Abdeckung / Coverage
 

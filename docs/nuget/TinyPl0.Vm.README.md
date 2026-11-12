@@ -11,6 +11,10 @@ Das Paket hängt von exakt derselben stabilen Version von `TinyPl0.Core` ab.
 Installierst du `TinyPl0.Vm` über NuGet, wird diese passende Core-Version
 automatisch aufgelöst.
 
+Die Paketprüfung kontrolliert die tatsächlich erzeugte NuGet-Abhängigkeit
+und baut einen unabhängigen Consumer. Eine bloße Mindestversion genügt
+diesem Vertrag nicht; eine Abweichung muss vor der Lieferung behoben werden.
+
 ### Für wen ist das Paket gedacht?
 
 - Lernende können Stack, Aktivierungsrahmen und P-Code-Ausführung untersuchen.
@@ -196,6 +200,10 @@ counter, base pointer, and stack pointer.
 The package depends on the exact same stable version of `TinyPl0.Core`. When
 you install `TinyPl0.Vm` through NuGet, this matching Core version is resolved
 automatically.
+
+Package validation checks the dependency in the actual NuGet package and
+builds an independent consumer. A minimum version alone does not meet this
+contract; any mismatch must be corrected before delivery.
 
 ### Who is this package for?
 

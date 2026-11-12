@@ -1,33 +1,106 @@
-# Sicherheitsrichtlinie / Security Policy
+<h1 lang="de">Sicherheitsrichtlinie / <span lang="en">Security Policy</span></h1>
 
-## DE — Schwachstellen vertraulich melden
+<div lang="de">
 
-Bitte veröffentliche eine vermutete Schwachstelle nicht als öffentliches Issue.
-Nutze stattdessen die privaten
-[GitHub Security Advisories](https://github.com/Hindermann/TinyPl0/security/advisories/new).
-Nenne betroffene Versionen, eine nachvollziehbare Reproduktion, die mögliche
-Auswirkung und bekannte Gegenmaßnahmen. Sende keine Kennwörter, Zugangsdaten
-oder personenbezogenen Daten.
+Bitte veröffentliche eine vermutete Schwachstelle nicht als öffentliches Issue. Nutze stattdessen die privaten [GitHub Security Advisories](https://github.com/hindermath/TinyPl0/security/advisories/new). Nenne betroffene Versionen, eine nachvollziehbare Reproduktion, die mögliche Auswirkung und bekannte Gegenmaßnahmen. Sende keine Kennwörter, Zugangsdaten oder personenbezogenen Daten.
 
-Der Maintainer bestätigt den Eingang möglichst innerhalb von 3 Arbeitstagen,
-beginnt die Triage möglichst innerhalb von 7 Arbeitstagen und gibt danach
-mindestens alle 14 Kalendertage einen Status. Termine sind Reaktionsziele, keine
-Garantie. Veröffentlichung und Behebung werden mit der meldenden Person
-abgestimmt. Ein bestätigter Befund wird nach Möglichkeit über ein GitHub
-Security Advisory einschließlich betroffener Versionen und Maßnahmen bekannt
-gegeben. Erkenntnisse fließen in Bedrohungsmodell, Tests und Checklisten ein.
+## Vertraulicher Meldeweg
 
-## EN — Report vulnerabilities privately
+Falls die private Meldefunktion nicht verfügbar ist, eröffne nur ein neutrales
+Issue ohne technische Details. Bitte darin um einen vertraulichen Kontaktweg.
+Veröffentliche keine Informationen, mit denen sich die vermutete Schwachstelle
+ausnutzen lässt.
 
-Do not publish a suspected vulnerability as a public issue. Use private
-[GitHub Security Advisories](https://github.com/Hindermann/TinyPl0/security/advisories/new)
-instead. Include affected versions, reproducible steps, possible impact, and
-known mitigations. Do not send passwords, credentials, or personal data.
+## Unterstützter Stand
 
-The maintainer aims to acknowledge receipt within 3 working days, start triage
-within 7 working days, and provide a status at least every 14 calendar days
-after that. These are response targets, not guarantees. Disclosure and a fix
-are coordinated with the reporter. When practical, a confirmed finding is
-published through a GitHub Security Advisory with affected versions and
-mitigations. Lessons learned feed back into the threat model, tests, and
-checklists.
+Sicherheitsmeldungen werden für den aktuellen Stand des Default Branch
+`main` geprüft. Ob eine Korrektur auch für veröffentlichte Versionen
+bereitgestellt wird, entscheidet der Maintainer im Einzelfall. Für ältere
+Versionen, historische Commits und andere Forks besteht keine allgemeine
+Supportzusage.
+
+## Sicherheitsbaseline
+
+- Geheimnisse dürfen nicht in Git, Issues, Logs oder Prüfnachweisen gespeichert werden.
+- Eingaben aus Dateien, Prozessen, Netzwerken und Geräten gelten als nicht vertrauenswürdig und müssen vor ihrer Verwendung geprüft werden.
+- Compiler, Parser und virtuelle Maschine müssen fehlerhafte Eingaben kontrolliert behandeln. Ressourcen wie Speicher, Laufzeit und Verschachtelung müssen angemessen begrenzt werden.
+- Datei- und Prozesszugriffe müssen die vorgesehenen Berechtigungs- und Verzeichnisgrenzen einhalten.
+- Neue Abhängigkeiten benötigen eine Prüfung von Herkunft, Lizenz, Wartungsstand und bekannten Schwachstellen.
+- Architektur- und Code-Reviews betrachten Eingaben, Berechtigungen, Fehlerausgaben sowie Datei- und Netzwerkzugriffe. Authentifizierung und Kryptografie werden geprüft, soweit das Projekt diese verwendet.
+- Sicherheitsrelevante Entscheidungen und die Annahme verbleibender Risiken benötigen eine menschliche Freigabe.
+
+## Prüfung und koordinierte Offenlegung
+
+Der Maintainer prüft die Meldung auf Nachvollziehbarkeit, Erreichbarkeit und
+mögliche Auswirkungen. Bei einem bestätigten Befund werden Korrektur, Tests
+und Veröffentlichung mit der meldenden Person abgestimmt.
+
+Bitte gib angemessene Zeit für die Untersuchung und Behebung. Veröffentliche
+technische Einzelheiten möglichst erst nach dieser Abstimmung.
+
+Der Maintainer bestätigt den Eingang möglichst innerhalb von 3 Arbeitstagen, beginnt die Triage möglichst innerhalb von 7 Arbeitstagen und gibt danach mindestens alle 14 Kalendertage einen Status. Termine sind Reaktionsziele, keine Garantie. Ein bestätigter Befund wird nach Möglichkeit über ein GitHub Security Advisory mit betroffenen Versionen und Maßnahmen bekannt gegeben. Erkenntnisse fließen in Bedrohungsmodell, Tests und Checklisten ein.
+
+## Grenzen dieser Richtlinie
+
+Diese Richtlinie beschreibt den Meldeweg und die Sicherheitsgrundsätze des
+Projekts. Sie ist keine Sicherheitszertifizierung und garantiert keine
+vollständige Befundfreiheit.
+
+Automatische Prüfungen erfassen nur ihren jeweiligen Prüfumfang. Ein
+erfolgreicher Lauf ersetzt keine vollständige Sicherheitsbewertung oder
+menschliche Freigabe. Diese Richtlinie ist keine Rechtsberatung und keine
+Zusage gesetzlicher Meldungen oder regulatorischer Konformität.
+
+</div>
+
+---
+
+<div lang="en">
+
+Please do not report a suspected vulnerability in a public issue. Instead, use private [GitHub Security Advisories](https://github.com/hindermath/TinyPl0/security/advisories/new). Include the affected versions, reproducible steps, the possible impact, and any known mitigations. Do not send passwords, credentials, or personal data.
+
+## Confidential reporting
+
+If private reporting is unavailable, open only a neutral issue without
+technical details. Ask for a confidential contact channel. Do not publish
+information that could be used to exploit the suspected vulnerability.
+
+## Supported version
+
+Security reports are assessed against the current default branch, `main`.
+The maintainer decides case by case whether a fix will also be provided for
+released versions. There is no general support commitment for older versions,
+historical commits, or other forks.
+
+## Security baseline
+
+- Secrets must not be stored in Git, issues, logs, or verification records.
+- Input from files, processes, networks, and devices is untrusted and must be checked before use.
+- The compiler, parser, and virtual machine must handle invalid input in a controlled way. Resources such as memory, execution time, and nesting depth must have suitable limits.
+- File and process operations must respect the intended permission and directory boundaries.
+- New dependencies require checks of their origin, licence, maintenance status, and known vulnerabilities.
+- Architecture and code reviews cover input, permissions, error output, and file and network operations. Authentication and cryptography are reviewed where the project uses them.
+- Security decisions and acceptance of remaining risks require human approval.
+
+## Assessment and coordinated disclosure
+
+The maintainer assesses whether the reported issue can be reproduced, how it
+can be reached, and what impact it may have. For a confirmed finding, the fix,
+tests, and disclosure are coordinated with the reporter.
+
+Please allow reasonable time for investigation and remediation. Where
+possible, publish technical details only after this coordination.
+
+The maintainer aims to acknowledge receipt within 3 working days, start triage within 7 working days, and provide a status at least every 14 calendar days after that. These are response targets, not guarantees. When practical, a confirmed finding is published through a GitHub Security Advisory with affected versions and mitigations. Lessons learned feed into the threat model, tests, and checklists.
+
+## Limits of this policy
+
+This policy describes the project's reporting process and security principles.
+It is not a security certification and does not guarantee the absence of
+vulnerabilities.
+
+Automated checks cover only their defined scope. A successful run does not
+replace a complete security assessment or human approval. This policy is not
+legal advice or a commitment to statutory reporting or regulatory compliance.
+
+</div>
