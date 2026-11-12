@@ -75,7 +75,10 @@ try {
     if ($Core.version -ne $Version -or $Vm.version -ne $Version) { throw 'Package versions do not match.' }
     if ($Core.dependencies.Count -ne 0) { throw 'TinyPl0.Core must have no runtime package dependency.' }
     if ($Vm.dependencies.Count -ne 1 -or $Vm.dependencies[0].id -ne 'TinyPl0.Core' -or
-        $Vm.dependencies[0].version -ne "[$Version]") { throw 'TinyPl0.Vm must depend exactly on matching TinyPl0.Core.' }
+        $Vm.dependencies[0].version -ne "[$Version]") {
+        throw ('TinyPl0.Vm must depend exactly on matching TinyPl0.Core. Actual dependencies: ' +
+            ($Vm.dependencies | ConvertTo-Json -Depth 4 -Compress))
+    }
     foreach ($Package in @($Core, $Vm)) {
         $AssemblyName = if ($Package.id -eq 'TinyPl0.Core') { 'Pl0.Core' } else { 'Pl0.Vm' }
         if (-not ($Package.entries -contains 'README.md')) { throw "$($Package.id) is missing README.md." }

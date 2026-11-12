@@ -6,9 +6,10 @@
       "changeId": "CHG001",
       "scope": "Confidential vulnerability reporting and project-specific security policy for TinyPl0",
       "decision": "UpdateRequired",
-      "rationale": "Owner-approved German-first and equivalent-English reporting policy; existing response targets retained.",
+      "rationale": "Owner-approved German-first and equivalent-English reporting policy; existing response targets retained. The unchanged exact-version package gate now reports actual public package dependency metadata when CI differs from local verification; no assertion is weakened.",
       "documents": [
-        ".github/SECURITY.md"
+        ".github/SECURITY.md",
+        "scripts/Test-NuGetPackages.ps1"
       ],
       "owner": "Thorsten Hindermann",
       "audiences": [
