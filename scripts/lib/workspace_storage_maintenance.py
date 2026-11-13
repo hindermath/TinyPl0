@@ -15,7 +15,6 @@ import json
 import os
 import pathlib
 import re
-import shlex
 import shutil
 import stat
 import subprocess
@@ -421,47 +420,6 @@ def remove_candidate(repository: pathlib.Path, candidate: dict) -> int:
     return size_before
 
 
-def make_preview(repository: pathlib.Path, make_directory: str, target: str) -> subprocess.CompletedProcess[str]:
-    return run_command(["make", "-C", make_directory, "-n", target], cwd=repository, timeout=120)
-
-
-def validate_cc65_make_preview(preview: str, allowed_paths: Iterable[str], protected: Iterable[str]) -> None:
-    allowed = {str(item).replace("\\", "/").strip("/").casefold() for item in allowed_paths}
-    protected_suffixes = tuple(pattern[1:].casefold() for pattern in protected if pattern.startswith("*."))
-    saw_delete = False
-    for line in preview.splitlines():
-        match = re.search(r"(?:^|\s)(rm|del)(?:\s|$)(.*)", line, re.IGNORECASE)
-        if not match:
-            continue
-        saw_delete = True
-        lower = line.casefold()
-        if ".git" in lower or any(suffix in lower for suffix in protected_suffixes):
-            raise StorageContractError(f"MakeCleanScopeDrift: protected deletion in preview: {line}")
-        try:
-            tokens = shlex.split(match.group(2), posix=os.name != "nt")
-        except ValueError as exc:
-            raise StorageContractError(f"MakeCleanScopeDrift: invalid deletion syntax: {line}") from exc
-        targets = [
-            token for token in tokens
-            if not token.startswith("-") and not (match.group(1).casefold() == "del" and token.startswith("/"))
-        ]
-        if not targets:
-            raise StorageContractError(f"MakeCleanScopeDrift: deletion has no bounded target: {line}")
-        for target in targets:
-            normalized = target.strip('"\'').replace("\\", "/")
-            if (
-                normalized.startswith("/")
-                or re.match(r"^[A-Za-z]:", normalized)
-                or any(character in normalized for character in ("*", "?", "$", "`", ";", "|", "&", ">", "<"))
-            ):
-                raise StorageContractError(f"MakeCleanScopeDrift: deletion outside declared group: {line}")
-            parts = [part.casefold() for part in normalized.split("/") if part not in {"", ".", ".."}]
-            if not parts or parts[0] not in allowed:
-                raise StorageContractError(f"MakeCleanScopeDrift: deletion outside declared group: {line}")
-    if not saw_delete:
-        raise StorageContractError("MakeCleanScopeDrift: make preview contains no bounded deletion")
-
-
 def protected_cc65_evidence(repository: pathlib.Path, patterns: list[str]) -> list[dict]:
     evidence = []
     for root_name in ("samples", "targettest"):
@@ -500,29 +458,6 @@ def handle_cc65(
     freed = 0
     status = "Passed"
     warnings: list[str] = []
-    if profile == "deep":
-        all_paths = [path for group in adapter["safeGroups"] for path in group["paths"]]
-        existing = [repository / path for path in all_paths if (repository / path).exists()]
-        for path in existing:
-            if not git_path_is_ignored_and_untracked(repository, path):
-                raise StorageContractError(f"cc65 deep candidate is not ignored and untracked: {path}")
-            candidates.append(candidate_record(repository, path, "cc65-root-clean", retention_days, True))
-        if not existing:
-            return candidates, protected, 0, status, warnings
-        for candidate in candidates:
-            candidate["action"] = "RemoveVerifiedCc65Output"
-        if mode != "update":
-            return candidates, protected, 0, status, warnings
-        if dirty or busy:
-            for candidate in candidates:
-                candidate["status"] = "SkippedDirtyOrBusy"
-            return candidates, protected, 0, "Warning", warnings
-        # Makefiles sind ausführbarer Quelltext und werden bei sicherer
-        # Speicherbereinigung niemals ausgewertet. / Makefiles are executable
-        # source and are never evaluated by safe storage cleanup.
-        for candidate in candidates:
-            freed += remove_candidate(repository, candidate)
-        return candidates, protected, freed, status, warnings
 
     effective_pressure = pressure_mode or profile == "deep"
     for group in adapter.get("safeGroups", []):
@@ -541,7 +476,7 @@ def handle_cc65(
             continue
         for candidate in group_candidates:
             if candidate["eligible"]:
-                candidate["action"] = "RemoveVerifiedCc65Output"
+                candidate["action"] = "RemoveVerifiedGeneratedTree"
         if mode != "update":
             continue
         if dirty or busy:
@@ -620,7 +555,7 @@ def handle_cmake(
     for candidate in candidates:
         if not candidate["eligible"]:
             continue
-        candidate["action"] = "RemoveVerifiedCMakeBuildTree"
+        candidate["action"] = "RemoveVerifiedBuildTree"
         if mode != "update":
             continue
         if dirty or busy:
@@ -628,12 +563,6 @@ def handle_cmake(
             status = "Warning"
             continue
         build = contained_path(repository / candidate["path"], repository, "CMake build tree")
-        # Ignorierte Build-Regeln sind nicht Teil des geprüften Quellstands.
-        # Ignored build rules are not part of the reviewed source revision.
-        # Der verifizierte, wiederherstellbare Build-Baum wird direkt entfernt,
-        # damit eine Wartungsaktion keine darin eingebetteten Befehle ausführt.
-        # Remove the verified, reproducible build tree directly so maintenance
-        # never executes commands embedded in it.
         freed += remove_candidate(repository, candidate)
     return candidates, freed, status
 

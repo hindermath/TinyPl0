@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "1.1",
+  "feature": "shared-security-rollout-2026-11-13",
+  "entries": [
+    {
+      "changeId": "CHG001",
+      "scope": "Verified fourteen-preset patch installation and shared CodeQL workflow permission correction",
+      "decision": "UpdateRequired",
+      "rationale": "Publish actual release bindings, retained behaviour and explicit least-privilege workflow authority.",
+      "documents": [
+        "docs/maintenance/shared-security-rollout-2026-11-13.md",
+        "docs/maintenance/preset-source-lock.json",
+        "docs/maintenance/preset-installed-lock.json"
+      ],
+      "owner": "Thorsten Hindermann",
+      "audiences": [
+        "Repository maintainers",
+        "Security reviewers"
+      ],
+      "readerPaths": [
+        "Maintenance record -> source/installed bindings -> exact source PR and consumer native/CodeQL CI"
+      ],
+      "canonicalSource": "Published preset repositories and Level-0 manifests; local shared workflow permission declarations",
+      "navigationImpact": "GitHub discovers this policy; reporting links target this repository.",
+      "documentClass": "ActiveSemantic",
+      "languageStrategy": "Complete German first, equivalent English second; CEFR B2 and applicable WCAG 2.2 AA criteria.",
+      "languagePartners": [],
+      "platformAndExampleProof": "Actual published ZIP installation, exact registry and payload bindings, existing agent-surface parity and repository-native CI. No new practical screen-reader/Braille acceptance claimed.",
+      "distributionClass": "sourceOnly",
+      "homeSyncRequired": false,
+      "evidence": "docs/maintenance/shared-security-rollout-2026-11-13.md",
+      "risk": "CodeQL success does not establish finding-free code. Open source/version and project-specific evidence gaps remain without new risk acceptance.",
+      "criticality": "Security",
+      "reevaluationTrigger": "Preset, archive, shared source, workflow permission, generated-surface or CodeQL analysis drift."
+    },
+    {
+      "homeSyncRequired": false,
+      "criticality": "Security",
+      "evidence": "docs/documentation-impact/security-policy-2026-11-12.json",
+      "audiences": [
+        "Vulnerability reporters",
+        "Repository users",
+        "Maintainers"
+      ],
+      "distributionClass": "sourceOnly",
+      "scope": "Deterministic exact-version TinyPl0.Vm to TinyPl0.Core NuGet package boundary",
+      "owner": "Thorsten Hindermann",
+      "documents": [
+        "docs/nuget/TinyPl0.Vm.README.md"
+      ],
+      "canonicalSource": "src/Pl0.Vm/Pl0.Vm.csproj and scripts/Test-NuGetPackages.ps1",
+      "risk": "The pack hook uses NuGet project-reference metadata; retain the strict generated-nuspec and independent-consumer gate when SDK/NuGet changes.",
+      "platformAndExampleProof": "Unchanged independent consumer gate passes locally with SDK 10.0.404. Linux, Windows and macOS CI must pass at the final exact head. No package release is performed.",
+      "languageStrategy": "Complete German first, equivalent English second; CEFR B2 and applicable WCAG 2.2 AA criteria.",
+      "readerPaths": [
+        "VM package README -> exact dependency contract -> independent package validation"
+      ],
+      "decision": "UpdateRequired",
+      "rationale": "CI intermittently emitted a minimum version 0.4.1 instead of the existing exact [0.4.1] contract. Pin the final pack metadata without weakening the independent consumer gate or changing runtime APIs.",
+      "languagePartners": [],
+      "navigationImpact": "Existing package README gains the matching validation explanation.",
+      "documentClass": "ActiveSemantic",
+      "changeId": "CHG002",
+      "reevaluationTrigger": "SDK, NuGet pack target, project-reference metadata or package version changes."
+    }
+  ]
+}
