@@ -75,7 +75,7 @@ class PathWriteBoundaryTests(unittest.TestCase):
 
             self.assertNotEqual(0, result.returncode)
             self.assertEqual("original\n", outside.read_text(encoding="utf-8"))
-            self.assertIn("selected repository is unavailable", result.stderr)
+            self.assertIn("existing regular file inside target directory", result.stderr)
 
     def test_feature_metadata_cannot_escape_repository_specs_tree(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
@@ -178,7 +178,11 @@ class PathWriteBoundaryTests(unittest.TestCase):
 
             self.assertNotEqual(0, result.returncode)
             self.assertEqual("original\n", outside.read_text(encoding="utf-8"))
-            self.assertIn("escapes selected repository", result.stderr)
+            self.assertTrue(
+                "existing regular file inside target directory" in result.stderr
+                or "inside the selected target directory" in result.stderr,
+                result.stderr,
+            )
 
     def _assert_homogeneity_allows_inside_target(
         self,
@@ -188,11 +192,11 @@ class PathWriteBoundaryTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temporary:
             target = pathlib.Path(temporary) / "repository"
             target.mkdir()
-            evidence = target / "evidence.txt"
+            evidence = target / "README.md"
             evidence.write_text("original\n", encoding="utf-8")
             patch = pathlib.Path(temporary) / "memory-patch.md"
             patch.write_text(
-                "### Target: evidence.txt\n+++ accepted\n",
+                "### Target: README.md\n+++ accepted\n",
                 encoding="utf-8",
             )
             resolved_arguments = [
@@ -218,7 +222,7 @@ class PathWriteBoundaryTests(unittest.TestCase):
             target.mkdir()
             outside = root / "outside"
             outside.mkdir()
-            evidence = outside / "evidence.txt"
+            evidence = outside / "README.md"
             evidence.write_text("original\n", encoding="utf-8")
             linked = target / "linked"
             if use_junction:
@@ -232,7 +236,7 @@ class PathWriteBoundaryTests(unittest.TestCase):
                 linked.symlink_to(outside, target_is_directory=True)
             patch = root / "memory-patch.md"
             patch.write_text(
-                "### Target: linked/evidence.txt\n+++ injected\n",
+                "### Target: linked/README.md\n+++ injected\n",
                 encoding="utf-8",
             )
 
@@ -256,7 +260,11 @@ class PathWriteBoundaryTests(unittest.TestCase):
 
             self.assertNotEqual(0, result.returncode)
             self.assertEqual("original\n", evidence.read_text(encoding="utf-8"))
-            self.assertIn("escapes selected repository", result.stderr)
+            self.assertTrue(
+                "symbolic link" in result.stderr
+                or "existing regular file inside target directory" in result.stderr,
+                result.stderr,
+            )
 
 
 if __name__ == "__main__":

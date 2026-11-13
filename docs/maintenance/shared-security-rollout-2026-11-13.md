@@ -112,3 +112,14 @@ DE: TinyPl0 behaelt die ausdrueckliche Freigabe fuer alternative ausfuehrbare Re
 EN: TinyPl0 retains explicit opt-in for alternate executable registries. The canonical, hash-bound npm agent registry also uses exactly the three code-approved version probes. A rejected probe cannot start an installation.
 
 Die Quellgrenze und ihre Negativtests / The source boundary and negative tests: [Level-0-Nachweis / Level 0 record](https://github.com/hindermath/home-baseline/blob/main/docs/maintenance/npm-agent-probe-authorization-2026-11-13.md). Andere Registry-Felder bleiben getrennt zu pruefen / Other registry fields remain a separate review area.
+## Projektgebundene Wartungsgrenze / Project maintenance boundary
+
+DE: Die Wartungstests folgen dem vorhandenen Opt-in für alternative ausführbare Registries. Kopierte Level-0-Tests für nicht vorhandene Cargo-Dokumentwerkzeuge, MSL-only und Host-Git-Transport wurden an diese Projektgrenze angepasst. Die eigentlichen Sicherheitsprüfungen für den Opt-in- und Pfadvertrag bleiben aktiv.
+
+EN: The maintenance tests follow the existing opt-in for alternate executable registries. Copied Level 0 tests for absent Cargo document tools, MSL-only mode and host Git transport were aligned with this project boundary. The actual opt-in and path-security checks remain active.
+
+Documentation Impact: UpdateRequired. Owner: Thorsten Hindermann. Audience:
+maintainers and security reviewers. Canonical sources: project adapters and
+Home Baseline propagation manifest. Reader path: this record to project tests
+and PR checks. Distribution: repository-local. Reevaluate when the shared
+manifest or project maintenance contract changes.

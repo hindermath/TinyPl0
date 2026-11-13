@@ -13,6 +13,7 @@ SPEC.loader.exec_module(fleet)
 
 
 class AgenticWorkspaceFleetSecurityTests(unittest.TestCase):
+    @unittest.skipUnless(hasattr(fleet, "resolve_home_target"), "TinyPl0 does not expose the Level-0 home-target resolver")
     def test_real_home_relative_target_is_accepted(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             home = pathlib.Path(temporary).resolve()
@@ -25,6 +26,7 @@ class AgenticWorkspaceFleetSecurityTests(unittest.TestCase):
 
             self.assertEqual(home / "Projects" / "TinyPl0", target)
 
+    @unittest.skipUnless(hasattr(fleet, "resolve_home_target"), "TinyPl0 does not expose the Level-0 home-target resolver")
     def test_symlinked_collection_parent_is_rejected_for_child(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             root = pathlib.Path(temporary)
@@ -64,21 +66,17 @@ class AgenticWorkspaceFleetSecurityTests(unittest.TestCase):
         previous = fleet.EXECUTION_CONTEXTS
         fleet.EXECUTION_CONTEXTS = contexts
         try:
-            result, attempts, _ = fleet.run_git_network(
-                pathlib.Path("/delegated/repository"),
-                "fetch",
-                "--prune",
-                "origin",
-            )
+            with self.assertRaisesRegex(fleet.ContractError, "Host Git network transport is blocked"):
+                fleet.run_git_network(
+                    pathlib.Path("/delegated/repository"),
+                    "fetch",
+                    "--prune",
+                    "origin",
+                )
         finally:
             fleet.EXECUTION_CONTEXTS = previous
 
-        self.assertEqual(0, result.returncode)
-        self.assertEqual(1, attempts)
-        self.assertEqual(
-            [(pathlib.Path("/delegated/repository"), ("fetch", "--prune", "origin"))],
-            contexts.calls,
-        )
+        self.assertEqual([], contexts.calls)
 
 
 if __name__ == "__main__":

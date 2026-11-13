@@ -14,6 +14,7 @@ MODULE = ROOT / "scripts/lib/msl-toolchains.psm1"
 CLI = ROOT / "scripts/config/required-cli-tools-registry.json"
 BREW = ROOT / "scripts/config/brew-apps-registry.json"
 PWSH = shutil.which("pwsh")
+HAS_MSL_ONLY_ENTRYPOINT = "--msl-only" in (ROOT / "scripts/maintain-agentic-brew-apps.sh").read_text(encoding="utf-8")
 
 
 def run_ps(source: str, payload: object | None = None) -> dict:
@@ -377,6 +378,7 @@ $answer | ConvertTo-Json
                         self.assertEqual(result.stdout.split(os.pathsep).count(managed), 1)
 
     @unittest.skipIf(os.name == "nt", "Native Windows uses the PowerShell entrypoint")
+    @unittest.skipUnless(HAS_MSL_ONLY_ENTRYPOINT, "TinyPl0 does not ship the Level-0 MSL-only CLI mode")
     def test_msl_only_bash_delegates_before_unrelated_maintenance(self):
         with tempfile.TemporaryDirectory() as temporary:
             directory = Path(temporary)
@@ -393,6 +395,7 @@ $answer | ConvertTo-Json
             self.assertNotIn("vscode", result.stdout)
 
     @unittest.skipIf(os.name == "nt", "Native Windows already runs PowerShell")
+    @unittest.skipUnless(HAS_MSL_ONLY_ENTRYPOINT, "TinyPl0 does not ship the Level-0 MSL-only CLI mode")
     def test_missing_shared_engine_cannot_return_success(self):
         with tempfile.TemporaryDirectory() as temporary:
             directory = Path(temporary)

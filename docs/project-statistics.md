@@ -699,6 +699,14 @@ EN: Distributed maintenance scripts bound npm agent probes before execution. Tin
 
 Documentation Impact: UpdateRequired; [Nachweis / evidence](maintenance/shared-security-rollout-2026-11-13.md).
 
+### 2026-11-13 — Projektgebundene Wartung erhalten / Preserved project maintenance
+
+DE: Die kopierten Wartungstests wurden an den vorhandenen Opt-in-Vertrag für alternative Registries und an die tatsächlich unterstützten CLI-Oberflächen angepasst. Sicherheitsprüfungen der Projektgrenze bleiben aktiv; kein Spec-Kit-Lauf wird ergänzt.
+
+EN: Copied maintenance tests were aligned with the existing opt-in contract for alternate registries and with the supported CLI surfaces. Checks of the project boundary remain active; no Spec Kit run is added.
+
+Documentation Impact: UpdateRequired; [Nachweis / evidence](maintenance/shared-security-rollout-2026-11-13.md).
+
 ## Gesamtstatistik / Overall Statistics
 
 <!-- project-statistics-v2:begin -->
