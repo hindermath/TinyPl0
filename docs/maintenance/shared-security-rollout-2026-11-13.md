@@ -104,3 +104,11 @@ existing named absdd CI entry point still checks separate source and installed
 locks. TuiVision's new historical input copies use shorter relative paths for
 Windows; their bytes and hashes remain unchanged. Existing technical checks
 remain mandatory.
+
+## npm-Agent-Proben / npm agent probes
+
+DE: TinyPl0 behaelt die ausdrueckliche Freigabe fuer alternative ausfuehrbare Registries. Fuer die kanonische, hashgebundene npm-Agent-Registry gelten zusaetzlich exakt die drei im Code freigegebenen Versionsabfragen. Eine abgelehnte Probe startet keine Installation.
+
+EN: TinyPl0 retains explicit opt-in for alternate executable registries. The canonical, hash-bound npm agent registry also uses exactly the three code-approved version probes. A rejected probe cannot start an installation.
+
+Die Quellgrenze und ihre Negativtests / The source boundary and negative tests: [Level-0-Nachweis / Level 0 record](https://github.com/hindermath/home-baseline/blob/main/docs/maintenance/npm-agent-probe-authorization-2026-11-13.md). Andere Registry-Felder bleiben getrennt zu pruefen / Other registry fields remain a separate review area.
