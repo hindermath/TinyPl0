@@ -45,7 +45,8 @@ Optionen / Options:
   --vscode-registry PATH
                         Alternative VS-Code-Extension-Registry
   --npm-agent-registry PATH
-                        Alternative npm-Agent-CLI-Registry
+                        Alternative npm-Agent-CLI-Registry; Standard nur mit
+                        freigegebenen Versionsabfragen / default uses approved probes
   --powershell-module-registry PATH
                         Alternative PowerShell-Modul-Registry
   --skip-upgrade        brew/apt update+upgrade ueberspringen / skip
@@ -959,6 +960,21 @@ install_cli_tools() {
   done 3< "$snapshot"
 }
 
+validate_npm_agent_probe_contract() {
+  local tool_id="$1" command_name="$2" args_json="$3"
+  # DE: TinyPl0s ausdrueckliche Freigabe fuer alternative Registries bleibt erhalten.
+  # EN: Preserve TinyPl0's explicit opt-in for alternate registries.
+  if [ "$NPM_AGENT_REGISTRY" != "$DEFAULT_NPM_AGENT_REGISTRY" ] &&
+     [ "$ALLOW_EXTERNAL_REGISTRY_PROBES" -eq 1 ]; then
+    return 0
+  fi
+  case "$tool_id" in
+    codex|claude|copilot) ;;
+    *) return 1 ;;
+  esac
+  [ "$command_name" = "$tool_id" ] && [ "$args_json" = '["--version"]' ]
+}
+
 install_npm_agent_tools() {
   local scope id package_name command_name args_json snapshot
   scope="required"
@@ -969,6 +985,11 @@ install_npm_agent_tools() {
     [ -n "$id" ] || continue
     validate_item_id "$id"
     validate_item_id "$package_name"
+    if ! validate_npm_agent_probe_contract "$id" "$command_name" "$args_json"; then
+      log "SKIP npm agent probe: $id (nicht durch Code-Policy autorisiert)"
+      mark_failed_attempt npm-cli "$id"
+      continue
+    fi
     if cli_tool_available "$id" "$command_name" "$args_json"; then
       log "OK npm agent cli: $id"
     elif [ "$DRY_RUN" -eq 1 ] || command -v npm >/dev/null 2>&1; then
@@ -1034,7 +1055,13 @@ compare_npm_agent_scope() {
     [ -n "$id" ] || continue
     attempted=false
     was_attempted npm-cli "$id" && attempted=true
-    if cli_tool_available "$id" "$command_name" "$args_json"; then
+    if ! validate_npm_agent_probe_contract "$id" "$command_name" "$args_json"; then
+      CURRENT_PROBE_STATUS="CapabilityBlocked"
+      CURRENT_PROBE_EVIDENCE="Probe ist nicht durch die Code-Policy autorisiert."
+      CURRENT_PROBE_NEXT_ACTION="npm-Registry an den kanonischen Probevertrag angleichen."
+      missing="${missing}${id}"$'\n'
+      final_status="Failed"
+    elif cli_tool_available "$id" "$command_name" "$args_json"; then
       final_status="Present"
       [ "$attempted" = true ] && final_status="Installed"
     else

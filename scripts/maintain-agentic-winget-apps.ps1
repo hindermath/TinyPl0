@@ -18,7 +18,10 @@
     Alternative VS Code extensions registry JSON path.
 
 .PARAMETER NpmAgentRegistry
-    Alternative npm agent CLI registry JSON path.
+    Alternative npm-Agent-Registry. Standardproben sind auf freigegebene
+    Versionsabfragen begrenzt.
+
+    Alternative npm agent registry. Default probes use approved version commands.
 
 .PARAMETER PowerShellModuleRegistry
     Alternative PowerShell module registry JSON path.
@@ -506,9 +509,32 @@ function Get-HBNpmAgentTools {
     )
 }
 
+function Assert-HBNpmAgentProbeContract {
+    param([Parameter(Mandatory)] $Tool)
+
+    # DE: Nur die alternative Registry mit ausdruecklicher Freigabe ist offen.
+    # EN: Only an alternate registry with explicit opt-in remains open.
+    if ($resolvedNpmRegistry -ne $resolvedDefaultNpmRegistry -and $AllowExternalRegistryProbes) {
+        return
+    }
+    $id = [string]$Tool.id
+    $arguments = @(
+        if ($Tool.PSObject.Properties.Name -contains 'args') {
+            $Tool.args | ForEach-Object { [string]$_ }
+        }
+    )
+    if ($id -cnotin @('codex', 'claude', 'copilot') -or
+        [string]$Tool.command -cne $id -or
+        $arguments.Count -ne 1 -or
+        $arguments[0] -cne '--version') {
+        throw "npm-Agent-Probe ist nicht durch die Code-Policy autorisiert: ${id}"
+    }
+}
+
 function Test-HBNpmAgentTool {
     param([Parameter(Mandatory)] $Tool)
 
+    Assert-HBNpmAgentProbeContract -Tool $Tool
     $command = Get-Command $Tool.command -ErrorAction SilentlyContinue
     if (-not $command) { return $false }
 
