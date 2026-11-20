@@ -46,6 +46,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@0f4a354dd5547a28c70b7853dbd95d5b67886e73
         with:
+          global-json-file: global.json
           dotnet-version: "10.0.x"
       - name: Pack and validate
         shell: pwsh
@@ -148,6 +149,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@0f4a354dd5547a28c70b7853dbd95d5b67886e73
         with:
+          global-json-file: global.json
           dotnet-version: "10.0.x"
       - name: Download release evidence
         if: inputs.verify_version == ''

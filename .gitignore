@@ -1283,3 +1283,5 @@ _site/
 !/.github/dependabot.yml
 !/.github/DEPENDENCY-MAINTENANCE.md
 !/.github/dependency-maintenance-impact.json
+
+!/global.json

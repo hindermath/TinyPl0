@@ -121,7 +121,14 @@ fpc pl0c.pas
 ./pl0c
 ```
 
-### .NET-10-Befehle
+### .NET-Befehle / .NET commands
+
+Zum Bauen das in `global.json` angegebene .NET SDK 11 verwenden. Für Tests
+und die Ausführung wird .NET 10 (`net10.0`) benötigt.
+
+Build with the .NET 11 SDK specified in `global.json`. Tests and execution
+require .NET 10 (`net10.0`).
+
 ```bash
 dotnet restore
 dotnet build
