@@ -403,3 +403,19 @@ now converts only formatted text at the editor boundary. After the fix, all
 392 local tests and a warning-free Release build pass again. A Windows CI
 rerun passed. The content version is `1.138.875.130`;
 no release was made.*
+
+182. Agent (2026-11-21): Nach dem Merge von PR #137 wurde PR #138
+konfliktfrei mit `main` zusammengefuehrt. Der Statistik-Workflow enthaelt
+jetzt die Cache-Abhaengigkeit; die IDE-Migration bleibt erhalten. Locked
+Restore, Release-Build mit 0 Warnungen und alle 392 Tests bestanden auf dem
+gemeinsamen Stand. Der lokale Testhost benoetigte wegen der vorhandenen
+.NET-11-Runtime `DOTNET_ROLL_FORWARD=Major`. Die beiden Statistikberichte
+werden aus dieser Inhaltsrevision neu erzeugt; es entstand kein Release.
+
+*After PR #137 was merged, PR #138 was reconciled with `main` without
+remaining conflicts. The statistics workflow now contains the cache
+dependency, and the IDE migration remains intact. Locked restore, a Release
+build with 0 warnings, and all 392 tests passed on the combined revision.
+The local test host needed `DOTNET_ROLL_FORWARD=Major` because only the .NET 11
+runtime is installed. Both statistics reports are regenerated from this
+content revision; no release was made.*
