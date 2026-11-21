@@ -352,3 +352,18 @@ tests passed. Locked restore and the Release build pass. The build retains
 menu, and compiler dialog with dark text areas and exited normally. The PTY
 used basic ANSI colors; the actual palettes of both macOS Terminal profiles
 still matter for a visual check. No release was created.*
+
+180. Agent (2026-11-21): Der Statistik-Workflow verwendet nun seine eigene
+Datei als Cache-Abhaengigkeit fuer `setup-uv`. Der bisherige Windows-Hinweis
+zu fehlenden Python-Manifesten ist die rote Ausgangsevidenz. Die gepinnte
+Spec-Kit-Revision steht in derselben Workflow-Datei, sodass ihre Aenderung
+den Cache neu schluesselt. IDE-Verhalten und Tests bleiben unveraendert;
+der Buildzaehler bleibt bei 116. Der neue CI-Lauf muss die Windows-Meldung
+ohne diese Warnung bestaetigen.
+
+*The statistics workflow now uses its own file as the `setup-uv` cache
+dependency. The former Windows notice about missing Python manifests is the
+red baseline evidence. The pinned Spec Kit revision is in that workflow file,
+so changing it changes the cache key. IDE behavior and tests are unchanged;
+the build counter stays at 116. The new CI run must confirm that the Windows
+job no longer reports this warning.*
