@@ -9,6 +9,49 @@ namespace Pl0.Tests;
 public sealed class IdeContrastTests
 {
     [Fact]
+    public void Alternate_Themes_Update_Existing_Editor_And_Menu()
+    {
+        Assert.True(IdeLookAndFeel.ApplyTurboPascalThemeIfAvailable());
+        using var mainView = new IdeMainView();
+        mainView.SourceEditor.Text = "begin ! 42 end.";
+        var document = mainView.SourceEditor.Document;
+        var menu = Assert.Single(mainView.SubViews.OfType<MenuBar>());
+        var original = menu.GetScheme().Normal.Background;
+        var builder = TuiConfigurationBuilder.Shared;
+
+        try
+        {
+            foreach (var (theme, background) in new[]
+                     {
+                         ("TinyPl0 TP6", "#101A50"),
+                         ("TinyPl0 TP7", "#102C32")
+                     })
+            {
+                Assert.True(builder.ThemeManager.SwitchTheme(theme));
+                var attribute = mainView.SourceEditor.GetScheme().Editable;
+                Assert.Equal(new Color(background), attribute.Background);
+                Assert.True(ContrastRatio(attribute.Foreground, attribute.Background) >= 4.5);
+                Assert.NotEqual(original, menu.GetScheme().Normal.Background);
+                Assert.Same(document, mainView.SourceEditor.Document);
+                foreach (var name in new[] { "Base", "Accent", "Dialog", "Menu", "Error" })
+                {
+                    AssertSchemeContrast(name);
+                }
+
+                foreach (var color in IdeRainbowAsciiArtView.RainbowPalette
+                             .Concat([IdeDebugView.BasePointerColor, IdeDebugView.StackPointerColor]))
+                {
+                    Assert.True(ContrastRatio(color, attribute.Background) >= 4.5, $"{theme}: {color}");
+                }
+            }
+        }
+        finally
+        {
+            Assert.True(IdeLookAndFeel.ApplyTurboPascalThemeIfAvailable());
+        }
+    }
+
+    [Fact]
     public void TurboPascal5_ReadOnly_Output_Meets_WcagAa_Text_Contrast()
     {
         Assert.True(IdeLookAndFeel.ApplyTurboPascalThemeIfAvailable());
@@ -29,6 +72,11 @@ public sealed class IdeContrastTests
     public void TurboPascal5_Scheme_Roles_Meet_WcagAa_Contrast(string schemeName)
     {
         Assert.True(IdeLookAndFeel.ApplyTurboPascalThemeIfAvailable());
+        AssertSchemeContrast(schemeName);
+    }
+
+    private static void AssertSchemeContrast(string schemeName)
+    {
         var scheme = Assert.IsType<Scheme>(TuiConfigurationBuilder.Shared.SchemeManager.GetScheme(schemeName));
         var roles = new (string Name, Terminal.Gui.Drawing.Attribute Attribute)[]
         {
@@ -54,6 +102,30 @@ public sealed class IdeContrastTests
         var focusBoundaryContrast = ContrastRatio(scheme.Focus.Background, scheme.Normal.Background);
         Assert.True(focusBoundaryContrast >= 3.0,
             $"{schemeName} focus boundary contrast was {focusBoundaryContrast:F2}:1; expected at least 3:1.");
+    }
+
+    [Fact]
+    public void Appearance_Preference_Survives_Restart_And_Handles_Unusable_Settings()
+    {
+        var directory = Directory.CreateTempSubdirectory("tinypl0-appearance-");
+        try
+        {
+            var path = Path.Combine(directory.FullName, "settings", "color-scheme");
+            var settings = new IdeAppearanceSettings(path);
+            Assert.Equal("tp5", settings.Read().Id);
+            Assert.True(settings.TrySave(IdeAppearanceSettings.Schemes[2]));
+            Assert.Equal("tp7", new IdeAppearanceSettings(path).Read().Id);
+            Assert.True(settings.TrySave(IdeAppearanceSettings.Schemes[1]));
+            Assert.Equal("tp6", new IdeAppearanceSettings(path).Read().Id);
+            File.WriteAllText(path, "unknown");
+            Assert.Equal("tp5", settings.Read().Id);
+            Assert.False(new IdeAppearanceSettings(Path.Combine(path, "color-scheme"))
+                .TrySave(IdeAppearanceSettings.Schemes[1]));
+        }
+        finally
+        {
+            directory.Delete(recursive: true);
+        }
     }
 
     [Fact]

@@ -419,3 +419,22 @@ build with 0 warnings, and all 392 tests passed on the combined revision.
 The local test host needed `DOTNET_ROLL_FORWARD=Major` because only the .NET 11
 runtime is installed. Both statistics reports are regenerated from this
 content revision; no release was made.*
+
+183. Agent (2026-11-21): Unter Ansicht > Darstellung lässt sich das
+Farbschema auswählen. Turbo Pascal 5 bleibt Standard. Zwei neue TinyPl0-Paletten
+orientieren sich an Turbo Pascal 6 und 7. Die Auswahl gilt sofort und wird im
+Benutzerprofil gespeichert. Abbrechen verwirft den Wechsel. Bei einem
+Schreibfehler bleibt die Farbe bis zum Ende der Sitzung aktiv.
+Der neue Wechseltest scheiterte ohne die Paletten und besteht mit ihnen.
+Locked Restore, Release-Build mit 0 Warnungen und alle 394 Tests bestehen.
+Im Pseudoterminal mit 134×27 Zeichen wurde der Dialog per Tastatur geöffnet und
+abgebrochen. Die Sichtprüfung in Terminal.app folgt vor dem Merge.
+
+*View > Appearance offers three color schemes. Turbo Pascal 5 remains the
+default. Two new TinyPl0 palettes take inspiration from Turbo Pascal 6 and 7.
+The choice takes effect immediately and is saved in the user profile. Cancel
+discards the change. If writing fails, the color remains active for the session.
+The new switching test failed without the palettes and passes with them.
+Locked restore, a Release build with 0 warnings, and all 394 tests passed.
+The dialog was opened and canceled by keyboard in a 134×27 pseudo-terminal.
+The visual check in Terminal.app follows before the merge.*

@@ -37,6 +37,8 @@ internal sealed class IdeMainView : Runnable
     private readonly IIdeCompilerSettingsDialogService compilerSettingsDialog;
     private readonly IIdeRuntimeDialogService runtimeDialogService;
     private readonly IIdeMessageDialogService messageDialogService;
+    private readonly IApplication? application;
+    private readonly IdeAppearanceSettings? appearanceSettings;
     private readonly Window sourceWindow;
     private readonly Window pCodeWindow;
     private readonly Pl0SourceEditorView sourceEditor;
@@ -67,12 +69,14 @@ internal sealed class IdeMainView : Runnable
     {
     }
 
-    internal IdeMainView(IApplication application) : this(
+    internal IdeMainView(IApplication application, IdeAppearanceSettings? appearanceSettings = null) : this(
         new TerminalGuiIdeFileDialogService(application),
         new PhysicalIdeFileStorage(),
         new TerminalGuiIdeCompilerSettingsDialogService(application),
         new TerminalGuiIdeRuntimeDialogService(application),
-        new TerminalGuiIdeMessageDialogService(application))
+        new TerminalGuiIdeMessageDialogService(application),
+        application,
+        appearanceSettings)
     {
     }
 
@@ -100,13 +104,17 @@ internal sealed class IdeMainView : Runnable
         IIdeFileStorage fileStorage,
         IIdeCompilerSettingsDialogService compilerSettingsDialog,
         IIdeRuntimeDialogService runtimeDialogService,
-        IIdeMessageDialogService messageDialogService)
+        IIdeMessageDialogService messageDialogService,
+        IApplication? application = null,
+        IdeAppearanceSettings? appearanceSettings = null)
     {
         this.fileDialogs = fileDialogs;
         this.fileStorage = fileStorage;
         this.compilerSettingsDialog = compilerSettingsDialog;
         this.runtimeDialogService = runtimeDialogService;
         this.messageDialogService = messageDialogService;
+        this.application = application;
+        this.appearanceSettings = appearanceSettings;
 
         var menuBar = CreateMenuBar();
         Add(menuBar);
@@ -360,6 +368,10 @@ internal sealed class IdeMainView : Runnable
                     Item("_Step", StepDebugFromMenu),
                     Item("_Abbrechen", AbortDebugFromMenu)
                 ]),
+                new MenuBarItem("An_sicht",
+                [
+                    Item("_Darstellung / Appearance", OpenAppearanceSettings)
+                ]),
                 new MenuBarItem("_Hilfe",
                 [
                     Item("_Bedienung", NoOp),
@@ -368,6 +380,36 @@ internal sealed class IdeMainView : Runnable
                 ])
             ]
         };
+    }
+
+    private void OpenAppearanceSettings()
+    {
+        if (application is null || appearanceSettings is null)
+        {
+            return;
+        }
+
+        var themeManager = TuiConfigurationBuilder.Shared.ThemeManager;
+        var scheme = IdeAppearanceSettings.ShowDialog(application, themeManager.CurrentThemeName);
+        if (scheme is null)
+        {
+            return;
+        }
+
+        if (!themeManager.SwitchTheme(scheme.ThemeName))
+        {
+            messageDialogService.ShowInfo("Darstellung / Appearance",
+                "Farbschema konnte nicht geladen werden.\nThe color scheme could not be loaded.");
+            return;
+        }
+
+        SetNeedsDraw();
+        if (!appearanceSettings.TrySave(scheme))
+        {
+            messageDialogService.ShowInfo("Darstellung / Appearance",
+                "Farbschema gilt nur für diese Sitzung. Speichern fehlgeschlagen.\n"
+                + "The color scheme applies to this session only. Saving failed.");
+        }
     }
 
     private void CompileSourceFromMenu()
