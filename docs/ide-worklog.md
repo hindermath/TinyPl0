@@ -438,3 +438,16 @@ The new switching test failed without the palettes and passes with them.
 Locked restore, a Release build with 0 warnings, and all 394 tests passed.
 The dialog was opened and canceled by keyboard in a 134×27 pseudo-terminal.
 The visual check in Terminal.app follows before the merge.*
+
+184. Agent (2026-11-21): Bei der Sichtprüfung in Terminal.app mit 134×27
+Zeichen war Turbo Pascal 6 aktiv, aber die Zeile für Turbo Pascal 7 fehlte.
+Der Darstellungsdialog gibt der Auswahlliste jetzt Platz für alle drei Zeilen.
+OK ist die Standardschaltfläche. Der Pseudoterminal-Test bestätigte den
+Fehler vor der Korrektur und danach alle drei sichtbaren Optionen.
+Der Release-Build meldete 0 Warnungen. Alle 395 Tests bestanden.
+
+*In the 134×27 Terminal.app review, Turbo Pascal 6 was active but the Turbo
+Pascal 7 row was missing. The appearance dialog now leaves room for all three
+choices. OK is the default button. The pseudo-terminal reproduced the
+missing row and then confirmed that all three choices were visible.
+The Release build reported 0 warnings. All 395 tests passed.*

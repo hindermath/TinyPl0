@@ -63,25 +63,34 @@ internal sealed class IdeAppearanceSettings(string settingsPath)
     internal static IdeColorScheme? ShowDialog(IApplication app, string currentTheme)
     {
         IdeColorScheme? accepted = null;
+        using var dialog = CreateDialog(app, currentTheme, scheme => accepted = scheme);
+        dialog.SubViews.OfType<OptionSelector>().Single().SetFocus();
+        app.Run(dialog);
+        return accepted;
+    }
+
+    internal static Dialog CreateDialog(IApplication app, string currentTheme, Action<IdeColorScheme> accept)
+    {
         var indices = Enumerable.Range(0, Schemes.Count).ToArray();
         var currentIndex = Array.FindIndex(indices, index => Schemes[index].ThemeName == currentTheme);
-        using var dialog = new Dialog { Title = "Darstellung / Appearance", Width = 54, Height = 9 };
+        // Der Platz für Rahmen, Schatten und Schaltflächen kommt zu den Auswahlzeilen hinzu.
+        // The border, shadow and buttons need room in addition to the option rows.
+        var dialog = new Dialog { Title = "Darstellung / Appearance", Width = 54, Height = Schemes.Count + 9 };
         var choices = new OptionSelector
         {
             X = 1,
             Y = 1,
             Width = Dim.Fill(1),
-            Height = Schemes.Count,
             Values = indices,
             Labels = Schemes.Select(scheme => scheme.Label).ToArray(),
             Value = Math.Max(0, currentIndex)
         };
-        var ok = new Button { Text = "_OK", IsDefault = true };
+        var ok = new Button { Text = "_OK" };
         var cancel = new Button { Text = "_Abbrechen / Cancel" };
         ok.Accepting += (_, e) =>
         {
             e.Handled = true;
-            accepted = Schemes[choices.Value ?? 0];
+            accept(Schemes[choices.Value ?? 0]);
             app.RequestStop(dialog);
         };
         cancel.Accepting += (_, e) =>
@@ -90,10 +99,8 @@ internal sealed class IdeAppearanceSettings(string settingsPath)
             app.RequestStop(dialog);
         };
         dialog.Add(choices);
-        dialog.AddButton(ok);
         dialog.AddButton(cancel);
-        choices.SetFocus();
-        app.Run(dialog);
-        return accepted;
+        dialog.AddButton(ok);
+        return dialog;
     }
 }

@@ -9,6 +9,25 @@ namespace Pl0.Tests;
 public sealed class IdeContrastTests
 {
     [Fact]
+    public void Appearance_Dialog_Fits_All_Three_Choices_At_134_By_27()
+    {
+        using var app = Pl0.Ide.Program.CreateApplication();
+        using var dialog = IdeAppearanceSettings.CreateDialog(app, "TinyPl0 TP6", _ => { });
+        Assert.True(dialog.Layout(new System.Drawing.Size(134, 27)));
+
+        var selector = Assert.Single(dialog.SubViews.OfType<OptionSelector>());
+        var choices = selector.SubViews.OfType<CheckBox>().ToArray();
+        Assert.Equal(3, choices.Length);
+        Assert.Equal(1, selector.Value);
+        Assert.All(choices, choice => Assert.True(selector.Viewport.Contains(choice.Frame),
+            $"The choice '{choice.Title}' is clipped."));
+        var ok = Assert.Single(dialog.Buttons, button => button.IsDefault);
+        Assert.Equal("_OK", ok.Text);
+        Assert.True(choices.Max(choice => choice.FrameToScreen().Bottom)
+                    <= dialog.Buttons.Min(button => button.FrameToScreen().Top));
+    }
+
+    [Fact]
     public void Alternate_Themes_Update_Existing_Editor_And_Menu()
     {
         Assert.True(IdeLookAndFeel.ApplyTurboPascalThemeIfAvailable());
