@@ -65,10 +65,10 @@ internal sealed class IdeRainbowAsciiArtView : TextView
             return;
         }
 
-        var scheme = ColorScheme;
+        var scheme = GetScheme();
         var background = scheme?.Normal.Background ?? Color.Black;
         var foreground = RainbowColors[colorIndex % RainbowColors.Length];
-        SetAttribute(new Terminal.Gui.Attribute(foreground, background));
+        SetAttribute(new Terminal.Gui.Drawing.Attribute(foreground, background));
     }
 
     private void RebuildRainbowMap(IReadOnlyList<string> asciiArt)

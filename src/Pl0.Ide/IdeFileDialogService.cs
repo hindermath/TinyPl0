@@ -11,8 +11,16 @@ internal interface IIdeFileDialogService
 
 internal sealed class TerminalGuiIdeFileDialogService : IIdeFileDialogService
 {
+    private readonly IApplication? application;
+
+    public TerminalGuiIdeFileDialogService(IApplication? application = null)
+    {
+        this.application = application;
+    }
+
     public string? ShowOpenDialog()
     {
+        var app = application ?? throw new InvalidOperationException("Die IDE-Anwendung wurde nicht initialisiert.");
         var allowedTypes = CreateOpenAllowedTypes();
         var dialog = new OpenDialog
         {
@@ -23,7 +31,7 @@ internal sealed class TerminalGuiIdeFileDialogService : IIdeFileDialogService
             AllowedTypes = allowedTypes
         };
 
-        Application.Run(dialog);
+        app.Run(dialog);
         if (dialog.Canceled)
         {
             return null;
@@ -34,6 +42,7 @@ internal sealed class TerminalGuiIdeFileDialogService : IIdeFileDialogService
 
     public string? ShowSaveDialog(string? currentPath)
     {
+        var app = application ?? throw new InvalidOperationException("Die IDE-Anwendung wurde nicht initialisiert.");
         var allowedTypes = CreateSaveAllowedTypes();
         var dialog = new SaveDialog
         {
@@ -48,7 +57,7 @@ internal sealed class TerminalGuiIdeFileDialogService : IIdeFileDialogService
             dialog.Path = currentPath;
         }
 
-        Application.Run(dialog);
+        app.Run(dialog);
         if (dialog.Canceled)
         {
             return null;
@@ -59,6 +68,7 @@ internal sealed class TerminalGuiIdeFileDialogService : IIdeFileDialogService
 
     public string? ShowExportDialog(IdeEmitMode mode, string? suggestedPath)
     {
+        var app = application ?? throw new InvalidOperationException("Die IDE-Anwendung wurde nicht initialisiert.");
         var allowedTypes = mode == IdeEmitMode.Cod
             ? CreateExportCodAllowedTypes()
             : CreateExportAsmAllowedTypes();
@@ -76,7 +86,7 @@ internal sealed class TerminalGuiIdeFileDialogService : IIdeFileDialogService
             dialog.Path = suggestedPath;
         }
 
-        Application.Run(dialog);
+        app.Run(dialog);
         if (dialog.Canceled)
         {
             return null;

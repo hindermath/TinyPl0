@@ -6,33 +6,17 @@ internal static class Program
 {
     private static int Main()
     {
-        var app = CreateApplication();
-        var previousApplication = ApplicationImpl.Instance;
+        using var app = CreateApplication();
 
-        ApplicationImpl.ChangeInstance(app);
-
-        try
-        {
-            app.Init();
-            _ = IdeLookAndFeel.ApplyTurboPascalThemeIfAvailable();
-            var mainView = new IdeMainView();
-            app.Run(mainView);
-            return mainView.ExitCode;
-        }
-        finally
-        {
-            app.Shutdown();
-            if (app is IDisposable disposable)
-            {
-                disposable.Dispose();
-            }
-
-            ApplicationImpl.ChangeInstance(previousApplication);
-        }
+        app.Init();
+        _ = IdeLookAndFeel.ApplyTurboPascalThemeIfAvailable();
+        var mainView = new IdeMainView(app);
+        app.Run(mainView);
+        return mainView.ExitCode;
     }
 
     internal static IApplication CreateApplication()
     {
-        return new ApplicationV2();
+        return Application.Create();
     }
 }

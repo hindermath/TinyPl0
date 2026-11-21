@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Configuration;
 using Terminal.Gui;
 
 namespace Pl0.Ide;
@@ -10,15 +11,15 @@ internal static class IdeLookAndFeel
     {
         try
         {
-            var themeManager = ThemeManager.Instance;
-            var availableThemes = ThemeManager.Themes;
-            if (availableThemes is null || !availableThemes.ContainsKey(TurboPascalThemeName))
+            var configuration = TuiConfigurationBuilder.Shared.Configuration;
+            if (configuration is null || !configuration.GetSection("Themes").GetChildren()
+                    .Any(theme => string.Equals(theme.Key, TurboPascalThemeName, StringComparison.OrdinalIgnoreCase)))
             {
                 return false;
             }
 
-            themeManager.Theme = TurboPascalThemeName;
-            return string.Equals(themeManager.Theme, TurboPascalThemeName, StringComparison.Ordinal);
+            ThemeManager.Theme = TurboPascalThemeName;
+            return string.Equals(ThemeManager.Theme, TurboPascalThemeName, StringComparison.Ordinal);
         }
         catch
         {

@@ -300,3 +300,26 @@ constructor and nine-value deconstruction while keeping resource limits as init
 properties. The editor binary-searches sorted highlight spans, and the test
 project pins `Microsoft.Build.Tasks.Git` 10.0.303. Version `1.124.805.101`
 records two further test runs; no release was created.*
+
+178. Agent (2026-11-21): Dependabot-PR #118 aktualisiert `Terminal.Gui` von
+2.0.0 auf 2.5.0. Der rote CI-Restore (`NU1004`) fuehrte zur aktualisierten
+Test-Lockdatei. Der erste lokale Build zeigte 41 API-Fehler; die IDE nutzt nun
+die neuen Namespaces, `Runnable`, `OptionSelector`, Instanz-Dialoge und
+Menue-Konstruktoren. Locked Restore und Release-Build bestehen. Lokal bestehen
+377 von 377 Tests mit .NET-11-Rollforward, weil die .NET-10-Laufzeit fehlt.
+Ein Terminal-Smoke-Test oeffnete IDE und Compiler-Einstellungen, brach den
+Dialog ab und beendete die IDE ueber das Menue. Der NuGet-Audit fuer IDE und
+Tests meldet keine bekannte Schwachstelle. `TextView` ist in 2.5.0 veraltet;
+ein Editorwechsel bleibt ein eigener Folgeauftrag. Die IDE-Version ist auf
+`1.118.858.111` ausgerichtet; ein Release wurde nicht erstellt.
+
+*Dependabot PR #118 updates `Terminal.Gui` from 2.0.0 to 2.5.0. The red CI
+restore (`NU1004`) led to an updated test lockfile. The first local build
+showed 41 API errors; the IDE now uses the new namespaces, `Runnable`,
+`OptionSelector`, instance dialogs, and menu constructors. Locked restore and
+Release build pass. All 377 local tests pass with .NET 11 roll-forward because
+the .NET 10 runtime is unavailable locally. A terminal smoke test opened the
+IDE and compiler settings, canceled the dialog, and exited through the menu.
+The IDE and test NuGet audits report no known vulnerability. `TextView` is
+obsolete in 2.5.0; an editor migration needs a separate follow-up. The IDE
+version is aligned to `1.118.858.111`; no release was created.*

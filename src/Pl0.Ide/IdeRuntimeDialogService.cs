@@ -10,8 +10,16 @@ internal interface IIdeRuntimeDialogService
 
 internal sealed class TerminalGuiIdeRuntimeDialogService : IIdeRuntimeDialogService
 {
+    private readonly IApplication? application;
+
+    public TerminalGuiIdeRuntimeDialogService(IApplication? application = null)
+    {
+        this.application = application;
+    }
+
     public int? ReadInt(string prompt)
     {
+        var app = application ?? throw new InvalidOperationException("Die IDE-Anwendung wurde nicht initialisiert.");
         int? value = null;
 
         var dialog = new Dialog
@@ -47,9 +55,8 @@ internal sealed class TerminalGuiIdeRuntimeDialogService : IIdeRuntimeDialogServ
         };
         cancelButton.Accepting += (_, e) =>
         {
-            e.Cancel = true;
-            dialog.Canceled = true;
-            Application.RequestStop(dialog);
+            e.Handled = true;
+            app.RequestStop(dialog);
         };
 
         var okButton = new Button
@@ -59,7 +66,7 @@ internal sealed class TerminalGuiIdeRuntimeDialogService : IIdeRuntimeDialogServ
         };
         okButton.Accepting += (_, e) =>
         {
-            e.Cancel = true;
+            e.Handled = true;
             var input = inputField.Text?.ToString() ?? string.Empty;
             if (!int.TryParse(input, NumberStyles.Integer, CultureInfo.InvariantCulture, out var parsed))
             {
@@ -68,15 +75,14 @@ internal sealed class TerminalGuiIdeRuntimeDialogService : IIdeRuntimeDialogServ
             }
 
             value = parsed;
-            dialog.Canceled = false;
-            Application.RequestStop(dialog);
+            app.RequestStop(dialog);
         };
 
         dialog.Add(promptLabel, inputField, validationLabel);
         dialog.AddButton(cancelButton);
         dialog.AddButton(okButton);
 
-        Application.Run(dialog);
-        return dialog.Canceled ? null : value;
+        app.Run(dialog);
+        return value;
     }
 }

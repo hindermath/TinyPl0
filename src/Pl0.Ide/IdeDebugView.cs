@@ -53,12 +53,12 @@ internal sealed class IdeDebugView : TextView
             return;
         }
 
-        var scheme = ColorScheme;
+        var scheme = GetScheme();
         var background = scheme?.Normal.Background ?? Color.Black;
         var attribute = highlightKind switch
         {
-            IdeDebugHighlightKind.BasePointer => new Terminal.Gui.Attribute(Color.BrightYellow, background),
-            IdeDebugHighlightKind.StackPointer => new Terminal.Gui.Attribute(Color.BrightBlue, background),
+            IdeDebugHighlightKind.BasePointer => new Terminal.Gui.Drawing.Attribute(Color.BrightYellow, background),
+            IdeDebugHighlightKind.StackPointer => new Terminal.Gui.Drawing.Attribute(Color.BrightBlue, background),
             _ => scheme?.Normal ?? default
         };
 
