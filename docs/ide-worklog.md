@@ -353,6 +353,21 @@ menu, and compiler dialog with dark text areas and exited normally. The PTY
 used basic ANSI colors; the actual palettes of both macOS Terminal profiles
 still matter for a visual check. No release was created.*
 
+180. Agent (2026-11-21): Der Statistik-Workflow verwendet nun seine eigene
+Datei als Cache-Abhaengigkeit fuer `setup-uv`. Der bisherige Windows-Hinweis
+zu fehlenden Python-Manifesten ist die rote Ausgangsevidenz. Die gepinnte
+Spec-Kit-Revision steht in derselben Workflow-Datei, sodass ihre Aenderung
+den Cache neu schluesselt. IDE-Verhalten und Tests bleiben unveraendert;
+der Buildzaehler bleibt bei 116. Der neue CI-Lauf muss die Windows-Meldung
+ohne diese Warnung bestaetigen.
+
+*The statistics workflow now uses its own file as the `setup-uv` cache
+dependency. The former Windows notice about missing Python manifests is the
+red baseline evidence. The pinned Spec Kit revision is in that workflow file,
+so changing it changes the cache key. IDE behavior and tests are unchanged;
+the build counter stays at 116. The new CI run must confirm that the Windows
+job no longer reports this warning.*
+
 181. Agent (2026-11-21): Fuer Folge-PR #138 nutzt die IDE
 `Terminal.Gui.Editor` 2.5.7 statt `TextView`. Quelleditor, drei
 Ausgabefenster, Debugfenster und Regenbogenansicht behalten ihre Aufgaben;
@@ -363,12 +378,13 @@ jetzt. Alle 392 Tests, Locked Restore und Release-Build bestehen; der Build
 meldet 0 Warnungen. NuGet meldet keine bekannte Schwachstelle in den
 IDE-Abhaengigkeiten. Ein PTY-Test mit 134x27 Zeichen pruefte Start, Texteingabe,
 Cursorstatus und Menue. Eine Sichtpruefung in Terminal.app mit Editor,
-Ausgaben, Debug, Dialog und Fokuswechsel steht vor der Review-Abnahme aus. Der
-erste Windows-CI-Lauf zeigte fuenf fehlschlagende Formatierungstests: Der neue
+Ausgaben, Debug, Dialog und Fokuswechsel bestaetigte Thorsten am PR-Kopf
+`263bbec` in Terminal.app. Der erste Windows-CI-Lauf zeigte fuenf
+fehlschlagende Formatierungstests: Der neue
 Editor gab LF statt des bisherigen Plattform-Zeilenumbruchs aus. Die IDE
 wandelt nun nur formatierte Texte am Editor-Eingang ins Systemformat um;
 danach bestehen lokal erneut 392 Tests und ein warnungsfreier Release-Build.
-Der Windows-CI-Nachlauf muss dies noch bestaetigen. Die Inhaltsversion lautet
+Der Windows-CI-Nachlauf bestand anschliessend. Die Inhaltsversion lautet
 `1.138.875.130`; ein Release wurde nicht erstellt.
 
 *For follow-up PR #138, the IDE uses `Terminal.Gui.Editor` 2.5.7 instead of
@@ -379,10 +395,11 @@ the unchanged post-PR-118 revision (1 of 1) and now passes. All 392 tests,
 locked restore, and Release build pass; the build reports 0 warnings. NuGet
 reports no known vulnerability in IDE dependencies. A 134x27 PTY smoke test
 covered startup, typing, caret status, and the menu. A visual Terminal.app
-check of the editor, output, debug, dialog, and focus changes remains before
-review acceptance. The first Windows CI run failed five formatting tests:
+check of the editor, output, debug, dialog, and focus changes was confirmed by
+Thorsten on PR head `263bbec` in Terminal.app. The first Windows CI run
+failed five formatting tests:
 the new editor exposed LF instead of the previous platform newline. The IDE
 now converts only formatted text at the editor boundary. After the fix, all
 392 local tests and a warning-free Release build pass again. A Windows CI
-rerun still needs to confirm this. The content version is `1.138.875.130`;
+rerun passed. The content version is `1.138.875.130`;
 no release was made.*
