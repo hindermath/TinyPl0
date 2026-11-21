@@ -94,11 +94,14 @@ try {
     $lifecycle | Set-Content (Join-Path $evidence 'lifecycle.log') -Encoding utf8NoBOM
     $surfaces = if ($IsWindows) { @('PowerShell') } else { @('Bash','PowerShell') }
     $decisions = @($surfaces | ForEach-Object { Get-ContextProofStatus $root $_ })
+    # Ein Wiederholungstest benutzt denselben Stichtag, auch nach Mitternacht.
+    # A repeated update uses the same cutoff, including across midnight.
+    $cutoff = $decisions[0].decision.asOf
     # Reale Quellen bleiben unveraendert; Encoding- und Schreibtests nur in der Kopie.
     # Keep real sources unchanged; only the isolated copy receives encoding/write tests.
     $null = Invoke-ContextProofCommand git @('clone','--quiet','--no-hardlinks',$root,$fixture)
     $copyBefore = Get-ContextProofHashSet $fixture
-    $null = Invoke-ContextProofCommand pwsh @('-NoProfile','-File',(Join-Path $fixture "$packageRelative/scripts/project-statistics.ps1"),'-Action','Update','-Repo',$fixture,'-Config',$config)
+    $null = Invoke-ContextProofCommand pwsh @('-NoProfile','-File',(Join-Path $fixture "$packageRelative/scripts/project-statistics.ps1"),'-Action','Update','-Repo',$fixture,'-Config',$config,'-AsOf',$cutoff)
     if ((Get-ContextProofHashSet $fixture) -cne $copyBefore -or (Invoke-ContextProofCommand git @('-C',$fixture,'status','--porcelain=v1'))) { throw 'Repeated update is not idempotent.' }
     $encodingDecisions = @()
     foreach ($variant in @('LF','CRLF','LF-BOM','CRLF-BOM')) {

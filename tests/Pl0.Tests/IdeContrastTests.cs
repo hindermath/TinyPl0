@@ -52,6 +52,7 @@ public sealed class IdeContrastTests
                 Assert.True(ContrastRatio(attribute.Foreground, attribute.Background) >= 4.5);
                 Assert.NotEqual(original, menu.GetScheme().Normal.Background);
                 Assert.Same(document, mainView.SourceEditor.Document);
+                AssertDividerContrast(mainView);
                 foreach (var name in new[] { "Base", "Accent", "Dialog", "Menu", "Error" })
                 {
                     AssertSchemeContrast(name);
@@ -121,6 +122,27 @@ public sealed class IdeContrastTests
         var focusBoundaryContrast = ContrastRatio(scheme.Focus.Background, scheme.Normal.Background);
         Assert.True(focusBoundaryContrast >= 3.0,
             $"{schemeName} focus boundary contrast was {focusBoundaryContrast:F2}:1; expected at least 3:1.");
+    }
+
+    [Fact]
+    public void Layout_Dividers_In_Default_Theme_Have_Visible_Glyphs_And_Focus()
+    {
+        Assert.True(IdeLookAndFeel.ApplyTurboPascalThemeIfAvailable());
+        using var mainView = new IdeMainView();
+        AssertDividerContrast(mainView);
+    }
+
+    private static void AssertDividerContrast(IdeMainView mainView)
+    {
+        var dividers = mainView.SubViews.OfType<IdeLayoutGrip>().ToArray();
+        Assert.Equal(4, dividers.Length);
+        foreach (var divider in dividers)
+        {
+            var scheme = divider.GetScheme();
+            Assert.True(ContrastRatio(scheme.Normal.Foreground, scheme.Normal.Background) >= 3);
+            Assert.True(ContrastRatio(scheme.Focus.Foreground, scheme.Focus.Background) >= 3);
+            Assert.True(ContrastRatio(scheme.Focus.Background, scheme.Normal.Background) >= 3);
+        }
     }
 
     [Fact]
