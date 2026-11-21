@@ -1,5 +1,6 @@
 using Pl0.Core;
 using Terminal.Gui;
+using EditorView = Terminal.Gui.Editor.Editor;
 
 namespace Pl0.Ide;
 
@@ -11,7 +12,7 @@ internal enum Pl0HighlightKind
     Operator
 }
 
-internal sealed class Pl0SourceEditorView : TextView
+internal sealed class Pl0SourceEditorView : EditorView
 {
     private const int MaximumHighlightedSourceLength = 200_000;
     private readonly CompilerOptions compilerOptions;
@@ -25,8 +26,9 @@ internal sealed class Pl0SourceEditorView : TextView
         ReadOnly = false;
         Text = string.Empty;
 
-        TextChanged += (_, _) => RebuildHighlightMap();
-        ContentsChanged += (_, _) => RebuildHighlightMap();
+        IndentationStrategy = null;
+        LineTransformers.Add(new IdeColorTransformer(GetHighlightAttributeAt));
+        ContentChanged += (_, _) => RebuildHighlightMap();
 
         RebuildHighlightMap();
     }
@@ -62,14 +64,13 @@ internal sealed class Pl0SourceEditorView : TextView
         return Pl0HighlightKind.None;
     }
 
-    protected override void OnDrawNormalColor(List<Cell> line, int idxCol, int idxRow)
+    private Terminal.Gui.Drawing.Attribute? GetHighlightAttributeAt(int rowIndex, int columnIndex)
     {
-        var highlightKind = GetHighlightKindAt(idxRow, idxCol);
+        var highlightKind = GetHighlightKindAt(rowIndex, columnIndex);
         var scheme = GetScheme();
         if (highlightKind == Pl0HighlightKind.None || scheme is null)
         {
-            base.OnDrawNormalColor(line, idxCol, idxRow);
-            return;
+            return null;
         }
 
         var attribute = highlightKind switch
@@ -80,7 +81,7 @@ internal sealed class Pl0SourceEditorView : TextView
             _ => scheme.Normal
         };
 
-        SetAttribute(attribute);
+        return attribute;
     }
 
     private void RebuildHighlightMap()

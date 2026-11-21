@@ -352,3 +352,27 @@ tests passed. Locked restore and the Release build pass. The build retains
 menu, and compiler dialog with dark text areas and exited normally. The PTY
 used basic ANSI colors; the actual palettes of both macOS Terminal profiles
 still matter for a visual check. No release was created.*
+
+181. Agent (2026-11-21): Fuer Folge-PR #138 nutzt die IDE
+`Terminal.Gui.Editor` 2.5.7 statt `TextView`. Quelleditor, drei
+Ausgabefenster, Debugfenster und Regenbogenansicht behalten ihre Aufgaben;
+Ausgaben bleiben schreibgeschuetzt. Inhalt, Cursor und Farbmarkierungen sind
+an Dokumentereignisse und visuelle Zeilen angepasst. Der neue Migrationstest
+schlug auf dem unveraenderten Stand nach PR #118 fehl (1 von 1) und besteht
+jetzt. Alle 392 Tests, Locked Restore und Release-Build bestehen; der Build
+meldet 0 Warnungen. NuGet meldet keine bekannte Schwachstelle in den
+IDE-Abhaengigkeiten. Ein PTY-Test mit 134x27 Zeichen pruefte Start, Texteingabe,
+Cursorstatus und Menue. Eine Sichtpruefung in Terminal.app mit Editor,
+Ausgaben, Debug, Dialog und Fokuswechsel steht vor der Review-Abnahme aus.
+Die IDE-Version lautet `1.138.872.128`; ein Release wurde nicht erstellt.
+
+*For follow-up PR #138, the IDE uses `Terminal.Gui.Editor` 2.5.7 instead of
+`TextView`. The source editor, three output panes, debug pane, and rainbow
+view keep their roles; output remains read-only. Content, caret, and colors
+now use document events and visual lines. The new migration test failed on
+the unchanged post-PR-118 revision (1 of 1) and now passes. All 392 tests,
+locked restore, and Release build pass; the build reports 0 warnings. NuGet
+reports no known vulnerability in IDE dependencies. A 134x27 PTY smoke test
+covered startup, typing, caret status, and the menu. A visual Terminal.app
+check of the editor, output, debug, dialog, and focus changes remains before
+review acceptance. The IDE version is `1.138.872.128`; no release was made.*

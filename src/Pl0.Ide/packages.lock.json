@@ -31,6 +31,16 @@
           "Wcwidth": "4.0.1"
         }
       },
+      "Terminal.Gui.Editor": {
+        "type": "Direct",
+        "requested": "[2.5.7, )",
+        "resolved": "2.5.7",
+        "contentHash": "7AjENfZ2xfRvaDQLXrkxttSkr1XAynH6KlRyn8eRSVpzKtthBUki3LV20AaN174Jg2yXQV+e017Mb5vs0d+4Bw==",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "10.0.7",
+          "Terminal.Gui": "2.4.17"
+        }
+      },
       "ColorHelper": {
         "type": "Transitive",
         "resolved": "1.8.1",
