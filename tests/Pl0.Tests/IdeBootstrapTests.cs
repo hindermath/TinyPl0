@@ -4,9 +4,11 @@ using Pl0.Vm;
 using Terminal.Gui;
 using Terminal.Gui.App;
 using Terminal.Gui.Views;
+using EditorView = Terminal.Gui.Editor.Editor;
 
 namespace Pl0.Tests;
 
+[Collection("IDE GUI")]
 public sealed class IdeBootstrapTests
 {
     [Fact]
@@ -47,7 +49,7 @@ public sealed class IdeBootstrapTests
             .OfType<Window>()
             .Single(window => window.Title.ToString() == "Quellcode");
 
-        var sourceEditor = Assert.Single(sourceWindow.SubViews.OfType<TextView>());
+        var sourceEditor = Assert.Single(sourceWindow.SubViews.OfType<EditorView>());
         Assert.Same(mainView.SourceEditor, sourceEditor);
         Assert.False(sourceEditor.ReadOnly);
         Assert.True(sourceEditor.Multiline);
@@ -59,6 +61,25 @@ public sealed class IdeBootstrapTests
         var mainView = new IdeMainView();
 
         Assert.Equal("Zeile 1, Spalte 1", mainView.SourceStatusLineText);
+    }
+
+    [Fact]
+    public void SourceWindow_Tracks_Caret_Position_Across_Lines()
+    {
+        var mainView = new IdeMainView();
+        mainView.SourceEditor.Text = "begin\nend.";
+        mainView.SourceEditor.CaretOffset = 7;
+
+        Assert.Equal("Zeile 2, Spalte 2", mainView.SourceStatusLineText);
+    }
+
+    [Fact]
+    public void Output_Windows_Remain_ReadOnly()
+    {
+        var mainView = new IdeMainView();
+
+        Assert.All(new[] { mainView.PCodeOutput, mainView.MessagesOutput,
+            mainView.RuntimeOutput, mainView.DebugOutput }, view => Assert.True(view.ReadOnly));
     }
 
     [Fact]

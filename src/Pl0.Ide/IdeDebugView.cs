@@ -1,4 +1,6 @@
 using Terminal.Gui;
+using Terminal.Gui.Editor.Document;
+using EditorView = Terminal.Gui.Editor.Editor;
 
 namespace Pl0.Ide;
 
@@ -15,7 +17,7 @@ internal readonly record struct IdeDebugHighlightSpan(
     int Length,
     IdeDebugHighlightKind Kind);
 
-internal sealed class IdeDebugView : TextView
+internal sealed class IdeDebugView : EditorView
 {
     internal static readonly Color BasePointerColor = new("#FFD700");
     internal static readonly Color StackPointerColor = new("#00FFFF");
@@ -26,12 +28,15 @@ internal sealed class IdeDebugView : TextView
         Multiline = true;
         ReadOnly = true;
         Text = string.Empty;
+        LineTransformers.Add(new IdeColorTransformer(GetHighlightAttributeAt));
     }
 
     internal void SetDebugContent(string text, IReadOnlyList<IdeDebugHighlightSpan> spans)
     {
-        Text = text;
         RebuildHighlightMap(spans);
+        // Ein neues Dokument verwirft zwischengespeicherte Farbzeilen nach jedem Debug-Schritt.
+        // A new document drops cached colored lines after each debug step.
+        Document = new TextDocument(text);
     }
 
     internal IdeDebugHighlightKind GetHighlightKindAt(int rowIndex, int columnIndex)
@@ -46,13 +51,12 @@ internal sealed class IdeDebugView : TextView
             : IdeDebugHighlightKind.None;
     }
 
-    protected override void OnDrawNormalColor(List<Cell> line, int idxCol, int idxRow)
+    private Terminal.Gui.Drawing.Attribute? GetHighlightAttributeAt(int rowIndex, int columnIndex)
     {
-        var highlightKind = GetHighlightKindAt(idxRow, idxCol);
+        var highlightKind = GetHighlightKindAt(rowIndex, columnIndex);
         if (highlightKind == IdeDebugHighlightKind.None)
         {
-            base.OnDrawNormalColor(line, idxCol, idxRow);
-            return;
+            return null;
         }
 
         var scheme = GetScheme();
@@ -64,7 +68,7 @@ internal sealed class IdeDebugView : TextView
             _ => scheme?.Normal ?? default
         };
 
-        SetAttribute(attribute);
+        return attribute;
     }
 
     private void RebuildHighlightMap(IReadOnlyList<IdeDebugHighlightSpan> spans)

@@ -5,6 +5,7 @@ using Terminal.Gui.Views;
 
 namespace Pl0.Tests;
 
+[Collection("IDE GUI")]
 public sealed class IdeContrastTests
 {
     [Fact]

@@ -1,8 +1,9 @@
 using Terminal.Gui;
+using EditorView = Terminal.Gui.Editor.Editor;
 
 namespace Pl0.Ide;
 
-internal sealed class IdeRainbowAsciiArtView : TextView
+internal sealed class IdeRainbowAsciiArtView : EditorView
 {
     private Dictionary<int, Dictionary<int, int>> rainbowMap = [];
 
@@ -23,12 +24,13 @@ internal sealed class IdeRainbowAsciiArtView : TextView
         Multiline = true;
         ReadOnly = true;
         Text = string.Empty;
+        LineTransformers.Add(new IdeColorTransformer(GetRainbowAttributeAt));
     }
 
     internal void SetAsciiArt(IReadOnlyList<string> asciiArt)
     {
-        Text = string.Join(Environment.NewLine, asciiArt);
         RebuildRainbowMap(asciiArt);
+        Text = string.Join(Environment.NewLine, asciiArt);
     }
 
     internal int GetRainbowColorIndexAt(int rowIndex, int columnIndex)
@@ -43,34 +45,18 @@ internal sealed class IdeRainbowAsciiArtView : TextView
             : -1;
     }
 
-    protected override void OnDrawNormalColor(List<Cell> line, int idxCol, int idxRow)
+    private Terminal.Gui.Drawing.Attribute? GetRainbowAttributeAt(int rowIndex, int columnIndex)
     {
-        ApplyRainbowColor(line, idxCol, idxRow, () => base.OnDrawNormalColor(line, idxCol, idxRow));
-    }
-
-    protected override void OnDrawReadOnlyColor(List<Cell> line, int idxCol, int idxRow)
-    {
-        ApplyRainbowColor(line, idxCol, idxRow, () => base.OnDrawReadOnlyColor(line, idxCol, idxRow));
-    }
-
-    protected override void OnDrawUsedColor(List<Cell> line, int idxCol, int idxRow)
-    {
-        ApplyRainbowColor(line, idxCol, idxRow, () => base.OnDrawUsedColor(line, idxCol, idxRow));
-    }
-
-    private void ApplyRainbowColor(List<Cell> line, int idxCol, int idxRow, Action drawBaseColor)
-    {
-        var colorIndex = GetRainbowColorIndexAt(idxRow, idxCol);
+        var colorIndex = GetRainbowColorIndexAt(rowIndex, columnIndex);
         if (colorIndex < 0)
         {
-            drawBaseColor();
-            return;
+            return null;
         }
 
         var scheme = GetScheme();
         var background = scheme?.Normal.Background ?? Color.Black;
         var foreground = RainbowColors[colorIndex % RainbowColors.Length];
-        SetAttribute(new Terminal.Gui.Drawing.Attribute(foreground, background));
+        return new Terminal.Gui.Drawing.Attribute(foreground, background);
     }
 
     private void RebuildRainbowMap(IReadOnlyList<string> asciiArt)

@@ -1,6 +1,8 @@
 using Pl0.Core;
 using Pl0.Vm;
 using Terminal.Gui;
+using Terminal.Gui.Editor.Document;
+using EditorView = Terminal.Gui.Editor.Editor;
 using System.Globalization;
 using System.Text;
 
@@ -39,9 +41,9 @@ internal sealed class IdeMainView : Runnable
     private readonly Window pCodeWindow;
     private readonly Pl0SourceEditorView sourceEditor;
     private readonly Label sourceStatusLine;
-    private readonly TextView pCodeOutput;
-    private readonly TextView messagesOutput;
-    private readonly TextView runtimeOutput;
+    private readonly EditorView pCodeOutput;
+    private readonly EditorView messagesOutput;
+    private readonly EditorView runtimeOutput;
     private readonly IdeDebugView debugOutput;
     private CompilationResult? lastCompilationResult;
     private VmStepResult? lastDebugStepResult;
@@ -167,18 +169,18 @@ internal sealed class IdeMainView : Runnable
 
         sourceStatusLine = CreateSourceStatusLine();
 
-        sourceEditor.ContentsChanged += (_, _) => RefreshSourceEditorState();
-        sourceEditor.UnwrappedCursorPositionChanged += (_, _) => RefreshSourceCursorStatus();
+        sourceEditor.ContentChanged += (_, _) => RefreshSourceEditorState();
+        sourceEditor.CaretChanged += (_, _) => RefreshSourceCursorStatus();
         RefreshSourceEditorState();
 
         Add(sourceWindow, pCodeWindow, messagesWindow, runtimeOutputWindow, debugWindow, sourceStatusLine);
     }
 
     internal Pl0SourceEditorView SourceEditor => sourceEditor;
-    internal TextView PCodeOutput => pCodeOutput;
-    internal TextView MessagesOutput => messagesOutput;
-    internal TextView RuntimeOutput => runtimeOutput;
-    internal TextView DebugOutput => debugOutput;
+    internal EditorView PCodeOutput => pCodeOutput;
+    internal EditorView MessagesOutput => messagesOutput;
+    internal EditorView RuntimeOutput => runtimeOutput;
+    internal EditorView DebugOutput => debugOutput;
     internal CompilationResult? LastCompilationResult => lastCompilationResult;
     internal string? CurrentSourcePath => currentSourcePath;
     internal string SourceWindowTitle => sourceWindow.Title?.ToString() ?? string.Empty;
@@ -272,7 +274,9 @@ internal sealed class IdeMainView : Runnable
             return false;
         }
 
-        sourceEditor.Text = formattedSource;
+        // Der Formatter liefert LF; die bisherige IDE zeigte formatierte Zeilen im Systemformat.
+        // The formatter emits LF; the previous IDE exposed formatted lines in the platform format.
+        sourceEditor.Text = formattedSource.Replace("\n", Environment.NewLine, StringComparison.Ordinal);
         messagesOutput.Text = "Quelltext formatiert.";
         return true;
     }
@@ -640,9 +644,9 @@ internal sealed class IdeMainView : Runnable
         };
     }
 
-    private static TextView CreateReadOnlyOutputView()
+    private static EditorView CreateReadOnlyOutputView()
     {
-        return new TextView
+        return new EditorView
         {
             X = 0,
             Y = 0,
@@ -699,9 +703,9 @@ internal sealed class IdeMainView : Runnable
 
     private void RefreshSourceCursorStatus()
     {
-        var row = Math.Max(0, sourceEditor.CurrentRow) + 1;
-        var column = Math.Max(0, sourceEditor.CurrentColumn) + 1;
-        sourceStatusLine.Text = $"Zeile {row}, Spalte {column}";
+        var location = sourceEditor.Document?.GetLocation(sourceEditor.CaretOffset)
+                       ?? new Terminal.Gui.Editor.Document.TextLocation(1, 1);
+        sourceStatusLine.Text = $"Zeile {location.Line}, Spalte {location.Column}";
     }
 
     private void UpdateDocumentTitles()
@@ -962,5 +966,10 @@ internal sealed class IdeMainView : Runnable
         runtimeOutput.Text = string.Empty;
     }
 
-    private void FlushRuntimeOutput() => runtimeOutput.Text = runtimeOutputBuffer.ToString();
+    private void FlushRuntimeOutput()
+    {
+        // Ein Dokumentwechsel vermeidet den inkrementellen Zeilencache bei grossen VM-Ausgaben.
+        // Replacing the document avoids the incremental line cache for large VM output.
+        runtimeOutput.Document = new TextDocument(runtimeOutputBuffer.ToString());
+    }
 }

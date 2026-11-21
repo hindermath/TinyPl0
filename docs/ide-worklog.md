@@ -367,3 +367,55 @@ red baseline evidence. The pinned Spec Kit revision is in that workflow file,
 so changing it changes the cache key. IDE behavior and tests are unchanged;
 the build counter stays at 116. The new CI run must confirm that the Windows
 job no longer reports this warning.*
+
+181. Agent (2026-11-21): Fuer Folge-PR #138 nutzt die IDE
+`Terminal.Gui.Editor` 2.5.7 statt `TextView`. Quelleditor, drei
+Ausgabefenster, Debugfenster und Regenbogenansicht behalten ihre Aufgaben;
+Ausgaben bleiben schreibgeschuetzt. Inhalt, Cursor und Farbmarkierungen sind
+an Dokumentereignisse und visuelle Zeilen angepasst. Der neue Migrationstest
+schlug auf dem unveraenderten Stand nach PR #118 fehl (1 von 1) und besteht
+jetzt. Alle 392 Tests, Locked Restore und Release-Build bestehen; der Build
+meldet 0 Warnungen. NuGet meldet keine bekannte Schwachstelle in den
+IDE-Abhaengigkeiten. Ein PTY-Test mit 134x27 Zeichen pruefte Start, Texteingabe,
+Cursorstatus und Menue. Eine Sichtpruefung in Terminal.app mit Editor,
+Ausgaben, Debug, Dialog und Fokuswechsel bestaetigte Thorsten am PR-Kopf
+`263bbec` in Terminal.app. Der erste Windows-CI-Lauf zeigte fuenf
+fehlschlagende Formatierungstests: Der neue
+Editor gab LF statt des bisherigen Plattform-Zeilenumbruchs aus. Die IDE
+wandelt nun nur formatierte Texte am Editor-Eingang ins Systemformat um;
+danach bestehen lokal erneut 392 Tests und ein warnungsfreier Release-Build.
+Der Windows-CI-Nachlauf bestand anschliessend. Die Inhaltsversion lautet
+`1.138.875.130`; ein Release wurde nicht erstellt.
+
+*For follow-up PR #138, the IDE uses `Terminal.Gui.Editor` 2.5.7 instead of
+`TextView`. The source editor, three output panes, debug pane, and rainbow
+view keep their roles; output remains read-only. Content, caret, and colors
+now use document events and visual lines. The new migration test failed on
+the unchanged post-PR-118 revision (1 of 1) and now passes. All 392 tests,
+locked restore, and Release build pass; the build reports 0 warnings. NuGet
+reports no known vulnerability in IDE dependencies. A 134x27 PTY smoke test
+covered startup, typing, caret status, and the menu. A visual Terminal.app
+check of the editor, output, debug, dialog, and focus changes was confirmed by
+Thorsten on PR head `263bbec` in Terminal.app. The first Windows CI run
+failed five formatting tests:
+the new editor exposed LF instead of the previous platform newline. The IDE
+now converts only formatted text at the editor boundary. After the fix, all
+392 local tests and a warning-free Release build pass again. A Windows CI
+rerun passed. The content version is `1.138.875.130`;
+no release was made.*
+
+182. Agent (2026-11-21): Nach dem Merge von PR #137 wurde PR #138
+konfliktfrei mit `main` zusammengefuehrt. Der Statistik-Workflow enthaelt
+jetzt die Cache-Abhaengigkeit; die IDE-Migration bleibt erhalten. Locked
+Restore, Release-Build mit 0 Warnungen und alle 392 Tests bestanden auf dem
+gemeinsamen Stand. Der lokale Testhost benoetigte wegen der vorhandenen
+.NET-11-Runtime `DOTNET_ROLL_FORWARD=Major`. Die beiden Statistikberichte
+werden aus dieser Inhaltsrevision neu erzeugt; es entstand kein Release.
+
+*After PR #137 was merged, PR #138 was reconciled with `main` without
+remaining conflicts. The statistics workflow now contains the cache
+dependency, and the IDE migration remains intact. Locked restore, a Release
+build with 0 warnings, and all 392 tests passed on the combined revision.
+The local test host needed `DOTNET_ROLL_FORWARD=Major` because only the .NET 11
+runtime is installed. Both statistics reports are regenerated from this
+content revision; no release was made.*

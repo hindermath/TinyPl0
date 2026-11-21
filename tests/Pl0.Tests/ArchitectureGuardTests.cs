@@ -44,7 +44,7 @@ public sealed class ArchitectureGuardTests
         // SourceLink-Version; es wird nicht als Laufzeitabhängigkeit ausgeliefert.
         // EN: The private build package overrides a vulnerable transitive
         // SourceLink version; it is not shipped as a runtime dependency.
-        Assert.Equal(["Microsoft.Build.Tasks.Git", "Terminal.Gui"], packageReferences);
+        Assert.Equal(["Microsoft.Build.Tasks.Git", "Terminal.Gui", "Terminal.Gui.Editor"], packageReferences);
     }
 
     [Fact]
