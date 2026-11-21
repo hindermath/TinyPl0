@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Pl0.Ide;
 
-internal sealed class IdeMainView : Toplevel
+internal sealed class IdeMainView : Runnable
 {
     private static readonly Action NoOp = static () => { };
     private const int SuccessfulExitCode = 0;
@@ -62,6 +62,15 @@ internal sealed class IdeMainView : Toplevel
         new TerminalGuiIdeCompilerSettingsDialogService(),
         new TerminalGuiIdeRuntimeDialogService(),
         new TerminalGuiIdeMessageDialogService())
+    {
+    }
+
+    internal IdeMainView(IApplication application) : this(
+        new TerminalGuiIdeFileDialogService(application),
+        new PhysicalIdeFileStorage(),
+        new TerminalGuiIdeCompilerSettingsDialogService(application),
+        new TerminalGuiIdeRuntimeDialogService(application),
+        new TerminalGuiIdeMessageDialogService(application))
     {
     }
 
@@ -159,7 +168,7 @@ internal sealed class IdeMainView : Toplevel
         sourceStatusLine = CreateSourceStatusLine();
 
         sourceEditor.ContentsChanged += (_, _) => RefreshSourceEditorState();
-        sourceEditor.UnwrappedCursorPosition += (_, _) => RefreshSourceCursorStatus();
+        sourceEditor.UnwrappedCursorPositionChanged += (_, _) => RefreshSourceCursorStatus();
         RefreshSourceEditorState();
 
         Add(sourceWindow, pCodeWindow, messagesWindow, runtimeOutputWindow, debugWindow, sourceStatusLine);
@@ -313,44 +322,46 @@ internal sealed class IdeMainView : Toplevel
 
     private MenuBar CreateMenuBar()
     {
+        static MenuItem Item(string title, Action action) => new(title, string.Empty, action, Key.Empty);
+
         return new MenuBar
         {
             Menus =
             [
                 new MenuBarItem("_Datei",
                 [
-                    new MenuItem("_Neu", string.Empty, CreateNewSourceFileFromMenu, () => true, null, default),
-                    new MenuItem("_Oeffnen", string.Empty, OpenSourceFileFromMenu, () => true, null, default),
-                    new MenuItem("_Speichern", string.Empty, SaveSourceFileFromMenu, () => true, null, default),
-                    new MenuItem("_Beenden", string.Empty, ExitApplicationFromMenu, () => true, null, default)
-                ], null),
+                    Item("_Neu", CreateNewSourceFileFromMenu),
+                    Item("_Oeffnen", OpenSourceFileFromMenu),
+                    Item("_Speichern", SaveSourceFileFromMenu),
+                    Item("_Beenden", ExitApplicationFromMenu)
+                ]),
                 new MenuBarItem("_Bearbeiten",
                 [
-                    new MenuItem("_Formatieren", string.Empty, FormatSourceFromMenu, () => true, null, default)
-                ], null),
+                    Item("_Formatieren", FormatSourceFromMenu)
+                ]),
                 new MenuBarItem("_Kompilieren",
                 [
-                    new MenuItem("_Einstellungen", string.Empty, OpenCompilerSettingsDialogFromMenu, () => true, null, default),
-                    new MenuItem("_Build", string.Empty, CompileSourceFromMenu, () => true, null, default),
-                    new MenuItem("Export _Asm", string.Empty, ExportAsmFromMenu, () => true, null, default),
-                    new MenuItem("Export _Cod", string.Empty, ExportCodFromMenu, () => true, null, default)
-                ], null),
+                    Item("_Einstellungen", OpenCompilerSettingsDialogFromMenu),
+                    Item("_Build", CompileSourceFromMenu),
+                    Item("Export _Asm", ExportAsmFromMenu),
+                    Item("Export _Cod", ExportCodFromMenu)
+                ]),
                 new MenuBarItem("_Ausfuehren",
                 [
-                    new MenuItem("Kompilieren _und Run", string.Empty, CompileAndRunFromMenu, () => true, null, default),
-                    new MenuItem("_Run", string.Empty, RunCompiledCodeFromMenu, () => true, null, default)
-                ], null),
+                    Item("Kompilieren _und Run", CompileAndRunFromMenu),
+                    Item("_Run", RunCompiledCodeFromMenu)
+                ]),
                 new MenuBarItem("Debu_g",
                 [
-                    new MenuItem("_Step", string.Empty, StepDebugFromMenu, () => true, null, default),
-                    new MenuItem("_Abbrechen", string.Empty, AbortDebugFromMenu, () => true, null, default)
-                ], null),
+                    Item("_Step", StepDebugFromMenu),
+                    Item("_Abbrechen", AbortDebugFromMenu)
+                ]),
                 new MenuBarItem("_Hilfe",
                 [
-                    new MenuItem("_Bedienung", string.Empty, NoOp, () => true, null, default),
-                    new MenuItem("_PL/0-Sprache", string.Empty, NoOp, () => true, null, default),
-                    new MenuItem("_Ueber", string.Empty, ShowAboutDialogFromMenu, () => true, null, default)
-                ], null)
+                    Item("_Bedienung", NoOp),
+                    Item("_PL/0-Sprache", NoOp),
+                    Item("_Ueber", ShowAboutDialogFromMenu)
+                ])
             ]
         };
     }
@@ -428,9 +439,9 @@ internal sealed class IdeMainView : Toplevel
     internal void ExitApplication(int exitCode = SuccessfulExitCode)
     {
         ExitCode = exitCode;
-        if (ApplicationImpl.Instance is not null)
+        if (App is not null)
         {
-            Application.RequestStop(this);
+            App.RequestStop(this);
         }
     }
 

@@ -65,7 +65,7 @@ internal sealed class Pl0SourceEditorView : TextView
     protected override void OnDrawNormalColor(List<Cell> line, int idxCol, int idxRow)
     {
         var highlightKind = GetHighlightKindAt(idxRow, idxCol);
-        var scheme = ColorScheme;
+        var scheme = GetScheme();
         if (highlightKind == Pl0HighlightKind.None || scheme is null)
         {
             base.OnDrawNormalColor(line, idxCol, idxRow);

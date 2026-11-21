@@ -145,3 +145,33 @@ conflicts are both zero.
 Diese interne Evidence ersetzt keine externe Zertifizierung oder
 Rechtsberatung. / This internal evidence does not replace external
 certification or legal advice.
+
+## Nachtrag PR #118 (2026-11-21) / PR #118 addendum
+
+Deutsch: `Terminal.Gui` 2.5.0 ist im IDE-Projekt und in beiden betroffenen
+Lockdateien gebunden. Das Paket nennt MIT als Lizenz und den Git-Commit
+`ece73d25c37df9bb17cb0c0d2171abd4d98eeaff` als Quelle. `dotnet package
+list --vulnerable --include-transitive --no-restore` meldete fuer IDE und
+Testprojekt keine bekannte verwundbare Abhaengigkeit. Der Locked Restore,
+Release-Build und 377 Tests bestanden lokal; CI auf den Zielplattformen steht
+noch aus. NIST SSDF und CWE Top 25 gelten; die Paketaufnahme wird im
+Release-SBOM erfasst, und CI-Build-Evidence folgt dem SLSA-Ziel. VEX ist mangels
+bekanntem Fund derzeit `N/A`. ASVS, AI-SBOM und Zero Trust sind `N/A`, weil
+dieser lokale IDE-Paketwechsel weder Web-/Auth-Dienst noch KI-Laufzeit oder
+verteilte Architektur einfuehrt. CAPEC erfordert ohne neue Trust Boundary kein
+neues Angriffsszenario; SAMM bleibt die periodische Projektbewertung. Die
+OpenSSF-Scorecard des oeffentlichen Lieferanten ist vor einem Release erneut
+zu sichten.
+
+*English: `Terminal.Gui` 2.5.0 is pinned in the IDE project and both affected
+lockfiles. The package declares the MIT licence and source commit
+`ece73d25c37df9bb17cb0c0d2171abd4d98eeaff`. The transitive NuGet
+vulnerability query reported no known vulnerable dependency for the IDE or
+test project. Locked restore, Release build, and 377 tests passed locally;
+target-platform CI is pending. NIST SSDF and CWE Top 25 apply. The dependency
+belongs in the release SBOM, and CI build evidence follows the SLSA target.
+VEX is currently `N/A` because no finding is known. ASVS, AI-SBOM, and Zero
+Trust are `N/A`: this local IDE update adds no web or authentication service,
+AI runtime, or distributed architecture. No new trust boundary calls for a
+CAPEC scenario; SAMM remains a periodic project assessment. Review the public
+supplier's OpenSSF Scorecard again before a release.*

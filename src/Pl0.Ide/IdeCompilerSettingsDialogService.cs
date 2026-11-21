@@ -11,8 +11,16 @@ internal interface IIdeCompilerSettingsDialogService
 
 internal sealed class TerminalGuiIdeCompilerSettingsDialogService : IIdeCompilerSettingsDialogService
 {
+    private readonly IApplication? application;
+
+    public TerminalGuiIdeCompilerSettingsDialogService(IApplication? application = null)
+    {
+        this.application = application;
+    }
+
     public IdeCompilerSettingsDialogResult? ShowCompilerSettingsDialog(CompilerOptions currentOptions, IdeCodeDisplayMode currentCodeDisplayMode)
     {
+        var app = application ?? throw new InvalidOperationException("Die IDE-Anwendung wurde nicht initialisiert.");
         var state = new IdeCompilerSettingsDialogState(currentOptions, currentCodeDisplayMode);
         IdeCompilerSettingsDialogResult? acceptedOptions = null;
 
@@ -29,13 +37,16 @@ internal sealed class TerminalGuiIdeCompilerSettingsDialogService : IIdeCompiler
             Y = 1,
             Text = "Dialect:"
         };
-        var dialectRadio = new RadioGroup
+        // Die Auswahl-API trennt stabile Werte von angezeigten Texten; die Indizes bleiben dadurch eindeutig.
+        // The selector API separates stable values from labels, keeping the indices unambiguous.
+        var dialectRadio = new OptionSelector
         {
             X = 28,
             Y = 1,
             Width = 18,
             Height = 2,
-            RadioLabels = ["Classic", "Extended"]
+            Values = [0, 1],
+            Labels = ["Classic", "Extended"]
         };
 
         var displayModeLabel = new Label
@@ -44,13 +55,14 @@ internal sealed class TerminalGuiIdeCompilerSettingsDialogService : IIdeCompiler
             Y = 4,
             Text = "Code-Anzeige:"
         };
-        var displayModeRadio = new RadioGroup
+        var displayModeRadio = new OptionSelector
         {
             X = 28,
             Y = 4,
             Width = 20,
             Height = 2,
-            RadioLabels = ["P-Code", "Assembler"]
+            Values = [0, 1],
+            Labels = ["P-Code", "Assembler"]
         };
 
         var maxLevelLabel = CreateLabel("MaxLevel:", 7);
@@ -81,7 +93,7 @@ internal sealed class TerminalGuiIdeCompilerSettingsDialogService : IIdeCompiler
         };
         resetButton.Accepting += (_, e) =>
         {
-            e.Cancel = true;
+            e.Handled = true;
             state.ResetToDefaults();
             ApplyStateToFields(state, dialectRadio, displayModeRadio, maxLevelField, maxAddressField, maxIdentifierLengthField, maxNumberDigitsField, maxSymbolCountField, maxCodeLengthField);
             validationLabel.Text = "Standardwerte geladen.";
@@ -93,9 +105,8 @@ internal sealed class TerminalGuiIdeCompilerSettingsDialogService : IIdeCompiler
         };
         cancelButton.Accepting += (_, e) =>
         {
-            e.Cancel = true;
-            dialog.Canceled = true;
-            Application.RequestStop(dialog);
+            e.Handled = true;
+            app.RequestStop(dialog);
         };
 
         var okButton = new Button
@@ -105,7 +116,7 @@ internal sealed class TerminalGuiIdeCompilerSettingsDialogService : IIdeCompiler
         };
         okButton.Accepting += (_, e) =>
         {
-            e.Cancel = true;
+            e.Handled = true;
             validationLabel.Text = string.Empty;
 
             if (!TryParseField(maxLevelField, "MaxLevel", out var maxLevel, out var parseError) ||
@@ -114,13 +125,13 @@ internal sealed class TerminalGuiIdeCompilerSettingsDialogService : IIdeCompiler
                 !TryParseField(maxSymbolCountField, "MaxSymbolCount", out var maxSymbolCount, out parseError) ||
                 !TryParseField(maxCodeLengthField, "MaxCodeLength", out var maxCodeLength, out parseError))
             {
-                validationLabel.Text = parseError;
+                validationLabel.Text = parseError ?? "Ungueltige Eingabe.";
                 return;
             }
 
-            var selectedDialect = GetDialectForSelectedIndex(dialectRadio.SelectedItem);
+            var selectedDialect = GetDialectForSelectedIndex(dialectRadio.Value ?? 0);
             state.SetDialect(selectedDialect);
-            state.SetCodeDisplayMode(GetDisplayModeForSelectedIndex(displayModeRadio.SelectedItem));
+            state.SetCodeDisplayMode(GetDisplayModeForSelectedIndex(displayModeRadio.Value ?? 0));
             if (!state.TryApplyValues(maxLevel, maxAddress, maxIdentifierLength, maxSymbolCount, maxCodeLength, out var validationError))
             {
                 validationLabel.Text = validationError ?? "Ungueltige Eingabe.";
@@ -128,19 +139,18 @@ internal sealed class TerminalGuiIdeCompilerSettingsDialogService : IIdeCompiler
             }
 
             acceptedOptions = new IdeCompilerSettingsDialogResult(state.Options, state.CodeDisplayMode);
-            dialog.Canceled = false;
-            Application.RequestStop(dialog);
+            app.RequestStop(dialog);
         };
 
-        dialectRadio.SelectedItemChanged += (_, _) =>
+        dialectRadio.ValueChanged += (_, _) =>
         {
-            state.SetDialect(GetDialectForSelectedIndex(dialectRadio.SelectedItem));
+            state.SetDialect(GetDialectForSelectedIndex(dialectRadio.Value ?? 0));
             maxNumberDigitsField.Text = state.Options.MaxNumberDigits.ToString(CultureInfo.InvariantCulture);
         };
 
-        displayModeRadio.SelectedItemChanged += (_, _) =>
+        displayModeRadio.ValueChanged += (_, _) =>
         {
-            state.SetCodeDisplayMode(GetDisplayModeForSelectedIndex(displayModeRadio.SelectedItem));
+            state.SetCodeDisplayMode(GetDisplayModeForSelectedIndex(displayModeRadio.Value ?? 0));
         };
 
         dialog.Add(
@@ -167,8 +177,10 @@ internal sealed class TerminalGuiIdeCompilerSettingsDialogService : IIdeCompiler
 
         ApplyStateToFields(state, dialectRadio, displayModeRadio, maxLevelField, maxAddressField, maxIdentifierLengthField, maxNumberDigitsField, maxSymbolCountField, maxCodeLengthField);
 
-        Application.Run(dialog);
-        return dialog.Canceled ? null : acceptedOptions;
+        // Nur ein erfolgreich bestätigter Dialog setzt acceptedOptions; Abbruch und Esc lassen es leer.
+        // Only a confirmed dialog sets acceptedOptions; Cancel and Esc leave it empty.
+        app.Run(dialog);
+        return acceptedOptions;
     }
 
     private static Label CreateLabel(string text, int y)
@@ -193,8 +205,8 @@ internal sealed class TerminalGuiIdeCompilerSettingsDialogService : IIdeCompiler
 
     private static void ApplyStateToFields(
         IdeCompilerSettingsDialogState state,
-        RadioGroup dialectRadio,
-        RadioGroup displayModeRadio,
+        OptionSelector dialectRadio,
+        OptionSelector displayModeRadio,
         TextField maxLevelField,
         TextField maxAddressField,
         TextField maxIdentifierLengthField,
@@ -202,8 +214,8 @@ internal sealed class TerminalGuiIdeCompilerSettingsDialogService : IIdeCompiler
         TextField maxSymbolCountField,
         TextField maxCodeLengthField)
     {
-        dialectRadio.SelectedItem = GetSelectedIndexForDialect(state.Options.Dialect);
-        displayModeRadio.SelectedItem = GetSelectedIndexForDisplayMode(state.CodeDisplayMode);
+        dialectRadio.Value = GetSelectedIndexForDialect(state.Options.Dialect);
+        displayModeRadio.Value = GetSelectedIndexForDisplayMode(state.CodeDisplayMode);
         maxLevelField.Text = state.Options.MaxLevel.ToString(CultureInfo.InvariantCulture);
         maxAddressField.Text = state.Options.MaxAddress.ToString(CultureInfo.InvariantCulture);
         maxIdentifierLengthField.Text = state.Options.MaxIdentifierLength.ToString(CultureInfo.InvariantCulture);

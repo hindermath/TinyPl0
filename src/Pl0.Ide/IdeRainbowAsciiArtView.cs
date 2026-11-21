@@ -8,13 +8,15 @@ internal sealed class IdeRainbowAsciiArtView : TextView
 
     private static readonly Color[] RainbowColors =
     [
-        Color.BrightRed,
-        Color.BrightYellow,
-        Color.BrightGreen,
-        Color.BrightCyan,
-        Color.BrightBlue,
-        Color.BrightMagenta
+        new Color("#FFB3B3"),
+        new Color("#FFD700"),
+        new Color("#B8FFB8"),
+        new Color("#00FFFF"),
+        new Color("#B8C8FF"),
+        new Color("#FFB8FF")
     ];
+
+    internal static IReadOnlyList<Color> RainbowPalette { get; } = Array.AsReadOnly(RainbowColors);
 
     public IdeRainbowAsciiArtView()
     {
@@ -65,10 +67,10 @@ internal sealed class IdeRainbowAsciiArtView : TextView
             return;
         }
 
-        var scheme = ColorScheme;
+        var scheme = GetScheme();
         var background = scheme?.Normal.Background ?? Color.Black;
         var foreground = RainbowColors[colorIndex % RainbowColors.Length];
-        SetAttribute(new Terminal.Gui.Attribute(foreground, background));
+        SetAttribute(new Terminal.Gui.Drawing.Attribute(foreground, background));
     }
 
     private void RebuildRainbowMap(IReadOnlyList<string> asciiArt)

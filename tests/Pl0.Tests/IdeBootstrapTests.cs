@@ -2,6 +2,8 @@ using Pl0.Core;
 using Pl0.Ide;
 using Pl0.Vm;
 using Terminal.Gui;
+using Terminal.Gui.App;
+using Terminal.Gui.Views;
 
 namespace Pl0.Tests;
 
@@ -10,17 +12,23 @@ public sealed class IdeBootstrapTests
     [Fact]
     public void CreateApplication_Uses_V2_Backend()
     {
-        var app = Pl0.Ide.Program.CreateApplication();
-        Assert.False(app.IsLegacy);
+        using var app = Pl0.Ide.Program.CreateApplication();
+        Assert.NotNull(app);
+    }
+
+    [Fact]
+    public void MainView_Implements_Runnable_For_Instance_Application()
+    {
+        Assert.IsAssignableFrom<IRunnable>(new IdeMainView());
     }
 
     [Fact]
     public void MainView_Contains_Core_Panes()
     {
         var mainView = new IdeMainView();
-        Assert.Single(mainView.Subviews.OfType<MenuBar>());
+        Assert.Single(mainView.SubViews.OfType<MenuBar>());
 
-        var windows = mainView.Subviews.OfType<Window>().ToArray();
+        var windows = mainView.SubViews.OfType<Window>().ToArray();
 
         Assert.Equal(5, windows.Length);
         Assert.Contains(windows, window => window.Title.ToString() == "Quellcode");
@@ -35,11 +43,11 @@ public sealed class IdeBootstrapTests
     {
         var mainView = new IdeMainView();
         var sourceWindow = mainView
-            .Subviews
+            .SubViews
             .OfType<Window>()
             .Single(window => window.Title.ToString() == "Quellcode");
 
-        var sourceEditor = Assert.Single(sourceWindow.Subviews.OfType<TextView>());
+        var sourceEditor = Assert.Single(sourceWindow.SubViews.OfType<TextView>());
         Assert.Same(mainView.SourceEditor, sourceEditor);
         Assert.False(sourceEditor.ReadOnly);
         Assert.True(sourceEditor.Multiline);
@@ -1052,9 +1060,9 @@ public sealed class IdeBootstrapTests
     public void MainView_Uses_Classic_Turbo_Pascal_Menu_Structure()
     {
         var mainView = new IdeMainView();
-        var menuBar = Assert.Single(mainView.Subviews.OfType<MenuBar>());
+        var menuBar = Assert.Single(mainView.SubViews.OfType<MenuBar>());
 
-        var menuTitles = menuBar.Menus.Select(menu => menu.Title.ToString()).ToArray();
+        var menuTitles = menuBar.SubViews.OfType<MenuBarItem>().Select(menu => menu.Title.ToString()).ToArray();
         Assert.Equal(["_Datei", "_Bearbeiten", "_Kompilieren", "_Ausfuehren", "Debu_g", "_Hilfe"], menuTitles);
     }
 

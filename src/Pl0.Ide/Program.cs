@@ -6,33 +6,23 @@ internal static class Program
 {
     private static int Main()
     {
-        var app = CreateApplication();
-        var previousApplication = ApplicationImpl.Instance;
+        using var app = CreateApplication();
 
-        ApplicationImpl.ChangeInstance(app);
-
-        try
+        app.Init();
+        if (!IdeLookAndFeel.ApplyTurboPascalThemeIfAvailable())
         {
-            app.Init();
-            _ = IdeLookAndFeel.ApplyTurboPascalThemeIfAvailable();
-            var mainView = new IdeMainView();
-            app.Run(mainView);
-            return mainView.ExitCode;
+            Console.Error.WriteLine("Die kontrastreiche IDE-Palette konnte nicht geladen werden.");
+            Console.Error.WriteLine("The high-contrast IDE palette could not be loaded.");
+            return 1;
         }
-        finally
-        {
-            app.Shutdown();
-            if (app is IDisposable disposable)
-            {
-                disposable.Dispose();
-            }
 
-            ApplicationImpl.ChangeInstance(previousApplication);
-        }
+        var mainView = new IdeMainView(app);
+        app.Run(mainView);
+        return mainView.ExitCode;
     }
 
     internal static IApplication CreateApplication()
     {
-        return new ApplicationV2();
+        return Application.Create();
     }
 }

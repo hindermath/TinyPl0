@@ -14,13 +14,22 @@ internal interface IIdeAboutDialogService
 
 internal sealed class TerminalGuiIdeMessageDialogService : IIdeMessageDialogService, IIdeAboutDialogService
 {
+    private readonly IApplication? application;
+
+    public TerminalGuiIdeMessageDialogService(IApplication? application = null)
+    {
+        this.application = application;
+    }
+
     public void ShowInfo(string title, string message)
     {
-        _ = MessageBox.Query(title, message, "OK");
+        var app = application ?? throw new InvalidOperationException("Die IDE-Anwendung wurde nicht initialisiert.");
+        _ = MessageBox.Query(app, title, message, "OK");
     }
 
     public void ShowAboutDialog(string title, IReadOnlyList<string> asciiArt, string slogan, string versionText, string buildCounterText)
     {
+        var app = application ?? throw new InvalidOperationException("Die IDE-Anwendung wurde nicht initialisiert.");
         var artHeight = asciiArt.Count;
         var artWidth = 0;
         foreach (var line in asciiArt)
@@ -88,14 +97,13 @@ internal sealed class TerminalGuiIdeMessageDialogService : IIdeMessageDialogServ
         };
         okButton.Accepting += (_, e) =>
         {
-            e.Cancel = true;
-            dialog.Canceled = false;
-            Application.RequestStop(dialog);
+            e.Handled = true;
+            app.RequestStop(dialog);
         };
 
         dialog.Add(rainbowView, sloganLabel, versionLabel, buildLabel);
         dialog.AddButton(okButton);
 
-        Application.Run(dialog);
+        app.Run(dialog);
     }
 }

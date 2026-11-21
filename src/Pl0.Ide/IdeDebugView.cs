@@ -17,6 +17,8 @@ internal readonly record struct IdeDebugHighlightSpan(
 
 internal sealed class IdeDebugView : TextView
 {
+    internal static readonly Color BasePointerColor = new("#FFD700");
+    internal static readonly Color StackPointerColor = new("#00FFFF");
     private Dictionary<int, Dictionary<int, IdeDebugHighlightKind>> highlightMap = [];
 
     public IdeDebugView()
@@ -53,12 +55,12 @@ internal sealed class IdeDebugView : TextView
             return;
         }
 
-        var scheme = ColorScheme;
+        var scheme = GetScheme();
         var background = scheme?.Normal.Background ?? Color.Black;
         var attribute = highlightKind switch
         {
-            IdeDebugHighlightKind.BasePointer => new Terminal.Gui.Attribute(Color.BrightYellow, background),
-            IdeDebugHighlightKind.StackPointer => new Terminal.Gui.Attribute(Color.BrightBlue, background),
+            IdeDebugHighlightKind.BasePointer => new Terminal.Gui.Drawing.Attribute(BasePointerColor, background),
+            IdeDebugHighlightKind.StackPointer => new Terminal.Gui.Drawing.Attribute(StackPointerColor, background),
             _ => scheme?.Normal ?? default
         };
 

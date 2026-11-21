@@ -7,7 +7,11 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Build.Tasks.Git" Version="11.0.100" PrivateAssets="all" />
-    <PackageReference Include="Terminal.Gui" Version="2.0.0" />
+    <PackageReference Include="Terminal.Gui" Version="2.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="ide-theme.json" LogicalName="Pl0.Ide.ide-theme.json" />
   </ItemGroup>
 
   <PropertyGroup>
@@ -15,9 +19,9 @@
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Version>1.124.805.101</Version>
-    <AssemblyVersion>1.124.805.101</AssemblyVersion>
-    <FileVersion>1.124.805.101</FileVersion>
+    <Version>1.118.870.116</Version>
+    <AssemblyVersion>1.118.870.116</AssemblyVersion>
+    <FileVersion>1.118.870.116</FileVersion>
     <InformationalVersion>$(Version)</InformationalVersion>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
