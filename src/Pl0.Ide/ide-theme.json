@@ -64,6 +64,136 @@
           "Disabled": { "Foreground": "#555555", "Background": "#D9D9D9" }
         }
       }
+    },
+    "TinyPl0 TP6": {
+      "Schemes": {
+        "Base": {
+          "Normal": { "Foreground": "#D9F3FF", "Background": "#101A50" },
+          "Focus": { "Foreground": "#101A50", "Background": "#D9F3FF" },
+          "Active": { "Foreground": "#101A50", "Background": "#D9F3FF" },
+          "HotNormal": { "Foreground": "#B8FFED", "Background": "#101A50" },
+          "HotFocus": { "Foreground": "#101A50", "Background": "#D9F3FF" },
+          "HotActive": { "Foreground": "#101A50", "Background": "#D9F3FF" },
+          "Highlight": { "Foreground": "#101A50", "Background": "#D9F3FF" },
+          "Editable": { "Foreground": "#D9F3FF", "Background": "#101A50" },
+          "ReadOnly": { "Foreground": "#D9F3FF", "Background": "#101A50" },
+          "Disabled": { "Foreground": "#A7BDE7", "Background": "#101A50" },
+          "Code": { "Foreground": "#D9F3FF", "Background": "#101A50" }
+        },
+        "Accent": {
+          "Normal": { "Foreground": "#B8FFED", "Background": "#101A50" },
+          "Focus": { "Foreground": "#101A50", "Background": "#D9F3FF" },
+          "Active": { "Foreground": "#101A50", "Background": "#D9F3FF" },
+          "HotNormal": { "Foreground": "#B8FFED", "Background": "#101A50" },
+          "HotFocus": { "Foreground": "#101A50", "Background": "#D9F3FF" },
+          "HotActive": { "Foreground": "#101A50", "Background": "#D9F3FF" },
+          "Highlight": { "Foreground": "#101A50", "Background": "#D9F3FF" },
+          "Editable": { "Foreground": "#B8FFED", "Background": "#101A50" },
+          "ReadOnly": { "Foreground": "#B8FFED", "Background": "#101A50" },
+          "Disabled": { "Foreground": "#A7BDE7", "Background": "#101A50" }
+        },
+        "Dialog": {
+          "Normal": { "Foreground": "#000000", "Background": "#D8E7F8" },
+          "Focus": { "Foreground": "#D9F3FF", "Background": "#101A50" },
+          "Active": { "Foreground": "#D9F3FF", "Background": "#101A50" },
+          "HotNormal": { "Foreground": "#692049", "Background": "#D8E7F8" },
+          "HotFocus": { "Foreground": "#D9F3FF", "Background": "#101A50" },
+          "HotActive": { "Foreground": "#D9F3FF", "Background": "#101A50" },
+          "Highlight": { "Foreground": "#D9F3FF", "Background": "#101A50" },
+          "Editable": { "Foreground": "#000000", "Background": "#D8E7F8" },
+          "ReadOnly": { "Foreground": "#000000", "Background": "#D8E7F8" },
+          "Disabled": { "Foreground": "#555555", "Background": "#D8E7F8" }
+        },
+        "Menu": {
+          "Normal": { "Foreground": "#000000", "Background": "#A5D9FF" },
+          "Focus": { "Foreground": "#D9F3FF", "Background": "#101A50" },
+          "Active": { "Foreground": "#D9F3FF", "Background": "#101A50" },
+          "HotNormal": { "Foreground": "#692049", "Background": "#A5D9FF" },
+          "HotFocus": { "Foreground": "#D9F3FF", "Background": "#101A50" },
+          "HotActive": { "Foreground": "#D9F3FF", "Background": "#101A50" },
+          "Highlight": { "Foreground": "#D9F3FF", "Background": "#101A50" },
+          "Editable": { "Foreground": "#000000", "Background": "#A5D9FF" },
+          "ReadOnly": { "Foreground": "#000000", "Background": "#A5D9FF" },
+          "Disabled": { "Foreground": "#404040", "Background": "#A5D9FF" }
+        },
+        "Error": {
+          "Normal": { "Foreground": "#692049", "Background": "#D8E7F8" },
+          "Focus": { "Foreground": "#D9F3FF", "Background": "#101A50" },
+          "Active": { "Foreground": "#D9F3FF", "Background": "#101A50" },
+          "HotNormal": { "Foreground": "#692049", "Background": "#D8E7F8" },
+          "HotFocus": { "Foreground": "#D9F3FF", "Background": "#101A50" },
+          "HotActive": { "Foreground": "#D9F3FF", "Background": "#101A50" },
+          "Highlight": { "Foreground": "#D9F3FF", "Background": "#101A50" },
+          "Editable": { "Foreground": "#692049", "Background": "#D8E7F8" },
+          "ReadOnly": { "Foreground": "#692049", "Background": "#D8E7F8" },
+          "Disabled": { "Foreground": "#555555", "Background": "#D8E7F8" }
+        }
+      }
+    },
+    "TinyPl0 TP7": {
+      "Schemes": {
+        "Base": {
+          "Normal": { "Foreground": "#FFF0C2", "Background": "#102C32" },
+          "Focus": { "Foreground": "#102C32", "Background": "#FFF0C2" },
+          "Active": { "Foreground": "#102C32", "Background": "#FFF0C2" },
+          "HotNormal": { "Foreground": "#A8F4DB", "Background": "#102C32" },
+          "HotFocus": { "Foreground": "#102C32", "Background": "#FFF0C2" },
+          "HotActive": { "Foreground": "#102C32", "Background": "#FFF0C2" },
+          "Highlight": { "Foreground": "#102C32", "Background": "#FFF0C2" },
+          "Editable": { "Foreground": "#FFF0C2", "Background": "#102C32" },
+          "ReadOnly": { "Foreground": "#FFF0C2", "Background": "#102C32" },
+          "Disabled": { "Foreground": "#AACED2", "Background": "#102C32" },
+          "Code": { "Foreground": "#FFF0C2", "Background": "#102C32" }
+        },
+        "Accent": {
+          "Normal": { "Foreground": "#A8F4DB", "Background": "#102C32" },
+          "Focus": { "Foreground": "#102C32", "Background": "#FFF0C2" },
+          "Active": { "Foreground": "#102C32", "Background": "#FFF0C2" },
+          "HotNormal": { "Foreground": "#A8F4DB", "Background": "#102C32" },
+          "HotFocus": { "Foreground": "#102C32", "Background": "#FFF0C2" },
+          "HotActive": { "Foreground": "#102C32", "Background": "#FFF0C2" },
+          "Highlight": { "Foreground": "#102C32", "Background": "#FFF0C2" },
+          "Editable": { "Foreground": "#A8F4DB", "Background": "#102C32" },
+          "ReadOnly": { "Foreground": "#A8F4DB", "Background": "#102C32" },
+          "Disabled": { "Foreground": "#AACED2", "Background": "#102C32" }
+        },
+        "Dialog": {
+          "Normal": { "Foreground": "#000000", "Background": "#F4E5CB" },
+          "Focus": { "Foreground": "#FFF0C2", "Background": "#102C32" },
+          "Active": { "Foreground": "#FFF0C2", "Background": "#102C32" },
+          "HotNormal": { "Foreground": "#781D24", "Background": "#F4E5CB" },
+          "HotFocus": { "Foreground": "#FFF0C2", "Background": "#102C32" },
+          "HotActive": { "Foreground": "#FFF0C2", "Background": "#102C32" },
+          "Highlight": { "Foreground": "#FFF0C2", "Background": "#102C32" },
+          "Editable": { "Foreground": "#000000", "Background": "#F4E5CB" },
+          "ReadOnly": { "Foreground": "#000000", "Background": "#F4E5CB" },
+          "Disabled": { "Foreground": "#555555", "Background": "#F4E5CB" }
+        },
+        "Menu": {
+          "Normal": { "Foreground": "#000000", "Background": "#F4C778" },
+          "Focus": { "Foreground": "#FFF0C2", "Background": "#102C32" },
+          "Active": { "Foreground": "#FFF0C2", "Background": "#102C32" },
+          "HotNormal": { "Foreground": "#781D24", "Background": "#F4C778" },
+          "HotFocus": { "Foreground": "#FFF0C2", "Background": "#102C32" },
+          "HotActive": { "Foreground": "#FFF0C2", "Background": "#102C32" },
+          "Highlight": { "Foreground": "#FFF0C2", "Background": "#102C32" },
+          "Editable": { "Foreground": "#000000", "Background": "#F4C778" },
+          "ReadOnly": { "Foreground": "#000000", "Background": "#F4C778" },
+          "Disabled": { "Foreground": "#404040", "Background": "#F4C778" }
+        },
+        "Error": {
+          "Normal": { "Foreground": "#781D24", "Background": "#F4E5CB" },
+          "Focus": { "Foreground": "#FFF0C2", "Background": "#102C32" },
+          "Active": { "Foreground": "#FFF0C2", "Background": "#102C32" },
+          "HotNormal": { "Foreground": "#781D24", "Background": "#F4E5CB" },
+          "HotFocus": { "Foreground": "#FFF0C2", "Background": "#102C32" },
+          "HotActive": { "Foreground": "#FFF0C2", "Background": "#102C32" },
+          "Highlight": { "Foreground": "#FFF0C2", "Background": "#102C32" },
+          "Editable": { "Foreground": "#781D24", "Background": "#F4E5CB" },
+          "ReadOnly": { "Foreground": "#781D24", "Background": "#F4E5CB" },
+          "Disabled": { "Foreground": "#555555", "Background": "#F4E5CB" }
+        }
+      }
     }
   }
 }

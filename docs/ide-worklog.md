@@ -419,3 +419,48 @@ build with 0 warnings, and all 392 tests passed on the combined revision.
 The local test host needed `DOTNET_ROLL_FORWARD=Major` because only the .NET 11
 runtime is installed. Both statistics reports are regenerated from this
 content revision; no release was made.*
+
+183. Agent (2026-11-21): Unter Ansicht > Darstellung lässt sich das
+Farbschema auswählen. Turbo Pascal 5 bleibt Standard. Zwei neue TinyPl0-Paletten
+orientieren sich an Turbo Pascal 6 und 7. Die Auswahl gilt sofort und wird im
+Benutzerprofil gespeichert. Abbrechen verwirft den Wechsel. Bei einem
+Schreibfehler bleibt die Farbe bis zum Ende der Sitzung aktiv.
+Der neue Wechseltest scheiterte ohne die Paletten und besteht mit ihnen.
+Locked Restore, Release-Build mit 0 Warnungen und alle 394 Tests bestehen.
+Im Pseudoterminal mit 134×27 Zeichen wurde der Dialog per Tastatur geöffnet und
+abgebrochen. Die Sichtprüfung in Terminal.app folgt vor dem Merge.
+
+*View > Appearance offers three color schemes. Turbo Pascal 5 remains the
+default. Two new TinyPl0 palettes take inspiration from Turbo Pascal 6 and 7.
+The choice takes effect immediately and is saved in the user profile. Cancel
+discards the change. If writing fails, the color remains active for the session.
+The new switching test failed without the palettes and passes with them.
+Locked restore, a Release build with 0 warnings, and all 394 tests passed.
+The dialog was opened and canceled by keyboard in a 134×27 pseudo-terminal.
+The visual check in Terminal.app follows before the merge.*
+
+184. Agent (2026-11-21): Bei der Sichtprüfung in Terminal.app mit 134×27
+Zeichen war Turbo Pascal 6 aktiv, aber die Zeile für Turbo Pascal 7 fehlte.
+Der Darstellungsdialog gibt der Auswahlliste jetzt Platz für alle drei Zeilen.
+OK ist die Standardschaltfläche. Der Pseudoterminal-Test bestätigte den
+Fehler vor der Korrektur und danach alle drei sichtbaren Optionen.
+Der Release-Build meldete 0 Warnungen. Alle 395 Tests bestanden.
+
+*In the 134×27 Terminal.app review, Turbo Pascal 6 was active but the Turbo
+Pascal 7 row was missing. The appearance dialog now leaves room for all three
+choices. OK is the default button. The pseudo-terminal reproduced the
+missing row and then confirmed that all three choices were visible.
+The Release build reported 0 warnings. All 395 tests passed.*
+
+185. Agent (2026-11-21): TinyPl0 prüft den Speicherpfad für das Farbschema
+nach der CodeQL-Meldung zu PR #139. Fehlt ein absoluter Pfad innerhalb des
+Benutzerprofils, verwendet die IDE das Standardschema und speichert den
+nächsten Wechsel nur für die laufende Sitzung. Der Regressionstest zeigte
+vor der Korrektur, dass ein Nachbarordner gelesen wurde. Locked Restore und
+alle 396 Release-Tests bestanden danach.
+
+*TinyPl0 checks the color scheme path after the CodeQL report on PR #139.
+If it cannot identify an absolute path inside the user profile, the IDE
+uses the default scheme and applies the next change for the current
+session only. The regression test showed that the old code read from a
+sibling folder. Locked restore and all 396 Release tests then passed.*

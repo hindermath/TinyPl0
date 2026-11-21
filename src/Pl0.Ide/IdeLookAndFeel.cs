@@ -9,6 +9,9 @@ internal static class IdeLookAndFeel
     private const string PaletteResourceName = "Pl0.Ide.ide-theme.json";
 
     internal static bool ApplyTurboPascalThemeIfAvailable(string? resourceName = null)
+        => LoadAndApplyTheme(TurboPascalThemeName, resourceName);
+
+    internal static bool LoadAndApplyTheme(string themeName, string? resourceName = null)
     {
         try
         {
@@ -25,17 +28,12 @@ internal static class IdeLookAndFeel
 
             var configuration = builder.Configuration;
             if (!configuration.GetSection("Themes").GetChildren()
-                    .Any(theme => string.Equals(theme.Key, TurboPascalThemeName, StringComparison.OrdinalIgnoreCase)))
+                    .Any(theme => string.Equals(theme.Key, themeName, StringComparison.Ordinal)))
             {
                 return false;
             }
 
-            ThemeManager.Theme = TurboPascalThemeName;
-            var baseScheme = builder.SchemeManager.GetScheme("Base");
-            return string.Equals(ThemeManager.Theme, TurboPascalThemeName, StringComparison.Ordinal)
-                   && baseScheme is not null
-                   && baseScheme.ReadOnly.Background == new Color("#000080")
-                   && baseScheme.ReadOnly.Foreground == new Color("#FFFF66");
+            return builder.ThemeManager.SwitchTheme(themeName);
         }
         catch
         {
