@@ -274,7 +274,9 @@ internal sealed class IdeMainView : Runnable
             return false;
         }
 
-        sourceEditor.Text = formattedSource;
+        // Der Formatter liefert LF; die bisherige IDE zeigte formatierte Zeilen im Systemformat.
+        // The formatter emits LF; the previous IDE exposed formatted lines in the platform format.
+        sourceEditor.Text = formattedSource.Replace("\n", Environment.NewLine, StringComparison.Ordinal);
         messagesOutput.Text = "Quelltext formatiert.";
         return true;
     }

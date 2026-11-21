@@ -363,8 +363,13 @@ jetzt. Alle 392 Tests, Locked Restore und Release-Build bestehen; der Build
 meldet 0 Warnungen. NuGet meldet keine bekannte Schwachstelle in den
 IDE-Abhaengigkeiten. Ein PTY-Test mit 134x27 Zeichen pruefte Start, Texteingabe,
 Cursorstatus und Menue. Eine Sichtpruefung in Terminal.app mit Editor,
-Ausgaben, Debug, Dialog und Fokuswechsel steht vor der Review-Abnahme aus.
-Die IDE-Version lautet `1.138.872.128`; ein Release wurde nicht erstellt.
+Ausgaben, Debug, Dialog und Fokuswechsel steht vor der Review-Abnahme aus. Der
+erste Windows-CI-Lauf zeigte fuenf fehlschlagende Formatierungstests: Der neue
+Editor gab LF statt des bisherigen Plattform-Zeilenumbruchs aus. Die IDE
+wandelt nun nur formatierte Texte am Editor-Eingang ins Systemformat um;
+danach bestehen lokal erneut 392 Tests und ein warnungsfreier Release-Build.
+Der Windows-CI-Nachlauf muss dies noch bestaetigen. Die Inhaltsversion lautet
+`1.138.875.130`; ein Release wurde nicht erstellt.
 
 *For follow-up PR #138, the IDE uses `Terminal.Gui.Editor` 2.5.7 instead of
 `TextView`. The source editor, three output panes, debug pane, and rainbow
@@ -375,4 +380,9 @@ locked restore, and Release build pass; the build reports 0 warnings. NuGet
 reports no known vulnerability in IDE dependencies. A 134x27 PTY smoke test
 covered startup, typing, caret status, and the menu. A visual Terminal.app
 check of the editor, output, debug, dialog, and focus changes remains before
-review acceptance. The IDE version is `1.138.872.128`; no release was made.*
+review acceptance. The first Windows CI run failed five formatting tests:
+the new editor exposed LF instead of the previous platform newline. The IDE
+now converts only formatted text at the editor boundary. After the fix, all
+392 local tests and a warning-free Release build pass again. A Windows CI
+rerun still needs to confirm this. The content version is `1.138.875.130`;
+no release was made.*
