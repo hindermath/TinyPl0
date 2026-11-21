@@ -32,6 +32,8 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
       - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2
+        with:
+          cache-dependency-glob: .github/workflows/project-statistics-proof.yml
       - name: Install pinned Spec Kit
         shell: pwsh
         run: |
