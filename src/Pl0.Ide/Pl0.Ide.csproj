@@ -10,14 +10,18 @@
     <PackageReference Include="Terminal.Gui" Version="2.5.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <EmbeddedResource Include="ide-theme.json" LogicalName="Pl0.Ide.ide-theme.json" />
+  </ItemGroup>
+
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Version>1.118.867.111</Version>
-    <AssemblyVersion>1.118.867.111</AssemblyVersion>
-    <FileVersion>1.118.867.111</FileVersion>
+    <Version>1.118.868.116</Version>
+    <AssemblyVersion>1.118.868.116</AssemblyVersion>
+    <FileVersion>1.118.868.116</FileVersion>
     <InformationalVersion>$(Version)</InformationalVersion>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>

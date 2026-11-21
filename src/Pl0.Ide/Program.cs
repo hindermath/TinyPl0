@@ -9,7 +9,13 @@ internal static class Program
         using var app = CreateApplication();
 
         app.Init();
-        _ = IdeLookAndFeel.ApplyTurboPascalThemeIfAvailable();
+        if (!IdeLookAndFeel.ApplyTurboPascalThemeIfAvailable())
+        {
+            Console.Error.WriteLine("Die kontrastreiche IDE-Palette konnte nicht geladen werden.");
+            Console.Error.WriteLine("The high-contrast IDE palette could not be loaded.");
+            return 1;
+        }
+
         var mainView = new IdeMainView(app);
         app.Run(mainView);
         return mainView.ExitCode;

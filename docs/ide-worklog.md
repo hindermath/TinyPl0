@@ -323,3 +323,32 @@ IDE and compiler settings, canceled the dialog, and exited through the menu.
 The IDE and test NuGet audits report no known vulnerability. `TextView` is
 obsolete in 2.5.0; an editor migration needs a separate follow-up. The IDE
 version is aligned to `1.118.858.111`; no release was created.*
+
+179. Agent (2026-11-21): Die Kontrastkorrektur fuer PR #118 behaelt die
+Turbo-Pascal-Farben bei. Die abgeleiteten Textzustaende `Editable` und
+`ReadOnly` hatten Gelb auf hellem Grund erzeugt. Eine eingebettete Palette
+legt jetzt Vorder- und Hintergrund fuer Text, Auswahl, Fokus, Dialoge und
+Menues fest. Fuer normale Schrift pruefen Tests mindestens 4,5:1, fuer
+Fokusflaechen gegen den angrenzenden Grund mindestens 3:1 nach WCAG 2.2 AA.
+Auch Debug-Markierungen und Regenbogenfarben bestehen die Textpruefung.
+Zuerst schlug der neue Kontrasttest fehl (1 von 1); nach der Korrektur
+bestanden 9 von 9 gezielten Tests und 386 von 386 Tests insgesamt. Locked
+Restore und Release-Build bestehen. Der Build meldet 13 bestehende
+`TextView`-Veraltungswarnungen. Ein PTY-Smoke-Test bei 134x27 Zeichen zeigte
+Editor, Menue und Compiler-Dialog mit dunklen Textflaechen und beendete die
+IDE regulaer. Die PTY nutzte ANSI-Grundfarben; die tatsaechliche Palette der
+beiden macOS-Terminalprofile muss bei einer Sichtpruefung beruecksichtigt
+werden. Es wurde kein Release erstellt.
+
+*The PR #118 contrast fix keeps the Turbo Pascal colors. Derived `Editable`
+and `ReadOnly` states had produced yellow text on a light background. An
+embedded palette now defines foreground and background colors for text,
+selection, focus, dialogs, and menus. Tests require at least 4.5:1 for normal
+text and 3:1 for focus areas against adjacent backgrounds under WCAG 2.2 AA.
+Debug markers and rainbow colors also pass the text contrast test. The new
+contrast test failed first (1 of 1); then all 9 focused tests and all 386
+tests passed. Locked restore and the Release build pass. The build retains
+13 `TextView` deprecation warnings. A 134x27 PTY smoke test showed the editor,
+menu, and compiler dialog with dark text areas and exited normally. The PTY
+used basic ANSI colors; the actual palettes of both macOS Terminal profiles
+still matter for a visual check. No release was created.*
