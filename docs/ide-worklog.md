@@ -451,3 +451,16 @@ Pascal 7 row was missing. The appearance dialog now leaves room for all three
 choices. OK is the default button. The pseudo-terminal reproduced the
 missing row and then confirmed that all three choices were visible.
 The Release build reported 0 warnings. All 395 tests passed.*
+
+185. Agent (2026-11-21): TinyPl0 prüft den Speicherpfad für das Farbschema
+nach der CodeQL-Meldung zu PR #139. Fehlt ein absoluter Pfad innerhalb des
+Benutzerprofils, verwendet die IDE das Standardschema und speichert den
+nächsten Wechsel nur für die laufende Sitzung. Der Regressionstest zeigte
+vor der Korrektur, dass ein Nachbarordner gelesen wurde. Locked Restore und
+alle 396 Release-Tests bestanden danach.
+
+*TinyPl0 checks the color scheme path after the CodeQL report on PR #139.
+If it cannot identify an absolute path inside the user profile, the IDE
+uses the default scheme and applies the next change for the current
+session only. The regression test showed that the old code read from a
+sibling folder. Locked restore and all 396 Release tests then passed.*

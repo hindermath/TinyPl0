@@ -124,6 +124,38 @@ public sealed class IdeContrastTests
     }
 
     [Fact]
+    public void Appearance_Uses_Only_Absolute_App_Data_Inside_The_Profile()
+    {
+        using var temporary = new TemporaryAppearanceDirectory();
+        var profile = Path.Combine(temporary.Path, "user");
+        var sibling = Path.Combine(temporary.Path, "user-other");
+        var outside = Path.Combine(sibling, "TinyPl0");
+        Directory.CreateDirectory(outside);
+        var outsideFile = Path.Combine(outside, "color-scheme");
+        File.WriteAllText(outsideFile, "tp7");
+
+        foreach (var invalid in new[] { sibling, Path.Combine(profile, "..", "user-other"), "", "relative" })
+        {
+            var settings = IdeAppearanceSettings.ForProfile(profile, invalid);
+            Assert.Equal("tp5", settings.Read().Id);
+            Assert.False(settings.TrySave(IdeAppearanceSettings.Schemes[1]));
+        }
+        Assert.Equal("tp7", File.ReadAllText(outsideFile));
+
+        var appData = Path.Combine(profile, "data");
+        var valid = IdeAppearanceSettings.ForProfile(profile, appData);
+        Assert.True(valid.TrySave(IdeAppearanceSettings.Schemes[2]));
+        Assert.Equal("tp7", File.ReadAllText(Path.Combine(appData, "TinyPl0", "color-scheme")));
+    }
+
+    private sealed class TemporaryAppearanceDirectory : IDisposable
+    {
+        private readonly DirectoryInfo directory = Directory.CreateTempSubdirectory("tinypl0-appearance-");
+        internal string Path => directory.FullName;
+        public void Dispose() => directory.Delete(recursive: true);
+    }
+
+    [Fact]
     public void Appearance_Preference_Survives_Restart_And_Handles_Unusable_Settings()
     {
         var directory = Directory.CreateTempSubdirectory("tinypl0-appearance-");

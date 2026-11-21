@@ -4,7 +4,7 @@ namespace Pl0.Ide;
 
 internal sealed record IdeColorScheme(string Id, string ThemeName, string Label);
 
-internal sealed class IdeAppearanceSettings(string settingsPath)
+internal sealed class IdeAppearanceSettings(string? settingsPath)
 {
     internal static IReadOnlyList<IdeColorScheme> Schemes { get; } = Array.AsReadOnly<IdeColorScheme>(
     [
@@ -13,11 +13,44 @@ internal sealed class IdeAppearanceSettings(string settingsPath)
         new("tp7", "TinyPl0 TP7", "Inspiriert von / Inspired by Turbo Pascal 7")
     ]);
 
-    internal static IdeAppearanceSettings ForCurrentUser() => new(Path.Combine(
-        Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "TinyPl0", "color-scheme"));
+    internal static IdeAppearanceSettings ForCurrentUser() => ForProfile(
+        Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
+        Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData));
+
+    internal static IdeAppearanceSettings ForProfile(string profile, string appData)
+    {
+        // Ein fehlender oder relativer Ordner darf nicht zum Arbeitsverzeichnis führen.
+        // A missing or relative folder must never fall back to the working directory.
+        if (!Path.IsPathFullyQualified(profile) || !Path.IsPathFullyQualified(appData))
+        {
+            return new(null);
+        }
+
+        try
+        {
+            var profileRoot = Path.TrimEndingDirectorySeparator(Path.GetFullPath(profile));
+            var candidate = Path.GetFullPath(Path.Combine(appData, "TinyPl0", "color-scheme"));
+            var comparison = OperatingSystem.IsWindows() ? StringComparison.OrdinalIgnoreCase : StringComparison.Ordinal;
+            if (!candidate.StartsWith(profileRoot + Path.DirectorySeparatorChar, comparison))
+            {
+                return new(null);
+            }
+
+            return new(candidate);
+        }
+        catch (Exception error) when (error is ArgumentException or IOException or UnauthorizedAccessException)
+        {
+            return new(null);
+        }
+    }
 
     internal IdeColorScheme Read()
     {
+        if (settingsPath is null)
+        {
+            return Schemes[0];
+        }
+
         try
         {
             var id = File.ReadAllText(settingsPath).Trim();
@@ -31,6 +64,11 @@ internal sealed class IdeAppearanceSettings(string settingsPath)
 
     internal bool TrySave(IdeColorScheme scheme)
     {
+        if (settingsPath is null)
+        {
+            return false;
+        }
+
         var directory = Path.GetDirectoryName(settingsPath)!;
         var temporaryPath = Path.Combine(directory, $".color-scheme-{Guid.NewGuid():N}.tmp");
         try
