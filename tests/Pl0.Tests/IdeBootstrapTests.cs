@@ -1084,7 +1084,7 @@ public sealed class IdeBootstrapTests
         var menuBar = Assert.Single(mainView.SubViews.OfType<MenuBar>());
 
         var menuTitles = menuBar.SubViews.OfType<MenuBarItem>().Select(menu => menu.Title.ToString()).ToArray();
-        Assert.Equal(["_Datei", "_Bearbeiten", "_Kompilieren", "_Ausfuehren", "Debu_g", "An_sicht", "_Hilfe"], menuTitles);
+        Assert.Equal(["_Datei", "An_sicht", "_Bearbeiten", "_Kompilieren", "_Ausfuehren", "Debu_g", "_Hilfe"], menuTitles);
     }
 
     [Fact]

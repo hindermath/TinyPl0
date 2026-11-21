@@ -464,3 +464,36 @@ If it cannot identify an absolute path inside the user profile, the IDE
 uses the default scheme and applies the next change for the current
 session only. The regression test showed that the old code read from a
 sibling folder. Locked restore and all 396 Release tests then passed.*
+
+186. Agent (2026-11-22): Die IDE zeigt vier verschiebbare Trennlinien.
+Unter Ansicht > Fenstergröße ändern wechselt Tab zur nächsten Trennlinie,
+Umschalt+Tab zur vorherigen. Pfeiltasten verschieben die markierte Linie um
+eine Zelle. Enter übernimmt die Aufteilung, Esc holt die vorige zurück.
+Die Linien lassen sich auch mit der Maus ziehen. Ansicht > Layout
+zurücksetzen stellt die Standardaufteilung wieder her. Unter 80×24 zeigt
+die IDE jeweils einen Bereich. Das Menü Ansicht wählt den Bereich aus
+und ist für schmale Terminals weiter links erreichbar. Beim Vergrößern
+kehrt die Aufteilung der laufenden Sitzung zurück.
+
+*The IDE shows four movable dividers. Under View > Resize panes, Tab moves
+to the next divider and Shift+Tab moves to the previous one. Arrow keys
+resize the highlighted divider by one cell. Enter keeps the layout and
+Esc restores the previous layout. Mouse users can drag the dividers.
+View > Reset layout restores the default proportions. Below 80×24, the
+IDE shows one pane at a time. Use the View menu to choose a pane. The menu
+is closer to the left so it remains available in narrow terminals.
+Enlarging the terminal restores the session's tiled layout.*
+
+Der erste Test zeigte, dass vorher auch unter der Grenze fünf Fenster
+sichtbar blieben. Locked Restore, Release-Build mit 0 Warnungen und alle
+400 Tests bestehen. Die Kontrasttests prüfen Trennlinien und Fokus in
+allen drei Farben. Ein macOS-Pseudoterminal prüfte Mausziehen,
+Tastatursteuerung und den Wechsel zwischen 134×27 und 79×23.
+Die Sichtprüfung in Terminal.app folgt vor dem Merge.
+
+*The first regression test showed that the old IDE kept five panes
+below the threshold. Locked restore, Release build with 0 warnings,
+and all 400 tests passed. Contrast tests cover the dividers and their
+focus in all three schemes. A macOS pseudo-terminal exercised mouse drag,
+keyboard controls, and resizing between 134×27 and 79×23.
+The visual check in Terminal.app follows before the merge.*

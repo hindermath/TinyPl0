@@ -39,6 +39,7 @@ internal sealed class IdeMainView : Runnable
     private readonly IIdeMessageDialogService messageDialogService;
     private readonly IApplication? application;
     private readonly IdeAppearanceSettings? appearanceSettings;
+    private readonly IdeWorkspaceLayout workspaceLayout;
     private readonly Window sourceWindow;
     private readonly Window pCodeWindow;
     private readonly Pl0SourceEditorView sourceEditor;
@@ -119,59 +120,24 @@ internal sealed class IdeMainView : Runnable
         var menuBar = CreateMenuBar();
         Add(menuBar);
 
-        sourceWindow = new Window
-        {
-            Title = SourceWindowBaseTitle,
-            X = 0,
-            Y = Pos.Bottom(menuBar),
-            Width = Dim.Percent(45),
-            Height = Dim.Percent(70)
-        };
+        sourceWindow = new Window { Title = SourceWindowBaseTitle };
         sourceEditor = CreateSourceEditor();
         sourceEditor.Height = Dim.Fill();
         sourceWindow.Add(sourceEditor);
 
-        pCodeWindow = new Window
-        {
-            Title = GetCodeWindowBaseTitle(),
-            X = Pos.Right(sourceWindow),
-            Y = Pos.Bottom(menuBar),
-            Width = Dim.Percent(25),
-            Height = Dim.Percent(70)
-        };
+        pCodeWindow = new Window { Title = GetCodeWindowBaseTitle() };
         pCodeOutput = CreateReadOnlyOutputView();
         pCodeWindow.Add(pCodeOutput);
 
-        var debugWindow = new Window
-        {
-            Title = DebugWindowBaseTitle,
-            X = Pos.Right(pCodeWindow),
-            Y = Pos.Bottom(menuBar),
-            Width = Dim.Fill(),
-            Height = Dim.Percent(70)
-        };
+        var debugWindow = new Window { Title = DebugWindowBaseTitle };
         debugOutput = CreateDebugOutputView();
         debugWindow.Add(debugOutput);
 
-        var messagesWindow = new Window
-        {
-            Title = "Meldungen",
-            X = 0,
-            Y = Pos.Bottom(sourceWindow),
-            Width = Dim.Percent(65),
-            Height = Dim.Fill(1)
-        };
+        var messagesWindow = new Window { Title = "Meldungen" };
         messagesOutput = CreateReadOnlyOutputView();
         messagesWindow.Add(messagesOutput);
 
-        var runtimeOutputWindow = new Window
-        {
-            Title = RuntimeOutputWindowBaseTitle,
-            X = Pos.Right(messagesWindow),
-            Y = Pos.Bottom(sourceWindow),
-            Width = Dim.Fill(),
-            Height = Dim.Fill(1)
-        };
+        var runtimeOutputWindow = new Window { Title = RuntimeOutputWindowBaseTitle };
         runtimeOutput = CreateReadOnlyOutputView();
         runtimeOutputWindow.Add(runtimeOutput);
 
@@ -182,6 +148,8 @@ internal sealed class IdeMainView : Runnable
         RefreshSourceEditorState();
 
         Add(sourceWindow, pCodeWindow, messagesWindow, runtimeOutputWindow, debugWindow, sourceStatusLine);
+        workspaceLayout = new IdeWorkspaceLayout(this,
+            [sourceWindow, pCodeWindow, debugWindow, messagesWindow, runtimeOutputWindow], sourceStatusLine);
     }
 
     internal Pl0SourceEditorView SourceEditor => sourceEditor;
@@ -189,6 +157,7 @@ internal sealed class IdeMainView : Runnable
     internal EditorView MessagesOutput => messagesOutput;
     internal EditorView RuntimeOutput => runtimeOutput;
     internal EditorView DebugOutput => debugOutput;
+    internal IdeWorkspaceLayout WorkspaceLayout => workspaceLayout;
     internal CompilationResult? LastCompilationResult => lastCompilationResult;
     internal string? CurrentSourcePath => currentSourcePath;
     internal string SourceWindowTitle => sourceWindow.Title?.ToString() ?? string.Empty;
@@ -347,6 +316,17 @@ internal sealed class IdeMainView : Runnable
                     Item("_Speichern", SaveSourceFileFromMenu),
                     Item("_Beenden", ExitApplicationFromMenu)
                 ]),
+                new MenuBarItem("An_sicht",
+                [
+                    Item("_Darstellung / Appearance", OpenAppearanceSettings),
+                    Item("_Fenstergröße ändern / Resize panes", () => workspaceLayout.StartArrangement()),
+                    Item("_Layout zurücksetzen / Reset layout", () => workspaceLayout.Reset()),
+                    Item("_Quellcode / Source", () => workspaceLayout.SelectPane(IdePane.Source)),
+                    Item("_Code / Code", () => workspaceLayout.SelectPane(IdePane.Code)),
+                    Item("De_bug / Debug", () => workspaceLayout.SelectPane(IdePane.Debug)),
+                    Item("_Meldungen / Messages", () => workspaceLayout.SelectPane(IdePane.Messages)),
+                    Item("_Ausgabe / Output", () => workspaceLayout.SelectPane(IdePane.Output))
+                ]),
                 new MenuBarItem("_Bearbeiten",
                 [
                     Item("_Formatieren", FormatSourceFromMenu)
@@ -367,10 +347,6 @@ internal sealed class IdeMainView : Runnable
                 [
                     Item("_Step", StepDebugFromMenu),
                     Item("_Abbrechen", AbortDebugFromMenu)
-                ]),
-                new MenuBarItem("An_sicht",
-                [
-                    Item("_Darstellung / Appearance", OpenAppearanceSettings)
                 ]),
                 new MenuBarItem("_Hilfe",
                 [
