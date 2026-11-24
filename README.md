@@ -158,6 +158,15 @@ dotnet run --project src/Pl0.Cli -- run tests/data/pl0/valid/feature_const_var_a
 ```
 
 ### IDE starten
+
+Die IDE läuft direkt im Terminal. Starte sie aus dem Projekt `Pl0.Ide`.
+Die NuGet-Pakete `TinyPl0.Core` und `TinyPl0.Vm` stellen Compiler und VM
+für eigene .NET-Projekte bereit.
+
+The IDE runs in your terminal. Start it from the `Pl0.Ide` project.
+The `TinyPl0.Core` and `TinyPl0.Vm` NuGet packages provide the compiler
+and VM for your own .NET projects.
+
 ```bash
 dotnet run --project src/Pl0.Ide
 ```

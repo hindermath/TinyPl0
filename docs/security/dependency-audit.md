@@ -175,3 +175,33 @@ Trust are `N/A`: this local IDE update adds no web or authentication service,
 AI runtime, or distributed architecture. No new trust boundary calls for a
 CAPEC scenario; SAMM remains a periodic project assessment. Review the public
 supplier's OpenSSF Scorecard again before a release.*
+
+## Nachtrag zu Terminal.Gui 2.6.0 (2026-11-24) / Terminal.Gui 2.6.0 addendum
+
+Die IDE verwendet unter .NET 11 `Terminal.Gui` 2.6.0 und
+`Terminal.Gui.Editor` 2.5.7. Die IDE und das Testprojekt lösen denselben
+Abhängigkeitsstand auf. Zu den indirekten Änderungen gehören
+`Microsoft.Extensions` 11.0.0, `TextMateSharp` 2.0.5 und `Wcwidth` 5.0.2.
+Das Terminal.Gui-Paket nennt die MIT-Lizenz und den Quellcommit
+`5cc059119ba9d2c8d8d8db3bb2f7980d7cea6118`. Die Abfrage bei NuGet.org
+meldete für IDE und Testprojekt keine bekannten verwundbaren Abhängigkeiten.
+
+`TinyPl0.Core` und `TinyPl0.Vm` enthalten keine Terminal.Gui-Abhängigkeit.
+Das IDE-Update erfordert deshalb keine neue Version dieser NuGet-Pakete.
+NIST SSDF und CWE Top 25 gelten für diese Änderung. Die IDE-Abhängigkeit
+gehört in den SBOM-Nachweis für eine IDE-Auslieferung. SLSA bleibt das Ziel
+für CI-Build-Evidenz. VEX ist ohne bekannten Fund `N/A`. ASVS, AI-SBOM und
+Zero Trust sind `N/A`, weil die Änderung eine lokale IDE-Abhängigkeit betrifft.
+
+*On .NET 11 the IDE uses `Terminal.Gui` 2.6.0 and `Terminal.Gui.Editor`
+2.5.7. The IDE and test project resolve the same Terminal.Gui dependency
+graph. The transitive changes include `Microsoft.Extensions` 11.0.0,
+`TextMateSharp` 2.0.5, and `Wcwidth` 5.0.2. The Terminal.Gui package declares
+the MIT licence and source commit `5cc059119ba9d2c8d8d8db3bb2f7980d7cea6118`.
+The NuGet.org query reported no known vulnerable dependencies in either project.*
+
+*The Core and VM packages have no Terminal.Gui dependency. The IDE update
+requires no new version of those packages. NIST SSDF and CWE Top 25 apply.
+The dependency belongs in the SBOM for an IDE release. SLSA remains the
+target for CI build evidence. VEX is `N/A` with no known finding. ASVS,
+AI-SBOM, and Zero Trust are `N/A` for this local IDE dependency update.*

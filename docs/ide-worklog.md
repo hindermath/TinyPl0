@@ -512,3 +512,30 @@ lock files were regenerated and passed afterwards. The local Release build
 had no warnings. All 400 TinyPl0 tests and 65 maintenance TUI tests passed.
 The golden-master script reproduced the same 22 reference P-Code outputs.
 Cross-platform CI acceptance and PR #146 follow separately.*
+
+188. Agent (2026-11-24): Die IDE verwendet Terminal.Gui 2.6.0 auf .NET 11.
+Terminal.Gui.Editor bleibt bei 2.5.7. Der gesperrte Restore reproduzierte
+`NU1004` und bestand nach der gemeinsamen Erneuerung der Lockdateien von
+IDE und Tests. Die transitiven Änderungen umfassen `Microsoft.Extensions`
+11.0.0, `TextMateSharp` 2.0.5 und `Wcwidth` 5.0.2. Release-Build und alle
+400 Tests bestanden. Im macOS-Pseudoterminal wurde eine temporäre PL/0-Datei
+geöffnet, bearbeitet und gespeichert. Danach funktionierten
+Tastaturmenüs, Dialogabbruch mit Esc, Programmausgabe `42`, Debug-Schritt
+und der Wechsel zwischen 134×27 und 79×23 Zeichen. Thorstens manueller
+Sichttest in Terminal.app mit 134×27 Zeichen zeigt den 2.6.0-Build,
+das Mehrfensterlayout und einen erfolgreichen Programmlauf mit Ausgabe
+300. Die CI für diesen Branch steht aus. Profil-2-Drift tritt bereits
+auf dem Ausgangscommit `c89e54f` auf.
+
+*The IDE uses Terminal.Gui 2.6.0 on .NET 11 and retains Editor 2.5.7.
+Locked restore reproduced `NU1004` and passed after both the IDE and test
+lock files were regenerated. The transitive updates include
+`Microsoft.Extensions` 11.0.0, `TextMateSharp` 2.0.5, and `Wcwidth` 5.0.2.
+The Release build and all 400 tests passed. The macOS pseudo-terminal
+exercise opened, edited, and saved a temporary PL/0 file and covered keyboard
+menus, dismissing a dialog with Esc,
+program output `42`, a debugger step, and resizing between 134×27 and 79×23.
+Thorsten tested the 2.6.0 build in Terminal.app at 134×27. His screenshot
+shows the multi-pane layout and a successful run with output 300.
+CI for this branch is pending.
+Profile 2 drift is also present on base commit `c89e54f`.*
