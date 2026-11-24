@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <Import Project="..\..\eng\TinyPl0.PackageVersion.props" />
   <PropertyGroup>
-    <TargetFramework>net10.0</TargetFramework>
+    <TargetFramework>net11.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -17,7 +17,7 @@
     <PackageVersion Condition="'$(BuildProjectReferences)' == 'false'">[$(TinyPl0PackageVersion)]</PackageVersion>
     <Version>$(TinyPl0PackageVersion)</Version>
     <Authors>Thorsten Hindermann</Authors>
-    <Description>Didaktischer Compilerkern des historischen PL/0 für .NET 10 mit Lexer, Parser, Diagnosen und typisierter P-Code-Erzeugung ohne Laufzeitabhängigkeiten. / Educational compiler core for historical PL/0 on .NET 10 with a lexer, parser, diagnostics, and typed P-Code generation without runtime dependencies.</Description>
+    <Description>Didaktischer Compilerkern des historischen PL/0 für .NET 11 mit Lexer, Parser, Diagnosen und typisierter P-Code-Erzeugung ohne Laufzeitabhängigkeiten. / Educational compiler core for historical PL/0 on .NET 11 with a lexer, parser, diagnostics, and typed P-Code generation without runtime dependencies.</Description>
     <PackageTags>pl0;compiler;compiler-construction;p-code;education;teaching;dotnet</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>

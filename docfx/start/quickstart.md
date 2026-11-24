@@ -2,7 +2,7 @@
 
 ## Voraussetzungen
 
-- .NET SDK 10
+- .NET 11 SDK gemäß `global.json` / .NET 11 SDK as specified in `global.json`
 
 ## Build und Tests
 

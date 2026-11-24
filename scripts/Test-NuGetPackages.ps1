@@ -14,6 +14,7 @@ param(
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 $RepositoryRoot = Split-Path -Parent $PSScriptRoot
+$TargetFramework = 'net11.0'
 $OutputPath = [IO.Path]::GetFullPath((Join-Path $RepositoryRoot $OutputDirectory))
 $TemporaryRoot = Join-Path ([IO.Path]::GetTempPath()) ("tinypl0-package-test-" + [guid]::NewGuid().ToString('N'))
 
@@ -82,18 +83,18 @@ try {
     foreach ($Package in @($Core, $Vm)) {
         $AssemblyName = if ($Package.id -eq 'TinyPl0.Core') { 'Pl0.Core' } else { 'Pl0.Vm' }
         if (-not ($Package.entries -contains 'README.md')) { throw "$($Package.id) is missing README.md." }
-        if (-not ($Package.entries -contains "lib/net10.0/$AssemblyName.dll")) { throw "$($Package.id) is missing its DLL." }
-        if (-not ($Package.entries -contains "lib/net10.0/$AssemblyName.xml")) { throw "$($Package.id) is missing XML documentation." }
+        if (-not ($Package.entries -contains "lib/$TargetFramework/$AssemblyName.dll")) { throw "$($Package.id) is missing its DLL." }
+        if (-not ($Package.entries -contains "lib/$TargetFramework/$AssemblyName.xml")) { throw "$($Package.id) is missing XML documentation." }
         $Text = ($Package.dependencies | ConvertTo-Json -Compress)
         if ($Text -match 'Terminal\.Gui|Pl0\.Ide|TinyCalc') { throw "$($Package.id) contains a forbidden dependency." }
     }
 
     $Consumer = Join-Path $TemporaryRoot 'consumer'
     New-Item -ItemType Directory -Path $Consumer -Force | Out-Null
-    Invoke-DotNet @('new', 'console', '--framework', 'net10.0', '--no-restore', '--output', $Consumer)
+    Invoke-DotNet @('new', 'console', '--framework', $TargetFramework, '--no-restore', '--output', $Consumer)
     $Project = @"
 <Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup><OutputType>Exe</OutputType><TargetFramework>net10.0</TargetFramework><ImplicitUsings>enable</ImplicitUsings></PropertyGroup>
+  <PropertyGroup><OutputType>Exe</OutputType><TargetFramework>$TargetFramework</TargetFramework><ImplicitUsings>enable</ImplicitUsings></PropertyGroup>
   <ItemGroup>
     <PackageReference Include="TinyPl0.Core" Version="$Version" />
     <PackageReference Include="TinyPl0.Vm" Version="$Version" />
@@ -104,14 +105,18 @@ try {
     $Program = @'
 using Pl0.Core;
 using Pl0.Vm;
-Instruction[] code = [new(Opcode.Lit, 0, 42), new(Opcode.Opr, 0, 15), new(Opcode.Opr, 0, 0)];
-var io = new BufferedPl0Io();
-VmExecutionResult run = new VirtualMachine().Run(code, io);
+CompilationResult compilation = new Pl0Compiler().Compile("begin ! 42 end.", CompilerOptions.Default);
+if (!compilation.Success) return 1;
+
+var runIo = new BufferedPl0Io();
+VmExecutionResult run = new VirtualMachine().Run(compilation.Instructions, runIo);
+var stepIo = new BufferedPl0Io();
 var stepVm = new SteppableVirtualMachine();
-stepVm.Initialize(code, new BufferedPl0Io());
+stepVm.Initialize(compilation.Instructions, stepIo);
 VmStepResult step;
 do { step = stepVm.Step(); } while (step.Status == VmStepStatus.Running);
-if (!run.Success || step.Reason != VmCompletionReason.Halted || io.Output.Single() != 42) return 1;
+if (!run.Success || step.Reason != run.Reason || step.ExecutedInstructions != run.ExecutedInstructions ||
+    !runIo.Output.SequenceEqual([42]) || !stepIo.Output.SequenceEqual(runIo.Output)) return 1;
 Console.WriteLine("PASS: TinyPl0 package consumer");
 return 0;
 '@
@@ -134,7 +139,7 @@ return 0;
     }
     $Evidence = [ordered]@{
         schemaVersion = '1.0'; packageVersion = $Version; configuration = $Configuration
-        platform = [Environment]::OSVersion.Platform.ToString(); consumerFramework = 'net10.0'
+        platform = [Environment]::OSVersion.Platform.ToString(); consumerFramework = $TargetFramework
         packages = @($Artifacts); core = $Core; vm = $Vm; consumer = 'Passed'
     }
     $Evidence | ConvertTo-Json -Depth 12 | Set-Content -LiteralPath (Join-Path $OutputPath 'package-validation.json') -Encoding utf8NoBOM

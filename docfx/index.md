@@ -1,6 +1,8 @@
 # TinyPl0 – Dokumentation & Ausbildung
 
-Willkommen zur zentralen Dokumentation von **TinyPl0**. Dieses Projekt dient als didaktische Portierung des historischen PL/0-Compilers nach C# auf .NET 10.
+Willkommen zur zentralen Dokumentation von **TinyPl0**. Das Projekt überträgt den historischen PL/0-Compiler als Lernbeispiel nach C# 15 auf .NET 11.
+
+*TinyPl0 is an educational port of the historical PL/0 compiler to C# 15 on .NET 11.*
 
 Diese Dokumentation ist speziell für die Ausbildung in der Fachinformatik konzipiert und bietet einen tiefen Einblick in die Funktionsweise von Compilern und virtuellen Maschinen.
 
@@ -53,7 +55,6 @@ Diese Dokumentation ist speziell für die Ausbildung in der Fachinformatik konzi
 TinyPl0 ist mehr als nur ein Compiler. Es ist ein Lernwerkzeug:
 
 - **Einfachheit:** PL/0 ist eine minimalistische Sprache, ideal zum Erlernen von Compilerbau-Grundlagen.
-- **Modernität:** Implementiert in C# 14 und .NET 10.
 - **Transparenz:** Vollständige Traceability von Anforderungen bis zu den Tests.
 
 > **Tipp / Tip:** Besuchen Sie den [Anhang](appendix/index.md), um eine Vielzahl

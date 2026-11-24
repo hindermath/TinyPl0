@@ -697,8 +697,8 @@ function Invoke-HBEnhancedMaintenanceUi {
     }
     $dotnet = Get-Command dotnet -ErrorAction SilentlyContinue
     $dotnetVersion = if ($dotnet) { (& dotnet --version 2>$null) } else { '' }
-    if (-not $dotnet -or -not $dotnetVersion.StartsWith('10.', [StringComparison]::Ordinal)) {
-        Write-Warning '.NET-10-SDK fehlt; lineare Ausgabe wird verwendet / .NET 10 SDK is missing; using plain output.'
+    if ($dotnetVersion -notlike '11.*') {
+        Write-Warning '.NET-11-SDK fehlt; lineare Ausgabe wird verwendet / .NET 11 SDK is missing; using plain output.'
         Invoke-HBPlainMaintenanceUi
     }
     $project = Join-Path $sourceRoot 'scripts/lib/maintenance-tui/src/HomeBaseline.MaintenanceTui/HomeBaseline.MaintenanceTui.csproj'

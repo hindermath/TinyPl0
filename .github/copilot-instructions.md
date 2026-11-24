@@ -8,7 +8,7 @@ für deine Aufgabe. Sie ergänzen die verbindlichen Arbeits-, Sicherheits-, Prü
 EN: Read the project constitution and the relevant [detailed rules](../docs/agent-guidance.md)
 before working. They supplement the binding work, security, verification and approval rules.
 
-This project is a port of the historical PL/0 compiler (originally in Pascal) to C# on .NET 10. It serves as a pedagogical reference for compiler construction in the German vocational training context (Fachinformatiker-Ausbildung).
+This project is a port of the historical PL/0 compiler (originally in Pascal) to C# on .NET 11. It serves as a pedagogical reference for compiler construction in the German vocational training context (Fachinformatiker-Ausbildung).
 
 ## Project Overview
 

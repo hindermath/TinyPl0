@@ -61,7 +61,7 @@ Use this command to produce an implementation plan from an approved specificatio
 1. Populate technical context with real stack details.
 2. Execute the Constitution Check gates explicitly:
    - branching and PR flow
-   - .NET 10 + C# 14.0 toolchain alignment
+   - .NET 11 + C# 15 toolchain alignment
    - general architecture evidence scope (`docs/architecture/`, ADRs, quality scenarios, risks/trade-offs)
    - architecture/layer boundaries
    - bilingual CEFR B2 documentation scope

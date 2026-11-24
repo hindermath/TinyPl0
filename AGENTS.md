@@ -12,7 +12,7 @@ This file provides guidance for agents working in this repository.
 
 ## Project Overview
 
-TinyPl0 is a C# .NET 10 port of the historical PL/0 compiler (originally in Pascal). It's a pedagogical reference for compiler construction.
+TinyPl0 is a C# .NET 11 port of the historical PL/0 compiler (originally in Pascal). It's a pedagogical reference for compiler construction.
 
 **Architecture:**
 - `Pl0.Core`: Lexer, Parser, Symbol Table, Code Generator
@@ -135,7 +135,7 @@ Enforced by `ArchitectureGuardTests` - do not violate these rules.
 - No language extensions beyond PL/0 definition.
 - No compiler optimizations (no peephole, SSA, etc.).
 - VM target only - no JIT or IL backend.
-- Prerequisites: .NET 10 SDK.
+- Prerequisites: .NET 11 SDK.
 - For `Pl0.Ide`, `<Version>` in `src/Pl0.Ide/Pl0.Ide.csproj` follows `Major.Minor.Patch.Build` with these fixed semantics: `Minor` = current Spec-Kit feature/branch number, interpreted numerically as the canonical PR number for versioning (`002` -> `2`) and used immediately even before a GitHub PR exists; `Patch` = current commit count in that feature/PR branch (after committing the current change); `Build` = manual build counter incremented by the bot before every `dotnet build` or `dotnet test`.
 - Whenever the bot creates a commit or updates a PR branch, it must automatically align the IDE version fields (`Version`, `AssemblyVersion`, `FileVersion`) to this rule before pushing.
 - Keep `docs/ide-worklog.md` up to date; the frozen IDE Pflichtenheft baseline is read-only.

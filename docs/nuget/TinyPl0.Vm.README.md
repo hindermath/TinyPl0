@@ -2,10 +2,13 @@
 
 ## Deutsch
 
-`TinyPl0.Vm` ist eine einbettbare und didaktische virtuelle Maschine für
-.NET 10. Sie führt den typisierten P-Code aus, den `TinyPl0.Core` aus
+`TinyPl0.Vm` ist eine einbettbare und didaktische virtuelle Maschine.
+Sie führt den typisierten P-Code aus, den `TinyPl0.Core` aus
 PL/0-Quelltext erzeugt. Die Stack-Architektur folgt dem historischen
 PL/0-Modell mit Programmzähler, Basiszeiger und Stackzeiger.
+
+Diese Paketversion setzt ein Projekt mit dem Ziel-Framework `net11.0`
+(.NET 11) oder höher voraus.
 
 Das Paket hängt von exakt derselben stabilen Version von `TinyPl0.Core` ab.
 Installierst du `TinyPl0.Vm` über NuGet, wird diese passende Core-Version
@@ -192,10 +195,12 @@ CLR-Indexausnahme die Batch- oder Step-API.
 
 ## English
 
-`TinyPl0.Vm` is an embeddable and educational virtual machine for .NET 10. It
+`TinyPl0.Vm` is an embeddable and educational virtual machine. It
 executes the typed P-Code that `TinyPl0.Core` generates from PL/0 source text.
 The stack architecture follows the historical PL/0 model with a program
 counter, base pointer, and stack pointer.
+
+This package version requires a project that targets `net11.0` (.NET 11) or later.
 
 The package depends on the exact same stable version of `TinyPl0.Core`. When
 you install `TinyPl0.Vm` through NuGet, this matching Core version is resolved

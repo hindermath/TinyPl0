@@ -298,12 +298,12 @@ run_enhanced_ui() {
     return $?
   fi
   command -v dotnet >/dev/null 2>&1 || {
-    warn ".NET 10 fehlt; lineare Ausgabe wird verwendet / .NET 10 is missing; using plain output"
+    warn ".NET 11 fehlt; lineare Ausgabe wird verwendet / .NET 11 is missing; using plain output"
     run_plain_ui
     return $?
   }
-  [[ "$(dotnet --version 2>/dev/null || true)" = 10.* ]] || {
-    warn ".NET-10-SDK fehlt; lineare Ausgabe wird verwendet / .NET 10 SDK is missing; using plain output"
+  [[ "$(dotnet --version 2>/dev/null || true)" = 11.* ]] || {
+    warn ".NET-11-SDK fehlt; lineare Ausgabe wird verwendet / .NET 11 SDK is missing; using plain output"
     run_plain_ui
     return $?
   }

@@ -918,7 +918,7 @@ constitution is the authoritative policy layer above all agent-specific files.
 ## Level-2 Project Environment Addendum / Level-2-Projektumgebung
 
 - Projekt / Project: TinyPl0 .NET compiler, VM, CLI, and Terminal.Gui IDE for the PL/0 language.
-- Laufzeit und Sprache / Runtime and language: .NET 10 / C# 14, Pl0.Core, Pl0.Vm, Pl0.Cli, Pl0.Ide, and xUnit tests.
+- Laufzeit und Sprache / Runtime and language: .NET 11 / C# 15, Pl0.Core, Pl0.Vm, Pl0.Cli, Pl0.Ide, and xUnit tests.
 - Build und Tests / Build and tests: dotnet restore/build/test, coverage collection, golden-master updates via scripts/update-golden-code.sh when intentional compiler output changes occur.
 - Doku und A11Y / Docs and A11Y: learner-facing compiler documentation, examples, generated API docs, and IDE flows follow DE-first/EN-second and WCAG 2.2 AA-oriented review.
 - Statistik / Statistics: manual conservative baseline 80 lines/workday; C#/.NET Thorsten-Solo baseline 125 lines/workday unless all agent files document a justified deviation.

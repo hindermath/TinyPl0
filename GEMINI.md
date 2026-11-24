@@ -8,7 +8,7 @@ für deine Aufgabe. Sie ergänzen die verbindlichen Arbeits-, Sicherheits-, Prü
 EN: Read the project constitution and the relevant [detailed rules](docs/agent-guidance.md)
 before working. They supplement the binding work, security, verification and approval rules.
 
-This project is a port of the historical PL/0 compiler (originally in Pascal) to C# on .NET 10. It serves as a pedagogical reference for compiler construction.
+This project is a port of the historical PL/0 compiler (originally in Pascal) to C# on .NET 11. It serves as a pedagogical reference for compiler construction.
 
 ## Project Overview
 
@@ -20,12 +20,12 @@ This project is a port of the historical PL/0 compiler (originally in Pascal) to
 - **Dialects:**
   - `classic`: Strictly compatible with the original Pascal reference (no I/O statements `?` and `!`).
   - `extended`: Includes `? ident` (input) and `! expression` (output) statements.
-- **Key Technologies:** C#, .NET 10, xUnit for testing.
+- **Key Technologies:** C#, .NET 11, xUnit for testing.
 
 ## Building and Running
 
 ### Prerequisites
-- [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0)
+- [.NET 11 SDK](https://dotnet.microsoft.com/download/dotnet/11.0)
 
 ### Key Commands
 - **Restore Dependencies:** `dotnet restore`
