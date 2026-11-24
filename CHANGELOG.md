@@ -1,5 +1,37 @@
 # Changelog
 
+## [1.0.0](https://github.com/hindermath/TinyPl0/compare/v0.5.0...v1.0.0) (2026-11-24)
+
+
+### ⚠ BREAKING CHANGES
+
+* New TinyPl0.Core and TinyPl0.Vm packages require .NET 11 or later.
+
+### Features / Neue Funktionen
+
+* require .NET 11 and C# 15 ([8720377](https://github.com/hindermath/TinyPl0/commit/8720377ed028b6ee0290f23c30c70d2403046e3c))
+
+
+### Bug Fixes / Fehlerbehebungen
+
+* **ci:** scope Pages validation concurrency to each PR ([f1f4815](https://github.com/hindermath/TinyPl0/commit/f1f4815d01bac29e490279bd56f4ae41285f3270))
+
+
+### Documentation / Dokumentation
+
+* refresh dependency update statistics evidence ([51c5f3e](https://github.com/hindermath/TinyPl0/commit/51c5f3e16cf740cc25323262a6e1e830bd47eede))
+* refresh dependency update statistics evidence ([940acf8](https://github.com/hindermath/TinyPl0/commit/940acf8a4fe399955d8a173fc06f5d6788da3e3c))
+* refresh dependency update statistics evidence ([d7350b6](https://github.com/hindermath/TinyPl0/commit/d7350b672120782515378de9af9e2e3f73a0115b))
+* refresh dependency update statistics evidence ([8b4714b](https://github.com/hindermath/TinyPl0/commit/8b4714b643f43c3b9a98d0b20bafa3f3324131ff))
+* refresh dependency update statistics evidence ([30eb884](https://github.com/hindermath/TinyPl0/commit/30eb884e64ee9520dd9393c6424dea5ec8db80ec))
+* refresh dependency update statistics evidence ([4f94afe](https://github.com/hindermath/TinyPl0/commit/4f94afe22302292a254aca95772738c598eaa485))
+* refresh statistics for dependency update ([41f6e9e](https://github.com/hindermath/TinyPl0/commit/41f6e9e95032bb87639e8e193a181d8fdb7321e9))
+* regenerate Profile 2 after evidence refresh ([b6d25aa](https://github.com/hindermath/TinyPl0/commit/b6d25aa19a90f0dd4bd494bb448968b28800b1ec))
+* regenerate Profile 2 after evidence refresh ([cfab71b](https://github.com/hindermath/TinyPl0/commit/cfab71b475ec178a5e8461c02d8387bcc20cd25b))
+* regenerate Profile 2 after evidence refresh ([b65c2e5](https://github.com/hindermath/TinyPl0/commit/b65c2e53509b610a4ff16b89bc49571386aa8228))
+* regenerate Profile 2 after evidence refresh ([0217aa2](https://github.com/hindermath/TinyPl0/commit/0217aa2166a2a6a0f3fd3259251909494a072147))
+* regenerate Profile 2 after evidence refresh ([092835b](https://github.com/hindermath/TinyPl0/commit/092835b4d5a519362b3d14fbcc845d031a429f03))
+
 ## [0.5.0](https://github.com/hindermath/TinyPl0/compare/v0.4.1...v0.5.0) (2026-11-22)
 
 
