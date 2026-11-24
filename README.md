@@ -39,7 +39,9 @@ German first, English second. Both language blocks are expected to follow
 compiler construction concepts and project workflows.
 
 ## Zielsetzung
-Dieses Repository dient der Portierung des historischen PL/0-Beispielcompilers (Pascal) nach C# auf .NET 10.
+Dieses Repository dient der Portierung des historischen PL/0-Beispielcompilers (Pascal) nach C# 15 auf .NET 11.
+
+This repository ports the historical PL/0 sample compiler from Pascal to C# 15 on .NET 11.
 
 Die fachliche und technische Zieldefinition steht im Pflichtenheft:
 - [Kanonischer Anforderungsindex](Pflichtenheft.md)
@@ -92,7 +94,7 @@ Fuer `src/Pl0.Ide` gilt die vierteilige Version `Major.Minor.Patch.Build` mit fo
 - `Build`: manueller Buildzaehler (vor jedem `dotnet build`/`dotnet test` erhoehen)
 
 ### Aktueller Stand (CLI + IDE)
-Die .NET-10-Solution ist angelegt:
+Die .NET-11-Projektmappe enthält diese Projekte:
 - `TinyPl0.sln`
 - `src/Pl0.Core`
 - `src/Pl0.Vm`
@@ -123,11 +125,13 @@ fpc pl0c.pas
 
 ### .NET-Befehle / .NET commands
 
-Zum Bauen das in `global.json` angegebene .NET SDK 11 verwenden. Für Tests
-und die Ausführung wird .NET 10 (`net10.0`) benötigt.
+Verwende zum Bauen und Testen das in `global.json` angegebene .NET 11 SDK.
+TinyPl0 verwendet C# 15 und benötigt zur Ausführung die .NET-11-Laufzeit.
+Die neuen NuGet-Pakete für Core und VM setzen ein Projekt mit .NET 11 oder höher voraus.
 
-Build with the .NET 11 SDK specified in `global.json`. Tests and execution
-require .NET 10 (`net10.0`).
+Use the .NET 11 SDK specified in `global.json` to build and test TinyPl0.
+TinyPl0 uses C# 15 and requires the .NET 11 runtime.
+The new Core and VM NuGet packages require a project that targets .NET 11 or later.
 
 ```bash
 dotnet restore

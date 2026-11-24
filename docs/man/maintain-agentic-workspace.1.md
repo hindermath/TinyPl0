@@ -450,7 +450,7 @@ timeouts, repository safety checks, tests, or review gates.*
 
 Die drei UI-Schalter sind gegenseitig ausgeschlossen. Enhanced und Plain
 dürfen außer dem Home-Verzeichnis keine Wartungsoption vorwegnehmen. Ein
-ungeeignetes Terminal, fehlendes .NET-10-SDK, Locked-Restore-/Buildfehler oder
+ungeeignetes Terminal, fehlendes .NET-11-SDK, Locked-Restore-/Buildfehler oder
 ein nicht sicher nutzbarer Cache führt vor Engine-Start zum linearen
 Assistenten. Nach Engine-Start wird nie ein zweiter Prozess gestartet.
 
@@ -497,7 +497,7 @@ automatische Bereinigung aus. Der kontrollierte Abbruch endet mit Exitcode
 `130`, sobald die Engine ihren Abschlusszustand geschrieben hat.
 
 *UI selectors are mutually exclusive. Enhanced and plain UI cannot preselect
-maintenance options. Unsupported terminal capability, missing .NET 10, locked
+maintenance options. Unsupported terminal capability, missing .NET 11, locked
 restore or build failure, or an unsafe cache falls back before engine start.
 The platform-bound content-addressed cache accepts only exact source and
 metadata. Internal JSONL events support live display only. Event drift causes

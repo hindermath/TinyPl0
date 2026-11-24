@@ -9,7 +9,7 @@ Start with [AGENTS.md](../AGENTS.md). The following sections apply to the named 
 Geltung / Applies to: `AGENTS.md`
 
 ### General
-- Use C# 14 features (collection expressions, primary constructors)
+- Use C# 15 on .NET 11. Use collection expressions and primary constructors where they improve readability.
 - Use `public sealed class` for test classes
 - All code in `Pl0.*` namespaces
 
@@ -58,7 +58,7 @@ Geltung / Applies to: `AGENTS.md`
 
 Geltung / Applies to: `AGENTS.md`
 
-This project is a port of the historical PL/0 compiler (originally in Pascal) to C# on .NET 10. It serves as a pedagogical reference for compiler construction in the German vocational training context (Fachinformatiker-Ausbildung).
+This project is a port of the historical PL/0 compiler (originally in Pascal) to C# 15 on .NET 11. It serves as a pedagogical reference for compiler construction in the German vocational training context (Fachinformatiker-Ausbildung).
 
 The original Pascal implementation serves as the behavioral reference. Key mappings:
 - `getsym/getch` → `Pl0Lexer`
@@ -97,7 +97,7 @@ Geltung / Applies to: `AGENTS.md`
 - When reporting acceleration, compare both manual references against visible Git active days and label the result as a blended repository speedup rather than a stopwatch measurement.
 - When hour values are shown, convert the day-based estimates with the TVoeD working-day baseline of `7.8 hours` (`7h 48m`) per day.
 
-## Active Technologies
+## Technology at the time of feature 002
 
 Geltung / Applies to: `AGENTS.md`
 
@@ -312,7 +312,7 @@ Align `Version`, `AssemblyVersion`, and `FileVersion` in `Pl0.Ide.csproj` whenev
 
 **IDE Worklog** — After any IDE-related work, append a new entry to `docs/ide-worklog.md`. The frozen IDE Pflichtenheft baseline is read-only.
 
-## Active Technologies
+## Technology at the time of feature 001
 
 Geltung / Applies to: `CLAUDE.md`
 

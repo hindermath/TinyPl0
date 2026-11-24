@@ -15,7 +15,7 @@ logic out of Bash, PowerShell, or the shared Python contract core.*
 | Baustein | Verantwortung | Bewusste Grenze |
 |---|---|---|
 | Bash-/PowerShell-Wrapper | Terminal erkennen, UI auswählen, Cache sicher bereitstellen | Keine zweite Engine nach Prozessstart |
-| .NET-10-TUI | Auswahl, Erklärung, Bestätigung, typisierte Argumente, Live-Anzeige | Keine Git-, Paket-, Sync- oder Providerlogik |
+| .NET-11-TUI | Auswahl, Erklärung, Bestätigung, typisierte Argumente, Live-Anzeige | Keine Git-, Paket-, Sync- oder Providerlogik |
 | Plain-Assistent | Lineare Auswahl bei fehlender TUI-Fähigkeit | Dieselben Kombinationen und Standardwerte |
 | Wartungs-Engine | Freshness, Barrieren, Registry, Propagation, Presets, Toolchain, Storage | Keine UI-Abhängigkeit |
 | JSONL-Ereignisse | Advisory Live-Status mit Run-ID und Sequenz | Kein Ersatz für Bericht oder Exitcode |

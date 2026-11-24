@@ -21,7 +21,7 @@ before stack mutation, contains corrupted non-root return frames as diagnostic
 authorises OIDC only, and generates reproducible supply-chain evidence.*
 
 **Feature**: `004-secure-development-hardening`
-**Sprache / Language**: C# 14 / .NET 10; PowerShell 7; Bash; YAML/JSON
+**Sprache / Language**: C# 15 / .NET 11; PowerShell 7; Bash; YAML/JSON
 **Reviewer**: independent security reviewer
 **Stand / Date**: 2026-08-30
 

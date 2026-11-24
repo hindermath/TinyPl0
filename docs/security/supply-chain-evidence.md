@@ -1,5 +1,23 @@
 # Lieferketten-Evidenz / Supply Chain Evidence
 
+## .NET-11-Migration / .NET 11 migration
+
+Die neuen Core- und VM-Pakete enthalten ihre Bibliotheken und XML-Dokumentation
+unter `lib/net11.0`. Die Paketprüfung kompiliert PL/0-Quelltext und führt den
+erzeugten P-Code in einem unabhängigen .NET-11-Projekt aus. Der Docs-Workflow
+erzeugt mit CycloneDX 6.3.2 eine CycloneDX-1.7-SBOM. Der Laufzeitwechsel auf
+.NET 11 ist auf diesen Toolaufruf begrenzt. NIST SSDF und CWE Top 25 gelten
+weiter. Die lokale SBOM und das CI-Artefakt sind Lieferketten-Nachweise
+für SLSA, dessen erreichte Stufe separat bewertet wird.
+
+The new Core and VM packages contain libraries and XML documentation under
+`lib/net11.0`. Package validation compiles PL/0 source and runs the resulting
+P-Code in an independent .NET 11 project. The Docs workflow uses CycloneDX
+6.3.2 to generate a CycloneDX 1.7 SBOM. Runtime roll-forward to .NET 11 is
+scoped to this tool invocation. NIST SSDF and CWE Top 25 continue to apply.
+The local SBOM and CI artefact provide evidence for SLSA. Any achieved SLSA
+level is assessed separately.
+
 ## Feature 006: NuGet-Pakete / NuGet Packages
 
 **Feature**: `006-embeddable-vm-nuget`

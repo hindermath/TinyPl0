@@ -12,7 +12,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-TinyPl0 is a C# .NET 10 port of the historical PL/0 compiler (originally in Pascal). It's a pedagogical reference for compiler construction targeting German vocational IT training (Fachinformatiker-Ausbildung). Learner-facing documentation and comments are bilingual (German first, English second) with CEFR/GER B2 readability.
+TinyPl0 is a C# .NET 11 port of the historical PL/0 compiler (originally in Pascal). It's a pedagogical reference for compiler construction targeting German vocational IT training (Fachinformatiker-Ausbildung). Learner-facing documentation and comments are bilingual (German first, English second) with CEFR/GER B2 readability.
 
 ## Build, Test, and Run Commands
 
@@ -68,7 +68,7 @@ dotnet run --project src/Pl0.Ide
 
 ## Code Conventions
 
-- C# 14 features: collection expressions `[]`, primary constructors, `record` for immutable data
+- C# examples: collection expressions `[]`, primary constructors, `record` for immutable data
 - Test classes: `public sealed class`, suffix `Tests`, use xUnit `[Fact]`
 - Namespaces: all in `Pl0.*`
 - 4-space indentation, opening brace on same line

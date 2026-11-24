@@ -9,7 +9,7 @@ Use this command to create or update a feature specification.
 3. Define measurable outcomes and explicit edge cases.
 4. Fill the Constitution Requirements and applicability sections with concrete impacts:
    - general architecture evidence impact (`docs/architecture/`, ADRs, quality scenarios, risks/trade-offs)
-   - .NET 10 + C# 14.0 toolchain impact
+   - .NET 11 + C# 15 toolchain impact
    - NuGet dependency currency impact
    - coverage thresholds (`>=70%`, target `>=80%`)
    - layering/shared logic placement

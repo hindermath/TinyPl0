@@ -18,7 +18,7 @@ Use this command when governance or project rules change.
    - `.github/copilot-instructions.md`
 5. Ensure no unresolved placeholders remain in the constitution.
 6. Verify toolchain, coverage, and dependency governance alignment:
-   - `.NET 10` + `C# 14.0`
+   - `.NET 11` + `C# 15`
    - coverage gate `>=70%` with target `>=80%`
    - NuGet packages tracked against latest stable versions
    - architecture evidence expectations under `docs/architecture/` and ADR usage when architecture rules changed

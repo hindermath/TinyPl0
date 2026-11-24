@@ -4,7 +4,7 @@
     <ProjectReference Include="..\Pl0.Core\Pl0.Core.csproj" Version="[$(TinyPl0PackageVersion)]" />
   </ItemGroup>
   <PropertyGroup>
-    <TargetFramework>net10.0</TargetFramework>
+    <TargetFramework>net11.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -12,7 +12,7 @@
     <PackageVersion>$(TinyPl0PackageVersion)</PackageVersion>
     <Version>$(TinyPl0PackageVersion)</Version>
     <Authors>Thorsten Hindermann</Authors>
-    <Description>Einbettbare, didaktische P-Code-VM des historischen PL/0 für .NET 10 mit vollständiger und schrittweiser Ausführung, Host-I/O und begrenzbaren Laufzeitressourcen. / Embeddable educational P-Code VM for historical PL/0 on .NET 10 with complete and stepwise execution, host I/O, and bounded runtime resources.</Description>
+    <Description>Einbettbare, didaktische P-Code-VM des historischen PL/0 für .NET 11 mit vollständiger und schrittweiser Ausführung, Host-I/O und begrenzbaren Laufzeitressourcen. / Embeddable educational P-Code VM for historical PL/0 on .NET 11 with complete and stepwise execution, host I/O, and bounded runtime resources.</Description>
     <PackageTags>pl0;virtual-machine;vm;compiler-construction;p-code;education;teaching;dotnet</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>

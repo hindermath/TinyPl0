@@ -2,15 +2,17 @@
 
 ## Installation
 
-### 1. .NET SDK 10 installieren
+### 1. .NET 11 SDK installieren / Install the .NET 11 SDK
 
-Stellen Sie sicher, dass das .NET 10 SDK auf Ihrem System installiert ist. Sie koennen dies ueberpruefen mit:
+Installieren Sie das in `global.json` angegebene .NET 11 SDK. Es enthält die Werkzeuge zum Bauen und Testen sowie die Laufzeit zum Starten von TinyPl0. Prüfen Sie die Version mit dem folgenden Befehl.
+
+Install the .NET 11 SDK specified in `global.json`. It includes the build and test tools and the runtime TinyPl0 needs. Use this command to check the installed version.
 
 ```bash
 dotnet --version
 ```
 
-Falls nicht installiert, laden Sie es von der [offiziellen Microsoft-Website](https://dotnet.microsoft.com/download/dotnet/10.0) herunter.
+[.NET 11 bei Microsoft herunterladen / Download .NET 11 from Microsoft](https://dotnet.microsoft.com/download/dotnet/11.0)
 
 ### 2. Repository klonen
 

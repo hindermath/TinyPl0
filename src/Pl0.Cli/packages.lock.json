@@ -1,14 +1,14 @@
 {
   "version": 1,
   "dependencies": {
-    "net10.0": {
+    "net11.0": {
       "TinyPl0.Core": {
         "type": "Project"
       },
       "TinyPl0.Vm": {
         "type": "Project",
         "dependencies": {
-          "TinyPl0.Core": "[0.4.1, )"
+          "TinyPl0.Core": "[0.5.0, )"
         }
       }
     }

@@ -2,10 +2,13 @@
 
 ## Deutsch
 
-`TinyPl0.Core` ist der didaktische Compilerkern von TinyPl0 für .NET 10. Das
+`TinyPl0.Core` ist der didaktische Compilerkern von TinyPl0. Das
 Paket überträgt die Ideen des historischen PL/0-Compilers in eine klar
 gegliederte C#-API. Es liest PL/0-Quelltext, prüft ihn und erzeugt typisierten
 P-Code für die virtuelle Maschine von TinyPl0.
+
+Diese Paketversion setzt ein Projekt mit dem Ziel-Framework `net11.0`
+(.NET 11) oder höher voraus.
 
 Das Paket hat keine Produkt-Laufzeitabhängigkeit. Für die Ausführung des
 erzeugten P-Codes installierst du zusätzlich `TinyPl0.Vm` in derselben stabilen
@@ -133,10 +136,12 @@ kontrolliertes `CompilationResult`, statt den Hoststack auszuschöpfen.
 
 ## English
 
-`TinyPl0.Core` is the educational compiler core of TinyPl0 for .NET 10. The
+`TinyPl0.Core` is the educational compiler core of TinyPl0. The
 package transfers the ideas of the historical PL/0 compiler into a clearly
 structured C# API. It reads and validates PL/0 source text and generates typed
 P-Code for the TinyPl0 virtual machine.
+
+This package version requires a project that targets `net11.0` (.NET 11) or later.
 
 The package has no product runtime dependency. To execute the generated
 P-Code, also install `TinyPl0.Vm` at the same stable version.

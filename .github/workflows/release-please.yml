@@ -47,7 +47,6 @@ jobs:
         uses: actions/setup-dotnet@0f4a354dd5547a28c70b7853dbd95d5b67886e73
         with:
           global-json-file: global.json
-          dotnet-version: "10.0.x"
       - name: Pack and validate
         shell: pwsh
         run: ./scripts/Test-NuGetPackages.ps1 -Configuration Release -Version '${{ needs.release-please.outputs.version }}' -OutputDirectory artifacts/packages
@@ -154,7 +153,6 @@ jobs:
         uses: actions/setup-dotnet@0f4a354dd5547a28c70b7853dbd95d5b67886e73
         with:
           global-json-file: global.json
-          dotnet-version: "10.0.x"
       - name: Download release evidence
         if: inputs.verify_version == ''
         uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333
@@ -269,10 +267,10 @@ jobs:
           $ErrorActionPreference = 'Stop'
           $root = Join-Path $env:RUNNER_TEMP 'public-consumer'
           $version = $env:SOURCE_VERSION
-          dotnet new console --framework net10.0 --output $root --no-restore
+          dotnet new console --framework net11.0 --output $root --no-restore
           @"
           <Project Sdk="Microsoft.NET.Sdk">
-            <PropertyGroup><OutputType>Exe</OutputType><TargetFramework>net10.0</TargetFramework><ImplicitUsings>enable</ImplicitUsings></PropertyGroup>
+            <PropertyGroup><OutputType>Exe</OutputType><TargetFramework>net11.0</TargetFramework><ImplicitUsings>enable</ImplicitUsings></PropertyGroup>
             <ItemGroup>
               <PackageReference Include="TinyPl0.Core" Version="$version" />
               <PackageReference Include="TinyPl0.Vm" Version="$version" />
@@ -308,7 +306,8 @@ jobs:
           '@ | Set-Content (Join-Path $root 'Program.cs')
           $packages = Join-Path $env:RUNNER_TEMP 'public-packages'
           dotnet restore (Join-Path $root 'public-consumer.csproj') --source https://api.nuget.org/v3/index.json --packages $packages --no-cache
-          dotnet run --project (Join-Path $root 'public-consumer.csproj') --configuration Release
+          if ($LASTEXITCODE -ne 0) { throw 'Public package restore failed.' }
+          dotnet run --project (Join-Path $root 'public-consumer.csproj') --configuration Release --no-restore
       - name: Upload final evidence
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:

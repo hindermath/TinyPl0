@@ -497,3 +497,18 @@ and all 400 tests passed. Contrast tests cover the dividers and their
 focus in all three schemes. A macOS pseudo-terminal exercised mouse drag,
 keyboard controls, and resizing between 134×27 and 79×23.
 The visual check in Terminal.app follows before the merge.*
+
+187. Agent (2026-11-24): TinyPl0 und die Wartungs-TUI verwenden `net11.0`
+und C# 15. Die IDE nutzt weiterhin Terminal.Gui 2.5.0. Der gesperrte
+NuGet-Restore zeigte vor der Erneuerung der Lockdateien `NU1004` und
+bestand danach. Der lokale Release-Build hatte keine Warnungen. Alle 400
+TinyPl0- und 65 Wartungs-TUI-Tests bestanden. Das Golden-Master-Skript
+erzeugte dieselben 22 P-Code-Referenzausgaben. Die plattformübergreifende
+CI-Abnahme und PR #146 folgen separat.
+
+*TinyPl0 and the maintenance TUI use `net11.0` and C# 15. The IDE continues
+to use Terminal.Gui 2.5.0. Locked NuGet restore reported `NU1004` before the
+lock files were regenerated and passed afterwards. The local Release build
+had no warnings. All 400 TinyPl0 tests and 65 maintenance TUI tests passed.
+The golden-master script reproduced the same 22 reference P-Code outputs.
+Cross-platform CI acceptance and PR #146 follow separately.*

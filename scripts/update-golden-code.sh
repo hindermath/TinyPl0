@@ -6,7 +6,7 @@ cd "$repo_root"
 
 catalog_file="tests/data/expected/catalog/cases.json"
 output_dir="tests/data/expected/code"
-cli_dll="src/Pl0.Cli/bin/Release/net10.0/Pl0.Cli.dll"
+cli_dll="src/Pl0.Cli/bin/Release/net11.0/Pl0.Cli.dll"
 
 if ! command -v jq >/dev/null 2>&1; then
   echo "jq is required to update golden artifacts." >&2
