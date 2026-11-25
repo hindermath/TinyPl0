@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.1](https://github.com/hindermath/TinyPl0/compare/v1.0.0...v1.0.1) (2026-11-25)
+
+
+### Documentation / Dokumentation
+
+* refresh Profile 2 and UTC project statistics ([1d10c70](https://github.com/hindermath/TinyPl0/commit/1d10c703e30e5f3b1ca6a273c4f8f3e1706602fd))
+* refresh statistics for the macOS proof workflow ([b6889e1](https://github.com/hindermath/TinyPl0/commit/b6889e160a6e517c44c347204a11f172ac8d80f1))
+
 ## [1.0.0](https://github.com/hindermath/TinyPl0/compare/v0.5.0...v1.0.0) (2026-11-24)
 
 
