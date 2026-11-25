@@ -11,13 +11,13 @@ Git-bound inventory and activity; not a measure of quality, learning performance
 | --- | --- |
 | Textdateien / Text files | 2645 |
 | Textzeilen / Text lines | 351998 |
-| Aktivtage / Active days | 107 |
+| Aktivtage / Active days | 108 |
 | Stichtag / As of | 2026-11-25 |
 | Fensterbeginn / Window start | 2025-11-30 |
 | Zeitzone / Time zone | UTC |
 
 Quellrevision / Source revision:
-aa4f9a57661f14a1239ba89fd2c302a28d8bd7ef
+0878d76574917673eb8b8750e425859d6a32ad30
 
 ### Artefakte / Artifacts
 
@@ -53,7 +53,7 @@ Wochen / Weeks 27..52 | 2026-05-31..2026-11-28
 So/Su  0 0 4 0 0 0 1 4 4 0 4 0 0 4 4 4 3 0 0 0 0 0 0 0 0 1
 Mo/Mo  0 0 0 0 3 1 4 0 0 0 0 2 0 0 4 0 0 0 0 0 0 0 0 3 0 1
 Di/Tu  0 0 0 0 2 0 3 4 4 0 0 0 0 2 4 0 0 0 0 0 0 0 4 0 0 3
-Mi/We  2 0 4 0 2 0 0 2 4 0 0 0 0 4 0 0 0 0 0 0 0 0 0 0 0 0
+Mi/We  2 0 4 0 2 0 0 2 4 0 0 0 0 4 0 0 0 0 0 0 0 0 0 0 0 1
 Do/Th  1 4 1 0 0 0 1 4 0 0 4 0 0 3 0 0 0 0 0 0 0 3 0 2 0 -
 Fr/Fr  2 0 4 2 3 4 4 4 1 0 0 0 0 0 3 0 0 0 0 0 0 0 4 4 4 -
 Sa/Sa  0 0 3 0 4 4 0 4 2 0 4 0 4 0 3 4 2 0 0 0 0 0 0 0 4 -
@@ -168,6 +168,7 @@ Sa/Sa  0 0 3 0 4 4 0 4 2 0 4 0 4 0 3 4 2 0 0 0 0 0 0 0 4 -
 | 2026-11-22 | 4 | 0 |
 | 2026-11-23 | 16 | 16 |
 | 2026-11-24 | 319 | 320 |
+| 2026-11-25 | 1 | 1 |
 
 ### Abdeckung / Coverage
 
