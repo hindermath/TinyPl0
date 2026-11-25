@@ -74,10 +74,11 @@ automatic CI commits. Exit 0 is current, 1 is drift, and 2 is blocked/invalid.
 
 [Rollout- und Installationsnachweis](../maintenance/project-statistics-rollout-v010.md)
 und [Pruefkommando](../man/prove-project-statistics-context.1.md).
-CI-Artefakte enthalten native Linux-/Windows-Ergebnisse am exakten Liefer-Head;
-lokale macOS-Ergebnisse werden im PR verlinkt. Technische Ergebnisse und
+CI-Artefakte enthalten native Ergebnisse für Ubuntu, Windows und macOS am
+exakten Git-Commit. Die drei Jobs führen dieselbe Prüfung aus. Technische Ergebnisse und
 fachliche Abnahme durch Thorsten bleiben getrennt. Kein Admin-Bypass.
 
 See the integration receipt and proof-command manual. CI artifacts bind native
-Linux/Windows results to the exact delivery head; the PR links macOS evidence.
+Ubuntu, Windows and macOS results to the exact Git commit. All three jobs run
+the same checks.
 Technical results do not grant human acceptance or admin bypass.
